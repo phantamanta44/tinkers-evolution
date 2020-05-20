@@ -1,0 +1,17 @@
+{
+  "modifier": "entropic",
+  "text": [
+    {
+      "text": "By fitting a weapon with a powerful energy core, it gains the ability to discharge large amounts of entropy into enemy energy shields."
+    }
+  ],
+  "effects": [
+    "Increases entropy dealt to energy shields",
+    "Multiple levels"
+  ],
+  "demoTool": [
+    "tconstruct:broadsword",
+    "tconstruct:cleaver",
+    "tconstruct:arrow"
+  ]
+}

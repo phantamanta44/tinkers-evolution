@@ -1,0 +1,18 @@
+{
+  "modifier": "primordial",
+  "text": [
+    {
+      "text": "A weapon suffused with pure chaos cleaves through the very essence of space and time. No ordinary armour or magicks can stay such a blade."
+    }
+  ],
+  "effects": [
+    "Converts a portion of damage to chaos damage",
+    "Bypasses most forms of damage resistance",
+    "Multiple levels"
+  ],
+  "demoTool": [
+    "tconstruct:broadsword",
+    "tconstruct:cleaver",
+    "tconstruct:arrow"
+  ]
+}

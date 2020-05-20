@@ -1,0 +1,19 @@
+{
+  "armormodifier": "chaos_resistance_armor",
+  "text": [
+    {
+      "text": "An armour plate attuned to the heart of chaos will gain a degree of resistance to its degenerative effects."
+    }
+  ],
+  "effects": [
+    "Reduces any incoming chaos damage",
+    "Stacks across all armour pieces",
+    "Multiple levels"
+  ],
+  "demoArmor": [
+    "conarm:helmet",
+    "conarm:chestplate",
+    "conarm:leggings",
+    "conarm:boots"
+  ]
+}

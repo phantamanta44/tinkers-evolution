@@ -1,0 +1,17 @@
+[
+{
+  "modid": "tconevo",
+  "name": "Tinkers' Evolution",
+  "description": "balanced because it takes effort",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["phantamanta44"],
+  "logoFile": "",
+  "screenshots": [],
+  "useDependencyInformation": true,
+  "dependencies": ["libnine", "baubles", "mantle", "tconstruct", "conarm", "draconicevolution"],
+  "requiredMods": ["libnine@[1.1.8,)", "tconstruct"]
+}
+]

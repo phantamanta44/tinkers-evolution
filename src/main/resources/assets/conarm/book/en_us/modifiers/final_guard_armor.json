@@ -1,0 +1,20 @@
+{
+  "armormodifier": "final_guard_armor",
+  "text": [
+    {
+      "text": "The same technology used to contain the destructive energies of chaos might also be used to keep it out. Fitting armour with such a shield projector should allow it to save you from the deadliest of attacks."
+    }
+  ],
+  "effects": [
+    "Saves the wearer from death at a large energy cost",
+    "Energy cost is split across all Final Guard armour pieces",
+    "Can only be applied to energized armour",
+    "Single level"
+  ],
+  "demoArmor": [
+    "conarm:helmet",
+    "conarm:chestplate",
+    "conarm:leggings",
+    "conarm:boots"
+  ]
+}

@@ -1,0 +1,200 @@
+package xyz.phanta.tconevo.command;
+
+import net.minecraft.command.*;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentTranslation;
+import slimeknights.tconstruct.library.TinkerRegistry;
+import slimeknights.tconstruct.library.events.TinkerCraftingEvent;
+import slimeknights.tconstruct.library.modifiers.IModifier;
+import slimeknights.tconstruct.library.modifiers.ModifierTrait;
+import slimeknights.tconstruct.library.modifiers.TinkerGuiException;
+import slimeknights.tconstruct.library.tinkering.ITinkerable;
+import slimeknights.tconstruct.library.utils.TinkerUtil;
+import slimeknights.tconstruct.tools.TinkerModifiers;
+import slimeknights.tconstruct.tools.modifiers.ToolModifier;
+import xyz.phanta.tconevo.integration.conarm.ConArmHooks;
+import xyz.phanta.tconevo.util.ToolUtils;
+
+import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class CommandTconEvo extends CommandBase {
+
+    private static final String LOC_BASE = "commands.tconevo.tconevo.";
+    private static final String LOC_USAGE = LOC_BASE + "usage";
+
+    private static final String LOC_MODADD_BASE = LOC_BASE + "modadd.";
+    private static final String LOC_MODADD_USAGE = LOC_MODADD_BASE + "usage";
+    private static final String LOC_MODADD_SUCCESS_PARTIAL = LOC_MODADD_BASE + "success_partial";
+    private static final String LOC_MODADD_SUCCESS_TOTAL = LOC_MODADD_BASE + "success_total";
+    private static final String LOC_MODADD_FAILURE = LOC_MODADD_BASE + "failure";
+
+    private static final String LOC_MODMAX_BASE = LOC_BASE + "modmax.";
+    private static final String LOC_MODMAX_USAGE = LOC_MODMAX_BASE + "usage";
+    private static final String LOC_MODMAX_SUCCESS = LOC_MODMAX_BASE + "success";
+    private static final String LOC_MODMAX_FAILURE = LOC_MODMAX_BASE + "failure";
+
+    @Override
+    public String getName() {
+        return "tconevo";
+    }
+
+    @Override
+    public int getRequiredPermissionLevel() {
+        return 2;
+    }
+
+    @Override
+    public String getUsage(ICommandSender sender) {
+        return LOC_USAGE;
+    }
+
+    @Override
+    public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
+        EntityPlayer player = getSenderPlayer(sender);
+        if (args.length < 1) {
+            throw new WrongUsageException(LOC_USAGE);
+        }
+        switch (args[0]) {
+            case "modadd": {
+                if (args.length < 2 || args.length > 3) {
+                    throw new WrongUsageException(LOC_MODADD_USAGE);
+                }
+                IModifier mod = getModifier(args[1]);
+                int level = 1;
+                if (args.length >= 3) {
+                    level = parseInt(args[2], 1);
+                }
+                ItemStack orig = getToolStack(player);
+                ItemStack stack = orig.copy();
+                int freeModCount = ToolUtils.getAndSetModifierCount(stack, Short.MAX_VALUE);
+                int remaining = level;
+                String error = null;
+                while (remaining > 0) {
+                    try {
+                        if (!mod.canApply(stack, orig)) {
+                            break;
+                        }
+                    } catch (TinkerGuiException e) {
+                        error = e.getMessage();
+                        break;
+                    }
+                    mod.apply(stack);
+                    try {
+                        TinkerCraftingEvent.ToolModifyEvent.fireEvent(stack, player, orig);
+                    } catch (TinkerGuiException e) {
+                        throw new CommandException(LOC_MODADD_FAILURE, e.getMessage());
+                    }
+                    orig = stack.copy();
+                    --remaining;
+                }
+                if (remaining == level) {
+                    throw new CommandException(LOC_MODADD_FAILURE, error != null ? error : "...?");
+                }
+                try {
+                    ToolUtils.rebuildToolStack(stack);
+                } catch (TinkerGuiException e) {
+                    // this almost certainly only occurs when there aren't enough modifiers, which we don't care about
+                }
+                ToolUtils.getAndSetModifierCount(stack, freeModCount);
+                player.setHeldItem(EnumHand.MAIN_HAND, stack);
+                if (remaining == 0) {
+                    player.sendMessage(new TextComponentTranslation(LOC_MODADD_SUCCESS_TOTAL,
+                            mod.getLocalizedName(), level));
+                } else {
+                    player.sendMessage(new TextComponentTranslation(LOC_MODADD_SUCCESS_PARTIAL,
+                            mod.getLocalizedName(), level - remaining));
+                }
+                break;
+            }
+            case "modmax": {
+                if (args.length != 1) {
+                    throw new WrongUsageException(LOC_MODMAX_USAGE);
+                }
+                ItemStack orig = getToolStack(player);
+                ItemStack stack = orig.copy();
+                int freeModCount = ToolUtils.getAndSetModifierCount(stack, Short.MAX_VALUE);
+                // getModifiers copies modifiers into a new list, so this shouldn't cause CMEs
+                for (IModifier mod : TinkerUtil.getModifiers(stack)) {
+                    // only maximize modifiers and ignore the extra-modifier modifier
+                    if (mod == TinkerModifiers.modCreative
+                            || !(mod instanceof ModifierTrait || mod instanceof ToolModifier
+                            || ConArmHooks.INSTANCE.isArmourModifierTrait(mod))) {
+                        continue;
+                    }
+                    for (int i = 0; i < 32767; i++) { // just for safety
+                        try {
+                            if (!mod.canApply(stack, orig)) {
+                                break;
+                            }
+                        } catch (TinkerGuiException e) {
+                            break;
+                        }
+                        mod.apply(stack);
+                        try {
+                            TinkerCraftingEvent.ToolModifyEvent.fireEvent(stack, player, orig);
+                        } catch (TinkerGuiException e) {
+                            throw new CommandException(LOC_MODMAX_FAILURE, e.getMessage());
+                        }
+                        orig = stack.copy();
+                    }
+                }
+                try {
+                    ToolUtils.rebuildToolStack(stack);
+                } catch (TinkerGuiException e) {
+                    // this almost certainly only occurs when there aren't enough modifiers, which we don't care about
+                }
+                ToolUtils.getAndSetModifierCount(stack, freeModCount);
+                player.setHeldItem(EnumHand.MAIN_HAND, stack);
+                player.sendMessage(new TextComponentTranslation(LOC_MODMAX_SUCCESS));
+                break;
+            }
+            default:
+                throw new WrongUsageException(LOC_USAGE);
+        }
+    }
+
+    @Override
+    public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, @Nullable BlockPos targetPos) {
+        if (args.length == 1) {
+            return getListOfStringsMatchingLastWord(args, "modadd", "modmax");
+        } else if (args[0].equals("modadd") && args.length == 2) {
+            List<String> modifierIds = new ArrayList<>();
+            for (IModifier mod : TinkerRegistry.getAllModifiers()) {
+                modifierIds.add(mod.getIdentifier());
+            }
+            return getListOfStringsMatchingLastWord(args, modifierIds);
+        }
+        return Collections.emptyList();
+    }
+
+    private static EntityPlayer getSenderPlayer(ICommandSender sender) throws CommandException {
+        if (!(sender instanceof EntityPlayer)) {
+            throw new PlayerNotFoundException("commands.tconevo.generic.player_only");
+        }
+        return (EntityPlayer)sender;
+    }
+
+    private static ItemStack getToolStack(EntityPlayer sender) throws CommandException {
+        ItemStack stack = sender.getHeldItemMainhand();
+        if (stack.isEmpty() || !(stack.getItem() instanceof ITinkerable)) {
+            throw new CommandException("commands.tconevo.generic.req_tool");
+        }
+        return stack;
+    }
+
+    private static IModifier getModifier(String id) throws CommandException {
+        IModifier mod = TinkerRegistry.getModifier(id);
+        if (mod == null) {
+            throw new CommandException("commands.tconevo.generic.unknown_mod", id);
+        }
+        return mod;
+    }
+
+}

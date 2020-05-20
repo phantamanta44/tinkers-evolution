@@ -1,0 +1,25 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "cube_all"
+  },
+  "variants": {
+    "type": {
+      "wyvern_metal": {
+        "textures": {
+          "all": "tconevo:blocks/metal/wyvern_metal"
+        }
+      },
+      "draconic_metal": {
+        "textures": {
+          "all": "tconevo:blocks/metal/draconic_metal"
+        }
+      },
+      "chaotic_metal": {
+        "textures": {
+          "all": "tconevo:blocks/metal/chaotic_metal"
+        }
+      }
+    }
+  }
+}

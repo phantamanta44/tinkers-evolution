@@ -1,0 +1,18 @@
+{
+  "modifier": "reaping",
+  "text": [
+    {
+      "text": "The ender energy manipulator can be used to disperse the energies tying mobs' souls to their mortal forms. Attaching more of these devices further increases the efficiency of the process."
+    }
+  ],
+  "effects": [
+    "Causes slain mobs to drop souls",
+    "Stacks with Soul Rend",
+    "Multiple levels"
+  ],
+  "demoTool": [
+    "tconstruct:broadsword",
+    "tconstruct:cleaver",
+    "tconstruct:arrow"
+  ]
+}

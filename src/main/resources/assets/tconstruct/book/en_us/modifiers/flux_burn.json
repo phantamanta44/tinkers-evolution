@@ -1,0 +1,18 @@
+{
+  "modifier": "flux_burn",
+  "text": [
+    {
+      "text": "A weapon with an energy-siphoning device can turn opponents' energized armour against them."
+    }
+  ],
+  "effects": [
+    "Burns a percentage of enemy armour charge",
+    "A portion of burned energy is dealt as damage",
+    "Multiple levels"
+  ],
+  "demoTool": [
+    "tconstruct:broadsword",
+    "tconstruct:cleaver",
+    "tconstruct:arrow"
+  ]
+}

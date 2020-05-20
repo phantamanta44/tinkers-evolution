@@ -1,0 +1,25 @@
+{
+  "9s": "pi",
+  "archetype": {
+    "parent": "block/cube_all"
+  },
+  "mutations": {
+    "type": {
+      "WYVERN_METAL": {
+        "textures": {
+          "all": "tconevo:blocks/metal/wyvern_metal"
+        }
+      },
+      "DRACONIC_METAL": {
+        "textures": {
+          "all": "tconevo:blocks/metal/draconic_metal"
+        }
+      },
+      "CHAOTIC_METAL": {
+        "textures": {
+          "all": "tconevo:blocks/metal/chaotic_metal"
+        }
+      }
+    }
+  }
+}

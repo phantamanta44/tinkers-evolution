@@ -1,0 +1,19 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "iii",
+    "iii",
+    "iii"
+  ],
+  "key": {
+    "i": {
+      "type": "forge:ore_dict",
+      "ore": "ingotChaoticMetal"
+    }
+  },
+  "result": {
+    "item": "tconevo:metal_block",
+    "count": 1,
+    "data": 2
+  }
+}

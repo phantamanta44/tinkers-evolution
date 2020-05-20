@@ -1,0 +1,52 @@
+{
+  "9s": "pi",
+  "archetype": {},
+  "mutations": {
+    "type": {
+      "WYVERN_METAL": {
+        "textures": {
+          "ingot": "tconevo:items/metal/ingot/wyvern_metal",
+          "dust": "tconevo:items/metal/dust/wyvern_metal",
+          "nugget": "tconevo:items/metal/nugget/wyvern_metal",
+          "plate": "tconevo:items/metal/plate/wyvern_metal",
+          "gear": "tconevo:items/metal/gear/wyvern_metal"
+        }
+      },
+      "DRACONIC_METAL": {
+        "textures": {
+          "ingot": "tconevo:items/metal/ingot/draconic_metal",
+          "dust": "tconevo:items/metal/dust/draconic_metal",
+          "nugget": "tconevo:items/metal/nugget/draconic_metal",
+          "plate": "tconevo:items/metal/plate/draconic_metal",
+          "gear": "tconevo:items/metal/gear/draconic_metal"
+        }
+      },
+      "CHAOTIC_METAL": {
+        "textures": {
+          "ingot": "tconevo:items/metal/ingot/chaotic_metal",
+          "dust": "tconevo:items/metal/dust/chaotic_metal",
+          "nugget": "tconevo:items/metal/nugget/chaotic_metal",
+          "plate": "tconevo:items/metal/plate/chaotic_metal",
+          "gear": "tconevo:items/metal/gear/chaotic_metal"
+        }
+      }
+    },
+    "form": {
+      "INGOT": {
+        "parent": "tconevo:item/metal_ingot"
+      },
+      "DUST": {
+        "parent": "tconevo:item/metal_dust"
+      },
+      "NUGGET": {
+        "parent": "tconevo:item/metal_nugget"
+      },
+      "PLATE": {
+        "parent": "tconevo:item/metal_plate"
+      },
+      "GEAR": {
+        "parent": "tconevo:item/metal_gear"
+      }
+    }
+  }
+}

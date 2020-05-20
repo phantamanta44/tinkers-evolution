@@ -1,0 +1,15 @@
+{
+  "9s": "pi",
+  "archetype": {
+    "parent": "item/generated"
+  },
+  "mutations": {
+    "type": {
+      "COALESCENCE_MATRIX": {
+        "textures": {
+          "layer0": "tconevo:items/coalescence_matrix"
+        }
+      }
+    }
+  }
+}
