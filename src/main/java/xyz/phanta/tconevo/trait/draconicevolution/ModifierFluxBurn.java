@@ -55,6 +55,7 @@ public class ModifierFluxBurn extends ModifierTrait {
         if (totalBurned > 0) {
             float burnDamage = (float)(totalBurned / (double)TconEvoConfig.moduleDraconicEvolution.fluxBurnEnergy);
             if (burnDamage >= 0.01F) { // no small damage
+                target.hurtResistantTime = 0; // reset i-frames from the original attack
                 target.attackEntityFrom(player instanceof EntityPlayer
                         ? DamageSource.causePlayerDamage((EntityPlayer)player)
                         : DamageSource.causeMobDamage(player), burnDamage);
