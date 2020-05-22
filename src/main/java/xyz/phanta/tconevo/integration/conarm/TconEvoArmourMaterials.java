@@ -1,5 +1,6 @@
 package xyz.phanta.tconevo.integration.conarm;
 
+import c4.conarm.common.armor.traits.ArmorTraits;
 import c4.conarm.lib.materials.*;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.Material;
@@ -27,6 +28,7 @@ public class TconEvoArmourMaterials {
 
     public static void initTraits() {
         // draconic evolution
+        ArmorMaterials.addArmorTrait(TconEvoMaterials.DRACONIUM, ArmorTraits.alien);
         ArmorMaterials.addArmorTrait(TconEvoMaterials.WYVERN_METAL, TconEvoArmourTraits.TRAIT_EVOLVED, ArmorMaterialType.CORE);
         ArmorMaterials.addArmorTrait(TconEvoMaterials.DRACONIC_METAL, TconEvoArmourTraits.TRAIT_EVOLVED, ArmorMaterialType.CORE);
         ArmorMaterials.addArmorTrait(TconEvoMaterials.CHAOTIC_METAL, TconEvoArmourTraits.TRAIT_EVOLVED, ArmorMaterialType.CORE);

@@ -1,18 +1,15 @@
 package xyz.phanta.tconevo.material;
 
-import io.github.phantamanta44.libnine.util.tuple.IPair;
 import net.minecraftforge.fluids.Fluid;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.*;
 import slimeknights.tconstruct.library.traits.ITrait;
 import xyz.phanta.tconevo.TconEvoMod;
+import xyz.phanta.tconevo.util.LazyAccum;
 import xyz.phanta.tconevo.util.TconReflect;
 
 import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.Supplier;
 
 public class MaterialBuilder {
@@ -22,13 +19,13 @@ public class MaterialBuilder {
     private final MaterialForm form;
     private final String oreName;
 
-    private final List<String> requiredMods = new ArrayList<>();
+    private final List<RegCondition> conditions = new ArrayList<>();
     private final List<IMaterialStats> materialStats = new ArrayList<>();
     private boolean craftable = false, castable = false;
     @Nullable
     private Supplier<Fluid> fluidGetter = null;
     private int fluidTemperature = 273; // only used if fluidGetter is null, as fluid is automatically generated
-    private final List<IPair<Supplier<ITrait>, Optional<String>>> traits = new ArrayList<>();
+    private final Map<PartType, LazyAccum<ITrait>> traits = new EnumMap<>(PartType.class);
 
     public MaterialBuilder(String matId, int colour, MaterialForm form, String oreName) {
         this.matId = matId;
@@ -37,8 +34,29 @@ public class MaterialBuilder {
         this.oreName = oreName;
     }
 
-    public MaterialBuilder dependsOn(String... mods) {
-        requiredMods.addAll(Arrays.asList(mods));
+    public MaterialBuilder requires(RegCondition condition) {
+        conditions.add(condition);
+        return this;
+    }
+
+    public MaterialBuilder requiresMods(String... mods) {
+        for (String mod : mods) {
+            requires(new RegCondition.ModLoaded(mod));
+        }
+        return this;
+    }
+
+    public MaterialBuilder requiresOres(String... oreKeys) {
+        for (String oreKey : oreKeys) {
+            requires(new RegCondition.OreDictExists(oreKey));
+        }
+        return this;
+    }
+
+    public MaterialBuilder requiresMaterials(Material... materials) {
+        for (Material material : materials) {
+            requires(new RegCondition.MaterialVisible(material));
+        }
         return this;
     }
 
@@ -96,22 +114,13 @@ public class MaterialBuilder {
         return setCastable(() -> fluid);
     }
 
-    public MaterialBuilder withTrait(Supplier<ITrait> traitGetter) {
-        traits.add(IPair.of(traitGetter, Optional.empty()));
+    public MaterialBuilder withTraits(PartType partType, LazyAccum<ITrait> traitCollector) {
+        traits.put(partType, traitCollector);
         return this;
     }
 
-    public MaterialBuilder withTrait(Supplier<ITrait> traitGetter, String toolPartType) {
-        traits.add(IPair.of(traitGetter, Optional.of(toolPartType)));
-        return this;
-    }
-
-    public MaterialBuilder withTrait(ITrait trait) {
-        return withTrait(() -> trait);
-    }
-
-    public MaterialBuilder withTrait(ITrait trait, String toolPartType) {
-        return withTrait(() -> trait, toolPartType);
+    public MaterialBuilder withTraits(PartType partType, ITrait... traits) {
+        return withTraits(partType, c -> c.acceptAll(traits));
     }
 
     public Material build() {
@@ -120,7 +129,7 @@ public class MaterialBuilder {
             TinkerRegistry.addMaterialStats(material, statsObj);
         }
         MaterialDefinition.register(
-                material, form, oreName, requiredMods, craftable, castable, fluidGetter, fluidTemperature, traits);
+                material, form, oreName, conditions, craftable, castable, fluidGetter, fluidTemperature, traits);
         TinkerRegistry.addMaterial(material);
         // override material owner since libnine invokes the static initializers
         TconReflect.overrideMaterialOwnerMod(material, TconEvoMod.INSTANCE);

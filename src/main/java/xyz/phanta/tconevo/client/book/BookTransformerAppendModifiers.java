@@ -1,6 +1,5 @@
 package xyz.phanta.tconevo.client.book;
 
-import io.github.phantamanta44.libnine.util.collection.Accrue;
 import slimeknights.mantle.client.book.data.BookData;
 import slimeknights.mantle.client.book.data.PageData;
 import slimeknights.mantle.client.book.data.SectionData;
@@ -9,19 +8,16 @@ import slimeknights.tconstruct.library.book.content.ContentListing;
 import slimeknights.tconstruct.library.book.sectiontransformer.SectionTransformer;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import xyz.phanta.tconevo.init.TconEvoTraits;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
+import xyz.phanta.tconevo.util.LazyAccum;
 
 // adapted from Tinkers' MEMES BookTransformerAppendModifiers
 public class BookTransformerAppendModifiers extends SectionTransformer {
 
     private final BookRepository source;
     private final boolean armour;
-    private final Consumer<Accrue<Modifier>> modCollector;
+    private final LazyAccum<Modifier> modCollector;
 
-    public BookTransformerAppendModifiers(BookRepository source, boolean armour, Consumer<Accrue<Modifier>> modCollector) {
+    public BookTransformerAppendModifiers(BookRepository source, boolean armour, LazyAccum<Modifier> modCollector) {
         super("modifiers");
         this.source = source;
         this.armour = armour;
@@ -31,9 +27,7 @@ public class BookTransformerAppendModifiers extends SectionTransformer {
     @Override
     public void transform(BookData book, SectionData section) {
         ContentListing listing = (ContentListing)section.pages.get(0).content;
-        List<Modifier> mods = new ArrayList<>();
-        modCollector.accept(new Accrue<>(mods));
-        for (Modifier mod : mods) {
+        for (Modifier mod : modCollector.collect()) {
             if (!TconEvoTraits.isModifierBlacklisted(mod)) {
                 PageData page = new PageData();
                 page.source = source;

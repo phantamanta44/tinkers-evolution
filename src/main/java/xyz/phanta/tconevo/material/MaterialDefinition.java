@@ -1,10 +1,8 @@
 package xyz.phanta.tconevo.material;
 
 import com.google.common.collect.Sets;
-import io.github.phantamanta44.libnine.util.tuple.IPair;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.oredict.OreDictionary;
 import slimeknights.tconstruct.library.fluid.FluidMolten;
 import slimeknights.tconstruct.library.materials.Material;
@@ -12,11 +10,12 @@ import slimeknights.tconstruct.library.traits.ITrait;
 import slimeknights.tconstruct.smeltery.TinkerSmeltery;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.TconEvoMod;
+import xyz.phanta.tconevo.util.LazyAccum;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 import java.util.Set;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
@@ -29,14 +28,14 @@ public class MaterialDefinition {
     public static void register(Material material,
                                 MaterialForm form,
                                 String oreName,
-                                List<String> requiredMods,
+                                List<RegCondition> conditions,
                                 boolean craftable,
                                 boolean castable,
                                 @Nullable Supplier<Fluid> fluidGetter,
                                 int fluidTemperature,
-                                List<IPair<Supplier<ITrait>, Optional<String>>> traits) {
+                                Map<PartType, LazyAccum<ITrait>> traits) {
         materialDefs.add(new MaterialDefinition(
-                material, form, oreName, requiredMods, craftable, castable, fluidGetter, fluidTemperature, traits));
+                material, form, oreName, conditions, craftable, castable, fluidGetter, fluidTemperature, traits));
     }
 
     public static void initMaterialProperties() {
@@ -57,27 +56,27 @@ public class MaterialDefinition {
     private final MaterialForm form;
     private final String oreName;
 
-    private final List<String> requiredMods;
+    private final List<RegCondition> conditions;
     private final boolean craftable;
     private final boolean castable;
     @Nullable
     private final Supplier<Fluid> fluidGetter;
     private final int fluidTemperature;
-    private final List<IPair<Supplier<ITrait>, Optional<String>>> traits;
+    private final Map<PartType, LazyAccum<ITrait>> traits;
 
     private MaterialDefinition(Material material,
                                MaterialForm form,
                                String oreName,
-                               List<String> requiredMods,
+                               List<RegCondition> conditions,
                                boolean craftable,
                                boolean castable,
                                @Nullable Supplier<Fluid> fluidGetter,
                                int fluidTemperature,
-                               List<IPair<Supplier<ITrait>, Optional<String>>> traits) {
+                               Map<PartType, LazyAccum<ITrait>> traits) {
         this.material = material;
         this.form = form;
         this.oreName = oreName;
-        this.requiredMods = requiredMods;
+        this.conditions = conditions;
         this.craftable = craftable;
         this.castable = castable;
         this.fluidGetter = fluidGetter;
@@ -102,14 +101,20 @@ public class MaterialDefinition {
                 .flatMap(prefix -> OreDictionary.getOres(prefix + oreName, false).stream())
                 .findFirst()
                 .ifPresent(material::setRepresentativeItem);
-        for (IPair<Supplier<ITrait>, Optional<String>> traitEntry : traits) {
-            material.addTrait(traitEntry.getA().get(), traitEntry.getB().orElse(null));
+        for (Map.Entry<PartType, LazyAccum<ITrait>> traitEntry : traits.entrySet()) {
+            for (String typeKey : traitEntry.getKey().typeKeys) {
+                for (ITrait trait : traitEntry.getValue().collect()) {
+                    if (!material.hasTrait(trait.getIdentifier(), typeKey)) { // some part types have overlapping keys
+                        material.addTrait(trait, typeKey);
+                    }
+                }
+            }
         }
     }
 
     private void tryActivate() {
-        for (String modId : requiredMods) {
-            if (!Loader.isModLoaded(modId)) {
+        for (RegCondition condition : conditions) {
+            if (!condition.isSatisfied()) {
                 return;
             }
         }
