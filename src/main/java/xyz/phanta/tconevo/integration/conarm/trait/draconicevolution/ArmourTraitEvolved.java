@@ -8,12 +8,17 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.energy.CapabilityEnergy;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import slimeknights.tconstruct.library.utils.TinkerUtil;
 import slimeknights.tconstruct.tools.modifiers.ModReinforced;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.TconEvoMod;
 import xyz.phanta.tconevo.capability.EnergyShield;
+import xyz.phanta.tconevo.client.event.ItemStackBarEvent;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.init.TconEvoCaps;
 import xyz.phanta.tconevo.integration.conarm.ConArmHooks;
@@ -30,6 +35,7 @@ public class ArmourTraitEvolved extends AbstractArmorTrait {
             EvolvedArmourCap cap = new EvolvedArmourCap(s);
             return new CapabilityBroker().with(CapabilityEnergy.ENERGY, cap).with(TconEvoCaps.ENERGY_SHIELD, cap);
         });
+        MinecraftForge.EVENT_BUS.register(this);
     }
 
     @Override
@@ -58,6 +64,14 @@ public class ArmourTraitEvolved extends AbstractArmorTrait {
             }
         }
         rootTag.setBoolean(TAG_EVOLVED_INIT, true);
+    }
+
+    @SideOnly(Side.CLIENT)
+    @SubscribeEvent
+    public void onItemStackBars(ItemStackBarEvent event) {
+        if (isToolWithTrait(event.stack)) {
+            event.addForgeEnergyBar();
+        }
     }
 
     private static class EvolvedArmourCap extends TraitEvolved.EvolvedCap implements EnergyShield {

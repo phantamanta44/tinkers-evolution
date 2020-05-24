@@ -14,6 +14,8 @@ import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import slimeknights.tconstruct.library.events.ProjectileEvent;
 import slimeknights.tconstruct.library.events.TinkerToolEvent;
 import slimeknights.tconstruct.library.materials.Material;
@@ -26,6 +28,7 @@ import slimeknights.tconstruct.library.utils.TinkerUtil;
 import slimeknights.tconstruct.tools.modifiers.ModReinforced;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.TconEvoMod;
+import xyz.phanta.tconevo.client.event.ItemStackBarEvent;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.util.ToolUtils;
 
@@ -180,6 +183,14 @@ public class TraitEvolved extends AbstractTrait {
         if (energy instanceof EvolvedCap) {
             EvolvedCap cap = (EvolvedCap)energy;
             cap.updateProjectileAmmo(cap.getEnergyStored());
+        }
+    }
+
+    @SideOnly(Side.CLIENT)
+    @SubscribeEvent
+    public void onItemStackBars(ItemStackBarEvent event) {
+        if (isToolWithTrait(event.stack)) {
+            event.addForgeEnergyBar();
         }
     }
 

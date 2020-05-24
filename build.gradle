@@ -63,6 +63,13 @@ dependencies {
     deobfCompile "curse.maven:draconic-evolution:2867186" // 2.3.25.351
 }
 
+jar {
+    manifest {
+        attributes 'FMLCorePluginContainsFMLMod': 'true'
+        attributes 'FMLCorePlugin': 'xyz.phanta.tconevo.coremod.TconEvoCoreMod'
+    }
+}
+
 processResources {
     // this will ensure that this task is redone when the versions change.
     inputs.property "version", project.version
