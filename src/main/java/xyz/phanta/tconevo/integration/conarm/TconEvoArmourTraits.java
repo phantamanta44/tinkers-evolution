@@ -4,6 +4,8 @@ import c4.conarm.lib.utils.RecipeMatchHolder;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.init.TconEvoTraits;
+import xyz.phanta.tconevo.integration.conarm.trait.ArmourTraitCelestial;
+import xyz.phanta.tconevo.integration.conarm.trait.ArmourTraitGaleForce;
 import xyz.phanta.tconevo.integration.conarm.trait.draconicevolution.*;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
 
@@ -11,6 +13,11 @@ import java.util.Arrays;
 import java.util.List;
 
 public class TconEvoArmourTraits {
+
+    public static final ArmourTraitCelestial TRAIT_CELESTIAL = new ArmourTraitCelestial();
+    public static final ArmourTraitGaleForce[] TRAIT_GALE_FORCE = {
+            new ArmourTraitGaleForce(1), new ArmourTraitGaleForce(2), new ArmourTraitGaleForce(3)
+    };
 
     // draconic evolution
     public static final ArmourTraitEvolved TRAIT_EVOLVED = new ArmourTraitEvolved();

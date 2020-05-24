@@ -35,6 +35,11 @@ fluid.tconevo.draconic_metal.name=Draconic Coalescence
 material.chaotic_metal.name=Chaotic
 fluid.tconevo.chaotic_metal.name=Destructured Chaos
 
+modifier.celestial_armor.name=Celestial
+modifier.celestial_armor.desc=§oAbyssal wings!§r\nThis armour grants creative flight.
+modifier.gale_force_armor.name=Gale Force
+modifier.gale_force_armor.desc=§oWind blow!§r\nThis armour grants increased flight speed.
+
 modifier.soul_rend.name=Soul Rend
 modifier.soul_rend.desc=§oSoul steal!§r\nThis weapon has innate soul-stealing abilities.
 modifier.evolved.name=Evolved
@@ -58,7 +63,7 @@ modifier.draconic_arrow_speed.desc=§oWarp speed!§r\nThis weapon fires shots at
 modifier.reaping.name=Reaping
 modifier.reaping.desc=§oDark metamorphosis!§r\nThis weapon has an additional chance to drop mob souls.
 modifier.entropic.name=Entropic
-modifier.entropic.desc=§oShield Breaker!§r\nThis weapon inflicts increased entropy on energy shields.
+modifier.entropic.desc=§oShield breaker!§r\nThis weapon inflicts increased entropy on energy shields.
 modifier.entropic.extra=Entropic Strike: +%s
 modifier.flux_burn.name=Flux Burn
 modifier.flux_burn.desc=§oThe magic ends here.§r\nThis weapon drains energy from armour and deals a portion of it as additional damage.
@@ -89,6 +94,8 @@ modifier.final_guard_armor.proc=Your armour's %s has kept you alive!
 
 death.attack.tconevo.chaos=%1$s was annihilated by %2$s using dark energy
 death.attack.tconevo.chaos.item=%1$s was annihilated by %2$s using the dark energy of %3$s
+
+attribute.name.tconevo.flightSpeed=Flight Speed
 
 commands.tconevo.generic.player_only=Only players can use this command.
 commands.tconevo.generic.req_tool=You need a Tinkers' Construct item to use this command.

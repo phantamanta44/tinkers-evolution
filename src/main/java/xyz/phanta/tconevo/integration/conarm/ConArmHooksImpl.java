@@ -15,6 +15,7 @@ import slimeknights.tconstruct.library.modifiers.IModifier;
 import slimeknights.tconstruct.library.modifiers.TinkerGuiException;
 import slimeknights.tconstruct.library.utils.TinkerUtil;
 import xyz.phanta.tconevo.constant.NameConst;
+import xyz.phanta.tconevo.integration.conarm.material.ArmourMaterialDefinition;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
 
 import javax.annotation.Nullable;
@@ -27,12 +28,12 @@ public class ConArmHooksImpl implements ConArmHooks {
     @Override
     public void onPreInit(FMLPreInitializationEvent event) {
         MinecraftForge.EVENT_BUS.register(this);
-        TconEvoArmourMaterials.initMaterialStats();
+        TconEvoArmourMaterials.init();
     }
 
     @Override
     public void onInit(FMLInitializationEvent event) {
-        TconEvoArmourMaterials.initTraits();
+        ArmourMaterialDefinition.initMaterialTraits();
         TconEvoArmourTraits.initModifierMaterials();
         // draconic evolution evolved upgrade recipes
         // have to hardcode upgrade key strings because we don't want to load DE classes here

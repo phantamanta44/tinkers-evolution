@@ -9,6 +9,14 @@ public class NameConst {
 
     public static final String POTION_IMMORTALITY = "immortality";
 
+    private static final String ARMOUR_SUFFIX = "_armor";
+    public static final String TRAIT_CELESTIAL = "celestial";
+    public static final String ARMOUR_TRAIT_CELESTSIAL = TRAIT_CELESTIAL + ARMOUR_SUFFIX;
+    public static final String TRAIT_GALE_FORCE = "gale_force";
+    public static final String ARMOUR_TRAIT_GALE_FORCE = TRAIT_GALE_FORCE + ARMOUR_SUFFIX;
+
+    // draconic evolution
+
     public static final String MAT_DRACONIUM = "draconium";
     public static final String MAT_WYVERN_METAL = "wyvern_metal";
     public static final String MAT_DRACONIC_METAL = "draconic_metal";
@@ -30,7 +38,6 @@ public class NameConst {
     public static final String MOD_FLUX_BURN = "flux_burn";
     public static final String MOD_PRIMORDIAL = "primordial";
 
-    private static final String ARMOUR_SUFFIX = "_armor";
     public static final String ARMOUR_TRAIT_EVOLVED = TRAIT_EVOLVED + ARMOUR_SUFFIX;
     public static final String ARMOUR_MOD_DRACONIC_ENERGY = MOD_DRACONIC_ENERGY + ARMOUR_SUFFIX;
     public static final String MOD_DRACONIC_SHIELD_CAPACITY = "draconic_shield_capacity";

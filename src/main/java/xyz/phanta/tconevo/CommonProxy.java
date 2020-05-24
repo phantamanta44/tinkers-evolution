@@ -8,10 +8,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
-import xyz.phanta.tconevo.handler.EnergyShieldHandler;
-import xyz.phanta.tconevo.handler.MaterialDeletionHandler;
-import xyz.phanta.tconevo.handler.PlayerStateHandler;
-import xyz.phanta.tconevo.handler.ToolCapabilityHandler;
+import xyz.phanta.tconevo.handler.*;
 import xyz.phanta.tconevo.init.TconEvoPotions;
 import xyz.phanta.tconevo.init.TconEvoTraits;
 import xyz.phanta.tconevo.integration.IntegrationManager;
@@ -31,6 +28,7 @@ public class CommonProxy {
         MinecraftForge.EVENT_BUS.register(toolCapHandler);
         MinecraftForge.EVENT_BUS.register(playerStateHandler);
         MinecraftForge.EVENT_BUS.register(energyShieldHandler);
+        MinecraftForge.EVENT_BUS.register(new FlightSpeedHandler());
         if (TconEvoConfig.overrideMaterials) {
             MinecraftForge.EVENT_BUS.register(new MaterialDeletionHandler());
         }

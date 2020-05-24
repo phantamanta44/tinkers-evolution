@@ -9,7 +9,10 @@ import xyz.phanta.tconevo.util.LazyAccum;
 import xyz.phanta.tconevo.util.TconReflect;
 
 import javax.annotation.Nullable;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.Map;
 import java.util.function.Supplier;
 
 public class MaterialBuilder {
@@ -60,8 +63,8 @@ public class MaterialBuilder {
         return this;
     }
 
-    public MaterialBuilder withStats(IMaterialStats... statsObjs) {
-        materialStats.addAll(Arrays.asList(statsObjs));
+    public MaterialBuilder withStats(IMaterialStats statsObj) {
+        materialStats.add(statsObj);
         return this;
     }
 

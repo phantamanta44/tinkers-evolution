@@ -32,4 +32,4 @@ public enum PartType {
         this.typeKeys = Arrays.stream(types).flatMap(t -> t.typeKeys.stream()).collect(Collectors.toList());
     }
 
-    }
+}
