@@ -83,7 +83,7 @@ public class ArmourModFinalGuard extends ArmorModifierTrait {
 
     @Override
     public List<String> getExtraInfo(ItemStack tool, NBTTagCompound modifierTag) {
-        return ToolUtils.formatExtraInfo(this, FormatUtils.formatSI(TconEvoConfig.moduleDraconicEvolution.finalGuardEnergy, "RF"));
+        return ToolUtils.formatExtraInfo(identifier, FormatUtils.formatSI(TconEvoConfig.moduleDraconicEvolution.finalGuardEnergy, "RF"));
     }
 
 }

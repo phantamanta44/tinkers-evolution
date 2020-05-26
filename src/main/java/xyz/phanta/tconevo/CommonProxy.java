@@ -9,10 +9,10 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
 import xyz.phanta.tconevo.handler.*;
-import xyz.phanta.tconevo.init.TconEvoPotions;
 import xyz.phanta.tconevo.init.TconEvoTraits;
 import xyz.phanta.tconevo.integration.IntegrationManager;
 import xyz.phanta.tconevo.material.MaterialDefinition;
+import xyz.phanta.tconevo.network.CPacketGaiaWrath;
 import xyz.phanta.tconevo.network.SPacketEntitySpecialEffect;
 import xyz.phanta.tconevo.recipe.MasterRecipes;
 import xyz.phanta.tconevo.recipe.OreDictRegistration;
@@ -34,6 +34,7 @@ public class CommonProxy {
         }
         SimpleNetworkWrapper netHandler = TconEvoMod.INSTANCE.getNetworkHandler();
         netHandler.registerMessage(new SPacketEntitySpecialEffect.Handler(), SPacketEntitySpecialEffect.class, 0, Side.CLIENT);
+        netHandler.registerMessage(new CPacketGaiaWrath.Handler(), CPacketGaiaWrath.class, 1, Side.SERVER);
         IntegrationManager.dispatchPreInit(event);
     }
 

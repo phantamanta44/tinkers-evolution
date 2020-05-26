@@ -47,6 +47,14 @@ repositories {
         name = "Thiakil Maven"
         url = "http://maven.thiakil.com/"
     }
+    maven {
+        name = "BlameJared Maven"
+        url = "https://maven.blamejared.com/"
+    }
+    maven {
+        name = "Bluexin Maven"
+        url = "http://maven.bluexin.be/repository/snapshots/"
+    }
 }
 
 dependencies {
@@ -61,6 +69,9 @@ dependencies {
     deobfCompile "curse.maven:redstone-flux:2920436" // 2.1.1.1
     deobfCompile "curse.maven:brandons-core:2867147" // 2.4.18.210
     deobfCompile "curse.maven:draconic-evolution:2867186" // 2.3.25.351
+    deobfCompile "vazkii.botania:Botania:r1.10-363.148"
+    deobfCompile "com.teamwizardry.librarianlib:librarianlib-1.12.2:4.19.1"
+    deobfCompile "curse.maven:natural-pledge:2740703" // r3.1.2
 }
 
 jar {

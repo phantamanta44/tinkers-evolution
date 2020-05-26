@@ -1,5 +1,6 @@
 package xyz.phanta.tconevo.integration;
 
+import io.github.phantamanta44.libnine.LibNine;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.discovery.ASMDataTable;
@@ -52,6 +53,11 @@ public class IntegrationManager {
     }
 
     public static void dispatchPreInit(FMLPreInitializationEvent event) {
+        LibNine.PROXY.getRegistrar().begin(TconEvoMod.INSTANCE);
+        for (IntegrationHooks hooksImpl : hooksInstances) {
+            hooksImpl.doRegistration();
+        }
+        LibNine.PROXY.getRegistrar().end();
         for (IntegrationHooks hooksImpl : hooksInstances) {
             hooksImpl.onPreInit(event);
         }

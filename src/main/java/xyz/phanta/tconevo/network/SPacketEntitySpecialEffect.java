@@ -10,6 +10,7 @@ import xyz.phanta.tconevo.TconEvoMod;
 
 import javax.annotation.Nullable;
 
+@SuppressWarnings("NotNullFieldNotInitialized")
 public class SPacketEntitySpecialEffect implements IMessage {
 
     private int entityId;

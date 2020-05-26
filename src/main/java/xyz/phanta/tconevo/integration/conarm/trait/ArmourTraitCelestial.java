@@ -24,7 +24,7 @@ public class ArmourTraitCelestial extends ArmorModifierTrait {
     }
 
     @Override
-    public void onArmorRemoved(ItemStack armor, EntityPlayer player, int slot) {
+    public void onArmorRemoved(ItemStack armour, EntityPlayer player, int slot) {
         if (player.world.isRemote || player.capabilities.isCreativeMode || player.isSpectator()) {
             return;
         }

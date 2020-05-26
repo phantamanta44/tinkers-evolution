@@ -11,6 +11,10 @@ import java.lang.annotation.Target;
 
 public interface IntegrationHooks {
 
+    default void doRegistration() {
+        // NO-OP
+    }
+
     default void onPreInit(FMLPreInitializationEvent event) {
         // NO-OP
     }

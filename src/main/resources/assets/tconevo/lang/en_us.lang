@@ -16,6 +16,7 @@ item.tconevo:metal11.name=Chaotic Metal Dust
 item.tconevo:metal12.name=Chaotic Metal Nugget
 item.tconevo:metal13.name=Chaotic Metal Plate
 item.tconevo:metal14.name=Chaotic Metal Gear
+item.tconevo.mana_giver.name=Internal Item
 
 tile.tconevo:metal_block0.name=Wyvern Metal Block
 tile.tconevo:metal_block1.name=Draconic Metal Block
@@ -25,6 +26,70 @@ effect.tconevo.immortality=Immortality
 potion.effect.tconevo.immortality=Potion of Undying
 splash_potion.effect.tconevo.immortality=Splash Potion of Undying
 lingering_potion.effect.tconevo.immortality=Lingering Potion of Undying
+effect.tconevo.mortal_wounds=Mortal Wounds
+potion.effect.tconevo.mortal_wounds=Potion of Suppressed Healing
+splash_potion.effect.tconevo.mortal_wounds=Splash Potion of Suppressed Healing
+lingering_potion.effect.tconevo.mortal_wounds=Lingering Potion of Suppressed Healing
+
+modifier.cascading.name=Cascading
+modifier.cascading.desc=§oIt's all coming down!§rThis tool destroys falling blocks in columns.
+modifier.mortal_wounds.name=Mortal Wounds
+modifier.mortal_wounds.desc=§oA mortal reminder!§r\nThis weapon reduces the enemy's healing for a duration.
+modifier.mortal_wounds.extra=Heal Reduction: -%s
+modifier.opportunist.name=Opportunist
+modifier.opportunist.desc=§rI've been waiting for this!§r\nThis weapon deals increased damage to debuffed targets.
+modifier.opportunist.extra=Opportunist Damage: +%s
+modifier.staggering.name=Staggering
+modifier.staggering.desc=§o...and stay bashed!§r\nThis weapon briefly immobilizes enemies on fully-charged hits.
+modifier.sundering.name=Sundering
+modifier.sundering.desc=§oBalance is weakness...§r\nThis weapon weakens attacked enemies.
+
+modifier.celestial_armor.name=Celestial
+modifier.celestial_armor.desc=§oAbyssal wings!§r\nThis armour grants creative flight.
+modifier.divine_grace_armor.name=Divine Grace
+modifier.divine_grace_armor.desc=§oSupport's on the way!§r\nThis armour amplifies received healing.
+modifier.divine_grace_armor.extra=Heal Amplification: +%s
+modifier.gale_force_armor.name=Gale Force
+modifier.gale_force_armor.desc=§oWind blow!§r\nThis armour grants increased flight speed.
+modifier.second_wind_armor.name=Second Wind
+modifier.second_wind_armor.desc=§oThe wind... it is blowing...§r\nThis armour provides regeneration after being attacked.
+modifier.stifling_armor.name=Stifling
+modifier.stifling_armor.desc=§oLike punching a rock!§r\nThis armour weakens attackers.
+modifier.stonebound_armor.name=Stonebound
+modifier.stonebound_armor.desc=This armour grows more effective as it wears out.
+modifier.stonebound_armor.extra=Stonebound Defense: +%s
+modifier.will_strength_armor.name=Strength of Will
+modifier.will_strength_armor.desc=§oMaintaining focus!§r\nThis armour grants immortality when hit at full health.
+
+material.livingrock.name=Livingrock
+material.livingwood.name=Livingwood
+material.dreamwood.name=Dreamwood
+material.manasteel.name=Manasteel
+material.terrasteel.name=Terrasteel
+material.elementium.name=Elementium
+material.mana_string.name=Mana-Infused
+
+modifier.mana_infused.name=Mana-Infused
+modifier.mana_infused.desc=§oMining in the database?§r\nThis tool repairs itself using mana.
+modifier.aura_siphon.name=Aura Siphon
+modifier.aura_siphon.desc=§oWex trionis!§r\nThis weapon converts some damage dealt to bonus mana.
+modifier.aura_siphon.extra=Aura Siphoning: %s
+modifier.fae_voice.name=Voice of the Fae
+modifier.fae_voice.desc=§oHey, listen!§r\nThis weapon may summon pixies to attack foes.
+modifier.fae_voice.extra=Pixie Chance: %s
+modifier.gaia_wrath.name=Gaia's Wrath
+modifier.gaia_wrath.desc=§oLight and darkness!§r\nThis weapon fires damaging beams when swung.
+
+modifier.mana_infused_armor.name=Mana-Infused
+modifier.mana_infused_armor.desc=§oMining in the database?§r\nThis armour repairs itself using mana.
+modifier.fae_voice_armor.name=Voice of the Fae
+modifier.fae_voice_armor.desc=§oHey, listen!§r\nThis armour may summon pixies to ward off attackers.
+modifier.fae_voice_armor.extra=Pixie Chance: %s
+modifier.aura_infused_armor.name=Aura-Infused
+modifier.aura_infused_armor.desc=§oInto the breach!§r\nThis armour passively generates mana.
+modifier.mana_affinity_armor.name=Mana Affinity
+modifier.mana_affinity_armor.desc=§oWarp not included!§r\nThis armour reduces mana costs.
+modifier.mana_affinity_armor.extra=Mana Discount: -%s
 
 material.draconium.name=Draconium
 fluid.tconevo.draconium.name=Molten Draconium
@@ -34,11 +99,6 @@ material.draconic_metal.name=Draconic
 fluid.tconevo.draconic_metal.name=Draconic Coalescence
 material.chaotic_metal.name=Chaotic
 fluid.tconevo.chaotic_metal.name=Destructured Chaos
-
-modifier.celestial_armor.name=Celestial
-modifier.celestial_armor.desc=§oAbyssal wings!§r\nThis armour grants creative flight.
-modifier.gale_force_armor.name=Gale Force
-modifier.gale_force_armor.desc=§oWind blow!§r\nThis armour grants increased flight speed.
 
 modifier.soul_rend.name=Soul Rend
 modifier.soul_rend.desc=§oSoul steal!§r\nThis weapon has innate soul-stealing abilities.

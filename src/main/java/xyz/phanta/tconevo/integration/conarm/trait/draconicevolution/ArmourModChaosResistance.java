@@ -50,7 +50,7 @@ public class ArmourModChaosResistance extends ArmorModifierTrait {
 
     @Override
     public List<String> getExtraInfo(ItemStack tool, NBTTagCompound modifierTag) {
-        return ToolUtils.formatExtraInfo(this,
+        return ToolUtils.formatExtraInfo(identifier,
                 FormatUtils.formatPercentage(getDamageReduction(ToolUtils.getTraitLevel(tool, identifier))));
     }
 

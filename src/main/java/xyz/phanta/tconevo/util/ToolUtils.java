@@ -63,16 +63,20 @@ public class ToolUtils {
         return TagUtil.getTagSafe(tag, Tags.TOOL_DATA_ORIG);
     }
 
+    public static boolean hasTrait(ItemStack stack, String traitId) {
+        return TinkerUtil.hasTrait(TagUtil.getTagSafe(stack), traitId);
+    }
+
     public static int getTraitLevel(ItemStack stack, String traitId) {
         return ModifierNBT.readTag(TinkerUtil.getModifierTag(stack, traitId)).level;
     }
 
-    public static List<String> formatExtraInfo(Modifier mod, String info) {
-        return Collections.singletonList(I18n.format(String.format(Modifier.LOC_Extra, mod.identifier), info));
+    public static List<String> formatExtraInfo(String identifier, String info) {
+        return Collections.singletonList(I18n.format(String.format(Modifier.LOC_Extra, identifier), info));
     }
 
-    public static List<String> formatExtraInfoPercent(Modifier mod, float percentage) {
-        return formatExtraInfo(mod, Util.dfPercent.format(percentage));
+    public static List<String> formatExtraInfoPercent(String identifier, float percentage) {
+        return formatExtraInfo(identifier, Util.dfPercent.format(percentage));
     }
 
     public static int getAndSetModifierCount(ItemStack stack, int mods) {

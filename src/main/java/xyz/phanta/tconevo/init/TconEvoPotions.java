@@ -9,10 +9,13 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.LivingHealEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.TconEvoMod;
 import xyz.phanta.tconevo.constant.NameConst;
+import xyz.phanta.tconevo.potion.PotionDispellable;
 import xyz.phanta.tconevo.potion.PotionUndispellable;
 
 public class TconEvoPotions {
@@ -21,6 +24,8 @@ public class TconEvoPotions {
 
     public static final Potion IMMORTALITY = new PotionUndispellable(false, 0xebc083)
             .setBeneficial().setPotionName(PREFIX + NameConst.POTION_IMMORTALITY);
+    public static final Potion MORTAL_WOUNDS = new PotionDispellable(true, 0x5f5d8e)
+            .setPotionName(PREFIX + NameConst.POTION_MORTAL_WOUNDS);
 
     @InitMe
     public static void init() {
@@ -29,7 +34,9 @@ public class TconEvoPotions {
 
     @SubscribeEvent
     public void onRegisterPotions(RegistryEvent.Register<Potion> event) {
-        event.getRegistry().register(IMMORTALITY.setRegistryName(TconEvoMod.MOD_ID, NameConst.POTION_IMMORTALITY));
+        event.getRegistry().registerAll(
+                IMMORTALITY.setRegistryName(TconEvoMod.MOD_ID, NameConst.POTION_IMMORTALITY),
+                MORTAL_WOUNDS.setRegistryName(TconEvoMod.MOD_ID, NameConst.POTION_MORTAL_WOUNDS));
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
@@ -58,6 +65,20 @@ public class TconEvoPotions {
             entity.setHealth(1F);
             entity.hurtResistantTime = entity.maxHurtResistantTime;
             event.setCanceled(true);
+        }
+    }
+
+    @SubscribeEvent
+    public void onEntityHeal(LivingHealEvent event) {
+        if (event.getEntityLiving().getActivePotionEffect(MORTAL_WOUNDS) != null
+                && TconEvoConfig.general.effectMortalWoundsHealReduction > 0D) {
+            float amount = event.getAmount() * (1F - (float)TconEvoConfig.general.effectMortalWoundsHealReduction);
+            if (amount <= 0F) {
+                event.setAmount(0F);
+                event.setCanceled(true);
+            } else {
+                event.setAmount(amount);
+            }
         }
     }
 

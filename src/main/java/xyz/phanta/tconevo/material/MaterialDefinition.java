@@ -18,7 +18,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Supplier;
-import java.util.stream.Stream;
 
 public class MaterialDefinition {
 
@@ -96,8 +95,14 @@ public class MaterialDefinition {
             FluidRegistry.registerFluid(fluid);
             material.setFluid(fluid);
         }
-        material.addCommonItems(oreName);
-        Stream.of("ingot", "gem", "crystal", "dust", "block", "nugget", "shard")
+        if (form == MaterialForm.RAW) {
+            for (String prefix : form.prefixes) {
+                material.addItemIngot(prefix + oreName);
+            }
+        } else {
+            material.addCommonItems(oreName);
+        }
+        form.prefixes.stream()
                 .flatMap(prefix -> OreDictionary.getOres(prefix + oreName, false).stream())
                 .findFirst()
                 .ifPresent(material::setRepresentativeItem);
@@ -119,7 +124,9 @@ public class MaterialDefinition {
             }
         }
         if (material.getFluid() != null) {
-            TinkerSmeltery.registerOredictMeltingCasting(material.getFluid(), oreName);
+            if (form == MaterialForm.METAL) {
+                TinkerSmeltery.registerOredictMeltingCasting(material.getFluid(), oreName);
+            }
             TinkerSmeltery.registerToolpartMeltingCasting(material);
         }
         material.setVisible();

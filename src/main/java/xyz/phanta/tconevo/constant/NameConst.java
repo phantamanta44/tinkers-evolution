@@ -4,16 +4,56 @@ public class NameConst {
 
     public static final String ITEM_MATERIAL = "material";
     public static final String ITEM_METAL = "metal";
+    public static final String ITEM_MANA_GIVER = "mana_giver";
 
     public static final String BLOCK_METAL = "metal_block";
 
     public static final String POTION_IMMORTALITY = "immortality";
+    public static final String POTION_MORTAL_WOUNDS = "mortal_wounds";
+
+    public static final String TRAIT_CASCADING = "cascading";
+    public static final String TRAIT_MORTAL_WOUNDS = "mortal_wounds";
+    public static final String TRAIT_OPPORTUNIST = "opportunist";
+    public static final String TRAIT_STAGGERING = "staggering";
+    public static final String TRAIT_SUNDERING = "sundering";
 
     private static final String ARMOUR_SUFFIX = "_armor";
     public static final String TRAIT_CELESTIAL = "celestial";
     public static final String ARMOUR_TRAIT_CELESTSIAL = TRAIT_CELESTIAL + ARMOUR_SUFFIX;
+    public static final String TRAIT_DIVINE_GRACE = "divine_grace";
+    public static final String ARMOUR_TRAIT_DIVINE_GRACE = TRAIT_DIVINE_GRACE + ARMOUR_SUFFIX;
     public static final String TRAIT_GALE_FORCE = "gale_force";
     public static final String ARMOUR_TRAIT_GALE_FORCE = TRAIT_GALE_FORCE + ARMOUR_SUFFIX;
+    public static final String TRAIT_SECOND_WIND = "second_wind";
+    public static final String ARMOUR_TRAIT_SECOND_WIND = TRAIT_SECOND_WIND + ARMOUR_SUFFIX;
+    public static final String TRAIT_STIFLING = "stifling";
+    public static final String ARMOUR_TRAIT_STIFLING = TRAIT_STIFLING + ARMOUR_SUFFIX;
+    public static final String TRAIT_STONEBOUND = "stonebound";
+    public static final String ARMOUR_TRAIT_STONEBOUND = TRAIT_STONEBOUND + ARMOUR_SUFFIX;
+    public static final String TRAIT_WILL_STRENGTH = "will_strength";
+    public static final String ARMOUR_TRAIT_WILL_STRENGTH = TRAIT_WILL_STRENGTH + ARMOUR_SUFFIX;
+
+    // botania
+
+    public static final String MAT_LIVINGROCK = "livingrock";
+    public static final String MAT_LIVINGWOOD = "livingwood";
+    public static final String MAT_DREAMWOOD = "dreamwood";
+    public static final String MAT_MANASTEEL = "manasteel";
+    public static final String MAT_TERRASTEEL = "terrasteel";
+    public static final String MAT_ELEMENTIUM = "elementium";
+    public static final String MAT_MANA_STRING = "mana_string";
+
+    public static final String TRAIT_MANA_INFUSED = "mana_infused";
+    public static final String TRAIT_AURA_SIPHON = "aura_siphon";
+    public static final String TRAIT_FAE_VOICE = "fae_voice";
+    public static final String TRAIT_GAIA_WRATH = "gaia_wrath";
+
+    public static final String ARMOUR_TRAIT_MANA_INFUSED = TRAIT_MANA_INFUSED + ARMOUR_SUFFIX;
+    public static final String ARMOUR_TRAIT_FAE_VOICE = TRAIT_FAE_VOICE + ARMOUR_SUFFIX;
+    public static final String TRAIT_AURA_INFUSED = "aura_infused";
+    public static final String ARMOUR_TRAIT_AURA_INFUSED = TRAIT_AURA_INFUSED + ARMOUR_SUFFIX;
+    public static final String TRAIT_MANA_AFFINITY = "mana_affinity";
+    public static final String ARMOUR_TRAIT_MANA_AFFINITY = TRAIT_MANA_AFFINITY + ARMOUR_SUFFIX;
 
     // draconic evolution
 

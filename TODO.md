@@ -15,7 +15,7 @@
 * battle furor: fully-charged hits grant increasing amounts of attack damage for a short duration
 * fleet of foot: fully-charged hits grant a speed boost for a short duration
 * mortal wounds: hit enemies have reduced healing for a short duration
-* staggering: fully-charged hits root full-health enemies for a short duration
+* staggering: fully-charged hits root enemies for a short duration
 * deadly precision: critical strikes deal increased damage
 * relentless: hit enemies have reduced i-frames
 * ruination: fully-charged hits deal a percentage of enemies' current health as damage
@@ -55,6 +55,7 @@
 * stifling: attacking enemies are inflicted with weakness for a short duration
 * thundergod's favour: immune to lightning damage
 * chilling touch: attacking enemies are inflicted with slowness for a short duration
+* stonebound: increased armour effectiveness at lower durability
 
 ## modifiers
 
@@ -223,19 +224,21 @@
 
 * mana-infused: repairs self with mana from inventory
 * aura siphon: some damage dealt is converted to mana in the inventory
-* voice of the fae: has a chance to summon pixies on hit
+* voice of the fae: fully-charged swings have a chance to summon pixies
 * gaia's wrath: fully-charged swings consume mana to emit a damaging mana burst
 
 ### armour traits
 
+* mana affinity: provides a mana cost discount
+    * higher levels -> higher discount
 * aura-infused: generates mana in the inventory over time
 * voice of the fae: has a chance to summon pixies when hit
 
 ### materials
 
 * livingrock
-    * tools: sundering + stonebound
-    * armour: stifling + stonebound
+    * tools: sundering (head) + stonebound
+    * armour: stifling (core) + stonebound
 * livingwood
     * tools: writable + ecological
     * armour: writable + ecological
@@ -246,18 +249,19 @@
     * suitable for arrow shaft
 * manasteel
     * tools: momentum + mana-infused
-    * armour: lightweight + mana-infused
+    * armour: lightweight + mana-infused + mana affinity
 * terrasteel
     * tools: staggering (head) + gaia's wrath (extra) + mortal wounds + mana-infused
-    * armour: strength of will (core) + second wind (plates/trim) + heavy + mana-infused
+    * armour: strength of will (core) + second wind (plates/trim) + heavy + mana-infused + mana affinity 2
 * elementium
     * tools: voice of the fae (head) + opportunist (extra) + cascading + mana-infused
-    * armour: voice of the fae (core) + divine grace (plates/trim) + shielding + mana-infused
+    * armour: voice of the fae (core) + divine grace (plates/trim) + shielding + mana-infused + mana affinity
 * mana string
     * bowstring: mana-infused
 
 ### other ideas
 
+* terra helmet wills as armour mods
 * alloy that does vitreous pickaxe stuff
 * alloys that do starcaller and thundercaller stuff
 

@@ -1,8 +1,7 @@
 package xyz.phanta.tconevo.integration.conarm;
 
 import c4.conarm.common.armor.traits.ArmorTraits;
-import c4.conarm.lib.materials.ArmorMaterialType;
-import c4.conarm.lib.materials.ArmorMaterials;
+import slimeknights.tconstruct.tools.TinkerTraits;
 import xyz.phanta.tconevo.init.TconEvoMaterials;
 import xyz.phanta.tconevo.integration.conarm.material.ArmourMaterialBuilder;
 import xyz.phanta.tconevo.integration.conarm.material.ArmourPartType;
@@ -10,6 +9,40 @@ import xyz.phanta.tconevo.integration.conarm.material.ArmourPartType;
 public class TconEvoArmourMaterials {
 
     public static void init() {
+        // botania
+        new ArmourMaterialBuilder(TconEvoMaterials.LIVINGROCK)
+                .withStatsArmour(9F, 5.2F, 0.5F, 0F, 0F, 0.8F)
+                .withTraits(ArmourPartType.CORE, TconEvoArmourTraits.TRAIT_STIFLING)
+                .withTraits(ArmourPartType.ARMOUR, TconEvoArmourTraits.TRAIT_STONEBOUND)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.LIVINGWOOD)
+                .withStatsArmour(2.75F, 3F, 0.75F, 1.25F, 0F, 0.6F)
+                .withTraits(ArmourPartType.ARMOUR, TinkerTraits.writable, ArmorTraits.ecological)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.DREAMWOOD)
+                .withStatsArmour(3F, 3.25F, 1.25F, 1F, 0F, 0.75F)
+                .withTraits(ArmourPartType.ARMOUR, TconEvoArmourTraits.TRAIT_AURA_INFUSED, ArmorTraits.ecological)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.MANASTEEL)
+                .withStatsArmour(13F, 15F, 0.85F, 7.5F, 0F, 4F)
+                .withTraits(ArmourPartType.ARMOUR, ArmorTraits.lightweight,
+                        TconEvoArmourTraits.TRAIT_MANA_INFUSED, TconEvoArmourTraits.TRAIT_MANA_AFFINITY[0])
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.TERRASTEEL)
+                .withStatsArmour(28F, 21F, 1F, 9.5F, 6F, 7F)
+                .withTraits(ArmourPartType.CORE, TconEvoArmourTraits.TRAIT_WILL_STRENGTH)
+                .withTraits(ArmourPartType.EXTRA, TconEvoArmourTraits.TRAIT_SECOND_WIND)
+                .withTraits(ArmourPartType.ARMOUR, ArmorTraits.heavy,
+                        TconEvoArmourTraits.TRAIT_MANA_INFUSED, TconEvoArmourTraits.TRAIT_MANA_AFFINITY[1])
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.ELEMENTIUM)
+                .withStatsArmour(18F, 15F, 1.2F, 1F, 0F, 6.5F)
+                .withTraits(ArmourPartType.CORE, TconEvoArmourTraits.TRAIT_FAE_VOICE)
+                .withTraits(ArmourPartType.EXTRA, TconEvoArmourTraits.TRAIT_DIVINE_GRACE)
+                .withTraits(ArmourPartType.ARMOUR, ArmorTraits.shielding,
+                        TconEvoArmourTraits.TRAIT_MANA_INFUSED, TconEvoArmourTraits.TRAIT_MANA_AFFINITY[0])
+                .build();
+
         // draconic evolution
         new ArmourMaterialBuilder(TconEvoMaterials.DRACONIUM)
                 .withStatsArmour(16F, 24F, 1.1F, 1F, 1F, 1F)

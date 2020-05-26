@@ -12,6 +12,7 @@ public enum ArmourPartType {
     PLATES(ArmorMaterialType.PLATES),
     TRIM(ArmorMaterialType.TRIM),
 
+    ARMOUR(CORE, PLATES, TRIM),
     EXTRA(PLATES, TRIM),
     DEFAULT((String)null);
 

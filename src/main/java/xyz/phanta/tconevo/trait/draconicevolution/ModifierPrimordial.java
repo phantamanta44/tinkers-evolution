@@ -45,7 +45,7 @@ public class ModifierPrimordial extends ModifierTrait {
 
     @Override
     public List<String> getExtraInfo(ItemStack tool, NBTTagCompound modifierTag) {
-        return ToolUtils.formatExtraInfoPercent(this, getDamageConversion(tool));
+        return ToolUtils.formatExtraInfoPercent(identifier, getDamageConversion(tool));
     }
 
 }

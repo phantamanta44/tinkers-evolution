@@ -5,10 +5,11 @@ import java.util.List;
 
 public enum MaterialForm {
 
-    METAL("ingot", "dust"),
-    GEM("gem", "crystal");
+    METAL("ingot", "dust", "nugget"),
+    GEM("gem", "crystal"),
+    RAW("");
 
-    private final List<String> prefixes;
+    public final List<String> prefixes;
 
     MaterialForm(String... prefixes) {
         this.prefixes = Arrays.asList(prefixes);

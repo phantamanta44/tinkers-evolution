@@ -4,6 +4,11 @@ import com.google.common.collect.Sets;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
+import xyz.phanta.tconevo.trait.*;
+import xyz.phanta.tconevo.trait.botania.TraitAuraSiphon;
+import xyz.phanta.tconevo.trait.botania.TraitFaeVoice;
+import xyz.phanta.tconevo.trait.botania.TraitGaiaWrath;
+import xyz.phanta.tconevo.trait.botania.TraitManaInfused;
 import xyz.phanta.tconevo.trait.draconicevolution.*;
 
 import java.util.Arrays;
@@ -17,6 +22,18 @@ public class TconEvoTraits {
     public static boolean isModifierBlacklisted(Modifier mod) {
         return blacklisted.contains(mod.identifier);
     }
+
+    public static final TraitCascading TRAIT_CASCADING = new TraitCascading();
+    public static final TraitMortalWounds TRAIT_MORTAL_WOUNDS = new TraitMortalWounds();
+    public static final TraitOpportunist TRAIT_OPPORTUNIST = new TraitOpportunist();
+    public static final TraitSundering TRAIT_SUNDERING = new TraitSundering();
+    public static final TraitStaggering TRAIT_STAGGERING = new TraitStaggering();
+
+    // botania
+    public static final TraitManaInfused TRAIT_MANA_INFUSED = new TraitManaInfused();
+    public static final TraitAuraSiphon TRAIT_AURA_SIPHON = new TraitAuraSiphon();
+    public static final TraitFaeVoice TRAIT_FAE_VOICE = new TraitFaeVoice();
+    public static final TraitGaiaWrath TRAIT_GAIA_WRATH = new TraitGaiaWrath();
 
     // draconic evolution
     public static final TraitSoulRend[] TRAIT_SOUL_REND = {

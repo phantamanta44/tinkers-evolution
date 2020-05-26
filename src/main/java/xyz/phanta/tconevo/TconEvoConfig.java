@@ -1,5 +1,6 @@
 package xyz.phanta.tconevo;
 
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraftforge.common.config.Config;
 
 @Config(modid = TconEvoMod.MOD_ID)
@@ -16,6 +17,160 @@ public class TconEvoConfig {
     @Config.Comment("A list of tool modifiers that should be disabled.")
     @Config.RequiresMcRestart
     public static String[] disabledModifiers = new String[0];
+
+    @Config.Comment("Configuration for the mod in general.")
+    public static final General general = new General();
+
+    public static class General {
+
+        @Config.Comment({
+                "The amount of healing amplification afforded by each armour piece with the divine grace trait.",
+                "Only useful with Construct's Armoury installed."
+        })
+        @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
+        public double traitDivineGraceHealBoost = 0.12D;
+
+        @Config.Comment("The duration, in ticks, of the healing reduction applied by the mortal wounds trait.")
+        @Config.RangeInt(min = 1)
+        public int traitMortalWoundsHealReductionDuration = 100;
+
+        @Config.Comment("The fraction of healing that is mitigated by the mortal wounds debuff.")
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double effectMortalWoundsHealReduction = 0.75D;
+
+        @Config.Comment("The bonus damage percentage for attacks that proc opportunist.")
+        @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
+        public double traitOpportunistBonusDamage = 0.5D;
+
+        @Config.Comment({
+                "The duration, in ticks, of the regeneration granted by the second wind trait.",
+                "Only useful with Construct's Armoury installed."
+        })
+        @Config.RangeInt(min = 1)
+        public int traitSecondWindRegenDuration = 140;
+
+        @Config.Comment("The duration, in ticks, of the root applied by the staggering trait.")
+        @Config.RangeInt(min = 1)
+        public int traitStaggeringRootDuration = 12;
+
+        @Config.Comment({
+                "The duration, in ticks, of the weakness applied by the stifling trait.",
+                "Only useful with Construct's Armoury installed."
+        })
+        @Config.RangeInt(min = 1)
+        public int traitStiflingWeaknessDuration = 100;
+
+        @Config.Comment({
+                "The maximum bonus armour effectiveness afforded by the stonebound armour trait.",
+                "Only useful with Construct's Armoury installed."
+        })
+        @Config.RangeDouble(min = 1D, max = Float.MAX_VALUE)
+        public double traitStoneboundArmourEffectivenessMax = 0.1D;
+
+        @Config.Comment({
+                "The duration, in ticks, of the immortality applied by the strength of will trait.",
+                "Only useful with Construct's Armoury installed."
+        })
+        @Config.RangeInt(min = 1)
+        public int traitWillStrengthImmortalityDuration = 200;
+
+    }
+
+    @Config.Comment({
+            "Configuration for the Botania module.",
+            "As a reference, a mana pool holds 1 million units of mana.",
+            "To repair one point of durability, the manasteel pickaxe uses 60 mana and the terra shatterer uses 100.",
+    })
+    public static final Botania moduleBotania = new Botania();
+
+    public static class Botania {
+
+        @Config.Comment({
+                "The amount of mana used to repair one point of durability by the mana-infused trait.",
+                "Also the amount of mana contained in a burst created by the gaia's wrath trait."
+        })
+        @Config.RangeInt(min = 1)
+        public int manaInfusedCost = 75;
+
+        @Config.Comment("The fraction of damage converted to mana gain by the aura siphon trait.")
+        @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
+        public double auraSiphonMultiplier = 2.5D;
+
+        @Config.Comment("The number of ticks between each proc by the aura-infused trait. Only useful with Construct's Armoury.")
+        @Config.RangeInt(min = 1)
+        public int auraInfusedDelay = 20;
+
+        @Config.Comment("The probability of spawning a pixie on each weapon attack by the voice of the fae trait.")
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double faeVoiceProbabilityWeapon = 0.05D;
+
+        @Config.Comment({
+                "The probability of spawning a pixie when hit for a helmet with the voice of the fae trait.",
+                "Only useful with Construct's Armoury installed."
+        })
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double faeVoiceProbabilityHelmet = 0.11D;
+
+        @Config.Comment({
+                "The probability of spawning a pixie when hit for a chestplate with the voice of the fae trait.",
+                "Only useful with Construct's Armoury installed."
+        })
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double faeVoiceProbabilityChestplate = 0.17D;
+
+        @Config.Comment({
+                "The probability of spawning a pixie when hit for leggings with the voice of the fae trait.",
+                "Only useful with Construct's Armoury installed."
+        })
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double faeVoiceProbabilityLeggings = 0.15D;
+
+        @Config.Comment({
+                "The probability of spawning a pixie when hit for boots with the voice of the fae trait.",
+                "Only useful with Construct's Armoury installed."
+        })
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double faeVoiceProbabilityBoots = 0.09D;
+
+        public double getFaeVoiceProbabilityArmour(EntityEquipmentSlot slot) {
+            return armourSwitch(slot, faeVoiceProbabilityHelmet, faeVoiceProbabilityChestplate,
+                    faeVoiceProbabilityLeggings, faeVoiceProbabilityBoots, 0D);
+        }
+
+        @Config.Comment({
+                "The mana discount percentage granted per level by a helmet with the mana affinity trait.",
+                "Only useful with Construct's Armoury installed."
+        })
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double manaAffinityDiscountHelmet = 0.015D;
+
+        @Config.Comment({
+                "The mana discount percentage granted per level by a chestplate with the mana affinity trait.",
+                "Only useful with Construct's Armoury installed."
+        })
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double manaAffinityDiscountChestplate = 0.04D;
+
+        @Config.Comment({
+                "The mana discount percentage granted per level by leggings with the mana affinity trait.",
+                "Only useful with Construct's Armoury installed."
+        })
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double manaAffinityDiscountLeggings = 0.03D;
+
+        @Config.Comment({
+                "The mana discount percentage granted per level by boots with the mana affinity trait.",
+                "Only useful with Construct's Armoury installed."
+        })
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double manaAffinityDiscountBoots = 0.015D;
+
+        public double getManaAffinityDiscount(EntityEquipmentSlot slot) {
+            return armourSwitch(slot, manaAffinityDiscountHelmet, manaAffinityDiscountChestplate,
+                    manaAffinityDiscountLeggings, manaAffinityDiscountBoots, 0D);
+        }
+
+    }
 
     @Config.Comment("Configuration for the Draconic Evolution module.")
     public static final DraconicEvolution moduleDraconicEvolution = new DraconicEvolution();
@@ -87,15 +242,15 @@ public class TconEvoConfig {
         }
 
         @Config.Comment("The base shield recovery rate for wyvern armour. Only useful with Construct's Armoury.")
-        @Config.RangeDouble(min = 0)
+        @Config.RangeDouble(min = 0D)
         public double baseShieldRecoveryWyvern = 2D;
 
         @Config.Comment("The base shield recovery rate for draconic armour. Only useful with Construct's Armoury.")
-        @Config.RangeDouble(min = 0)
+        @Config.RangeDouble(min = 0D)
         public double baseShieldRecoveryDraconic = 4D;
 
         @Config.Comment("The base shield recovery rate for chaotic armour. Only useful with Construct's Armoury.")
-        @Config.RangeDouble(min = 0)
+        @Config.RangeDouble(min = 0D)
         public double baseShieldRecoveryChaotic = 7D;
 
         public double getBaseShieldRecovery(int tier) {
@@ -142,6 +297,21 @@ public class TconEvoConfig {
             }
         }
 
+    }
+
+    private static <T> T armourSwitch(EntityEquipmentSlot slot, T helmet, T chestplate, T leggings, T boots, T defaultValue) {
+        switch (slot) {
+            case HEAD:
+                return helmet;
+            case CHEST:
+                return chestplate;
+            case LEGS:
+                return leggings;
+            case FEET:
+                return boots;
+            default:
+                return defaultValue;
+        }
     }
 
 }
