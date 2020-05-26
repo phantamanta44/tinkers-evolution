@@ -13,33 +13,48 @@ public interface BotaniaHooks extends IntegrationHooks {
     @IntegrationHooks.Inject(MOD_ID)
     BotaniaHooks INSTANCE = new Noop();
 
-    @Override
-    default void doRegistration() {
-        new ItemManaGiver();
-    }
+    boolean requestManaExactDiscounted(ItemStack stack, EntityPlayer player, int amount, boolean commit);
 
-    default boolean requestManaExactDiscounted(ItemStack stack, EntityPlayer player, int amount, boolean commit) {
-        return false;
-    }
+    int dispatchMana(ItemStack stack, EntityPlayer player, int amount, boolean commit);
 
-    default int dispatchMana(ItemStack stack, EntityPlayer player, int amount, boolean commit) {
-        return 0;
-    }
+    boolean dispatchManaExact(ItemStack stack, EntityPlayer player, int amount, boolean commit);
 
-    default boolean dispatchManaExact(ItemStack stack, EntityPlayer player, int amount, boolean commit) {
-        return false;
-    }
+    void spawnPixie(EntityPlayer player, EntityLivingBase target);
 
-    default void spawnPixie(EntityPlayer player, EntityLivingBase target) {
-        // NO-OP
-    }
-
-    default void spawnGaiaWrathBeam(EntityPlayer player, EnumHand hand) {
-        // NO-OP
-    }
+    void spawnGaiaWrathBeam(EntityPlayer player, EnumHand hand);
 
     class Noop implements BotaniaHooks {
-        // NO-OP
+
+        @Override
+        public void doRegistration() {
+            new ItemManaGiver();
+        }
+
+        @Override
+        public boolean requestManaExactDiscounted(ItemStack stack, EntityPlayer player, int amount, boolean commit) {
+            return false;
+        }
+
+        @Override
+        public int dispatchMana(ItemStack stack, EntityPlayer player, int amount, boolean commit) {
+            return 0;
+        }
+
+        @Override
+        public boolean dispatchManaExact(ItemStack stack, EntityPlayer player, int amount, boolean commit) {
+            return false;
+        }
+
+        @Override
+        public void spawnPixie(EntityPlayer player, EntityLivingBase target) {
+            // NO-OP
+        }
+
+        @Override
+        public void spawnGaiaWrathBeam(EntityPlayer player, EnumHand hand) {
+            // NO-OP
+        }
+
     }
 
 }

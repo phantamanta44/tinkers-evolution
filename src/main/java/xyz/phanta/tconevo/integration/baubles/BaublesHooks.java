@@ -5,7 +5,6 @@ import net.minecraftforge.items.IItemHandler;
 import xyz.phanta.tconevo.integration.IntegrationHooks;
 
 import javax.annotation.Nullable;
-import java.util.Collections;
 
 public interface BaublesHooks {
 
@@ -15,12 +14,16 @@ public interface BaublesHooks {
     BaublesHooks INSTANCE = new Noop();
 
     @Nullable
-    default IItemHandler getBaublesInventory(EntityPlayer player) {
-        return null;
-    }
+    IItemHandler getBaublesInventory(EntityPlayer player);
 
     class Noop implements BaublesHooks {
-        // NO-OP
+
+        @Nullable
+        @Override
+        public IItemHandler getBaublesInventory(EntityPlayer player) {
+            return null;
+        }
+
     }
 
 }

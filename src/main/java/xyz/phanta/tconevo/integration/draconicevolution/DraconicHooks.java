@@ -29,86 +29,136 @@ public interface DraconicHooks extends IntegrationHooks {
         return !(INSTANCE instanceof Noop);
     }
 
-    default Optional<ItemStack> getItemEnderEnergyManipulator() {
-        return Optional.empty();
-    }
+    Optional<ItemStack> getItemEnderEnergyManipulator();
 
-    default Optional<ItemStack> getItemWyvernEnergyCore() {
-        return Optional.empty();
-    }
+    Optional<ItemStack> getItemWyvernEnergyCore();
 
-    default Optional<ItemStack> getItemDraconicEnergyCore() {
-        return Optional.empty();
-    }
+    Optional<ItemStack> getItemDraconicEnergyCore();
 
-    default Optional<ItemStack> getItemChaosShard() {
-        return Optional.empty();
-    }
+    Optional<ItemStack> getItemChaosShard();
 
-    default Optional<ItemStack> getItemDragonHeart() {
-        return Optional.empty();
-    }
+    Optional<ItemStack> getItemDragonHeart();
 
-    default Optional<ItemStack> getItemReactorStabilizer() {
-        return Optional.empty();
-    }
+    Optional<ItemStack> getItemReactorStabilizer();
 
-    default void addUpgradeRecipes(Modifier upgradeMod, String upgradeKey) {
-        // NO-OP
-    }
+    void addUpgradeRecipes(Modifier upgradeMod, String upgradeKey);
 
-    default boolean isReaperEnchantment(Enchantment ench) {
-        return false;
-    }
+    boolean isReaperEnchantment(Enchantment ench);
 
-    default boolean isEligibleForReaper(EntityLivingBase entity) {
-        return false;
-    }
+    boolean isEligibleForReaper(EntityLivingBase entity);
 
-    default void playShieldHitEffect(EntityPlayer player, float shieldPower) {
-        MinecraftServer server = player.world.getMinecraftServer();
-        if (server != null) {
-            server.getPlayerList().sendToAllNearExcept(
-                    null, player.posX, player.posY, player.posZ, 64D, player.dimension, new SPacketAnimation(player, 5));
-        } else {
-            player.onEnchantmentCritical(player);
-        }
-        player.world.playSound(null, player.posX, player.posY, player.posZ,
-                SoundEvents.ENTITY_BLAZE_HURT, SoundCategory.PLAYERS, 1F, 1F + 0.5F * shieldPower);
-    }
+    void playShieldHitEffect(EntityPlayer player, float shieldPower);
 
-    default boolean isShieldEnabled(EntityPlayer player) {
-        return true;
-    }
+    boolean isShieldEnabled(EntityPlayer player);
 
     @Nullable
-    default IPair<Float, Float> applyShieldDamageModifiers(EntityPlayer victim, EntityPlayer attacker,
-                                                           float shieldPoints, float damage) {
-        return null;
-    }
+    IPair<Float, Float> applyShieldDamageModifiers(EntityPlayer victim, EntityPlayer attacker,
+                                                   float shieldPoints, float damage);
 
-    default boolean inflictEntropy(ItemStack stack, float amount) {
-        return false;
-    }
+    boolean inflictEntropy(ItemStack stack, float amount);
 
-    default int burnArmourEnergy(ItemStack stack, float fraction, int minBurn, int maxBurn) {
-        return 0;
-    }
+    int burnArmourEnergy(ItemStack stack, float fraction, int minBurn, int maxBurn);
 
-    default DamageSource getChaosDamage(EntityLivingBase attacker) {
-        return new EntityDamageSource("chaos", attacker).setDamageBypassesArmor().setDamageIsAbsolute();
-    }
+    DamageSource getChaosDamage(EntityLivingBase attacker);
 
-    default boolean isChaosDamage(DamageSource dmgSrc) {
-        return dmgSrc.damageType.equals("chaos");
-    }
+    boolean isChaosDamage(DamageSource dmgSrc);
 
     default void playChaosEffect(World world, double x, double y, double z) {
-        // NO-OP
+        // only on the client
     }
 
     class Noop implements DraconicHooks {
-        // NO-OP
+
+        @Override
+        public Optional<ItemStack> getItemEnderEnergyManipulator() {
+            return Optional.empty();
+        }
+
+        @Override
+        public Optional<ItemStack> getItemWyvernEnergyCore() {
+            return Optional.empty();
+        }
+
+        @Override
+        public Optional<ItemStack> getItemDraconicEnergyCore() {
+            return Optional.empty();
+        }
+
+        @Override
+        public Optional<ItemStack> getItemChaosShard() {
+            return Optional.empty();
+        }
+
+        @Override
+        public Optional<ItemStack> getItemDragonHeart() {
+            return Optional.empty();
+        }
+
+        @Override
+        public Optional<ItemStack> getItemReactorStabilizer() {
+            return Optional.empty();
+        }
+
+        @Override
+        public void addUpgradeRecipes(Modifier upgradeMod, String upgradeKey) {
+            // NO-OP
+        }
+
+        @Override
+        public boolean isReaperEnchantment(Enchantment ench) {
+            return false;
+        }
+
+        @Override
+        public boolean isEligibleForReaper(EntityLivingBase entity) {
+            return false;
+        }
+
+        @Override
+        public void playShieldHitEffect(EntityPlayer player, float shieldPower) {
+            MinecraftServer server = player.world.getMinecraftServer();
+            if (server != null) {
+                server.getPlayerList().sendToAllNearExcept(
+                        null, player.posX, player.posY, player.posZ, 64D, player.dimension, new SPacketAnimation(player, 5));
+            } else {
+                player.onEnchantmentCritical(player);
+            }
+            player.world.playSound(null, player.posX, player.posY, player.posZ,
+                    SoundEvents.ENTITY_BLAZE_HURT, SoundCategory.PLAYERS, 1F, 1F + 0.5F * shieldPower);
+        }
+
+        @Override
+        public boolean isShieldEnabled(EntityPlayer player) {
+            return true;
+        }
+
+        @Nullable
+        @Override
+        public IPair<Float, Float> applyShieldDamageModifiers(EntityPlayer victim, EntityPlayer attacker,
+                                                              float shieldPoints, float damage) {
+            return null;
+        }
+
+        @Override
+        public boolean inflictEntropy(ItemStack stack, float amount) {
+            return false;
+        }
+
+        @Override
+        public int burnArmourEnergy(ItemStack stack, float fraction, int minBurn, int maxBurn) {
+            return 0;
+        }
+
+        @Override
+        public DamageSource getChaosDamage(EntityLivingBase attacker) {
+            return new EntityDamageSource("chaos", attacker).setDamageBypassesArmor().setDamageIsAbsolute();
+        }
+
+        @Override
+        public boolean isChaosDamage(DamageSource dmgSrc) {
+            return dmgSrc.damageType.equals("chaos");
+        }
+
     }
 
 }

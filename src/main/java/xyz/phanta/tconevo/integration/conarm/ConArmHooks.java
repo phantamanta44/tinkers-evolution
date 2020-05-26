@@ -16,21 +16,31 @@ public interface ConArmHooks extends IntegrationHooks {
     @IntegrationHooks.Inject(value = MOD_ID, sided = true)
     ConArmHooks INSTANCE = new Noop();
 
-    default boolean isArmourModifierTrait(IModifier mod) {
-        return false;
-    }
+    boolean isArmourModifierTrait(IModifier mod);
 
     @Nullable
-    default EntityEquipmentSlot getArmourType(NBTTagCompound rootTag) {
-        return null;
-    }
+    EntityEquipmentSlot getArmourType(NBTTagCompound rootTag);
 
-    default void rebuildArmour(NBTTagCompound rootTag, Item item) throws TinkerGuiException {
-        // NO-OP
-    }
+    void rebuildArmour(NBTTagCompound rootTag, Item item) throws TinkerGuiException;
 
     class Noop implements ConArmHooks {
-        // NO-OP
+
+        @Override
+        public boolean isArmourModifierTrait(IModifier mod) {
+            return false;
+        }
+
+        @Nullable
+        @Override
+        public EntityEquipmentSlot getArmourType(NBTTagCompound rootTag) {
+            return null;
+        }
+
+        @Override
+        public void rebuildArmour(NBTTagCompound rootTag, Item item) throws TinkerGuiException {
+            // NO-OP
+        }
+
     }
 
 }
