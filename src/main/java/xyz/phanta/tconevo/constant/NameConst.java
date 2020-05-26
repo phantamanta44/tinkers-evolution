@@ -18,20 +18,13 @@ public class NameConst {
     public static final String TRAIT_SUNDERING = "sundering";
 
     private static final String ARMOUR_SUFFIX = "_armor";
-    public static final String TRAIT_CELESTIAL = "celestial";
-    public static final String ARMOUR_TRAIT_CELESTSIAL = TRAIT_CELESTIAL + ARMOUR_SUFFIX;
-    public static final String TRAIT_DIVINE_GRACE = "divine_grace";
-    public static final String ARMOUR_TRAIT_DIVINE_GRACE = TRAIT_DIVINE_GRACE + ARMOUR_SUFFIX;
-    public static final String TRAIT_GALE_FORCE = "gale_force";
-    public static final String ARMOUR_TRAIT_GALE_FORCE = TRAIT_GALE_FORCE + ARMOUR_SUFFIX;
-    public static final String TRAIT_SECOND_WIND = "second_wind";
-    public static final String ARMOUR_TRAIT_SECOND_WIND = TRAIT_SECOND_WIND + ARMOUR_SUFFIX;
-    public static final String TRAIT_STIFLING = "stifling";
-    public static final String ARMOUR_TRAIT_STIFLING = TRAIT_STIFLING + ARMOUR_SUFFIX;
-    public static final String TRAIT_STONEBOUND = "stonebound";
-    public static final String ARMOUR_TRAIT_STONEBOUND = TRAIT_STONEBOUND + ARMOUR_SUFFIX;
-    public static final String TRAIT_WILL_STRENGTH = "will_strength";
-    public static final String ARMOUR_TRAIT_WILL_STRENGTH = TRAIT_WILL_STRENGTH + ARMOUR_SUFFIX;
+    public static final String TRAIT_CELESTIAL = "celestial", ARMOUR_TRAIT_CELESTSIAL = TRAIT_CELESTIAL + ARMOUR_SUFFIX;
+    public static final String TRAIT_DIVINE_GRACE = "divine_grace", ARMOUR_TRAIT_DIVINE_GRACE = TRAIT_DIVINE_GRACE + ARMOUR_SUFFIX;
+    public static final String TRAIT_GALE_FORCE = "gale_force", ARMOUR_TRAIT_GALE_FORCE = TRAIT_GALE_FORCE + ARMOUR_SUFFIX;
+    public static final String TRAIT_SECOND_WIND = "second_wind", ARMOUR_TRAIT_SECOND_WIND = TRAIT_SECOND_WIND + ARMOUR_SUFFIX;
+    public static final String TRAIT_STIFLING = "stifling", ARMOUR_TRAIT_STIFLING = TRAIT_STIFLING + ARMOUR_SUFFIX;
+    public static final String TRAIT_STONEBOUND = "stonebound", ARMOUR_TRAIT_STONEBOUND = TRAIT_STONEBOUND + ARMOUR_SUFFIX;
+    public static final String TRAIT_WILL_STRENGTH = "will_strength", ARMOUR_TRAIT_WILL_STRENGTH = TRAIT_WILL_STRENGTH + ARMOUR_SUFFIX;
 
     // botania
 
@@ -50,10 +43,8 @@ public class NameConst {
 
     public static final String ARMOUR_TRAIT_MANA_INFUSED = TRAIT_MANA_INFUSED + ARMOUR_SUFFIX;
     public static final String ARMOUR_TRAIT_FAE_VOICE = TRAIT_FAE_VOICE + ARMOUR_SUFFIX;
-    public static final String TRAIT_AURA_INFUSED = "aura_infused";
-    public static final String ARMOUR_TRAIT_AURA_INFUSED = TRAIT_AURA_INFUSED + ARMOUR_SUFFIX;
-    public static final String TRAIT_MANA_AFFINITY = "mana_affinity";
-    public static final String ARMOUR_TRAIT_MANA_AFFINITY = TRAIT_MANA_AFFINITY + ARMOUR_SUFFIX;
+    public static final String TRAIT_AURA_INFUSED = "aura_infused", ARMOUR_TRAIT_AURA_INFUSED = TRAIT_AURA_INFUSED + ARMOUR_SUFFIX;
+    public static final String TRAIT_MANA_AFFINITY = "mana_affinity", ARMOUR_TRAIT_MANA_AFFINITY = TRAIT_MANA_AFFINITY + ARMOUR_SUFFIX;
 
     // draconic evolution
 
@@ -88,9 +79,7 @@ public class NameConst {
     public static final String ARMOUR_MOD_DRACONIC_MOVE_SPEED = MOD_DRACONIC_MOVE_SPEED + ARMOUR_SUFFIX;
     public static final String MOD_DRACONIC_JUMP_BOOST = "draconic_jump_boost";
     public static final String ARMOUR_MOD_DRACONIC_JUMP_BOOST = MOD_DRACONIC_JUMP_BOOST + ARMOUR_SUFFIX;
-    public static final String MOD_CHAOS_RESISTANCE = "chaos_resistance";
-    public static final String ARMOUR_MOD_CHAOS_RESISTANCE = MOD_CHAOS_RESISTANCE + ARMOUR_SUFFIX;
-    public static final String MOD_FINAL_GUARD = "final_guard";
-    public static final String ARMOUR_MOD_FINAL_GUARD = MOD_FINAL_GUARD + ARMOUR_SUFFIX;
+    public static final String MOD_CHAOS_RESISTANCE = "chaos_resistance", ARMOUR_MOD_CHAOS_RESISTANCE = MOD_CHAOS_RESISTANCE + ARMOUR_SUFFIX;
+    public static final String MOD_FINAL_GUARD = "final_guard", ARMOUR_MOD_FINAL_GUARD = MOD_FINAL_GUARD + ARMOUR_SUFFIX;
 
 }
