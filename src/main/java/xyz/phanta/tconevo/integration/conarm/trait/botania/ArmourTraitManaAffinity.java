@@ -27,7 +27,7 @@ public class ArmourTraitManaAffinity extends AbstractArmorTraitLeveled {
     public List<String> getExtraInfo(ItemStack tool, NBTTagCompound modifierTag) {
         if (tool.getItem() instanceof ArmorCore) {
             return ToolUtils.formatExtraInfo(NameConst.ARMOUR_TRAIT_MANA_AFFINITY, FormatUtils.formatPercentage(
-                    getDiscount(tool, ToolUtils.getTraitLevel(tool, NameConst.ARMOUR_TRAIT_MANA_AFFINITY))));
+                    getDiscount(tool, ToolUtils.getTraitLevel(modifierTag))));
         }
         return Collections.emptyList();
     }

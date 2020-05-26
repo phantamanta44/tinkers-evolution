@@ -6,11 +6,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextFormatting;
 import slimeknights.tconstruct.library.modifiers.ModifierAspect;
-import slimeknights.tconstruct.library.modifiers.ModifierNBT;
 import slimeknights.tconstruct.library.modifiers.ModifierTrait;
 import slimeknights.tconstruct.library.tinkering.Category;
 import slimeknights.tconstruct.library.utils.TagUtil;
-import slimeknights.tconstruct.library.utils.TinkerUtil;
 import xyz.phanta.tconevo.util.ToolUtils;
 
 import javax.annotation.Nullable;
@@ -43,7 +41,7 @@ public class ModifierDraconic extends ModifierTrait {
     @Override
     public final void applyEffect(NBTTagCompound rootCompound, NBTTagCompound modifierTag) {
         super.applyEffect(rootCompound, modifierTag);
-        int level = ModifierNBT.readTag(modifierTag).level;
+        int level = ToolUtils.getTraitLevel(modifierTag);
         if (level > 1) {
             applyDraconicEffect(rootCompound, level - 1);
         }

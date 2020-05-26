@@ -66,7 +66,7 @@ public class ModifierFluxBurn extends ModifierTrait {
 
     @Override
     public List<String> getExtraInfo(ItemStack tool, NBTTagCompound modifierTag) {
-        return ToolUtils.formatExtraInfoPercent(identifier, getBurnFraction(ToolUtils.getTraitLevel(tool, identifier)));
+        return ToolUtils.formatExtraInfoPercent(identifier, getBurnFraction(ToolUtils.getTraitLevel(modifierTag)));
     }
 
 }

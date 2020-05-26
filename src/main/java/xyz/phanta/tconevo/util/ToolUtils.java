@@ -68,7 +68,11 @@ public class ToolUtils {
     }
 
     public static int getTraitLevel(ItemStack stack, String traitId) {
-        return ModifierNBT.readTag(TinkerUtil.getModifierTag(stack, traitId)).level;
+        return getTraitLevel(TinkerUtil.getModifierTag(stack, traitId));
+    }
+
+    public static int getTraitLevel(NBTTagCompound modTag) {
+        return ModifierNBT.readTag(modTag).level;
     }
 
     public static List<String> formatExtraInfo(String identifier, String info) {

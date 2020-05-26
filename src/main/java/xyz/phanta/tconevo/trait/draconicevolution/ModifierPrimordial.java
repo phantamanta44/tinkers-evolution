@@ -18,14 +18,14 @@ public class ModifierPrimordial extends ModifierTrait {
         super(NameConst.MOD_PRIMORDIAL, 0x43525f, 5, 0);
     }
 
-    private float getDamageConversion(ItemStack tool) {
-        return ToolUtils.getTraitLevel(tool, identifier) / 25F;
+    private float getDamageConversion(int level) {
+        return level / 25F;
     }
 
     @Override
     public float damage(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damage, float newDamage, boolean isCritical) {
         if (!player.world.isRemote) {
-            float chaosDmg = damage * getDamageConversion(tool);
+            float chaosDmg = damage * getDamageConversion(ToolUtils.getTraitLevel(tool, identifier));
             if (chaosDmg > 0F) {
                 newDamage = Math.max(newDamage - chaosDmg, 0F);
                 if (target.attackEntityFrom(DraconicHooks.INSTANCE.getChaosDamage(player), chaosDmg)) {
@@ -45,7 +45,7 @@ public class ModifierPrimordial extends ModifierTrait {
 
     @Override
     public List<String> getExtraInfo(ItemStack tool, NBTTagCompound modifierTag) {
-        return ToolUtils.formatExtraInfoPercent(identifier, getDamageConversion(tool));
+        return ToolUtils.formatExtraInfoPercent(identifier, getDamageConversion(ToolUtils.getTraitLevel(modifierTag)));
     }
 
 }

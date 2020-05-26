@@ -7,7 +7,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextFormatting;
 import slimeknights.tconstruct.library.modifiers.ModifierAspect;
-import slimeknights.tconstruct.library.modifiers.ModifierNBT;
 import xyz.phanta.tconevo.trait.draconicevolution.ModifierDraconic;
 import xyz.phanta.tconevo.util.ToolUtils;
 
@@ -40,7 +39,7 @@ public class ArmourModDraconic extends ArmorModifierTrait {
     @Override
     public final void applyEffect(NBTTagCompound rootCompound, NBTTagCompound modifierTag) {
         super.applyEffect(rootCompound, modifierTag);
-        int level = ModifierNBT.readTag(modifierTag).level;
+        int level = ToolUtils.getTraitLevel(modifierTag);
         if (level > 1) {
             applyDraconicEffect(rootCompound, level - 1);
         }

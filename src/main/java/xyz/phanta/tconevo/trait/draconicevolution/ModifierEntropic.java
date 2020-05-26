@@ -48,7 +48,7 @@ public class ModifierEntropic extends ModifierTrait {
     @Override
     public List<String> getExtraInfo(ItemStack tool, NBTTagCompound modifierTag) {
         // each trait level adds +100% entropy damage
-        return ToolUtils.formatExtraInfoPercent(identifier, ToolUtils.getTraitLevel(tool, identifier));
+        return ToolUtils.formatExtraInfoPercent(identifier, ToolUtils.getTraitLevel(modifierTag));
     }
 
 }
