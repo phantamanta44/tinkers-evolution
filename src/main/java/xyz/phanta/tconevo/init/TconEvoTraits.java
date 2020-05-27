@@ -1,8 +1,11 @@
 package xyz.phanta.tconevo.init;
 
 import com.google.common.collect.Sets;
+import net.minecraft.item.ItemStack;
 import slimeknights.tconstruct.library.modifiers.Modifier;
+import slimeknights.tconstruct.library.traits.AbstractTrait;
 import xyz.phanta.tconevo.TconEvoConfig;
+import xyz.phanta.tconevo.integration.botania.BotaniaHooks;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
 import xyz.phanta.tconevo.trait.*;
 import xyz.phanta.tconevo.trait.botania.TraitAuraSiphon;
@@ -13,14 +16,17 @@ import xyz.phanta.tconevo.trait.draconicevolution.*;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
+import java.util.function.Supplier;
 
 public class TconEvoTraits {
 
     private static final Set<String> blacklisted = Sets.newHashSet(TconEvoConfig.disabledModifiers);
 
-    public static boolean isModifierBlacklisted(Modifier mod) {
-        return blacklisted.contains(mod.identifier);
+    public static boolean isModifierEnabled(Modifier mod) {
+        return !blacklisted.contains(
+                mod instanceof AbstractTrait ? ((AbstractTrait)mod).getModifierIdentifier() : mod.identifier);
     }
 
     public static final TraitCascading TRAIT_CASCADING = new TraitCascading();
@@ -53,22 +59,19 @@ public class TconEvoTraits {
     public static final ModifierFluxBurn MOD_FLUX_BURN = new ModifierFluxBurn();
     public static final ModifierPrimordial MOD_PRIMORDIAL = new ModifierPrimordial();
 
-    public static final List<Modifier> MODIFIERS = Arrays.asList(
-            MOD_REAPING, MOD_ENTROPIC, MOD_FLUX_BURN, MOD_PRIMORDIAL);
+    public static final List<Modifier> MODIFIERS = Arrays.asList(MOD_REAPING, MOD_ENTROPIC, MOD_FLUX_BURN, MOD_PRIMORDIAL);
 
     public static void initModifierMaterials() {
         // draconic evolution
-        if (!isModifierBlacklisted(MOD_REAPING)) {
-            DraconicHooks.INSTANCE.getItemEnderEnergyManipulator().ifPresent(s -> MOD_REAPING.addItem(s, 1, 1));
-        }
-        if (!isModifierBlacklisted(MOD_ENTROPIC)) {
-            DraconicHooks.INSTANCE.getItemDraconicEnergyCore().ifPresent(s -> MOD_ENTROPIC.addItem(s, 1, 1));
-        }
-        if (!isModifierBlacklisted(MOD_FLUX_BURN)) {
-            DraconicHooks.INSTANCE.getItemWyvernEnergyCore().ifPresent(s -> MOD_FLUX_BURN.addItem(s, 1, 1));
-        }
-        if (!isModifierBlacklisted(MOD_PRIMORDIAL)) {
-            DraconicHooks.INSTANCE.getItemChaosShard().ifPresent(s -> MOD_PRIMORDIAL.addItem(s, 1, 1));
+        addModItemOpt(MOD_REAPING, DraconicHooks.INSTANCE::getItemEnderEnergyManipulator);
+        addModItemOpt(MOD_ENTROPIC, DraconicHooks.INSTANCE::getItemDraconicEnergyCore);
+        addModItemOpt(MOD_FLUX_BURN, DraconicHooks.INSTANCE::getItemWyvernEnergyCore);
+        addModItemOpt(MOD_PRIMORDIAL, DraconicHooks.INSTANCE::getItemChaosShard);
+    }
+
+    private static void addModItemOpt(Modifier mod, Supplier<Optional<ItemStack>> materialGetter) {
+        if (isModifierEnabled(mod)) {
+            materialGetter.get().ifPresent(s -> mod.addItem(s, 1, 1));
         }
     }
 

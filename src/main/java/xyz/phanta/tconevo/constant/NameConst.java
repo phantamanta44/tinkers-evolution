@@ -45,6 +45,9 @@ public class NameConst {
     public static final String ARMOUR_TRAIT_FAE_VOICE = TRAIT_FAE_VOICE + ARMOUR_SUFFIX;
     public static final String TRAIT_AURA_INFUSED = "aura_infused", ARMOUR_TRAIT_AURA_INFUSED = TRAIT_AURA_INFUSED + ARMOUR_SUFFIX;
     public static final String TRAIT_MANA_AFFINITY = "mana_affinity", ARMOUR_TRAIT_MANA_AFFINITY = TRAIT_MANA_AFFINITY + ARMOUR_SUFFIX;
+    public static final String MOD_GAIA_WILL_AHRIM = "gaia_will_ahrim", MOD_GAIA_WILL_DHAROK = "gaia_will_dharok",
+            MOD_GAIA_WILL_GUTHAN = "gaia_will_guthan", MOD_GAIA_WILL_TORAG = "gaia_will_torag",
+            MOD_GAIA_WILL_VERAC = "gaia_will_verac", MOD_GAIA_WILL_KARIL = "gaia_will_karil";
 
     // draconic evolution
 

@@ -28,7 +28,7 @@ public class BookTransformerAppendModifiers extends SectionTransformer {
     public void transform(BookData book, SectionData section) {
         ContentListing listing = (ContentListing)section.pages.get(0).content;
         for (Modifier mod : modCollector.collect()) {
-            if (!TconEvoTraits.isModifierBlacklisted(mod)) {
+            if (TconEvoTraits.isModifierEnabled(mod)) {
                 PageData page = new PageData();
                 page.source = source;
                 page.parent = section;

@@ -1,0 +1,16 @@
+{
+  "armormodifier": "gaia_will_guthan_armor",
+  "text": [
+    {
+      "text": "Infusing a helmet with a small fragment of an ancient will grants new offensive abilities. With the Will of Guthan, your strikes absorb the spilled life force of your foes."
+    }
+  ],
+  "effects": [
+    "Critical Hits heal for a portion of damage dealt",
+    "Only one Ancient Will per helmet",
+    "Single level"
+  ],
+  "demoArmor": [
+    "conarm:helmet"
+  ]
+}

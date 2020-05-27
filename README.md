@@ -4,6 +4,7 @@ The fresh new [Tinkers' Construct](https://github.com/SlimeKnights/TinkersConstr
 Current mod integration modules are as follows:
 
 * **Construct's Armoury** - Adds armour materials and modifiers.
+* **Botania** - Adds mana-infused and botanical materials.
 * **Draconic Evolution** - Adds energized and chaotic materials.
 
 More mod integrations will be added as development goes on.

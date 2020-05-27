@@ -27,6 +27,8 @@ import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.integration.conarm.trait.botania.ArmourTraitManaAffinity;
 import xyz.phanta.tconevo.util.ToolUtils;
 
+import java.util.Optional;
+
 public class BotaniaHooksImpl implements BotaniaHooks {
 
     private static final MirrorUtils.IField<Potion[]> fPixieHandler_potions
@@ -40,6 +42,36 @@ public class BotaniaHooksImpl implements BotaniaHooks {
     @Override
     public void onPreInit(FMLPreInitializationEvent event) {
         MinecraftForge.EVENT_BUS.register(this);
+    }
+
+    @Override
+    public Optional<ItemStack> getItemAncientWillAhrim() {
+        return Optional.of(new ItemStack(ModItems.ancientWill, 1, 0));
+    }
+
+    @Override
+    public Optional<ItemStack> getItemAncientWillDharok() {
+        return Optional.of(new ItemStack(ModItems.ancientWill, 1, 1));
+    }
+
+    @Override
+    public Optional<ItemStack> getItemAncientWillGuthan() {
+        return Optional.of(new ItemStack(ModItems.ancientWill, 1, 2));
+    }
+
+    @Override
+    public Optional<ItemStack> getItemAncientWillKaril() {
+        return Optional.of(new ItemStack(ModItems.ancientWill, 1, 5));
+    }
+
+    @Override
+    public Optional<ItemStack> getItemAncientWillTorag() {
+        return Optional.of(new ItemStack(ModItems.ancientWill, 1, 3));
+    }
+
+    @Override
+    public Optional<ItemStack> getItemAncientWillVerac() {
+        return Optional.of(new ItemStack(ModItems.ancientWill, 1, 4));
     }
 
     @Override

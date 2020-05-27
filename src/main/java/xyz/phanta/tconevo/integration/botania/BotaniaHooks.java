@@ -6,12 +6,26 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import xyz.phanta.tconevo.integration.IntegrationHooks;
 
+import java.util.Optional;
+
 public interface BotaniaHooks extends IntegrationHooks {
 
     String MOD_ID = "botania";
 
     @IntegrationHooks.Inject(MOD_ID)
     BotaniaHooks INSTANCE = new Noop();
+
+    Optional<ItemStack> getItemAncientWillAhrim();
+
+    Optional<ItemStack> getItemAncientWillDharok();
+
+    Optional<ItemStack> getItemAncientWillGuthan();
+
+    Optional<ItemStack> getItemAncientWillKaril();
+
+    Optional<ItemStack> getItemAncientWillTorag();
+
+    Optional<ItemStack> getItemAncientWillVerac();
 
     boolean requestManaExactDiscounted(ItemStack stack, EntityPlayer player, int amount, boolean commit);
 
@@ -28,6 +42,36 @@ public interface BotaniaHooks extends IntegrationHooks {
         @Override
         public void doRegistration() {
             new ItemManaGiver();
+        }
+
+        @Override
+        public Optional<ItemStack> getItemAncientWillAhrim() {
+            return Optional.empty();
+        }
+
+        @Override
+        public Optional<ItemStack> getItemAncientWillDharok() {
+            return Optional.empty();
+        }
+
+        @Override
+        public Optional<ItemStack> getItemAncientWillGuthan() {
+            return Optional.empty();
+        }
+
+        @Override
+        public Optional<ItemStack> getItemAncientWillKaril() {
+            return Optional.empty();
+        }
+
+        @Override
+        public Optional<ItemStack> getItemAncientWillTorag() {
+            return Optional.empty();
+        }
+
+        @Override
+        public Optional<ItemStack> getItemAncientWillVerac() {
+            return Optional.empty();
         }
 
         @Override

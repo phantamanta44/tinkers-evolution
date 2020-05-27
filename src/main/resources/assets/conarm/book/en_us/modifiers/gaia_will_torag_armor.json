@@ -1,0 +1,16 @@
+{
+  "armormodifier": "gaia_will_torag_armor",
+  "text": [
+    {
+      "text": "Infusing a helmet with a small fragment of an ancient will grants new offensive abilities. With the Will of Torag, your strikes become forceful enough to cripple approaching foes."
+    }
+  ],
+  "effects": [
+    "Critical Hits apply a strong slowness effect",
+    "Only one Ancient Will per helmet",
+    "Single level"
+  ],
+  "demoArmor": [
+    "conarm:helmet"
+  ]
+}
