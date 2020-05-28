@@ -107,6 +107,10 @@ public class TconEvoConfig {
         @Config.RangeDouble(min = 1D, max = Float.MAX_VALUE)
         public double traitStoneboundArmourEffectivenessMax = 0.1D;
 
+        @Config.Comment("The duration, in ticks, of the weakness applied by the sundering trait.")
+        @Config.RangeInt(min = 1)
+        public int traitSunderingWeaknessDuration = 100;
+
         @Config.Comment({
                 "The duration, in ticks, of the immortality applied by the strength of will trait.",
                 "Only useful with Construct's Armoury installed."
