@@ -64,9 +64,7 @@ dependencies {
     deobfCompile "slimeknights:TConstruct:1.12.2-2.13.0.184"
     deobfCompile "curse.maven:constructs-armory:2882794" // 1.2.5.4
     deobfCompile 'com.azanor.baubles:Baubles:1.12-1.5.2'
-//    deobfCompile "curse.maven:codechicken-lib:2779848" // 3.2.3.358
     deobfCompile "codechicken:CodeChickenLib:1.12.2-3.2.3.358:universal"
-//    deobfCompile "curse.maven:redstone-flux:2920436" // 2.1.1.1
     deobfCompile "cofh:RedstoneFlux:1.12-2.1.0.7:universal"
     // get DE deps from curseforge because trying to get it from a proper repo Fs up dependencies extremely hard
     // because DE/PI depend on deobf jars for some reason and the deobf mappings versions differ
