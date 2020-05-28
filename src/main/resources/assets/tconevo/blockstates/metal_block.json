@@ -19,6 +19,11 @@
         "textures": {
           "all": "tconevo:blocks/metal/chaotic_metal"
         }
+      },
+      "essence_metal": {
+        "textures": {
+          "all": "tconevo:blocks/metal/essence_metal"
+        }
       }
     }
   }

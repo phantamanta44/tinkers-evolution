@@ -63,6 +63,24 @@ public class TconEvoArmourMaterials {
                 .withTraits(ArmourPartType.EXTRA, TconEvoArmourTraits.TRAIT_GALE_FORCE[1])
                 .build();
 
+        // industrial foregoing
+        new ArmourMaterialBuilder(TconEvoMaterials.ESSENCE_METAL)
+                .withStatsArmour(15F, 13F, 1.5F, 0.15F, 0F, 1.5F)
+                .withTraits(ArmourPartType.ARMOUR, ArmorTraits.ambitious, TconEvoArmourTraits.TRAIT_STIFLING)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.MEAT_METAL)
+                .withStatsArmour(1F, 5F, 2.5F, 0F, 0F, 0.1F)
+                .withTraits(ArmourPartType.ARMOUR, TconEvoArmourTraits.TRAIT_SECOND_WIND, ArmorTraits.tasty)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.PINK_SLIME)
+                .withStatsArmour(22F, 4F, 1.25F, 0.25F, 3F, 13.5F)
+                .withTraits(ArmourPartType.ARMOUR, TconEvoArmourTraits.TRAIT_SLIMEY_PINK, ArmorTraits.bouncy)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.PINK_METAL)
+                .withStatsArmour(33F, 22F, 1F, 8F, 3F, 5.5F)
+                .withTraits(ArmourPartType.ARMOUR, TconEvoArmourTraits.TRAIT_DIVINE_GRACE, ArmorTraits.vengeful)
+                .build();
+
         // thermal series
         new ArmourMaterialBuilder(TconEvoMaterials.TIN)
                 .withStatsArmour(8F, 9F, 0.8F, 1F, 0F, 0.75F)

@@ -1,22 +1,8 @@
 const fs = require('fs');
+const { MetalForm, MOD_ID, METALS } = require('../constants');
 
-const MOD_ID = 'tconevo';
 const ITEM_METAL = `${MOD_ID}:metal`;
 const BLOCK_METAL = `${MOD_ID}:metal_block`;
-// must be listed in the same order as they're defined in ItemMetal.Type
-const METALS = [
-  { key: 'wyvern_metal', oreName: 'WyvernMetal' },
-  { key: 'draconic_metal', oreName: 'DraconicMetal' },
-  { key: 'chaotic_metal', oreName: 'ChaoticMetal' }
-];
-
-const MetalForm = {
-  INGOT: 0,
-  DUST: 1,
-  NUGGET: 2,
-  PLATE: 3,
-  GEAR: 4
-}
 
 function getMetalItem(typeNdx, form, count) {
   return { item: ITEM_METAL, count, data: typeNdx * 5 + form };

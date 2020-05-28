@@ -360,18 +360,22 @@
 
 ### materials
 
-* metallic essence (pour essence over coag matrix)
+* metallic essence (fluid sieve essence into coag matrix)
     * tools: well-established + sundering
     * armour: ambitious + stifling
-* meat (pour meat over coag matrix)
-    * tools: rejuvenating (head) + tasty
-    * armour: second wind (core) + tasty
+* meaty (fluid sieve meat into coag matrix)
+    * tools: rejuvenating + tasty
+    * armour: second wind + tasty
 * pink slime
-    * tools: slimey (pink) + bouncy
+    * tools: slimey (pink)
     * armour: slimey (pink) + bouncy
 * pink metal
     * tools: mortal wounds + unnatural
     * armour: divine grace + vengeful
+    
+### other ideas
+
+* maybe add straw handlers for various tcon fluids
 
 ## mekanism
 

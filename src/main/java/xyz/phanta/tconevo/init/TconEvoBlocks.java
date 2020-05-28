@@ -10,6 +10,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
 import slimeknights.tconstruct.tools.TinkerTools;
 import xyz.phanta.tconevo.TconEvoMod;
+import xyz.phanta.tconevo.block.BlockEarthMaterial;
 import xyz.phanta.tconevo.block.BlockMetal;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.item.ItemMetal;
@@ -17,12 +18,15 @@ import xyz.phanta.tconevo.item.ItemMetal;
 @SuppressWarnings("NotNullFieldNotInitialized")
 public class TconEvoBlocks {
 
+    @GameRegistry.ObjectHolder(TconEvoMod.MOD_ID + ":" + NameConst.BLOCK_EARTH_MATERIAL)
+    public static BlockEarthMaterial EARTH_MATERIAL;
     @GameRegistry.ObjectHolder(TconEvoMod.MOD_ID + ":" + NameConst.BLOCK_METAL)
     public static BlockMetal METAL_BLOCK;
 
     @InitMe(TconEvoMod.MOD_ID)
     public static void init() {
         MinecraftForge.EVENT_BUS.register(new TconEvoBlocks());
+        new BlockEarthMaterial();
         new BlockMetal();
     }
 

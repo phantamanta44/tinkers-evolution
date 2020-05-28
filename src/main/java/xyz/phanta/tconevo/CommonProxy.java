@@ -3,6 +3,7 @@ package xyz.phanta.tconevo;
 import net.minecraft.entity.Entity;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLInterModComms;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
@@ -42,9 +43,13 @@ public class CommonProxy {
         OreDictRegistration.registerOreDict();
         MasterRecipes.initRecipes();
         MaterialDefinition.initMaterialProperties();
-        MaterialDefinition.activate();
         TconEvoTraits.initModifierMaterials();
         IntegrationManager.dispatchInit(event);
+    }
+
+    public void onImcReceived(FMLInterModComms.IMCEvent event) {
+        // we need this to happen before tcon's post-init finishes and the imc handling event just happens to be convenient
+        MaterialDefinition.activate();
     }
 
     public void onPostInit(FMLPostInitializationEvent event) {

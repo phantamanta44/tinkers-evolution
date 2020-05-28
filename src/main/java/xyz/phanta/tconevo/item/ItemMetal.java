@@ -24,7 +24,8 @@ public class ItemMetal extends L9ItemSubs implements ParameterizedItemModel.IPar
 
     public enum Type implements IStringSerializable {
 
-        WYVERN_METAL("WyvernMetal"), DRACONIC_METAL("DraconicMetal"), CHAOTIC_METAL("ChaoticMetal");
+        WYVERN_METAL("WyvernMetal"), DRACONIC_METAL("DraconicMetal"), CHAOTIC_METAL("ChaoticMetal"),
+        ESSENCE_METAL("EssenceMetal");
 
         public static final Type[] VALUES = values();
 

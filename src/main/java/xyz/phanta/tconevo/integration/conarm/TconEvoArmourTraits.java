@@ -12,6 +12,7 @@ import xyz.phanta.tconevo.integration.conarm.trait.botania.ArmourTraitFaeVoice;
 import xyz.phanta.tconevo.integration.conarm.trait.botania.ArmourTraitManaAffinity;
 import xyz.phanta.tconevo.integration.conarm.trait.botania.ArmourTraitManaInfused;
 import xyz.phanta.tconevo.integration.conarm.trait.draconicevolution.*;
+import xyz.phanta.tconevo.integration.conarm.trait.industrialforegoing.ArmourTraitSlimeyPink;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
 import xyz.phanta.tconevo.trait.botania.ModifierGaiaWill;
 
@@ -59,6 +60,9 @@ public class TconEvoArmourTraits {
     public static final ArmourModDraconicJumpBoost MOD_DRACONIC_JUMP_BOOST = new ArmourModDraconicJumpBoost();
     public static final ArmourModChaosResistance MOD_CHAOS_RESISTANCE = new ArmourModChaosResistance();
     public static final ArmourModFinalGuard MOD_FINAL_GUARD = new ArmourModFinalGuard();
+
+    // industrial foregoing
+    public static final ArmourTraitSlimeyPink TRAIT_SLIMEY_PINK = new ArmourTraitSlimeyPink();
 
     public static final List<Modifier> MODIFIERS = Arrays.asList(
             MOD_GAIA_WILL_AHRIM, MOD_GAIA_WILL_DHAROK, MOD_GAIA_WILL_GUTHAN,

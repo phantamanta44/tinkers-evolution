@@ -91,7 +91,7 @@ public class MaterialDefinition {
         } else {
             material.setCastable(false);
         }
-        if (form == MaterialForm.RAW) {
+        if (form.isRaw()) {
             for (String prefix : form.prefixes) {
                 material.addItemIngot(prefix + oreName);
             }

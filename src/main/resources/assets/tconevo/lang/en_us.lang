@@ -1,6 +1,7 @@
 itemGroup.tconevo=Tinkers' Evolution
 
 item.tconevo:material0.name=Coalescence Matrix
+item.tconevo:material1.name=Pink Slime Crystal
 item.tconevo:metal0.name=Wyvern Metal Ingot
 item.tconevo:metal1.name=Wyvern Metal Dust
 item.tconevo:metal2.name=Wyvern Metal Nugget
@@ -16,11 +17,20 @@ item.tconevo:metal11.name=Chaotic Metal Dust
 item.tconevo:metal12.name=Chaotic Metal Nugget
 item.tconevo:metal13.name=Chaotic Metal Plate
 item.tconevo:metal14.name=Chaotic Metal Gear
+item.tconevo:metal15.name=Essence-Infused Ingot
+item.tconevo:metal16.name=Essence-Infused Dust
+item.tconevo:metal17.name=Essence-Infused Nugget
+item.tconevo:metal18.name=Essence-Infused Plate
+item.tconevo:metal19.name=Essence-Infused Gear
+item.tconevo:edible0.name=Raw Meat Ingot
+item.tconevo:edible1.name=Cooked Meat Ingot
 item.tconevo.mana_giver.name=Internal Item
 
+tile.tconevo:earth_material_block0.name=Pink Slimy Mud
 tile.tconevo:metal_block0.name=Wyvern Metal Block
 tile.tconevo:metal_block1.name=Draconic Metal Block
 tile.tconevo:metal_block2.name=Chaotic Metal Block
+tile.tconevo:metal_block3.name=Essence-Infused Metal Block
 
 effect.tconevo.immortality=Immortality
 potion.effect.tconevo.immortality=Potion of Undying
@@ -48,6 +58,8 @@ modifier.mortal_wounds.extra=Heal Reduction: -%s
 modifier.opportunist.name=Opportunist
 modifier.opportunist.desc=§oI've been waiting for this!§r\nThis weapon deals increased damage to debuffed targets.
 modifier.opportunist.extra=Opportunist Damage: +%s
+modifier.rejuvenating.name=Rejuvenating
+modifier.rejuvenating.desc=§oYour weapons betray you!§r\nThis weapon applies regeneration to attacked targets.
 modifier.relentless.name=Relentless
 modifier.relentless.desc=§oSwift strikes!§r\nThis weapon induces a shorter invulnerability period in struck enemies.
 modifier.staggering.name=Staggering
@@ -187,6 +199,13 @@ modifier.final_guard_armor.desc=§oLook out!§r\nThis armour will save you from 
 modifier.final_guard_armor.extra=Final Guard Cost: %s
 modifier.final_guard_armor.proc=Your armour's %s has kept you alive!
 
+material.essence_metal.name=Essence-Infused
+fluid.tconevo.essence_metal.name=Molten Metallic Essence
+material.meat_metal.name=Meaty
+material.pink_slime.name=Pink Slime
+material.pink_metal.name=Pink Metal
+fluid.tconevo.pink_metal.name=Molten Pink Metal
+
 material.tin.name=Tin
 material.aluminium.name=Aluminium
 material.nickel.name=Nickel
@@ -203,6 +222,7 @@ fluid.tconevo.lumium.name=Molten Lumium
 material.enderium.name=Enderium
 fluid.tconevo.enderium.name=Molten Enderium
 
+death.attack.meat_ingot=%1$s choked on some very tough meat
 death.attack.tconevo.chaos=%1$s was annihilated by %2$s using dark energy
 death.attack.tconevo.chaos.item=%1$s was annihilated by %2$s using the dark energy of %3$s
 

@@ -29,6 +29,15 @@
           "plate": "tconevo:items/metal/plate/chaotic_metal",
           "gear": "tconevo:items/metal/gear/chaotic_metal"
         }
+      },
+      "ESSENCE_METAL": {
+        "textures": {
+          "ingot": "tconevo:items/metal/ingot/essence_metal",
+          "dust": "tconevo:items/metal/dust/essence_metal",
+          "nugget": "tconevo:items/metal/nugget/essence_metal",
+          "plate": "tconevo:items/metal/plate/essence_metal",
+          "gear": "tconevo:items/metal/gear/essence_metal"
+        }
       }
     },
     "form": {

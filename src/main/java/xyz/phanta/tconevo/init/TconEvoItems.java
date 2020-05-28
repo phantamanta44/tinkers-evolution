@@ -4,6 +4,7 @@ import io.github.phantamanta44.libnine.InitMe;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import xyz.phanta.tconevo.TconEvoMod;
 import xyz.phanta.tconevo.constant.NameConst;
+import xyz.phanta.tconevo.item.ItemEdible;
 import xyz.phanta.tconevo.item.ItemMaterial;
 import xyz.phanta.tconevo.item.ItemMetal;
 
@@ -14,11 +15,14 @@ public class TconEvoItems {
     public static ItemMaterial MATERIAL;
     @GameRegistry.ObjectHolder(TconEvoMod.MOD_ID + ":" + NameConst.ITEM_METAL)
     public static ItemMetal METAL;
+    @GameRegistry.ObjectHolder(TconEvoMod.MOD_ID + ":" + NameConst.ITEM_EDIBLE)
+    public static ItemEdible EDIBLE;
 
     @InitMe(TconEvoMod.MOD_ID)
     public static void init() {
         new ItemMaterial();
         new ItemMetal();
+        new ItemEdible();
     }
 
 }

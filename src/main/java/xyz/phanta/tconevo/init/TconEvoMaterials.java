@@ -7,6 +7,7 @@ import slimeknights.tconstruct.tools.TinkerTraits;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.integration.botania.BotaniaHooks;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
+import xyz.phanta.tconevo.integration.industrialforegoing.ForegoingHooks;
 import xyz.phanta.tconevo.material.MaterialBuilder;
 import xyz.phanta.tconevo.material.MaterialForm;
 import xyz.phanta.tconevo.material.PartType;
@@ -19,6 +20,8 @@ public class TconEvoMaterials {
     public static Material LIVINGROCK, LIVINGWOOD, DREAMWOOD, MANASTEEL, TERRASTEEL, ELEMENTIUM, MANA_STRING;
     // draconic evolution
     public static Material DRACONIUM, WYVERN_METAL, DRACONIC_METAL, CHAOTIC_METAL;
+    // industrial foregoing
+    public static Material ESSENCE_METAL, MEAT_METAL, PINK_SLIME, PINK_METAL;
     // thermal series
     public static Material TIN, ALUMINIUM, NICKEL, PLATINUM, INVAR, CONSTANTAN, SIGNALUM, LUMIUM, ENDERIUM;
 
@@ -137,6 +140,43 @@ public class TconEvoMaterials {
                 .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_SOUL_REND[2])
                 .build();
         TraitEvolved.registerMaterial(CHAOTIC_METAL, 3);
+
+        // industrial foregoing
+        ESSENCE_METAL = new MaterialBuilder(NameConst.MAT_ESSENCE_METAL, 0x4d7018, MaterialForm.METAL, "EssenceMetal")
+                .requiresMods(ForegoingHooks.MOD_ID)
+                .setCastable(1000)
+                .withStatsHead(400, 5F, 5F, HarvestLevels.DIAMOND)
+                .withStatsHandle(1.5F, 20)
+                .withStatsExtra(50)
+                .withStatsBow(1.5F, 0.7F, 0F)
+                .withTraits(PartType.TOOL, TinkerTraits.established, TconEvoTraits.TRAIT_SUNDERING)
+                .build();
+        MEAT_METAL = new MaterialBuilder(NameConst.MAT_MEAT_METAL, 0x7e5132, MaterialForm.METAL, "Meat")
+                .requiresMods(ForegoingHooks.MOD_ID)
+                .setCraftable()
+                .withStatsHead(135, 4.25F, 2.5F, HarvestLevels.STONE)
+                .withStatsHandle(2.5F, -75)
+                .withStatsExtra(1)
+                .withStatsBow(0.5F, 0.5F, -4F)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_REJUVENATING, TinkerTraits.tasty)
+                .build();
+        PINK_SLIME = new MaterialBuilder(NameConst.MAT_PINK_SLIME, 0xca75cb, MaterialForm.SLIME_CRYSTAL, "Pink")
+                .requiresOres("slimeballPink")
+                .setCraftable()
+                .withStatsHead(1200, 4F, 2F, HarvestLevels.STONE)
+                .withStatsHandle(1.25F, -25)
+                .withStatsExtra(300)
+                .withStatsBow(1.3F, 0.85F, 0F)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_SLIMEY_PINK)
+                .build();
+        PINK_METAL = new MaterialBuilder(NameConst.MAT_PINK_METAL, 0xc77389, MaterialForm.METAL, "PinkMetal")
+                .requiresOres("ingotPinkMetal")
+                .setCastable(1600)
+                .withStatsHead(1789, 12.5F, 8.5F, 5)
+                .withStatsHandle(1F, 125)
+                .withStatsExtra(250)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_MORTAL_WOUNDS, TinkerTraits.unnatural)
+                .build();
 
         // thermal series
         TIN = new MaterialBuilder(NameConst.MAT_TIN, 0x98acb9, MaterialForm.METAL, "Tin")

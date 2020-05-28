@@ -5,14 +5,14 @@
   },
   "mutations": {
     "type": {
-      "COALESCENCE_MATRIX": {
+      "MEAT_INGOT_RAW": {
         "textures": {
-          "layer0": "tconevo:items/coalescence_matrix"
+          "layer0": "tconevo:items/meat_ingot_raw"
         }
       },
-      "PINK_SLIME_CRYSTAL": {
+      "MEAT_INGOT_COOKED": {
         "textures": {
-          "layer0": "tconevo:items/pink_slime_crystal"
+          "layer0": "tconevo:items/meat_ingot_cooked"
         }
       }
     }

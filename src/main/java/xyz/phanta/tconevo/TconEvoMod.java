@@ -4,10 +4,7 @@ import io.github.phantamanta44.libnine.Virtue;
 import io.github.phantamanta44.libnine.util.L9CreativeTab;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
+import net.minecraftforge.fml.common.event.*;
 import org.apache.logging.log4j.Logger;
 import xyz.phanta.tconevo.command.CommandTconEvo;
 import xyz.phanta.tconevo.item.ItemMaterial;
@@ -44,6 +41,11 @@ public class TconEvoMod extends Virtue {
     @Mod.EventHandler
     public void onInit(FMLInitializationEvent event) {
         PROXY.onInit(event);
+    }
+
+    @Mod.EventHandler
+    public void onImcReceived(FMLInterModComms.IMCEvent event) {
+        PROXY.onImcReceived(event);
     }
 
     @Mod.EventHandler

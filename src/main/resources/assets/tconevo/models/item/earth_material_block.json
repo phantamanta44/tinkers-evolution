@@ -1,0 +1,15 @@
+{
+  "9s": "pi",
+  "archetype": {
+    "parent": "block/cube_all"
+  },
+  "mutations": {
+    "type": {
+      "PINK_SLIMY_MUD": {
+        "textures": {
+          "all": "tconevo:blocks/pink_slimy_mud"
+        }
+      }
+    }
+  }
+}

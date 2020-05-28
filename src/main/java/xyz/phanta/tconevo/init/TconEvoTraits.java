@@ -12,6 +12,7 @@ import xyz.phanta.tconevo.trait.botania.TraitFaeVoice;
 import xyz.phanta.tconevo.trait.botania.TraitGaiaWrath;
 import xyz.phanta.tconevo.trait.botania.TraitManaInfused;
 import xyz.phanta.tconevo.trait.draconicevolution.*;
+import xyz.phanta.tconevo.trait.industrialforegoing.TraitSlimeyPink;
 
 import java.util.Arrays;
 import java.util.List;
@@ -37,6 +38,7 @@ public class TconEvoTraits {
     public static final TraitLuminiferous TRAIT_LUMINIFEROUS = new TraitLuminiferous();
     public static final TraitMortalWounds TRAIT_MORTAL_WOUNDS = new TraitMortalWounds();
     public static final TraitOpportunist TRAIT_OPPORTUNIST = new TraitOpportunist();
+    public static final TraitRejuvenating TRAIT_REJUVENATING = new TraitRejuvenating();
     public static final TraitRelentless TRAIT_RELENTLESS = new TraitRelentless();
     public static final TraitSundering TRAIT_SUNDERING = new TraitSundering();
     public static final TraitStaggering TRAIT_STAGGERING = new TraitStaggering();
@@ -64,6 +66,9 @@ public class TconEvoTraits {
     public static final ModifierEntropic MOD_ENTROPIC = new ModifierEntropic();
     public static final ModifierFluxBurn MOD_FLUX_BURN = new ModifierFluxBurn();
     public static final ModifierPrimordial MOD_PRIMORDIAL = new ModifierPrimordial();
+
+    // industrial foregoing
+    public static final TraitSlimeyPink TRAIT_SLIMEY_PINK = new TraitSlimeyPink();
 
     public static final List<Modifier> MODIFIERS = Arrays.asList(MOD_REAPING, MOD_ENTROPIC, MOD_FLUX_BURN, MOD_PRIMORDIAL);
 

@@ -4,8 +4,10 @@ public class NameConst {
 
     public static final String ITEM_MATERIAL = "material";
     public static final String ITEM_METAL = "metal";
+    public static final String ITEM_EDIBLE = "edible";
     public static final String ITEM_MANA_GIVER = "mana_giver";
 
+    public static final String BLOCK_EARTH_MATERIAL = "earth_material_block";
     public static final String BLOCK_METAL = "metal_block";
 
     public static final String POTION_IMMORTALITY = "immortality";
@@ -18,6 +20,7 @@ public class NameConst {
     public static final String TRAIT_LUMINIFEROUS = "luminiferous";
     public static final String TRAIT_MORTAL_WOUNDS = "mortal_wounds";
     public static final String TRAIT_OPPORTUNIST = "opportunist";
+    public static final String TRAIT_REJUVENATING = "rejuvenating";
     public static final String TRAIT_RELENTLESS = "relentless";
     public static final String TRAIT_STAGGERING = "staggering";
     public static final String TRAIT_SUNDERING = "sundering";
@@ -93,6 +96,17 @@ public class NameConst {
     public static final String ARMOUR_MOD_DRACONIC_JUMP_BOOST = MOD_DRACONIC_JUMP_BOOST + ARMOUR_SUFFIX;
     public static final String MOD_CHAOS_RESISTANCE = "chaos_resistance", ARMOUR_MOD_CHAOS_RESISTANCE = MOD_CHAOS_RESISTANCE + ARMOUR_SUFFIX;
     public static final String MOD_FINAL_GUARD = "final_guard", ARMOUR_MOD_FINAL_GUARD = MOD_FINAL_GUARD + ARMOUR_SUFFIX;
+
+    // industrial foregoing
+
+    public static final String MAT_ESSENCE_METAL = "essence_metal";
+    public static final String MAT_MEAT_METAL = "meat_metal";
+    public static final String MAT_PINK_SLIME = "pink_slime";
+    public static final String MAT_PINK_METAL = "pink_metal";
+
+    public static final String TRAIT_SLIMEY_PINK = "slimey_pink";
+
+    public static final String ARMOUR_TRAIT_SLIMEY_PINK = TRAIT_SLIMEY_PINK + ARMOUR_SUFFIX;
 
     // thermal series
 

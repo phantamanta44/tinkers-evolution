@@ -78,6 +78,10 @@ public class TconEvoConfig {
         @Config.RangeInt(min = 1)
         public int traitRadiantBlindnessDuration = 32;
 
+        @Config.Comment("The duration, in ticks, of the regeneration applied by the rejuvenating trait.")
+        @Config.RangeInt(min = 1)
+        public int traitRejuvenatingRegenDuration = 64;
+
         @Config.Comment("The number of ticks of invincibility removed by the relentless trait.")
         @Config.RangeInt(min = 1)
         public int traitRelentlessInvincibilityReduction = 16;
@@ -340,6 +344,17 @@ public class TconEvoConfig {
                     return defaultValue;
             }
         }
+
+    }
+
+    @Config.Comment("Configuration for the Industrial Foregoing module.")
+    public static final IndustrialForegoing moduleIndustrialForegoing = new IndustrialForegoing();
+
+    public static class IndustrialForegoing {
+
+        @Config.Comment("The probability of a pink slime spawning with the pink slimey trait.")
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double slimeyPinkSpawnProbability = 0.0033D;
 
     }
 

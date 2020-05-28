@@ -1,0 +1,33 @@
+{
+  "type": "forge:ore_shapeless",
+  "ingredients": [
+    {
+      "type": "forge:ore_dict",
+      "ore": "slimeballPink"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "slimeballPink"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "slimeballPink"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "slimeballPink"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "sand"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "dirt"
+    }
+  ],
+  "result": {
+    "item": "tconevo:earth_material_block",
+    "data": 0
+  }
+}
