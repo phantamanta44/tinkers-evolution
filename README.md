@@ -8,9 +8,13 @@ Current mod integration modules are as follows:
 * **Botania**
     * Adds botanical materials and metals
     * Adds various traits that interact with mana
+    * Adds ancient will helmet modifiers
 * **Draconic Evolution**
     * Adds wyvern, draconic, and chaotic materials that use energy and are upgradable by fusion crafting
     * Adds modifiers that augment offensive capabilities against draconic armour, among other things
+* **Industrial Foregoing**
+    * Adds IF-based materials, including a powerful pink metal material
+    * Adds meat ingots! Tasty!
 * **Thermal Series**
     * Adds materials for the various thermal metals
     * Adds support to the magma crucible for smeltery melting recipes
