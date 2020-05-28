@@ -2,7 +2,9 @@ package xyz.phanta.tconevo.material;
 
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.oredict.OreDictionary;
+import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.Material;
+import xyz.phanta.tconevo.TconEvoConfig;
 
 public interface RegCondition {
 
@@ -49,6 +51,21 @@ public interface RegCondition {
         @Override
         public boolean isSatisfied() {
             return !material.isHidden();
+        }
+
+    }
+
+    class MaterialCanOverride implements RegCondition {
+
+        private final String matId;
+
+        public MaterialCanOverride(String matId) {
+            this.matId = matId;
+        }
+
+        @Override
+        public boolean isSatisfied() {
+            return TconEvoConfig.overrideMaterials || TinkerRegistry.getMaterial(matId) == Material.UNKNOWN;
         }
 
     }

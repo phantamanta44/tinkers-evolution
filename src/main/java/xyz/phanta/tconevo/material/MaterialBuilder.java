@@ -66,6 +66,13 @@ public class MaterialBuilder {
         return this;
     }
 
+    public MaterialBuilder overrides(String... matIds) {
+        for (String matId : matIds) {
+            requires(new RegCondition.MaterialCanOverride(matId));
+        }
+        return this;
+    }
+
     public MaterialBuilder withStats(IMaterialStats statsObj) {
         materialStats.add(statsObj);
         return this;
