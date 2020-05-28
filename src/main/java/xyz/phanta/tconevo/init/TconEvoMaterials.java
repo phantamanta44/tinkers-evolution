@@ -19,6 +19,8 @@ public class TconEvoMaterials {
     public static Material LIVINGROCK, LIVINGWOOD, DREAMWOOD, MANASTEEL, TERRASTEEL, ELEMENTIUM, MANA_STRING;
     // draconic evolution
     public static Material DRACONIUM, WYVERN_METAL, DRACONIC_METAL, CHAOTIC_METAL;
+    // thermal series
+    public static Material TIN, ALUMINIUM, NICKEL, PLATINUM, INVAR, CONSTANTAN, SIGNALUM, LUMIUM, ENDERIUM;
 
     @InitMe
     public static void init() {
@@ -135,6 +137,95 @@ public class TconEvoMaterials {
                 .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_SOUL_REND[2])
                 .build();
         TraitEvolved.registerMaterial(CHAOTIC_METAL, 3);
+
+        // thermal series
+        TIN = new MaterialBuilder(NameConst.MAT_TIN, 0x98acb9, MaterialForm.METAL, "Tin")
+                .requiresOres("ingotTin")
+                .setCastable("tin", 350)
+                .withStatsHead(150, 4.5F, 4F, HarvestLevels.IRON)
+                .withStatsHandle(0.8F, 10)
+                .withStatsExtra(20)
+                .withStatsBow(0.9F, 1.25F, 0F)
+                .withTraits(PartType.TOOL, TinkerTraits.crude)
+                .build();
+        ALUMINIUM = new MaterialBuilder(NameConst.MAT_ALUMINIUM, 0xd6d7e2, MaterialForm.METAL, "Aluminum")
+                .requiresOres("ingotAluminum") // where's the i???
+                .setCastable("aluminum", 330)
+                .withStatsHead(225, 10F, 4F, HarvestLevels.IRON)
+                .withStatsHandle(0.9F, 25)
+                .withStatsExtra(35)
+                .withStatsBow(1F, 1.1F, 1F)
+                .withTraits(PartType.TOOL, TinkerTraits.lightweight)
+                .build();
+        NICKEL = new MaterialBuilder(NameConst.MAT_NICKEL, 0xbfb684, MaterialForm.METAL, "Nickel")
+                .requiresOres("ingotNickel")
+                .setCastable("nickel", 727)
+                .withStatsHead(300, 6.5F, 5.5F, HarvestLevels.DIAMOND)
+                .withStatsHandle(0.75F, 35)
+                .withStatsExtra(60)
+                .withStatsBow(0.65F, 1.5F, 2F)
+                .withTraits(PartType.HEAD, TconEvoTraits.TRAIT_IMPACT_FORCE)
+                .withTraits(PartType.EXTRA, TinkerTraits.magnetic)
+                .build();
+        PLATINUM = new MaterialBuilder(NameConst.MAT_PLATINUM, 0x61d1f3, MaterialForm.METAL, "Platinum")
+                .requiresOres("ingotPlatinum")
+                .setCastable("platinum", 1400)
+                .withStatsHead(1400, 9F, 6.5F, HarvestLevels.COBALT)
+                .withStatsHandle(0.8F, 120)
+                .withStatsExtra(100)
+                .withStatsBow(1F, 0.8F, 8F)
+                .withTraits(PartType.HEAD, TinkerTraits.coldblooded)
+                .withTraits(PartType.EXTRA, TconEvoTraits.TRAIT_DEADLY_PRECISION)
+                .build();
+        INVAR = new MaterialBuilder(NameConst.MAT_INVAR, 0x93a49d, MaterialForm.METAL, "Invar")
+                .requiresOres("ingotInvar")
+                .setCastable("invar", 1400)
+                .withStatsHead(425, 6.5F, 5.5F, HarvestLevels.DIAMOND)
+                .withStatsHandle(1.25F, 20)
+                .withStatsExtra(50)
+                .withStatsBow(0.5F, 1.75F, 6F)
+                .withTraits(PartType.HEAD, TinkerTraits.stiff)
+                .withTraits(PartType.EXTRA, TinkerTraits.duritos)
+                .build();
+        CONSTANTAN = new MaterialBuilder(NameConst.MAT_CONSTANTAN, 0xbf9f5f, MaterialForm.METAL, "Constantan")
+                .requiresOres("ingotConstantan")
+                .setCastable("constantan", 650)
+                .withStatsHead(275, 6F, 4.5F, HarvestLevels.DIAMOND)
+                .withStatsHandle(1.1F, 10)
+                .withStatsExtra(40)
+                .withStatsBow(0.75F, 1.25F, 3F)
+                .withTraits(PartType.HEAD, TinkerTraits.aridiculous)
+                .withTraits(PartType.EXTRA, TinkerTraits.freezing)
+                .build();
+        SIGNALUM = new MaterialBuilder(NameConst.MAT_SIGNALUM, 0xdf5c00, MaterialForm.METAL, "Signalum")
+                .requiresOres("ingotSignalum")
+                .setCastable("signalum", 1000)
+                .withStatsHead(150, 13F, 4.5F, HarvestLevels.IRON)
+                .withStatsHandle(0.7F, 0)
+                .withStatsExtra(15)
+                .withStatsBow(2F, 1F, -4F) // machine gun bow is back!!!
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_RELENTLESS, TconEvoTraits.TRAIT_AFTERSHOCK[0])
+                .build();
+        LUMIUM = new MaterialBuilder(NameConst.MAT_LUMIUM, 0xdde38d, MaterialForm.METAL, "Lumium")
+                .requiresOres("ingotLumium")
+                .setCastable("lumium", 1000)
+                .withStatsHead(250, 9F, 5.5F, HarvestLevels.IRON)
+                .withStatsHandle(0.8F, 5)
+                .withStatsExtra(20)
+                .withStatsBow(1F, 1.15F, 2F)
+                .withTraits(PartType.HEAD, TconEvoTraits.TRAIT_LUMINIFEROUS)
+                .withTraits(PartType.EXTRA, TconEvoTraits.TRAIT_OPPORTUNIST)
+                .build();
+        ENDERIUM = new MaterialBuilder(NameConst.MAT_ENDERIUM, 0x0e5f61, MaterialForm.METAL, "Enderium")
+                .requiresOres("ingotEnderium")
+                .setCastable("enderium", 1600)
+                .withStatsHead(1700, 8F, 9F, 5)
+                .withStatsHandle(1.25F, 150)
+                .withStatsExtra(180)
+                .withStatsBow(0.75F, 1.5F, 7F)
+                .withTraits(PartType.HEAD, TconEvoTraits.TRAIT_MORTAL_WOUNDS)
+                .withTraits(PartType.EXTRA, TinkerTraits.enderference)
+                .build();
     }
 
 }

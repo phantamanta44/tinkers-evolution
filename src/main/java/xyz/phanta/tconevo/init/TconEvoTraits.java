@@ -5,7 +5,6 @@ import net.minecraft.item.ItemStack;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 import xyz.phanta.tconevo.TconEvoConfig;
-import xyz.phanta.tconevo.integration.botania.BotaniaHooks;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
 import xyz.phanta.tconevo.trait.*;
 import xyz.phanta.tconevo.trait.botania.TraitAuraSiphon;
@@ -29,9 +28,16 @@ public class TconEvoTraits {
                 mod instanceof AbstractTrait ? ((AbstractTrait)mod).getModifierIdentifier() : mod.identifier);
     }
 
+    public static final TraitAftershock[] TRAIT_AFTERSHOCK = {
+            new TraitAftershock(1), new TraitAftershock(2), new TraitAftershock(3)
+    };
     public static final TraitCascading TRAIT_CASCADING = new TraitCascading();
+    public static final TraitDeadlyPrecision TRAIT_DEADLY_PRECISION = new TraitDeadlyPrecision();
+    public static final TraitImpactForce TRAIT_IMPACT_FORCE = new TraitImpactForce();
+    public static final TraitLuminiferous TRAIT_LUMINIFEROUS = new TraitLuminiferous();
     public static final TraitMortalWounds TRAIT_MORTAL_WOUNDS = new TraitMortalWounds();
     public static final TraitOpportunist TRAIT_OPPORTUNIST = new TraitOpportunist();
+    public static final TraitRelentless TRAIT_RELENTLESS = new TraitRelentless();
     public static final TraitSundering TRAIT_SUNDERING = new TraitSundering();
     public static final TraitStaggering TRAIT_STAGGERING = new TraitStaggering();
 

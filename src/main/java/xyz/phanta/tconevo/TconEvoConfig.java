@@ -23,12 +23,41 @@ public class TconEvoConfig {
 
     public static class General {
 
+        @Config.Comment("The amount of flat bonus magical damage dealt per level of the aftershock trait.")
+        @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
+        public double traitAftershockDamage = 2.5D;
+
+        @Config.Comment({
+                "The duration, in ticks, of the slow applied by the chilling touch trait.",
+                "Only useful with Construct's Armoury installed."
+        })
+        @Config.RangeInt(min = 1)
+        public int traitChillingTouchSlowDuration = 32;
+
+        @Config.Comment({
+                "The bonus damage percentage for critical strikes augmented by the deadly precision trait.",
+                "Note that the built-in +50% bonus critical strike damage is applied after this bonus damage."
+        })
+        @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
+        public double traitDeadlyPrecisionBonusDamage = 0.5D;
+
         @Config.Comment({
                 "The amount of healing amplification afforded by each armour piece with the divine grace trait.",
                 "Only useful with Construct's Armoury installed."
         })
         @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
         public double traitDivineGraceHealBoost = 0.12D;
+
+        @Config.Comment({
+                "The duration, in ticks, of the regeneration and fire resistance granted by the hearth's embrace trait.",
+                "Only useful with Construct's Armoury installed."
+        })
+        @Config.RangeInt(min = 1)
+        public int traitHearthEmbraceBuffDuration = 200;
+
+        @Config.Comment("The duration, in ticks, of the glowing effect applied by the luminiferous trait.")
+        @Config.RangeInt(min = 1)
+        public int traitLuminiferousGlowingDuration = 160;
 
         @Config.Comment("The duration, in ticks, of the healing reduction applied by the mortal wounds trait.")
         @Config.RangeInt(min = 1)
@@ -41,6 +70,17 @@ public class TconEvoConfig {
         @Config.Comment("The bonus damage percentage for attacks that proc opportunist.")
         @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
         public double traitOpportunistBonusDamage = 0.5D;
+
+        @Config.Comment({
+                "The duration, in ticks, of the blindness applied by the radiant trait.",
+                "Only useful with Construct's Armoury installed."
+        })
+        @Config.RangeInt(min = 1)
+        public int traitRadiantBlindnessDuration = 32;
+
+        @Config.Comment("The number of ticks of invincibility removed by the relentless trait.")
+        @Config.RangeInt(min = 1)
+        public int traitRelentlessInvincibilityReduction = 16;
 
         @Config.Comment({
                 "The duration, in ticks, of the regeneration granted by the second wind trait.",

@@ -22,11 +22,15 @@ import java.util.function.Supplier;
 
 public class TconEvoArmourTraits {
 
+    public static final ArmourTraitBulwark TRAIT_BULWARK = new ArmourTraitBulwark();
     public static final ArmourTraitCelestial TRAIT_CELESTIAL = new ArmourTraitCelestial();
+    public static final ArmourTraitChillingTouch TRAIT_CHILLING_TOUCH = new ArmourTraitChillingTouch();
     public static final ArmourTraitDivineGrace TRAIT_DIVINE_GRACE = new ArmourTraitDivineGrace();
     public static final ArmourTraitGaleForce[] TRAIT_GALE_FORCE = {
             new ArmourTraitGaleForce(1), new ArmourTraitGaleForce(2), new ArmourTraitGaleForce(3)
     };
+    public static final ArmourTraitHearthEmbrace TRAIT_HEARTH_EMBRACE = new ArmourTraitHearthEmbrace();
+    public static final ArmourTraitRadiant TRAIT_RADIANT = new ArmourTraitRadiant();
     public static final ArmourTraitSecondWind TRAIT_SECOND_WIND = new ArmourTraitSecondWind();
     public static final ArmourTraitStifling TRAIT_STIFLING = new ArmourTraitStifling();
     public static final ArmourTraitStonebound TRAIT_STONEBOUND = new ArmourTraitStonebound();

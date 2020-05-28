@@ -62,6 +62,50 @@ public class TconEvoArmourMaterials {
                 .withTraits(ArmourPartType.CORE, TconEvoArmourTraits.TRAIT_EVOLVED, TconEvoArmourTraits.TRAIT_CELESTIAL)
                 .withTraits(ArmourPartType.EXTRA, TconEvoArmourTraits.TRAIT_GALE_FORCE[1])
                 .build();
+
+        // thermal series
+        new ArmourMaterialBuilder(TconEvoMaterials.TIN)
+                .withStatsArmour(8F, 9F, 0.8F, 1F, 0F, 0.75F)
+                .withTraits(ArmourPartType.ARMOUR, ArmorTraits.mundane)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.ALUMINIUM)
+                .withStatsArmour(12F, 10F, 0.9F, 1F, 0F, 0.8F)
+                .withTraits(ArmourPartType.ARMOUR, ArmorTraits.featherweight)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.NICKEL)
+                .withStatsArmour(15F, 14F, 0.75F, 2.5F, 0F, 2F)
+                .withTraits(ArmourPartType.CORE, TconEvoArmourTraits.TRAIT_BULWARK)
+                .withTraits(ArmourPartType.EXTRA, ArmorTraits.magnetic)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.PLATINUM)
+                .withStatsArmour(35F, 21F, 0.8F, 2.5F, 2F, 3F)
+                .withTraits(ArmourPartType.CORE, ArmorTraits.prideful)
+                .withTraits(ArmourPartType.EXTRA, TconEvoArmourTraits.TRAIT_DIVINE_GRACE)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.INVAR)
+                .withStatsArmour(21F, 16F, 1.25F, 0.5F, 1F, 1F)
+                .withTraits(ArmourPartType.CORE, ArmorTraits.steady)
+                .withTraits(ArmourPartType.EXTRA, ArmorTraits.duritae)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.CONSTANTAN)
+                .withStatsArmour(13F, 12F, 1.1F, 0.5F, 0F, 0.8F)
+                .withTraits(ArmourPartType.CORE, TconEvoArmourTraits.TRAIT_HEARTH_EMBRACE)
+                .withTraits(ArmourPartType.EXTRA, TconEvoArmourTraits.TRAIT_CHILLING_TOUCH)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.SIGNALUM)
+                .withStatsArmour(8F, 8F, 0.7F, 0.15F, 0F, 0.75F)
+                .withTraits(ArmourPartType.ARMOUR, ArmorTraits.lightweight, ArmorTraits.invigorating)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.LUMIUM)
+                .withStatsArmour(10F, 8.5F, 0.8F, 0.25F, 0F, 0.9F)
+                .withTraits(ArmourPartType.CORE, TconEvoArmourTraits.TRAIT_RADIANT)
+                .withTraits(ArmourPartType.EXTRA, ArmorTraits.indomitable)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.ENDERIUM)
+                .withStatsArmour(37F, 24.5F, 1.25F, 1.25F, 3.5F, 1.5F)
+                .withTraits(ArmourPartType.CORE, ArmorTraits.vengeful)
+                .withTraits(ArmourPartType.EXTRA, ArmorTraits.enderport)
+                .build();
     }
 
 }

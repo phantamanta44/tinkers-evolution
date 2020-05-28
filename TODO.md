@@ -25,6 +25,7 @@
 * force of impact: deal increased damage with higher velocity
 * thundergod's wrath: fully-charged hits strike lightning on full-health enemies
 * aftershock: fully-charged hits deal a fixed amount of bonus magical damage
+    * higher levels -> more bonus damage
 * corrupting: fully-charged hits inflict increasing levels of wither for a short duration
 * piezoelectric: fully-charged hits charge energetic items in the inventory
 * crystalline: do more damage at higher durability
@@ -183,7 +184,7 @@
 ### materials
 
 * crystal matrix
-    * tools: crystalline + aftershock + insatiable
+    * tools: crystalline + aftershock 3 + insatiable
     * armour: rough + strength of will + prideful
 * neutronium
     * tools: condensing (head) + dense + heavy
@@ -508,8 +509,8 @@
 ### materials
 
 * fluxed electrum
-    * tools: energized + magnetic
-    * armour: energized + magnetic
+    * tools: energized + magnetic 2
+    * armour: energized + magnetic 2
 * flux crystal
     * tools: energized + shocking
     * armour: energized + voltaic
@@ -525,7 +526,7 @@
     * tools: energized 2 + executor (head)
     * armour: energized 2 + chilling touch
 * fluxed string
-    * bowstring: aftershock
+    * bowstring: aftershock 2
 
 ## thaumcraft
 
@@ -567,9 +568,9 @@
     * armour: featherweight
 * nickel
     * tools: force of impact (head) + magnetic (extra)
-    * armour: bulwark + magnetic (plates/trim)
+    * armour: bulwark (core) + magnetic (plates/trim)
 * platinum
-    * tools: cold-blooded (core) + deadly precision (extra)
+    * tools: cold-blooded (head) + deadly precision (extra)
     * armour: prideful (core) + divine grace (plates/trim)
 * invar
     * tools: stiff (head) + duritae (extra)
@@ -582,7 +583,11 @@
     * armour: lightweight + invigorating
 * lumium
     * tools: luminiferous (head) + opportunist (extra)
-    * armour: radiant (core) + prideful (plates/trim)
+    * armour: radiant (core) + indomitable (plates/trim)
 * enderium
     * tools: mortal wounds (head) + enderference (extra)
     * armour: vengeful (core) + enderport (plates/trim)
+
+### other stuff
+
+* the magma crucible should be able to do melting recipes... probably

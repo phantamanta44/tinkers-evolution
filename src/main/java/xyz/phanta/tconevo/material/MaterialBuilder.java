@@ -1,6 +1,7 @@
 package xyz.phanta.tconevo.material;
 
 import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidRegistry;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.*;
 import slimeknights.tconstruct.library.traits.ITrait;
@@ -27,7 +28,7 @@ public class MaterialBuilder {
     private boolean craftable = false, castable = false;
     @Nullable
     private Supplier<Fluid> fluidGetter = null;
-    private int fluidTemperature = 273; // only used if fluidGetter is null, as fluid is automatically generated
+    private int fluidTemperature = 273; // used for generated fluids
     private final Map<PartType, LazyAccum<ITrait>> traits = new EnumMap<>(PartType.class);
 
     public MaterialBuilder(String matId, int colour, MaterialForm form, String oreName) {
@@ -107,14 +108,19 @@ public class MaterialBuilder {
         return this;
     }
 
-    public MaterialBuilder setCastable(Supplier<Fluid> fluidGetter) {
+    public MaterialBuilder setCastable(Supplier<Fluid> fluidGetter, int fallbackTemp) {
         this.castable = true;
         this.fluidGetter = fluidGetter;
+        this.fluidTemperature = fallbackTemp;
         return this;
     }
 
-    public MaterialBuilder setCastable(Fluid fluid) {
-        return setCastable(() -> fluid);
+    public MaterialBuilder setCastable(Fluid fluid, int fallbackTemp) {
+        return setCastable(() -> fluid, fallbackTemp);
+    }
+
+    public MaterialBuilder setCastable(String fluidId, int fallbackTemp) {
+        return setCastable(() -> FluidRegistry.getFluid(fluidId), fallbackTemp);
     }
 
     public MaterialBuilder withTraits(PartType partType, LazyAccum<ITrait> traitCollector) {

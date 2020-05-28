@@ -11,16 +11,25 @@ public class NameConst {
     public static final String POTION_IMMORTALITY = "immortality";
     public static final String POTION_MORTAL_WOUNDS = "mortal_wounds";
 
+    public static final String TRAIT_AFTERSHOCK = "aftershock";
     public static final String TRAIT_CASCADING = "cascading";
+    public static final String TRAIT_DEADLY_PRECISION = "deadly_precision";
+    public static final String TRAIT_IMPACT_FORCE = "impact_force";
+    public static final String TRAIT_LUMINIFEROUS = "luminiferous";
     public static final String TRAIT_MORTAL_WOUNDS = "mortal_wounds";
     public static final String TRAIT_OPPORTUNIST = "opportunist";
+    public static final String TRAIT_RELENTLESS = "relentless";
     public static final String TRAIT_STAGGERING = "staggering";
     public static final String TRAIT_SUNDERING = "sundering";
 
     private static final String ARMOUR_SUFFIX = "_armor";
+    public static final String TRAIT_BULWARK = "bulwark", ARMOUR_TRAIT_BULWARK = TRAIT_BULWARK + ARMOUR_SUFFIX;
     public static final String TRAIT_CELESTIAL = "celestial", ARMOUR_TRAIT_CELESTSIAL = TRAIT_CELESTIAL + ARMOUR_SUFFIX;
+    public static final String TRAIT_CHILLING_TOUCH = "chilling_touch", ARMOUR_TRAIT_CHILLING_TOUCH = TRAIT_CHILLING_TOUCH + ARMOUR_SUFFIX;
     public static final String TRAIT_DIVINE_GRACE = "divine_grace", ARMOUR_TRAIT_DIVINE_GRACE = TRAIT_DIVINE_GRACE + ARMOUR_SUFFIX;
     public static final String TRAIT_GALE_FORCE = "gale_force", ARMOUR_TRAIT_GALE_FORCE = TRAIT_GALE_FORCE + ARMOUR_SUFFIX;
+    public static final String TRAIT_HEARTH_EMBRACE = "hearth_embrace", ARMOUR_TRAIT_HEARTH_EMBRACE = TRAIT_HEARTH_EMBRACE + ARMOUR_SUFFIX;
+    public static final String TRAIT_RADIANT = "radiant", ARMOUR_TRAIT_RADIANT = TRAIT_RADIANT + ARMOUR_SUFFIX;
     public static final String TRAIT_SECOND_WIND = "second_wind", ARMOUR_TRAIT_SECOND_WIND = TRAIT_SECOND_WIND + ARMOUR_SUFFIX;
     public static final String TRAIT_STIFLING = "stifling", ARMOUR_TRAIT_STIFLING = TRAIT_STIFLING + ARMOUR_SUFFIX;
     public static final String TRAIT_STONEBOUND = "stonebound", ARMOUR_TRAIT_STONEBOUND = TRAIT_STONEBOUND + ARMOUR_SUFFIX;
@@ -84,5 +93,17 @@ public class NameConst {
     public static final String ARMOUR_MOD_DRACONIC_JUMP_BOOST = MOD_DRACONIC_JUMP_BOOST + ARMOUR_SUFFIX;
     public static final String MOD_CHAOS_RESISTANCE = "chaos_resistance", ARMOUR_MOD_CHAOS_RESISTANCE = MOD_CHAOS_RESISTANCE + ARMOUR_SUFFIX;
     public static final String MOD_FINAL_GUARD = "final_guard", ARMOUR_MOD_FINAL_GUARD = MOD_FINAL_GUARD + ARMOUR_SUFFIX;
+
+    // thermal series
+
+    public static final String MAT_TIN = "tin";
+    public static final String MAT_ALUMINIUM = "aluminium";
+    public static final String MAT_NICKEL = "nickel";
+    public static final String MAT_PLATINUM = "platinum";
+    public static final String MAT_INVAR = "invar";
+    public static final String MAT_CONSTANTAN = "constantan";
+    public static final String MAT_SIGNALUM = "signalum";
+    public static final String MAT_LUMIUM = "lumium";
+    public static final String MAT_ENDERIUM = "enderium";
 
 }

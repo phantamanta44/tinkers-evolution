@@ -85,15 +85,11 @@ public class MaterialDefinition {
 
     private void initProperties() {
         material.setCraftable(craftable);
-        material.setCastable(castable);
-        if (fluidGetter != null) {
-            material.setFluid(fluidGetter.get());
-        } else if (castable) {
-            Fluid fluid = new FluidMolten(material.identifier, material.materialTextColor);
-            fluid.setTemperature(fluidTemperature);
-            fluid.setUnlocalizedName(TconEvoMod.MOD_ID + "." + material.identifier);
-            FluidRegistry.registerFluid(fluid);
-            material.setFluid(fluid);
+        if (castable) {
+            material.setCastable(true);
+            registerFluid();
+        } else {
+            material.setCastable(false);
         }
         if (form == MaterialForm.RAW) {
             for (String prefix : form.prefixes) {
@@ -115,6 +111,21 @@ public class MaterialDefinition {
                 }
             }
         }
+    }
+
+    private void registerFluid() {
+        if (fluidGetter != null) {
+            Fluid fluid = fluidGetter.get();
+            if (fluid != null) { // fall back to generating a fluid if the getter fails
+                material.setFluid(fluid);
+                return;
+            }
+        }
+        Fluid fluid = new FluidMolten(material.identifier, material.materialTextColor);
+        fluid.setTemperature(fluidTemperature);
+        fluid.setUnlocalizedName(TconEvoMod.MOD_ID + "." + material.identifier);
+        FluidRegistry.registerFluid(fluid);
+        material.setFluid(fluid);
     }
 
     private void tryActivate() {
