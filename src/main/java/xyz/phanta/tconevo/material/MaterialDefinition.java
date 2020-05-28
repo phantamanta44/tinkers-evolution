@@ -39,14 +39,24 @@ public class MaterialDefinition {
 
     public static void initMaterialProperties() {
         for (MaterialDefinition defn : materialDefs) {
-            defn.initProperties();
+            try {
+                defn.initProperties();
+            } catch (Exception e) {
+                TconEvoMod.LOGGER.error("Encountered exception while initializing material {}", defn.material.identifier);
+                TconEvoMod.LOGGER.error(e);
+            }
         }
     }
 
     public static void activate() {
         for (MaterialDefinition defn : materialDefs) {
             if (!blacklisted.contains(defn.material.identifier)) {
-                defn.tryActivate();
+                try {
+                    defn.tryActivate();
+                } catch (Exception e) {
+                    TconEvoMod.LOGGER.error("Encountered exception while activating material {}", defn.material.identifier);
+                    TconEvoMod.LOGGER.error(e);
+                }
             }
         }
     }

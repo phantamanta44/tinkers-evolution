@@ -2,6 +2,7 @@ package xyz.phanta.tconevo.integration.conarm.material;
 
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.traits.ITrait;
+import xyz.phanta.tconevo.TconEvoMod;
 import xyz.phanta.tconevo.util.LazyAccum;
 
 import java.util.ArrayList;
@@ -19,7 +20,13 @@ public class ArmourMaterialDefinition {
 
     public static void initMaterialTraits() {
         for (ArmourMaterialDefinition materialDef : materialDefs) {
-            materialDef.initTraits();
+            try {
+                materialDef.initTraits();
+            } catch (Exception e) {
+                TconEvoMod.LOGGER.error("Encountered exception while initializing armour material {}",
+                        materialDef.baseMaterial.identifier);
+                TconEvoMod.LOGGER.error(e);
+            }
         }
     }
 

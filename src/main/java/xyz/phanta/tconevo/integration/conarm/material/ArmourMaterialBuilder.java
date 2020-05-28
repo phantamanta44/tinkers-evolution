@@ -7,6 +7,7 @@ import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.IMaterialStats;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.traits.ITrait;
+import xyz.phanta.tconevo.TconEvoMod;
 import xyz.phanta.tconevo.util.LazyAccum;
 
 import java.util.ArrayList;
@@ -59,10 +60,18 @@ public class ArmourMaterialBuilder {
     }
 
     public void build() {
-        for (IMaterialStats statsObj : materialStats) {
-            TinkerRegistry.addMaterialStats(baseMaterial, statsObj);
+        // don't mess with other mods' materials in case they overwrite our materials
+        try {
+            if (TinkerRegistry.getTrace(baseMaterial).matches(TconEvoMod.INSTANCE)) {
+                for (IMaterialStats statsObj : materialStats) {
+                    TinkerRegistry.addMaterialStats(baseMaterial, statsObj);
+                }
+                ArmourMaterialDefinition.register(baseMaterial, traits);
+            }
+        } catch (Exception e) {
+            TconEvoMod.LOGGER.error("Encountered exception while building armour material {}", baseMaterial.identifier);
+            TconEvoMod.LOGGER.error(e);
         }
-        ArmourMaterialDefinition.register(baseMaterial, traits);
     }
 
 }

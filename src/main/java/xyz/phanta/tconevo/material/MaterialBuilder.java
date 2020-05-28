@@ -2,9 +2,11 @@ package xyz.phanta.tconevo.material;
 
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fml.common.ModContainer;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.*;
 import slimeknights.tconstruct.library.traits.ITrait;
+import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.TconEvoMod;
 import xyz.phanta.tconevo.util.LazyAccum;
 import xyz.phanta.tconevo.util.TconReflect;
@@ -133,15 +135,31 @@ public class MaterialBuilder {
     }
 
     public Material build() {
-        Material material = new Material(matId, colour, true);
-        for (IMaterialStats statsObj : materialStats) {
-            TinkerRegistry.addMaterialStats(material, statsObj);
+        Material material = TinkerRegistry.getMaterial(matId);
+        if (material != Material.UNKNOWN) {
+            if (TconEvoConfig.overrideMaterials) {
+                ModContainer owningMod = TinkerRegistry.getTrace(material);
+                TconEvoMod.LOGGER.info("Overriding existing material {} registered by {}",
+                        material.identifier, owningMod != null ? owningMod.getModId() : "unknown");
+                TconReflect.removeMaterial(matId); // "it's my material now!" said Tap, with a laugh
+            } else {
+                return material;
+            }
         }
-        MaterialDefinition.register(
-                material, form, oreName, conditions, craftable, castable, fluidGetter, fluidTemperature, traits);
-        TinkerRegistry.addMaterial(material);
-        // override material owner since libnine invokes the static initializers
-        TconReflect.overrideMaterialOwnerMod(material, TconEvoMod.INSTANCE);
+        material = new Material(matId, colour, true);
+        try {
+            for (IMaterialStats statsObj : materialStats) {
+                TinkerRegistry.addMaterialStats(material, statsObj);
+            }
+            MaterialDefinition.register(
+                    material, form, oreName, conditions, craftable, castable, fluidGetter, fluidTemperature, traits);
+            TinkerRegistry.addMaterial(material);
+            // override material owner since libnine invokes the static initializers
+            TconReflect.overrideMaterialOwnerMod(material, TconEvoMod.INSTANCE);
+        } catch (Exception e) {
+            TconEvoMod.LOGGER.error("Encountered exception while building material {}", matId);
+            TconEvoMod.LOGGER.error(e);
+        }
         return material;
     }
 

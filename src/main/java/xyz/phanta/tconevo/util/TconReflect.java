@@ -12,9 +12,15 @@ public class TconReflect {
 
     private static final Map<String, ModContainer> materialRegisteredByMod = MirrorUtils
             .<Map<String, ModContainer>>reflectField(TinkerRegistry.class, "materialRegisteredByMod").get(null);
+    private static final Map<String, Material> materials = MirrorUtils
+            .<Map<String, Material>>reflectField(TinkerRegistry.class, "materials").get(null);
 
     public static void overrideMaterialOwnerMod(Material material, Object modObj) {
         materialRegisteredByMod.put(material.identifier, FMLCommonHandler.instance().findContainerFor(modObj));
+    }
+
+    public static void removeMaterial(String identifier) {
+        materials.remove(identifier);
     }
 
 }

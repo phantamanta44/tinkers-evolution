@@ -9,7 +9,10 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
-import xyz.phanta.tconevo.handler.*;
+import xyz.phanta.tconevo.handler.EnergyShieldHandler;
+import xyz.phanta.tconevo.handler.FlightSpeedHandler;
+import xyz.phanta.tconevo.handler.PlayerStateHandler;
+import xyz.phanta.tconevo.handler.ToolCapabilityHandler;
 import xyz.phanta.tconevo.init.TconEvoTraits;
 import xyz.phanta.tconevo.integration.IntegrationManager;
 import xyz.phanta.tconevo.material.MaterialDefinition;
@@ -30,9 +33,6 @@ public class CommonProxy {
         MinecraftForge.EVENT_BUS.register(playerStateHandler);
         MinecraftForge.EVENT_BUS.register(energyShieldHandler);
         MinecraftForge.EVENT_BUS.register(new FlightSpeedHandler());
-        if (TconEvoConfig.overrideMaterials) {
-            MinecraftForge.EVENT_BUS.register(new MaterialDeletionHandler());
-        }
         SimpleNetworkWrapper netHandler = TconEvoMod.INSTANCE.getNetworkHandler();
         netHandler.registerMessage(new SPacketEntitySpecialEffect.Handler(), SPacketEntitySpecialEffect.class, 0, Side.CLIENT);
         netHandler.registerMessage(new CPacketGaiaWrath.Handler(), CPacketGaiaWrath.class, 1, Side.SERVER);

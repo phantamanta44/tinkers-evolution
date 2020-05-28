@@ -5,6 +5,7 @@ import io.github.phantamanta44.libnine.util.L9CreativeTab;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.*;
+import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import xyz.phanta.tconevo.command.CommandTconEvo;
 import xyz.phanta.tconevo.item.ItemMaterial;
@@ -25,8 +26,7 @@ public class TconEvoMod extends Virtue {
             serverSide = "xyz.phanta.tconevo.CommonProxy")
     public static CommonProxy PROXY;
 
-    @SuppressWarnings("NotNullFieldNotInitialized")
-    public static Logger LOGGER;
+    public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
 
     public TconEvoMod() {
         super(MOD_ID, new L9CreativeTab(MOD_ID, () -> ItemMaterial.Type.COALESCENCE_MATRIX.newStack(1)));
@@ -34,7 +34,6 @@ public class TconEvoMod extends Virtue {
 
     @Mod.EventHandler
     public void onPreInit(FMLPreInitializationEvent event) {
-        LOGGER = event.getModLog();
         PROXY.onPreInit(event);
     }
 
