@@ -13,7 +13,7 @@ public interface ConArmHooks extends IntegrationHooks {
 
     String MOD_ID = "conarm";
 
-    @IntegrationHooks.Inject(value = MOD_ID, sided = true)
+    @Inject(value = MOD_ID, sided = true)
     ConArmHooks INSTANCE = new Noop();
 
     boolean isArmourModifierTrait(IModifier mod);
@@ -37,7 +37,7 @@ public interface ConArmHooks extends IntegrationHooks {
         }
 
         @Override
-        public void rebuildArmour(NBTTagCompound rootTag, Item item) throws TinkerGuiException {
+        public void rebuildArmour(NBTTagCompound rootTag, Item item) {
             // NO-OP
         }
 

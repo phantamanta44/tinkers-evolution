@@ -22,7 +22,7 @@ public interface DraconicHooks extends IntegrationHooks {
 
     String MOD_ID = "draconicevolution";
 
-    @IntegrationHooks.Inject(value = MOD_ID, sided = true)
+    @Inject(value = MOD_ID, sided = true)
     DraconicHooks INSTANCE = new Noop();
 
     static boolean isLoaded() {

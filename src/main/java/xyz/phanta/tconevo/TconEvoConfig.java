@@ -339,6 +339,25 @@ public class TconEvoConfig {
 
     }
 
+    @Config.Comment("Configuration for the Thermal Series module.")
+    public static final ThermalSeries moduleThermalSeries = new ThermalSeries();
+
+    public static class ThermalSeries {
+
+        @Config.Comment("Allows smeltery melting recipes to be executed using a magma crucible.")
+        @Config.RequiresMcRestart
+        public boolean magmaCrucibleMeltingEnabled = true;
+
+        @Config.Comment({
+                "The multiplier for magma crucible melting recipe costs.",
+                "This is multiplied by the recipe's required temperature to compute the recipe cost in RF."
+        })
+        @Config.RangeDouble(min = 0D)
+        @Config.RequiresMcRestart
+        public double magmaCrucibleMeltingCostMultiplier = 9D;
+
+    }
+
     private static <T> T armourSwitch(EntityEquipmentSlot slot, T helmet, T chestplate, T leggings, T boots, T defaultValue) {
         switch (slot) {
             case HEAD:

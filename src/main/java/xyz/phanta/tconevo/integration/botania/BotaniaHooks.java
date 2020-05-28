@@ -12,7 +12,7 @@ public interface BotaniaHooks extends IntegrationHooks {
 
     String MOD_ID = "botania";
 
-    @IntegrationHooks.Inject(MOD_ID)
+    @Inject(MOD_ID)
     BotaniaHooks INSTANCE = new Noop();
 
     Optional<ItemStack> getItemAncientWillAhrim();
