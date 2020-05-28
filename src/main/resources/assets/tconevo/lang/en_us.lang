@@ -81,11 +81,15 @@ modifier.will_strength_armor.name=Strength of Will
 modifier.will_strength_armor.desc=§oMaintaining focus!§r\nThis armour grants immortality when hit at full health.
 
 material.livingrock.name=Livingrock
+fluid.tconevo.livingrock.name=Molten Livingrock
 material.livingwood.name=Livingwood
 material.dreamwood.name=Dreamwood
 material.manasteel.name=Manasteel
+fluid.tconevo.manasteel.name=Molten Manasteel
 material.terrasteel.name=Terrasteel
+fluid.tconevo.terrasteel.name=Molten Terrasteel
 material.elementium.name=Elementium
+fluid.tconevo.elementium.name=Molten Elementium
 material.mana_string.name=Mana-Infused
 
 modifier.mana_infused.name=Mana-Infused
