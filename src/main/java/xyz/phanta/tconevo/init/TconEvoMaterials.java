@@ -30,7 +30,7 @@ public class TconEvoMaterials {
     @InitMe
     public static void init() {
         // applied energistics 2
-        SKY_STONE = new MaterialBuilder(NameConst.MAT_SKY_STONE, 0x4a4d4c, MaterialForm.RAW, "blockSkyStone")
+        SKY_STONE = new MaterialBuilder(NameConst.MAT_SKY_STONE, 0x4a4d4c, MaterialForm.STONE_BLOCK, "SkyStone")
                 .requiresOres("blockSkyStone")
                 .setCastable(1250)
                 .withStatsHead(340, 5F, 4F, HarvestLevels.DIAMOND)
@@ -70,7 +70,7 @@ public class TconEvoMaterials {
                 .build();
 
         // botania
-        LIVINGROCK = new MaterialBuilder(NameConst.MAT_LIVINGROCK, 0xd7dac7, MaterialForm.RAW, "livingrock")
+        LIVINGROCK = new MaterialBuilder(NameConst.MAT_LIVINGROCK, 0xd7dac7, MaterialForm.RAW_BLOCK, "livingrock")
                 .requiresOres("livingrock")
                 .setCastable(1000)
                 .withStatsHead(170, 4.5F, 3.5F, HarvestLevels.IRON)
@@ -120,7 +120,7 @@ public class TconEvoMaterials {
                 .withTraits(PartType.EXTRA, TconEvoTraits.TRAIT_GAIA_WRATH)
                 .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_MORTAL_WOUNDS, TconEvoTraits.TRAIT_MANA_INFUSED)
                 .build();
-        ELEMENTIUM = new MaterialBuilder(NameConst.MAT_ELEMENTIUM, 0xf15cae, MaterialForm.METAL, "Elementium")
+        ELEMENTIUM = new MaterialBuilder(NameConst.MAT_ELEMENTIUM, 0xf15cae, MaterialForm.METAL, "ElvenElementium")
                 .requiresMods(BotaniaHooks.MOD_ID)
                 .setCastable(900)
                 .withStatsHead(700, 6F, 4F, HarvestLevels.DIAMOND)

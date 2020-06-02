@@ -4,6 +4,7 @@ import com.google.common.collect.Sets;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.oredict.OreDictionary;
+import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.fluid.FluidMolten;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.traits.ITrait;
@@ -13,13 +14,13 @@ import xyz.phanta.tconevo.TconEvoMod;
 import xyz.phanta.tconevo.util.LazyAccum;
 
 import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.function.Supplier;
 
 public class MaterialDefinition {
+
+    private static final List<String> METAL_PREFIXES = Arrays.asList(
+            "ingot", "nugget", "dust", "ore", "oreNether", "denseore", "orePoor", "oreNugget", "block", "plate", "gear");
 
     private static final List<MaterialDefinition> materialDefs = new ArrayList<>();
     private static final Set<String> blacklisted = Sets.newHashSet(TconEvoConfig.disabledMaterials);
@@ -101,17 +102,13 @@ public class MaterialDefinition {
         } else {
             material.setCastable(false);
         }
-        if (form.isRaw()) {
-            for (String prefix : form.prefixes) {
-                material.addItemIngot(prefix + oreName);
-            }
-        } else {
+        if (form == MaterialForm.METAL) {
             material.addCommonItems(oreName);
+        } else {
+            for (MaterialForm.Entry entry : form.entries) {
+                material.addItem(entry.prefix + oreName, 1, entry.value);
+            }
         }
-        form.prefixes.stream()
-                .flatMap(prefix -> OreDictionary.getOres(prefix + oreName, false).stream())
-                .findFirst()
-                .ifPresent(material::setRepresentativeItem);
         for (Map.Entry<PartType, LazyAccum<ITrait>> traitEntry : traits.entrySet()) {
             for (String typeKey : traitEntry.getKey().typeKeys) {
                 for (ITrait trait : traitEntry.getValue().collect()) {
@@ -144,9 +141,23 @@ public class MaterialDefinition {
                 return;
             }
         }
-        if (material.getFluid() != null) {
+        (form == MaterialForm.METAL ? METAL_PREFIXES.stream() : form.entries.stream().map(e -> e.prefix))
+                .map(prefix -> prefix + oreName)
+                .filter(oreKey -> !OreDictionary.getOres(oreKey, false).isEmpty())
+                .findFirst()
+                .ifPresent(material::setRepresentativeItem);
+        Fluid fluid = material.getFluid();
+        if (fluid != null) {
             if (form == MaterialForm.METAL) {
                 TinkerSmeltery.registerOredictMeltingCasting(material.getFluid(), oreName);
+            } else {
+                for (MaterialForm.Entry entry : form.entries) {
+                    String oreKey = entry.prefix + oreName;
+                    TinkerRegistry.registerMelting(oreKey, fluid, entry.value);
+                    if (entry.castType != null) {
+                        entry.castType.registerCasting(oreKey, fluid, entry.value);
+                    }
+                }
             }
             TinkerSmeltery.registerToolpartMeltingCasting(material);
         }
