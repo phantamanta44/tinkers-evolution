@@ -5,6 +5,9 @@ Current mod integration modules are as follows:
 
 * **Construct's Armoury**
     * Adds armour material analogues for all the tool materials
+* **Applied Energistics 2**
+    * Adds sky stone, certus, and fluix materials
+    * Adds fluix steel material for [Lazy AE2](https://github.com/phantamanta44/Lazy-AE2)
 * **Botania**
     * Adds botanical materials and metals
     * Adds various traits that interact with mana
