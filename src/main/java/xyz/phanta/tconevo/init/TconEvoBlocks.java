@@ -15,6 +15,8 @@ import xyz.phanta.tconevo.block.BlockMetal;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.item.ItemMetal;
 
+import java.util.Arrays;
+
 @SuppressWarnings("NotNullFieldNotInitialized")
 public class TconEvoBlocks {
 
@@ -37,8 +39,13 @@ public class TconEvoBlocks {
         for (ItemMetal.Type type : ItemMetal.Type.VALUES) {
             TinkerTools.registerToolForgeBlock(registry, "block" + type.oreName);
         }
-        TinkerTools.registerToolForgeBlock(registry, "blockDraconium");
-        TinkerTools.registerToolForgeBlock(registry, "blockDraconiumAwakened");
+        for (String oreName : Arrays.asList(
+                // botania
+                "Manasteel", "Terrasteel", "ElvenElementium",
+                // draconic evolution
+                "Draconium", "DraconiumAwakened")) {
+            TinkerTools.registerToolForgeBlock(registry, "block" + oreName);
+        }
     }
 
 }
