@@ -9,6 +9,25 @@ import xyz.phanta.tconevo.integration.conarm.material.ArmourPartType;
 public class TconEvoArmourMaterials {
 
     public static void init() {
+        // applied energistics 2
+        new ArmourMaterialBuilder(TconEvoMaterials.SKY_STONE)
+                .withStatsArmour(9F, 6.5F, 1F, 0.5F, 1F, 1F)
+                .withTraits(ArmourPartType.CORE, ArmorTraits.alien)
+                .withTraits(ArmourPartType.ARMOUR, TconEvoArmourTraits.TRAIT_STONEBOUND)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.CERTUS_QUARTZ)
+                .withStatsArmour(10F, 15F, 0.75F, 6F, 0F, 4F)
+                .withTraits(ArmourPartType.ARMOUR, ArmorTraits.lightweight)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.FLUIX)
+                .withStatsArmour(11F, 15.5F, 1F, 4F, 0F, 5F)
+                .withTraits(ArmourPartType.ARMOUR, ArmorTraits.voltaic)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.FLUIX_STEEL)
+                .withStatsArmour(15F, 18F, 0.9F, 7.5F, 2.5F, 1F)
+                .withTraits(ArmourPartType.ARMOUR, ArmorTraits.steady, ArmorTraits.magnetic)
+                .build();
+
         // botania
         new ArmourMaterialBuilder(TconEvoMaterials.LIVINGROCK)
                 .withStatsArmour(9F, 5.2F, 0.5F, 0F, 0F, 0.8F)

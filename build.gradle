@@ -13,7 +13,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: "com.wynprice.cursemaven"
 
-version = "1.0.5"
+version = "1.0.6"
 group = "xyz.phanta.tconevo"
 archivesBaseName = "tconevo-1.12.2"
 
@@ -76,6 +76,7 @@ dependencies {
     deobfCompile "cofh:CoFHCore:1.12.2-4.6.3.27:universal"
     deobfCompile "cofh:ThermalExpansion:1.12.2-5.5.4.43:universal"
     deobfCompile "curse.maven:industrial-foregoing:2745321"
+    deobfCompile 'appeng:appliedenergistics2:rv6-stable-7'
 }
 
 jar {

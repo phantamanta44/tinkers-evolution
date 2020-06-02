@@ -123,7 +123,7 @@
 ### materials
 
 * sky stone
-    * tools: alien (head) + stonebound
+    * tools: crumbling (head) + stonebound
     * armour: alien (core) + stonebound
 * certus quartz
     * tools: crystalline + lightweight

@@ -33,11 +33,13 @@ public class TconEvoTraits {
             new TraitAftershock(1), new TraitAftershock(2), new TraitAftershock(3)
     };
     public static final TraitCascading TRAIT_CASCADING = new TraitCascading();
+    public static final TraitCrystalline TRAIT_CRYSTALLINE = new TraitCrystalline();
     public static final TraitDeadlyPrecision TRAIT_DEADLY_PRECISION = new TraitDeadlyPrecision();
     public static final TraitImpactForce TRAIT_IMPACT_FORCE = new TraitImpactForce();
     public static final TraitLuminiferous TRAIT_LUMINIFEROUS = new TraitLuminiferous();
     public static final TraitMortalWounds TRAIT_MORTAL_WOUNDS = new TraitMortalWounds();
     public static final TraitOpportunist TRAIT_OPPORTUNIST = new TraitOpportunist();
+    public static final TraitPiezoelectric TRAIT_PIEZOELECTRIC = new TraitPiezoelectric();
     public static final TraitRejuvenating TRAIT_REJUVENATING = new TraitRejuvenating();
     public static final TraitRelentless TRAIT_RELENTLESS = new TraitRelentless();
     public static final TraitSundering TRAIT_SUNDERING = new TraitSundering();

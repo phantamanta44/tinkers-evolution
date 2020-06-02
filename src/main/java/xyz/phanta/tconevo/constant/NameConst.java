@@ -17,11 +17,13 @@ public class NameConst {
 
     public static final String TRAIT_AFTERSHOCK = TconEvoMod.MOD_ID + ".aftershock";
     public static final String TRAIT_CASCADING = TconEvoMod.MOD_ID + ".cascading";
+    public static final String TRAIT_CRYSTALLINE = TconEvoMod.MOD_ID + ".crystalline";
     public static final String TRAIT_DEADLY_PRECISION = TconEvoMod.MOD_ID + ".deadly_precision";
     public static final String TRAIT_IMPACT_FORCE = TconEvoMod.MOD_ID + ".impact_force";
     public static final String TRAIT_LUMINIFEROUS = TconEvoMod.MOD_ID + ".luminiferous";
     public static final String TRAIT_MORTAL_WOUNDS = TconEvoMod.MOD_ID + ".mortal_wounds";
     public static final String TRAIT_OPPORTUNIST = TconEvoMod.MOD_ID + ".opportunist";
+    public static final String TRAIT_PIEZOELECTRIC = TconEvoMod.MOD_ID + ".piezoelectric";
     public static final String TRAIT_REJUVENATING = TconEvoMod.MOD_ID + ".rejuvenating";
     public static final String TRAIT_RELENTLESS = TconEvoMod.MOD_ID + ".relentless";
     public static final String TRAIT_STAGGERING = TconEvoMod.MOD_ID + ".staggering";
@@ -39,6 +41,13 @@ public class NameConst {
     public static final String TRAIT_STIFLING = TconEvoMod.MOD_ID + ".stifling", ARMOUR_TRAIT_STIFLING = TRAIT_STIFLING + ARMOUR_SUFFIX;
     public static final String TRAIT_STONEBOUND = TconEvoMod.MOD_ID + ".stonebound", ARMOUR_TRAIT_STONEBOUND = TRAIT_STONEBOUND + ARMOUR_SUFFIX;
     public static final String TRAIT_WILL_STRENGTH = TconEvoMod.MOD_ID + ".will_strength", ARMOUR_TRAIT_WILL_STRENGTH = TRAIT_WILL_STRENGTH + ARMOUR_SUFFIX;
+
+    // applied energistics 2
+
+    public static final String MAT_SKY_STONE = "sky_stone";
+    public static final String MAT_CERTUS_QUARTZ = "certus_quartz";
+    public static final String MAT_FLUIX = "fluix";
+    public static final String MAT_FLUIX_STEEL = "fluix_steel";
 
     // botania
 

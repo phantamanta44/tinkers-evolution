@@ -34,6 +34,10 @@ public class TconEvoConfig {
         @Config.RangeInt(min = 1)
         public int traitChillingTouchSlowDuration = 32;
 
+        @Config.Comment("The bonus damage percentage at maximum durability for the crystalline trait.")
+        @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
+        public double traitCrystallineMaxBonus = 0.3D;
+
         @Config.Comment({
                 "The bonus damage percentage for critical strikes augmented by the deadly precision trait.",
                 "Note that the built-in +50% bonus critical strike damage is applied after this bonus damage."
@@ -70,6 +74,10 @@ public class TconEvoConfig {
         @Config.Comment("The bonus damage percentage for attacks that proc opportunist.")
         @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
         public double traitOpportunistBonusDamage = 0.5D;
+
+        @Config.Comment("The fraction of damage converted to energy for attacks that proc the piezoelectric trait.")
+        @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
+        public double traitPiezoelectricConversionRatio = 30D;
 
         @Config.Comment({
                 "The duration, in ticks, of the blindness applied by the radiant trait.",

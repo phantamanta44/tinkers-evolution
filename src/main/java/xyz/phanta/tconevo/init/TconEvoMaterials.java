@@ -16,6 +16,8 @@ import xyz.phanta.tconevo.trait.draconicevolution.TraitEvolved;
 @SuppressWarnings("NotNullFieldNotInitialized")
 public class TconEvoMaterials {
 
+    // applied energistics 2
+    public static Material SKY_STONE, CERTUS_QUARTZ, FLUIX, FLUIX_STEEL;
     // botania
     public static Material LIVINGROCK, LIVINGWOOD, DREAMWOOD, MANASTEEL, TERRASTEEL, ELEMENTIUM, MANA_STRING;
     // draconic evolution
@@ -27,6 +29,46 @@ public class TconEvoMaterials {
 
     @InitMe
     public static void init() {
+        // applied energistics 2
+        SKY_STONE = new MaterialBuilder(NameConst.MAT_SKY_STONE, 0x4a4d4c, MaterialForm.RAW, "blockSkyStone")
+                .requiresOres("blockSkyStone")
+                .setCastable(1250)
+                .withStatsHead(340, 5F, 4F, HarvestLevels.DIAMOND)
+                .withStatsHandle(1F, 20)
+                .withStatsExtra(50)
+                .withStatsBow(0.5F, 1.25F, 2F)
+                .withTraits(PartType.HEAD, TinkerTraits.crumbling)
+                .withTraits(PartType.TOOL, TinkerTraits.stonebound)
+                .build();
+        CERTUS_QUARTZ = new MaterialBuilder(NameConst.MAT_CERTUS_QUARTZ, 0xc6e1ff, MaterialForm.GEM, "CertusQuartz")
+                .requiresOres("crystalCertusQuartz")
+                .setCraftable()
+                .withStatsHead(200, 6F, 4F, HarvestLevels.DIAMOND)
+                .withStatsHandle(0.75F, 30)
+                .withStatsExtra(25)
+                .withStatsBow(1.15F, 1F, 0F)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_CRYSTALLINE, TinkerTraits.lightweight)
+                .build();
+        FLUIX = new MaterialBuilder(NameConst.MAT_FLUIX, 0x8358a1, MaterialForm.GEM, "Fluix")
+                .requiresOres("crystalFluix")
+                .setCraftable()
+                .withStatsHead(275, 6F, 4F, HarvestLevels.DIAMOND)
+                .withStatsHandle(1F, 15)
+                .withStatsExtra(30)
+                .withStatsBow(0.9F, 1.25F, 4F)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_CRYSTALLINE, TinkerTraits.shocking)
+                .build();
+        FLUIX_STEEL = new MaterialBuilder(NameConst.MAT_FLUIX_STEEL, 0x483758, MaterialForm.METAL, "FluixSteel")
+                .requiresOres("ingotFluixSteel")
+                .setCastable(1100)
+                .withStatsHead(450, 6.5F, 5.5F, HarvestLevels.OBSIDIAN)
+                .withStatsHandle(0.9F, 60)
+                .withStatsExtra(75)
+                .withStatsBow(0.7F, 1.3F, 6F)
+                .withTraits(PartType.HEAD, TconEvoTraits.TRAIT_PIEZOELECTRIC)
+                .withTraits(PartType.TOOL, TinkerTraits.magnetic)
+                .build();
+
         // botania
         LIVINGROCK = new MaterialBuilder(NameConst.MAT_LIVINGROCK, 0xd7dac7, MaterialForm.RAW, "livingrock")
                 .requiresOres("livingrock")
