@@ -23,6 +23,17 @@ public class TconEvoConfig {
 
     public static class General {
 
+        @Config.Comment({
+                "The value added to the divider for each level of the damage reduction buff.",
+                "The formula for final damage if `damage / (1 + level * x)`, where `x` is this config value."
+        })
+        @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
+        public double effectDamageReductionDividerIncrement = 0.1D;
+
+        @Config.Comment("The fraction of healing that is mitigated by the mortal wounds debuff.")
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double effectMortalWoundsHealReduction = 0.75D;
+
         @Config.Comment("The amount of flat bonus magical damage dealt per level of the aftershock trait.")
         @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
         public double traitAftershockDamage = 2.5D;
@@ -52,6 +63,10 @@ public class TconEvoConfig {
         @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
         public double traitDivineGraceHealBoost = 0.12D;
 
+        @Config.Comment("The duration, in ticks, of the speed granted by the fleet of foot trait.")
+        @Config.RangeInt(min = 1)
+        public int traitFootFleetSpeedDuration = 50;
+
         @Config.Comment({
                 "The duration, in ticks, of the regeneration and fire resistance granted by the hearth's embrace trait.",
                 "Only useful with Construct's Armoury installed."
@@ -67,10 +82,6 @@ public class TconEvoConfig {
         @Config.RangeInt(min = 1)
         public int traitMortalWoundsHealReductionDuration = 100;
 
-        @Config.Comment("The fraction of healing that is mitigated by the mortal wounds debuff.")
-        @Config.RangeDouble(min = 0D, max = 1D)
-        public double effectMortalWoundsHealReduction = 0.75D;
-
         @Config.Comment("The bonus damage percentage for attacks that proc opportunist.")
         @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
         public double traitOpportunistBonusDamage = 0.5D;
@@ -85,6 +96,19 @@ public class TconEvoConfig {
         })
         @Config.RangeInt(min = 1)
         public int traitRadiantBlindnessDuration = 32;
+
+        @Config.Comment({
+                "The duration, in ticks, of damage reduction applied by the reactive trait.",
+                "Each additional proc of the trait refreshes the duration of the effect.",
+                "Only useful with Construct's Armoury installed."
+        })
+        public int traitReactiveResistanceDuration = 200;
+
+        @Config.Comment({
+                "The maximum level of damage reduction that the reactive trait can stack up to.",
+                "Only useful with Construct's Armoury installed."
+        })
+        public int traitReactiveMaxStacks = 30;
 
         @Config.Comment("The duration, in ticks, of the regeneration applied by the rejuvenating trait.")
         @Config.RangeInt(min = 1)
@@ -117,7 +141,7 @@ public class TconEvoConfig {
                 "Only useful with Construct's Armoury installed."
         })
         @Config.RangeDouble(min = 1D, max = Float.MAX_VALUE)
-        public double traitStoneboundArmourEffectivenessMax = 0.1D;
+        public double traitStoneboundArmourEffectivenessMax = 0.03D;
 
         @Config.Comment("The duration, in ticks, of the weakness applied by the sundering trait.")
         @Config.RangeInt(min = 1)

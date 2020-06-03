@@ -100,6 +100,24 @@ public class TconEvoArmourMaterials {
                 .withTraits(ArmourPartType.ARMOUR, TconEvoArmourTraits.TRAIT_DIVINE_GRACE, ArmorTraits.vengeful)
                 .build();
 
+        // mekanism
+        new ArmourMaterialBuilder(TconEvoMaterials.OSMIUM)
+                .withStatsArmour(19F, 14F, 0.8F, 7F, 0.5F, 8F)
+                .withTraits(ArmourPartType.ARMOUR, ArmorTraits.dense, ArmorTraits.heavy)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.REFINED_OBSIDIAN)
+                .withStatsArmour(39F, 23F, 1.25F, 4F, 2.5F, 10F)
+                .withTraits(ArmourPartType.ARMOUR, ArmorTraits.duritae, TconEvoArmourTraits.TRAIT_BULWARK)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.REFINED_GLOWSTONE)
+                .withStatsArmour(5F, 18F, 0.8F, 7F, 1.5F, 6F)
+                .withTraits(ArmourPartType.ARMOUR, TconEvoArmourTraits.TRAIT_RADIANT, ArmorTraits.indomitable)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.HDPE)
+                .withStatsArmour(2F, 5F, 0.5F, 1F, 0.5F, 2.5F)
+                .withTraits(ArmourPartType.ARMOUR, ArmorTraits.cheap, ArmorTraits.mundane, TconEvoArmourTraits.TRAIT_REACTIVE)
+                .build();
+
         // thermal series
         new ArmourMaterialBuilder(TconEvoMaterials.TIN)
                 .withStatsArmour(8F, 9F, 0.8F, 1F, 0F, 0.75F)

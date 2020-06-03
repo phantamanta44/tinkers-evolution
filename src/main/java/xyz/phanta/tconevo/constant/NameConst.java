@@ -14,11 +14,13 @@ public class NameConst {
 
     public static final String POTION_IMMORTALITY = "immortality";
     public static final String POTION_MORTAL_WOUNDS = "mortal_wounds";
+    public static final String POTION_DAMAGE_REDUCTION = "damage_reduction";
 
     public static final String TRAIT_AFTERSHOCK = TconEvoMod.MOD_ID + ".aftershock";
     public static final String TRAIT_CASCADING = TconEvoMod.MOD_ID + ".cascading";
     public static final String TRAIT_CRYSTALLINE = TconEvoMod.MOD_ID + ".crystalline";
     public static final String TRAIT_DEADLY_PRECISION = TconEvoMod.MOD_ID + ".deadly_precision";
+    public static final String TRAIT_FOOT_FLEET = TconEvoMod.MOD_ID + ".foot_fleet";
     public static final String TRAIT_IMPACT_FORCE = TconEvoMod.MOD_ID + ".impact_force";
     public static final String TRAIT_LUMINIFEROUS = TconEvoMod.MOD_ID + ".luminiferous";
     public static final String TRAIT_MORTAL_WOUNDS = TconEvoMod.MOD_ID + ".mortal_wounds";
@@ -37,6 +39,7 @@ public class NameConst {
     public static final String TRAIT_GALE_FORCE = TconEvoMod.MOD_ID + ".gale_force", ARMOUR_TRAIT_GALE_FORCE = TRAIT_GALE_FORCE + ARMOUR_SUFFIX;
     public static final String TRAIT_HEARTH_EMBRACE = TconEvoMod.MOD_ID + ".hearth_embrace", ARMOUR_TRAIT_HEARTH_EMBRACE = TRAIT_HEARTH_EMBRACE + ARMOUR_SUFFIX;
     public static final String TRAIT_RADIANT = TconEvoMod.MOD_ID + ".radiant", ARMOUR_TRAIT_RADIANT = TRAIT_RADIANT + ARMOUR_SUFFIX;
+    public static final String TRAIT_REACTIVE = TconEvoMod.MOD_ID + ".reactive", ARMOUR_TRAIT_REACTIVE = TRAIT_REACTIVE + ARMOUR_SUFFIX;
     public static final String TRAIT_SECOND_WIND = TconEvoMod.MOD_ID + ".second_wind", ARMOUR_TRAIT_SECOND_WIND = TRAIT_SECOND_WIND + ARMOUR_SUFFIX;
     public static final String TRAIT_STIFLING = TconEvoMod.MOD_ID + ".stifling", ARMOUR_TRAIT_STIFLING = TRAIT_STIFLING + ARMOUR_SUFFIX;
     public static final String TRAIT_STONEBOUND = TconEvoMod.MOD_ID + ".stonebound", ARMOUR_TRAIT_STONEBOUND = TRAIT_STONEBOUND + ARMOUR_SUFFIX;
@@ -121,6 +124,13 @@ public class NameConst {
     public static final String TRAIT_SLIMEY_PINK = TconEvoMod.MOD_ID + ".slimey_pink";
 
     public static final String ARMOUR_TRAIT_SLIMEY_PINK = TRAIT_SLIMEY_PINK + ARMOUR_SUFFIX;
+
+    // mekanism
+
+    public static final String MAT_OSMIUM = "osmium";
+    public static final String MAT_REFINED_OBSIDIAN = "refined_obsidian";
+    public static final String MAT_REFINED_GLOWSTONE = "refined_glowstone";
+    public static final String MAT_HDPE = "polyethylene";
 
     // thermal series
 

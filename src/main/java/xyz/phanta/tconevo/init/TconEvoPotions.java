@@ -4,6 +4,7 @@ import io.github.phantamanta44.libnine.InitMe;
 import io.github.phantamanta44.libnine.util.math.MathUtils;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
@@ -26,6 +27,8 @@ public class TconEvoPotions {
             .setBeneficial().setPotionName(PREFIX + NameConst.POTION_IMMORTALITY);
     public static final Potion MORTAL_WOUNDS = new PotionDispellable(true, 0x5f5d8e)
             .setPotionName(PREFIX + NameConst.POTION_MORTAL_WOUNDS);
+    public static final Potion DAMAGE_REDUCTION = new PotionDispellable(false, 0x5a059a)
+            .setBeneficial().setPotionName(PREFIX + NameConst.POTION_DAMAGE_REDUCTION);
 
     @InitMe
     public static void init() {
@@ -36,7 +39,8 @@ public class TconEvoPotions {
     public void onRegisterPotions(RegistryEvent.Register<Potion> event) {
         event.getRegistry().registerAll(
                 IMMORTALITY.setRegistryName(TconEvoMod.MOD_ID, NameConst.POTION_IMMORTALITY),
-                MORTAL_WOUNDS.setRegistryName(TconEvoMod.MOD_ID, NameConst.POTION_MORTAL_WOUNDS));
+                MORTAL_WOUNDS.setRegistryName(TconEvoMod.MOD_ID, NameConst.POTION_MORTAL_WOUNDS),
+                DAMAGE_REDUCTION.setRegistryName(TconEvoMod.MOD_ID, NameConst.POTION_DAMAGE_REDUCTION));
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
@@ -48,10 +52,17 @@ public class TconEvoPotions {
             return;
         }
         EntityLivingBase entity = event.getEntityLiving();
+        float amount = event.getAmount();
+        PotionEffect dmgReduction = entity.getActivePotionEffect(DAMAGE_REDUCTION);
+        if (dmgReduction != null) {
+            amount /= 1F + (dmgReduction.getAmplifier() + 1F)
+                    * (float)TconEvoConfig.general.effectDamageReductionDividerIncrement;
+        }
         if (entity.getActivePotionEffect(IMMORTALITY) != null) {
             // never let damage drop the player below 1 health
-            event.setAmount(MathUtils.clamp(entity.getHealth() - 1F, 0F, event.getAmount()));
+            amount = MathUtils.clamp(entity.getHealth() - 1F, 0F, amount);
         }
+        event.setAmount(amount);
     }
 
     // just in case something gets around onEntityHurt

@@ -24,6 +24,8 @@ public class TconEvoMaterials {
     public static Material DRACONIUM, WYVERN_METAL, DRACONIC_METAL, CHAOTIC_METAL;
     // industrial foregoing
     public static Material ESSENCE_METAL, MEAT_METAL, PINK_SLIME, PINK_METAL;
+    // mekanism
+    public static Material OSMIUM, REFINED_OBSIDIAN, REFINED_GLOWSTONE, HDPE;
     // thermal series
     public static Material TIN, ALUMINIUM, NICKEL, PLATINUM, INVAR, CONSTANTAN, SIGNALUM, LUMIUM, ENDERIUM;
 
@@ -217,7 +219,47 @@ public class TconEvoMaterials {
                 .withStatsHead(1789, 12.5F, 8.5F, 5)
                 .withStatsHandle(1F, 125)
                 .withStatsExtra(250)
+                .withStatsBow(1.1F, 1F, 4F)
                 .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_MORTAL_WOUNDS, TinkerTraits.unnatural)
+                .build();
+
+        // mekanism
+        OSMIUM = new MaterialBuilder(NameConst.MAT_OSMIUM, 0xa9bdcc, MaterialForm.METAL, "Osmium")
+                .requiresOres("ingotOsmium")
+                .setCastable("osmium", 1516)
+                .withStatsHead(500, 7.5F, 5.5F, HarvestLevels.DIAMOND)
+                .withStatsHandle(0.8F, 150)
+                .withStatsExtra(175)
+                .withStatsBow(0.4F, 1.75F, 6F)
+                .withTraits(PartType.TOOL, TinkerTraits.dense, TinkerTraits.stiff)
+                .build();
+        REFINED_OBSIDIAN = new MaterialBuilder(NameConst.MAT_REFINED_OBSIDIAN, 0x7d659b, MaterialForm.METAL, "RefinedObsidian")
+                .requiresOres("ingotRefinedObsidian")
+                .setCastable(2100)
+                .withStatsHead(2200, 8.5F, 8F, 4)
+                .withStatsHandle(1.25F, 50)
+                .withStatsExtra(300)
+                .withStatsBow(0.65F, 1.35F, 7F)
+                .withTraits(PartType.TOOL, TinkerTraits.duritos, TconEvoTraits.TRAIT_IMPACT_FORCE)
+                .build();
+        REFINED_GLOWSTONE = new MaterialBuilder(NameConst.MAT_REFINED_GLOWSTONE, 0xeecd48, MaterialForm.METAL, "RefinedGlowstone")
+                .requiresOres("ingotRefinedGlowstone")
+                .setCastable(1350)
+                .withStatsHead(300, 10F, 5F, HarvestLevels.DIAMOND)
+                .withStatsHandle(0.8F, 30)
+                .withStatsExtra(55)
+                .withStatsBow(1F, 1.25F, 4F)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_LUMINIFEROUS, TinkerTraits.sharp)
+                .build();
+        HDPE = new MaterialBuilder(NameConst.MAT_HDPE, 0xe0e0e0, MaterialForm.RAW, "sheetHDPE")
+                .requiresOres("sheetHDPE")
+                .setCraftable()
+                .withStatsHead(220, 5F, 3F, HarvestLevels.STONE)
+                .withStatsHandle(0.5F, 25)
+                .withStatsExtra(40)
+                .withStatsBow(1.75F, 0.6F, 0F)
+                .withStatsArrowShaft(0.75F, 75)
+                .withTraits(PartType.TOOL, TinkerTraits.cheap, TinkerTraits.crude, TconEvoTraits.TRAIT_FOOT_FLEET)
                 .build();
 
         // thermal series

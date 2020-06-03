@@ -35,6 +35,7 @@ public class TconEvoTraits {
     public static final TraitCascading TRAIT_CASCADING = new TraitCascading();
     public static final TraitCrystalline TRAIT_CRYSTALLINE = new TraitCrystalline();
     public static final TraitDeadlyPrecision TRAIT_DEADLY_PRECISION = new TraitDeadlyPrecision();
+    public static final TraitFootFleet TRAIT_FOOT_FLEET = new TraitFootFleet();
     public static final TraitImpactForce TRAIT_IMPACT_FORCE = new TraitImpactForce();
     public static final TraitLuminiferous TRAIT_LUMINIFEROUS = new TraitLuminiferous();
     public static final TraitMortalWounds TRAIT_MORTAL_WOUNDS = new TraitMortalWounds();
