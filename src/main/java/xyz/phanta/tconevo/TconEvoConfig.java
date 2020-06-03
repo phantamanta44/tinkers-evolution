@@ -28,7 +28,7 @@ public class TconEvoConfig {
                 "The formula for final damage if `damage / (1 + level * x)`, where `x` is this config value."
         })
         @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
-        public double effectDamageReductionDividerIncrement = 0.1D;
+        public double effectDamageReductionDividerIncrement = 0.03D;
 
         @Config.Comment("The fraction of healing that is mitigated by the mortal wounds debuff.")
         @Config.RangeDouble(min = 0D, max = 1D)
@@ -36,7 +36,7 @@ public class TconEvoConfig {
 
         @Config.Comment("The amount of flat bonus magical damage dealt per level of the aftershock trait.")
         @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
-        public double traitAftershockDamage = 2.5D;
+        public double traitAftershockDamage = 2D;
 
         @Config.Comment({
                 "The duration, in ticks, of the slow applied by the chilling touch trait.",
@@ -47,7 +47,7 @@ public class TconEvoConfig {
 
         @Config.Comment("The bonus damage percentage at maximum durability for the crystalline trait.")
         @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
-        public double traitCrystallineMaxBonus = 0.3D;
+        public double traitCrystallineMaxBonus = 0.2D;
 
         @Config.Comment({
                 "The bonus damage percentage for critical strikes augmented by the deadly precision trait.",
@@ -84,11 +84,11 @@ public class TconEvoConfig {
 
         @Config.Comment("The bonus damage percentage for attacks that proc opportunist.")
         @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
-        public double traitOpportunistBonusDamage = 0.5D;
+        public double traitOpportunistBonusDamage = 0.3D;
 
         @Config.Comment("The fraction of damage converted to energy for attacks that proc the piezoelectric trait.")
         @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
-        public double traitPiezoelectricConversionRatio = 30D;
+        public double traitPiezoelectricConversionRatio = 36D;
 
         @Config.Comment({
                 "The duration, in ticks, of the blindness applied by the radiant trait.",
@@ -141,7 +141,7 @@ public class TconEvoConfig {
                 "Only useful with Construct's Armoury installed."
         })
         @Config.RangeDouble(min = 1D, max = Float.MAX_VALUE)
-        public double traitStoneboundArmourEffectivenessMax = 0.03D;
+        public double traitStoneboundArmourEffectivenessMax = 0.05D;
 
         @Config.Comment("The duration, in ticks, of the weakness applied by the sundering trait.")
         @Config.RangeInt(min = 1)
@@ -160,7 +160,7 @@ public class TconEvoConfig {
                 "To disable the durability requirement entirely, set this to zero."
         })
         @Config.RangeDouble(min = 0D)
-        public double modFluxedDurabilityThresholdDivider = 500; // original impl from 1.7.10 had a divider of 1000
+        public double modFluxedDurabilityThresholdDivider = 2000; // original impl from 1.7.10 had a divider of 1000
 
         @Config.Comment("The energy cost per point of durability absorbed by tools with the fluxed modifier.")
         @Config.RangeInt(min = 0)
@@ -179,7 +179,7 @@ public class TconEvoConfig {
                 "Set to zero for unlimited transfer rate."
         })
         @Config.RangeDouble(min = 0D)
-        public double modFluxedEnergyTransferDivider = 60;
+        public double modFluxedEnergyTransferDivider = 100;
 
     }
 
