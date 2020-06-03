@@ -41,6 +41,10 @@ public interface DraconicHooks extends IntegrationHooks {
 
     Optional<ItemStack> getItemReactorStabilizer();
 
+    Optional<ItemStack> getItemWyvernCapacitor();
+
+    Optional<ItemStack> getItemDraconicCapacitor();
+
     void addUpgradeRecipes(Modifier upgradeMod, String upgradeKey);
 
     boolean isReaperEnchantment(Enchantment ench);
@@ -96,6 +100,16 @@ public interface DraconicHooks extends IntegrationHooks {
 
         @Override
         public Optional<ItemStack> getItemReactorStabilizer() {
+            return Optional.empty();
+        }
+
+        @Override
+        public Optional<ItemStack> getItemWyvernCapacitor() {
+            return Optional.empty();
+        }
+
+        @Override
+        public Optional<ItemStack> getItemDraconicCapacitor() {
             return Optional.empty();
         }
 

@@ -6,18 +6,25 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.oredict.OreDictionary;
 
+import java.util.Optional;
+
 public class MekanismHooksImpl implements MekanismHooks {
 
     @Override
     public void onInit(FMLInitializationEvent event) {
-        OreDictionary.registerOre("pelletHDPE", createHdpeStack(ItemHDPE.PlasticItem.PELLET, 1));
-        OreDictionary.registerOre("rodHDPE", createHdpeStack(ItemHDPE.PlasticItem.ROD, 1));
-        OreDictionary.registerOre("sheetHDPE", createHdpeStack(ItemHDPE.PlasticItem.SHEET, 1));
-        OreDictionary.registerOre("stickHDPE", createHdpeStack(ItemHDPE.PlasticItem.STICK, 1));
+        OreDictionary.registerOre("pelletHDPE", createHdpeStack(ItemHDPE.PlasticItem.PELLET));
+        OreDictionary.registerOre("rodHDPE", createHdpeStack(ItemHDPE.PlasticItem.ROD));
+        OreDictionary.registerOre("sheetHDPE", createHdpeStack(ItemHDPE.PlasticItem.SHEET));
+        OreDictionary.registerOre("stickHDPE", createHdpeStack(ItemHDPE.PlasticItem.STICK));
     }
 
-    private static ItemStack createHdpeStack(ItemHDPE.PlasticItem type, int count) {
-        return new ItemStack(MekanismItems.Polyethene, count, type.ordinal());
+    private static ItemStack createHdpeStack(ItemHDPE.PlasticItem type) {
+        return new ItemStack(MekanismItems.Polyethene, 1, type.ordinal());
+    }
+
+    @Override
+    public Optional<ItemStack> getItemEnergyTablet() {
+        return Optional.of(new ItemStack(MekanismItems.EnergyTablet));
     }
 
 }

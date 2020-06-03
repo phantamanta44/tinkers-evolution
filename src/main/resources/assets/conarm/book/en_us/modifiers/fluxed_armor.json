@@ -1,0 +1,19 @@
+{
+  "armormodifier": "fluxed",
+  "text": [
+    {
+      "text": "With a few well-placed energy fields, an armour piece can be made to last longer by electromechanically negating material stress."
+    }
+  ],
+  "effects": [
+    "Attaches a battery to the armour piece",
+    "The battery will be depleted in place of armour durability",
+    "Single level"
+  ],
+  "demoArmor": [
+    "conarm:helmet",
+    "conarm:chestplate",
+    "conarm:leggings",
+    "conarm:boots"
+  ]
+}

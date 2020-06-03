@@ -1,5 +1,6 @@
 package xyz.phanta.tconevo.integration.thermal;
 
+import cofh.thermalexpansion.init.TEItems;
 import cofh.thermalexpansion.util.managers.machine.CrucibleManager;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
@@ -8,6 +9,8 @@ import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.smeltery.MeltingRecipe;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.TconEvoMod;
+
+import java.util.Optional;
 
 public class ThermalHooksImpl implements ThermalHooks {
 
@@ -27,6 +30,11 @@ public class ThermalHooksImpl implements ThermalHooks {
                 }
             }
         }
+    }
+
+    @Override
+    public Optional<ItemStack> getItemFluxCapacitor(int tier) {
+        return Optional.of(new ItemStack(TEItems.itemCapacitor, 1, tier));
     }
 
     @Override

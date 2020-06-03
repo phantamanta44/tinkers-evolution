@@ -6,6 +6,8 @@ import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
+import xyz.phanta.tconevo.integration.mekanism.MekanismHooks;
+import xyz.phanta.tconevo.integration.thermal.ThermalHooks;
 import xyz.phanta.tconevo.trait.*;
 import xyz.phanta.tconevo.trait.botania.TraitAuraSiphon;
 import xyz.phanta.tconevo.trait.botania.TraitFaeVoice;
@@ -45,6 +47,7 @@ public class TconEvoTraits {
     public static final TraitRelentless TRAIT_RELENTLESS = new TraitRelentless();
     public static final TraitSundering TRAIT_SUNDERING = new TraitSundering();
     public static final TraitStaggering TRAIT_STAGGERING = new TraitStaggering();
+    public static final ModifierFluxed MOD_FLUXED = new ModifierFluxed();
 
     // botania
     public static final TraitManaInfused TRAIT_MANA_INFUSED = new TraitManaInfused();
@@ -73,7 +76,9 @@ public class TconEvoTraits {
     // industrial foregoing
     public static final TraitSlimeyPink TRAIT_SLIMEY_PINK = new TraitSlimeyPink();
 
-    public static final List<Modifier> MODIFIERS = Arrays.asList(MOD_REAPING, MOD_ENTROPIC, MOD_FLUX_BURN, MOD_PRIMORDIAL);
+    public static final List<Modifier> MODIFIERS = Arrays.asList(
+            MOD_FLUXED,
+            MOD_REAPING, MOD_ENTROPIC, MOD_FLUX_BURN, MOD_PRIMORDIAL);
 
     public static void initModifierMaterials() {
         // draconic evolution
@@ -81,6 +86,17 @@ public class TconEvoTraits {
         addModItemOpt(MOD_ENTROPIC, DraconicHooks.INSTANCE::getItemDraconicEnergyCore);
         addModItemOpt(MOD_FLUX_BURN, DraconicHooks.INSTANCE::getItemWyvernEnergyCore);
         addModItemOpt(MOD_PRIMORDIAL, DraconicHooks.INSTANCE::getItemChaosShard);
+        addModItemOpt(MOD_FLUXED, DraconicHooks.INSTANCE::getItemWyvernCapacitor);
+        addModItemOpt(MOD_FLUXED, DraconicHooks.INSTANCE::getItemDraconicCapacitor);
+
+        // mekanism
+        addModItemOpt(MOD_FLUXED, MekanismHooks.INSTANCE::getItemEnergyTablet);
+
+        // thermal series
+        for (int i = 0; i < 5; i++) { // basic, hardened, redstone, signalum, resonant
+            final int tier = i; // closure bindings!
+            addModItemOpt(MOD_FLUXED, () -> ThermalHooks.INSTANCE.getItemFluxCapacitor(tier));
+        }
     }
 
     private static void addModItemOpt(Modifier mod, Supplier<Optional<ItemStack>> materialGetter) {

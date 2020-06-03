@@ -77,6 +77,8 @@ modifier.tconevo.staggering.name=Staggering
 modifier.tconevo.staggering.desc=§o...and stay bashed!§r\nThis weapon briefly immobilizes enemies on fully-charged hits.
 modifier.tconevo.sundering.name=Sundering
 modifier.tconevo.sundering.desc=§oBalance is weakness...§r\nThis weapon weakens attacked enemies.
+modifier.tconevo.fluxed.name=Fluxed
+modifier.tconevo.fluxed.desc=§oIt's been years!§r\nThis tool consumes energy before durability.
 
 modifier.tconevo.bulwark_armor.name=Bulwark
 modifier.tconevo.bulwark_armor.desc=§oBlocked!§r\nThis armour reduces incoming damage by one heart, to a minimum of one heart.
@@ -104,6 +106,8 @@ modifier.tconevo.stonebound_armor.desc=This armour grows more effective as it we
 modifier.tconevo.stonebound_armor.extra=Stonebound Defense: +%s
 modifier.tconevo.will_strength_armor.name=Strength of Will
 modifier.tconevo.will_strength_armor.desc=§oMaintaining focus!§r\nThis armour grants immortality when hit at full health.
+modifier.tconevo.fluxed_armor.name=Fluxed
+modifier.tconevo.fluxed_armor.desc=§oIt's been years!§r\nThis armour consumes energy before durability.
 
 material.sky_stone.name=Sky Stone
 fluid.tconevo.sky_stone.name=Molten Sky Stone

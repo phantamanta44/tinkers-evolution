@@ -72,6 +72,7 @@
 
 * should probably add celestial to draconic evolution materials
 * should probably let draconic flux caps apply fluxed
+* tuberous flux capacitor :D
 
 # integration modules
 
@@ -531,6 +532,10 @@
     * armour: energized 2 + chilling touch
 * fluxed string
     * bowstring: aftershock 2
+    
+### other stuff
+
+* gelid flux capacitor should apply fluxed
 
 ## thaumcraft
 
@@ -594,4 +599,5 @@
 
 ### other stuff
 
+* flux capacitors should apply fluxed
 * the magma crucible should be able to do melting recipes... probably

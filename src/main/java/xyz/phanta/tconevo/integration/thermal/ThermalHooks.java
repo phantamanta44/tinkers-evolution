@@ -4,6 +4,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import xyz.phanta.tconevo.integration.IntegrationHooks;
 
+import java.util.Optional;
+
 public interface ThermalHooks extends IntegrationHooks {
 
     // decided to use thermal foundation as the required mod since it's the one that provides most of the materials
@@ -13,9 +15,16 @@ public interface ThermalHooks extends IntegrationHooks {
     @Inject(MOD_ID)
     ThermalHooks INSTANCE = new Noop();
 
+    Optional<ItemStack> getItemFluxCapacitor(int tier);
+
     void addCrucibleRecipe(int energy, ItemStack input, FluidStack output);
 
     class Noop implements ThermalHooks {
+
+        @Override
+        public Optional<ItemStack> getItemFluxCapacitor(int tier) {
+            return Optional.empty();
+        }
 
         @Override
         public void addCrucibleRecipe(int energy, ItemStack input, FluidStack output) {

@@ -117,6 +117,16 @@ public class DraconicHooksImpl implements DraconicHooks {
     }
 
     @Override
+    public Optional<ItemStack> getItemWyvernCapacitor() {
+        return Optional.of(DEFeatures.wyvernCapacitor.copy());
+    }
+
+    @Override
+    public Optional<ItemStack> getItemDraconicCapacitor() {
+        return Optional.of(DEFeatures.draconicCapacitor.copy());
+    }
+
+    @Override
     public void addUpgradeRecipes(Modifier upgradeMod, String upgradeKey) {
         FusionRecipeAPI.addRecipe(new DraconicUpgradeRecipe(upgradeMod, upgradeKey, 0,
                 Items.GOLDEN_APPLE, Items.GOLDEN_APPLE, "gemDiamond", "gemDiamond", Items.ENDER_EYE, Items.ENDER_EYE, DEFeatures.draconicCore));

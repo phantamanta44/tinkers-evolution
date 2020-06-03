@@ -1,0 +1,19 @@
+{
+  "modifier": "fluxed",
+  "text": [
+    {
+      "text": "By projecting a small force field around a tool, it can be made to last longer at the cost of energy."
+    }
+  ],
+  "effects": [
+    "Attaches a battery to the tool",
+    "The battery will be depleted in place of tool durability",
+    "Single level"
+  ],
+  "demoTool": [
+    "tconstruct:pickaxe",
+    "tconstruct:hammer",
+    "tconstruct:shortbow",
+    "tconstruct:arrow"
+  ]
+}

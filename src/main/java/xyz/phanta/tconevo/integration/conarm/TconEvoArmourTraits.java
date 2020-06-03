@@ -2,6 +2,7 @@ package xyz.phanta.tconevo.integration.conarm;
 
 import c4.conarm.lib.utils.RecipeMatchHolder;
 import net.minecraft.item.ItemStack;
+import slimeknights.mantle.util.RecipeMatch;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.init.TconEvoTraits;
@@ -15,6 +16,7 @@ import xyz.phanta.tconevo.integration.conarm.trait.draconicevolution.*;
 import xyz.phanta.tconevo.integration.conarm.trait.industrialforegoing.ArmourTraitSlimeyPink;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
 import xyz.phanta.tconevo.trait.botania.ModifierGaiaWill;
+import xyz.phanta.tconevo.util.TconReflect;
 
 import java.util.Arrays;
 import java.util.List;
@@ -37,6 +39,7 @@ public class TconEvoArmourTraits {
     public static final ArmourTraitStifling TRAIT_STIFLING = new ArmourTraitStifling();
     public static final ArmourTraitStonebound TRAIT_STONEBOUND = new ArmourTraitStonebound();
     public static final ArmourTraitWillStrength TRAIT_WILL_STRENGTH = new ArmourTraitWillStrength();
+    public static final ArmourModFluxed MOD_FLUXED = new ArmourModFluxed();
 
     // botania
     public static final ArmourTraitAuraInfused TRAIT_AURA_INFUSED = new ArmourTraitAuraInfused();
@@ -66,6 +69,7 @@ public class TconEvoArmourTraits {
     public static final ArmourTraitSlimeyPink TRAIT_SLIMEY_PINK = new ArmourTraitSlimeyPink();
 
     public static final List<Modifier> MODIFIERS = Arrays.asList(
+            MOD_FLUXED,
             MOD_GAIA_WILL_AHRIM, MOD_GAIA_WILL_DHAROK, MOD_GAIA_WILL_GUTHAN,
             MOD_GAIA_WILL_KARIL, MOD_GAIA_WILL_TORAG, MOD_GAIA_WILL_VERAC,
             MOD_CHAOS_RESISTANCE, MOD_FINAL_GUARD);
@@ -82,11 +86,20 @@ public class TconEvoArmourTraits {
         // draconic evolution
         addModItemOpt(MOD_CHAOS_RESISTANCE, DraconicHooks.INSTANCE::getItemDragonHeart);
         addModItemOpt(MOD_FINAL_GUARD, DraconicHooks.INSTANCE::getItemReactorStabilizer);
+
+        // copy equivalent item matchers from analogous tool mods
+        copyMatchers(TconEvoTraits.MOD_FLUXED, MOD_FLUXED);
     }
 
     private static void addModItemOpt(Modifier mod, Supplier<Optional<ItemStack>> materialGetter) {
         if (TconEvoTraits.isModifierEnabled(mod)) {
             materialGetter.get().ifPresent(s -> RecipeMatchHolder.addItem(mod, s, 1, 1));
+        }
+    }
+
+    private static void copyMatchers(Modifier src, Modifier dest) {
+        for (RecipeMatch matcher : TconReflect.getItems(src)) {
+            RecipeMatchHolder.addRecipeMatch(dest, matcher);
         }
     }
 

@@ -154,6 +154,33 @@ public class TconEvoConfig {
         @Config.RangeInt(min = 1)
         public int traitWillStrengthImmortalityDuration = 200;
 
+        @Config.Comment({
+                "The energy capacity divider that determines the durability threshold for the fluxed modifier.",
+                "For a battery storing `s` RF, the tool needs at least `s/n` max durability, where `n` is this config value.",
+                "To disable the durability requirement entirely, set this to zero."
+        })
+        @Config.RangeDouble(min = 0D)
+        public double modFluxedDurabilityThresholdDivider = 500; // original impl from 1.7.10 had a divider of 1000
+
+        @Config.Comment("The energy cost per point of durability absorbed by tools with the fluxed modifier.")
+        @Config.RangeInt(min = 0)
+        public int modFluxedEnergyCostTools = 320;
+
+        @Config.Comment({
+                "The energy cost per point of durability absorbed by armour with the fluxed modifier.",
+                "Only useful with Construct's Armoury installed."
+        })
+        @Config.RangeInt(min = 0)
+        public int modFluxedEnergyCostArmour = 1024;
+
+        @Config.Comment({
+                "The divider used to calculate the maximum energy transfer rate for tools with the fluxed modifier.",
+                "Transfer rate is calculated as `capacity/n`, where `n` is this config value.",
+                "Set to zero for unlimited transfer rate."
+        })
+        @Config.RangeDouble(min = 0D)
+        public double modFluxedEnergyTransferDivider = 60;
+
     }
 
     @Config.Comment({

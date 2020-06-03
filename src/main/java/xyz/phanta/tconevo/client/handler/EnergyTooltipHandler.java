@@ -39,8 +39,12 @@ public class EnergyTooltipHandler {
         NBTTagList tagList = TagUtil.getTraitsTagList(stack.getTagCompound());
         for (int i = 0; i < tagList.tagCount(); i++) {
             String traitId = tagList.getStringTagAt(i);
-            if (traitId.equals(NameConst.TRAIT_EVOLVED) || traitId.equals(NameConst.ARMOUR_TRAIT_EVOLVED)) {
-                return true;
+            switch (traitId) {
+                case NameConst.TRAIT_EVOLVED:
+                case NameConst.ARMOUR_TRAIT_EVOLVED:
+                case NameConst.MOD_FLUXED:
+                case NameConst.ARMOUR_MOD_FLUXED:
+                    return true;
             }
         }
         return false;

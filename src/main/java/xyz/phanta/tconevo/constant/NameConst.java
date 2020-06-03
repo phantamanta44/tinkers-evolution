@@ -30,6 +30,7 @@ public class NameConst {
     public static final String TRAIT_RELENTLESS = TconEvoMod.MOD_ID + ".relentless";
     public static final String TRAIT_STAGGERING = TconEvoMod.MOD_ID + ".staggering";
     public static final String TRAIT_SUNDERING = TconEvoMod.MOD_ID + ".sundering";
+    public static final String MOD_FLUXED = TconEvoMod.MOD_ID + ".fluxed";
 
     private static final String ARMOUR_SUFFIX = "_armor";
     public static final String TRAIT_BULWARK = TconEvoMod.MOD_ID + ".bulwark", ARMOUR_TRAIT_BULWARK = TRAIT_BULWARK + ARMOUR_SUFFIX;
@@ -44,6 +45,7 @@ public class NameConst {
     public static final String TRAIT_STIFLING = TconEvoMod.MOD_ID + ".stifling", ARMOUR_TRAIT_STIFLING = TRAIT_STIFLING + ARMOUR_SUFFIX;
     public static final String TRAIT_STONEBOUND = TconEvoMod.MOD_ID + ".stonebound", ARMOUR_TRAIT_STONEBOUND = TRAIT_STONEBOUND + ARMOUR_SUFFIX;
     public static final String TRAIT_WILL_STRENGTH = TconEvoMod.MOD_ID + ".will_strength", ARMOUR_TRAIT_WILL_STRENGTH = TRAIT_WILL_STRENGTH + ARMOUR_SUFFIX;
+    public static final String ARMOUR_MOD_FLUXED = MOD_FLUXED + ARMOUR_SUFFIX;
 
     // applied energistics 2
 
