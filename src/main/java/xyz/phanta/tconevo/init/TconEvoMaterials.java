@@ -16,6 +16,8 @@ import xyz.phanta.tconevo.trait.draconicevolution.TraitEvolved;
 @SuppressWarnings("NotNullFieldNotInitialized")
 public class TconEvoMaterials {
 
+    // actually additions
+    public static Material BLACK_QUARTZ, AA_RESTONIA, AA_PALIS, AA_DIAMANTINE, AA_VOID, AA_EMERALDIC, AA_ENORI;
     // applied energistics 2
     public static Material SKY_STONE, CERTUS_QUARTZ, FLUIX, FLUIX_STEEL;
     // botania
@@ -31,6 +33,74 @@ public class TconEvoMaterials {
 
     @InitMe
     public static void init() {
+        // actually additions
+        BLACK_QUARTZ = new MaterialBuilder(NameConst.MAT_BLACK_QUARTZ, 0x171717, MaterialForm.GEM, "QuartzBlack")
+                .requiresOres("gemQuartzBlack")
+                .setCraftable()
+                .withStatsHead(280, 6.5F, 5F, HarvestLevels.DIAMOND)
+                .withStatsHandle(0.8F, 20)
+                .withStatsExtra(10)
+                .withStatsBow(1.2F, 1F, 0F)
+                .withTraits(PartType.TOOL, TinkerTraits.depthdigger, TinkerTraits.jagged)
+                .build();
+        AA_RESTONIA = new MaterialBuilder(NameConst.MAT_AA_RESTONIA, 0xbe0000, MaterialForm.GEM, "Restonia")
+                .requiresOres("crystalRestonia")
+                .setCraftable()
+                .withStatsHead(150, 7F, 3.5F, HarvestLevels.DIAMOND)
+                .withStatsHandle(0.75F, 10)
+                .withStatsExtra(20)
+                .withStatsBow(1.5F, 0.8F, 0F)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_CRYSTALLINE)
+                .withTraits(PartType.HEAD, TconEvoTraits.TRAIT_PIEZOELECTRIC)
+                .build();
+        AA_PALIS = new MaterialBuilder(NameConst.MAT_AA_PALIS, 0x005dba, MaterialForm.GEM, "Palis")
+                .requiresOres("crystalPalis")
+                .setCraftable()
+                .withStatsHead(150, 4F, 4.5F, HarvestLevels.DIAMOND)
+                .withStatsHandle(1.1F, 0)
+                .withStatsExtra(10)
+                .withStatsBow(0.75F, 1.1F, 0F)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_CRYSTALLINE, TinkerTraits.established)
+                .build();
+        AA_DIAMANTINE = new MaterialBuilder(NameConst.MAT_AA_DIAMANTINE, 0x8bc5fe, MaterialForm.GEM, "Diamantine")
+                .requiresOres("crystalDiamantine")
+                .setCraftable()
+                .withStatsHead(960, 7.5F, 6F, HarvestLevels.OBSIDIAN)
+                .withStatsHandle(1.25F, 30)
+                .withStatsExtra(60)
+                .withStatsBow(1F, 1.2F, 4F)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_CRYSTALLINE, TconEvoTraits.TRAIT_AFTERSHOCK[0])
+                .build();
+        AA_VOID = new MaterialBuilder(NameConst.MAT_AA_VOID, 0x343434, MaterialForm.GEM, "Void")
+                .requiresOres("crystalVoid")
+                .setCraftable()
+                .withStatsHead(170, 3F, 4F, HarvestLevels.DIAMOND)
+                .withStatsHandle(0.8F, 0)
+                .withStatsExtra(5)
+                .withStatsBow(1.25F, 0.6F, 0F)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_CRYSTALLINE, TinkerTraits.cheapskate)
+                .build();
+        AA_EMERALDIC = new MaterialBuilder(NameConst.MAT_AA_EMERALDIC, 0x3ac30a, MaterialForm.GEM, "Emeraldic")
+                .requiresOres("crystalEmeraldic")
+                .setCraftable()
+                .withStatsHead(1130, 8F, 7F, HarvestLevels.COBALT)
+                .withStatsHandle(1.25F, 50)
+                .withStatsExtra(75)
+                .withStatsBow(0.85F, 1.3F, 6F)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_CRYSTALLINE)
+                .withTraits(PartType.HEAD, TinkerTraits.coldblooded)
+                .withTraits(PartType.EXTRA, TinkerTraits.momentum)
+                .build();
+        AA_ENORI = new MaterialBuilder(NameConst.MAT_AA_ENORI, 0xe3e3e3, MaterialForm.GEM, "Enori")
+                .requiresOres("crystalEnori")
+                .setCraftable()
+                .withStatsHead(160, 6F, 5F, HarvestLevels.DIAMOND)
+                .withStatsHandle(1F, 70)
+                .withStatsExtra(55)
+                .withStatsBow(0.7F, 1.35F, 2F)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_CRYSTALLINE, TinkerTraits.magnetic)
+                .build();
+
         // applied energistics 2
         SKY_STONE = new MaterialBuilder(NameConst.MAT_SKY_STONE, 0x4a4d4c, MaterialForm.STONE_BLOCK, "SkyStone")
                 .requiresOres("blockSkyStone")

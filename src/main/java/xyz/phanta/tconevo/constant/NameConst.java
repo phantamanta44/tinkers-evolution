@@ -47,6 +47,16 @@ public class NameConst {
     public static final String TRAIT_WILL_STRENGTH = TconEvoMod.MOD_ID + ".will_strength", ARMOUR_TRAIT_WILL_STRENGTH = TRAIT_WILL_STRENGTH + ARMOUR_SUFFIX;
     public static final String ARMOUR_MOD_FLUXED = MOD_FLUXED + ARMOUR_SUFFIX;
 
+    // actually additions
+
+    public static final String MAT_BLACK_QUARTZ = "black_quartz";
+    public static final String MAT_AA_RESTONIA = "restonia_crystal";
+    public static final String MAT_AA_PALIS = "palis_crystal";
+    public static final String MAT_AA_DIAMANTINE = "diamantine_crystal";
+    public static final String MAT_AA_VOID = "void_crystal";
+    public static final String MAT_AA_EMERALDIC = "emeraldic_crystal";
+    public static final String MAT_AA_ENORI = "enori_crystal";
+
     // applied energistics 2
 
     public static final String MAT_SKY_STONE = "sky_stone";

@@ -5,6 +5,7 @@ import net.minecraft.item.ItemStack;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 import xyz.phanta.tconevo.TconEvoConfig;
+import xyz.phanta.tconevo.integration.actuallyadditions.ActuallyHooks;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
 import xyz.phanta.tconevo.integration.mekanism.MekanismHooks;
 import xyz.phanta.tconevo.integration.thermal.ThermalHooks;
@@ -81,6 +82,13 @@ public class TconEvoTraits {
             MOD_REAPING, MOD_ENTROPIC, MOD_FLUX_BURN, MOD_PRIMORDIAL);
 
     public static void initModifierMaterials() {
+        // actually additions
+        addModItemOpt(MOD_FLUXED, ActuallyHooks.INSTANCE::getItemBatterySingle);
+        addModItemOpt(MOD_FLUXED, ActuallyHooks.INSTANCE::getItemBatteryDouble);
+        addModItemOpt(MOD_FLUXED, ActuallyHooks.INSTANCE::getItemBatteryTriple);
+        addModItemOpt(MOD_FLUXED, ActuallyHooks.INSTANCE::getItemBatteryQuadra);
+        addModItemOpt(MOD_FLUXED, ActuallyHooks.INSTANCE::getItemBatteryPenta);
+
         // draconic evolution
         addModItemOpt(MOD_REAPING, DraconicHooks.INSTANCE::getItemEnderEnergyManipulator);
         addModItemOpt(MOD_ENTROPIC, DraconicHooks.INSTANCE::getItemDraconicEnergyCore);

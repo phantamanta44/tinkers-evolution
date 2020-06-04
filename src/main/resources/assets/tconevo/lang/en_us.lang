@@ -109,6 +109,14 @@ modifier.tconevo.will_strength_armor.desc=§oMaintaining focus!§r\nThis armour 
 modifier.tconevo.fluxed_armor.name=Fluxed
 modifier.tconevo.fluxed_armor.desc=§oIt's been years!§r\nThis armour consumes energy before durability.
 
+material.black_quartz.name=Black Quartz
+material.restonia_crystal.name=Restonia Crystal
+material.palis_crystal.name=Palis Crystal
+material.diamantine_crystal.name=Diamantine Crystal
+material.void_crystal.name=Void Crystal
+material.emeraldic_crystal.name=Emeraldic Crystal
+material.enori_crystal.name=Enori Crystal
+
 material.sky_stone.name=Sky Stone
 fluid.tconevo.sky_stone.name=Molten Sky Stone
 material.certus_quartz.name=Certus Quartz

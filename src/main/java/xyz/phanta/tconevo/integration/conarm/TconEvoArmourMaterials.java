@@ -9,6 +9,36 @@ import xyz.phanta.tconevo.integration.conarm.material.ArmourPartType;
 public class TconEvoArmourMaterials {
 
     public static void init() {
+        // actually additions
+        new ArmourMaterialBuilder(TconEvoMaterials.BLACK_QUARTZ)
+                .withStatsArmour(10F, 13F, 0.8F, 3.5F, 1F, 2F)
+                .withTraits(ArmourPartType.ARMOUR, ArmorTraits.subterranean, ArmorTraits.rough)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.AA_RESTONIA)
+                .withStatsArmour(6F, 10F, 0.75F, 4F, 0F, 5F)
+                .withTraits(ArmourPartType.ARMOUR, ArmorTraits.mundane)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.AA_PALIS)
+                .withStatsArmour(6F, 10F, 1.1F, 0F, 0F, 4F)
+                .withTraits(ArmourPartType.ARMOUR, ArmorTraits.ambitious)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.AA_DIAMANTINE)
+                .withStatsArmour(18F, 21F, 1.25F, 11F, 2F, 13F)
+                .withTraits(ArmourPartType.ARMOUR, ArmorTraits.shielding)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.AA_VOID)
+                .withStatsArmour(4F, 7F, 0.8F, 0F, 0F, 1.5F)
+                .withTraits(ArmourPartType.ARMOUR, ArmorTraits.cheapskate)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.AA_EMERALDIC)
+                .withStatsArmour(21F, 22.5F, 1.25F, 12.5F, 3F, 14F)
+                .withTraits(ArmourPartType.ARMOUR, ArmorTraits.vengeful)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.AA_ENORI)
+                .withStatsArmour(10F, 15F, 1F, 8F, 0F, 10F)
+                .withTraits(ArmourPartType.ARMOUR, ArmorTraits.heavy, ArmorTraits.magnetic)
+                .build();
+
         // applied energistics 2
         new ArmourMaterialBuilder(TconEvoMaterials.SKY_STONE)
                 .withStatsArmour(9F, 6.5F, 1F, 0.5F, 1F, 1F)
