@@ -14,6 +14,7 @@ import xyz.phanta.tconevo.integration.conarm.trait.botania.ArmourTraitManaAffini
 import xyz.phanta.tconevo.integration.conarm.trait.botania.ArmourTraitManaInfused;
 import xyz.phanta.tconevo.integration.conarm.trait.draconicevolution.*;
 import xyz.phanta.tconevo.integration.conarm.trait.industrialforegoing.ArmourTraitSlimeyPink;
+import xyz.phanta.tconevo.integration.conarm.trait.thaumcraft.ArmourTraitWarping;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
 import xyz.phanta.tconevo.trait.botania.ModifierGaiaWill;
 import xyz.phanta.tconevo.util.TconReflect;
@@ -33,6 +34,7 @@ public class TconEvoArmourTraits {
             new ArmourTraitGaleForce(1), new ArmourTraitGaleForce(2), new ArmourTraitGaleForce(3)
     };
     public static final ArmourTraitHearthEmbrace TRAIT_HEARTH_EMBRACE = new ArmourTraitHearthEmbrace();
+    public static final ArmourTraitPhoenixAspect TRAIT_PHOENIX_ASPECT = new ArmourTraitPhoenixAspect();
     public static final ArmourTraitRadiant TRAIT_RADIANT = new ArmourTraitRadiant();
     public static final ArmourTraitReactive TRAIT_REACTIVE = new ArmourTraitReactive();
     public static final ArmourTraitSecondWind TRAIT_SECOND_WIND = new ArmourTraitSecondWind();
@@ -67,6 +69,9 @@ public class TconEvoArmourTraits {
 
     // industrial foregoing
     public static final ArmourTraitSlimeyPink TRAIT_SLIMEY_PINK = new ArmourTraitSlimeyPink();
+
+    // thaumium
+    public static final ArmourTraitWarping TRAIT_WARPING = new ArmourTraitWarping();
 
     public static final List<Modifier> MODIFIERS = Arrays.asList(
             MOD_FLUXED,

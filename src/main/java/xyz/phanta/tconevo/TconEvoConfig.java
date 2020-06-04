@@ -45,9 +45,35 @@ public class TconEvoConfig {
         @Config.RangeInt(min = 1)
         public int traitChillingTouchSlowDuration = 32;
 
+        @Config.Comment({
+                "The duration, in ticks, of wither effect applied by the corrupting trait.",
+                "Each additional proc of the trait refreshes the duration of the effect.",
+        })
+        @Config.RangeInt(min = 1)
+        public int traitCorruptingWitherDuration = 140;
+
+        @Config.Comment("The maximum level of wither that can be applied by the corrupting trait.")
+        @Config.RangeInt(min = 0)
+        public int traitCorruptingMaxStacks = 5;
+
         @Config.Comment("The bonus damage percentage at maximum durability for the crystalline trait.")
         @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
         public double traitCrystallineMaxBonus = 0.2D;
+
+        @Config.Comment({
+                "The max-health-difference multiplier for computing damage from the culling trait.",
+                "Bonus damage dealt is computed as `n * (attackerHealth - targetHealth)`, where `n` is this config value."
+        })
+        @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
+        public double traitCullingDifferenceMultiplier = 0.5D;
+
+        @Config.Comment({
+                "The upper bound for the bonus damage dealt by the culling trait.",
+                "The bonus damage cannot exceed the attack's base damage times this multiplier.",
+                "Set this to zero to disable the upper bound."
+        })
+        @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
+        public double traitCullingBoundMultiplier = 2D;
 
         @Config.Comment({
                 "The bonus damage percentage for critical strikes augmented by the deadly precision trait.",
@@ -102,12 +128,14 @@ public class TconEvoConfig {
                 "Each additional proc of the trait refreshes the duration of the effect.",
                 "Only useful with Construct's Armoury installed."
         })
+        @Config.RangeInt(min = 1)
         public int traitReactiveResistanceDuration = 200;
 
         @Config.Comment({
                 "The maximum level of damage reduction that the reactive trait can stack up to.",
                 "Only useful with Construct's Armoury installed."
         })
+        @Config.RangeInt(min = 0)
         public int traitReactiveMaxStacks = 30;
 
         @Config.Comment("The duration, in ticks, of the regeneration applied by the rejuvenating trait.")
@@ -117,6 +145,10 @@ public class TconEvoConfig {
         @Config.Comment("The number of ticks of invincibility removed by the relentless trait.")
         @Config.RangeInt(min = 1)
         public int traitRelentlessInvincibilityReduction = 16;
+
+        @Config.Comment("The fraction of enemy current health dealt as bonus damage by the ruination trait.")
+        @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
+        public double traitRuinationHealthMultiplier = 0.04D;
 
         @Config.Comment({
                 "The duration, in ticks, of the regeneration granted by the second wind trait.",

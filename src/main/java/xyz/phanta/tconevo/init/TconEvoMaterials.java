@@ -8,6 +8,7 @@ import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.integration.botania.BotaniaHooks;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
 import xyz.phanta.tconevo.integration.industrialforegoing.ForegoingHooks;
+import xyz.phanta.tconevo.integration.thaumcraft.ThaumHooks;
 import xyz.phanta.tconevo.material.MaterialBuilder;
 import xyz.phanta.tconevo.material.MaterialForm;
 import xyz.phanta.tconevo.material.PartType;
@@ -28,6 +29,8 @@ public class TconEvoMaterials {
     public static Material ESSENCE_METAL, MEAT_METAL, PINK_SLIME, PINK_METAL;
     // mekanism
     public static Material OSMIUM, REFINED_OBSIDIAN, REFINED_GLOWSTONE, HDPE;
+    // thaumcraft
+    public static Material THAUMIUM, VOID_METAL, PRIMAL_METAL;
     // thermal series
     public static Material TIN, ALUMINIUM, NICKEL, PLATINUM, INVAR, CONSTANTAN, SIGNALUM, LUMIUM, ENDERIUM;
 
@@ -330,6 +333,35 @@ public class TconEvoMaterials {
                 .withStatsBow(1.75F, 0.6F, 0F)
                 .withStatsArrowShaft(0.75F, 75)
                 .withTraits(PartType.TOOL, TinkerTraits.cheap, TinkerTraits.crude, TconEvoTraits.TRAIT_FOOT_FLEET)
+                .build();
+
+        // thaumcraft
+        THAUMIUM = new MaterialBuilder(NameConst.MAT_THAUMIUM, 0x51437c, MaterialForm.METAL, "Thaumium")
+                .requiresOres("ingotThaumium")
+                .setCastable("thaumium", 940)
+                .withStatsHead(500, 7F, 5.5F, HarvestLevels.OBSIDIAN)
+                .withStatsHandle(1.3F, 20)
+                .withStatsExtra(60)
+                .withStatsBow(1.2F, 1F, 1F)
+                .withTraits(PartType.TOOL, TinkerTraits.writable, TconEvoTraits.TRAIT_OPPORTUNIST)
+                .build();
+        VOID_METAL = new MaterialBuilder(NameConst.MAT_VOID_METAL, 0x2f114b, MaterialForm.METAL, "Void")
+                .requiresOres("ingotVoid")
+                .setCastable("void_metal", 1120)
+                .withStatsHead(340, 8F, 6F, HarvestLevels.COBALT)
+                .withStatsHandle(1.8F, 0)
+                .withStatsExtra(95)
+                .withStatsBow(1.4F, 0.8F, 1F)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_RUINATION, TconEvoTraits.TRAIT_SUNDERING, TconEvoTraits.TRAIT_WARPING)
+                .build();
+        PRIMAL_METAL = new MaterialBuilder(NameConst.MAT_PRIMAL_METAL, 0xd23c84, MaterialForm.METAL, "Primordial")
+                .requiresMods(ThaumHooks.MOD_ID)
+                .setCastable(1760)
+                .withStatsHead(170, 9F, 7F, 5)
+                .withStatsHandle(1F, 0)
+                .withStatsExtra(5)
+                .withStatsBow(1.5F, 1F, 8F)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_CORRUPTING, TconEvoTraits.TRAIT_CULLING)
                 .build();
 
         // thermal series

@@ -553,10 +553,10 @@
     * tools: writable + opportunist
     * armour: writable + shielding
 * void metal
-    * tools: corrupting + mortal wounds + warping
-    * armour: stifling + chilling touch + warping
+    * tools: ruination + sundering + warping
+    * armour: chilling touch + stifling + warping
 * primal metal (infuse primordial pearl + salis mundis onto coag matrix)
-    * tools: ruination + culling
+    * tools: corrupting + culling
     * armour: aspect of the phoenix + gale force
 
 ## the one probe

@@ -148,6 +148,21 @@ public class TconEvoArmourMaterials {
                 .withTraits(ArmourPartType.ARMOUR, ArmorTraits.cheap, ArmorTraits.mundane, TconEvoArmourTraits.TRAIT_REACTIVE)
                 .build();
 
+        // thaumcraft
+        new ArmourMaterialBuilder(TconEvoMaterials.THAUMIUM)
+                .withStatsArmour(16.5F, 16F, 1.3F, 2F, 1F, 4F)
+                .withTraits(ArmourPartType.ARMOUR, TinkerTraits.writable, ArmorTraits.shielding)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.VOID_METAL)
+                .withStatsArmour(10F, 20F, 1.8F, 0F, 1F, 7F)
+                .withTraits(ArmourPartType.ARMOUR, TconEvoArmourTraits.TRAIT_CHILLING_TOUCH,
+                        TconEvoArmourTraits.TRAIT_STIFLING, TconEvoArmourTraits.TRAIT_WARPING)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.PRIMAL_METAL)
+                .withStatsArmour(3.5F, 22F, 1F, 0F, 2.5F, 0.5F)
+                .withTraits(ArmourPartType.ARMOUR, TconEvoArmourTraits.TRAIT_PHOENIX_ASPECT, TconEvoArmourTraits.TRAIT_GALE_FORCE[0])
+                .build();
+
         // thermal series
         new ArmourMaterialBuilder(TconEvoMaterials.TIN)
                 .withStatsArmour(8F, 9F, 0.8F, 1F, 0F, 0.75F)

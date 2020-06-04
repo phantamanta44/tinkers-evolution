@@ -24,6 +24,11 @@
         "textures": {
           "all": "tconevo:blocks/metal/essence_metal"
         }
+      },
+      "primal_metal": {
+        "textures": {
+          "all": "tconevo:blocks/metal/primal_metal"
+        }
       }
     }
   }

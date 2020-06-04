@@ -11,6 +11,7 @@ module.exports = {
     { key: 'wyvern_metal', oreName: 'WyvernMetal' },
     { key: 'draconic_metal', oreName: 'DraconicMetal' },
     { key: 'chaotic_metal', oreName: 'ChaoticMetal' },
-    { key: 'essence_metal', oreName: 'EssenceMetal' }
+    { key: 'essence_metal', oreName: 'EssenceMetal' },
+    { key: 'primal_metal', oreName: 'Primordial' }
   ]
 }

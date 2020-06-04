@@ -16,6 +16,7 @@ import xyz.phanta.tconevo.trait.botania.TraitGaiaWrath;
 import xyz.phanta.tconevo.trait.botania.TraitManaInfused;
 import xyz.phanta.tconevo.trait.draconicevolution.*;
 import xyz.phanta.tconevo.trait.industrialforegoing.TraitSlimeyPink;
+import xyz.phanta.tconevo.trait.thaumcraft.TraitWarping;
 
 import java.util.Arrays;
 import java.util.List;
@@ -36,7 +37,9 @@ public class TconEvoTraits {
             new TraitAftershock(1), new TraitAftershock(2), new TraitAftershock(3)
     };
     public static final TraitCascading TRAIT_CASCADING = new TraitCascading();
+    public static final TraitCorrupting TRAIT_CORRUPTING = new TraitCorrupting();
     public static final TraitCrystalline TRAIT_CRYSTALLINE = new TraitCrystalline();
+    public static final TraitCulling TRAIT_CULLING = new TraitCulling();
     public static final TraitDeadlyPrecision TRAIT_DEADLY_PRECISION = new TraitDeadlyPrecision();
     public static final TraitFootFleet TRAIT_FOOT_FLEET = new TraitFootFleet();
     public static final TraitImpactForce TRAIT_IMPACT_FORCE = new TraitImpactForce();
@@ -46,6 +49,7 @@ public class TconEvoTraits {
     public static final TraitPiezoelectric TRAIT_PIEZOELECTRIC = new TraitPiezoelectric();
     public static final TraitRejuvenating TRAIT_REJUVENATING = new TraitRejuvenating();
     public static final TraitRelentless TRAIT_RELENTLESS = new TraitRelentless();
+    public static final TraitRuination TRAIT_RUINATION = new TraitRuination();
     public static final TraitSundering TRAIT_SUNDERING = new TraitSundering();
     public static final TraitStaggering TRAIT_STAGGERING = new TraitStaggering();
     public static final ModifierFluxed MOD_FLUXED = new ModifierFluxed();
@@ -76,6 +80,9 @@ public class TconEvoTraits {
 
     // industrial foregoing
     public static final TraitSlimeyPink TRAIT_SLIMEY_PINK = new TraitSlimeyPink();
+
+    // thaumcraft
+    public static final TraitWarping TRAIT_WARPING = new TraitWarping();
 
     public static final List<Modifier> MODIFIERS = Arrays.asList(
             MOD_FLUXED,

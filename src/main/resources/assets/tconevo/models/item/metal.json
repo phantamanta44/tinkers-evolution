@@ -38,6 +38,15 @@
           "plate": "tconevo:items/metal/plate/essence_metal",
           "gear": "tconevo:items/metal/gear/essence_metal"
         }
+      },
+      "PRIMAL_METAL": {
+        "textures": {
+          "ingot": "tconevo:items/metal/ingot/primal_metal",
+          "dust": "tconevo:items/metal/dust/primal_metal",
+          "nugget": "tconevo:items/metal/nugget/primal_metal",
+          "plate": "tconevo:items/metal/plate/primal_metal",
+          "gear": "tconevo:items/metal/gear/primal_metal"
+        }
       }
     },
     "form": {

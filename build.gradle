@@ -79,6 +79,7 @@ dependencies {
     deobfCompile 'appeng:appliedenergistics2:rv6-stable-7'
     deobfCompile "curse.maven:mekanism:2835175" // 9.8.3.390
     deobfCompile "curse.maven:actually-additions:2844115" // r151-2
+    deobfCompile "curse.maven:thaumcraft:2629023" // 6.1.BETA26
 }
 
 jar {
