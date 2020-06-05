@@ -11,6 +11,9 @@ Current mod integration modules are as follows:
 * **Applied Energistics 2**
     * Adds sky stone, certus, and fluix materials
     * Adds fluix steel material for [Lazy AE2](https://github.com/phantamanta44/Lazy-AE2)
+* **Astral Sorcery**
+    * Adds aquamarine and starmetal materials
+    * Adds special modifiers that can be applied to AS materials through alignment with a constellation
 * **Botania**
     * Adds botanical materials and metals
     * Adds various traits that interact with mana
