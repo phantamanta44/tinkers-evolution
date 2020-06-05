@@ -13,7 +13,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: "com.wynprice.cursemaven"
 
-version = "1.0.8"
+version = "1.0.9"
 group = "xyz.phanta.tconevo"
 archivesBaseName = "tconevo-1.12.2"
 
@@ -80,6 +80,7 @@ dependencies {
     deobfCompile "curse.maven:mekanism:2835175" // 9.8.3.390
     deobfCompile "curse.maven:actually-additions:2844115" // r151-2
     deobfCompile "curse.maven:thaumcraft:2629023" // 6.1.BETA26
+    deobfCompile "curse.maven:astral-sorcery:2971187" // 1.10.24
 }
 
 jar {

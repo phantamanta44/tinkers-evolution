@@ -68,6 +68,27 @@ public class NameConst {
     public static final String MAT_FLUIX = "fluix";
     public static final String MAT_FLUIX_STEEL = "fluix_steel";
 
+    // astral sorcery
+
+    public static final String MAT_AQUAMARINE = "aquamarine";
+    public static final String MAT_STARMETAL = "starmetal";
+
+    public static final String TRAIT_ASTRAL = TconEvoMod.MOD_ID + ".astral";
+    public static final String MOD_ATTUNED_AEVITAS = TconEvoMod.MOD_ID + ".attuned_aevitas";
+    public static final String MOD_ATTUNED_ARMARA = TconEvoMod.MOD_ID + ".attuned_armara";
+    public static final String MOD_ATTUNED_DISCIDIA = TconEvoMod.MOD_ID + ".attuned_discidia";
+    public static final String MOD_ATTUNED_EVORSIO = TconEvoMod.MOD_ID + ".attuned_evorsio";
+    public static final String MOD_ATTUNED_VICIO = TconEvoMod.MOD_ID + ".attuned_vicio";
+    public static final String MOD_ATTUNED_BOOTES = TconEvoMod.MOD_ID + ".attuned_bootes";
+    public static final String MOD_ATTUNED_FORNAX = TconEvoMod.MOD_ID + ".attuned_fornax";
+    public static final String MOD_ATTUNED_HOROLOGIUM = TconEvoMod.MOD_ID + ".attuned_horologium";
+    public static final String MOD_ATTUNED_LUCERNA = TconEvoMod.MOD_ID + ".attuned_lucerna";
+    public static final String MOD_ATTUNED_MINERALIS = TconEvoMod.MOD_ID + ".attuned_mineralis";
+    public static final String MOD_ATTUNED_OCTANS = TconEvoMod.MOD_ID + ".attuned_octans";
+    public static final String MOD_ATTUNED_PELOTRIO = TconEvoMod.MOD_ID + ".attuned_pelotrio";
+
+    public static final String ARMOUR_TRAIT_ASTRAL = TRAIT_ASTRAL + ARMOUR_SUFFIX;
+
     // botania
 
     public static final String MAT_LIVINGROCK = "livingrock";

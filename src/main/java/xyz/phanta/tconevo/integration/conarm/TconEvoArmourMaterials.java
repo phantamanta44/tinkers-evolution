@@ -58,6 +58,18 @@ public class TconEvoArmourMaterials {
                 .withTraits(ArmourPartType.ARMOUR, ArmorTraits.steady, ArmorTraits.magnetic)
                 .build();
 
+        // astral sorcery
+        new ArmourMaterialBuilder(TconEvoMaterials.AQUAMARINE)
+                .withStatsArmour(5.5F, 12.5F, 0.8F, 3.5F, 0F, 5F)
+                .withTraits(ArmourPartType.CORE, TconEvoArmourTraits.TRAIT_ASTRAL)
+                .withTraits(ArmourPartType.ARMOUR, ArmorTraits.absorbent)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.STARMETAL)
+                .withStatsArmour(13F, 17F, 0.9F, 6.5F, 1F, 9.5F)
+                .withTraits(ArmourPartType.CORE, TconEvoArmourTraits.TRAIT_ASTRAL)
+                .withTraits(ArmourPartType.ARMOUR, ArmorTraits.magnetic)
+                .build();
+
         // botania
         new ArmourMaterialBuilder(TconEvoMaterials.LIVINGROCK)
                 .withStatsArmour(9F, 5.2F, 0.5F, 0F, 0F, 0.8F)

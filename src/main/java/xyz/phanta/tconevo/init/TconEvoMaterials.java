@@ -5,6 +5,7 @@ import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.utils.HarvestLevels;
 import slimeknights.tconstruct.tools.TinkerTraits;
 import xyz.phanta.tconevo.constant.NameConst;
+import xyz.phanta.tconevo.integration.astralsorcery.AstralHooks;
 import xyz.phanta.tconevo.integration.botania.BotaniaHooks;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
 import xyz.phanta.tconevo.integration.industrialforegoing.ForegoingHooks;
@@ -21,6 +22,8 @@ public class TconEvoMaterials {
     public static Material BLACK_QUARTZ, AA_RESTONIA, AA_PALIS, AA_DIAMANTINE, AA_VOID, AA_EMERALDIC, AA_ENORI;
     // applied energistics 2
     public static Material SKY_STONE, CERTUS_QUARTZ, FLUIX, FLUIX_STEEL;
+    // astral sorcery
+    public static Material AQUAMARINE, STARMETAL;
     // botania
     public static Material LIVINGROCK, LIVINGWOOD, DREAMWOOD, MANASTEEL, TERRASTEEL, ELEMENTIUM, MANA_STRING;
     // draconic evolution
@@ -142,6 +145,28 @@ public class TconEvoMaterials {
                 .withStatsBow(0.7F, 1.3F, 6F)
                 .withTraits(PartType.HEAD, TconEvoTraits.TRAIT_PIEZOELECTRIC)
                 .withTraits(PartType.TOOL, TinkerTraits.magnetic)
+                .build();
+
+        // astral sorcery
+        AQUAMARINE = new MaterialBuilder(NameConst.MAT_AQUAMARINE, 0x24b1fe, MaterialForm.GEM, "Aquamarine")
+                .requiresMods(AstralHooks.MOD_ID)
+                .setCraftable()
+                .withStatsHead(175, 7F, 4F, HarvestLevels.IRON)
+                .withStatsHandle(0.8F, 10)
+                .withStatsExtra(25)
+                .withStatsBow(0.75F, 1F, 0F)
+                .withTraits(PartType.HEAD, TconEvoTraits.TRAIT_ASTRAL)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_CRYSTALLINE)
+                .build();
+        STARMETAL = new MaterialBuilder(NameConst.MAT_STARMETAL, 0x000f6d, MaterialForm.METAL, "AstralStarmetal")
+                .requiresMods(AstralHooks.MOD_ID)
+                .setCastable("starmetal", 1360)
+                .withStatsHead(390, 6.5F, 5.5F, HarvestLevels.OBSIDIAN)
+                .withStatsHandle(0.9F, 40)
+                .withStatsExtra(65)
+                .withStatsBow(0.8F, 1.2F, 3F)
+                .withTraits(PartType.HEAD, TconEvoTraits.TRAIT_ASTRAL)
+                .withTraits(PartType.TOOL, TinkerTraits.unnatural)
                 .build();
 
         // botania

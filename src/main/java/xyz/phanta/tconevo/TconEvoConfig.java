@@ -215,6 +215,134 @@ public class TconEvoConfig {
 
     }
 
+    @Config.Comment("Configuration for the Astral Sorcery module.")
+    public static final AstralSorcery moduleAstralSorcery = new AstralSorcery();
+
+    public static class AstralSorcery {
+
+        @Config.Comment("The bonus mining speed percentage granted by attunement when the constellation is in the sky.")
+        @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
+        public double attunementBonusEfficiency = 0.1D;
+
+        @Config.Comment("The bonus attack damage percentage granted by attunement when the constellation is in the sky.")
+        @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
+        public double attunementBonusDamage = 0.1D;
+
+        @Config.Comment("The duration, in ticks, of the regeneration granted by tools attuned to aevitas.")
+        @Config.RangeInt(min = 1)
+        public int toolAevitasRegenDuration = 100;
+
+        @Config.Comment("The duration, in ticks, of the resistance granted by tools attuned to armara.")
+        @Config.RangeInt(min = 1)
+        public int toolArmaraResistanceDuration = 100;
+
+        @Config.Comment("The bonus damage percentage granted by tools attuned to discidia.")
+        @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
+        public double toolDiscidiaBonusDamage = 0.25D;
+
+        @Config.Comment("The bonus efficiency granted by tools attuned to evorsio.")
+        @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
+        public double toolEvorsioBonusEfficiency = 0.25D;
+
+        @Config.Comment("The duration, in ticks, of the speed granted by tools attuned to vicio.")
+        @Config.RangeInt(min = 1)
+        public int toolVicioSpeedDuration = 100;
+
+        @Config.Comment("The duration, in SECONDS, of the fire set by tools attuned to fornax.")
+        @Config.RangeInt(min = 1)
+        public int toolFornaxFireDuration = 10;
+
+        @Config.Comment("The duration, in ticks, of the time freeze caused by tools attuned to horologium.")
+        @Config.RangeInt(min = 1)
+        public int toolHorologiumFreezeDuration = 16;
+
+        @Config.Comment("The duration, in ticks, of the glowing effect granted by tools attuned to lucerna.")
+        @Config.RangeInt(min = 1)
+        public int toolLucernaGlowingDuration = 200;
+
+        @Config.Comment("The level of fortune granted by tools attuned to mineralis.")
+        @Config.RangeInt(min = 1, max = Short.MAX_VALUE)
+        public int toolMineralisFortuneLevel = 3;
+
+        @Config.Comment("The probability of repairing one durability each second on tools attuned to pelotrio.")
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double toolPelotrioRepairProbability = 0.17D;
+
+        @Config.Comment({
+                "The bonus armour protection afforded by attunement when the constellation is in the sky.",
+                "Only useful with Construct's Armoury installed!"
+        })
+        @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
+        public double attunementBonusProtection = 0.1D;
+
+        @Config.Comment({
+                "The duration, in ticks, of the regeneration granted by armour attuned to aevitas.",
+                "Only useful with Construct's Armoury installed!"
+        })
+        @Config.RangeInt(min = 1)
+        public int armourAevitasRegenDuration = 100;
+
+        @Config.Comment({
+                "The bonus armour protection (defense and toughness) afforded by armour attuned to armara.",
+                "Only useful with Construct's Armoury installed!"
+        })
+        @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
+        public double armourArmaraBonusProtection = 0.25D;
+
+
+        @Config.Comment({
+                "The fraction of damage reflected by armour attuned to discidia.",
+                "Only useful with Construct's Armoury installed!"
+        })
+        @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
+        public double armourDiscidiaReflectRatio = 0.3D;
+
+        @Config.Comment({
+                "The duration, in ticks, of the speed granted by armour attuned to vicio.",
+                "Only useful with Construct's Armoury installed!"
+        })
+        @Config.RangeInt(min = 1)
+        public int armourVicioSpeedDuration = 100;
+
+        @Config.Comment({
+                "The probability of a flare spawning for each hit on armour attuned to bootes.",
+                "Note that each armour piece makes an independent roll, allowing up to 4 flares to spawn per hit.",
+                "Only useful with Construct's Armoury installed!"
+        })
+        public double armourBootesFlareProbability = 0.09F;
+
+        @Config.Comment({
+                "The duration, in ticks, of the time freeze incurred by armour attuned to horologium.",
+                "Only useful with Construct's Armoury installed!"
+        })
+        @Config.RangeInt(min = 1)
+        public int armourHorologiumFreezeDuration = 64;
+
+        @Config.Comment({
+                "The range of the time freeze incurred by armour attuned to horologium.",
+                "Don't make this too large; it will probably crash servers.",
+                "Only useful with Construct's Armoury installed!"
+        })
+        @Config.RangeDouble(min = 1D, max = Float.MAX_VALUE)
+        public double armourHorologiumFreezeRange = 6D;
+
+        @Config.Comment({
+                "The cooldown duration, in ticks, between time freeze procs on armour attuned to horologium.",
+                "This should probably be a number larger than the time freeze duration.",
+                "Only useful with Construct's Armoury installed!"
+        })
+        @Config.RangeInt(min = 1)
+        public int armourHorologiumCooldown = 200;
+
+        @Config.Comment({
+                "The probability of repairing one durability each second on armour attuned to pelotrio.",
+                "Only useful with Construct's Armoury installed!"
+        })
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double armourPelotrioRepairProbability = 0.11D;
+
+    }
+
     @Config.Comment({
             "Configuration for the Botania module.",
             "As a reference, a mana pool holds 1 million units of mana.",

@@ -6,10 +6,13 @@ import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.integration.actuallyadditions.ActuallyHooks;
+import xyz.phanta.tconevo.integration.astralsorcery.AstralConstellation;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
 import xyz.phanta.tconevo.integration.mekanism.MekanismHooks;
 import xyz.phanta.tconevo.integration.thermal.ThermalHooks;
 import xyz.phanta.tconevo.trait.*;
+import xyz.phanta.tconevo.trait.astralsorcery.ModifierAttuned;
+import xyz.phanta.tconevo.trait.astralsorcery.TraitAstral;
 import xyz.phanta.tconevo.trait.botania.TraitAuraSiphon;
 import xyz.phanta.tconevo.trait.botania.TraitFaeVoice;
 import xyz.phanta.tconevo.trait.botania.TraitGaiaWrath;
@@ -18,10 +21,7 @@ import xyz.phanta.tconevo.trait.draconicevolution.*;
 import xyz.phanta.tconevo.trait.industrialforegoing.TraitSlimeyPink;
 import xyz.phanta.tconevo.trait.thaumcraft.TraitWarping;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.function.Supplier;
 
 public class TconEvoTraits {
@@ -53,6 +53,20 @@ public class TconEvoTraits {
     public static final TraitSundering TRAIT_SUNDERING = new TraitSundering();
     public static final TraitStaggering TRAIT_STAGGERING = new TraitStaggering();
     public static final ModifierFluxed MOD_FLUXED = new ModifierFluxed();
+
+    // astral sorcery
+    public static final TraitAstral TRAIT_ASTRAL = new TraitAstral();
+    public static final Map<AstralConstellation, ModifierAttuned> MOD_ATTUNED = new EnumMap<>(AstralConstellation.class);
+
+    static {
+        for (ModifierAttuned mod : Arrays.asList(
+                new ModifierAttuned.Aevitas(), new ModifierAttuned.Armara(), new ModifierAttuned.Discidia(),
+                new ModifierAttuned.Evorsio(), new ModifierAttuned.Vicio(), new ModifierAttuned.Bootes(),
+                new ModifierAttuned.Fornax(), new ModifierAttuned.Horologium(), new ModifierAttuned.Lucerna(),
+                new ModifierAttuned.Mineralis(), new ModifierAttuned.Octans(), new ModifierAttuned.Pelotrio())) {
+            MOD_ATTUNED.put(mod.getConstellation(), mod);
+        }
+    }
 
     // botania
     public static final TraitManaInfused TRAIT_MANA_INFUSED = new TraitManaInfused();

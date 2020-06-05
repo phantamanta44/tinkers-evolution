@@ -140,12 +140,12 @@
 
 ### traits
 
-* unattuned: equipment is more effective at night + can be attuned in an attunement altar for additional effects
+* astral: equipment can be attuned in an attunement altar for additional effects
 * attuned: equipment is more effective at night while attuned constellation is present + gets a bonus effect
     * aevitas: tools grant regen after hitting something, armour grants regen after getting hit
     * armara: tools grant resistance after hitting something, armour has increased protection
     * discidia: tools deal more damage, armour reflects a portion of incoming damage
-    * evorsio: tools mine faster, armour emits a concussive blast after killing something
+    * evorsio: tools mine faster, armour grants haste
     * vicio: tools grant move speed after hitting something, armour grants move speed after getting hit
     * bootes: tools have silk touch, has a chance of spawning a flare after getting hit
     * fornax: tools ignite enemies, armour grants fire resistance
@@ -159,11 +159,11 @@
 ### materials
 
 * aquamarine
-    * tools: crystalline + unattuned (head)
-    * armour: lightweight + unattuned (core)
+    * tools: astral (head) + crystalline
+    * armour: astral (core) + absorbent
 * starmetal
-    * tools: alien + unattuned (head)
-    * armour: alien + unattuned (core)
+    * tools: astral (head) + unnatural
+    * armour: astral (core) + magnetic
 
 ### other ideas
 

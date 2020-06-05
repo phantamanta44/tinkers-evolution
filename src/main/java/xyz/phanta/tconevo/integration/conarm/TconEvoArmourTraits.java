@@ -6,8 +6,11 @@ import slimeknights.mantle.util.RecipeMatch;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.init.TconEvoTraits;
+import xyz.phanta.tconevo.integration.astralsorcery.AstralConstellation;
 import xyz.phanta.tconevo.integration.botania.BotaniaHooks;
 import xyz.phanta.tconevo.integration.conarm.trait.*;
+import xyz.phanta.tconevo.integration.conarm.trait.astralsorcery.ArmourModAttuned;
+import xyz.phanta.tconevo.integration.conarm.trait.astralsorcery.ArmourTraitAstral;
 import xyz.phanta.tconevo.integration.conarm.trait.botania.ArmourTraitAuraInfused;
 import xyz.phanta.tconevo.integration.conarm.trait.botania.ArmourTraitFaeVoice;
 import xyz.phanta.tconevo.integration.conarm.trait.botania.ArmourTraitManaAffinity;
@@ -19,9 +22,7 @@ import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
 import xyz.phanta.tconevo.trait.botania.ModifierGaiaWill;
 import xyz.phanta.tconevo.util.TconReflect;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.Supplier;
 
 public class TconEvoArmourTraits {
@@ -42,6 +43,20 @@ public class TconEvoArmourTraits {
     public static final ArmourTraitStonebound TRAIT_STONEBOUND = new ArmourTraitStonebound();
     public static final ArmourTraitWillStrength TRAIT_WILL_STRENGTH = new ArmourTraitWillStrength();
     public static final ArmourModFluxed MOD_FLUXED = new ArmourModFluxed();
+
+    // astral sorcery
+    public static final ArmourTraitAstral TRAIT_ASTRAL = new ArmourTraitAstral();
+    public static final Map<AstralConstellation, ArmourModAttuned> MOD_ATTUNED = new EnumMap<>(AstralConstellation.class);
+
+    static {
+        for (ArmourModAttuned mod : Arrays.asList(
+                new ArmourModAttuned.Aevitas(), new ArmourModAttuned.Armara(), new ArmourModAttuned.Discidia(),
+                new ArmourModAttuned.Evorsio(), new ArmourModAttuned.Vicio(), new ArmourModAttuned.Bootes(),
+                new ArmourModAttuned.Fornax(), new ArmourModAttuned.Horologium(), new ArmourModAttuned.Lucerna(),
+                new ArmourModAttuned.Mineralis(), new ArmourModAttuned.Octans(), new ArmourModAttuned.Pelotrio())) {
+            MOD_ATTUNED.put(mod.getConstellation(), mod);
+        }
+    }
 
     // botania
     public static final ArmourTraitAuraInfused TRAIT_AURA_INFUSED = new ArmourTraitAuraInfused();
