@@ -22,6 +22,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import slimeknights.tconstruct.library.modifiers.ModifierAspect;
 import slimeknights.tconstruct.library.utils.TagUtil;
 import slimeknights.tconstruct.library.utils.ToolHelper;
 import xyz.phanta.tconevo.TconEvoConfig;
@@ -39,6 +40,8 @@ public abstract class ArmourModAttuned extends ArmorModifierTrait {
     public ArmourModAttuned(String identifier, AstralConstellation constellation) {
         super(identifier, ModifierAttuned.COLOUR);
         this.constellation = constellation;
+        // slightly faster than direct remove() because freeModifier will likely be near the end of the list
+        aspects.remove(aspects.lastIndexOf(ModifierAspect.freeModifier));
     }
 
     public AstralConstellation getConstellation() {

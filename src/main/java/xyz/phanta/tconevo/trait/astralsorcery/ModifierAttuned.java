@@ -14,6 +14,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import slimeknights.tconstruct.library.modifiers.ModifierAspect;
 import slimeknights.tconstruct.library.modifiers.ModifierTrait;
 import slimeknights.tconstruct.library.tools.ToolNBT;
 import slimeknights.tconstruct.library.utils.TagUtil;
@@ -21,7 +22,6 @@ import slimeknights.tconstruct.library.utils.ToolBuilder;
 import slimeknights.tconstruct.library.utils.ToolHelper;
 import slimeknights.tconstruct.tools.TinkerTraits;
 import xyz.phanta.tconevo.TconEvoConfig;
-import xyz.phanta.tconevo.TconEvoMod;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.integration.astralsorcery.AstralConstellation;
 import xyz.phanta.tconevo.integration.astralsorcery.AstralHooks;
@@ -38,6 +38,8 @@ public abstract class ModifierAttuned extends ModifierTrait {
     public ModifierAttuned(String identifier, AstralConstellation constellation) {
         super(identifier, COLOUR);
         this.constellation = constellation;
+        // slightly faster than direct remove() because freeModifier will likely be near the end of the list
+        aspects.remove(aspects.lastIndexOf(ModifierAspect.freeModifier));
     }
 
     public AstralConstellation getConstellation() {
