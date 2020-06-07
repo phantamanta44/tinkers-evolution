@@ -74,6 +74,7 @@ modifier.tconevo.crystalline.desc=§oYou could buy a very small piano!§r\nThis 
 modifier.tconevo.crystalline.extra=Crystalline Damage: +%s
 modifier.tconevo.culling.name=Culling
 modifier.tconevo.culling.desc=§oOnly the worthy will survive.§r\nThis weapon deals increased damage to enemies with less health than its wielder.
+modifier.tconevo.culling.extra=Culling Damage: +%s
 modifier.tconevo.deadly_precision.name=Deadly Precision
 modifier.tconevo.deadly_precision.desc=§oJust buy six daedalus 4Head§r\nThis weapon deals greatly increased damage on critical strikes.
 modifier.tconevo.deadly_precision.extra=Bonus Crit Damage: +%s
