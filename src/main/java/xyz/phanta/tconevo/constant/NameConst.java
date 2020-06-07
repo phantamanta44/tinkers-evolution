@@ -33,6 +33,7 @@ public class NameConst {
     public static final String TRAIT_RUINATION = TconEvoMod.MOD_ID + ".ruination";
     public static final String TRAIT_STAGGERING = TconEvoMod.MOD_ID + ".staggering";
     public static final String TRAIT_SUNDERING = TconEvoMod.MOD_ID + ".sundering";
+    public static final String TRAIT_VAMPIRIC = TconEvoMod.MOD_ID + ".vampiric";
     public static final String MOD_FLUXED = TconEvoMod.MOD_ID + ".fluxed";
 
     private static final String ARMOUR_SUFFIX = "_armor";
@@ -88,6 +89,20 @@ public class NameConst {
     public static final String MOD_ATTUNED_PELOTRIO = TconEvoMod.MOD_ID + ".attuned_pelotrio";
 
     public static final String ARMOUR_TRAIT_ASTRAL = TRAIT_ASTRAL + ARMOUR_SUFFIX;
+
+    // blood magic
+
+    public static final String MAT_BOUND_METAL = "bound_metal";
+    public static final String MAT_SENTIENT_METAL = "sentient_metal";
+
+    public static final String TRAIT_CRYSTALYS = TconEvoMod.MOD_ID + ".crystalys";
+    public static final String TRAIT_BLOODBOUND = TconEvoMod.MOD_ID + ".bloodbound";
+    public static final String TRAIT_SENTIENT = TconEvoMod.MOD_ID + ".sentient";
+    public static final String TRAIT_WILLFUL = TconEvoMod.MOD_ID + ".willful";
+
+    public static final String ARMOUR_TRAIT_SENTIENT = TRAIT_SENTIENT + ARMOUR_SUFFIX;
+    public static final String ARMOUR_TRAIT_WILLFUL = TRAIT_WILLFUL + ARMOUR_SUFFIX;
+    public static final String TRAIT_SOUL_GUARD = TconEvoMod.MOD_ID + ".soul_guard", ARMOUR_TRAIT_SOUL_GUARD = TRAIT_SOUL_GUARD + ARMOUR_SUFFIX;
 
     // botania
 

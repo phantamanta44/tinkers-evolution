@@ -1,0 +1,14 @@
+{
+  "type": "forge:ore_shapeless",
+  "ingredients": [
+    {
+      "type": "forge:ore_dict",
+      "ore": "blockBoundMetal"
+    }
+  ],
+  "result": {
+    "item": "tconevo:metal",
+    "count": 9,
+    "data": 25
+  }
+}

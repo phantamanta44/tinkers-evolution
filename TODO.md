@@ -199,19 +199,21 @@
 ### traits
 
 * crystalys: drops weak blood shards
-* bloodbound: indestructable, but consumes lp
-* sentient: speed/damage proportional to demon will + grants the effects of pure wills
-* willful: consumes demon will instead of durability if possible 
+* bloodbound: consumes lp before durability
+* sentient: consumes demon will + speed/damage proportional to demon will + grants the effects of pure wills
+* willful: killed mobs drop demon will or fill tartaric gems
 
 ### armour traits
 
-* sentient: defense is proportional to demon will
+* soul guard: consumes lp to reduce damage
+* sentient: consumes demon will + defense is proportional to demon will
+* willful: attacking mobs have a chance of being ensnared
 
 ### materials
 
-* lifeblood (infuse blood into coag matrix)
-    * tools: crystalys (core) + vampiric (extra) + bloodbound
-    * armour: divine grace (core) + bulwark (plates/trim) + bloodbound
+* bound metal (infuse blood into coag matrix)
+    * tools: crystalys (head) + bloodbound
+    * armour: soul guard (core) + bloodbound
 * sentient metal (forge tartaric gem + coag matrix)
     * tools: sentient (head) + willful
     * armour: sentient (core) + willful
@@ -219,6 +221,7 @@
 ### other ideas
 
 * some kind of "sanguine steel" alloy
+* maybe allow tablets to be used as modifiers like on bound armour
 
 ## botania
 

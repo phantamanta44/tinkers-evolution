@@ -29,6 +29,16 @@
         "textures": {
           "all": "tconevo:blocks/metal/primal_metal"
         }
+      },
+      "bound_metal": {
+        "textures": {
+          "all": "tconevo:blocks/metal/bound_metal"
+        }
+      },
+      "sentient_metal": {
+        "textures": {
+          "all": "tconevo:blocks/metal/sentient_metal"
+        }
       }
     }
   }

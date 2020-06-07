@@ -36,6 +36,8 @@ public class EnergyShieldHandler {
         float damage = event.getAmount();
         DamageSource dmgSrc = event.getSource();
         // don't block /kill damage
+        // could use DamageUtils::isPureDamage, but this is slightly more faithful to the original DE mechanics
+        // (not sure if that's a good or bad thing lol)
         if (damage == Float.MAX_VALUE && dmgSrc.isUnblockable() && dmgSrc.canHarmInCreative()) {
             return;
         }

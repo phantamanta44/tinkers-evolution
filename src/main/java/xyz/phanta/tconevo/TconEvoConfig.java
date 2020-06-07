@@ -23,12 +23,9 @@ public class TconEvoConfig {
 
     public static class General {
 
-        @Config.Comment({
-                "The value added to the divider for each level of the damage reduction buff.",
-                "The formula for final damage if `damage / (1 + level * x)`, where `x` is this config value."
-        })
-        @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
-        public double effectDamageReductionDividerIncrement = 0.03D;
+        @Config.Comment("The additional percentage of damage mitigated per level of the damage reduction effect.")
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double effectDamageReductionPercentage = 0.04D;
 
         @Config.Comment("The fraction of healing that is mitigated by the mortal wounds debuff.")
         @Config.RangeDouble(min = 0D, max = 1D)
@@ -136,7 +133,7 @@ public class TconEvoConfig {
                 "Only useful with Construct's Armoury installed."
         })
         @Config.RangeInt(min = 0)
-        public int traitReactiveMaxStacks = 30;
+        public int traitReactiveMaxStacks = 20;
 
         @Config.Comment("The duration, in ticks, of the regeneration applied by the rejuvenating trait.")
         @Config.RangeInt(min = 1)
@@ -178,6 +175,10 @@ public class TconEvoConfig {
         @Config.Comment("The duration, in ticks, of the weakness applied by the sundering trait.")
         @Config.RangeInt(min = 1)
         public int traitSunderingWeaknessDuration = 100;
+
+        @Config.Comment("The fraction of damage converted to healing by the vampiric trait.")
+        @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
+        public double traitVampiricConversionRatio = 0.2D;
 
         @Config.Comment({
                 "The duration, in ticks, of the immortality applied by the strength of will trait.",
@@ -340,6 +341,311 @@ public class TconEvoConfig {
         })
         @Config.RangeDouble(min = 0D, max = 1D)
         public double armourPelotrioRepairProbability = 0.11D;
+
+    }
+
+    @Config.Comment("Configuration for the Blood Magic module.")
+    public static final BloodMagic moduleBloodMagic = new BloodMagic();
+
+    public static class BloodMagic {
+
+        @Config.Comment("The cost, in LP, per durability point consumed by bloodbound tools.")
+        @Config.RangeInt(min = 1)
+        public int bloodboundToolCost = 5;
+
+        @Config.Comment({
+                "The cost, in LP, per durability point consumed by bloodbound armour.",
+                "Only useful with Construct's Armoury installed!"
+        })
+        @Config.RangeInt(min = 1)
+        public int bloodboundArmourCost = 25;
+
+        @Config.Comment("The probability of dropping a blood shard per mob slain with the crystalys trait.")
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double crystalysDropProbability = 0.2D;
+
+        @Config.Comment({
+                "The threshold values of demon will required for each tier of power for sentient tools.",
+                "Note that changing the length of this array will change the number of tiers."
+        })
+        public double[] sentientTierThresholds = { 16D, 60D, 200D, 400D, 1000D, 2000D, 4000D };
+
+        @Config.Comment({
+                "The threshold values of demon will required for each tier of power for sentient armour.",
+                "Note that changing the length of this array will change the number of tiers.",
+                "Only useful with Construct's Armoury installed!"
+        })
+        public double[] sentientArmourTierThresholds = { 30D, 200D, 600D, 1500D, 4000D, 6000D, 8000D, 16000D };
+
+        @Config.Comment("The base demon will cost per operation performed by sentient tools.")
+        @Config.RangeDouble(min = 0D, max = 1e9D)
+        public double sentientWillCostBase = 0.05D;
+
+        @Config.Comment("The additional demon will cost per tier of power per operation performed by sentient tools.")
+        @Config.RangeDouble(min = 0D, max = 1e9D)
+        public double sentientWillCostPerLevel = 0.15D;
+
+        @Config.Comment("The base demon will cost per damage point absorbed by sentient armour.")
+        @Config.RangeDouble(min = 0D, max = 1e9D)
+        public double sentientArmourWillCostBase = 0.1D;
+
+        @Config.Comment("The additional demon will cost per tier of power per damage point absorbed by sentient armour.")
+        @Config.RangeDouble(min = 0D, max = 1e9D)
+        public double sentientArmourWillCostPerLevel = 0.05D;
+
+        @Config.Comment("The additional dig speed granted per tier of power for sentient tools.")
+        @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
+        public double sentientDigSpeedPerLevel = 0.75D;
+
+        @Config.Comment("The additional flat attack damage granted per tier of raw will on sentient tools.")
+        @Config.RangeDouble(min = 0D, max = 1e9D)
+        public double sentientRawDamagePerLevel = 0.5D;
+
+        @Config.Comment({
+                "The additional percentage damage reduction granted per tier of raw will on sentient armour.",
+                "Only useful with Construct's Armoury installed!"
+        })
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double sentientRawArmourProtectionPerLevel = 0.028D;
+
+        @Config.Comment("The base flat attack damage granted for corrosive will on sentient tools.")
+        @Config.RangeDouble(min = 0D, max = 1e9D)
+        public double sentientCorrosiveDamageBase = 0D;
+
+        @Config.Comment("The additional flat attack damage granted per tier of corrosive will on sentient tools.")
+        @Config.RangeDouble(min = 0D, max = 1e9D)
+        public double sentientCorrosiveDamagePerLevel = 0.5D;
+
+        @Config.Comment({
+                "The base poison duration, in ticks, for corrosive will on sentient tools.",
+                "Also used for the poison effect corrosive sentient armour."
+        })
+        @Config.RangeInt(min = 1)
+        public int sentientCorrosivePoisonDurationBase = 16;
+
+        @Config.Comment({
+                "The additional poison duration, in ticks, per tier of corrosive will on sentient tools.",
+                "Also used for the poison effect corrosive sentient armour."
+        })
+        @Config.RangeInt(min = 0)
+        public int sentientCorrosivePoisonDurationPerLevel = 16;
+
+        @Config.Comment({
+                "The base percentage damage reduction granted per tier of corrosive will on sentient armour.",
+                "Only useful with Construct's Armoury installed!"
+        })
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double sentientCorrosiveArmourProtectionBase = 0D;
+
+        @Config.Comment({
+                "The additional percentage damage reduction granted per tier of corrosive will on sentient armour.",
+                "Only useful with Construct's Armoury installed!"
+        })
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double sentientCorrosiveArmourProtectionPerLevel = 0.028D;
+
+        @Config.Comment("The base flat attack damage granted for destructive will on sentient tools.")
+        @Config.RangeDouble(min = 0D, max = 1e9D)
+        public double sentientDestructiveDamageBase = 0.25D;
+
+        @Config.Comment("The additional flat attack damage granted per tier of destructive will on sentient tools.")
+        @Config.RangeDouble(min = 0D, max = 1e9D)
+        public double sentientDestructiveDamagePerLevel = 0.75D;
+
+        @Config.Comment("The base percentage reduction in attack speed incurred by destructive will on sentient tools.")
+        @Config.RangeDouble(min = 0D, max = 1e9D)
+        public double sentientDestructiveAttackSpeedBase = 0D;
+
+        @Config.Comment("The additional percentage reduction in attack speed incurred per tier of destructive will on sentient tools.")
+        @Config.RangeDouble(min = 0D, max = 1e9D)
+        public double sentientDestructiveAttackSpeedPerLevel = 0.09D;
+
+        @Config.Comment({
+                "The base percentage damage reduction granted per tier of destructive will on sentient armour.",
+                "Only useful with Construct's Armoury installed!"
+        })
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double sentientDestructiveArmourProtectionBase = 0D;
+
+        @Config.Comment({
+                "The additional percentage damage reduction granted per tier of destructive will on sentient armour.",
+                "Only useful with Construct's Armoury installed!"
+        })
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double sentientDestructiveArmourProtectionPerLevel = 0.028D;
+
+        @Config.Comment({
+                "The base flat attack damage granted for destructive will on sentient armour.",
+                "Only useful with Construct's Armoury installed!"
+        })
+        @Config.RangeDouble(min = 0D, max = 1e9D)
+        public double sentientDestructiveArmourAttackDamageBase = 0.25D;
+
+        @Config.Comment({
+                "The additional flat attack damage granted per tier of destructive will on sentient armour.",
+                "Only useful with Construct's Armoury installed!"
+        })
+        @Config.RangeDouble(min = 0D, max = 1e9D)
+        public double sentientDestructiveArmourAttackDamagePerLevel = 0.25D;
+
+        @Config.Comment({
+                "The base percentage reduction in attack speed incurred by destructive will on sentient armour.",
+                "Only useful with Construct's Armoury installed!"
+        })
+        @Config.RangeDouble(min = 0D, max = 1e9D)
+        public double sentientDestructiveArmourAttackSpeedBase = 0D;
+
+        @Config.Comment({
+                "The additional percentage reduction in attack speed incurred per tier of destructive will on sentient armour.",
+                "Only useful with Construct's Armoury installed!"
+        })
+        @Config.RangeDouble(min = 0D, max = 1e9D)
+        public double sentientDestructiveArmourAttackSpeedPerLevel = 0.01D;
+
+        @Config.Comment("The base flat attack damage granted for vengeful will on sentient tools.")
+        @Config.RangeDouble(min = 0D, max = 1e9D)
+        public double sentientVengefulDamageBase = -0.4D;
+
+        @Config.Comment("The additional flat attack damage granted per tier of vengeful will on sentient tools.")
+        @Config.RangeDouble(min = 0D, max = 1e9D)
+        public double sentientVengefulDamagePerLevel = 0.4D;
+
+        @Config.Comment("The base percentage attack speed granted per tier of vengeful will on sentient tools.")
+        @Config.RangeDouble(min = 0D, max = 1e9D)
+        public double sentientVengefulAttackSpeedBase = 0.09D;
+
+        @Config.Comment("The additional percentage attack speed granted per tier of vengeful will on sentient tools.")
+        @Config.RangeDouble(min = 0D, max = 1e9D)
+        public double sentientVengefulAttackSpeedPerLevel = 0.09D;
+
+        @Config.Comment("The base percentage move speed granted per tier of vengeful will on sentient tools.")
+        @Config.RangeDouble(min = 0D, max = 1e9D)
+        public double sentientVengefulMoveSpeedBase = 0D;
+
+        @Config.Comment("The additional percentage move speed granted per tier of vengeful will on sentient tools.")
+        @Config.RangeDouble(min = 0D, max = 1e9D)
+        public double sentientVengefulMoveSpeedPerLevel = 0.05D;
+
+        @Config.Comment({
+                "The base percentage damage reduction granted per tier of vengeful will on sentient armour.",
+                "Only useful with Construct's Armoury installed!"
+        })
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double sentientVengefulArmourProtectionBase = 0D;
+
+        @Config.Comment({
+                "The additional percentage damage reduction granted per tier of vengeful will on sentient armour.",
+                "Only useful with Construct's Armoury installed!"
+        })
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double sentientVengefulArmourProtectionPerLevel = 0.028D;
+
+        @Config.Comment({
+                "The base percentage move speed granted per tier of vengeful will on sentient armour.",
+                "Only useful with Construct's Armoury installed!"
+        })
+        @Config.RangeDouble(min = 0D, max = 1e9D)
+        public double sentientVengefulArmourMoveSpeedBase = 0D;
+
+        @Config.Comment({
+                "The additional percentage move speed granted per tier of vengeful will on sentient armour.",
+                "Only useful with Construct's Armoury installed!"
+        })
+        @Config.RangeDouble(min = 0D, max = 1e9D)
+        public double sentientVengefulArmourMoveSpeedPerLevel = 0.03D;
+
+        @Config.Comment("The base flat attack damage granted for steadfast will on sentient tools.")
+        @Config.RangeDouble(min = 0D, max = 1e9D)
+        public double sentientSteadfastDamageBase = -0.4D;
+
+        @Config.Comment("The additional flat attack damage granted per tier of steadfast will on sentient tools.")
+        @Config.RangeDouble(min = 0D, max = 1e9D)
+        public double sentientSteadfastDamagePerLevel = 0.4D;
+
+        @Config.Comment("The base absorption duration, in ticks, for steadfast will on sentient tools.")
+        @Config.RangeInt(min = 1)
+        public int sentientSteadfastAbsorptionDurationBase = 100;
+
+        @Config.Comment("The additional absorption duration, in ticks, per tier of steadfast will on sentient tools.")
+        @Config.RangeInt(min = 0)
+        public int sentientSteadfastAbsorptionDurationPerLevel = 100;
+
+        @Config.Comment({
+                "The percentage of enemy max health gained as absorption per proc of steadfast will on sentient tools.",
+                "Note that no more than 20 points of absorption can be gained from steadfast tools at a time."
+        })
+        @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
+        public double sentientSteadfastAbsorptionHealthRatio = 0.05D;
+
+        @Config.Comment({
+                "The base percentage damage reduction granted per tier of steadfast will on sentient armour.",
+                "Only useful with Construct's Armoury installed!"
+        })
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double sentientSteadfastArmourProtectionBase = 0.06D;
+
+        @Config.Comment({
+                "The additional percentage damage reduction granted per tier of steadfast will on sentient armour.",
+                "Only useful with Construct's Armoury installed!"
+        })
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double sentientSteadfastArmourProtectionPerLevel = 0.022D;
+
+        @Config.Comment({
+                "The base percentage knockback resistance granted per tier of steadfast will on sentient armour.",
+                "Only useful with Construct's Armoury installed!"
+        })
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double sentientSteadfastArmourKnockbackResistBase = 0D;
+
+        @Config.Comment({
+                "The additional percentage knockback resistance granted per tier of steadfast will on sentient armour.",
+                "Only useful with Construct's Armoury installed!"
+        })
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double sentientSteadfastArmourKnockbackResistPerLevel = 0.1D;
+
+        @Config.Comment({
+                "The total possible percentage of damage mitigated by the soul guard trait.",
+                "Only useful with Construct's Armoury installed!"
+        })
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double soulGuardDamageReduction = 0.25D;
+
+        @Config.Comment({
+                "The cost, in LP, to mitigate one point of damage with the soul guard trait.",
+                "Only useful with Construct's Armoury installed!"
+        })
+        @Config.RangeInt(min = 1)
+        public int soulGuardCost = 50;
+
+        @Config.Comment({
+                "The percentage penalty to damage reduction by soul guard when incoming damage is armour-piercing.",
+                "Only useful with Construct's Armoury installed!"
+        })
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double soulGuardPiercingPenalty = 0.1D;
+
+        @Config.Comment({
+                "The percentage penalty to damage reduction by soul guard per level of the soul fray debuff.",
+                "Only useful with Construct's Armoury installed!"
+        })
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double soulGuardFrayedPenalty = 0.33D;
+
+        @Config.Comment({
+                "The probability of a mob becoming soul-snared upon attacking armour with the willful trait.",
+                "Only useful with Construct's Armoury installed!"
+        })
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double willfulArmourEnsnareProbability = 0.25D;
+
+        @Config.Comment({
+                "The duration, in ticks, of the soul snare effect applied by armour with the willful trait.",
+                "Only useful with Construct's Armoury installed!"
+        })
+        @Config.RangeInt(min = 1)
+        public int willfulArmourEnsnareDuration = 300;
 
     }
 
@@ -596,7 +902,7 @@ public class TconEvoConfig {
 
     }
 
-    private static <T> T armourSwitch(EntityEquipmentSlot slot, T helmet, T chestplate, T leggings, T boots, T defaultValue) {
+    public static <T> T armourSwitch(EntityEquipmentSlot slot, T helmet, T chestplate, T leggings, T boots, T defaultValue) {
         switch (slot) {
             case HEAD:
                 return helmet;

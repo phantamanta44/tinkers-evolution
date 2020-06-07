@@ -6,6 +6,7 @@ import slimeknights.tconstruct.library.utils.HarvestLevels;
 import slimeknights.tconstruct.tools.TinkerTraits;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.integration.astralsorcery.AstralHooks;
+import xyz.phanta.tconevo.integration.bloodmagic.BloodMagicHooks;
 import xyz.phanta.tconevo.integration.botania.BotaniaHooks;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
 import xyz.phanta.tconevo.integration.industrialforegoing.ForegoingHooks;
@@ -24,6 +25,8 @@ public class TconEvoMaterials {
     public static Material SKY_STONE, CERTUS_QUARTZ, FLUIX, FLUIX_STEEL;
     // astral sorcery
     public static Material AQUAMARINE, STARMETAL;
+    // blood magic
+    public static Material BOUND_METAL, SENTIENT_METAL;
     // botania
     public static Material LIVINGROCK, LIVINGWOOD, DREAMWOOD, MANASTEEL, TERRASTEEL, ELEMENTIUM, MANA_STRING;
     // draconic evolution
@@ -167,6 +170,28 @@ public class TconEvoMaterials {
                 .withStatsBow(0.8F, 1.2F, 3F)
                 .withTraits(PartType.HEAD, TconEvoTraits.TRAIT_ASTRAL)
                 .withTraits(PartType.TOOL, TinkerTraits.unnatural)
+                .build();
+
+        // blood magic
+        BOUND_METAL = new MaterialBuilder(NameConst.MAT_BOUND_METAL, 0x6b0205, MaterialForm.METAL, "BoundMetal")
+                .requiresMods(BloodMagicHooks.MOD_ID)
+                .setCastable(1700)
+                .withStatsHead(470, 8F, 7F, HarvestLevels.COBALT)
+                .withStatsHandle(1F, 40)
+                .withStatsExtra(80)
+                .withStatsBow(0.6F, 1.4F, 4F)
+                .withTraits(PartType.HEAD, TconEvoTraits.TRAIT_CRYSTALYS)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_BLOODBOUND)
+                .build();
+        SENTIENT_METAL = new MaterialBuilder(NameConst.MAT_SENTIENT_METAL, 0x7edee3, MaterialForm.METAL, "SentientMetal")
+                .requiresMods(BloodMagicHooks.MOD_ID)
+                .setCastable(1300)
+                .withStatsHead(300, 7F, 5F, HarvestLevels.DIAMOND)
+                .withStatsHandle(0.75F, 30)
+                .withStatsExtra(45)
+                .withStatsBow(0.75F, 1.25F, 1.5F)
+                .withTraits(PartType.HEAD, TconEvoTraits.TRAIT_SENTIENT)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_WILLFUL)
                 .build();
 
         // botania

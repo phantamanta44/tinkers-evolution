@@ -13,6 +13,10 @@ import xyz.phanta.tconevo.integration.thermal.ThermalHooks;
 import xyz.phanta.tconevo.trait.*;
 import xyz.phanta.tconevo.trait.astralsorcery.ModifierAttuned;
 import xyz.phanta.tconevo.trait.astralsorcery.TraitAstral;
+import xyz.phanta.tconevo.trait.bloodmagic.TraitBloodbound;
+import xyz.phanta.tconevo.trait.bloodmagic.TraitCrystalys;
+import xyz.phanta.tconevo.trait.bloodmagic.TraitSentient;
+import xyz.phanta.tconevo.trait.bloodmagic.TraitWillful;
 import xyz.phanta.tconevo.trait.botania.TraitAuraSiphon;
 import xyz.phanta.tconevo.trait.botania.TraitFaeVoice;
 import xyz.phanta.tconevo.trait.botania.TraitGaiaWrath;
@@ -67,6 +71,12 @@ public class TconEvoTraits {
             MOD_ATTUNED.put(mod.getConstellation(), mod);
         }
     }
+
+    // blood magic
+    public static final TraitCrystalys TRAIT_CRYSTALYS = new TraitCrystalys();
+    public static final TraitBloodbound TRAIT_BLOODBOUND = new TraitBloodbound();
+    public static final TraitSentient TRAIT_SENTIENT = new TraitSentient();
+    public static final TraitWillful TRAIT_WILLFUL = new TraitWillful();
 
     // botania
     public static final TraitManaInfused TRAIT_MANA_INFUSED = new TraitManaInfused();

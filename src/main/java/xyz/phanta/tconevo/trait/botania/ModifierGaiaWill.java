@@ -1,8 +1,8 @@
 package xyz.phanta.tconevo.trait.botania;
 
-import c4.conarm.lib.armor.ArmorCore;
 import c4.conarm.lib.modifiers.ArmorModifierTrait;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.MobEffects;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -25,7 +25,7 @@ public abstract class ModifierGaiaWill extends ArmorModifierTrait {
 
     @Override
     public boolean canApplyCustom(ItemStack stack) {
-        if (!(stack.getItem() instanceof ArmorCore) || ((ArmorCore)stack.getItem()).armorType != EntityEquipmentSlot.HEAD) {
+        if (EntityLiving.getSlotForItemStack(stack) != EntityEquipmentSlot.HEAD) {
             return false;
         }
         for (IModifier modifier : TinkerUtil.getModifiers(stack)) {

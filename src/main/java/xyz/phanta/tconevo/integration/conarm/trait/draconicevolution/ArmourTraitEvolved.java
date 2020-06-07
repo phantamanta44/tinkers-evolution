@@ -4,6 +4,7 @@ import c4.conarm.lib.traits.AbstractArmorTrait;
 import io.github.phantamanta44.libnine.capability.provider.CapabilityBroker;
 import io.github.phantamanta44.libnine.util.helper.OptUtils;
 import io.github.phantamanta44.libnine.util.math.MathUtils;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
@@ -101,12 +102,9 @@ public class ArmourTraitEvolved extends AbstractArmorTrait {
 
         @Override
         public float getShieldCapacity() {
-            float capacity = TconEvoConfig.moduleDraconicEvolution.getBaseShieldCapacity(TraitEvolved.getEvolvedTier(stack))
-                    * ToolUtils.getTraitLevel(stack, NameConst.ARMOUR_MOD_DRACONIC_SHIELD_CAPACITY);
-            if (stack.getItem() instanceof ItemArmor) {
-                capacity *= getShieldPartition(((ItemArmor)stack.getItem()).armorType);
-            }
-            return capacity;
+            return TconEvoConfig.moduleDraconicEvolution.getBaseShieldCapacity(TraitEvolved.getEvolvedTier(stack))
+                    * ToolUtils.getTraitLevel(stack, NameConst.ARMOUR_MOD_DRACONIC_SHIELD_CAPACITY)
+                    * getShieldPartition(EntityLiving.getSlotForItemStack(stack));
         }
 
         @Override

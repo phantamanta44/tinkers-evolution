@@ -27,6 +27,16 @@ item.tconevo:metal21.name=Primal Metal Dust
 item.tconevo:metal22.name=Primal Metal Nugget
 item.tconevo:metal23.name=Primal Metal Plate
 item.tconevo:metal24.name=Primal Metal Gear
+item.tconevo:metal25.name=Bound Ingot
+item.tconevo:metal26.name=Bound Metal Dust
+item.tconevo:metal27.name=Bound Nugget
+item.tconevo:metal28.name=Bound Plate
+item.tconevo:metal29.name=Bound Gear
+item.tconevo:metal30.name=Sentient Ingot
+item.tconevo:metal31.name=Sentient Metal Dust
+item.tconevo:metal32.name=Sentient Nugget
+item.tconevo:metal33.name=Sentient Plate
+item.tconevo:metal34.name=Sentient Gear
 item.tconevo:edible0.name=Raw Meat Ingot
 item.tconevo:edible1.name=Cooked Meat Ingot
 item.tconevo.mana_giver.name=Internal Item
@@ -37,6 +47,8 @@ tile.tconevo:metal_block1.name=Draconic Metal Block
 tile.tconevo:metal_block2.name=Chaotic Metal Block
 tile.tconevo:metal_block3.name=Essence-Infused Metal Block
 tile.tconevo:metal_block4.name=Primal Metal Block
+tile.tconevo:metal_block5.name=Bound Metal Block
+tile.tconevo:metal_block6.name=Sentient Metal Block
 
 effect.tconevo.immortality=Immortality
 potion.effect.tconevo.immortality=Potion of Undying
@@ -90,6 +102,8 @@ modifier.tconevo.staggering.name=Staggering
 modifier.tconevo.staggering.desc=§o...and stay bashed!§r\nThis weapon briefly immobilizes enemies on fully-charged hits.
 modifier.tconevo.sundering.name=Sundering
 modifier.tconevo.sundering.desc=§oBalance is weakness...§r\nThis weapon weakens attacked enemies.
+modifier.tconevo.vampiric.name=Vampiric
+modifier.tconevo.vampiric.desc=§oStill befriending mortals?§r\nThis weapon drains life energy from enemies to heal its wielder.
 modifier.tconevo.fluxed.name=Fluxed
 modifier.tconevo.fluxed.desc=§oIt's been years!§r\nThis tool consumes energy before durability.
 
@@ -197,6 +211,30 @@ modifier.tconevo.attuned_octans_armor.name=Attuned (Octans)
 modifier.tconevo.attuned_octans_armor.desc=§oEffervescent!§r\nThis armour piece is aligned with Octans and grants water breathing.
 modifier.tconevo.attuned_pelotrio_armor.name=Attuned (Pelotrio)
 modifier.tconevo.attuned_pelotrio_armor.desc=§oEffervescent!§r\nThis armour piece is aligned with Pelotrio and repairs itself over time.
+
+material.bound_metal.name=Bound
+fluid.tconevo.bound_metal.name=Molten Bound Metal
+material.sentient_metal.name=Sentient
+fluid.tconevo.sentient_metal.name=Fluidic Sentience
+
+modifier.tconevo.crystalys.name=Crystalys
+modifier.tconevo.crystalys.desc=§oI'm not afraid of the darkness!§r\nThis weapon shatters soul networks to manifest weak blood shards.
+modifier.tconevo.bloodbound.name=Bloodbound
+modifier.tconevo.bloodbound.desc=§oThe multitudinous seas incarnadine...§r\nThis tool siphons its user's life essence to prevent damage to itself.
+modifier.tconevo.sentient.name=Sentient
+modifier.tconevo.sentient.desc=§oIt knows what you've done...§r\nThis tool consumes demon will to increase its power.
+modifier.tconevo.willful.name=Willful
+modifier.tconevo.willful.desc=§oYour soul is mine!§r\nThis weapon severs the strands of demonic will that bind its enemies.
+
+modifier.tconevo.soul_guard_armor.name=Soul Guard
+modifier.tconevo.soul_guard_armor.desc=§oOn that day, the reaper laid down his scythe...§r\nThis armour siphons its user's life essence to mitigate a portion of incoming damage.
+modifier.tconevo.soul_guard_armor.extra=Soul Guard: +%s
+modifier.tconevo.bloodbound_armor.name=Bloodbound
+modifier.tconevo.bloodbound_armor.desc=§oThe multitudinous seas incarnadine...§r\nThis armour siphons its user's life essence to prevent damage to itself.
+modifier.tconevo.sentient_armor.name=Sentient
+modifier.tconevo.sentient_armor.desc=§oIt knows what you've done...§r\nThis armour consumes demon will to increase its power.
+modifier.tconevo.willful_armor.name=Willful
+modifier.tconevo.willful_armor.desc=§oYour soul is mine!§r\nThis armour ensnares the souls of those that would attack it.
 
 material.livingrock.name=Livingrock
 fluid.tconevo.livingrock.name=Molten Livingrock
@@ -354,6 +392,7 @@ death.attack.tconevo.chaos=%1$s was annihilated by %2$s using dark energy
 death.attack.tconevo.chaos.item=%1$s was annihilated by %2$s using the dark energy of %3$s
 
 attribute.name.tconevo.flightSpeed=Flight Speed
+attribute.name.tconevo.damageTaken=Damage Taken
 
 commands.tconevo.generic.player_only=Only players can use this command.
 commands.tconevo.generic.req_tool=You need a Tinkers' Construct item to use this command.

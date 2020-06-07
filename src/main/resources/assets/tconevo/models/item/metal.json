@@ -47,6 +47,24 @@
           "plate": "tconevo:items/metal/plate/primal_metal",
           "gear": "tconevo:items/metal/gear/primal_metal"
         }
+      },
+      "BOUND_METAL": {
+        "textures": {
+          "ingot": "tconevo:items/metal/ingot/bound_metal",
+          "dust": "tconevo:items/metal/dust/bound_metal",
+          "nugget": "tconevo:items/metal/nugget/bound_metal",
+          "plate": "tconevo:items/metal/plate/bound_metal",
+          "gear": "tconevo:items/metal/gear/bound_metal"
+        }
+      },
+      "SENTIENT_METAL": {
+        "textures": {
+          "ingot": "tconevo:items/metal/ingot/sentient_metal",
+          "dust": "tconevo:items/metal/dust/sentient_metal",
+          "nugget": "tconevo:items/metal/nugget/sentient_metal",
+          "plate": "tconevo:items/metal/plate/sentient_metal",
+          "gear": "tconevo:items/metal/gear/sentient_metal"
+        }
       }
     },
     "form": {

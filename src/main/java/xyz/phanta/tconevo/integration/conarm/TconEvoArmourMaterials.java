@@ -70,6 +70,18 @@ public class TconEvoArmourMaterials {
                 .withTraits(ArmourPartType.ARMOUR, ArmorTraits.magnetic)
                 .build();
 
+        // blood magic
+        new ArmourMaterialBuilder(TconEvoMaterials.BOUND_METAL)
+                .withStatsArmour(15F, 20F, 1F, 8F, 4F, 9F)
+                .withTraits(ArmourPartType.CORE, TconEvoArmourTraits.TRAIT_SOUL_GUARD)
+                .withTraits(ArmourPartType.ARMOUR, TconEvoArmourTraits.TRAIT_BLOODBOUND)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.SENTIENT_METAL)
+                .withStatsArmour(13F, 16F, 0.75F, 6F, 1F, 7.5F)
+                .withTraits(ArmourPartType.CORE, TconEvoArmourTraits.TRAIT_SENTIENT)
+                .withTraits(ArmourPartType.ARMOUR, TconEvoArmourTraits.TRAIT_WILLFUL)
+                .build();
+
         // botania
         new ArmourMaterialBuilder(TconEvoMaterials.LIVINGROCK)
                 .withStatsArmour(9F, 5.2F, 0.5F, 0F, 0F, 0.8F)

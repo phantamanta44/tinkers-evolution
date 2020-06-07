@@ -4,7 +4,6 @@ import io.github.phantamanta44.libnine.InitMe;
 import io.github.phantamanta44.libnine.util.math.MathUtils;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
@@ -16,19 +15,20 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.TconEvoMod;
 import xyz.phanta.tconevo.constant.NameConst;
+import xyz.phanta.tconevo.potion.PotionDamageReduction;
 import xyz.phanta.tconevo.potion.PotionDispellable;
 import xyz.phanta.tconevo.potion.PotionUndispellable;
+import xyz.phanta.tconevo.util.DamageUtils;
 
 public class TconEvoPotions {
 
-    private static final String PREFIX = "effect.tconevo.";
+    public static final String PREFIX = "effect.tconevo.";
 
     public static final Potion IMMORTALITY = new PotionUndispellable(false, 0xebc083)
             .setBeneficial().setPotionName(PREFIX + NameConst.POTION_IMMORTALITY);
     public static final Potion MORTAL_WOUNDS = new PotionDispellable(true, 0x5f5d8e)
             .setPotionName(PREFIX + NameConst.POTION_MORTAL_WOUNDS);
-    public static final Potion DAMAGE_REDUCTION = new PotionDispellable(false, 0x5a059a)
-            .setBeneficial().setPotionName(PREFIX + NameConst.POTION_DAMAGE_REDUCTION);
+    public static final Potion DAMAGE_REDUCTION = new PotionDamageReduction();
 
     @InitMe
     public static void init() {
@@ -46,18 +46,11 @@ public class TconEvoPotions {
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public void onEntityHurt(LivingDamageEvent event) {
         DamageSource dmgSrc = event.getSource();
-        // don't block void damage or /kill
-        if (dmgSrc == DamageSource.OUT_OF_WORLD
-                || (event.getAmount() == Float.MAX_VALUE && dmgSrc.isUnblockable() && dmgSrc.canHarmInCreative())) {
+        float amount = event.getAmount();
+        if (amount <= 0F || DamageUtils.isPureDamage(dmgSrc, amount)) {
             return;
         }
         EntityLivingBase entity = event.getEntityLiving();
-        float amount = event.getAmount();
-        PotionEffect dmgReduction = entity.getActivePotionEffect(DAMAGE_REDUCTION);
-        if (dmgReduction != null) {
-            amount /= 1F + (dmgReduction.getAmplifier() + 1F)
-                    * (float)TconEvoConfig.general.effectDamageReductionDividerIncrement;
-        }
         if (entity.getActivePotionEffect(IMMORTALITY) != null) {
             // never let damage drop the player below 1 health
             amount = MathUtils.clamp(entity.getHealth() - 1F, 0F, amount);

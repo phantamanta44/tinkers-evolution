@@ -3,6 +3,7 @@ package xyz.phanta.tconevo.integration.conarm.trait.botania;
 import c4.conarm.lib.armor.ArmorCore;
 import c4.conarm.lib.traits.AbstractArmorTraitLeveled;
 import io.github.phantamanta44.libnine.util.format.FormatUtils;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import xyz.phanta.tconevo.TconEvoConfig;
@@ -20,7 +21,7 @@ public class ArmourTraitManaAffinity extends AbstractArmorTraitLeveled {
     }
 
     public static float getDiscount(ItemStack stack, int level) {
-        return level * (float)TconEvoConfig.moduleBotania.getManaAffinityDiscount(((ArmorCore)stack.getItem()).armorType);
+        return level * (float)TconEvoConfig.moduleBotania.getManaAffinityDiscount(EntityLiving.getSlotForItemStack(stack));
     }
 
     @Override

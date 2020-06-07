@@ -4,7 +4,6 @@ import io.github.phantamanta44.libnine.client.model.ParameterizedItemModel;
 import io.github.phantamanta44.libnine.item.L9ItemSubs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
-import net.minecraftforge.oredict.OreDictionary;
 import xyz.phanta.tconevo.constant.NameConst;
 
 public class ItemMetal extends L9ItemSubs implements ParameterizedItemModel.IParamaterized {
@@ -25,7 +24,8 @@ public class ItemMetal extends L9ItemSubs implements ParameterizedItemModel.IPar
     public enum Type implements IStringSerializable {
 
         WYVERN_METAL("WyvernMetal"), DRACONIC_METAL("DraconicMetal"), CHAOTIC_METAL("ChaoticMetal"),
-        ESSENCE_METAL("EssenceMetal"), PRIMAL_METAL("Primordial");
+        ESSENCE_METAL("EssenceMetal"), PRIMAL_METAL("Primordial"), BOUND_METAL("BoundMetal"),
+        SENTIENT_METAL("SentientMetal");
 
         public static final Type[] VALUES = values();
 

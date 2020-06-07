@@ -13,7 +13,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: "com.wynprice.cursemaven"
 
-version = "1.0.9"
+version = "1.0.10"
 group = "xyz.phanta.tconevo"
 archivesBaseName = "tconevo-1.12.2"
 
@@ -55,6 +55,10 @@ repositories {
         name = "Bluexin Maven"
         url = "http://maven.bluexin.be/repository/snapshots/"
     }
+    maven {
+        name = "TehNut Maven"
+        url = "https://tehnut.info/maven/"
+    }
 }
 
 dependencies {
@@ -81,6 +85,7 @@ dependencies {
     deobfCompile "curse.maven:actually-additions:2844115" // r151-2
     deobfCompile "curse.maven:thaumcraft:2629023" // 6.1.BETA26
     deobfCompile "curse.maven:astral-sorcery:2971187" // 1.10.24
+    deobfCompile "com.wayoftime.bloodmagic:BloodMagic:1.12.2-2.4.3-105"
 }
 
 jar {

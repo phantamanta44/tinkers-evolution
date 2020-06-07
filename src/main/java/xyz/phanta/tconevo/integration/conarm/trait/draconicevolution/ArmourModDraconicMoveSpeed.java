@@ -26,7 +26,7 @@ public class ArmourModDraconicMoveSpeed extends ArmourModDraconic {
                 attributeMap.put(SharedMonsterAttributes.MOVEMENT_SPEED.getName(), new AttributeModifier(
                         ATTR_SPEED, "Draconic Move Speed",
                         0.5D * Math.pow(2D, tier - 1D),
-                        Constants.AttributeModifierOperation.MULTIPLY));
+                        Constants.AttributeModifierOperation.ADD_MULTIPLE));
             }
         }
     }

@@ -12,6 +12,8 @@ module.exports = {
     { key: 'draconic_metal', oreName: 'DraconicMetal' },
     { key: 'chaotic_metal', oreName: 'ChaoticMetal' },
     { key: 'essence_metal', oreName: 'EssenceMetal' },
-    { key: 'primal_metal', oreName: 'Primordial' }
+    { key: 'primal_metal', oreName: 'Primordial' },
+    { key: 'bound_metal', oreName: 'BoundMetal' },
+    { key: 'sentient_metal', oreName: 'SentientMetal' }
   ]
 }

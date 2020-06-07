@@ -3,6 +3,7 @@ package xyz.phanta.tconevo.integration.conarm.trait.botania;
 import c4.conarm.lib.armor.ArmorCore;
 import c4.conarm.lib.traits.AbstractArmorTrait;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -27,7 +28,7 @@ public class ArmourTraitFaeVoice extends AbstractArmorTrait {
     }
 
     private static double getProbability(ItemStack stack) {
-        return TconEvoConfig.moduleBotania.getFaeVoiceProbabilityArmour(((ArmorCore)stack.getItem()).armorType);
+        return TconEvoConfig.moduleBotania.getFaeVoiceProbabilityArmour(EntityLiving.getSlotForItemStack(stack));
     }
 
     // since we're doing this orthogonal to botania's own handler, players could potentially get two pixies per hit

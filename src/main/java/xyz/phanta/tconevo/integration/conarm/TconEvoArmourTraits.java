@@ -11,6 +11,10 @@ import xyz.phanta.tconevo.integration.botania.BotaniaHooks;
 import xyz.phanta.tconevo.integration.conarm.trait.*;
 import xyz.phanta.tconevo.integration.conarm.trait.astralsorcery.ArmourModAttuned;
 import xyz.phanta.tconevo.integration.conarm.trait.astralsorcery.ArmourTraitAstral;
+import xyz.phanta.tconevo.integration.conarm.trait.bloodmagic.ArmourTraitBloodbound;
+import xyz.phanta.tconevo.integration.conarm.trait.bloodmagic.ArmourTraitSentient;
+import xyz.phanta.tconevo.integration.conarm.trait.bloodmagic.ArmourTraitSoulGuard;
+import xyz.phanta.tconevo.integration.conarm.trait.bloodmagic.ArmourTraitWillful;
 import xyz.phanta.tconevo.integration.conarm.trait.botania.ArmourTraitAuraInfused;
 import xyz.phanta.tconevo.integration.conarm.trait.botania.ArmourTraitFaeVoice;
 import xyz.phanta.tconevo.integration.conarm.trait.botania.ArmourTraitManaAffinity;
@@ -57,6 +61,12 @@ public class TconEvoArmourTraits {
             MOD_ATTUNED.put(mod.getConstellation(), mod);
         }
     }
+
+    // blood magic
+    public static final ArmourTraitSoulGuard TRAIT_SOUL_GUARD = new ArmourTraitSoulGuard();
+    public static final ArmourTraitBloodbound TRAIT_BLOODBOUND = new ArmourTraitBloodbound();
+    public static final ArmourTraitSentient TRAIT_SENTIENT = new ArmourTraitSentient();
+    public static final ArmourTraitWillful TRAIT_WILLFUL = new ArmourTraitWillful();
 
     // botania
     public static final ArmourTraitAuraInfused TRAIT_AURA_INFUSED = new ArmourTraitAuraInfused();
