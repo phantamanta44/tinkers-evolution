@@ -14,7 +14,6 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import xyz.phanta.tconevo.capability.EnergyShield;
 import xyz.phanta.tconevo.init.TconEvoCaps;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
-import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooksImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +53,7 @@ public class EnergyShieldHandler {
         float bonusEntropyCost = 0F;
         if (attackerEntity instanceof EntityPlayer) {
             EntityPlayer attacker = (EntityPlayer)attackerEntity;
-            IPair<Float, Float> newDamage = DraconicHooksImpl.INSTANCE
+            IPair<Float, Float> newDamage = DraconicHooks.INSTANCE
                     .applyShieldDamageModifiers(player, attacker, totalShieldPoints, damage);
             if (newDamage != null) {
                 damage = newDamage.getA();
