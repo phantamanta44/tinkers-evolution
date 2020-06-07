@@ -25,6 +25,10 @@ public class MaterialDefinition {
     private static final List<MaterialDefinition> materialDefs = new ArrayList<>();
     private static final Set<String> blacklisted = Sets.newHashSet(TconEvoConfig.disabledMaterials);
 
+    public static boolean isNotBlacklisted(String matId) {
+        return !blacklisted.contains(matId);
+    }
+
     public static void register(Material material,
                                 MaterialForm form,
                                 String oreName,
@@ -51,7 +55,7 @@ public class MaterialDefinition {
 
     public static void activate() {
         for (MaterialDefinition defn : materialDefs) {
-            if (!blacklisted.contains(defn.material.identifier)) {
+            if (isNotBlacklisted(defn.material.identifier)) {
                 try {
                     defn.tryActivate();
                 } catch (Exception e) {
