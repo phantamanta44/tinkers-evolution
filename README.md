@@ -14,6 +14,9 @@ Current mod integration modules are as follows:
 * **Astral Sorcery**
     * Adds aquamarine and starmetal materials
     * Adds special modifiers that can be applied to AS materials through alignment with a constellation
+* **Blood Magic**
+    * Adds sentient material that gains power from demon will
+    * Adds bloodbound material that negates damage using LP
 * **Botania**
     * Adds botanical materials and metals
     * Adds various traits that interact with mana
