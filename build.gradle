@@ -2,7 +2,7 @@
 buildscript {
     repositories {
         jcenter()
-        maven { url = "http://files.minecraftforge.net/maven" }
+        maven { url "http://files.minecraftforge.net/maven" }
         maven { url "https://plugins.gradle.org/m2/" }
     }
     dependencies {
@@ -32,32 +32,32 @@ minecraft {
 repositories {
     mavenLocal()
     maven {
-        name = 'DVS1 Repo'
-        url = 'http://dvs1.progwml6.com/files/maven/'
+        name 'DVS1 Repo'
+        url 'http://dvs1.progwml6.com/files/maven/'
     }
     maven {
-        name = "OpenComputers"
-        url = "https://maven.cil.li"
+        name "OpenComputers"
+        url "https://maven.cil.li"
     }
     maven {
-        name = "CoFH Maven"
-        url = "http://maven.covers1624.net"
+        name "CoFH Maven"
+        url "http://maven.covers1624.net"
     }
     maven {
-        name = "Thiakil Maven"
-        url = "http://maven.thiakil.com/"
+        name "Thiakil Maven"
+        url "http://maven.thiakil.com/"
     }
     maven {
-        name = "BlameJared Maven"
-        url = "https://maven.blamejared.com/"
+        name "BlameJared Maven"
+        url "https://maven.blamejared.com/"
     }
     maven {
-        name = "Bluexin Maven"
-        url = "http://maven.bluexin.be/repository/snapshots/"
+        name "Bluexin Maven"
+        url "http://maven.bluexin.be/repository/snapshots/"
     }
     maven {
-        name = "TehNut Maven"
-        url = "https://tehnut.info/maven/"
+        name "TehNut Maven"
+        url "https://tehnut.info/maven/"
     }
 }
 
@@ -70,14 +70,15 @@ dependencies {
     deobfCompile 'com.azanor.baubles:Baubles:1.12-1.5.2'
     deobfCompile "codechicken:CodeChickenLib:1.12.2-3.2.3.358:universal"
     deobfCompile "cofh:RedstoneFlux:1.12-2.1.0.7:universal"
-    // get DE deps from curseforge because trying to get it from a proper repo Fs up dependencies extremely hard
-    // because DE/PI depend on deobf jars for some reason and the deobf mappings versions differ
     deobfCompile "curse.maven:brandons-core:2867147" // 2.4.18.210
     deobfCompile "curse.maven:draconic-evolution:2867186" // 2.3.25.351
     deobfCompile "vazkii.botania:Botania:r1.10-363.148"
     deobfCompile "com.teamwizardry.librarianlib:librarianlib-1.12.2:4.19.1"
     deobfCompile "curse.maven:natural-pledge:2740703" // r3.1.2
     deobfCompile "cofh:CoFHCore:1.12.2-4.6.3.27:universal"
+//    deobfCompile("cofh:CoFHCore:1.12.2-4.6.3.27:universal") {
+//        println artifacts.collect { it.classifier }
+//    }
     deobfCompile "cofh:ThermalExpansion:1.12.2-5.5.4.43:universal"
     deobfCompile "curse.maven:industrial-foregoing:2745321"
     deobfCompile 'appeng:appliedenergistics2:rv6-stable-7'
@@ -86,6 +87,30 @@ dependencies {
     deobfCompile "curse.maven:thaumcraft:2629023" // 6.1.BETA26
     deobfCompile "curse.maven:astral-sorcery:2971187" // 1.10.24
     deobfCompile "com.wayoftime.bloodmagic:BloodMagic:1.12.2-2.4.3-105"
+}
+
+// when forgegradle deobfs dependency jars, it'll try to cheat and grab the sources jar and remap *that* to avoid decompiling
+// however, since we use IDE builds instead of delegating to maven, this means pre-deobf'd sources jars that are built
+// on different deobf mappings versions will completely F up the build with class/member resolution errors
+// this is a dumb workaround for that: we just delete the tasks that do the cheating and thus force forge to deobf built jars
+Set SOURCES_BLACKLIST = ['CoFHCore-1.12.2']
+afterEvaluate {
+    tasks.deobfCompileDummyTask.dependsOn.removeIf {
+        if (it.hasProperty('inJar')) {
+            def name = it.inJar.name
+            if (name.endsWith('-sources.jar')) {
+                def artifact = name.substring(0, name.substring(0, name.length() - 12).lastIndexOf('-'))
+                print "Found sources jar: $artifact"
+                if (artifact in SOURCES_BLACKLIST) {
+                    println " (BLACKLISTED)"
+                    return true
+                } else {
+                    println()
+                }
+            }
+        }
+        return false
+    }
 }
 
 jar {
