@@ -562,12 +562,6 @@
     * tools: corrupting + culling
     * armour: aspect of the phoenix + gale force
 
-## the one probe
-
-### armour mods
-
-* probing (the one probe): attaches a probe to your armour
-
 ## thermal series
 
 ### materials
