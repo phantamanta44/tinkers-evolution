@@ -524,7 +524,7 @@ public class TconEvoMaterials {
                 .withStatsHead(150, 13F, 4.5F, HarvestLevels.IRON)
                 .withStatsHandle(0.7F, 0)
                 .withStatsExtra(15)
-                .withStatsBow(2F, 1F, -4F) // machine gun bow is back!!!
+                .withStatsBow(5F, 1F, -4F) // machine gun bow is back!!!
                 .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_RELENTLESS, TconEvoTraits.TRAIT_AFTERSHOCK[0])
                 .build();
         LUMIUM = new MaterialBuilder(NameConst.MAT_LUMIUM, 0xdde38d, MaterialForm.METAL, "Lumium")
