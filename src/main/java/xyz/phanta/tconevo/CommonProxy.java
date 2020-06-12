@@ -30,7 +30,7 @@ public class CommonProxy {
         MinecraftForge.EVENT_BUS.register(playerStateHandler);
         MinecraftForge.EVENT_BUS.register(energyShieldHandler);
         MinecraftForge.EVENT_BUS.register(new FlightSpeedHandler());
-        MinecraftForge.EVENT_BUS.register(new DamageAttributeHandler());
+        MinecraftForge.EVENT_BUS.register(new EntityAttributeHandler());
         SimpleNetworkWrapper netHandler = TconEvoMod.INSTANCE.getNetworkHandler();
         netHandler.registerMessage(new SPacketEntitySpecialEffect.Handler(), SPacketEntitySpecialEffect.class, 0, Side.CLIENT);
         netHandler.registerMessage(new CPacketGaiaWrath.Handler(), CPacketGaiaWrath.class, 1, Side.SERVER);

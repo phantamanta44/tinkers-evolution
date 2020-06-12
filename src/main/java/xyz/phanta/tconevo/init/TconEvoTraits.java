@@ -40,6 +40,7 @@ public class TconEvoTraits {
     public static final TraitAftershock[] TRAIT_AFTERSHOCK = {
             new TraitAftershock(1), new TraitAftershock(2), new TraitAftershock(3)
     };
+    public static final TraitBlasting TRAIT_BLASTING = new TraitBlasting();
     public static final TraitCascading TRAIT_CASCADING = new TraitCascading();
     public static final TraitCorrupting TRAIT_CORRUPTING = new TraitCorrupting();
     public static final TraitCrystalline TRAIT_CRYSTALLINE = new TraitCrystalline();
@@ -56,6 +57,7 @@ public class TconEvoTraits {
     public static final TraitRuination TRAIT_RUINATION = new TraitRuination();
     public static final TraitSundering TRAIT_SUNDERING = new TraitSundering();
     public static final TraitStaggering TRAIT_STAGGERING = new TraitStaggering();
+    public static final TraitVampiric TRAIT_VAMPIRIC = new TraitVampiric();
     public static final ModifierFluxed MOD_FLUXED = new ModifierFluxed();
 
     // astral sorcery

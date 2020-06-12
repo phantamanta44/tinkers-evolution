@@ -17,6 +17,7 @@ public class NameConst {
     public static final String POTION_DAMAGE_REDUCTION = "damage_reduction";
 
     public static final String TRAIT_AFTERSHOCK = TconEvoMod.MOD_ID + ".aftershock";
+    public static final String TRAIT_BLASTING = TconEvoMod.MOD_ID + ".blasting";
     public static final String TRAIT_CASCADING = TconEvoMod.MOD_ID + ".cascading";
     public static final String TRAIT_CORRUPTING = TconEvoMod.MOD_ID + ".corrupting";
     public static final String TRAIT_CRYSTALLINE = TconEvoMod.MOD_ID + ".crystalline";
@@ -47,6 +48,7 @@ public class NameConst {
     public static final String TRAIT_RADIANT = TconEvoMod.MOD_ID + ".radiant", ARMOUR_TRAIT_RADIANT = TRAIT_RADIANT + ARMOUR_SUFFIX;
     public static final String TRAIT_REACTIVE = TconEvoMod.MOD_ID + ".reactive", ARMOUR_TRAIT_REACTIVE = TRAIT_REACTIVE + ARMOUR_SUFFIX;
     public static final String TRAIT_SECOND_WIND = TconEvoMod.MOD_ID + ".second_wind", ARMOUR_TRAIT_SECOND_WIND = TRAIT_SECOND_WIND + ARMOUR_SUFFIX;
+    public static final String TRAIT_SPECTRAL = TconEvoMod.MOD_ID + ".spectral", ARMOUR_TRAIT_SPECTRAL = TRAIT_SPECTRAL + ARMOUR_SUFFIX;
     public static final String TRAIT_STIFLING = TconEvoMod.MOD_ID + ".stifling", ARMOUR_TRAIT_STIFLING = TRAIT_STIFLING + ARMOUR_SUFFIX;
     public static final String TRAIT_STONEBOUND = TconEvoMod.MOD_ID + ".stonebound", ARMOUR_TRAIT_STONEBOUND = TRAIT_STONEBOUND + ARMOUR_SUFFIX;
     public static final String TRAIT_WILL_STRENGTH = TconEvoMod.MOD_ID + ".will_strength", ARMOUR_TRAIT_WILL_STRENGTH = TRAIT_WILL_STRENGTH + ARMOUR_SUFFIX;
@@ -183,6 +185,13 @@ public class NameConst {
     public static final String MAT_REFINED_OBSIDIAN = "refined_obsidian";
     public static final String MAT_REFINED_GLOWSTONE = "refined_glowstone";
     public static final String MAT_HDPE = "polyethylene";
+
+    // natura
+
+    public static final String MAT_GHOSTWOOD = "ghostwood";
+    public static final String MAT_BLOODWOOD = "bloodwood";
+    public static final String MAT_DARKWOOD = "darkwood";
+    public static final String MAT_FUSEWOOD = "fusewood";
 
     // thaumcraft
 

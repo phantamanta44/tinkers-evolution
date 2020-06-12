@@ -35,6 +35,8 @@ public class TconEvoMaterials {
     public static Material ESSENCE_METAL, MEAT_METAL, PINK_SLIME, PINK_METAL;
     // mekanism
     public static Material OSMIUM, REFINED_OBSIDIAN, REFINED_GLOWSTONE, HDPE;
+    // natura
+    public static Material GHOSTWOOD, BLOODWOOD, DARKWOOD, FUSEWOOD;
     // thaumcraft
     public static Material THAUMIUM, VOID_METAL, PRIMAL_METAL;
     // thermal series
@@ -383,6 +385,49 @@ public class TconEvoMaterials {
                 .withStatsBow(1.75F, 0.6F, 0F)
                 .withStatsArrowShaft(0.75F, 75)
                 .withTraits(PartType.TOOL, TinkerTraits.cheap, TinkerTraits.crude, TconEvoTraits.TRAIT_FOOT_FLEET)
+                .build();
+
+        // natura
+        GHOSTWOOD = new MaterialBuilder(NameConst.MAT_GHOSTWOOD, 0xc1c1c1, MaterialForm.RAW, "planksGhostwood")
+                .requiresOres("planksGhostwood")
+                .setCraftable()
+                .withStatsHead(24, 3F, 2.5F, HarvestLevels.STONE)
+                .withStatsHandle(0.9F, 5)
+                .withStatsExtra(10)
+                .withStatsBow(1.5F, 1F, 0F)
+                .withStatsArrowShaft(0.9F, 12)
+                .withStatsFletching(1F, 0.9F)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_FOOT_FLEET, TinkerTraits.ecological)
+                .build();
+        BLOODWOOD = new MaterialBuilder(NameConst.MAT_BLOODWOOD, 0x761d12, MaterialForm.RAW, "planksBloodwood")
+                .requiresOres("planksBloodwood")
+                .setCraftable()
+                .withStatsHead(350, 7F, 5F, HarvestLevels.OBSIDIAN)
+                .withStatsHandle(0.75F, 40)
+                .withStatsExtra(60)
+                .withStatsBow(0.8F, 1.2F, 2.5F)
+                .withStatsArrowShaft(1.5F, 0)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_VAMPIRIC, TinkerTraits.ecological)
+                .build();
+        DARKWOOD = new MaterialBuilder(NameConst.MAT_DARKWOOD, 0x275293, MaterialForm.RAW, "planksDarkwood")
+                .requiresOres("planksDarkwood")
+                .setCraftable()
+                .withStatsHead(112, 4F, 3.5F, HarvestLevels.IRON)
+                .withStatsHandle(0.9F, 30)
+                .withStatsExtra(45)
+                .withStatsBow(0.9F, 1.1F, 1F)
+                .withStatsArrowShaft(1F, 10)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_SUNDERING, TinkerTraits.ecological)
+                .build();
+        FUSEWOOD = new MaterialBuilder(NameConst.MAT_FUSEWOOD, 0x365841, MaterialForm.RAW, "planksFusewood")
+                .requiresOres("planksFusewood")
+                .setCraftable()
+                .withStatsHead(24, 5.5F, 4.5F, HarvestLevels.DIAMOND)
+                .withStatsHandle(1F, 30)
+                .withStatsExtra(55)
+                .withStatsBow(0.75F, 1.25F, 4F)
+                .withStatsArrowShaft(1.25F, 4)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_BLASTING, TinkerTraits.ecological)
                 .build();
 
         // thaumcraft

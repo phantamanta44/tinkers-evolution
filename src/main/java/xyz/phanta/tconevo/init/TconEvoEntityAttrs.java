@@ -16,6 +16,8 @@ public class TconEvoEntityAttrs {
             .setDescription("Flight Speed").setShouldWatch(true);
     public static final IAttribute DAMAGE_TAKEN = new RangedAttribute(null, "tconevo.damageTaken", 1D, 0D, 1e9D)
             .setDescription("Damage Taken").setShouldWatch(true);
+    public static final IAttribute EVASION_CHANCE = new RangedAttribute(null, "tconevo.evasionChance", 1D, 1D, 2D)
+            .setDescription("Evasion Chance").setShouldWatch(true);
 
     @InitMe
     public static void init() {
@@ -29,6 +31,7 @@ public class TconEvoEntityAttrs {
             AbstractAttributeMap attrMap = ((EntityLivingBase)event.getObject()).getAttributeMap();
             attrMap.registerAttribute(FLIGHT_SPEED);
             attrMap.registerAttribute(DAMAGE_TAKEN);
+            attrMap.registerAttribute(EVASION_CHANCE);
         }
     }
 

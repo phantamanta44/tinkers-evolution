@@ -172,6 +172,24 @@ public class TconEvoArmourMaterials {
                 .withTraits(ArmourPartType.ARMOUR, ArmorTraits.cheap, ArmorTraits.mundane, TconEvoArmourTraits.TRAIT_REACTIVE)
                 .build();
 
+        // natura
+        new ArmourMaterialBuilder(TconEvoMaterials.GHOSTWOOD)
+                .withStatsArmour(2F, 3F, 0.9F, 1F, 0F, 0.35F)
+                .withTraits(ArmourPartType.ARMOUR, TconEvoArmourTraits.TRAIT_SPECTRAL, ArmorTraits.ecological)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.BLOODWOOD)
+                .withStatsArmour(7F, 15F, 0.75F, 5F, 2F, 6F)
+                .withTraits(ArmourPartType.ARMOUR, ArmorTraits.infernal, ArmorTraits.ecological)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.DARKWOOD)
+                .withStatsArmour(4F, 6F, 0.9F, 1.25F, 0F, 0.75F)
+                .withTraits(ArmourPartType.ARMOUR, TconEvoArmourTraits.TRAIT_STIFLING, ArmorTraits.ecological)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.FUSEWOOD)
+                .withStatsArmour(5F, 12F, 1F, 2F, 1F, 1F)
+                .withTraits(ArmourPartType.ARMOUR, ArmorTraits.steady, ArmorTraits.ecological)
+                .build();
+
         // thaumcraft
         new ArmourMaterialBuilder(TconEvoMaterials.THAUMIUM)
                 .withStatsArmour(16.5F, 16F, 1.3F, 2F, 1F, 4F)

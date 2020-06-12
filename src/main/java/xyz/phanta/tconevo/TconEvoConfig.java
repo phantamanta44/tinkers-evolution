@@ -35,6 +35,25 @@ public class TconEvoConfig {
         @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
         public double traitAftershockDamage = 2D;
 
+        @Config.Comment("The probability of creating a blast on block break with the blasting trait.")
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double traitBlastingBlockProbability = 0.05D;
+
+        @Config.Comment("The probability of creating a blast on hitting entities with the blasting trait.")
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double traitBlastingAttackProbability = 0.33D;
+
+        @Config.Comment("The probability of projectile exploding on hitting a block with the blasting trait.")
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double traitBlastingProjectileProbability = 0.33D;
+
+        @Config.Comment("The magnitude of the blast created by the blasting trait. This should probably not be too large...")
+        @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
+        public double traitBlastingMagnitude = 1D;
+
+        @Config.Comment("Whether blasts creating by the blasting trait will destroy blocks or not.")
+        public boolean traitBlastingDamagesTerrain = false;
+
         @Config.Comment({
                 "The duration, in ticks, of the slow applied by the chilling touch trait.",
                 "Only useful with Construct's Armoury installed."
@@ -153,6 +172,13 @@ public class TconEvoConfig {
         })
         @Config.RangeInt(min = 1)
         public int traitSecondWindRegenDuration = 140;
+
+        @Config.Comment({
+                "The evasion chance granted by each piece of armour with the spectarl trait.",
+                "Only useful with Construct's Armoury installed!"
+        })
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double traitSpectralEvasionChance = 0.08D;
 
         @Config.Comment("The duration, in ticks, of the root applied by the staggering trait.")
         @Config.RangeInt(min = 1)
