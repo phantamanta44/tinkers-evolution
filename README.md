@@ -31,10 +31,13 @@ Current mod integration modules are as follows:
 * **Mekanism**
     * Adds osmium, refined obsidian/glowstone, and HDPE materials
     * Allows the energy tablet to apply the "fluxed" modifier
+* **Natura**
+    * Adds materials for nether wood types
 * **Thaumcraft**
     * Adds thaumium, void metal, and primordial materials
 * **Thermal Series**
     * Adds materials for the various thermal metals
+    * Adds Verey Fast(TM) signalum bows
     * Adds support to the magma crucible for smeltery melting recipes
     * Allows flux capacitors to apply the "fluxed" modifier
 
