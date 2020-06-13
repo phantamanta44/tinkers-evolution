@@ -13,7 +13,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: "com.wynprice.cursemaven"
 
-version = "1.0.11"
+version = "1.0.12"
 group = "xyz.phanta.tconevo"
 archivesBaseName = "tconevo-1.12.2"
 
@@ -89,6 +89,7 @@ dependencies {
     deobfCompile "com.wayoftime.bloodmagic:BloodMagic:1.12.2-2.4.3-105"
     deobfCompile "com.progwml6.natura:natura:1.12.2-4.3.2.69"
     deobfCompile "curse.maven:projecte:2702991" // 1.4.1
+    deobfCompile "curse.maven:environmental-tech:2691536" // 2.0.20.1
 }
 
 // when forgegradle deobfs dependency jars, it'll try to cheat and grab the sources jar and remap *that* to avoid decompiling

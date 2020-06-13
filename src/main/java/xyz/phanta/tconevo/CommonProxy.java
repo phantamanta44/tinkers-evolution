@@ -1,6 +1,7 @@
 package xyz.phanta.tconevo;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLInterModComms;
@@ -15,8 +16,11 @@ import xyz.phanta.tconevo.integration.IntegrationManager;
 import xyz.phanta.tconevo.material.MaterialDefinition;
 import xyz.phanta.tconevo.network.CPacketGaiaWrath;
 import xyz.phanta.tconevo.network.SPacketEntitySpecialEffect;
+import xyz.phanta.tconevo.network.SPacketLightningEffect;
 import xyz.phanta.tconevo.recipe.MasterRecipes;
 import xyz.phanta.tconevo.recipe.OreDictRegistration;
+
+import java.util.List;
 
 public class CommonProxy {
 
@@ -34,6 +38,7 @@ public class CommonProxy {
         SimpleNetworkWrapper netHandler = TconEvoMod.INSTANCE.getNetworkHandler();
         netHandler.registerMessage(new SPacketEntitySpecialEffect.Handler(), SPacketEntitySpecialEffect.class, 0, Side.CLIENT);
         netHandler.registerMessage(new CPacketGaiaWrath.Handler(), CPacketGaiaWrath.class, 1, Side.SERVER);
+        netHandler.registerMessage(new SPacketLightningEffect.Handler(), SPacketLightningEffect.class, 2, Side.CLIENT);
         IntegrationManager.dispatchPreInit(event);
     }
 
@@ -70,6 +75,12 @@ public class CommonProxy {
         TconEvoMod.INSTANCE.getNetworkHandler().sendToAllAround(
                 new SPacketEntitySpecialEffect(entity.getEntityId(), type),
                 new NetworkRegistry.TargetPoint(entity.dimension, entity.posX, entity.posY, entity.posZ, 32D));
+    }
+
+    public void playLightningEffect(Entity ref, List<Vec3d> positions) {
+        TconEvoMod.INSTANCE.getNetworkHandler().sendToAllAround(
+                new SPacketLightningEffect(positions),
+                new NetworkRegistry.TargetPoint(ref.dimension, ref.posX, ref.posY, ref.posZ, 64D));
     }
 
 }

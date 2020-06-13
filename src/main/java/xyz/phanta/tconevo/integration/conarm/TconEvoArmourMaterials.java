@@ -136,6 +136,36 @@ public class TconEvoArmourMaterials {
                 .withTraits(ArmourPartType.EXTRA, TconEvoArmourTraits.TRAIT_GALE_FORCE[1])
                 .build();
 
+        // environmental tech
+        new ArmourMaterialBuilder(TconEvoMaterials.LITHERITE)
+                .withStatsArmour(6F, 17F, 1F, 4F, 0F, 5F)
+                .withTraits(ArmourPartType.ARMOUR, ArmorTraits.rough, ArmorTraits.petravidity)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.ERODIUM)
+                .withStatsArmour(7F, 18.5F, 1F, 4.5F, 0F, 5.5F)
+                .withTraits(ArmourPartType.ARMOUR, ArmorTraits.lightweight, ArmorTraits.subterranean)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.KYRONITE)
+                .withStatsArmour(8F, 20F, 1F, 5F, 1F, 6F)
+                .withTraits(ArmourPartType.PROTECTIVE, ArmorTraits.infernal)
+                .withTraits(ArmourPartType.TRIM, ArmorTraits.invigorating)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.PLADIUM)
+                .withStatsArmour(9F, 21.5F, 1F, 5.5F, 2F, 6.5F)
+                .withTraits(ArmourPartType.PROTECTIVE, TconEvoArmourTraits.TRAIT_BULWARK)
+                .withTraits(ArmourPartType.TRIM, TconEvoArmourTraits.TRAIT_SECOND_WIND)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.IONITE)
+                .withStatsArmour(10F, 23F, 1F, 6F, 3.5F, 7F)
+                .withTraits(ArmourPartType.PROTECTIVE, TconEvoArmourTraits.TRAIT_SHADOWSTEP)
+                .withTraits(ArmourPartType.TRIM, TconEvoArmourTraits.TRAIT_GALE_FORCE[0])
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.AETHIUM)
+                .withStatsArmour(11F, 24.5F, 1F, 7F, 5.5F, 8F)
+                .withTraits(ArmourPartType.PROTECTIVE, TconEvoArmourTraits.TRAIT_CELESTIAL)
+                .withTraits(ArmourPartType.TRIM, TconEvoArmourTraits.TRAIT_SPECTRAL)
+                .build();
+
         // industrial foregoing
         new ArmourMaterialBuilder(TconEvoMaterials.ESSENCE_METAL)
                 .withStatsArmour(15F, 13F, 1.5F, 0.15F, 0F, 1.5F)

@@ -15,14 +15,18 @@ public class NameConst {
     public static final String POTION_IMMORTALITY = "immortality";
     public static final String POTION_MORTAL_WOUNDS = "mortal_wounds";
     public static final String POTION_DAMAGE_REDUCTION = "damage_reduction";
+    public static final String POTION_DAMAGE_BOOST = "damage_boost";
 
     public static final String TRAIT_AFTERSHOCK = TconEvoMod.MOD_ID + ".aftershock";
+    public static final String TRAIT_BATTLE_FUROR = TconEvoMod.MOD_ID + ".battle_furor";
     public static final String TRAIT_BLASTING = TconEvoMod.MOD_ID + ".blasting";
     public static final String TRAIT_CASCADING = TconEvoMod.MOD_ID + ".cascading";
+    public static final String TRAIT_CHAIN_LIGHTNING = TconEvoMod.MOD_ID + ".chain_lightning";
     public static final String TRAIT_CORRUPTING = TconEvoMod.MOD_ID + ".corrupting";
     public static final String TRAIT_CRYSTALLINE = TconEvoMod.MOD_ID + ".crystalline";
     public static final String TRAIT_CULLING = TconEvoMod.MOD_ID + ".culling";
     public static final String TRAIT_DEADLY_PRECISION = TconEvoMod.MOD_ID + ".deadly_precision";
+    public static final String TRAIT_EXECUTOR = TconEvoMod.MOD_ID + ".executor";
     public static final String TRAIT_FOOT_FLEET = TconEvoMod.MOD_ID + ".foot_fleet";
     public static final String TRAIT_IMPACT_FORCE = TconEvoMod.MOD_ID + ".impact_force";
     public static final String TRAIT_JUGGERNAUT = TconEvoMod.MOD_ID + ".juggernaut";
@@ -50,6 +54,7 @@ public class NameConst {
     public static final String TRAIT_RADIANT = TconEvoMod.MOD_ID + ".radiant", ARMOUR_TRAIT_RADIANT = TRAIT_RADIANT + ARMOUR_SUFFIX;
     public static final String TRAIT_REACTIVE = TconEvoMod.MOD_ID + ".reactive", ARMOUR_TRAIT_REACTIVE = TRAIT_REACTIVE + ARMOUR_SUFFIX;
     public static final String TRAIT_SECOND_WIND = TconEvoMod.MOD_ID + ".second_wind", ARMOUR_TRAIT_SECOND_WIND = TRAIT_SECOND_WIND + ARMOUR_SUFFIX;
+    public static final String TRAIT_SHADOWSTEP = TconEvoMod.MOD_ID + ".shadowstep", ARMOUR_TRAIT_SHADOWSTEP = TRAIT_SHADOWSTEP + ARMOUR_SUFFIX;
     public static final String TRAIT_SPECTRAL = TconEvoMod.MOD_ID + ".spectral", ARMOUR_TRAIT_SPECTRAL = TRAIT_SPECTRAL + ARMOUR_SUFFIX;
     public static final String TRAIT_STIFLING = TconEvoMod.MOD_ID + ".stifling", ARMOUR_TRAIT_STIFLING = TRAIT_STIFLING + ARMOUR_SUFFIX;
     public static final String TRAIT_STONEBOUND = TconEvoMod.MOD_ID + ".stonebound", ARMOUR_TRAIT_STONEBOUND = TRAIT_STONEBOUND + ARMOUR_SUFFIX;
@@ -169,6 +174,17 @@ public class NameConst {
     public static final String ARMOUR_MOD_DRACONIC_JUMP_BOOST = MOD_DRACONIC_JUMP_BOOST + ARMOUR_SUFFIX;
     public static final String MOD_CHAOS_RESISTANCE = TconEvoMod.MOD_ID + ".chaos_resistance", ARMOUR_MOD_CHAOS_RESISTANCE = MOD_CHAOS_RESISTANCE + ARMOUR_SUFFIX;
     public static final String MOD_FINAL_GUARD = TconEvoMod.MOD_ID + ".final_guard", ARMOUR_MOD_FINAL_GUARD = MOD_FINAL_GUARD + ARMOUR_SUFFIX;
+
+    // environmental tech
+
+    public static final String MAT_LITHERITE = "litherite";
+    public static final String MAT_ERODIUM = "erodium";
+    public static final String MAT_KYRONITE = "kyronite";
+    public static final String MAT_PLADIUM = "pladium";
+    public static final String MAT_IONITE = "ionite";
+    public static final String MAT_AETHIUM = "aethium";
+    public static final String MAT_LONSDALEITE = "lonsdaleite";
+    public static final String MAT_MICA = "mica";
 
     // industrial foregoing
 

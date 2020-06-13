@@ -3,10 +3,10 @@ package xyz.phanta.tconevo.trait;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.DamageSource;
 import slimeknights.tconstruct.library.traits.AbstractTraitLeveled;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.constant.NameConst;
+import xyz.phanta.tconevo.util.DamageUtils;
 import xyz.phanta.tconevo.util.ToolUtils;
 
 public class TraitAftershock extends AbstractTraitLeveled {
@@ -29,16 +29,8 @@ public class TraitAftershock extends AbstractTraitLeveled {
         float bonusDamage = getBonusDamage(ToolUtils.getTraitLevel(tool, NameConst.TRAIT_AFTERSHOCK));
         if (bonusDamage > 0F) {
             target.hurtResistantTime = 0;
-            target.attackEntityFrom(getDamageSource(player), bonusDamage);
+            target.attackEntityFrom(DamageUtils.getEntityDamageSource(player).setMagicDamage(), bonusDamage);
         }
-    }
-
-    private static DamageSource getDamageSource(EntityLivingBase attacker) {
-        // plustic makes morgan le fay damage bypass armour for some reason
-        // we don't do that here
-        return (attacker instanceof EntityPlayer
-                ? DamageSource.causePlayerDamage((EntityPlayer)attacker)
-                : DamageSource.causeMobDamage(attacker)).setMagicDamage();
     }
 
 }

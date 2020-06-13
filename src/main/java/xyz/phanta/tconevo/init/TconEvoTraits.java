@@ -41,12 +41,15 @@ public class TconEvoTraits {
     public static final TraitAftershock[] TRAIT_AFTERSHOCK = {
             new TraitAftershock(1), new TraitAftershock(2), new TraitAftershock(3)
     };
+    public static final TraitBattleFuror TRAIT_BATTLE_FUROR = new TraitBattleFuror();
     public static final TraitBlasting TRAIT_BLASTING = new TraitBlasting();
     public static final TraitCascading TRAIT_CASCADING = new TraitCascading();
+    public static final TraitChainLightning TRAIT_CHAIN_LIGHTNING = new TraitChainLightning();
     public static final TraitCorrupting TRAIT_CORRUPTING = new TraitCorrupting();
     public static final TraitCrystalline TRAIT_CRYSTALLINE = new TraitCrystalline();
     public static final TraitCulling TRAIT_CULLING = new TraitCulling();
     public static final TraitDeadlyPrecision TRAIT_DEADLY_PRECISION = new TraitDeadlyPrecision();
+    public static final TraitExecutor TRAIT_EXECUTOR = new TraitExecutor();
     public static final TraitFootFleet TRAIT_FOOT_FLEET = new TraitFootFleet();
     public static final TraitImpactForce TRAIT_IMPACT_FORCE = new TraitImpactForce();
     public static final TraitJuggernaut TRAIT_JUGGERNAUT = new TraitJuggernaut();

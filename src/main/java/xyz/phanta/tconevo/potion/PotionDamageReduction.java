@@ -18,7 +18,7 @@ public class PotionDamageReduction extends PotionDispellable {
     }
 
     public double getAttributeModifierAmount(int amplifier, AttributeModifier modifier) {
-        return (amplifier + 1) * TconEvoConfig.general.effectDamageReductionPercentage;
+        return -(amplifier + 1) * TconEvoConfig.general.effectDamageReductionPercentage;
     }
 
 }

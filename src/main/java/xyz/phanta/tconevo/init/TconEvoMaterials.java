@@ -32,6 +32,8 @@ public class TconEvoMaterials {
     public static Material LIVINGROCK, LIVINGWOOD, DREAMWOOD, MANASTEEL, TERRASTEEL, ELEMENTIUM, MANA_STRING;
     // draconic evolution
     public static Material DRACONIUM, WYVERN_METAL, DRACONIC_METAL, CHAOTIC_METAL;
+    // environmental tech
+    public static Material LITHERITE, ERODIUM, KYRONITE, PLADIUM, IONITE, AETHIUM, LONSDALEITE, MICA;
     // industrial foregoing
     public static Material ESSENCE_METAL, MEAT_METAL, PINK_SLIME, PINK_METAL;
     // mekanism
@@ -312,6 +314,89 @@ public class TconEvoMaterials {
                 .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_SOUL_REND[2])
                 .build();
         TraitEvolved.registerMaterial(CHAOTIC_METAL, 3);
+
+        // environmental tech
+        LITHERITE = new MaterialBuilder(NameConst.MAT_LITHERITE, 0x0a8352, MaterialForm.GEM, "Litherite")
+                .requiresOres("crystalLitherite")
+                .setCraftable()
+                .withStatsHead(300, 6.5F, 4F, HarvestLevels.DIAMOND)
+                .withStatsHandle(1F, 20)
+                .withStatsExtra(25)
+                .withStatsBow(0.75F, 1.25F, 2F)
+                .withTraits(PartType.TOOL, TinkerTraits.jagged, TinkerTraits.petramor)
+                .build();
+        ERODIUM = new MaterialBuilder(NameConst.MAT_ERODIUM, 0x7d6793, MaterialForm.GEM, "Erodium")
+                .requiresOres("crystalErodium")
+                .setCraftable()
+                .withStatsHead(325, 7F, 5F, HarvestLevels.OBSIDIAN)
+                .withStatsHandle(1F, 35)
+                .withStatsExtra(45)
+                .withStatsBow(0.85F, 1.2F, 1.5F)
+                .withTraits(PartType.TOOL, TinkerTraits.lightweight, TinkerTraits.depthdigger)
+                .build();
+        KYRONITE = new MaterialBuilder(NameConst.MAT_KYRONITE, 0x47163f, MaterialForm.GEM, "Kyronite")
+                .requiresOres("crystalKyronite")
+                .setCraftable()
+                .withStatsHead(350, 7.5F, 6F, HarvestLevels.OBSIDIAN)
+                .withStatsHandle(1F, 50)
+                .withStatsExtra(65)
+                .withStatsBow(0.95F, 1.15F, 1F)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_BATTLE_FUROR)
+                .build();
+        PLADIUM = new MaterialBuilder(NameConst.MAT_PLADIUM, 0x23335e, MaterialForm.GEM, "Pladium")
+                .requiresOres("crystalPladium")
+                .setCraftable()
+                .withStatsHead(375, 8F, 7F, HarvestLevels.COBALT)
+                .withStatsHandle(1F, 65)
+                .withStatsExtra(85)
+                .withStatsBow(1.05F, 1.1F, 0.5F)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_RELENTLESS)
+                .build();
+        IONITE = new MaterialBuilder(NameConst.MAT_IONITE, 0x68ccf8, MaterialForm.GEM, "Ionite")
+                .requiresOres("crystalIonite")
+                .setCraftable()
+                .withStatsHead(400, 8.5F, 8F, 5)
+                .withStatsHandle(1F, 80)
+                .withStatsExtra(105)
+                .withStatsBow(1.15F, 1.05F, 1F)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_DEADLY_PRECISION, TconEvoTraits.TRAIT_CHAIN_LIGHTNING)
+                .build();
+        AETHIUM = new MaterialBuilder(NameConst.MAT_AETHIUM, 0x121212, MaterialForm.GEM, "Aethium")
+                .requiresOres("crystalAethium")
+                .setCraftable()
+                .withStatsHead(425, 9F, 9F, 6)
+                .withStatsHandle(1F, 95)
+                .withStatsExtra(125)
+                .withStatsBow(1.25F, 1F, 2F)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_EXECUTOR, TconEvoTraits.TRAIT_CORRUPTING)
+                .build();
+        LONSDALEITE = new MaterialBuilder(NameConst.MAT_LONSDALEITE, 0x090909, MaterialForm.GEM, "Lonsdaleite")
+                .requiresOres("crystalLonsdaleite")
+                .setCraftable()
+                .withStatsHead(840, 7F, 6F, HarvestLevels.OBSIDIAN)
+                .withStatsHandle(1.2F, 30)
+                .withStatsExtra(75)
+                .withStatsBow(0.9F, 1.2F, 1.5F)
+                .withTraits(PartType.TOOL, TinkerTraits.writable, TinkerTraits.crude)
+                .build();
+        LONSDALEITE = new MaterialBuilder(NameConst.MAT_LONSDALEITE, 0x090909, MaterialForm.GEM, "Lonsdaleite")
+                .requiresOres("crystalLonsdaleite")
+                .setCraftable()
+                .withStatsHead(840, 7F, 6F, HarvestLevels.OBSIDIAN)
+                .withStatsHandle(1.2F, 30)
+                .withStatsExtra(75)
+                .withStatsBow(0.9F, 1.2F, 1.5F)
+                .withTraits(PartType.TOOL, TinkerTraits.writable, TinkerTraits.crude)
+                .build();
+        MICA = new MaterialBuilder(NameConst.MAT_MICA, 0xafafaf, MaterialForm.RAW_BLOCK, "mica")
+                .requiresOres("mica")
+                .setCastable(900)
+                .withStatsHead(275, 5F, 4F, HarvestLevels.DIAMOND)
+                .withStatsHandle(0.8F, 25)
+                .withStatsExtra(40)
+                .withStatsBow(1.75F, 0.75F, 0F)
+                .withTraits(PartType.TOOL, TinkerTraits.writable, TinkerTraits.writable2)
+                .build();
 
         // industrial foregoing
         ESSENCE_METAL = new MaterialBuilder(NameConst.MAT_ESSENCE_METAL, 0x4d7018, MaterialForm.METAL, "EssenceMetal")

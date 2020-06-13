@@ -1,7 +1,9 @@
 package xyz.phanta.tconevo.client;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -9,11 +11,14 @@ import slimeknights.mantle.client.book.repository.FileRepository;
 import slimeknights.tconstruct.library.book.TinkerBook;
 import xyz.phanta.tconevo.CommonProxy;
 import xyz.phanta.tconevo.client.book.BookTransformerAppendModifiers;
+import xyz.phanta.tconevo.client.fx.ParticleChainLightning;
 import xyz.phanta.tconevo.client.handler.EnergyShieldHudHandler;
 import xyz.phanta.tconevo.client.handler.EnergyTooltipHandler;
 import xyz.phanta.tconevo.init.TconEvoTraits;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
 import xyz.phanta.tconevo.network.SPacketEntitySpecialEffect;
+
+import java.util.List;
 
 public class ClientProxy extends CommonProxy {
 
@@ -60,6 +65,17 @@ public class ClientProxy extends CommonProxy {
             }
         } else {
             super.playEntityEffect(entity, type);
+        }
+    }
+
+    @Override
+    public void playLightningEffect(Entity ref, List<Vec3d> positions) {
+        if (ref.world.isRemote) {
+            if (!positions.isEmpty()) {
+                Minecraft.getMinecraft().effectRenderer.addEffect(new ParticleChainLightning(ref.world, positions));
+            }
+        } else {
+            super.playLightningEffect(ref, positions);
         }
     }
 

@@ -23,6 +23,10 @@ public class TconEvoConfig {
 
     public static class General {
 
+        @Config.Comment("The additional bonus damage percentage granted per level of the damage boost effect.")
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double effectDamageBoostBonusDamage = 0.05D;
+
         @Config.Comment("The additional percentage of damage mitigated per level of the damage reduction effect.")
         @Config.RangeDouble(min = 0D, max = 1D)
         public double effectDamageReductionPercentage = 0.04D;
@@ -34,6 +38,15 @@ public class TconEvoConfig {
         @Config.Comment("The amount of flat bonus magical damage dealt per level of the aftershock trait.")
         @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
         public double traitAftershockDamage = 2D;
+
+        @Config.Comment({
+                "The duration, in ticks, of the damage boost effect gained from the battle furor trait.",
+                "Each additional proc of the trait refreshes the duration of the effect.",
+        })
+        public int traitBattleFurorDuration = 100;
+
+        @Config.Comment("The maximum level of damage boost that can be gained from the battle furor trait.")
+        public int traitBattleFurorMaxStacks = 9;
 
         @Config.Comment("The probability of creating a blast on block break with the blasting trait.")
         @Config.RangeDouble(min = 0D, max = 1D)
@@ -53,6 +66,28 @@ public class TconEvoConfig {
 
         @Config.Comment("Whether blasts creating by the blasting trait will destroy blocks or not.")
         public boolean traitBlastingDamagesTerrain = false;
+
+        @Config.Comment("The probability of a hit generating lightning with the chain lightning trait.")
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double traitChainLightningProbability = 0.25D;
+
+        @Config.Comment({
+                "The maximum distance, in blocks, that a chain lightning instance can jump between targets.",
+                "This should probably be reasonably small, since searching large areas can be expensive."
+        })
+        @Config.RangeDouble(min = 0D)
+        public double traitChainLightningRange = 3D;
+
+        @Config.Comment({
+                "The maximum number of additional targets that can be bounced to by a single chain lightning instance.",
+                "Setting this to zero means the chain lightning will only hit the original target of the attack."
+        })
+        @Config.RangeInt(min = 0, max = Short.MAX_VALUE)
+        public int traitChainLightningBounces = 3;
+
+        @Config.Comment("The fraction of the original attack's damage dealt as chain lightning damage.")
+        @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
+        public double traitChainLightningDamageMultiplier = 0.25D;
 
         @Config.Comment({
                 "The duration, in ticks, of the slow applied by the chilling touch trait.",
@@ -104,6 +139,10 @@ public class TconEvoConfig {
         })
         @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
         public double traitDivineGraceHealBoost = 0.12D;
+
+        @Config.Comment("The percentage of missing health dealt as bonus damage by the executor trait.")
+        @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
+        public double traitExecutorMissingHealthDamage = 0.2D;
 
         @Config.Comment("The duration, in ticks, of the speed granted by the fleet of foot trait.")
         @Config.RangeInt(min = 1)
@@ -205,6 +244,12 @@ public class TconEvoConfig {
         })
         @Config.RangeInt(min = 1)
         public int traitSecondWindRegenDuration = 140;
+
+        @Config.Comment({
+                "The (inclusive) light level threshold for the invisibility granted by the shadowstep trait.",
+                "Only useful with Construct's Armoury installed."
+        })
+        public int traitShadowstepLightThreshold = 3;
 
         @Config.Comment({
                 "The evasion chance granted by each piece of armour with the spectarl trait.",
