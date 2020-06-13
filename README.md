@@ -33,6 +33,8 @@ Current mod integration modules are as follows:
     * Allows the energy tablet to apply the "fluxed" modifier
 * **Natura**
     * Adds materials for nether wood types
+* **Project: E**
+    * Adds powerful dark matter and red matter materials
 * **Thaumcraft**
     * Adds thaumium, void metal, and primordial materials
 * **Thermal Series**
