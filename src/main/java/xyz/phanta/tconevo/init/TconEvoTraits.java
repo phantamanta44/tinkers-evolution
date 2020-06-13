@@ -54,6 +54,9 @@ public class TconEvoTraits {
     public static final TraitImpactForce TRAIT_IMPACT_FORCE = new TraitImpactForce();
     public static final TraitJuggernaut TRAIT_JUGGERNAUT = new TraitJuggernaut();
     public static final TraitLuminiferous TRAIT_LUMINIFEROUS = new TraitLuminiferous();
+    public static final TraitModifiable[] TRAIT_MODIFIABLE = {
+            new TraitModifiable(1), new TraitModifiable(2), new TraitModifiable(3)
+    };
     public static final TraitMortalWounds TRAIT_MORTAL_WOUNDS = new TraitMortalWounds();
     public static final TraitOpportunist TRAIT_OPPORTUNIST = new TraitOpportunist();
     public static final TraitOverwhelm TRAIT_OVERWHELM = new TraitOverwhelm();

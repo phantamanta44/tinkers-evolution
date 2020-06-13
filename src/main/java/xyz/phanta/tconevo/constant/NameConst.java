@@ -31,6 +31,7 @@ public class NameConst {
     public static final String TRAIT_IMPACT_FORCE = TconEvoMod.MOD_ID + ".impact_force";
     public static final String TRAIT_JUGGERNAUT = TconEvoMod.MOD_ID + ".juggernaut";
     public static final String TRAIT_LUMINIFEROUS = TconEvoMod.MOD_ID + ".luminiferous";
+    public static final String TRAIT_MODIFIABLE = TconEvoMod.MOD_ID + ".modifiable";
     public static final String TRAIT_MORTAL_WOUNDS = TconEvoMod.MOD_ID + ".mortal_wounds";
     public static final String TRAIT_OPPORTUNIST = TconEvoMod.MOD_ID + ".opportunist";
     public static final String TRAIT_OVERWHELM = TconEvoMod.MOD_ID + ".overwhelm";

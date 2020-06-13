@@ -1,8 +1,8 @@
 package xyz.phanta.tconevo.integration.conarm;
 
 import c4.conarm.common.armor.traits.ArmorTraits;
-import slimeknights.tconstruct.tools.TinkerTraits;
 import xyz.phanta.tconevo.init.TconEvoMaterials;
+import xyz.phanta.tconevo.init.TconEvoTraits;
 import xyz.phanta.tconevo.integration.conarm.material.ArmourMaterialBuilder;
 import xyz.phanta.tconevo.integration.conarm.material.ArmourPartType;
 
@@ -90,7 +90,7 @@ public class TconEvoArmourMaterials {
                 .build();
         new ArmourMaterialBuilder(TconEvoMaterials.LIVINGWOOD)
                 .withStatsArmour(2.75F, 3F, 0.75F, 1.25F, 0F, 0.6F)
-                .withTraits(ArmourPartType.ARMOUR, TinkerTraits.writable, ArmorTraits.ecological)
+                .withTraits(ArmourPartType.ARMOUR, TconEvoTraits.TRAIT_MODIFIABLE[0], ArmorTraits.ecological)
                 .build();
         new ArmourMaterialBuilder(TconEvoMaterials.DREAMWOOD)
                 .withStatsArmour(3F, 3.25F, 1.25F, 1F, 0F, 0.75F)
@@ -165,6 +165,14 @@ public class TconEvoArmourMaterials {
                 .withTraits(ArmourPartType.PROTECTIVE, TconEvoArmourTraits.TRAIT_CELESTIAL)
                 .withTraits(ArmourPartType.TRIM, TconEvoArmourTraits.TRAIT_SPECTRAL)
                 .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.LONSDALEITE)
+                .withStatsArmour(21F, 20F, 0.9F, 14F, 1F, 17F)
+                .withTraits(ArmourPartType.ARMOUR, TconEvoTraits.TRAIT_MODIFIABLE[0], ArmorTraits.mundane)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.MICA)
+                .withStatsArmour(4F, 15F, 0.8F, 2.5F, 0F, 3F)
+                .withTraits(ArmourPartType.ARMOUR, TconEvoTraits.TRAIT_MODIFIABLE[1])
+                .build();
 
         // industrial foregoing
         new ArmourMaterialBuilder(TconEvoMaterials.ESSENCE_METAL)
@@ -237,7 +245,7 @@ public class TconEvoArmourMaterials {
         // thaumcraft
         new ArmourMaterialBuilder(TconEvoMaterials.THAUMIUM)
                 .withStatsArmour(16.5F, 16F, 1.3F, 2F, 1F, 4F)
-                .withTraits(ArmourPartType.ARMOUR, TinkerTraits.writable, ArmorTraits.shielding)
+                .withTraits(ArmourPartType.ARMOUR, TconEvoTraits.TRAIT_MODIFIABLE[0], ArmorTraits.shielding)
                 .build();
         new ArmourMaterialBuilder(TconEvoMaterials.VOID_METAL)
                 .withStatsArmour(10F, 20F, 1.8F, 0F, 1F, 7F)

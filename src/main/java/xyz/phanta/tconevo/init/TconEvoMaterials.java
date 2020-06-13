@@ -220,7 +220,7 @@ public class TconEvoMaterials {
                 .withStatsExtra(20)
                 .withStatsBow(1.2F, 1F, 0F)
                 .withStatsArrowShaft(1F, 0)
-                .withTraits(PartType.TOOL, TinkerTraits.writable, TinkerTraits.ecological)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_MODIFIABLE[0], TinkerTraits.ecological)
                 .build();
         DREAMWOOD = new MaterialBuilder(NameConst.MAT_DREAMWOOD, 0xadbbbf, MaterialForm.RAW, "dreamwood")
                 .requiresMods(BotaniaHooks.MOD_ID)
@@ -377,16 +377,7 @@ public class TconEvoMaterials {
                 .withStatsHandle(1.2F, 30)
                 .withStatsExtra(75)
                 .withStatsBow(0.9F, 1.2F, 1.5F)
-                .withTraits(PartType.TOOL, TinkerTraits.writable, TinkerTraits.crude)
-                .build();
-        LONSDALEITE = new MaterialBuilder(NameConst.MAT_LONSDALEITE, 0x090909, MaterialForm.GEM, "Lonsdaleite")
-                .requiresOres("crystalLonsdaleite")
-                .setCraftable()
-                .withStatsHead(840, 7F, 6F, HarvestLevels.OBSIDIAN)
-                .withStatsHandle(1.2F, 30)
-                .withStatsExtra(75)
-                .withStatsBow(0.9F, 1.2F, 1.5F)
-                .withTraits(PartType.TOOL, TinkerTraits.writable, TinkerTraits.crude)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_MODIFIABLE[0], TinkerTraits.crude)
                 .build();
         MICA = new MaterialBuilder(NameConst.MAT_MICA, 0xafafaf, MaterialForm.RAW_BLOCK, "mica")
                 .requiresOres("mica")
@@ -395,7 +386,7 @@ public class TconEvoMaterials {
                 .withStatsHandle(0.8F, 25)
                 .withStatsExtra(40)
                 .withStatsBow(1.75F, 0.75F, 0F)
-                .withTraits(PartType.TOOL, TinkerTraits.writable, TinkerTraits.writable2)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_MODIFIABLE[1])
                 .build();
 
         // industrial foregoing
@@ -548,7 +539,7 @@ public class TconEvoMaterials {
                 .withStatsHandle(1.3F, 20)
                 .withStatsExtra(60)
                 .withStatsBow(1.2F, 1F, 1F)
-                .withTraits(PartType.TOOL, TinkerTraits.writable, TconEvoTraits.TRAIT_OPPORTUNIST)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_MODIFIABLE[0], TconEvoTraits.TRAIT_OPPORTUNIST)
                 .build();
         VOID_METAL = new MaterialBuilder(NameConst.MAT_VOID_METAL, 0x2f114b, MaterialForm.METAL, "Void")
                 .requiresOres("ingotVoid")

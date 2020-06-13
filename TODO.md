@@ -8,6 +8,8 @@
 * photosynthetic: repairs in the sun
 * cascading: destroys all gravitating blocks in a column
 * blasting: breaking blocks and fully-charged hits create explosions
+* modifiable: equipment has more modifier slots
+    * a clone of writable that avoids the weird quirks of writable
 
 ## weapon traits
 
@@ -245,8 +247,8 @@
     * tools: sundering (head) + stonebound
     * armour: stifling (core) + stonebound
 * livingwood
-    * tools: writable + ecological
-    * armour: writable + ecological
+    * tools: modifiable + ecological
+    * armour: modifiable + ecological
     * suitable for arrow shaft
 * dreamwood
     * tools: aura siphon + ecological
@@ -318,11 +320,11 @@
     * tools: executor + corrupting
     * armour: celestial (core/plates) + spectral (trim)
 * lonsdaleite
-    * tools: writable + crude
-    * armour: writable + mundane
+    * tools: modifiable + crude
+    * armour: modifiable + mundane
 * mica
-    * tools: writable 2
-    * armour: writable 2
+    * tools: modifiable 2
+    * armour: modifiable 2
 
 ## ic2 (and icc?)
 
@@ -555,8 +557,8 @@
 ### materials
 
 * thaumium
-    * tools: writable + opportunist
-    * armour: writable + shielding
+    * tools: modifiable + opportunist
+    * armour: modifiable + shielding
 * void metal
     * tools: ruination + sundering + warping
     * armour: chilling touch + stifling + warping
