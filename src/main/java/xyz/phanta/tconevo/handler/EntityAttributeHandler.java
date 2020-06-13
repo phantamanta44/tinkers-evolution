@@ -3,6 +3,7 @@ package xyz.phanta.tconevo.handler;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.SoundCategory;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -12,7 +13,7 @@ import xyz.phanta.tconevo.util.DamageUtils;
 public class EntityAttributeHandler {
 
     @SubscribeEvent(priority = EventPriority.HIGH)
-    public void onEntityHurtEarly(LivingHurtEvent event) {
+    public void onEntityAttacked(LivingAttackEvent event) {
         EntityLivingBase victim = event.getEntityLiving();
         // only do this on the server; since it's random, the server and client may produce different results
         // might cause some weird interactions where the client assumes the player got hit and does something funky
