@@ -21,6 +21,8 @@ import xyz.phanta.tconevo.integration.conarm.trait.botania.ArmourTraitManaAffini
 import xyz.phanta.tconevo.integration.conarm.trait.botania.ArmourTraitManaInfused;
 import xyz.phanta.tconevo.integration.conarm.trait.draconicevolution.*;
 import xyz.phanta.tconevo.integration.conarm.trait.industrialforegoing.ArmourTraitSlimeyPink;
+import xyz.phanta.tconevo.integration.conarm.trait.projecte.ArmourTraitSuperdense;
+import xyz.phanta.tconevo.integration.conarm.trait.projecte.ArmourTraitUltradense;
 import xyz.phanta.tconevo.integration.conarm.trait.thaumcraft.ArmourTraitWarping;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
 import xyz.phanta.tconevo.trait.botania.ModifierGaiaWill;
@@ -95,6 +97,10 @@ public class TconEvoArmourTraits {
 
     // industrial foregoing
     public static final ArmourTraitSlimeyPink TRAIT_SLIMEY_PINK = new ArmourTraitSlimeyPink();
+
+    // project: e
+    public static final ArmourTraitSuperdense TRAIT_SUPERDENSE = new ArmourTraitSuperdense();
+    public static final ArmourTraitUltradense TRAIT_ULTRADENSE = new ArmourTraitUltradense();
 
     // thaumium
     public static final ArmourTraitWarping TRAIT_WARPING = new ArmourTraitWarping();

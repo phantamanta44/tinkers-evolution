@@ -190,6 +190,20 @@ public class TconEvoArmourMaterials {
                 .withTraits(ArmourPartType.ARMOUR, ArmorTraits.steady, ArmorTraits.ecological)
                 .build();
 
+        // project: e
+        new ArmourMaterialBuilder(TconEvoMaterials.DARK_MATTER)
+                .withStatsArmour(32F, 24F, 1F, 24F, 5F, 28F)
+                .withTraits(ArmourPartType.CORE, TconEvoArmourTraits.TRAIT_SUPERDENSE)
+                .withTraits(ArmourPartType.EXTRA, ArmorTraits.infernal)
+                .withTraits(ArmourPartType.ARMOUR, ArmorTraits.dense)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.RED_MATTER)
+                .withStatsArmour(48F, 36F, 1F, 36F, 8F, 42F)
+                .withTraits(ArmourPartType.CORE, TconEvoArmourTraits.TRAIT_ULTRADENSE)
+                .withTraits(ArmourPartType.EXTRA, TconEvoArmourTraits.TRAIT_HEARTH_EMBRACE)
+                .withTraits(ArmourPartType.ARMOUR, ArmorTraits.dense)
+                .build();
+
         // thaumcraft
         new ArmourMaterialBuilder(TconEvoMaterials.THAUMIUM)
                 .withStatsArmour(16.5F, 16F, 1.3F, 2F, 1F, 4F)

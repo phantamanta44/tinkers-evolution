@@ -11,6 +11,7 @@ import slimeknights.tconstruct.library.traits.AbstractTrait;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.util.InventoryIterator;
+import xyz.phanta.tconevo.util.InventoryUtils;
 import xyz.phanta.tconevo.util.ItemHandlerIterator;
 
 import java.util.ArrayList;
@@ -34,14 +35,7 @@ public class TraitPiezoelectric extends AbstractTrait {
         if (energy <= 0) {
             return;
         }
-        Iterator<ItemStack> iterInv;
-        if (player instanceof EntityPlayer) {
-            iterInv = new InventoryIterator(((EntityPlayer)player).inventory);
-        } else {
-            iterInv = OptUtils.capability(player, CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
-                    .<Iterator<ItemStack>>map(ItemHandlerIterator::new)
-                    .orElseGet(() -> player.getEquipmentAndArmor().iterator());
-        }
+        Iterator<ItemStack> iterInv = InventoryUtils.iterateInv(player);
         // probably should split energy based on how much a given recipient is missing, but this is good enough for now
         List<IEnergyStorage> recipients = new ArrayList<>();
         while (iterInv.hasNext()) {

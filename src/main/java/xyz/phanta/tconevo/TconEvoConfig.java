@@ -116,6 +116,35 @@ public class TconEvoConfig {
         @Config.RangeInt(min = 1)
         public int traitHearthEmbraceBuffDuration = 200;
 
+        @Config.Comment({
+                "The first health threshold for the juggernaut trait.",
+                "The damage multiplier for the trait is computed in the following way: there are a series of health",
+                "thresholds and for each threshold surpassed by the player's current health amount, the damage multiplier",
+                "is applied once. The distance between the thresholds increases by a multiplier. With the default settings",
+                "of 20 base health, 2 threshold multiplier, and 30% damage multiplier, the player would gain 30% damage",
+                "at 20 health, 60% damage at 40 health, 90% damage at 80 health, and so on. The specific formula used is:",
+                "bonusDamage = damageMult * (log(health/baseHealth) / log(threshFactor) + 1)",
+                "If the threshold multiplier is set to 1, then the threshold scaling is disabled and a linear formula is used instead:",
+                "bonusDamage = damageMult * health / baseHealth"
+        })
+        @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
+        public double traitJuggernautHealthBase = 20D;
+
+        @Config.Comment({
+                "The multiplier applied to the previous threshold to compute the next threshold for the juggernaut trait.",
+                "Set to 1 if you want the thresholds to not change (i.e. linearly scaling juggernaut damage).",
+                "See the comment for traitJuggernautHealthBase for more details."
+        })
+        @Config.RangeDouble(min = 1D, max = Float.MAX_VALUE)
+        public double traitJuggernautThresholdFactor = 2D;
+
+        @Config.Comment({
+                "The bonus damage percentage per passed health threshold for the juggernaut trait.",
+                "See the comment for traitJuggernautHealthBase for more details."
+        })
+        @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
+        public double traitJuggernautDamageMultiplier = 0.3D;
+
         @Config.Comment("The duration, in ticks, of the glowing effect applied by the luminiferous trait.")
         @Config.RangeInt(min = 1)
         public int traitLuminiferousGlowingDuration = 160;
@@ -127,6 +156,10 @@ public class TconEvoConfig {
         @Config.Comment("The bonus damage percentage for attacks that proc opportunist.")
         @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
         public double traitOpportunistBonusDamage = 0.3D;
+
+        @Config.Comment("The bonus damage percentage gained for each point of enemy armour using the overwhelm trait.")
+        @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
+        public double traitOverwhelmArmourDamage = 0.015D;
 
         @Config.Comment("The fraction of damage converted to energy for attacks that proc the piezoelectric trait.")
         @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
@@ -906,6 +939,34 @@ public class TconEvoConfig {
         @Config.Comment("The probability of a pink slime spawning with the pink slimey trait.")
         @Config.RangeDouble(min = 0D, max = 1D)
         public double slimeyPinkSpawnProbability = 0.0033D;
+
+    }
+
+    @Config.Comment("Configuration for the Project: E module.")
+    public static final ProjectE moduleProjectE = new ProjectE();
+
+    public static class ProjectE {
+
+        @Config.Comment({
+                "The percentage of damage converted to EMC by each level of the eternal density trait.",
+                "This is multiplied by the level of the trait to determine the final conversion ratio."
+        })
+        @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
+        public double eternalDensityDamageConversion = 16D;
+
+        @Config.Comment({
+                "The additional damage reduction granted per piece of armour with the superdense trait.",
+                "Only useful with Construct's Armoury installed."
+        })
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double superdenseDamageReduction = 0.15D;
+
+        @Config.Comment({
+                "The additional damage reduction granted per piece of armour with the ultradense trait.",
+                "Only useful with Construct's Armoury installed."
+        })
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double ultradenseDamageReduction = 0.2D;
 
     }
 

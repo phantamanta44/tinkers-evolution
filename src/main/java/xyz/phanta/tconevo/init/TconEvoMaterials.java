@@ -10,6 +10,7 @@ import xyz.phanta.tconevo.integration.bloodmagic.BloodMagicHooks;
 import xyz.phanta.tconevo.integration.botania.BotaniaHooks;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
 import xyz.phanta.tconevo.integration.industrialforegoing.ForegoingHooks;
+import xyz.phanta.tconevo.integration.projecte.EqExHooks;
 import xyz.phanta.tconevo.integration.thaumcraft.ThaumHooks;
 import xyz.phanta.tconevo.material.MaterialBuilder;
 import xyz.phanta.tconevo.material.MaterialForm;
@@ -37,6 +38,8 @@ public class TconEvoMaterials {
     public static Material OSMIUM, REFINED_OBSIDIAN, REFINED_GLOWSTONE, HDPE;
     // natura
     public static Material GHOSTWOOD, BLOODWOOD, DARKWOOD, FUSEWOOD;
+    // project: e
+    public static Material DARK_MATTER, RED_MATTER;
     // thaumcraft
     public static Material THAUMIUM, VOID_METAL, PRIMAL_METAL;
     // thermal series
@@ -428,6 +431,28 @@ public class TconEvoMaterials {
                 .withStatsBow(0.75F, 1.25F, 4F)
                 .withStatsArrowShaft(1.25F, 4)
                 .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_BLASTING, TinkerTraits.ecological)
+                .build();
+
+        // project: e
+        DARK_MATTER = new MaterialBuilder(NameConst.MAT_DARK_MATTER, 0x2f2f2f, MaterialForm.GEM_ITEM_4, "DarkMatter")
+                .requiresMods(EqExHooks.MOD_ID)
+                .setCastable("dark_matter", 2700)
+                .withStatsHead(3200, 15F, 14F, 5)
+                .withStatsHandle(1F, 320)
+                .withStatsExtra(540)
+                .withStatsBow(0.85F, 1.5F, 4F)
+                .withTraits(PartType.HEAD, TconEvoTraits.TRAIT_ETERNAL_DENSITY[0])
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_CULLING, TconEvoTraits.TRAIT_STAGGERING)
+                .build();
+        RED_MATTER = new MaterialBuilder(NameConst.MAT_RED_MATTER, 0x9b060b, MaterialForm.GEM_ITEM_4, "RedMatter")
+                .requiresMods(EqExHooks.MOD_ID)
+                .setCastable("red_matter", 3400)
+                .withStatsHead(7200, 20F, 23F, 10)
+                .withStatsHandle(1F, 720)
+                .withStatsExtra(1200)
+                .withStatsBow(0.75F, 2F, 10F)
+                .withTraits(PartType.HEAD, TconEvoTraits.TRAIT_ETERNAL_DENSITY[1])
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_JUGGERNAUT, TconEvoTraits.TRAIT_OVERWHELM)
                 .build();
 
         // thaumcraft

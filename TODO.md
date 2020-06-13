@@ -474,21 +474,23 @@
 
 ### traits
 
-* eternal density: dealing damage and breaking blocks fills klein stars in the inventory
+* eternal density: dealing damage fills klein stars in the inventory
+    * higher levels -> higher conversion ratio
+    * also allows breaking dark/red matter blocks
 
 ### armour traits
 
-* superdense: additively-stacking 20% damage reduction
-* ultradense: additively-stacking 22.5% damage reduction
+* superdense: additively-stacking 15% damage reduction
+* ultradense: additively-stacking 20% damage reduction
 
 ### materials
 
 * dark matter
     * tools: eternal density (head) + culling + staggering
-    * armour: superdense (core) + infernal (plates/trim) + prideful
+    * armour: superdense (core) + infernal (plates/trim) + dense
 * red matter
-    * tools: eternal density (head) + juggernaut + overwhelm
-    * armour: ultradense (core) + hearth's embrace (plates/trim) + reactive
+    * tools: eternal density 2 (head) + juggernaut + overwhelm
+    * armour: ultradense (core) + hearth's embrace (plates/trim) + dense
 
 ## psi
 

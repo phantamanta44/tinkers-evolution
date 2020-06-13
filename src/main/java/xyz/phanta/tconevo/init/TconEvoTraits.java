@@ -23,6 +23,7 @@ import xyz.phanta.tconevo.trait.botania.TraitGaiaWrath;
 import xyz.phanta.tconevo.trait.botania.TraitManaInfused;
 import xyz.phanta.tconevo.trait.draconicevolution.*;
 import xyz.phanta.tconevo.trait.industrialforegoing.TraitSlimeyPink;
+import xyz.phanta.tconevo.trait.projecte.TraitEternalDensity;
 import xyz.phanta.tconevo.trait.thaumcraft.TraitWarping;
 
 import java.util.*;
@@ -48,9 +49,11 @@ public class TconEvoTraits {
     public static final TraitDeadlyPrecision TRAIT_DEADLY_PRECISION = new TraitDeadlyPrecision();
     public static final TraitFootFleet TRAIT_FOOT_FLEET = new TraitFootFleet();
     public static final TraitImpactForce TRAIT_IMPACT_FORCE = new TraitImpactForce();
+    public static final TraitJuggernaut TRAIT_JUGGERNAUT = new TraitJuggernaut();
     public static final TraitLuminiferous TRAIT_LUMINIFEROUS = new TraitLuminiferous();
     public static final TraitMortalWounds TRAIT_MORTAL_WOUNDS = new TraitMortalWounds();
     public static final TraitOpportunist TRAIT_OPPORTUNIST = new TraitOpportunist();
+    public static final TraitOverwhelm TRAIT_OVERWHELM = new TraitOverwhelm();
     public static final TraitPiezoelectric TRAIT_PIEZOELECTRIC = new TraitPiezoelectric();
     public static final TraitRejuvenating TRAIT_REJUVENATING = new TraitRejuvenating();
     public static final TraitRelentless TRAIT_RELENTLESS = new TraitRelentless();
@@ -106,6 +109,11 @@ public class TconEvoTraits {
 
     // industrial foregoing
     public static final TraitSlimeyPink TRAIT_SLIMEY_PINK = new TraitSlimeyPink();
+
+    // project: e
+    public static final TraitEternalDensity[] TRAIT_ETERNAL_DENSITY = {
+            new TraitEternalDensity(1), new TraitEternalDensity(2)
+    };
 
     // thaumcraft
     public static final TraitWarping TRAIT_WARPING = new TraitWarping();

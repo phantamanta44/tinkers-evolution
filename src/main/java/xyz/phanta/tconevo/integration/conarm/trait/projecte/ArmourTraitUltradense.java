@@ -1,4 +1,4 @@
-package xyz.phanta.tconevo.integration.conarm.trait;
+package xyz.phanta.tconevo.integration.conarm.trait.projecte;
 
 import c4.conarm.lib.traits.AbstractArmorTrait;
 import com.google.common.collect.Multimap;
@@ -16,28 +16,29 @@ import xyz.phanta.tconevo.util.ToolUtils;
 
 import java.util.List;
 
-public class ArmourTraitSpectral extends AbstractArmorTrait {
+public class ArmourTraitUltradense extends AbstractArmorTrait {
 
-    private static final ArmourAttributeId ATTR_EVASION_CHANCE = new ArmourAttributeId(
-            "c1aec767-0422-4995-bb14-a4dcbcc3c367", "a1698893-5e56-430a-9694-0f82d5077368",
-            "b72b66e7-c4f5-4c8e-a724-aa714d2d5329", "7e514294-9eb0-49f8-b510-0c65f56e7c92");
+    private static final ArmourAttributeId ATTR_DAMAGE_TAKEN = new ArmourAttributeId(
+            "c1c129b2-706a-49d7-b207-0e59e1b5d46f", "868e9364-4c94-4d19-b7db-6621edce7cd5",
+            "aec021f2-a53d-49b4-9498-c285a0976fd4", "ca6bca80-6c77-4357-8967-b0411b376f59");
 
-    public ArmourTraitSpectral() {
-        super(NameConst.TRAIT_SPECTRAL, 0x91acb8);
+    public ArmourTraitUltradense() {
+        super(NameConst.TRAIT_ULTRADENSE, 0x9b060b);
     }
 
     @Override
     public void getAttributeModifiers(EntityEquipmentSlot slot, ItemStack stack, Multimap<String, AttributeModifier> attributeMap) {
         if (slot == EntityLiving.getSlotForItemStack(stack)) {
-            attributeMap.put(TconEvoEntityAttrs.EVASION_CHANCE.getName(), new AttributeModifier(
-                    ATTR_EVASION_CHANCE.getId(slot), "Spectral Evasion Chance",
-                    TconEvoConfig.general.traitSpectralEvasionChance, Constants.AttributeModifierOperation.ADD_MULTIPLE));
+            attributeMap.put(TconEvoEntityAttrs.DAMAGE_TAKEN.getName(), new AttributeModifier(
+                    ATTR_DAMAGE_TAKEN.getId(slot), "Ultradense Damage Reduction",
+                    -TconEvoConfig.moduleProjectE.ultradenseDamageReduction,
+                    Constants.AttributeModifierOperation.ADD_MULTIPLE));
         }
     }
 
     @Override
     public List<String> getExtraInfo(ItemStack tool, NBTTagCompound modifierTag) {
-        return ToolUtils.formatExtraInfoPercent(identifier, (float)TconEvoConfig.general.traitSpectralEvasionChance);
+        return ToolUtils.formatExtraInfoPercent(identifier, (float)TconEvoConfig.moduleProjectE.ultradenseDamageReduction);
     }
 
 }

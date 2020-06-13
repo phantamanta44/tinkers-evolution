@@ -84,6 +84,8 @@ modifier.tconevo.foot_fleet.name=Fleet of Foot
 modifier.tconevo.foot_fleet.desc=§oStay still--I'm trying to shoot you!§r\nThis weapon grants a burst of speed to its wielder on fully-charged hits.
 modifier.tconevo.impact_force.name=Force of Impact
 modifier.tconevo.impact_force.desc=§oSuffering is magic!§r\nThis weapon deals greater damage at high velocity.
+modifier.tconevo.juggernaut.name=Juggernaut
+modifier.tconevo.juggernaut.desc=§oA titanic strike!§r\nThis weapon deals increased damage based on its wielder's current health.
 modifier.tconevo.luminiferous.name=Luminiferous
 modifier.tconevo.luminiferous.desc=§oRelativistic!§r\nThis weapon reveals the positions of struck enemies.
 modifier.tconevo.mortal_wounds.name=Mortal Wounds
@@ -92,6 +94,8 @@ modifier.tconevo.mortal_wounds.extra=Heal Reduction: -%s
 modifier.tconevo.opportunist.name=Opportunist
 modifier.tconevo.opportunist.desc=§oI've been waiting for this!§r\nThis weapon deals increased damage to debuffed targets.
 modifier.tconevo.opportunist.extra=Opportunist Damage: +%s
+modifier.tconevo.overwhelm.name=Overwhelm
+modifier.tconevo.overwhelm.desc=§oHeavy is the hand...§r\nThis weapon deals greater damage to armoured targets.
 modifier.tconevo.piezoelectric.name=Piezoelectric
 modifier.tconevo.piezoelectric.desc=§oElectromechanical!§r\nThis weapon converts damage from fully-charged hits into usable energy.
 modifier.tconevo.rejuvenating.name=Rejuvenating
@@ -369,6 +373,22 @@ material.ghostwood.name=Ghostwood
 material.bloodwood.name=Bloodwood
 material.darkwood.name=Darkwood
 material.fusewood.name=Fusewood
+
+material.dark_matter.name=Dark Matter
+fluid.tconevo.dark_matter.name=Dark Liquid
+material.red_matter.name=Red Matter
+fluid.tconevo.red_matter.name=Red Liquid
+
+modifier.tconevo.eternal_density.name=Eternal Density
+modifier.tconevo.eternal_density.desc=§oFlower power!§r\nThis weapon condenses the energy from its strikes into EMC.
+modifier.tconevo.eternal_density.extra=EMC Conversion: +%s
+
+modifier.tconevo.superdense_armor.name=Superdense
+modifier.tconevo.superdense_armor.desc=§oNot overpowered!§r\nThis armour slightly mitigates most forms of incoming damage.
+modifier.tconevo.superdense_armor.extra=Damage Taken: -%s
+modifier.tconevo.ultradense_armor.name=Ultradense
+modifier.tconevo.ultradense_armor.desc=§oExtremely not overpowered!§r\nThis armour significantly mitigates most forms of incoming damage.
+modifier.tconevo.ultradense_armor.extra=Damage Taken: -%s
 
 material.thaumium.name=Thaumium
 fluid.tconevo.thaumium.name=Molten Thaumium

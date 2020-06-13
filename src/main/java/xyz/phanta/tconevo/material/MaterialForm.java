@@ -17,6 +17,9 @@ public enum MaterialForm {
             new Entry("block", Material.VALUE_Ingot, MaterialCastType.BLOCK),
             new Entry("brick", Material.VALUE_Fragment, MaterialCastType.INGOT)),
     SLIME_CRYSTAL(new Entry("slimecrystal", Material.VALUE_Ingot)),
+    GEM_ITEM_4( // based on dark matter and red matter
+            new Entry("item", Material.VALUE_Ingot, MaterialCastType.GEM),
+            new Entry("block", Material.VALUE_BrickBlock, MaterialCastType.BLOCK)),
     RAW_BLOCK(new Entry("", Material.VALUE_Ingot, MaterialCastType.BLOCK)),
     RAW(new Entry("", Material.VALUE_Ingot));
 

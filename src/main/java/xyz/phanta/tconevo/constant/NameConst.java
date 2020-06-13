@@ -25,9 +25,11 @@ public class NameConst {
     public static final String TRAIT_DEADLY_PRECISION = TconEvoMod.MOD_ID + ".deadly_precision";
     public static final String TRAIT_FOOT_FLEET = TconEvoMod.MOD_ID + ".foot_fleet";
     public static final String TRAIT_IMPACT_FORCE = TconEvoMod.MOD_ID + ".impact_force";
+    public static final String TRAIT_JUGGERNAUT = TconEvoMod.MOD_ID + ".juggernaut";
     public static final String TRAIT_LUMINIFEROUS = TconEvoMod.MOD_ID + ".luminiferous";
     public static final String TRAIT_MORTAL_WOUNDS = TconEvoMod.MOD_ID + ".mortal_wounds";
     public static final String TRAIT_OPPORTUNIST = TconEvoMod.MOD_ID + ".opportunist";
+    public static final String TRAIT_OVERWHELM = TconEvoMod.MOD_ID + ".overwhelm";
     public static final String TRAIT_PIEZOELECTRIC = TconEvoMod.MOD_ID + ".piezoelectric";
     public static final String TRAIT_REJUVENATING = TconEvoMod.MOD_ID + ".rejuvenating";
     public static final String TRAIT_RELENTLESS = TconEvoMod.MOD_ID + ".relentless";
@@ -192,6 +194,16 @@ public class NameConst {
     public static final String MAT_BLOODWOOD = "bloodwood";
     public static final String MAT_DARKWOOD = "darkwood";
     public static final String MAT_FUSEWOOD = "fusewood";
+
+    // project: e
+
+    public static final String MAT_DARK_MATTER = "dark_matter";
+    public static final String MAT_RED_MATTER = "red_matter";
+
+    public static final String TRAIT_ETERNAL_DENSITY = TconEvoMod.MOD_ID + ".eternal_density";
+
+    public static final String TRAIT_SUPERDENSE = TconEvoMod.MOD_ID + ".superdense", ARMOUR_TRAIT_SUPERDENSE = TRAIT_SUPERDENSE + ARMOUR_SUFFIX;
+    public static final String TRAIT_ULTRADENSE = TconEvoMod.MOD_ID + ".ultradense", ARMOUR_TRAIT_ULTRADENSE = TRAIT_ULTRADENSE + ARMOUR_SUFFIX;
 
     // thaumcraft
 

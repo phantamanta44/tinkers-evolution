@@ -33,7 +33,7 @@ public enum MaterialCastType {
     public ItemStack getCast() {
         if (castStack == null) {
             Item castItem = ForgeRegistries.ITEMS.getValue(Util.getResource("cast_custom"));
-            castStack = castItem != null ? new ItemStack(castItem, meta) : ItemStack.EMPTY;
+            castStack = castItem != null ? new ItemStack(castItem, 1, meta) : ItemStack.EMPTY;
         }
         return castStack;
     }
