@@ -76,9 +76,6 @@ dependencies {
     deobfCompile "com.teamwizardry.librarianlib:librarianlib-1.12.2:4.19.1"
     deobfCompile "curse.maven:natural-pledge:2740703" // r3.1.2
     deobfCompile "cofh:CoFHCore:1.12.2-4.6.3.27:universal"
-//    deobfCompile("cofh:CoFHCore:1.12.2-4.6.3.27:universal") {
-//        println artifacts.collect { it.classifier }
-//    }
     deobfCompile "cofh:ThermalExpansion:1.12.2-5.5.4.43:universal"
     deobfCompile "curse.maven:industrial-foregoing:2745321"
     deobfCompile 'appeng:appliedenergistics2:rv6-stable-7'
