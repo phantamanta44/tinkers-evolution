@@ -564,7 +564,7 @@
     * armour: chilling touch + stifling + warping
 * primal metal (infuse primordial pearl + salis mundis onto coag matrix)
     * tools: corrupting + culling
-    * armour: aspect of the phoenix + gale force
+    * armour: gale force (core/plates) + aspect of the phoenix (trim)
 
 ## thermal series
 

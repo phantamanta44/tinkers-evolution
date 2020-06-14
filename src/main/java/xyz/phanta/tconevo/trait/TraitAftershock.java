@@ -3,16 +3,21 @@ package xyz.phanta.tconevo.trait;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import slimeknights.tconstruct.library.traits.AbstractTraitLeveled;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.constant.NameConst;
+import xyz.phanta.tconevo.trait.base.StackableTrait;
 import xyz.phanta.tconevo.util.DamageUtils;
 import xyz.phanta.tconevo.util.ToolUtils;
 
-public class TraitAftershock extends AbstractTraitLeveled {
+public class TraitAftershock extends StackableTrait {
 
     public TraitAftershock(int level) {
         super(NameConst.TRAIT_AFTERSHOCK, 0x52d3fa, 3, level);
+    }
+
+    @Override
+    public LevelCombiner getLevelCombiner() {
+        return LevelCombiner.SUM;
     }
 
     private float getBonusDamage(int level) {

@@ -1,20 +1,20 @@
 package xyz.phanta.tconevo.integration.conarm.trait.botania;
 
 import c4.conarm.lib.armor.ArmorCore;
-import c4.conarm.lib.traits.AbstractArmorTraitLeveled;
 import io.github.phantamanta44.libnine.util.format.FormatUtils;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.constant.NameConst;
+import xyz.phanta.tconevo.integration.conarm.trait.base.StackableArmourTrait;
 import xyz.phanta.tconevo.util.ToolUtils;
 
 import java.util.Collections;
 import java.util.List;
 
 // actual discount handled in BotaniaHooksImpl#onManaDiscount
-public class ArmourTraitManaAffinity extends AbstractArmorTraitLeveled {
+public class ArmourTraitManaAffinity extends StackableArmourTrait {
 
     public ArmourTraitManaAffinity(int level) {
         super(NameConst.TRAIT_MANA_AFFINITY, 0x49cebf, 2, level);

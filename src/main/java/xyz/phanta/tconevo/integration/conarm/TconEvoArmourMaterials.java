@@ -127,13 +127,15 @@ public class TconEvoArmourMaterials {
                 .build();
         new ArmourMaterialBuilder(TconEvoMaterials.DRACONIC_METAL)
                 .withStatsArmour(34F, 52.5F, 1.8F, 9F, 14F, 14F)
-                .withTraits(ArmourPartType.CORE, TconEvoArmourTraits.TRAIT_EVOLVED, TconEvoArmourTraits.TRAIT_CELESTIAL)
-                .withTraits(ArmourPartType.EXTRA, TconEvoArmourTraits.TRAIT_GALE_FORCE[0])
+                .withTraits(ArmourPartType.CORE, TconEvoArmourTraits.TRAIT_EVOLVED)
+                .withTraits(ArmourPartType.PLATES, TconEvoArmourTraits.TRAIT_CELESTIAL)
+                .withTraits(ArmourPartType.TRIM, TconEvoArmourTraits.TRAIT_GALE_FORCE[0])
                 .build();
         new ArmourMaterialBuilder(TconEvoMaterials.CHAOTIC_METAL)
                 .withStatsArmour(55F, 96F, 2.2F, 16F, 27F, 20F)
-                .withTraits(ArmourPartType.CORE, TconEvoArmourTraits.TRAIT_EVOLVED, TconEvoArmourTraits.TRAIT_CELESTIAL)
-                .withTraits(ArmourPartType.EXTRA, TconEvoArmourTraits.TRAIT_GALE_FORCE[1])
+                .withTraits(ArmourPartType.CORE, TconEvoArmourTraits.TRAIT_EVOLVED)
+                .withTraits(ArmourPartType.PLATES, TconEvoArmourTraits.TRAIT_CELESTIAL)
+                .withTraits(ArmourPartType.TRIM, TconEvoArmourTraits.TRAIT_GALE_FORCE[1])
                 .build();
 
         // environmental tech
@@ -254,7 +256,8 @@ public class TconEvoArmourMaterials {
                 .build();
         new ArmourMaterialBuilder(TconEvoMaterials.PRIMAL_METAL)
                 .withStatsArmour(3.5F, 22F, 1F, 0F, 2.5F, 0.5F)
-                .withTraits(ArmourPartType.ARMOUR, TconEvoArmourTraits.TRAIT_PHOENIX_ASPECT, TconEvoArmourTraits.TRAIT_GALE_FORCE[0])
+                .withTraits(ArmourPartType.PROTECTIVE, TconEvoArmourTraits.TRAIT_GALE_FORCE[0])
+                .withTraits(ArmourPartType.TRIM, TconEvoArmourTraits.TRAIT_PHOENIX_ASPECT)
                 .build();
 
         // thermal series

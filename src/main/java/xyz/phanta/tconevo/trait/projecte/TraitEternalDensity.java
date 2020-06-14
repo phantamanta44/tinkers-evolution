@@ -10,10 +10,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerEvent;
-import slimeknights.tconstruct.library.traits.AbstractTraitLeveled;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.integration.projecte.EqExHooks;
+import xyz.phanta.tconevo.trait.base.StackableTrait;
 import xyz.phanta.tconevo.util.InventoryUtils;
 import xyz.phanta.tconevo.util.ToolUtils;
 
@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class TraitEternalDensity extends AbstractTraitLeveled {
+public class TraitEternalDensity extends StackableTrait {
 
     public static final int COLOUR = 0x38173e;
 

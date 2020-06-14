@@ -13,7 +13,8 @@ public class TconEvoCoreMod implements IFMLLoadingPlugin {
         return new String[] {
                 pkg + "ClassTransformerItemStackBar",
                 pkg + "ClassTransformerItemSensitiveModifiers",
-                pkg + "ClassTransformerAstralAttunement"
+                pkg + "ClassTransformerAstralAttunement",
+                pkg + "ClassTransformerUniquePartTraits"
         };
     }
 

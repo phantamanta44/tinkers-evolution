@@ -44,7 +44,7 @@ public class NameConst {
     public static final String TRAIT_VAMPIRIC = TconEvoMod.MOD_ID + ".vampiric";
     public static final String MOD_FLUXED = TconEvoMod.MOD_ID + ".fluxed";
 
-    private static final String ARMOUR_SUFFIX = "_armor";
+    public static final String ARMOUR_SUFFIX = "_armor";
     public static final String TRAIT_BULWARK = TconEvoMod.MOD_ID + ".bulwark", ARMOUR_TRAIT_BULWARK = TRAIT_BULWARK + ARMOUR_SUFFIX;
     public static final String TRAIT_CELESTIAL = TconEvoMod.MOD_ID + ".celestial", ARMOUR_TRAIT_CELESTSIAL = TRAIT_CELESTIAL + ARMOUR_SUFFIX;
     public static final String TRAIT_CHILLING_TOUCH = TconEvoMod.MOD_ID + ".chilling_touch", ARMOUR_TRAIT_CHILLING_TOUCH = TRAIT_CHILLING_TOUCH + ARMOUR_SUFFIX;

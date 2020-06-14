@@ -1,6 +1,5 @@
 package xyz.phanta.tconevo.integration.conarm.trait;
 
-import c4.conarm.lib.traits.AbstractArmorTraitLeveled;
 import com.google.common.collect.Multimap;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -9,10 +8,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.Constants;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.init.TconEvoEntityAttrs;
+import xyz.phanta.tconevo.integration.conarm.trait.base.StackableArmourTrait;
 import xyz.phanta.tconevo.util.ArmourAttributeId;
 import xyz.phanta.tconevo.util.ToolUtils;
 
-public class ArmourTraitGaleForce extends AbstractArmorTraitLeveled {
+public class ArmourTraitGaleForce extends StackableArmourTrait {
 
     private static final ArmourAttributeId ATTR_FLIGHT_SPEED = new ArmourAttributeId(
             "f93c61fb-5f6f-486b-b610-e2a109d8e271", "a85316b2-b454-4e37-a64e-c94e386161c7",
@@ -20,6 +20,11 @@ public class ArmourTraitGaleForce extends AbstractArmorTraitLeveled {
 
     public ArmourTraitGaleForce(int level) {
         super(NameConst.TRAIT_GALE_FORCE, 0x0cab14, 3, level);
+    }
+
+    @Override
+    public LevelCombiner getLevelCombiner() {
+        return LevelCombiner.SUM;
     }
 
     @Override
