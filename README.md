@@ -25,6 +25,8 @@ Current mod integration modules are as follows:
     * Adds wyvern, draconic, and chaotic materials that use energy and are upgradable by fusion crafting
     * Adds modifiers that augment offensive capabilities against draconic armour, among other things
     * Allows wyvern and draconic flux capacitors to apply the "fluxed" modifier
+* **Environmental Tech**
+    * Adds materials for the many crystal types
 * **Industrial Foregoing**
     * Adds IF-based materials, including a powerful pink metal material
     * Adds meat ingots! Tasty!
