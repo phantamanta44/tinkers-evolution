@@ -1,0 +1,19 @@
+{
+  "armormodifier": "tconevo.absorption_armor",
+  "text": [
+    {
+      "text": "By infusing an armour plate with the power of a Book of Absorption, it can be made to grant increased protection."
+    }
+  ],
+  "effects": [
+    "Grants absorptive hearts",
+    "Analogous to the absorption enchantment",
+    "Multiple levels"
+  ],
+  "demoArmor": [
+    "conarm:helmet",
+    "conarm:chestplate",
+    "conarm:leggings",
+    "conarm:boots"
+  ]
+}

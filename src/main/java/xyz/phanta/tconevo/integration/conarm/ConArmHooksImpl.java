@@ -4,6 +4,7 @@ import c4.conarm.lib.events.ArmoryEvent;
 import c4.conarm.lib.modifiers.ArmorModifierTrait;
 import c4.conarm.lib.tinkering.ArmorBuilder;
 import c4.conarm.lib.tinkering.TinkersArmor;
+import c4.conarm.lib.utils.RecipeMatchHolder;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
@@ -72,6 +73,11 @@ public class ConArmHooksImpl implements ConArmHooks {
     @Override
     public void rebuildArmour(NBTTagCompound rootTag, Item item) throws TinkerGuiException {
         ArmorBuilder.rebuildArmor(rootTag, (TinkersArmor)item);
+    }
+
+    @Override
+    public boolean hasArmourModMatches(IModifier mod) {
+        return RecipeMatchHolder.getRecipes(mod).map(m -> !m.isEmpty()).orElse(false);
     }
 
 }

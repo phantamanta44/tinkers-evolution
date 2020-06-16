@@ -235,6 +235,10 @@ public class NameConst {
     public static final String MAT_DARKWOOD = "darkwood";
     public static final String MAT_FUSEWOOD = "fusewood";
 
+    // natural absorption
+
+    public static final String MOD_ABSORPTION = TconEvoMod.MOD_ID + ".absorption";
+
     // project: e
 
     public static final String MAT_DARK_MATTER = "dark_matter";

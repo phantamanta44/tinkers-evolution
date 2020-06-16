@@ -437,6 +437,9 @@ material.bloodwood.name=Bloodwood
 material.darkwood.name=Darkwood
 material.fusewood.name=Fusewood
 
+modifier.tconevo.absorption_armor.name=Absorption
+modifier.tconevo.absorption_armor.desc=§oKnockoff runic shielding?§r\nThis armour grants additional absorption hearts.
+
 material.dark_matter.name=Dark Matter
 fluid.tconevo.dark_matter.name=Dark Liquid
 material.red_matter.name=Red Matter

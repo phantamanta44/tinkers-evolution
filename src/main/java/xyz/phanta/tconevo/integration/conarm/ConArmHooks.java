@@ -23,6 +23,8 @@ public interface ConArmHooks extends IntegrationHooks {
 
     void rebuildArmour(NBTTagCompound rootTag, Item item) throws TinkerGuiException;
 
+    boolean hasArmourModMatches(IModifier mod);
+
     class Noop implements ConArmHooks {
 
         @Override
@@ -39,6 +41,11 @@ public interface ConArmHooks extends IntegrationHooks {
         @Override
         public void rebuildArmour(NBTTagCompound rootTag, Item item) {
             // NO-OP
+        }
+
+        @Override
+        public boolean hasArmourModMatches(IModifier mod) {
+            return false;
         }
 
     }

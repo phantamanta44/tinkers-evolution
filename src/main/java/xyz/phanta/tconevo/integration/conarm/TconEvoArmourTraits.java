@@ -22,10 +22,12 @@ import xyz.phanta.tconevo.integration.conarm.trait.botania.ArmourTraitManaInfuse
 import xyz.phanta.tconevo.integration.conarm.trait.draconicevolution.*;
 import xyz.phanta.tconevo.integration.conarm.trait.ic2.ArmourTraitElectric;
 import xyz.phanta.tconevo.integration.conarm.trait.industrialforegoing.ArmourTraitSlimeyPink;
+import xyz.phanta.tconevo.integration.conarm.trait.naturalabsorption.ArmourModAbsorption;
 import xyz.phanta.tconevo.integration.conarm.trait.projecte.ArmourTraitSuperdense;
 import xyz.phanta.tconevo.integration.conarm.trait.projecte.ArmourTraitUltradense;
 import xyz.phanta.tconevo.integration.conarm.trait.thaumcraft.ArmourTraitWarping;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
+import xyz.phanta.tconevo.integration.naturalabsorption.NaturalAbsorptionHooks;
 import xyz.phanta.tconevo.trait.botania.ModifierGaiaWill;
 import xyz.phanta.tconevo.util.TconReflect;
 
@@ -105,6 +107,9 @@ public class TconEvoArmourTraits {
     // industrialcraft 2
     public static final ArmourTraitElectric TRAIT_ELECTRIC = new ArmourTraitElectric();
 
+    // natural absorption
+    public static final ArmourModAbsorption MOD_ABSORPTION = new ArmourModAbsorption();
+
     // project: e
     public static final ArmourTraitSuperdense TRAIT_SUPERDENSE = new ArmourTraitSuperdense();
     public static final ArmourTraitUltradense TRAIT_ULTRADENSE = new ArmourTraitUltradense();
@@ -116,7 +121,8 @@ public class TconEvoArmourTraits {
             MOD_FLUXED,
             MOD_GAIA_WILL_AHRIM, MOD_GAIA_WILL_DHAROK, MOD_GAIA_WILL_GUTHAN,
             MOD_GAIA_WILL_KARIL, MOD_GAIA_WILL_TORAG, MOD_GAIA_WILL_VERAC,
-            MOD_CHAOS_RESISTANCE, MOD_FINAL_GUARD);
+            MOD_CHAOS_RESISTANCE, MOD_FINAL_GUARD,
+            MOD_ABSORPTION);
 
     public static void initModifierMaterials() {
         // botania
@@ -130,6 +136,9 @@ public class TconEvoArmourTraits {
         // draconic evolution
         addModItemOpt(MOD_CHAOS_RESISTANCE, DraconicHooks.INSTANCE::getItemDragonHeart);
         addModItemOpt(MOD_FINAL_GUARD, DraconicHooks.INSTANCE::getItemReactorStabilizer);
+
+        // natural absorption
+        addModItemOpt(MOD_ABSORPTION, NaturalAbsorptionHooks.INSTANCE::getItemAbsorptionBook);
 
         // copy equivalent item matchers from analogous tool mods
         copyMatchers(TconEvoTraits.MOD_FLUXED, MOD_FLUXED);
