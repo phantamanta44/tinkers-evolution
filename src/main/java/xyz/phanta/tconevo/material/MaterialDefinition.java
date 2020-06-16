@@ -2,10 +2,8 @@ package xyz.phanta.tconevo.material;
 
 import com.google.common.collect.Sets;
 import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import slimeknights.tconstruct.library.TinkerRegistry;
-import slimeknights.tconstruct.library.fluid.FluidMolten;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.traits.ITrait;
 import slimeknights.tconstruct.smeltery.TinkerSmeltery;
@@ -13,9 +11,7 @@ import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.TconEvoMod;
 import xyz.phanta.tconevo.util.LazyAccum;
 
-import javax.annotation.Nullable;
 import java.util.*;
-import java.util.function.Supplier;
 
 public class MaterialDefinition {
 
@@ -33,13 +29,8 @@ public class MaterialDefinition {
                                 MaterialForm form,
                                 String oreName,
                                 List<RegCondition> conditions,
-                                boolean craftable,
-                                boolean castable,
-                                @Nullable Supplier<Fluid> fluidGetter,
-                                int fluidTemperature,
                                 Map<PartType, LazyAccum<ITrait>> traits) {
-        materialDefs.add(new MaterialDefinition(
-                material, form, oreName, conditions, craftable, castable, fluidGetter, fluidTemperature, traits));
+        materialDefs.add(new MaterialDefinition(material, form, oreName, conditions, traits));
     }
 
     public static void initMaterialProperties() {
@@ -71,41 +62,21 @@ public class MaterialDefinition {
     private final String oreName;
 
     private final List<RegCondition> conditions;
-    private final boolean craftable;
-    private final boolean castable;
-    @Nullable
-    private final Supplier<Fluid> fluidGetter;
-    private final int fluidTemperature;
     private final Map<PartType, LazyAccum<ITrait>> traits;
 
     private MaterialDefinition(Material material,
                                MaterialForm form,
                                String oreName,
                                List<RegCondition> conditions,
-                               boolean craftable,
-                               boolean castable,
-                               @Nullable Supplier<Fluid> fluidGetter,
-                               int fluidTemperature,
                                Map<PartType, LazyAccum<ITrait>> traits) {
         this.material = material;
         this.form = form;
         this.oreName = oreName;
         this.conditions = conditions;
-        this.craftable = craftable;
-        this.castable = castable;
-        this.fluidGetter = fluidGetter;
-        this.fluidTemperature = fluidTemperature;
         this.traits = traits;
     }
 
     private void initProperties() {
-        material.setCraftable(craftable);
-        if (castable) {
-            material.setCastable(true);
-            registerFluid();
-        } else {
-            material.setCastable(false);
-        }
         if (form == MaterialForm.METAL) {
             material.addCommonItems(oreName);
         } else {
@@ -122,21 +93,6 @@ public class MaterialDefinition {
                 }
             }
         }
-    }
-
-    private void registerFluid() {
-        if (fluidGetter != null) {
-            Fluid fluid = fluidGetter.get();
-            if (fluid != null) { // fall back to generating a fluid if the getter fails
-                material.setFluid(fluid);
-                return;
-            }
-        }
-        Fluid fluid = new FluidMolten(material.identifier, material.materialTextColor);
-        fluid.setTemperature(fluidTemperature);
-        fluid.setUnlocalizedName(TconEvoMod.MOD_ID + "." + material.identifier);
-        FluidRegistry.registerFluid(fluid);
-        material.setFluid(fluid);
     }
 
     private void tryActivate() {

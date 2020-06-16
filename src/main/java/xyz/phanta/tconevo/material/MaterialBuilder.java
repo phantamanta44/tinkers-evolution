@@ -4,6 +4,7 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.ModContainer;
 import slimeknights.tconstruct.library.TinkerRegistry;
+import slimeknights.tconstruct.library.fluid.FluidMolten;
 import slimeknights.tconstruct.library.materials.*;
 import slimeknights.tconstruct.library.traits.ITrait;
 import xyz.phanta.tconevo.TconEvoConfig;
@@ -155,11 +156,17 @@ public class MaterialBuilder {
         }
         material = new Material(matId, colour, true);
         try {
+            material.setCraftable(craftable);
+            if (castable) {
+                material.setCastable(true);
+                registerFluid(material);
+            } else {
+                material.setCastable(false);
+            }
             for (IMaterialStats statsObj : materialStats) {
                 TinkerRegistry.addMaterialStats(material, statsObj);
             }
-            MaterialDefinition.register(
-                    material, form, oreName, conditions, craftable, castable, fluidGetter, fluidTemperature, traits);
+            MaterialDefinition.register(material, form, oreName, conditions, traits);
             TinkerRegistry.addMaterial(material);
             // override material owner since libnine invokes the static initializers
             TconReflect.overrideMaterialOwnerMod(material, TconEvoMod.INSTANCE);
@@ -168,6 +175,21 @@ public class MaterialBuilder {
             TconEvoMod.LOGGER.error(e);
         }
         return material;
+    }
+
+    private void registerFluid(Material material) {
+        if (fluidGetter != null) {
+            Fluid fluid = fluidGetter.get();
+            if (fluid != null) { // fall back to generating a fluid if the getter fails
+                material.setFluid(fluid);
+                return;
+            }
+        }
+        Fluid fluid = new FluidMolten(material.identifier, material.materialTextColor);
+        fluid.setTemperature(fluidTemperature);
+        fluid.setUnlocalizedName(TconEvoMod.MOD_ID + "." + material.identifier);
+        FluidRegistry.registerFluid(fluid);
+        material.setFluid(fluid);
     }
 
 }
