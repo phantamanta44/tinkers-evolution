@@ -9,6 +9,7 @@ import xyz.phanta.tconevo.integration.astralsorcery.AstralHooks;
 import xyz.phanta.tconevo.integration.bloodmagic.BloodMagicHooks;
 import xyz.phanta.tconevo.integration.botania.BotaniaHooks;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
+import xyz.phanta.tconevo.integration.ic2.Ic2Hooks;
 import xyz.phanta.tconevo.integration.industrialforegoing.ForegoingHooks;
 import xyz.phanta.tconevo.integration.projecte.EqExHooks;
 import xyz.phanta.tconevo.integration.thaumcraft.ThaumHooks;
@@ -22,6 +23,8 @@ public class TconEvoMaterials {
 
     // actually additions
     public static Material BLACK_QUARTZ, AA_RESTONIA, AA_PALIS, AA_DIAMANTINE, AA_VOID, AA_EMERALDIC, AA_ENORI;
+    // advanced solar panels
+    public static Material SUNNARIUM;
     // applied energistics 2
     public static Material SKY_STONE, CERTUS_QUARTZ, FLUIX, FLUIX_STEEL;
     // astral sorcery
@@ -36,6 +39,8 @@ public class TconEvoMaterials {
     public static Material LITHERITE, ERODIUM, KYRONITE, PLADIUM, IONITE, AETHIUM, LONSDALEITE, MICA;
     // industrial foregoing
     public static Material ESSENCE_METAL, MEAT_METAL, PINK_SLIME, PINK_METAL;
+    // industrialcraft 2
+    public static Material RUBBER, ADV_ALLOY, ENERGIUM, CARBON_FIBER, IRIDIUM, UU_METAL;
     // mekanism
     public static Material OSMIUM, REFINED_OBSIDIAN, REFINED_GLOWSTONE, HDPE;
     // natura
@@ -115,6 +120,17 @@ public class TconEvoMaterials {
                 .withStatsExtra(55)
                 .withStatsBow(0.7F, 1.35F, 2F)
                 .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_CRYSTALLINE, TinkerTraits.magnetic)
+                .build();
+
+        // advanced solar panels
+        SUNNARIUM = new MaterialBuilder(NameConst.MAT_SUNNARIUM, 0xe2c715, MaterialForm.GEM_ITEM_4, "Sunnarium")
+                .requiresOres("itemSunnarium")
+                .setCastable("sunnarium", 3000)
+                .withStatsHead(580, 12F, 12F, 7)
+                .withStatsHandle(1.25F, 40)
+                .withStatsExtra(70)
+                .withStatsBow(2F, 1.1F, 4F)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_PHOTOSYNTHETIC, TconEvoTraits.TRAIT_LUMINIFEROUS)
                 .build();
 
         // applied energistics 2
@@ -425,6 +441,63 @@ public class TconEvoMaterials {
                 .withStatsExtra(250)
                 .withStatsBow(1.1F, 1F, 4F)
                 .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_MORTAL_WOUNDS, TinkerTraits.unnatural)
+                .build();
+
+        // industrialcraft 2
+        RUBBER = new MaterialBuilder(NameConst.MAT_RUBBER, 0x1d1d1d, MaterialForm.GEM_ITEM_4, "Rubber")
+                .requiresOres("itemRubber")
+                .setCraftable()
+                .withStatsHead(180, 5F, 1.5F, HarvestLevels.IRON)
+                .withStatsHandle(0.5F, 75)
+                .withStatsExtra(50)
+                .withStatsBow(2F, 0.5F, 0F)
+                .withTraits(PartType.HEAD, TinkerTraits.squeaky)
+                .withTraits(PartType.EXTRA, TinkerTraits.crude)
+                .build();
+        ADV_ALLOY = new MaterialBuilder(NameConst.MAT_ADV_ALLOY, 0x515044, MaterialForm.PLATE, "AdvancedAlloy")
+                .requiresOres("plateAdvancedAlloy")
+                .setCraftable()
+                .withStatsHead(800, 7F, 5.5F, HarvestLevels.OBSIDIAN)
+                .withStatsHandle(1F, 175)
+                .withStatsExtra(225)
+                .withStatsBow(0.85F, 1.25F, 2F)
+                .withTraits(PartType.TOOL, TinkerTraits.dense, TconEvoTraits.TRAIT_IMPACT_FORCE)
+                .build();
+        ENERGIUM = new MaterialBuilder(NameConst.MAT_ENERGIUM, 0xc83838, MaterialForm.METAL, "Energium")
+                .requiresMods(Ic2Hooks.MOD_ID)
+                .setCastable(1400)
+                .withStatsHead(512, 8.5F, 6F, HarvestLevels.OBSIDIAN)
+                .withStatsHandle(0.8F, 40)
+                .withStatsExtra(50)
+                .withStatsBow(0.75F, 1F, 3.5F)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_ELECTRIC)
+                .build();
+        CARBON_FIBER = new MaterialBuilder(NameConst.MAT_CARBON_FIBER, 0x323232, MaterialForm.PLATE, "Carbon")
+                .requiresOres("plateCarbon")
+                .setCraftable()
+                .withStatsHead(1200, 6F, 5.5F, HarvestLevels.DIAMOND)
+                .withStatsHandle(1.3F, 70)
+                .withStatsExtra(95)
+                .withStatsBow(1.6F, 1F, 1.5F)
+                .withTraits(PartType.TOOL, TinkerTraits.lightweight, TconEvoTraits.TRAIT_RELENTLESS)
+                .build();
+        IRIDIUM = new MaterialBuilder(NameConst.MAT_IRIDIUM, 0xc2c1df, MaterialForm.METAL, "Iridium")
+                .requiresOres("ingotIridium")
+                .setCastable("iridium", 1233)
+                .withStatsHead(1900, 9F, 8.5F, 5)
+                .withStatsHandle(0.8F, 160)
+                .withStatsExtra(340)
+                .withStatsBow(0.6F, 2F, 5.5F)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_OVERWHELM, TinkerTraits.momentum)
+                .build();
+        UU_METAL = new MaterialBuilder(NameConst.MAT_UU_METAL, 0xd75dd6, MaterialForm.METAL, "UUMatter")
+                .requiresMods(Ic2Hooks.MOD_ID)
+                .setCastable(420)
+                .withStatsHead(17, 15F, 10F, 5)
+                .withStatsHandle(2F, 0)
+                .withStatsExtra(420)
+                .withStatsBow(1.25F, 1.25F, 0F)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_RUINATION, TinkerTraits.crumbling)
                 .build();
 
         // mekanism

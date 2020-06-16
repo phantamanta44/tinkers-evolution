@@ -1,18 +1,15 @@
 package xyz.phanta.tconevo.trait;
 
-import io.github.phantamanta44.libnine.util.helper.OptUtils;
+import gnu.trove.list.TIntList;
+import gnu.trove.list.array.TIntArrayList;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.energy.CapabilityEnergy;
-import net.minecraftforge.energy.IEnergyStorage;
-import net.minecraftforge.items.CapabilityItemHandler;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 import xyz.phanta.tconevo.TconEvoConfig;
+import xyz.phanta.tconevo.capability.PowerWrapper;
 import xyz.phanta.tconevo.constant.NameConst;
-import xyz.phanta.tconevo.util.InventoryIterator;
 import xyz.phanta.tconevo.util.InventoryUtils;
-import xyz.phanta.tconevo.util.ItemHandlerIterator;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -36,19 +33,25 @@ public class TraitPiezoelectric extends AbstractTrait {
             return;
         }
         Iterator<ItemStack> iterInv = InventoryUtils.iterateInv(player);
-        // probably should split energy based on how much a given recipient is missing, but this is good enough for now
-        List<IEnergyStorage> recipients = new ArrayList<>();
+        List<PowerWrapper> recipients = new ArrayList<>();
+        TIntList missing = new TIntArrayList();
+        long totalMissing = 0;
         while (iterInv.hasNext()) {
-            OptUtils.capability(iterInv.next(), CapabilityEnergy.ENERGY)
-                    .filter(e -> e.getEnergyStored() < e.getMaxEnergyStored())
-                    .ifPresent(recipients::add);
+            PowerWrapper recipient = PowerWrapper.wrap(iterInv.next());
+            if (recipient != null) {
+                int missingHere = recipient.getEnergyMax() - recipient.getEnergy();
+                if (missingHere > 0) {
+                    recipients.add(recipient);
+                    missing.add(missingHere);
+                    totalMissing += missingHere;
+                }
+            }
         }
         if (recipients.isEmpty()) {
             return;
         }
-        energy = (int)Math.ceil(energy / (float)recipients.size());
-        for (IEnergyStorage recipient : recipients) {
-            recipient.receiveEnergy(energy, false);
+        for (int i = 0; i < recipients.size(); i++) {
+            recipients.get(i).inject((int)Math.round(energy * (missing.get(i) / (double)totalMissing)), true);
         }
     }
 

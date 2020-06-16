@@ -13,17 +13,15 @@ import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.energy.CapabilityEnergy;
-import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import xyz.phanta.tconevo.TconEvoConfig;
+import xyz.phanta.tconevo.capability.PowerWrapper;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.init.TconEvoPotions;
 import xyz.phanta.tconevo.util.ToolUtils;
 
 import java.util.List;
-import java.util.Objects;
 
 public class ArmourModFinalGuard extends ArmorModifierTrait {
 
@@ -34,7 +32,7 @@ public class ArmourModFinalGuard extends ArmorModifierTrait {
 
     @Override
     public boolean canApplyCustom(ItemStack stack) {
-        return super.canApplyCustom(stack) && stack.hasCapability(CapabilityEnergy.ENERGY, null);
+        return PowerWrapper.isPowered(stack) && super.canApplyCustom(stack);
     }
 
     @SubscribeEvent
@@ -48,25 +46,23 @@ public class ArmourModFinalGuard extends ArmorModifierTrait {
             return;
         }
         EntityPlayer player = (EntityPlayer)playerEntity;
-        int[] energy = new int[player.inventory.armorInventory.size()];
+        PowerWrapper[] energyStores = new PowerWrapper[player.inventory.armorInventory.size()];
+        int[] energy = new int[energyStores.length];
         long totalEnergy = 0;
         int cost = TconEvoConfig.moduleDraconicEvolution.finalGuardEnergy;
-        for (int i = 0; i < energy.length; i++) {
+        for (int i = 0; i < energyStores.length; i++) {
             ItemStack stack = player.inventory.armorInventory.get(i);
-            if (stack.hasCapability(CapabilityEnergy.ENERGY, null)) {
-                IEnergyStorage energyStore = Objects.requireNonNull(stack.getCapability(CapabilityEnergy.ENERGY, null));
-                totalEnergy += energy[i] = energyStore.extractEnergy(cost, true);
+            if ((energyStores[i] = PowerWrapper.wrap(stack)) != null) {
+                totalEnergy += energy[i] = energyStores[i].extract(cost, false);
             }
         }
         if (totalEnergy >= cost) {
             double ratio = (float)(cost / (double)totalEnergy);
             // we will just assume the energy stores have consistent simulation/non-sim behaviour
-            // we will also assume the energy capabilities have not spontaneously disappeared
-            for (int i = 0; i < energy.length; i++) {
+            for (int i = 0; i < energyStores.length; i++) {
                 if (energy[i] > 0) {
-                    // *should* be at the correct precision to cast to integer now
-                    Objects.requireNonNull(player.inventory.armorInventory.get(i).getCapability(CapabilityEnergy.ENERGY, null))
-                            .extractEnergy((int)Math.round(energy[i] * ratio), false);
+                    //noinspection ConstantConditions
+                    energyStores[i].extract((int)Math.round(energy[i] * ratio), true);
                 }
             }
             event.setCanceled(true);

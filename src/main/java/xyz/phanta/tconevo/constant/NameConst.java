@@ -17,6 +17,9 @@ public class NameConst {
     public static final String POTION_DAMAGE_REDUCTION = "damage_reduction";
     public static final String POTION_DAMAGE_BOOST = "damage_boost";
 
+    private static final String INFO_KEY = TconEvoMod.MOD_ID + ".info.";
+    public static final String INFO_ENERGIZED_TRAIT_CONFLICT = INFO_KEY + "energized_trait_conflict";
+
     public static final String TRAIT_AFTERSHOCK = TconEvoMod.MOD_ID + ".aftershock";
     public static final String TRAIT_BATTLE_FUROR = TconEvoMod.MOD_ID + ".battle_furor";
     public static final String TRAIT_BLASTING = TconEvoMod.MOD_ID + ".blasting";
@@ -35,6 +38,7 @@ public class NameConst {
     public static final String TRAIT_MORTAL_WOUNDS = TconEvoMod.MOD_ID + ".mortal_wounds";
     public static final String TRAIT_OPPORTUNIST = TconEvoMod.MOD_ID + ".opportunist";
     public static final String TRAIT_OVERWHELM = TconEvoMod.MOD_ID + ".overwhelm";
+    public static final String TRAIT_PHOTOSYNTHETIC = TconEvoMod.MOD_ID + ".photosynthetic";
     public static final String TRAIT_PIEZOELECTRIC = TconEvoMod.MOD_ID + ".piezoelectric";
     public static final String TRAIT_REJUVENATING = TconEvoMod.MOD_ID + ".rejuvenating";
     public static final String TRAIT_RELENTLESS = TconEvoMod.MOD_ID + ".relentless";
@@ -45,6 +49,7 @@ public class NameConst {
     public static final String MOD_FLUXED = TconEvoMod.MOD_ID + ".fluxed";
 
     public static final String ARMOUR_SUFFIX = "_armor";
+    public static final String ARMOUR_TRAIT_PHOTOSYNTHETIC = TRAIT_PHOTOSYNTHETIC + ARMOUR_SUFFIX;
     public static final String TRAIT_BULWARK = TconEvoMod.MOD_ID + ".bulwark", ARMOUR_TRAIT_BULWARK = TRAIT_BULWARK + ARMOUR_SUFFIX;
     public static final String TRAIT_CELESTIAL = TconEvoMod.MOD_ID + ".celestial", ARMOUR_TRAIT_CELESTSIAL = TRAIT_CELESTIAL + ARMOUR_SUFFIX;
     public static final String TRAIT_CHILLING_TOUCH = TconEvoMod.MOD_ID + ".chilling_touch", ARMOUR_TRAIT_CHILLING_TOUCH = TRAIT_CHILLING_TOUCH + ARMOUR_SUFFIX;
@@ -59,6 +64,7 @@ public class NameConst {
     public static final String TRAIT_SPECTRAL = TconEvoMod.MOD_ID + ".spectral", ARMOUR_TRAIT_SPECTRAL = TRAIT_SPECTRAL + ARMOUR_SUFFIX;
     public static final String TRAIT_STIFLING = TconEvoMod.MOD_ID + ".stifling", ARMOUR_TRAIT_STIFLING = TRAIT_STIFLING + ARMOUR_SUFFIX;
     public static final String TRAIT_STONEBOUND = TconEvoMod.MOD_ID + ".stonebound", ARMOUR_TRAIT_STONEBOUND = TRAIT_STONEBOUND + ARMOUR_SUFFIX;
+    public static final String TRAIT_THUNDERGOD_FAVOUR = TconEvoMod.MOD_ID + ".thundergod_favour", ARMOUR_TRAIT_THUNDERGOD_FAVOUR = TRAIT_THUNDERGOD_FAVOUR + ARMOUR_SUFFIX;
     public static final String TRAIT_WILL_STRENGTH = TconEvoMod.MOD_ID + ".will_strength", ARMOUR_TRAIT_WILL_STRENGTH = TRAIT_WILL_STRENGTH + ARMOUR_SUFFIX;
     public static final String ARMOUR_MOD_FLUXED = MOD_FLUXED + ARMOUR_SUFFIX;
 
@@ -71,6 +77,10 @@ public class NameConst {
     public static final String MAT_AA_VOID = "void_crystal";
     public static final String MAT_AA_EMERALDIC = "emeraldic_crystal";
     public static final String MAT_AA_ENORI = "enori_crystal";
+
+    // advanced solar panels
+
+    public static final String MAT_SUNNARIUM = "sunnarium";
 
     // applied energistics 2
 
@@ -197,6 +207,19 @@ public class NameConst {
     public static final String TRAIT_SLIMEY_PINK = TconEvoMod.MOD_ID + ".slimey_pink";
 
     public static final String ARMOUR_TRAIT_SLIMEY_PINK = TRAIT_SLIMEY_PINK + ARMOUR_SUFFIX;
+
+    // industrialcraft 2
+
+    public static final String MAT_RUBBER = "rubber";
+    public static final String MAT_ADV_ALLOY = "advanced_alloy";
+    public static final String MAT_ENERGIUM = "energetic_metal";
+    public static final String MAT_CARBON_FIBER = "carbon_fiber";
+    public static final String MAT_IRIDIUM = "iridium";
+    public static final String MAT_UU_METAL = "universal_metal";
+
+    public static final String TRAIT_ELECTRIC = TconEvoMod.MOD_ID + ".electric";
+
+    public static final String ARMOUR_TRAIT_ELECTRIC = TRAIT_ELECTRIC + ARMOUR_SUFFIX;
 
     // mekanism
 

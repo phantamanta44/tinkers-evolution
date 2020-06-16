@@ -1,0 +1,19 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "nnn",
+    "nnn",
+    "nnn"
+  ],
+  "key": {
+    "n": {
+      "type": "forge:ore_dict",
+      "ore": "nuggetEnergium"
+    }
+  },
+  "result": {
+    "item": "tconevo:metal",
+    "count": 1,
+    "data": 35
+  }
+}

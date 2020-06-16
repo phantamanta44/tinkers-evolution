@@ -25,7 +25,7 @@ public class ItemMetal extends L9ItemSubs implements ParameterizedItemModel.IPar
 
         WYVERN_METAL("WyvernMetal"), DRACONIC_METAL("DraconicMetal"), CHAOTIC_METAL("ChaoticMetal"),
         ESSENCE_METAL("EssenceMetal"), PRIMAL_METAL("Primordial"), BOUND_METAL("BoundMetal"),
-        SENTIENT_METAL("SentientMetal");
+        SENTIENT_METAL("SentientMetal"), ENERGETIC_METAL("Energium"), UNIVERSAL_METAL("UUMatter");
 
         public static final Type[] VALUES = values();
 

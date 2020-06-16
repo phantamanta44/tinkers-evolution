@@ -21,6 +21,7 @@ import slimeknights.tconstruct.library.utils.ToolHelper;
 import slimeknights.tconstruct.tools.modifiers.ModMendingMoss;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.TconEvoMod;
+import xyz.phanta.tconevo.capability.PowerWrapper;
 import xyz.phanta.tconevo.client.event.ItemStackBarEvent;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.trait.base.MatchSensitiveModifier;
@@ -42,7 +43,7 @@ public class ModifierFluxed extends ModifierTrait implements MatchSensitiveModif
 
     @Override
     public boolean canApplyCustom(ItemStack stack) {
-        return !stack.hasCapability(CapabilityEnergy.ENERGY, null) && super.canApplyCustom(stack);
+        return !PowerWrapper.isPowered(stack) && super.canApplyCustom(stack);
     }
 
     @Override

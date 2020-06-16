@@ -39,6 +39,16 @@
         "textures": {
           "all": "tconevo:blocks/metal/sentient_metal"
         }
+      },
+      "ENERGETIC_METAL": {
+        "textures": {
+          "all": "tconevo:blocks/metal/energetic_metal"
+        }
+      },
+      "UNIVERSAL_METAL": {
+        "textures": {
+          "all": "tconevo:blocks/metal/universal_metal"
+        }
       }
     }
   }

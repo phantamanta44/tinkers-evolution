@@ -4,6 +4,7 @@ import com.google.common.collect.Sets;
 import net.minecraft.item.ItemStack;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
+import slimeknights.tconstruct.library.traits.ITrait;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.integration.actuallyadditions.ActuallyHooks;
 import xyz.phanta.tconevo.integration.astralsorcery.AstralConstellation;
@@ -22,9 +23,11 @@ import xyz.phanta.tconevo.trait.botania.TraitFaeVoice;
 import xyz.phanta.tconevo.trait.botania.TraitGaiaWrath;
 import xyz.phanta.tconevo.trait.botania.TraitManaInfused;
 import xyz.phanta.tconevo.trait.draconicevolution.*;
+import xyz.phanta.tconevo.trait.ic2.TraitElectric;
 import xyz.phanta.tconevo.trait.industrialforegoing.TraitSlimeyPink;
 import xyz.phanta.tconevo.trait.projecte.TraitEternalDensity;
 import xyz.phanta.tconevo.trait.thaumcraft.TraitWarping;
+import xyz.phanta.tconevo.util.LazyAccum;
 
 import java.util.*;
 import java.util.function.Supplier;
@@ -60,6 +63,7 @@ public class TconEvoTraits {
     public static final TraitMortalWounds TRAIT_MORTAL_WOUNDS = new TraitMortalWounds();
     public static final TraitOpportunist TRAIT_OPPORTUNIST = new TraitOpportunist();
     public static final TraitOverwhelm TRAIT_OVERWHELM = new TraitOverwhelm();
+    public static final TraitPhotosynthetic TRAIT_PHOTOSYNTHETIC = new TraitPhotosynthetic();
     public static final TraitPiezoelectric TRAIT_PIEZOELECTRIC = new TraitPiezoelectric();
     public static final TraitRejuvenating TRAIT_REJUVENATING = new TraitRejuvenating();
     public static final TraitRelentless TRAIT_RELENTLESS = new TraitRelentless();
@@ -115,6 +119,9 @@ public class TconEvoTraits {
 
     // industrial foregoing
     public static final TraitSlimeyPink TRAIT_SLIMEY_PINK = new TraitSlimeyPink();
+
+    // industrialcraft 2
+    public static final TraitElectric TRAIT_ELECTRIC = new TraitElectric();
 
     // project: e
     public static final TraitEternalDensity[] TRAIT_ETERNAL_DENSITY = {

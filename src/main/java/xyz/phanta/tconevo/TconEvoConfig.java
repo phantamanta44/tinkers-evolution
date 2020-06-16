@@ -200,6 +200,21 @@ public class TconEvoConfig {
         @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
         public double traitOverwhelmArmourDamage = 0.015D;
 
+        @Config.Comment({
+                "The probability of repairing one durability each second for tools with the photosynthetic trait.",
+                "This is the probability in full sunlight; the probability is decreased in lower light and when occluded."
+        })
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double traitPhotosyntheticRepairProbability = 0.2D;
+
+        @Config.Comment({
+                "The probability of repairing one durability each second for armour with the photosynthetic trait.",
+                "This is the probability in full sunlight; the probability is decreased in lower light and when occluded.",
+                "Only useful with Construct's Armoury installed."
+        })
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double traitPhotosyntheticArmourRepairProbability = 0.15D;
+
         @Config.Comment("The fraction of damage converted to energy for attacks that proc the piezoelectric trait.")
         @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
         public double traitPiezoelectricConversionRatio = 36D;
@@ -984,6 +999,47 @@ public class TconEvoConfig {
         @Config.Comment("The probability of a pink slime spawning with the pink slimey trait.")
         @Config.RangeDouble(min = 0D, max = 1D)
         public double slimeyPinkSpawnProbability = 0.0033D;
+
+    }
+
+    @Config.Comment("Configuration for the IC2 module")
+    public static final Ic2 moduleIndustrialCraft = new Ic2();
+
+    public static class Ic2 {
+
+        @Config.Comment("The cost, in EU, per point of durability absorbed on tools with the electric trait.")
+        @Config.RangeDouble(min = 0D)
+        public double electricToolEnergyCost = 100D;
+
+        @Config.Comment("The total EU that can be stored in tools with the electric trait.")
+        @Config.RangeDouble(min = 0D)
+        public double electricToolEnergyBuffer = 30000D;
+
+        @Config.Comment({
+                "The divider used to calculate the maximum energy transfer rate for electric equipment.",
+                "Transfer rate is calculated as `capacity/n`, where `n` is this config value.",
+                "Set to zero for unlimited transfer rate."
+        })
+        @Config.RangeDouble(min = 0D)
+        public double electricPowerTransferDivider = 100;
+
+        @Config.Comment("The power tier for equipment with the electric trait.")
+        @Config.RangeInt(min = 1)
+        public int electricPowerTier = 1;
+
+        @Config.Comment({
+                "The cost, in EU, per point of durability absorbed on armour with the electric trait.",
+                "Only useful with Construct's Armoury installed."
+        })
+        @Config.RangeDouble(min = 0D)
+        public double electricArmourEnergyCost = 400D;
+
+        @Config.Comment({
+                "The total EU that can be stored in armour with the electric trait.",
+                "Only useful with Construct's Armoury installed."
+        })
+        @Config.RangeDouble(min = 0D)
+        public double electricArmourEnergyBuffer = 30000D;
 
     }
 

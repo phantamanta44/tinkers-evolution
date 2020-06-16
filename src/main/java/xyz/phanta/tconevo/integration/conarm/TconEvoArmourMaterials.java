@@ -39,6 +39,12 @@ public class TconEvoArmourMaterials {
                 .withTraits(ArmourPartType.ARMOUR, ArmorTraits.heavy, ArmorTraits.magnetic)
                 .build();
 
+        // advanced solar panels
+        new ArmourMaterialBuilder(TconEvoMaterials.SUNNARIUM)
+                .withStatsArmour(20F, 27F, 1.25F, 9F, 4F, 12F)
+                .withTraits(ArmourPartType.ARMOUR, TconEvoArmourTraits.TRAIT_PHOTOSYNTHETIC, TconEvoArmourTraits.TRAIT_RADIANT)
+                .build();
+
         // applied energistics 2
         new ArmourMaterialBuilder(TconEvoMaterials.SKY_STONE)
                 .withStatsArmour(9F, 6.5F, 1F, 0.5F, 1F, 1F)
@@ -192,6 +198,32 @@ public class TconEvoArmourMaterials {
         new ArmourMaterialBuilder(TconEvoMaterials.PINK_METAL)
                 .withStatsArmour(33F, 22F, 1F, 8F, 3F, 5.5F)
                 .withTraits(ArmourPartType.ARMOUR, TconEvoArmourTraits.TRAIT_DIVINE_GRACE, ArmorTraits.vengeful)
+                .build();
+
+        // industrialcraft 2
+        new ArmourMaterialBuilder(TconEvoMaterials.RUBBER)
+                .withStatsArmour(10F, 7F, 0.5F, 4F, 0F, 3F)
+                .withTraits(ArmourPartType.ARMOUR, ArmorTraits.bouncy, TconEvoArmourTraits.TRAIT_THUNDERGOD_FAVOUR)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.ADV_ALLOY)
+                .withStatsArmour(24F, 22F, 1F, 10.5F, 2F, 14F)
+                .withTraits(ArmourPartType.ARMOUR, ArmorTraits.dense, ArmorTraits.indomitable)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.ENERGIUM)
+                .withStatsArmour(16F, 20F, 0.8F, 7F, 0F, 9.5F)
+                .withTraits(ArmourPartType.ARMOUR, TconEvoArmourTraits.TRAIT_ELECTRIC)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.CARBON_FIBER)
+                .withStatsArmour(28F, 16F, 1.3F, 7F, 5F, 10F)
+                .withTraits(ArmourPartType.ARMOUR, TconEvoArmourTraits.TRAIT_BULWARK, ArmorTraits.lightweight)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.IRIDIUM)
+                .withStatsArmour(36F, 24F, 0.8F, 13.5F, 3F, 16F)
+                .withTraits(ArmourPartType.ARMOUR, ArmorTraits.steady, TconEvoArmourTraits.TRAIT_REACTIVE)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.UU_METAL)
+                .withStatsArmour(1F, 18F, 2F, 0F, 0F, 15F)
+                .withTraits(ArmourPartType.ARMOUR, TconEvoArmourTraits.TRAIT_PHOENIX_ASPECT)
                 .build();
 
         // mekanism

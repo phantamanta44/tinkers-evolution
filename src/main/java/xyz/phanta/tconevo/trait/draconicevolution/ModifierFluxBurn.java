@@ -6,18 +6,16 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
-import net.minecraftforge.energy.CapabilityEnergy;
-import net.minecraftforge.energy.IEnergyStorage;
 import slimeknights.tconstruct.library.modifiers.ModifierTrait;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.TconEvoMod;
+import xyz.phanta.tconevo.capability.PowerWrapper;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
 import xyz.phanta.tconevo.network.SPacketEntitySpecialEffect;
 import xyz.phanta.tconevo.util.ToolUtils;
 
 import java.util.List;
-import java.util.Objects;
 
 public class ModifierFluxBurn extends ModifierTrait {
 
@@ -44,11 +42,13 @@ public class ModifierFluxBurn extends ModifierTrait {
             int burned = DraconicHooks.INSTANCE.burnArmourEnergy(stack, burnAmount, minBurn, maxBurn);
             if (burned > 0) {
                 totalBurned += burned;
-            } else if (stack.hasCapability(CapabilityEnergy.ENERGY, null)) {
-                IEnergyStorage energy = Objects.requireNonNull(stack.getCapability(CapabilityEnergy.ENERGY, null));
-                burned = MathUtils.clamp((int)Math.ceil(energy.getEnergyStored() * burnAmount), minBurn, maxBurn);
-                if (burned > 0) {
-                    totalBurned += energy.extractEnergy(burned, false);
+            } else {
+                PowerWrapper energy = PowerWrapper.wrap(stack);
+                if (energy != null) {
+                    burned = MathUtils.clamp((int)Math.ceil(energy.getEnergy() * burnAmount), minBurn, maxBurn);
+                    if (burned > 0) {
+                        totalBurned += energy.extract(burned, true);
+                    }
                 }
             }
         }

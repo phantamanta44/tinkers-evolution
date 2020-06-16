@@ -65,6 +65,24 @@
           "plate": "tconevo:items/metal/plate/sentient_metal",
           "gear": "tconevo:items/metal/gear/sentient_metal"
         }
+      },
+      "ENERGETIC_METAL": {
+        "textures": {
+          "ingot": "tconevo:items/metal/ingot/energetic_metal",
+          "dust": "tconevo:items/metal/dust/energetic_metal",
+          "nugget": "tconevo:items/metal/nugget/energetic_metal",
+          "plate": "tconevo:items/metal/plate/energetic_metal",
+          "gear": "tconevo:items/metal/gear/energetic_metal"
+        }
+      },
+      "UNIVERSAL_METAL": {
+        "textures": {
+          "ingot": "tconevo:items/metal/ingot/universal_metal",
+          "dust": "tconevo:items/metal/dust/universal_metal",
+          "nugget": "tconevo:items/metal/nugget/universal_metal",
+          "plate": "tconevo:items/metal/plate/universal_metal",
+          "gear": "tconevo:items/metal/gear/universal_metal"
+        }
       }
     },
     "form": {

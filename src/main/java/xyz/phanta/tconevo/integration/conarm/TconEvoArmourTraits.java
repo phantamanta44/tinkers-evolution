@@ -20,6 +20,7 @@ import xyz.phanta.tconevo.integration.conarm.trait.botania.ArmourTraitFaeVoice;
 import xyz.phanta.tconevo.integration.conarm.trait.botania.ArmourTraitManaAffinity;
 import xyz.phanta.tconevo.integration.conarm.trait.botania.ArmourTraitManaInfused;
 import xyz.phanta.tconevo.integration.conarm.trait.draconicevolution.*;
+import xyz.phanta.tconevo.integration.conarm.trait.ic2.ArmourTraitElectric;
 import xyz.phanta.tconevo.integration.conarm.trait.industrialforegoing.ArmourTraitSlimeyPink;
 import xyz.phanta.tconevo.integration.conarm.trait.projecte.ArmourTraitSuperdense;
 import xyz.phanta.tconevo.integration.conarm.trait.projecte.ArmourTraitUltradense;
@@ -42,6 +43,7 @@ public class TconEvoArmourTraits {
     };
     public static final ArmourTraitHearthEmbrace TRAIT_HEARTH_EMBRACE = new ArmourTraitHearthEmbrace();
     public static final ArmourTraitPhoenixAspect TRAIT_PHOENIX_ASPECT = new ArmourTraitPhoenixAspect();
+    public static final ArmourTraitPhotosynthetic TRAIT_PHOTOSYNTHETIC = new ArmourTraitPhotosynthetic();
     public static final ArmourTraitRadiant TRAIT_RADIANT = new ArmourTraitRadiant();
     public static final ArmourTraitReactive TRAIT_REACTIVE = new ArmourTraitReactive();
     public static final ArmourTraitSecondWind TRAIT_SECOND_WIND = new ArmourTraitSecondWind();
@@ -49,6 +51,7 @@ public class TconEvoArmourTraits {
     public static final ArmourTraitSpectral TRAIT_SPECTRAL = new ArmourTraitSpectral();
     public static final ArmourTraitStifling TRAIT_STIFLING = new ArmourTraitStifling();
     public static final ArmourTraitStonebound TRAIT_STONEBOUND = new ArmourTraitStonebound();
+    public static final ArmourTraitThundergodFavour TRAIT_THUNDERGOD_FAVOUR = new ArmourTraitThundergodFavour();
     public static final ArmourTraitWillStrength TRAIT_WILL_STRENGTH = new ArmourTraitWillStrength();
     public static final ArmourModFluxed MOD_FLUXED = new ArmourModFluxed();
 
@@ -98,6 +101,9 @@ public class TconEvoArmourTraits {
 
     // industrial foregoing
     public static final ArmourTraitSlimeyPink TRAIT_SLIMEY_PINK = new ArmourTraitSlimeyPink();
+
+    // industrialcraft 2
+    public static final ArmourTraitElectric TRAIT_ELECTRIC = new ArmourTraitElectric();
 
     // project: e
     public static final ArmourTraitSuperdense TRAIT_SUPERDENSE = new ArmourTraitSuperdense();

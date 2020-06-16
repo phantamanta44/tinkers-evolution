@@ -15,6 +15,7 @@ import slimeknights.mantle.util.RecipeMatch;
 import slimeknights.tconstruct.library.modifiers.IToolMod;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.TconEvoMod;
+import xyz.phanta.tconevo.capability.PowerWrapper;
 import xyz.phanta.tconevo.client.event.ItemStackBarEvent;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.init.TconEvoTraits;
@@ -33,7 +34,7 @@ public class ArmourModFluxed extends ArmorModifierTrait implements MatchSensitiv
 
     @Override
     public boolean canApplyCustom(ItemStack stack) {
-        return !stack.hasCapability(CapabilityEnergy.ENERGY, null) && super.canApplyCustom(stack);
+        return !PowerWrapper.isPowered(stack) && super.canApplyCustom(stack);
     }
 
     @Override

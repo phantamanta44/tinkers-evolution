@@ -4,7 +4,6 @@
 
 * energized: the equipment uses forge energy before durability
     * higher levels -> higher energy capacity
-* disassembling: vein miner
 * photosynthetic: repairs in the sun
 * cascading: destroys all gravitating blocks in a column
 * blasting: breaking blocks and fully-charged hits create explosions
@@ -63,12 +62,20 @@
 ## modifiers
 
 * fluxed: the equipment uses forge energy before durability
-    * higher levels -> larger energy buffer
-    * EXCLUDE ELECTRIC ITEMS
+    * capacity is determined by the item used to apply it
+    * cannot be applied to items that are already energetic/electric
+* photovoltaic: the equipment charges itself in sunlight
+    * can only be applied to energetic/electric items
+    * generation rate is determined by the item used to apply it
+* disassembling: vein miner
 
 ## materials
 
 * *TODO: all sorts of funky alloys*
+
+## tools
+
+* sceptre: hits things while near or launches projectiles from a distance for magic damage
 
 ## other stuff
 
@@ -108,6 +115,7 @@
 
 * some sort of rainbow crystal alloy
 * batteries should apply fluxed
+* solar panel should apply photovoltaic
 
 ## advanced solars
 
@@ -119,7 +127,7 @@
 
 ### other ideas
 
-* solar equipment modifiers
+* various tiers of solar panels can apply photovoltaic
 
 ## app eng
 
@@ -326,6 +334,10 @@
     * tools: modifiable 2
     * armour: modifiable 2
 
+### other ideas
+
+* solar cells can apply photovoltaic
+
 ## ic2 (and icc?)
 
 ### traits
@@ -341,7 +353,7 @@
 * advanced alloy
     * tools: dense + force of impact
     * armour: dense + indomitable
-* energetic metal (craft energium dust + coag matrix)
+* energetic metal (canning machine infuse energium dust + coag matrix)
     * tools: electric
     * armour: electric
 * carbon fiber
@@ -351,12 +363,12 @@
     * tools: overwhelm + momentum
     * armour: steady + reactive
 * universal metal (canning machine infuse uu matter + coag matrix)
-    * tools: ruination + disassembling + crumbling
-    * armour: aspect of the phoenix + prideful
+    * tools: ruination + crumbling
+    * armour: aspect of the phoenix
 
-### other stuff
+### modifiers
 
-* maybe a solar recharge modifier
+* solar panel can apply photoelectric
 
 ## industrial foregoing
 
@@ -404,6 +416,7 @@
 ### other notes
 
 * energy tablet should apply fluxed (?)
+* solar generators should apply photovoltaic
 
 ## natura
 
@@ -425,6 +438,12 @@
     * tools: blasting + ecological
     * armour: steady + ecological
     * suitable for arrow shaft
+
+## natural absorption
+
+### modifiers
+
+* absorption: grants additional natural absorption
 
 ## natural pledge
 

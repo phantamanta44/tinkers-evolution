@@ -33,6 +33,7 @@ public class CommonProxy {
         MinecraftForge.EVENT_BUS.register(toolCapHandler);
         MinecraftForge.EVENT_BUS.register(playerStateHandler);
         MinecraftForge.EVENT_BUS.register(energyShieldHandler);
+        MinecraftForge.EVENT_BUS.register(new EnergizedTraitConflictHandler());
         MinecraftForge.EVENT_BUS.register(new FlightSpeedHandler());
         MinecraftForge.EVENT_BUS.register(new EntityAttributeHandler());
         SimpleNetworkWrapper netHandler = TconEvoMod.INSTANCE.getNetworkHandler();

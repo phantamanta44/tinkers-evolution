@@ -37,6 +37,16 @@ item.tconevo:metal31.name=Sentient Metal Dust
 item.tconevo:metal32.name=Sentient Nugget
 item.tconevo:metal33.name=Sentient Plate
 item.tconevo:metal34.name=Sentient Gear
+item.tconevo:metal35.name=Energium Ingot
+item.tconevo:metal36.name=Energium Metal Dust
+item.tconevo:metal37.name=Energium Nugget
+item.tconevo:metal38.name=Energium Plate
+item.tconevo:metal39.name=Energium Gear
+item.tconevo:metal40.name=UU-Metal Ingot
+item.tconevo:metal41.name=UU-Metal Dust
+item.tconevo:metal42.name=UU-Metal Nugget
+item.tconevo:metal43.name=UU-Metal Plate
+item.tconevo:metal44.name=UU-Metal Gear
 item.tconevo:edible0.name=Raw Meat Ingot
 item.tconevo:edible1.name=Cooked Meat Ingot
 item.tconevo.mana_giver.name=Internal Item
@@ -49,6 +59,8 @@ tile.tconevo:metal_block3.name=Essence-Infused Metal Block
 tile.tconevo:metal_block4.name=Primal Metal Block
 tile.tconevo:metal_block5.name=Bound Metal Block
 tile.tconevo:metal_block6.name=Sentient Metal Block
+tile.tconevo:metal_block7.name=Energium Metal Block
+tile.tconevo:metal_block8.name=UU-Metal Block
 
 effect.tconevo.immortality=Immortality
 potion.effect.tconevo.immortality=Potion of Undying
@@ -110,6 +122,8 @@ modifier.tconevo.opportunist.desc=§oI've been waiting for this!§r\nThis weapon
 modifier.tconevo.opportunist.extra=Opportunist Damage: +%s
 modifier.tconevo.overwhelm.name=Overwhelm
 modifier.tconevo.overwhelm.desc=§oHeavy is the hand...§r\nThis weapon deals greater damage to armoured targets.
+modifier.tconevo.photosynthetic.name=Photosynthetic
+modifier.tconevo.photosynthetic.desc=§oPhotosynthesis... photosynthesis...§r\nThis tool absorbs sunlight to repair itself.
 modifier.tconevo.piezoelectric.name=Piezoelectric
 modifier.tconevo.piezoelectric.desc=§oElectromechanical!§r\nThis weapon converts damage from fully-charged hits into usable energy.
 modifier.tconevo.rejuvenating.name=Rejuvenating
@@ -145,6 +159,8 @@ modifier.tconevo.hearth_embrace_armor.desc=§oHeartwarming!§r\nThis armour exti
 modifier.tconevo.phoenix_aspect_armor.name=Aspect of the Phoenix
 modifier.tconevo.phoenix_aspect_armor.desc=§oHeroes never die!§r\nThis armour sacrifices itself to save its wearer from death.
 modifier.tconevo.phoenix_aspect_armor.proc=Your armour's %s has kept you alive!
+modifier.tconevo.photosynthetic_armor.name=Photosynthetic
+modifier.tconevo.photosynthetic_armor.desc=§oPhotosynthesis... photosynthesis...§r\nThis armour absorbs sunlight to repair itself.
 modifier.tconevo.radiant_armor.name=Radiant
 modifier.tconevo.radiant_armor.desc=§oShines like the sun!§r\nThis armour briefly blinds attackers.
 modifier.tconevo.reactive_armor.name=Reactive
@@ -161,6 +177,8 @@ modifier.tconevo.stifling_armor.desc=§oLike punching a rock!§r\nThis armour we
 modifier.tconevo.stonebound_armor.name=Stonebound
 modifier.tconevo.stonebound_armor.desc=This armour grows more effective as it wears out.
 modifier.tconevo.stonebound_armor.extra=Stonebound Defense: +%s
+modifier.tconevo.thundergod_favour_armor.name=Thundergod's Favour
+modifier.tconevo.thundergod_favour_armor.desc=§oInsulated!§r\nThis armour grants immunity to lightning strikes.
 modifier.tconevo.will_strength_armor.name=Strength of Will
 modifier.tconevo.will_strength_armor.desc=§oMaintaining focus!§r\nThis armour grants immortality when hit at full health.
 modifier.tconevo.fluxed_armor.name=Fluxed
@@ -173,6 +191,9 @@ material.diamantine_crystal.name=Diamantine Crystal
 material.void_crystal.name=Void Crystal
 material.emeraldic_crystal.name=Emeraldic Crystal
 material.enori_crystal.name=Enori Crystal
+
+material.sunnarium.name=Sunnarium
+fluid.tconevo.sunnarium.name=Molten Sunnarium
 
 material.sky_stone.name=Sky Stone
 fluid.tconevo.sky_stone.name=Molten Sky Stone
@@ -387,6 +408,22 @@ material.pink_slime.name=Pink Slime
 material.pink_metal.name=Pink Metal
 fluid.tconevo.pink_metal.name=Molten Pink Metal
 
+material.rubber.name=Rubber
+material.advanced_alloy.name=Advanced Alloy
+material.energetic_metal.name=Energium
+fluid.tconevo.energetic_metal.name=Molten Energium Metal
+material.carbon_fiber.name=Carbon Fiber
+material.iridium.name=Iridium
+fluid.tconevo.iridium.name=Molten Iridium
+material.universal_metal.name=UU-Metal
+fluid.tconevo.universal_metal.name=Eutectic UU-Metal Alloy
+
+modifier.tconevo.electric.name=Electric
+modifier.tconevo.electric.desc=§oHAYO!§r\nThis tool consumes electricity before durability.
+
+modifier.tconevo.electric_armor.name=Electric
+modifier.tconevo.electric_armor.desc=§oHAYO!§r\nThis armour consumes electricity before durability.
+
 material.osmium.name=Osmium
 fluid.tconevo.osmium.name=Molten Osmium
 material.refined_obsidian.name=Refined Obsidian
@@ -464,6 +501,8 @@ commands.tconevo.tconevo.modadd.failure=Failed to apply modifier: %s
 commands.tconevo.tconevo.modmax.usage=/tconevo modmax
 commands.tconevo.tconevo.modmax.success=Maximized tool.
 commands.tconevo.tconevo.modmax.failure=Failed to maximize tool: %s
+
+tconevo.info.energized_trait_conflict=Two energetic traits are conflicting!
 
 upgrade.level.0=-
 upgrade.level.1=Basic

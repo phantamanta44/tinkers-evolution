@@ -14,6 +14,8 @@ module.exports = {
     { key: 'essence_metal', oreName: 'EssenceMetal' },
     { key: 'primal_metal', oreName: 'Primordial' },
     { key: 'bound_metal', oreName: 'BoundMetal' },
-    { key: 'sentient_metal', oreName: 'SentientMetal' }
+    { key: 'sentient_metal', oreName: 'SentientMetal' },
+    { key: 'energetic_metal', oreName: 'Energium' },
+    { key: 'universal_metal', oreName: 'UUMatter' }
   ]
 }
