@@ -9,6 +9,7 @@ import slimeknights.tconstruct.library.book.sectiontransformer.SectionTransforme
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import xyz.phanta.tconevo.init.TconEvoTraits;
 import xyz.phanta.tconevo.util.LazyAccum;
+import xyz.phanta.tconevo.util.TconReflect;
 
 // adapted from Tinkers' MEMES BookTransformerAppendModifiers
 public class BookTransformerAppendModifiers extends SectionTransformer {
@@ -28,7 +29,7 @@ public class BookTransformerAppendModifiers extends SectionTransformer {
     public void transform(BookData book, SectionData section) {
         ContentListing listing = (ContentListing)section.pages.get(0).content;
         for (Modifier mod : modCollector.collect()) {
-            if (TconEvoTraits.isModifierEnabled(mod)) {
+            if (TconEvoTraits.isModifierEnabled(mod) && !TconReflect.getItems(mod).isEmpty()) {
                 PageData page = new PageData();
                 page.source = source;
                 page.parent = section;
