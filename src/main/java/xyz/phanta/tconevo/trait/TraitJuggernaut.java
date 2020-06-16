@@ -16,7 +16,7 @@ public class TraitJuggernaut extends AbstractTrait {
 
     @Override
     public float damage(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damage, float newDamage, boolean isCritical) {
-        float bonusDamage = Calculator.get().calculateBonusDamage(player.getHealth());
+        float bonusDamage = damage * Calculator.get().calculateBonusDamage(player.getHealth());
         return bonusDamage > 0F ? (newDamage + bonusDamage) : newDamage;
     }
 
