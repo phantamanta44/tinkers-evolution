@@ -976,6 +976,9 @@ public class TconEvoConfig {
         @Config.RangeInt(min = 1)
         public int finalGuardEnergy = 10000000;
 
+        @Config.Comment("Causes the reaping modifier to only consume one modifier slot, similar to the luck modifier.")
+        public boolean reapingOnlyUsesOneModifier = false;
+
         private static <T> T triSwitch(int tier, T wyvern, T draconic, T chaotic, T defaultValue) {
             switch (tier) {
                 case 1:
