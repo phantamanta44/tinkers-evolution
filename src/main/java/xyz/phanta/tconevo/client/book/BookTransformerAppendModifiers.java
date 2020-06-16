@@ -8,6 +8,7 @@ import slimeknights.tconstruct.library.book.content.ContentListing;
 import slimeknights.tconstruct.library.book.sectiontransformer.SectionTransformer;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import xyz.phanta.tconevo.init.TconEvoTraits;
+import xyz.phanta.tconevo.integration.conarm.ConArmHooks;
 import xyz.phanta.tconevo.util.LazyAccum;
 import xyz.phanta.tconevo.util.TconReflect;
 
@@ -29,7 +30,8 @@ public class BookTransformerAppendModifiers extends SectionTransformer {
     public void transform(BookData book, SectionData section) {
         ContentListing listing = (ContentListing)section.pages.get(0).content;
         for (Modifier mod : modCollector.collect()) {
-            if (TconEvoTraits.isModifierEnabled(mod) && !TconReflect.getItems(mod).isEmpty()) {
+            if (TconEvoTraits.isModifierEnabled(mod)
+                    && (!TconReflect.getItems(mod).isEmpty() || ConArmHooks.INSTANCE.hasArmourModMatches(mod))) {
                 PageData page = new PageData();
                 page.source = source;
                 page.parent = section;
