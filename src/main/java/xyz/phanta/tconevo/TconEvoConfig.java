@@ -966,18 +966,71 @@ public class TconEvoConfig {
         }
 
         @Config.Comment({
+                "The percentage bonus of entropy dealt to energy shields per level of the entropic trait.",
+                "Normally, 1/20 of the raw damage dealt to an energy shield is applied as entropy."
+        })
+        @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
+        public double entropicBonusEntropyPerLevel = 1D;
+
+        @Config.Comment("Causes only the first level of the entropic modifier to consume a modifier slot.")
+        @Config.RequiresMcRestart
+        public boolean entropicOnlyUsesOneModifier = false;
+
+        @Config.Comment("The percentage of damage converted to chaos damage per level of the primordial trait.")
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double primordialConversionPerLevel = 0.04D;
+
+        @Config.Comment("Causes only the first level of the primordial modifier to consume a modifier slot.")
+        @Config.RequiresMcRestart
+        public boolean primordialOnlyUsesOneModifier = false;
+
+        @Config.Comment("The percentage of energy burned per hit per level of the flux burn modifier.")
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double fluxBurnPortionPerLevel = 0.01D;
+
+        @Config.Comment("The minimum amount of energy burned per hit per level of the flux burn modifier.")
+        @Config.RangeInt(min = 0, max = Integer.MAX_VALUE / 5)
+        public int fluxBurnMinPerLevel = 256;
+
+        @Config.Comment({
+                "The maximum amount of energy burned per hit per level of the flux burn modifier.",
+                "Set to zero to disable the cap."
+        })
+        @Config.RangeInt(min = 0, max = Integer.MAX_VALUE / 5)
+        public int fluxBurnMaxPerLevel = 320000;
+
+        @Config.Comment({
                 "The amount of energy burned per one point of damage for the flux burn ability.",
                 "That is to say, if you burn exactly this much energy, you'll deal exactly one point of damage."
         })
         @Config.RangeInt(min = 1)
         public int fluxBurnEnergy = 16000;
 
+        @Config.Comment("Causes only the first level of the flux burn modifier to consume a modifier slot.")
+        @Config.RequiresMcRestart
+        public boolean fluxBurnOnlyUsesOneModifier = false;
+
         @Config.Comment("The amount of energy required for the final guard ability. Only useful with Construct's Armoury.")
         @Config.RangeInt(min = 1)
         public int finalGuardEnergy = 10000000;
 
-        @Config.Comment("Causes the reaping modifier to only consume one modifier slot, similar to the luck modifier.")
+        @Config.Comment("Causes only the first level of the reaping modifier to consume a modifier slot.")
+        @Config.RequiresMcRestart
         public boolean reapingOnlyUsesOneModifier = false;
+
+        @Config.Comment({
+                "The percentage of chaos damage mitigated per level of the chaos resistance modifier.",
+                "Note that this stacks additively across all pieces of armour."
+        })
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double chaosResistPercentagePerLevel = 0.048D;
+
+        @Config.Comment({
+                "Causes only the first level of the chaos resistance armour modifier to consume a modifier slot.",
+                "Only useful with Construct's Armoury installed."
+        })
+        @Config.RequiresMcRestart
+        public boolean chaosResistOnlyUsesOneModifier = false;
 
         private static <T> T triSwitch(int tier, T wyvern, T draconic, T chaotic, T defaultValue) {
             switch (tier) {
@@ -1043,6 +1096,20 @@ public class TconEvoConfig {
         })
         @Config.RangeDouble(min = 0D)
         public double electricArmourEnergyBuffer = 30000D;
+
+    }
+
+    @Config.Comment("Configuration for the Natural Absorption module.")
+    public static final NaturalAbsorption moduleNaturalAbsorption = new NaturalAbsorption();
+
+    public static class NaturalAbsorption {
+
+        @Config.Comment({
+                "Causes only the first level of the absorption armour modifier to consume a modifier slot.",
+                "Only useful with Construct's Armoury installed."
+        })
+        @Config.RequiresMcRestart
+        public boolean absorptionOnlyUsesOneModifier = false;
 
     }
 

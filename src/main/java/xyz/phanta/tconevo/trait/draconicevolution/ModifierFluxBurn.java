@@ -6,6 +6,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
+import slimeknights.tconstruct.library.modifiers.ModifierAspect;
 import slimeknights.tconstruct.library.modifiers.ModifierTrait;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.TconEvoMod;
@@ -21,10 +22,15 @@ public class ModifierFluxBurn extends ModifierTrait {
 
     public ModifierFluxBurn() {
         super(NameConst.MOD_FLUX_BURN, 0xaa2648, 5, 0);
+        if (TconEvoConfig.moduleDraconicEvolution.fluxBurnOnlyUsesOneModifier) {
+            // slightly faster than direct remove() because freeModifier will likely be near the end of the list
+            aspects.remove(aspects.lastIndexOf(ModifierAspect.freeModifier));
+            addAspects(new ModifierAspect.FreeFirstModifierAspect(this, 1));
+        }
     }
 
     private float getBurnFraction(int level) {
-        return level / 100F;
+        return level * (float)TconEvoConfig.moduleDraconicEvolution.fluxBurnPortionPerLevel;
     }
 
     @Override
@@ -36,7 +42,9 @@ public class ModifierFluxBurn extends ModifierTrait {
         }
         int level = ToolUtils.getTraitLevel(tool, identifier);
         float burnAmount = getBurnFraction(level);
-        int minBurn = level * 256, maxBurn = level * 320000;
+        int minBurn = level * TconEvoConfig.moduleDraconicEvolution.fluxBurnMinPerLevel;
+        int maxBurn = TconEvoConfig.moduleDraconicEvolution.fluxBurnMaxPerLevel;
+        maxBurn = maxBurn > 0 ? (level * maxBurn) : Integer.MAX_VALUE;
         long totalBurned = 0;
         for (ItemStack stack : target.getArmorInventoryList()) {
             int burned = DraconicHooks.INSTANCE.burnArmourEnergy(stack, burnAmount, minBurn, maxBurn);

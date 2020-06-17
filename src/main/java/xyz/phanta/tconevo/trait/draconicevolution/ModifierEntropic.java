@@ -3,7 +3,9 @@ package xyz.phanta.tconevo.trait.draconicevolution;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import slimeknights.tconstruct.library.modifiers.ModifierAspect;
 import slimeknights.tconstruct.library.modifiers.ModifierTrait;
+import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.TconEvoMod;
 import xyz.phanta.tconevo.capability.EnergyShield;
 import xyz.phanta.tconevo.constant.NameConst;
@@ -19,6 +21,15 @@ public class ModifierEntropic extends ModifierTrait {
 
     public ModifierEntropic() {
         super(NameConst.MOD_ENTROPIC, 0xff6600, 5, 0);
+        if (TconEvoConfig.moduleDraconicEvolution.entropicOnlyUsesOneModifier) {
+            // slightly faster than direct remove() because freeModifier will likely be near the end of the list
+            aspects.remove(aspects.lastIndexOf(ModifierAspect.freeModifier));
+            addAspects(new ModifierAspect.FreeFirstModifierAspect(this, 1));
+        }
+    }
+
+    private static float getBonusEntropy(int level) {
+        return level * (float)TconEvoConfig.moduleDraconicEvolution.entropicBonusEntropyPerLevel;
     }
 
     @Override
@@ -27,7 +38,7 @@ public class ModifierEntropic extends ModifierTrait {
         if (target.world.isRemote || !wasHit) {
             return;
         }
-        float entropy = ToolUtils.getTraitLevel(tool, identifier) * (damageDealt / 20F);
+        float entropy = (damageDealt / 20F) * getBonusEntropy(ToolUtils.getTraitLevel(tool, identifier));
         if (entropy > 0F) {
             boolean success = false;
             for (ItemStack stack : target.getArmorInventoryList()) {
@@ -47,8 +58,7 @@ public class ModifierEntropic extends ModifierTrait {
 
     @Override
     public List<String> getExtraInfo(ItemStack tool, NBTTagCompound modifierTag) {
-        // each trait level adds +100% entropy damage
-        return ToolUtils.formatExtraInfoPercent(identifier, ToolUtils.getTraitLevel(modifierTag));
+        return ToolUtils.formatExtraInfoPercent(identifier, getBonusEntropy(ToolUtils.getTraitLevel(modifierTag)));
     }
 
 }

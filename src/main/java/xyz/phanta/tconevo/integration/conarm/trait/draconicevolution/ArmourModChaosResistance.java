@@ -8,6 +8,8 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import slimeknights.tconstruct.library.modifiers.ModifierAspect;
+import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
 import xyz.phanta.tconevo.util.ToolUtils;
@@ -18,11 +20,16 @@ public class ArmourModChaosResistance extends ArmorModifierTrait {
 
     public ArmourModChaosResistance() {
         super(NameConst.MOD_CHAOS_RESISTANCE, 0x031977, 5, 0);
+        if (TconEvoConfig.moduleDraconicEvolution.chaosResistOnlyUsesOneModifier) {
+            // slightly faster than direct remove() because freeModifier will likely be near the end of the list
+            aspects.remove(aspects.lastIndexOf(ModifierAspect.freeModifier));
+            addAspects(new ModifierAspect.FreeFirstModifierAspect(this, 1));
+        }
         MinecraftForge.EVENT_BUS.register(this);
     }
 
     public static float getDamageReduction(int level) {
-        return 0.048F * level;
+        return level * (float)TconEvoConfig.moduleDraconicEvolution.chaosResistPercentagePerLevel;
     }
 
     // using a conventional event handler rather than a conarm callback so we can handle all armour pieces at once
