@@ -21,7 +21,7 @@ public class ArmourTraitElectric extends AbstractArmorTrait {
     public ArmourTraitElectric() {
         super(NameConst.TRAIT_ELECTRIC, TraitElectric.COLOUR);
         TconEvoMod.PROXY.getToolCapHandler().addModifierCap(this, s -> new CapabilityBroker()
-                .with(TconEvoCaps.EU_STORE, new TraitElectric.ElectricToolBuffer(s)));
+                .with(TconEvoCaps.EU_STORE, new ElectricArmourBuffer(s)));
         MinecraftForge.EVENT_BUS.register(this);
     }
 
@@ -41,6 +41,19 @@ public class ArmourTraitElectric extends AbstractArmorTrait {
         if (isToolWithTrait(event.stack)) {
             event.addEuBar();
         }
+    }
+
+    private static class ElectricArmourBuffer extends TraitElectric.ElectricToolBuffer {
+
+        public ElectricArmourBuffer(ItemStack stack) {
+            super(stack);
+        }
+
+        @Override
+        public double getEuStoredMax() {
+            return TconEvoConfig.moduleIndustrialCraft.electricArmourEnergyBuffer;
+        }
+
     }
 
 }
