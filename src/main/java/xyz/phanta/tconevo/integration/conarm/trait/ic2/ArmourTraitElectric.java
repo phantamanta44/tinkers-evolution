@@ -27,7 +27,8 @@ public class ArmourTraitElectric extends AbstractArmorTrait {
 
     @Override
     public int onArmorDamage(ItemStack armour, DamageSource source, int damage, int newDamage, EntityPlayer player, int slot) {
-        return TraitElectric.doDamageReduction(armour, newDamage, TconEvoConfig.moduleIndustrialCraft.electricArmourEnergyCost);
+        return TraitElectric.doDamageReduction(
+                armour, player, newDamage, TconEvoConfig.moduleIndustrialCraft.electricArmourEnergyCost);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package xyz.phanta.tconevo.capability;
 
 import io.github.phantamanta44.libnine.util.helper.OptUtils;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.energy.CapabilityEnergy;
@@ -51,6 +52,10 @@ public abstract class PowerWrapper {
     public abstract int inject(int amount, boolean commit);
 
     public abstract int extract(int amount, boolean commit);
+
+    public boolean consume(int amount, EntityLivingBase user, boolean commit) {
+        return extract(amount, commit) >= amount;
+    }
 
     private static class Fluxed extends PowerWrapper {
 
@@ -110,6 +115,11 @@ public abstract class PowerWrapper {
         @Override
         public int extract(int amount, boolean commit) {
             return (int)Math.floor(energy.extractEu(amount / RF_PER_EU, true, commit) * RF_PER_EU);
+        }
+
+        @Override
+        public boolean consume(int amount, EntityLivingBase user, boolean commit) {
+            return energy.consumeEu(amount / RF_PER_EU, user, commit);
         }
 
     }

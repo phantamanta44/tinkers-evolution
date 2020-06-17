@@ -58,11 +58,11 @@ public class ArmourModFinalGuard extends ArmorModifierTrait {
         }
         if (totalEnergy >= cost) {
             double ratio = (float)(cost / (double)totalEnergy);
-            // we will just assume the energy stores have consistent simulation/non-sim behaviour
+            // we will assume the energy from simulating extract() earlier can be consumed with consume() here
             for (int i = 0; i < energyStores.length; i++) {
                 if (energy[i] > 0) {
                     //noinspection ConstantConditions
-                    energyStores[i].extract((int)Math.round(energy[i] * ratio), true);
+                    energyStores[i].consume((int)Math.round(energy[i] * ratio), player, true);
                 }
             }
             event.setCanceled(true);

@@ -15,9 +15,8 @@ import xyz.phanta.tconevo.capability.EuStore;
 import xyz.phanta.tconevo.client.event.ItemStackBarEvent;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.init.TconEvoCaps;
+import xyz.phanta.tconevo.integration.ic2.Ic2Hooks;
 import xyz.phanta.tconevo.util.ToolUtils;
-
-import java.util.Objects;
 
 public class TraitElectric extends AbstractTrait {
 
@@ -34,18 +33,14 @@ public class TraitElectric extends AbstractTrait {
 
     @Override
     public int onToolDamage(ItemStack tool, int damage, int newDamage, EntityLivingBase entity) {
-        return doDamageReduction(tool, newDamage, TconEvoConfig.moduleIndustrialCraft.electricToolEnergyCost);
+        return doDamageReduction(tool, entity, newDamage, TconEvoConfig.moduleIndustrialCraft.electricToolEnergyCost);
     }
 
-    public static int doDamageReduction(ItemStack tool, int damage, double unitCost) {
-        if (damage > 0 && tool.hasCapability(TconEvoCaps.EU_STORE, null)) {
-            double cost = damage * unitCost;
-            double spent = Objects.requireNonNull(tool.getCapability(TconEvoCaps.EU_STORE, null)).extractEu(cost, true, true);
-            if (spent >= cost) {
-                return 0;
-            } else if (spent > 0) {
-                return Math.max(damage - (int)Math.ceil(damage * (spent / cost)), 0);
-            }
+    public static int doDamageReduction(ItemStack tool, EntityLivingBase user, int damage, double unitCost) {
+        if (damage > 0) {
+            return OptUtils.capability(tool, TconEvoCaps.EU_STORE)
+                    .map(e -> e.consumeEu(damage * unitCost, user, true) ? 0 : damage)
+                    .orElse(damage);
         }
         return damage;
     }
@@ -95,6 +90,11 @@ public class TraitElectric extends AbstractTrait {
                 setEuStored(stored - toTransfer);
             }
             return toTransfer;
+        }
+
+        @Override
+        public boolean consumeEu(double amount, EntityLivingBase user, boolean commit) {
+            return Ic2Hooks.INSTANCE.consumeEu(stack, amount, user, commit);
         }
 
         @Override

@@ -1,10 +1,14 @@
 package xyz.phanta.tconevo.capability;
 
+import net.minecraft.entity.EntityLivingBase;
+
 public interface EuStore {
 
     double injectEu(double amount, boolean ignoreTfrRate, boolean commit);
 
     double extractEu(double amount, boolean ignoreTfrRate, boolean commit);
+
+    boolean consumeEu(double amount, EntityLivingBase user, boolean commit);
 
     double getEuStored();
 
@@ -24,6 +28,11 @@ public interface EuStore {
         @Override
         public double extractEu(double amount, boolean ignoreTfrRate, boolean commit) {
             return 0D;
+        }
+
+        @Override
+        public boolean consumeEu(double amount, EntityLivingBase user, boolean commit) {
+            return false;
         }
 
         @Override

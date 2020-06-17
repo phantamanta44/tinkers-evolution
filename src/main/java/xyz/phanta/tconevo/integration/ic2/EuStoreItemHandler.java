@@ -21,6 +21,12 @@ import java.awt.Color;
 
 public class EuStoreItemHandler implements IBackupElectricItemManager {
 
+    public static final EuStoreItemHandler INSTANCE = new EuStoreItemHandler();
+
+    private EuStoreItemHandler() {
+        // NO-OP
+    }
+
     @Override
     public boolean handles(ItemStack stack) {
         return stack.hasCapability(TconEvoCaps.EU_STORE, null);
