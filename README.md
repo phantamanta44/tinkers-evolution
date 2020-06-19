@@ -27,6 +27,9 @@ Current mod integration modules are as follows:
     * Allows wyvern and draconic flux capacitors to apply the "fluxed" modifier
 * **Environmental Tech**
     * Adds materials for the many crystal types
+* **IndustrialCraft 2**
+    * Adds industrial materials, including an energium material that runs on electricity
+    * Adds a sunnarium material from Advanced Solar Panels
 * **Industrial Foregoing**
     * Adds IF-based materials, including a powerful pink metal material
     * Adds meat ingots! Tasty!
@@ -35,6 +38,8 @@ Current mod integration modules are as follows:
     * Allows the energy tablet to apply the "fluxed" modifier
 * **Natura**
     * Adds materials for nether wood types
+* **Natural Absorption**
+    * Adds an absorption modifier for armour
 * **Project: E**
     * Adds powerful dark matter and red matter materials
 * **Thaumcraft**
