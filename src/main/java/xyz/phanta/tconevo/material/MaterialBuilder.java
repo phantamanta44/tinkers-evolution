@@ -1,5 +1,6 @@
 package xyz.phanta.tconevo.material;
 
+import com.google.common.collect.Sets;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.ModContainer;
@@ -13,13 +14,16 @@ import xyz.phanta.tconevo.util.LazyAccum;
 import xyz.phanta.tconevo.util.TconReflect;
 
 import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Supplier;
 
 public class MaterialBuilder {
+
+    private static final Set<String> blacklisted = Sets.newHashSet(TconEvoConfig.disabledMaterials);
+
+    public static boolean isNotBlacklisted(String matId) {
+        return !blacklisted.contains(matId);
+    }
 
     private final String matId;
     private final int colour;
@@ -144,8 +148,9 @@ public class MaterialBuilder {
 
     public Material build() {
         Material material = TinkerRegistry.getMaterial(matId);
+        boolean notBlacklisted = isNotBlacklisted(matId);
         if (material != Material.UNKNOWN) {
-            if (TconEvoConfig.overrideMaterials) {
+            if (notBlacklisted && TconEvoConfig.overrideMaterials) {
                 ModContainer owningMod = TinkerRegistry.getTrace(material);
                 TconEvoMod.LOGGER.info("Overriding existing material {} registered by {}",
                         material.identifier, owningMod != null ? owningMod.getModId() : "unknown");
@@ -167,7 +172,9 @@ public class MaterialBuilder {
                 TinkerRegistry.addMaterialStats(material, statsObj);
             }
             MaterialDefinition.register(material, form, oreName, conditions, traits);
-            TinkerRegistry.addMaterial(material);
+            if (notBlacklisted) {
+                TinkerRegistry.addMaterial(material);
+            }
             // override material owner since libnine invokes the static initializers
             TconReflect.overrideMaterialOwnerMod(material, TconEvoMod.INSTANCE);
         } catch (Exception e) {

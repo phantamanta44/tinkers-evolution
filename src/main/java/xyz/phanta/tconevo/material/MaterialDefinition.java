@@ -1,17 +1,18 @@
 package xyz.phanta.tconevo.material;
 
-import com.google.common.collect.Sets;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.oredict.OreDictionary;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.traits.ITrait;
 import slimeknights.tconstruct.smeltery.TinkerSmeltery;
-import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.TconEvoMod;
 import xyz.phanta.tconevo.util.LazyAccum;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 public class MaterialDefinition {
 
@@ -19,11 +20,6 @@ public class MaterialDefinition {
             "ingot", "nugget", "dust", "ore", "oreNether", "denseore", "orePoor", "oreNugget", "block", "plate", "gear");
 
     private static final List<MaterialDefinition> materialDefs = new ArrayList<>();
-    private static final Set<String> blacklisted = Sets.newHashSet(TconEvoConfig.disabledMaterials);
-
-    public static boolean isNotBlacklisted(String matId) {
-        return !blacklisted.contains(matId);
-    }
 
     public static void register(Material material,
                                 MaterialForm form,
@@ -46,13 +42,11 @@ public class MaterialDefinition {
 
     public static void activate() {
         for (MaterialDefinition defn : materialDefs) {
-            if (isNotBlacklisted(defn.material.identifier)) {
-                try {
-                    defn.tryActivate();
-                } catch (Exception e) {
-                    TconEvoMod.LOGGER.error("Encountered exception while activating material {}", defn.material.identifier);
-                    TconEvoMod.LOGGER.error(e);
-                }
+            try {
+                defn.tryActivate();
+            } catch (Exception e) {
+                TconEvoMod.LOGGER.error("Encountered exception while activating material {}", defn.material.identifier);
+                TconEvoMod.LOGGER.error(e);
             }
         }
     }

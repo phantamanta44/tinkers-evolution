@@ -8,7 +8,7 @@ import slimeknights.tconstruct.library.events.MaterialEvent;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.TconEvoMod;
 import xyz.phanta.tconevo.constant.NameConst;
-import xyz.phanta.tconevo.material.MaterialDefinition;
+import xyz.phanta.tconevo.material.MaterialBuilder;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,7 +28,7 @@ public class MaterialOverrideHandler {
     public static void onMaterialRegistration(MaterialEvent.MaterialRegisterEvent event) {
         if (TconEvoConfig.overrideMaterials) {
             String overrideMatId = OVERRIDE_BLACKLIST.get(event.material.identifier);
-            if (overrideMatId != null && MaterialDefinition.isNotBlacklisted(overrideMatId)) {
+            if (overrideMatId != null && MaterialBuilder.isNotBlacklisted(overrideMatId)) {
                 ModContainer owningMod = Loader.instance().activeModContainer();
                 TconEvoMod.LOGGER.info("Blocking registration of material {} registered by {}",
                         event.material.identifier, owningMod != null ? owningMod.getModId() : "unknown");
