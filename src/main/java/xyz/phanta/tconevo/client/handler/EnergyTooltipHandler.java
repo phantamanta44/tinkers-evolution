@@ -3,14 +3,14 @@ package xyz.phanta.tconevo.client.handler;
 import io.github.phantamanta44.libnine.util.format.FormatUtils;
 import io.github.phantamanta44.libnine.util.helper.OptUtils;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import slimeknights.tconstruct.library.client.CustomFontColor;
 import slimeknights.tconstruct.library.tinkering.ITinkerable;
-import slimeknights.tconstruct.library.utils.TagUtil;
-import xyz.phanta.tconevo.constant.NameConst;
+import slimeknights.tconstruct.library.traits.ITrait;
+import slimeknights.tconstruct.library.utils.ToolHelper;
+import xyz.phanta.tconevo.trait.base.EnergeticModifier;
 
 import java.awt.Color;
 
@@ -36,15 +36,10 @@ public class EnergyTooltipHandler {
         if (!(stack.getItem() instanceof ITinkerable)) {
             return false;
         }
-        NBTTagList tagList = TagUtil.getTraitsTagList(stack.getTagCompound());
-        for (int i = 0; i < tagList.tagCount(); i++) {
-            String traitId = tagList.getStringTagAt(i);
-            switch (traitId) {
-                case NameConst.TRAIT_EVOLVED:
-                case NameConst.ARMOUR_TRAIT_EVOLVED:
-                case NameConst.MOD_FLUXED:
-                case NameConst.ARMOUR_MOD_FLUXED:
-                    return true;
+        for (ITrait trait : ToolHelper.getTraits(stack)) {
+            if (trait instanceof EnergeticModifier
+                    && ((EnergeticModifier)trait).getEnergyType() == EnergeticModifier.EnergyType.FORGE_ENERGY) {
+                return true;
             }
         }
         return false;

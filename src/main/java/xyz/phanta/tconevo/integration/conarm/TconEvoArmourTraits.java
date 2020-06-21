@@ -40,6 +40,9 @@ public class TconEvoArmourTraits {
     public static final ArmourTraitCelestial TRAIT_CELESTIAL = new ArmourTraitCelestial();
     public static final ArmourTraitChillingTouch TRAIT_CHILLING_TOUCH = new ArmourTraitChillingTouch();
     public static final ArmourTraitDivineGrace TRAIT_DIVINE_GRACE = new ArmourTraitDivineGrace();
+    public static final ArmourTraitEnergized[] TRAIT_ENERGIZED = {
+            new ArmourTraitEnergized(1), new ArmourTraitEnergized(2)
+    };
     public static final ArmourTraitGaleForce[] TRAIT_GALE_FORCE = {
             new ArmourTraitGaleForce(1), new ArmourTraitGaleForce(2), new ArmourTraitGaleForce(3)
     };

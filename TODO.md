@@ -543,21 +543,21 @@
     * tools: energized + magnetic 2
     * armour: energized + magnetic 2
 * flux crystal
-    * tools: energized + shocking
-    * armour: energized + voltaic
+    * tools: energized + aftershock
+    * armour: energized + shielding
 
 ## redstone repository
 
 ### materials
 
 * gelid enderium
-    * tools: energized 2 + juggernaut (head)
-    * armour: energized 2 + reactive
-* gelid gem
-    * tools: energized 2 + executor (head)
+    * tools: energized 2 + juggernaut
     * armour: energized 2 + chilling touch
+* gelid gem
+    * tools: energized 2 + aftershock 2
+    * armour: energized 2 + reactive
 * fluxed string
-    * bowstring: aftershock 2
+    * bowstring: aftershock
     
 ### other stuff
 

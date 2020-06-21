@@ -6,7 +6,6 @@ import io.github.phantamanta44.libnine.util.helper.OptUtils;
 import io.github.phantamanta44.libnine.util.math.MathUtils;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.MinecraftForge;
@@ -23,10 +22,11 @@ import xyz.phanta.tconevo.client.event.ItemStackBarEvent;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.init.TconEvoCaps;
 import xyz.phanta.tconevo.integration.conarm.ConArmHooks;
+import xyz.phanta.tconevo.trait.base.EnergeticModifier;
 import xyz.phanta.tconevo.trait.draconicevolution.TraitEvolved;
 import xyz.phanta.tconevo.util.ToolUtils;
 
-public class ArmourTraitEvolved extends AbstractArmorTrait {
+public class ArmourTraitEvolved extends AbstractArmorTrait implements EnergeticModifier {
 
     private static final String TAG_EVOLVED_INIT = "ConArmEvolvedInit";
 

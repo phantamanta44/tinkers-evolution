@@ -14,15 +14,21 @@ import xyz.phanta.tconevo.TconEvoMod;
 import xyz.phanta.tconevo.client.event.ItemStackBarEvent;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.init.TconEvoCaps;
+import xyz.phanta.tconevo.trait.base.EnergeticModifier;
 import xyz.phanta.tconevo.trait.ic2.TraitElectric;
 
-public class ArmourTraitElectric extends AbstractArmorTrait {
+public class ArmourTraitElectric extends AbstractArmorTrait implements EnergeticModifier {
 
     public ArmourTraitElectric() {
         super(NameConst.TRAIT_ELECTRIC, TraitElectric.COLOUR);
         TconEvoMod.PROXY.getToolCapHandler().addModifierCap(this, s -> new CapabilityBroker()
                 .with(TconEvoCaps.EU_STORE, new ElectricArmourBuffer(s)));
         MinecraftForge.EVENT_BUS.register(this);
+    }
+
+    @Override
+    public EnergyType getEnergyType() {
+        return EnergyType.EU;
     }
 
     @Override

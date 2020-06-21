@@ -140,6 +140,36 @@ public class TconEvoConfig {
         @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
         public double traitDivineGraceHealBoost = 0.12D;
 
+        @Config.Comment("The energy cost per point of durability absorbed by tools with the energized trait.")
+        @Config.RangeInt(min = 0)
+        public int traitEnergizedEnergyCostTools = 320;
+
+        @Config.Comment("The energy capacity granted per trait level on tools with the energized trait.")
+        @Config.RangeInt(min = 1)
+        public int traitEnergizedEnergyCapacityTools = 400000;
+
+        @Config.Comment({
+                "The energy cost per point of durability absorbed by armour with the energized trait.",
+                "Only useful with Construct's Armoury installed."
+        })
+        @Config.RangeInt(min = 0)
+        public int traitEnergizedEnergyCostArmour = 1024;
+
+        @Config.Comment({
+                "The energy capacity granted per trait level on armour with the energized trait.",
+                "Only useful with Construct's Armoury installed."
+        })
+        @Config.RangeInt(min = 0)
+        public int traitEnergizedEnergyCapacityArmour = 400000;
+
+        @Config.Comment({
+                "The divider used to calculate the maximum energy transfer rate for equipment with the energized trait.",
+                "Transfer rate is calculated as `capacity/n`, where `n` is this config value.",
+                "Set to zero for unlimited transfer rate."
+        })
+        @Config.RangeDouble(min = 0D)
+        public double traitEnergizedEnergyTransferDivider = 100;
+
         @Config.Comment("The percentage of missing health dealt as bonus damage by the executor trait.")
         @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
         public double traitExecutorMissingHealthDamage = 0.2D;

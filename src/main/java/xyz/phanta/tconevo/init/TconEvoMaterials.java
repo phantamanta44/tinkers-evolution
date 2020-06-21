@@ -47,6 +47,8 @@ public class TconEvoMaterials {
     public static Material GHOSTWOOD, BLOODWOOD, DARKWOOD, FUSEWOOD;
     // project: e
     public static Material DARK_MATTER, RED_MATTER;
+    // redstone arsenal/repository
+    public static Material FLUXED_ELECTRUM, FLUX_CRYSTAL, GELID_ENDERIUM, GELID_GEM, FLUXED_STRING;
     // thaumcraft
     public static Material THAUMIUM, VOID_METAL, PRIMAL_METAL;
     // thermal series
@@ -602,6 +604,50 @@ public class TconEvoMaterials {
                 .withStatsBow(0.75F, 2F, 10F)
                 .withTraits(PartType.HEAD, TconEvoTraits.TRAIT_ETERNAL_DENSITY[1])
                 .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_JUGGERNAUT, TconEvoTraits.TRAIT_OVERWHELM)
+                .build();
+
+        // redstone arsenal/repository
+        FLUXED_ELECTRUM = new MaterialBuilder(NameConst.MAT_FLUXED_ELECTRUM, 0xf3d363, MaterialForm.METAL, "ElectrumFlux")
+                .requiresOres("ingotElectrumFlux")
+                .setCastable("fluxed_electrum", 2800)
+                .withStatsHead(800, 8F, 7F, HarvestLevels.COBALT)
+                .withStatsHandle(0.6F, 90)
+                .withStatsExtra(120)
+                .withStatsBow(0.8F, 1.25F, 2F)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_ENERGIZED[0], TinkerTraits.magnetic2)
+                .build();
+        FLUX_CRYSTAL = new MaterialBuilder(NameConst.MAT_FLUX_CRYSTAL, 0xb9262d, MaterialForm.GEM, "CrystalFlux")
+                .requiresOres("gemCrystalFlux")
+                .setCraftable()
+                .withStatsHead(500, 7F, 8F, HarvestLevels.COBALT)
+                .withStatsHandle(0.9F, 40)
+                .withStatsExtra(80)
+                .withStatsBow(1.2F, 1F, 0F)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_ENERGIZED[0], TconEvoTraits.TRAIT_AFTERSHOCK[0])
+                .build();
+        GELID_ENDERIUM = new MaterialBuilder(NameConst.MAT_GELID_ENDERIUM, 0x127476, MaterialForm.METAL, "GelidEnderium")
+                .requiresOres("ingotGelidEnderium")
+                .setCastable("gelid_enderium", 3200)
+                .withStatsHead(1400, 10F, 11F, 6)
+                .withStatsHandle(0.75F, 140)
+                .withStatsExtra(175)
+                .withStatsBow(0.75F, 1.5F, 4F)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_ENERGIZED[1], TconEvoTraits.TRAIT_JUGGERNAUT)
+                .build();
+        GELID_GEM = new MaterialBuilder(NameConst.MAT_GELID_GEM, 0x3aadad, MaterialForm.GEM, "Gelid")
+                .requiresOres("gemGelid")
+                .setCraftable()
+                .withStatsHead(900, 9F, 12F, 6)
+                .withStatsHandle(1F, 90)
+                .withStatsExtra(135)
+                .withStatsBow(1.5F, 1.1F, 0F)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_ENERGIZED[1], TconEvoTraits.TRAIT_AFTERSHOCK[1])
+                .build();
+        FLUXED_STRING = new MaterialBuilder(NameConst.MAT_FLUXED_STRING, 0xd7cece, MaterialForm.RAW, "stringFluxed")
+                .requiresOres("stringFluxed")
+                .setCraftable()
+                .withStatsBowString(1.25F)
+                .withTraits(PartType.BOWSTRING, TconEvoTraits.TRAIT_AFTERSHOCK[0])
                 .build();
 
         // thaumcraft

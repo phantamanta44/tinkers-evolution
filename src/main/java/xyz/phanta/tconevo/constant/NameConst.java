@@ -29,6 +29,7 @@ public class NameConst {
     public static final String TRAIT_CRYSTALLINE = TconEvoMod.MOD_ID + ".crystalline";
     public static final String TRAIT_CULLING = TconEvoMod.MOD_ID + ".culling";
     public static final String TRAIT_DEADLY_PRECISION = TconEvoMod.MOD_ID + ".deadly_precision";
+    public static final String TRAIT_ENERGIZED = TconEvoMod.MOD_ID + ".energized";
     public static final String TRAIT_EXECUTOR = TconEvoMod.MOD_ID + ".executor";
     public static final String TRAIT_FOOT_FLEET = TconEvoMod.MOD_ID + ".foot_fleet";
     public static final String TRAIT_IMPACT_FORCE = TconEvoMod.MOD_ID + ".impact_force";
@@ -49,6 +50,7 @@ public class NameConst {
     public static final String MOD_FLUXED = TconEvoMod.MOD_ID + ".fluxed";
 
     public static final String ARMOUR_SUFFIX = "_armor";
+    public static final String ARMOUR_TRAIT_ENERGIZED = TRAIT_ENERGIZED + ARMOUR_SUFFIX;
     public static final String ARMOUR_TRAIT_PHOTOSYNTHETIC = TRAIT_PHOTOSYNTHETIC + ARMOUR_SUFFIX;
     public static final String TRAIT_BULWARK = TconEvoMod.MOD_ID + ".bulwark", ARMOUR_TRAIT_BULWARK = TRAIT_BULWARK + ARMOUR_SUFFIX;
     public static final String TRAIT_CELESTIAL = TconEvoMod.MOD_ID + ".celestial", ARMOUR_TRAIT_CELESTSIAL = TRAIT_CELESTIAL + ARMOUR_SUFFIX;
@@ -248,6 +250,14 @@ public class NameConst {
 
     public static final String TRAIT_SUPERDENSE = TconEvoMod.MOD_ID + ".superdense", ARMOUR_TRAIT_SUPERDENSE = TRAIT_SUPERDENSE + ARMOUR_SUFFIX;
     public static final String TRAIT_ULTRADENSE = TconEvoMod.MOD_ID + ".ultradense", ARMOUR_TRAIT_ULTRADENSE = TRAIT_ULTRADENSE + ARMOUR_SUFFIX;
+
+    // redstone arsenal/repository
+
+    public static final String MAT_FLUXED_ELECTRUM = "fluxed_electrum";
+    public static final String MAT_FLUX_CRYSTAL = "flux_crystal";
+    public static final String MAT_GELID_ENDERIUM = "gelid_enderium";
+    public static final String MAT_GELID_GEM = "gelid_gem";
+    public static final String MAT_FLUXED_STRING = "fluxed_string";
 
     // thaumcraft
 

@@ -30,9 +30,10 @@ import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.TconEvoMod;
 import xyz.phanta.tconevo.client.event.ItemStackBarEvent;
 import xyz.phanta.tconevo.constant.NameConst;
+import xyz.phanta.tconevo.trait.base.EnergeticModifier;
 import xyz.phanta.tconevo.util.ToolUtils;
 
-public class TraitEvolved extends AbstractTrait {
+public class TraitEvolved extends AbstractTrait implements EnergeticModifier {
 
     public static final int COLOUR = 0xc89af4;
 

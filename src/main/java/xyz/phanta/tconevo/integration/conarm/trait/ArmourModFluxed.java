@@ -20,13 +20,14 @@ import xyz.phanta.tconevo.client.event.ItemStackBarEvent;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.init.TconEvoTraits;
 import xyz.phanta.tconevo.trait.ModifierFluxed;
+import xyz.phanta.tconevo.trait.base.EnergeticModifier;
 import xyz.phanta.tconevo.trait.base.MatchSensitiveModifier;
 
 // mostly just delegates to ModifierFluxed because the behaviour is identical
-public class ArmourModFluxed extends ArmorModifierTrait implements MatchSensitiveModifier {
+public class ArmourModFluxed extends ArmorModifierTrait implements MatchSensitiveModifier, EnergeticModifier {
 
     public ArmourModFluxed() {
-        super(NameConst.MOD_FLUXED, 0xa93f3b);
+        super(NameConst.MOD_FLUXED, ModifierFluxed.COLOUR);
         TconEvoMod.PROXY.getToolCapHandler().addModifierCap(this, s -> new CapabilityBroker()
                 .with(CapabilityEnergy.ENERGY, new ModifierFluxed.FluxedEnergyStore(s)));
         MinecraftForge.EVENT_BUS.register(this);

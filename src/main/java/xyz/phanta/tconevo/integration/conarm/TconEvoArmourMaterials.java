@@ -276,6 +276,24 @@ public class TconEvoArmourMaterials {
                 .withTraits(ArmourPartType.ARMOUR, ArmorTraits.dense)
                 .build();
 
+        // redstone arsenal/repository
+        new ArmourMaterialBuilder(TconEvoMaterials.FLUXED_ELECTRUM)
+                .withStatsArmour(18F, 22F, 0.6F, 12F, 2F, 15F)
+                .withTraits(ArmourPartType.ARMOUR, TconEvoArmourTraits.TRAIT_ENERGIZED[0], ArmorTraits.magnetic2)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.FLUX_CRYSTAL)
+                .withStatsArmour(14F, 18F, 1F, 9F, 4F, 11.5F)
+                .withTraits(ArmourPartType.ARMOUR, TconEvoArmourTraits.TRAIT_ENERGIZED[0], ArmorTraits.shielding)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.GELID_ENDERIUM)
+                .withStatsArmour(24F, 27F, 0.75F, 17F, 4F, 21F)
+                .withTraits(ArmourPartType.ARMOUR, TconEvoArmourTraits.TRAIT_ENERGIZED[1], TconEvoArmourTraits.TRAIT_CHILLING_TOUCH)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.GELID_GEM)
+                .withStatsArmour(19F, 23F, 1F, 14F, 7F, 16.5F)
+                .withTraits(ArmourPartType.ARMOUR, TconEvoArmourTraits.TRAIT_ENERGIZED[1], TconEvoArmourTraits.TRAIT_REACTIVE)
+                .build();
+
         // thaumcraft
         new ArmourMaterialBuilder(TconEvoMaterials.THAUMIUM)
                 .withStatsArmour(16.5F, 16F, 1.3F, 2F, 1F, 4F)

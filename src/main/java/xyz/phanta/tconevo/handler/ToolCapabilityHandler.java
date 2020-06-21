@@ -28,7 +28,11 @@ public class ToolCapabilityHandler {
     private final Map<String, Function<ItemStack, ICapabilityProvider>> modifierCaps = new HashMap<>();
 
     public void addModifierCap(Modifier mod, Function<ItemStack, ICapabilityProvider> capFactory) {
-        modifierCaps.put(mod.getIdentifier(), capFactory);
+        addModifierCap(mod.getIdentifier(), capFactory);
+    }
+
+    public void addModifierCap(String modifierId, Function<ItemStack, ICapabilityProvider> capFactory) {
+        modifierCaps.put(modifierId, capFactory);
     }
 
     @SubscribeEvent

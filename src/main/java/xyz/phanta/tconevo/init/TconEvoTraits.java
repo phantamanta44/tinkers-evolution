@@ -4,12 +4,12 @@ import com.google.common.collect.Sets;
 import net.minecraft.item.ItemStack;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
-import slimeknights.tconstruct.library.traits.ITrait;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.integration.actuallyadditions.ActuallyHooks;
 import xyz.phanta.tconevo.integration.astralsorcery.AstralConstellation;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
 import xyz.phanta.tconevo.integration.mekanism.MekanismHooks;
+import xyz.phanta.tconevo.integration.redstonerepository.RedstoneRepositoryHooks;
 import xyz.phanta.tconevo.integration.thermal.ThermalHooks;
 import xyz.phanta.tconevo.trait.*;
 import xyz.phanta.tconevo.trait.astralsorcery.ModifierAttuned;
@@ -27,7 +27,6 @@ import xyz.phanta.tconevo.trait.ic2.TraitElectric;
 import xyz.phanta.tconevo.trait.industrialforegoing.TraitSlimeyPink;
 import xyz.phanta.tconevo.trait.projecte.TraitEternalDensity;
 import xyz.phanta.tconevo.trait.thaumcraft.TraitWarping;
-import xyz.phanta.tconevo.util.LazyAccum;
 
 import java.util.*;
 import java.util.function.Supplier;
@@ -52,6 +51,9 @@ public class TconEvoTraits {
     public static final TraitCrystalline TRAIT_CRYSTALLINE = new TraitCrystalline();
     public static final TraitCulling TRAIT_CULLING = new TraitCulling();
     public static final TraitDeadlyPrecision TRAIT_DEADLY_PRECISION = new TraitDeadlyPrecision();
+    public static final TraitEnergized[] TRAIT_ENERGIZED = {
+            new TraitEnergized(1), new TraitEnergized(2)
+    };
     public static final TraitExecutor TRAIT_EXECUTOR = new TraitExecutor();
     public static final TraitFootFleet TRAIT_FOOT_FLEET = new TraitFootFleet();
     public static final TraitImpactForce TRAIT_IMPACT_FORCE = new TraitImpactForce();
@@ -153,6 +155,9 @@ public class TconEvoTraits {
 
         // mekanism
         addModItemOpt(MOD_FLUXED, MekanismHooks.INSTANCE::getItemEnergyTablet);
+
+        // redstone arsenal/repository
+        addModItemOpt(MOD_FLUXED, RedstoneRepositoryHooks.INSTANCE::getItemGelidCapacitor);
 
         // thermal series
         for (int i = 0; i < 5; i++) { // basic, hardened, redstone, signalum, resonant
