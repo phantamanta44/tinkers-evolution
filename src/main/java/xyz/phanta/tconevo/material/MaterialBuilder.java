@@ -10,6 +10,7 @@ import slimeknights.tconstruct.library.materials.*;
 import slimeknights.tconstruct.library.traits.ITrait;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.TconEvoMod;
+import xyz.phanta.tconevo.util.CraftReflect;
 import xyz.phanta.tconevo.util.LazyAccum;
 import xyz.phanta.tconevo.util.TconReflect;
 
@@ -196,6 +197,7 @@ public class MaterialBuilder {
         fluid.setTemperature(fluidTemperature);
         fluid.setUnlocalizedName(TconEvoMod.MOD_ID + "." + material.identifier);
         FluidRegistry.registerFluid(fluid);
+        CraftReflect.setFluidUniqueId(fluid, TconEvoMod.MOD_ID + ":" + material.identifier);
         material.setFluid(fluid);
     }
 

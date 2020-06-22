@@ -517,7 +517,13 @@ commands.tconevo.tconevo.modmax.usage=/tconevo modmax
 commands.tconevo.tconevo.modmax.success=Maximized tool.
 commands.tconevo.tconevo.modmax.failure=Failed to maximize tool: %s
 
+commands.tconevo.tconevoclient.usage=/tconevoclient <matrenderinfo>
+commands.tconevo.tconevoclient.matrenderinfo.failure_nopart=Hold a Tinkers' Construct tool part to use this command.
+
 tconevo.info.energized_trait_conflict=Two energetic traits are conflicting!
+
+tconevo.gui.preview_material_render.refresh=Reload Render Info
+tconevo.gui.preview_material_render.nothing_to_render=Nothing to render!
 
 upgrade.level.0=-
 upgrade.level.1=Basic

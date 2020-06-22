@@ -57,7 +57,7 @@ public class TconEvoMaterials {
     @InitMe
     public static void init() {
         // actually additions
-        BLACK_QUARTZ = new MaterialBuilder(NameConst.MAT_BLACK_QUARTZ, 0x171717, MaterialForm.GEM, "QuartzBlack")
+        BLACK_QUARTZ = new MaterialBuilder(NameConst.MAT_BLACK_QUARTZ, 0x575757, MaterialForm.GEM, "QuartzBlack")
                 .requiresOres("gemQuartzBlack")
                 .setCraftable()
                 .withStatsHead(280, 6.5F, 5F, HarvestLevels.DIAMOND)
@@ -103,7 +103,7 @@ public class TconEvoMaterials {
                 .withStatsBow(1.25F, 0.6F, 0F)
                 .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_CRYSTALLINE, TinkerTraits.cheapskate)
                 .build();
-        AA_EMERALDIC = new MaterialBuilder(NameConst.MAT_AA_EMERALDIC, 0x3ac30a, MaterialForm.GEM, "Emeraldic")
+        AA_EMERALDIC = new MaterialBuilder(NameConst.MAT_AA_EMERALDIC, 0x004e00, MaterialForm.GEM, "Emeraldic")
                 .requiresOres("crystalEmeraldic")
                 .setCraftable()
                 .withStatsHead(1130, 8F, 7F, HarvestLevels.COBALT)
@@ -186,7 +186,7 @@ public class TconEvoMaterials {
                 .withTraits(PartType.HEAD, TconEvoTraits.TRAIT_ASTRAL)
                 .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_CRYSTALLINE)
                 .build();
-        STARMETAL = new MaterialBuilder(NameConst.MAT_STARMETAL, 0x000f6d, MaterialForm.METAL, "AstralStarmetal")
+        STARMETAL = new MaterialBuilder(NameConst.MAT_STARMETAL, 0x224baf, MaterialForm.METAL, "AstralStarmetal")
                 .requiresMods(AstralHooks.MOD_ID)
                 .setCastable("starmetal", 1360)
                 .withStatsHead(390, 6.5F, 5.5F, HarvestLevels.OBSIDIAN)
@@ -230,7 +230,7 @@ public class TconEvoMaterials {
                 .withTraits(PartType.HEAD, TconEvoTraits.TRAIT_SUNDERING)
                 .withTraits(PartType.TOOL, TinkerTraits.stonebound)
                 .build();
-        LIVINGWOOD = new MaterialBuilder(NameConst.MAT_LIVINGWOOD, 0x311510, MaterialForm.RAW, "livingwood")
+        LIVINGWOOD = new MaterialBuilder(NameConst.MAT_LIVINGWOOD, 0x795a2b, MaterialForm.RAW, "livingwood")
                 .requiresOres("livingwood")
                 .setCraftable()
                 .withStatsHead(80, 2.5F, 3.5F, HarvestLevels.STONE)
@@ -379,7 +379,7 @@ public class TconEvoMaterials {
                 .withStatsBow(1.15F, 1.05F, 1F)
                 .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_DEADLY_PRECISION, TconEvoTraits.TRAIT_CHAIN_LIGHTNING)
                 .build();
-        AETHIUM = new MaterialBuilder(NameConst.MAT_AETHIUM, 0x121212, MaterialForm.GEM, "Aethium")
+        AETHIUM = new MaterialBuilder(NameConst.MAT_AETHIUM, 0x575757, MaterialForm.GEM, "Aethium")
                 .requiresOres("crystalAethium")
                 .setCraftable()
                 .withStatsHead(425, 9F, 9F, 6)
@@ -388,7 +388,7 @@ public class TconEvoMaterials {
                 .withStatsBow(1.25F, 1F, 2F)
                 .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_EXECUTOR, TconEvoTraits.TRAIT_CORRUPTING)
                 .build();
-        LONSDALEITE = new MaterialBuilder(NameConst.MAT_LONSDALEITE, 0x090909, MaterialForm.GEM, "Lonsdaleite")
+        LONSDALEITE = new MaterialBuilder(NameConst.MAT_LONSDALEITE, 0x575757, MaterialForm.GEM, "Lonsdaleite")
                 .requiresOres("crystalLonsdaleite")
                 .setCraftable()
                 .withStatsHead(840, 7F, 6F, HarvestLevels.OBSIDIAN)
@@ -435,7 +435,7 @@ public class TconEvoMaterials {
                 .withStatsBow(1.3F, 0.85F, 0F)
                 .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_SLIMEY_PINK)
                 .build();
-        PINK_METAL = new MaterialBuilder(NameConst.MAT_PINK_METAL, 0xc77389, MaterialForm.METAL, "PinkMetal")
+        PINK_METAL = new MaterialBuilder(NameConst.MAT_PINK_METAL, 0xc279b6, MaterialForm.METAL, "PinkMetal")
                 .requiresOres("ingotPinkMetal")
                 .setCastable(1600)
                 .withStatsHead(1789, 12.5F, 8.5F, 5)
@@ -446,7 +446,7 @@ public class TconEvoMaterials {
                 .build();
 
         // industrialcraft 2
-        RUBBER = new MaterialBuilder(NameConst.MAT_RUBBER, 0x1d1d1d, MaterialForm.GEM_ITEM_4, "Rubber")
+        RUBBER = new MaterialBuilder(NameConst.MAT_RUBBER, 0x575757, MaterialForm.GEM_ITEM_4, "Rubber")
                 .requiresOres("itemRubber")
                 .setCraftable()
                 .withStatsHead(180, 5F, 1.5F, HarvestLevels.IRON)
@@ -660,7 +660,7 @@ public class TconEvoMaterials {
                 .withStatsBow(1.2F, 1F, 1F)
                 .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_MODIFIABLE[0], TconEvoTraits.TRAIT_OPPORTUNIST)
                 .build();
-        VOID_METAL = new MaterialBuilder(NameConst.MAT_VOID_METAL, 0x2f114b, MaterialForm.METAL, "Void")
+        VOID_METAL = new MaterialBuilder(NameConst.MAT_VOID_METAL, 0x63186f, MaterialForm.METAL, "Void")
                 .requiresOres("ingotVoid")
                 .setCastable("void_metal", 1120)
                 .withStatsHead(340, 8F, 6F, HarvestLevels.COBALT)

@@ -174,14 +174,14 @@ public class CommandTconEvo extends CommandBase {
         return Collections.emptyList();
     }
 
-    private static EntityPlayer getSenderPlayer(ICommandSender sender) throws CommandException {
+    public static EntityPlayer getSenderPlayer(ICommandSender sender) throws CommandException {
         if (!(sender instanceof EntityPlayer)) {
             throw new PlayerNotFoundException("commands.tconevo.generic.player_only");
         }
         return (EntityPlayer)sender;
     }
 
-    private static ItemStack getToolStack(EntityPlayer sender) throws CommandException {
+    public static ItemStack getToolStack(EntityPlayer sender) throws CommandException {
         ItemStack stack = sender.getHeldItemMainhand();
         if (stack.isEmpty() || !(stack.getItem() instanceof ITinkerable)) {
             throw new CommandException("commands.tconevo.generic.req_tool");
@@ -189,7 +189,7 @@ public class CommandTconEvo extends CommandBase {
         return stack;
     }
 
-    private static IModifier getModifier(String id) throws CommandException {
+    public static IModifier getModifier(String id) throws CommandException {
         IModifier mod = TinkerRegistry.getModifier(id);
         if (mod == null) {
             throw new CommandException("commands.tconevo.generic.unknown_mod", id);

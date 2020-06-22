@@ -4,16 +4,22 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.Vec3d;
+import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import slimeknights.mantle.client.book.repository.FileRepository;
 import slimeknights.tconstruct.library.book.TinkerBook;
+import slimeknights.tconstruct.library.client.material.MaterialRenderInfoLoader;
 import xyz.phanta.tconevo.CommonProxy;
+import xyz.phanta.tconevo.TconEvoMod;
 import xyz.phanta.tconevo.client.book.BookTransformerAppendModifiers;
+import xyz.phanta.tconevo.client.command.CommandTconEvoClient;
 import xyz.phanta.tconevo.client.fx.ParticleChainLightning;
 import xyz.phanta.tconevo.client.handler.EnergyShieldHudHandler;
 import xyz.phanta.tconevo.client.handler.EnergyTooltipHandler;
+import xyz.phanta.tconevo.client.render.material.EdgeColourMaterialRenderInfo;
 import xyz.phanta.tconevo.init.TconEvoTraits;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
 import xyz.phanta.tconevo.network.SPacketEntitySpecialEffect;
@@ -29,6 +35,12 @@ public class ClientProxy extends CommonProxy {
         if (!DraconicHooks.isLoaded()) {
             MinecraftForge.EVENT_BUS.register(new EnergyShieldHudHandler());
         }
+        MaterialRenderInfoLoader.addRenderInfo(TconEvoMod.MOD_ID + ".edge_colour", EdgeColourMaterialRenderInfo.Deserializer.class);
+    }
+
+    @Override
+    public void onInit(FMLInitializationEvent event) {
+        super.onInit(event);
     }
 
     @Override
@@ -36,6 +48,7 @@ public class ClientProxy extends CommonProxy {
         super.onPostInit(event);
         TinkerBook.INSTANCE.addTransformer(new BookTransformerAppendModifiers(
                 new FileRepository("tconstruct:book"), false, c -> c.acceptAll(TconEvoTraits.MODIFIERS)));
+        ClientCommandHandler.instance.registerCommand(new CommandTconEvoClient());
     }
 
     @SuppressWarnings("DuplicatedCode")

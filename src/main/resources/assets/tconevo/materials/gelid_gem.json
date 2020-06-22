@@ -1,0 +1,8 @@
+{
+  "type": "tconevo.edge_colour",
+  "parameters": {
+    "inner": "31b6b6",
+    "outer": "22c0f9",
+    "bleed": 0.25
+  }
+}
