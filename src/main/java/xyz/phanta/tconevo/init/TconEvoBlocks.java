@@ -43,7 +43,19 @@ public class TconEvoBlocks {
                 // botania
                 "Manasteel", "Terrasteel", "ElvenElementium",
                 // draconic evolution
-                "Draconium", "DraconiumAwakened")) {
+                "Draconium", "DraconiumAwakened",
+                // industrialcraft 2
+                "Iridium",
+                // mekanism
+                "Osmium", "RefinedGlowstone", "RefinedObsidian",
+                // project: e
+                "DarkMatter", "RedMatter",
+                // redstone arsenal/repository
+                "ElectrumFlux", "GelidEnderium",
+                // thaumcraft
+                "Thaumium", "Void", "Brass",
+                // thermal series
+                "Nickel", "Platinum", "Invar", "Constantan", "Signalum", "Lumium", "Enderium")) {
             TinkerTools.registerToolForgeBlock(registry, "block" + oreName);
         }
     }
