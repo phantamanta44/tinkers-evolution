@@ -42,6 +42,9 @@ Current mod integration modules are as follows:
     * Adds an absorption modifier for armour
 * **Project: E**
     * Adds powerful dark matter and red matter materials
+* **Redstone Arsenal/Repository**
+    * Adds fluxed tool materials using fluxed electrum and gelid enderium
+    * Allows the gelid flux capacitor to apply the "fluxed" modifier
 * **Thaumcraft**
     * Adds thaumium, void metal, and primordial materials
 * **Thermal Series**
