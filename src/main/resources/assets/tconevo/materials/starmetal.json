@@ -1,5 +1,5 @@
 {
-  "type": "block",
+  "type": "tconevo.maybe_block"",
   "parameters": {
     "texture": "tconevo:blocks/bright_starmetal"
   }

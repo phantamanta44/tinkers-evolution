@@ -20,6 +20,7 @@ import xyz.phanta.tconevo.client.fx.ParticleChainLightning;
 import xyz.phanta.tconevo.client.handler.EnergyShieldHudHandler;
 import xyz.phanta.tconevo.client.handler.EnergyTooltipHandler;
 import xyz.phanta.tconevo.client.render.material.EdgeColourMaterialRenderInfo;
+import xyz.phanta.tconevo.client.render.material.MaybeBlockMaterialRenderInfo;
 import xyz.phanta.tconevo.init.TconEvoTraits;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
 import xyz.phanta.tconevo.network.SPacketEntitySpecialEffect;
@@ -36,6 +37,7 @@ public class ClientProxy extends CommonProxy {
             MinecraftForge.EVENT_BUS.register(new EnergyShieldHudHandler());
         }
         MaterialRenderInfoLoader.addRenderInfo(TconEvoMod.MOD_ID + ".edge_colour", EdgeColourMaterialRenderInfo.Deserializer.class);
+        MaterialRenderInfoLoader.addRenderInfo(TconEvoMod.MOD_ID + ".maybe_block", MaybeBlockMaterialRenderInfo.Deserializer.class);
     }
 
     @Override
