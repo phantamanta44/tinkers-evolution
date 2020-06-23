@@ -70,7 +70,7 @@ public class ArmourMaterialBuilder {
             }
         } catch (Exception e) {
             TconEvoMod.LOGGER.error("Encountered exception while building armour material {}", baseMaterial.identifier);
-            TconEvoMod.LOGGER.error(e);
+            TconEvoMod.LOGGER.error("Stack trace:", e);
         }
     }
 

@@ -180,7 +180,7 @@ public class MaterialBuilder {
             TconReflect.overrideMaterialOwnerMod(material, TconEvoMod.INSTANCE);
         } catch (Exception e) {
             TconEvoMod.LOGGER.error("Encountered exception while building material {}", matId);
-            TconEvoMod.LOGGER.error(e);
+            TconEvoMod.LOGGER.error("Stack trace:", e);
         }
         return material;
     }

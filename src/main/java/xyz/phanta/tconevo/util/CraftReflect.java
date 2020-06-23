@@ -31,11 +31,12 @@ public class CraftReflect {
     }
 
     public static void setFluidUniqueId(Fluid fluid, String fluidId) {
-        String oldId = defaultFluidName.get(fluid.getName());
+        String oldId = masterFluidReference.inverse().remove(fluid);
         if (oldId != null) {
-            masterFluidReference.remove(oldId);
             masterFluidReference.put(fluidId, fluid);
-            defaultFluidName.put(fluid.getName(), fluidId);
+            if (oldId.equals(defaultFluidName.get(fluid.getName()))) {
+                defaultFluidName.put(fluid.getName(), fluidId);
+            }
         }
     }
 

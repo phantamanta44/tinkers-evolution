@@ -35,7 +35,7 @@ public class MaterialDefinition {
                 defn.initProperties();
             } catch (Exception e) {
                 TconEvoMod.LOGGER.error("Encountered exception while initializing material {}", defn.material.identifier);
-                TconEvoMod.LOGGER.error(e);
+                TconEvoMod.LOGGER.error("Stack trace:", e);
             }
         }
     }
@@ -46,7 +46,7 @@ public class MaterialDefinition {
                 defn.tryActivate();
             } catch (Exception e) {
                 TconEvoMod.LOGGER.error("Encountered exception while activating material {}", defn.material.identifier);
-                TconEvoMod.LOGGER.error(e);
+                TconEvoMod.LOGGER.error("Stack trace:", e);
             }
         }
     }

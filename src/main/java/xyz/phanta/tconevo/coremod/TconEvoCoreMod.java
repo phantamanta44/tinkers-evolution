@@ -14,7 +14,8 @@ public class TconEvoCoreMod implements IFMLLoadingPlugin {
                 pkg + "ClassTransformerItemStackBar",
                 pkg + "ClassTransformerItemSensitiveModifiers",
                 pkg + "ClassTransformerAstralAttunement",
-                pkg + "ClassTransformerUniquePartTraits"
+                pkg + "ClassTransformerUniquePartTraits",
+                pkg + "ClassTransformerGregTechRecipeCrash"
         };
     }
 

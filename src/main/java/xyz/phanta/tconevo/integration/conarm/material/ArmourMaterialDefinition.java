@@ -25,7 +25,7 @@ public class ArmourMaterialDefinition {
             } catch (Exception e) {
                 TconEvoMod.LOGGER.error("Encountered exception while initializing armour material {}",
                         materialDef.baseMaterial.identifier);
-                TconEvoMod.LOGGER.error(e);
+                TconEvoMod.LOGGER.error("Stack trace:", e);
             }
         }
     }
