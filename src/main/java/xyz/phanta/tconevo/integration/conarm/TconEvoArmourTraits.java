@@ -15,10 +15,7 @@ import xyz.phanta.tconevo.integration.conarm.trait.bloodmagic.ArmourTraitBloodbo
 import xyz.phanta.tconevo.integration.conarm.trait.bloodmagic.ArmourTraitSentient;
 import xyz.phanta.tconevo.integration.conarm.trait.bloodmagic.ArmourTraitSoulGuard;
 import xyz.phanta.tconevo.integration.conarm.trait.bloodmagic.ArmourTraitWillful;
-import xyz.phanta.tconevo.integration.conarm.trait.botania.ArmourTraitAuraInfused;
-import xyz.phanta.tconevo.integration.conarm.trait.botania.ArmourTraitFaeVoice;
-import xyz.phanta.tconevo.integration.conarm.trait.botania.ArmourTraitManaAffinity;
-import xyz.phanta.tconevo.integration.conarm.trait.botania.ArmourTraitManaInfused;
+import xyz.phanta.tconevo.integration.conarm.trait.botania.*;
 import xyz.phanta.tconevo.integration.conarm.trait.draconicevolution.*;
 import xyz.phanta.tconevo.integration.conarm.trait.ic2.ArmourTraitElectric;
 import xyz.phanta.tconevo.integration.conarm.trait.industrialforegoing.ArmourTraitSlimeyPink;
@@ -28,7 +25,6 @@ import xyz.phanta.tconevo.integration.conarm.trait.projecte.ArmourTraitUltradens
 import xyz.phanta.tconevo.integration.conarm.trait.thaumcraft.ArmourTraitWarping;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
 import xyz.phanta.tconevo.integration.naturalabsorption.NaturalAbsorptionHooks;
-import xyz.phanta.tconevo.trait.botania.ModifierGaiaWill;
 import xyz.phanta.tconevo.util.TconReflect;
 
 import java.util.*;
@@ -87,12 +83,12 @@ public class TconEvoArmourTraits {
             new ArmourTraitManaAffinity(1), new ArmourTraitManaAffinity(2)
     };
     public static final ArmourTraitManaInfused TRAIT_MANA_INFUSED = new ArmourTraitManaInfused();
-    public static final ModifierGaiaWill.Ahrim MOD_GAIA_WILL_AHRIM = new ModifierGaiaWill.Ahrim();
-    public static final ModifierGaiaWill.Dharok MOD_GAIA_WILL_DHAROK = new ModifierGaiaWill.Dharok();
-    public static final ModifierGaiaWill.Guthan MOD_GAIA_WILL_GUTHAN = new ModifierGaiaWill.Guthan();
-    public static final ModifierGaiaWill.Karil MOD_GAIA_WILL_KARIL = new ModifierGaiaWill.Karil();
-    public static final ModifierGaiaWill.Torag MOD_GAIA_WILL_TORAG = new ModifierGaiaWill.Torag();
-    public static final ModifierGaiaWill.Verac MOD_GAIA_WILL_VERAC = new ModifierGaiaWill.Verac();
+    public static final ArmourModGaiaWill.Ahrim MOD_GAIA_WILL_AHRIM = new ArmourModGaiaWill.Ahrim();
+    public static final ArmourModGaiaWill.Dharok MOD_GAIA_WILL_DHAROK = new ArmourModGaiaWill.Dharok();
+    public static final ArmourModGaiaWill.Guthan MOD_GAIA_WILL_GUTHAN = new ArmourModGaiaWill.Guthan();
+    public static final ArmourModGaiaWill.Karil MOD_GAIA_WILL_KARIL = new ArmourModGaiaWill.Karil();
+    public static final ArmourModGaiaWill.Torag MOD_GAIA_WILL_TORAG = new ArmourModGaiaWill.Torag();
+    public static final ArmourModGaiaWill.Verac MOD_GAIA_WILL_VERAC = new ArmourModGaiaWill.Verac();
 
     // draconic evolution
     public static final ArmourTraitEvolved TRAIT_EVOLVED = new ArmourTraitEvolved();

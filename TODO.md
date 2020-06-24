@@ -517,23 +517,26 @@
 
 ### traits
 
-* psionic: slowly repairs over time using psi energy
-* socketed: comes with spell sockets (might leave it for rpsideas?)
+* psion-infused: slowly repairs over time using psi energy
 
 ### materials
 
 * psimetal
-    * tools: psionic + socketed + magnetic
-    * armour: psionic + magnetic
+    * tools: psion-infused + magnetic
+    * armour: psion-infused + magnetic
 * psigem
-    * tools: psionic + socketed + aftershock
-    * armour: psionic + shielding
+    * tools: psion-infused + aftershock
+    * armour: psion-infused + shielding
 * ebony psimetal
-    * tools: psionic + socketed + battle furor
-    * armour: psionic + heavy
+    * tools: psion-infused + battle furor
+    * armour: psion-infused + heavy
 * ivory psimetal
-    * tools: psionic + socketed + fleet of foot
-    * armour: psionic + steady
+    * tools: psion-infused + relentless
+    * armour: psion-infused + steady
+
+### other notes
+
+* no trait/modifier for adding spell sockets because rpsideas already does that
 
 ## redstone arsenal
 

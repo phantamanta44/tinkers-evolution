@@ -2,6 +2,7 @@ package xyz.phanta.tconevo.integration.conarm;
 
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import slimeknights.tconstruct.library.modifiers.IModifier;
 import slimeknights.tconstruct.library.modifiers.TinkerGuiException;
@@ -25,6 +26,8 @@ public interface ConArmHooks extends IntegrationHooks {
 
     boolean hasArmourModMatches(IModifier mod);
 
+    boolean isTinkerArmour(ItemStack stack);
+
     class Noop implements ConArmHooks {
 
         @Override
@@ -45,6 +48,11 @@ public interface ConArmHooks extends IntegrationHooks {
 
         @Override
         public boolean hasArmourModMatches(IModifier mod) {
+            return false;
+        }
+
+        @Override
+        public boolean isTinkerArmour(ItemStack stack) {
             return false;
         }
 

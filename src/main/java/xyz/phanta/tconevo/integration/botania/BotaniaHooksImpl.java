@@ -1,6 +1,5 @@
 package xyz.phanta.tconevo.integration.botania;
 
-import c4.conarm.lib.armor.ArmorCore;
 import io.github.phantamanta44.libnine.util.helper.MirrorUtils;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -25,6 +24,7 @@ import vazkii.botania.common.item.ModItems;
 import vazkii.botania.common.item.equipment.armor.elementium.ItemElementiumHelm;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.constant.NameConst;
+import xyz.phanta.tconevo.integration.conarm.ConArmHooks;
 import xyz.phanta.tconevo.util.ToolUtils;
 
 import java.util.Optional;
@@ -93,7 +93,7 @@ public class BotaniaHooksImpl implements BotaniaHooks {
     public void onManaDiscount(ManaDiscountEvent event) {
         float discount = 0F;
         for (ItemStack stack : event.getEntityPlayer().inventory.armorInventory) {
-            if (stack.getItem() instanceof ArmorCore) {
+            if (ConArmHooks.INSTANCE.isTinkerArmour(stack)) {
                 int level = ToolUtils.getTraitLevel(stack, NameConst.ARMOUR_TRAIT_MANA_AFFINITY);
                 if (level > 0) {
                     // would call ArmourTraitManaAffinity::getDiscount, but we don't want to load a conarm integration class

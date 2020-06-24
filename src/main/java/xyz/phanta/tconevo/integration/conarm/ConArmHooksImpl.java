@@ -7,6 +7,7 @@ import c4.conarm.lib.tinkering.TinkersArmor;
 import c4.conarm.lib.utils.RecipeMatchHolder;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -78,6 +79,11 @@ public class ConArmHooksImpl implements ConArmHooks {
     @Override
     public boolean hasArmourModMatches(IModifier mod) {
         return RecipeMatchHolder.getRecipes(mod).map(m -> !m.isEmpty()).orElse(false);
+    }
+
+    @Override
+    public boolean isTinkerArmour(ItemStack stack) {
+        return stack.getItem() instanceof TinkersArmor;
     }
 
 }

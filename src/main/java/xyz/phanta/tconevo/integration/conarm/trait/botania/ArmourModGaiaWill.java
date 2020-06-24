@@ -1,4 +1,4 @@
-package xyz.phanta.tconevo.trait.botania;
+package xyz.phanta.tconevo.integration.conarm.trait.botania;
 
 import c4.conarm.lib.modifiers.ArmorModifierTrait;
 import net.minecraft.entity.Entity;
@@ -16,9 +16,9 @@ import slimeknights.tconstruct.library.modifiers.IModifier;
 import slimeknights.tconstruct.library.utils.TinkerUtil;
 import xyz.phanta.tconevo.constant.NameConst;
 
-public abstract class ModifierGaiaWill extends ArmorModifierTrait {
+public abstract class ArmourModGaiaWill extends ArmorModifierTrait {
 
-    public ModifierGaiaWill(String identifier) {
+    public ArmourModGaiaWill(String identifier) {
         super(identifier, 0x5b773e);
         MinecraftForge.EVENT_BUS.register(this);
     }
@@ -29,7 +29,7 @@ public abstract class ModifierGaiaWill extends ArmorModifierTrait {
             return false;
         }
         for (IModifier modifier : TinkerUtil.getModifiers(stack)) {
-            if (modifier instanceof ModifierGaiaWill) {
+            if (modifier instanceof ArmourModGaiaWill) {
                 return false;
             }
         }
@@ -56,7 +56,7 @@ public abstract class ModifierGaiaWill extends ArmorModifierTrait {
 
     protected abstract float applyWillEffect(EntityLivingBase attacker, EntityLivingBase target, float amount, DamageSource dmgSrc);
 
-    public static class Ahrim extends ModifierGaiaWill {
+    public static class Ahrim extends ArmourModGaiaWill {
 
         public Ahrim() {
             super(NameConst.MOD_GAIA_WILL_AHRIM);
@@ -70,7 +70,7 @@ public abstract class ModifierGaiaWill extends ArmorModifierTrait {
 
     }
 
-    public static class Dharok extends ModifierGaiaWill {
+    public static class Dharok extends ArmourModGaiaWill {
 
         public Dharok() {
             super(NameConst.MOD_GAIA_WILL_DHAROK);
@@ -84,7 +84,7 @@ public abstract class ModifierGaiaWill extends ArmorModifierTrait {
 
     }
 
-    public static class Guthan extends ModifierGaiaWill {
+    public static class Guthan extends ArmourModGaiaWill {
 
         public Guthan() {
             super(NameConst.MOD_GAIA_WILL_GUTHAN);
@@ -98,7 +98,7 @@ public abstract class ModifierGaiaWill extends ArmorModifierTrait {
 
     }
 
-    public static class Karil extends ModifierGaiaWill {
+    public static class Karil extends ArmourModGaiaWill {
 
         public Karil() {
             super(NameConst.MOD_GAIA_WILL_KARIL);
@@ -112,7 +112,7 @@ public abstract class ModifierGaiaWill extends ArmorModifierTrait {
 
     }
 
-    public static class Torag extends ModifierGaiaWill {
+    public static class Torag extends ArmourModGaiaWill {
 
         public Torag() {
             super(NameConst.MOD_GAIA_WILL_TORAG);
@@ -126,7 +126,7 @@ public abstract class ModifierGaiaWill extends ArmorModifierTrait {
 
     }
 
-    public static class Verac extends ModifierGaiaWill {
+    public static class Verac extends ArmourModGaiaWill {
 
         public Verac() {
             super(NameConst.MOD_GAIA_WILL_VERAC);
