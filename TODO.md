@@ -71,6 +71,7 @@
 
 ## materials
 
+* silver usable for magic tool parts
 * *TODO: all sorts of funky alloys*
 
 ## tools
@@ -273,6 +274,12 @@
     * armour: voice of the fae (core) + divine grace (plates/trim) + shielding + mana-infused + mana affinity
 * mana string
     * bowstring: mana-infused
+* mana diamond:
+    * magic: crystalline + mana-infused
+* mana pearl:
+    * magic: endspeed + mana-infused
+* dragonstone:
+    * magic: voice of the fae + mana-infused
 
 ### other ideas
 
@@ -297,8 +304,21 @@
 * antimony (soot)
     * tools: shredding + ember-aspected
     * armour: indomitable + ember-aspected
+* ember crystal
+    * magic: superheat + ember-aspected
 
 ## ender io
+
+### materials
+
+* ender crystal
+    * magic: endspeed
+* pulsating crystal
+    * magic: enderference
+* vibrant crystal
+    * magic: chain lightning
+* weather crystal
+    * magic: thundergod's wrath
 
 ### other ideas
 
@@ -390,7 +410,7 @@
 * pink metal
     * tools: mortal wounds + unnatural
     * armour: divine grace + vengeful
-    
+
 ### other ideas
 
 * maybe add straw handlers for various tcon fluids
@@ -587,6 +607,10 @@
 * primal metal (infuse primordial pearl + salis mundis onto coag matrix)
     * tools: corrupting + culling
     * armour: gale force (core/plates) + aspect of the phoenix (trim)
+* amber
+    * magic: opportunist
+* quicksilver
+    * magic: modifiable 2
 
 ## thermal series
 

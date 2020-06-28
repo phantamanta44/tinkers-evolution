@@ -13,7 +13,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: "com.wynprice.cursemaven"
 
-version = "1.0.19"
+version = "1.0.20"
 group = "xyz.phanta.tconevo"
 archivesBaseName = "tconevo-1.12.2"
 
@@ -119,6 +119,7 @@ afterEvaluate {
 
 jar {
     manifest {
+        attributes 'FMLAT': 'tconevo_at.cfg'
         attributes 'FMLCorePluginContainsFMLMod': 'true'
         attributes 'FMLCorePlugin': 'xyz.phanta.tconevo.coremod.TconEvoCoreMod'
     }

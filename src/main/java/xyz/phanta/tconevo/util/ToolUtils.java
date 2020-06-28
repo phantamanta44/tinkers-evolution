@@ -9,6 +9,7 @@ import net.minecraft.util.EnumHand;
 import slimeknights.tconstruct.library.Util;
 import slimeknights.tconstruct.library.capability.projectile.CapabilityTinkerProjectile;
 import slimeknights.tconstruct.library.capability.projectile.ITinkerProjectile;
+import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierNBT;
 import slimeknights.tconstruct.library.modifiers.TinkerGuiException;
@@ -99,6 +100,10 @@ public class ToolUtils {
             ConArmHooks.INSTANCE.rebuildArmour(rootTag, stack.getItem());
         }
         stack.setTagCompound(rootTag);
+    }
+
+    public static List<Material> getToolMaterials(ItemStack stack) {
+        return TinkerUtil.getMaterialsFromTagList(TagUtil.getBaseMaterialsTagList(stack));
     }
 
 }

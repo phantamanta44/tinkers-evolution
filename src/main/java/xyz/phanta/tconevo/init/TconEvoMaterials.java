@@ -3,6 +3,7 @@ package xyz.phanta.tconevo.init;
 import io.github.phantamanta44.libnine.InitMe;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.utils.HarvestLevels;
+import slimeknights.tconstruct.tools.TinkerMaterials;
 import slimeknights.tconstruct.tools.TinkerTraits;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.integration.astralsorcery.AstralHooks;
@@ -16,6 +17,7 @@ import xyz.phanta.tconevo.integration.thaumcraft.ThaumHooks;
 import xyz.phanta.tconevo.material.MaterialBuilder;
 import xyz.phanta.tconevo.material.MaterialForm;
 import xyz.phanta.tconevo.material.PartType;
+import xyz.phanta.tconevo.material.stats.MagicMaterialStats;
 import xyz.phanta.tconevo.trait.draconicevolution.TraitEvolved;
 
 @SuppressWarnings("NotNullFieldNotInitialized")
@@ -32,7 +34,7 @@ public class TconEvoMaterials {
     // blood magic
     public static Material BOUND_METAL, SENTIENT_METAL;
     // botania
-    public static Material LIVINGROCK, LIVINGWOOD, DREAMWOOD, MANASTEEL, TERRASTEEL, ELEMENTIUM, MANA_STRING;
+    public static Material LIVINGROCK, LIVINGWOOD, DREAMWOOD, MANASTEEL, TERRASTEEL, ELEMENTIUM, MANA_STRING, MANA_DIAMOND, MANA_PEARL, DRAGONSTONE;
     // draconic evolution
     public static Material DRACONIUM, WYVERN_METAL, DRACONIC_METAL, CHAOTIC_METAL;
     // environmental tech
@@ -50,17 +52,22 @@ public class TconEvoMaterials {
     // redstone arsenal/repository
     public static Material FLUXED_ELECTRUM, FLUX_CRYSTAL, GELID_ENDERIUM, GELID_GEM, FLUXED_STRING;
     // thaumcraft
-    public static Material THAUMIUM, VOID_METAL, PRIMAL_METAL;
+    public static Material THAUMIUM, VOID_METAL, PRIMAL_METAL, AMBER, QUICKSILVER;
     // thermal series
     public static Material TIN, ALUMINIUM, NICKEL, PLATINUM, INVAR, CONSTANTAN, SIGNALUM, LUMIUM, ENDERIUM;
 
     @InitMe
     public static void init() {
+        // tinkers' construct
+        TinkerMaterials.stone.addStats(new MagicMaterialStats(120, 1F, 0.25F, HarvestLevels.IRON));
+        TinkerMaterials.silver.addStats(new MagicMaterialStats(250, 5.5F, 1.15F, HarvestLevels.IRON));
+
         // actually additions
         BLACK_QUARTZ = new MaterialBuilder(NameConst.MAT_BLACK_QUARTZ, 0x575757, MaterialForm.GEM, "QuartzBlack")
                 .requiresOres("gemQuartzBlack")
                 .setCraftable()
                 .withStatsHead(280, 6.5F, 5F, HarvestLevels.DIAMOND)
+                .withStatsMagic(280, 5F, 1F, HarvestLevels.DIAMOND)
                 .withStatsHandle(0.8F, 20)
                 .withStatsExtra(10)
                 .withStatsBow(1.2F, 1F, 0F)
@@ -70,16 +77,18 @@ public class TconEvoMaterials {
                 .requiresOres("crystalRestonia")
                 .setCraftable()
                 .withStatsHead(150, 7F, 3.5F, HarvestLevels.DIAMOND)
+                .withStatsMagic(150, 3.5F, 0.8F, HarvestLevels.DIAMOND)
                 .withStatsHandle(0.75F, 10)
                 .withStatsExtra(20)
                 .withStatsBow(1.5F, 0.8F, 0F)
                 .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_CRYSTALLINE)
-                .withTraits(PartType.HEAD, TconEvoTraits.TRAIT_PIEZOELECTRIC)
+                .withTraits(PartType.MAIN, TconEvoTraits.TRAIT_PIEZOELECTRIC)
                 .build();
         AA_PALIS = new MaterialBuilder(NameConst.MAT_AA_PALIS, 0x005dba, MaterialForm.GEM, "Palis")
                 .requiresOres("crystalPalis")
                 .setCraftable()
                 .withStatsHead(150, 4F, 4.5F, HarvestLevels.DIAMOND)
+                .withStatsMagic(150, 4.5F, 1F, HarvestLevels.DIAMOND)
                 .withStatsHandle(1.1F, 0)
                 .withStatsExtra(10)
                 .withStatsBow(0.75F, 1.1F, 0F)
@@ -89,6 +98,7 @@ public class TconEvoMaterials {
                 .requiresOres("crystalDiamantine")
                 .setCraftable()
                 .withStatsHead(960, 7.5F, 6F, HarvestLevels.OBSIDIAN)
+                .withStatsMagic(960, 7F, 1.1F, HarvestLevels.OBSIDIAN)
                 .withStatsHandle(1.25F, 30)
                 .withStatsExtra(60)
                 .withStatsBow(1F, 1.2F, 4F)
@@ -98,6 +108,7 @@ public class TconEvoMaterials {
                 .requiresOres("crystalVoid")
                 .setCraftable()
                 .withStatsHead(170, 3F, 4F, HarvestLevels.DIAMOND)
+                .withStatsMagic(170, 4F, 0.75F, HarvestLevels.DIAMOND)
                 .withStatsHandle(0.8F, 0)
                 .withStatsExtra(5)
                 .withStatsBow(1.25F, 0.6F, 0F)
@@ -107,17 +118,19 @@ public class TconEvoMaterials {
                 .requiresOres("crystalEmeraldic")
                 .setCraftable()
                 .withStatsHead(1130, 8F, 7F, HarvestLevels.COBALT)
+                .withStatsMagic(1130, 8F, 1.25F, HarvestLevels.COBALT)
                 .withStatsHandle(1.25F, 50)
                 .withStatsExtra(75)
                 .withStatsBow(0.85F, 1.3F, 6F)
                 .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_CRYSTALLINE)
-                .withTraits(PartType.HEAD, TinkerTraits.coldblooded)
-                .withTraits(PartType.EXTRA, TinkerTraits.momentum)
+                .withTraits(PartType.MAIN, TinkerTraits.coldblooded)
+                .withTraits(PartType.AUX, TinkerTraits.momentum)
                 .build();
         AA_ENORI = new MaterialBuilder(NameConst.MAT_AA_ENORI, 0xe3e3e3, MaterialForm.GEM, "Enori")
                 .requiresOres("crystalEnori")
                 .setCraftable()
                 .withStatsHead(160, 6F, 5F, HarvestLevels.DIAMOND)
+                .withStatsMagic(160, 5F, 1F, HarvestLevels.DIAMOND)
                 .withStatsHandle(1F, 70)
                 .withStatsExtra(55)
                 .withStatsBow(0.7F, 1.35F, 2F)
@@ -129,6 +142,7 @@ public class TconEvoMaterials {
                 .requiresOres("itemSunnarium")
                 .setCastable("sunnarium", 3000)
                 .withStatsHead(580, 12F, 12F, 7)
+                .withStatsMagic(580, 13F, 1.25F, 7)
                 .withStatsHandle(1.25F, 40)
                 .withStatsExtra(70)
                 .withStatsBow(2F, 1.1F, 4F)
@@ -143,13 +157,14 @@ public class TconEvoMaterials {
                 .withStatsHandle(1F, 20)
                 .withStatsExtra(50)
                 .withStatsBow(0.5F, 1.25F, 2F)
-                .withTraits(PartType.HEAD, TinkerTraits.crumbling)
+                .withTraits(PartType.MAIN, TinkerTraits.crumbling)
                 .withTraits(PartType.TOOL, TinkerTraits.stonebound)
                 .build();
         CERTUS_QUARTZ = new MaterialBuilder(NameConst.MAT_CERTUS_QUARTZ, 0xc6e1ff, MaterialForm.GEM, "CertusQuartz")
                 .requiresOres("crystalCertusQuartz")
                 .setCraftable()
                 .withStatsHead(200, 6F, 4.5F, HarvestLevels.DIAMOND)
+                .withStatsMagic(200, 4.5F, 1F, HarvestLevels.DIAMOND)
                 .withStatsHandle(0.75F, 30)
                 .withStatsExtra(25)
                 .withStatsBow(1.15F, 1F, 0F)
@@ -159,6 +174,7 @@ public class TconEvoMaterials {
                 .requiresOres("crystalFluix")
                 .setCraftable()
                 .withStatsHead(275, 6F, 4.5F, HarvestLevels.DIAMOND)
+                .withStatsMagic(275, 5.5F, 1.1F, HarvestLevels.DIAMOND)
                 .withStatsHandle(1F, 15)
                 .withStatsExtra(30)
                 .withStatsBow(0.9F, 1.25F, 4F)
@@ -171,7 +187,7 @@ public class TconEvoMaterials {
                 .withStatsHandle(0.9F, 60)
                 .withStatsExtra(75)
                 .withStatsBow(0.7F, 1.3F, 6F)
-                .withTraits(PartType.HEAD, TconEvoTraits.TRAIT_PIEZOELECTRIC)
+                .withTraits(PartType.MAIN, TconEvoTraits.TRAIT_PIEZOELECTRIC)
                 .withTraits(PartType.TOOL, TinkerTraits.magnetic)
                 .build();
 
@@ -180,10 +196,11 @@ public class TconEvoMaterials {
                 .requiresMods(AstralHooks.MOD_ID)
                 .setCraftable()
                 .withStatsHead(175, 7F, 4F, HarvestLevels.IRON)
+                .withStatsMagic(175, 5F, 1.25F, HarvestLevels.IRON)
                 .withStatsHandle(0.8F, 10)
                 .withStatsExtra(25)
                 .withStatsBow(0.75F, 1F, 0F)
-                .withTraits(PartType.HEAD, TconEvoTraits.TRAIT_ASTRAL)
+                .withTraits(PartType.MAIN, TconEvoTraits.TRAIT_ASTRAL)
                 .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_CRYSTALLINE)
                 .build();
         STARMETAL = new MaterialBuilder(NameConst.MAT_STARMETAL, 0x224baf, MaterialForm.METAL, "AstralStarmetal")
@@ -193,7 +210,7 @@ public class TconEvoMaterials {
                 .withStatsHandle(0.9F, 40)
                 .withStatsExtra(65)
                 .withStatsBow(0.8F, 1.2F, 3F)
-                .withTraits(PartType.HEAD, TconEvoTraits.TRAIT_ASTRAL)
+                .withTraits(PartType.MAIN, TconEvoTraits.TRAIT_ASTRAL)
                 .withTraits(PartType.TOOL, TinkerTraits.unnatural)
                 .build();
 
@@ -205,17 +222,18 @@ public class TconEvoMaterials {
                 .withStatsHandle(1F, 40)
                 .withStatsExtra(80)
                 .withStatsBow(0.6F, 1.4F, 4F)
-                .withTraits(PartType.HEAD, TconEvoTraits.TRAIT_CRYSTALYS)
+                .withTraits(PartType.MAIN, TconEvoTraits.TRAIT_CRYSTALYS)
                 .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_BLOODBOUND)
                 .build();
         SENTIENT_METAL = new MaterialBuilder(NameConst.MAT_SENTIENT_METAL, 0x7edee3, MaterialForm.METAL, "SentientMetal")
                 .requiresMods(BloodMagicHooks.MOD_ID)
                 .setCastable(1300)
                 .withStatsHead(300, 7F, 5F, HarvestLevels.DIAMOND)
+                .withStatsMagic(300, 5F, 1F, HarvestLevels.DIAMOND)
                 .withStatsHandle(0.75F, 30)
                 .withStatsExtra(45)
                 .withStatsBow(0.75F, 1.25F, 1.5F)
-                .withTraits(PartType.HEAD, TconEvoTraits.TRAIT_SENTIENT)
+                .withTraits(PartType.MAIN, TconEvoTraits.TRAIT_SENTIENT)
                 .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_WILLFUL)
                 .build();
 
@@ -227,7 +245,7 @@ public class TconEvoMaterials {
                 .withStatsHandle(0.9F, 10)
                 .withStatsExtra(35)
                 .withStatsBow(0.6F, 0.9F, 0F)
-                .withTraits(PartType.HEAD, TconEvoTraits.TRAIT_SUNDERING)
+                .withTraits(PartType.MAIN, TconEvoTraits.TRAIT_SUNDERING)
                 .withTraits(PartType.TOOL, TinkerTraits.stonebound)
                 .build();
         LIVINGWOOD = new MaterialBuilder(NameConst.MAT_LIVINGWOOD, 0x795a2b, MaterialForm.RAW, "livingwood")
@@ -266,8 +284,8 @@ public class TconEvoMaterials {
                 .withStatsHandle(1F, 180)
                 .withStatsExtra(120)
                 .withStatsBow(0.4F, 1.75F, 9F)
-                .withTraits(PartType.HEAD, TconEvoTraits.TRAIT_STAGGERING)
-                .withTraits(PartType.EXTRA, TconEvoTraits.TRAIT_GAIA_WRATH)
+                .withTraits(PartType.MAIN, TconEvoTraits.TRAIT_STAGGERING)
+                .withTraits(PartType.AUX, TconEvoTraits.TRAIT_GAIA_WRATH)
                 .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_MORTAL_WOUNDS, TconEvoTraits.TRAIT_MANA_INFUSED)
                 .build();
         ELEMENTIUM = new MaterialBuilder(NameConst.MAT_ELEMENTIUM, 0xf15cae, MaterialForm.METAL, "ElvenElementium")
@@ -277,8 +295,8 @@ public class TconEvoMaterials {
                 .withStatsHandle(1F, 100)
                 .withStatsExtra(80)
                 .withStatsBow(0.75F, 1.25F, 7F)
-                .withTraits(PartType.HEAD, TconEvoTraits.TRAIT_FAE_VOICE)
-                .withTraits(PartType.EXTRA, TconEvoTraits.TRAIT_OPPORTUNIST)
+                .withTraits(PartType.MAIN, TconEvoTraits.TRAIT_FAE_VOICE)
+                .withTraits(PartType.AUX, TconEvoTraits.TRAIT_OPPORTUNIST)
                 .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_CASCADING, TconEvoTraits.TRAIT_MANA_INFUSED)
                 .build();
         MANA_STRING = new MaterialBuilder(NameConst.MAT_MANA_STRING, 0xc4f9ec, MaterialForm.RAW, "manaString")
@@ -286,6 +304,24 @@ public class TconEvoMaterials {
                 .setCraftable()
                 .withStatsBowString(1F)
                 .withTraits(PartType.BOWSTRING, TconEvoTraits.TRAIT_MANA_INFUSED)
+                .build();
+        MANA_DIAMOND = new MaterialBuilder(NameConst.MAT_MANA_DIAMOND, 0xa0f8ff, MaterialForm.RAW, "manaDiamond")
+                .requiresMods(BotaniaHooks.MOD_ID)
+                .setCraftable()
+                .withStatsMagic(900, 6F, 1.25F, HarvestLevels.OBSIDIAN)
+                .withTraits(PartType.MAGIC, TconEvoTraits.TRAIT_CRYSTALLINE, TconEvoTraits.TRAIT_MANA_INFUSED)
+                .build();
+        MANA_PEARL = new MaterialBuilder(NameConst.MAT_MANA_PEARL, 0x0097b8, MaterialForm.RAW, "manaPearl")
+                .requiresMods(BotaniaHooks.MOD_ID)
+                .setCraftable()
+                .withStatsMagic(900, 7F, 0.9F, HarvestLevels.OBSIDIAN)
+                .withTraits(PartType.MAGIC, TinkerTraits.endspeed, TconEvoTraits.TRAIT_MANA_INFUSED)
+                .build();
+        DRAGONSTONE = new MaterialBuilder(NameConst.MAT_DRAGONSTONE, 0xffb2e5, MaterialForm.RAW, "elvenDragonstone")
+                .requiresMods(BotaniaHooks.MOD_ID)
+                .setCraftable()
+                .withStatsMagic(1400, 8F, 1F, HarvestLevels.COBALT)
+                .withTraits(PartType.MAGIC, TconEvoTraits.TRAIT_FAE_VOICE, TconEvoTraits.TRAIT_MANA_INFUSED)
                 .build();
 
         // draconic evolution
@@ -296,17 +332,18 @@ public class TconEvoMaterials {
                 .withStatsHandle(1.1F, 50)
                 .withStatsExtra(50)
                 .withStatsBow(0.95F, 1.1F, 2.5F)
-                .withTraits(PartType.HEAD, TconEvoTraits.TRAIT_SOUL_REND[0], TinkerTraits.alien)
+                .withTraits(PartType.MAIN, TconEvoTraits.TRAIT_SOUL_REND[0], TinkerTraits.alien)
                 .withTraits(PartType.TOOL, TinkerTraits.alien)
                 .build();
         WYVERN_METAL = new MaterialBuilder(NameConst.MAT_WYVERN_METAL, 0x78518f, MaterialForm.METAL, "WyvernMetal")
                 .requiresMods(DraconicHooks.MOD_ID)
                 .setCastable(1200)
                 .withStatsHead(2140, 12F, 15F, 10)
+                .withStatsMagic(2140, 15F, 1.3F, 10)
                 .withStatsHandle(1.5F, 250)
                 .withStatsExtra(200)
                 .withStatsBow(0.9F, 1.3F, 6F)
-                .withTraits(PartType.HEAD, TconEvoTraits.TRAIT_EVOLVED, TconEvoTraits.TRAIT_SOUL_REND[0])
+                .withTraits(PartType.MAIN, TconEvoTraits.TRAIT_EVOLVED, TconEvoTraits.TRAIT_SOUL_REND[0])
                 .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_SOUL_REND[0])
                 .build();
         TraitEvolved.registerMaterial(WYVERN_METAL, 1);
@@ -314,10 +351,11 @@ public class TconEvoMaterials {
                 .requiresMods(DraconicHooks.MOD_ID)
                 .setCastable(1700)
                 .withStatsHead(3650, 18F, 35F, 10)
+                .withStatsMagic(3650, 35F, 1.6F, 10)
                 .withStatsHandle(1.75F, 300)
                 .withStatsExtra(300)
                 .withStatsBow(0.85F, 1.6F, 10F)
-                .withTraits(PartType.HEAD, TconEvoTraits.TRAIT_EVOLVED, TconEvoTraits.TRAIT_SOUL_REND[1])
+                .withTraits(PartType.MAIN, TconEvoTraits.TRAIT_EVOLVED, TconEvoTraits.TRAIT_SOUL_REND[1])
                 .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_SOUL_REND[1])
                 .build();
         TraitEvolved.registerMaterial(DRACONIC_METAL, 2);
@@ -325,10 +363,11 @@ public class TconEvoMaterials {
                 .requiresMods(DraconicHooks.MOD_ID)
                 .setCastable(3400)
                 .withStatsHead(6660, 22F, 64F, 10)
+                .withStatsMagic(6660, 64F, 2F, 10)
                 .withStatsHandle(2.2F, 125)
                 .withStatsExtra(340)
                 .withStatsBow(1.2F, 2F, 18F)
-                .withTraits(PartType.HEAD, TconEvoTraits.TRAIT_EVOLVED, TconEvoTraits.TRAIT_SOUL_REND[2])
+                .withTraits(PartType.MAIN, TconEvoTraits.TRAIT_EVOLVED, TconEvoTraits.TRAIT_SOUL_REND[2])
                 .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_SOUL_REND[2])
                 .build();
         TraitEvolved.registerMaterial(CHAOTIC_METAL, 3);
@@ -338,6 +377,7 @@ public class TconEvoMaterials {
                 .requiresOres("crystalLitherite")
                 .setCraftable()
                 .withStatsHead(300, 6.5F, 4F, HarvestLevels.DIAMOND)
+                .withStatsMagic(300, 4F, 1F, HarvestLevels.DIAMOND)
                 .withStatsHandle(1F, 20)
                 .withStatsExtra(25)
                 .withStatsBow(0.75F, 1.25F, 2F)
@@ -347,6 +387,7 @@ public class TconEvoMaterials {
                 .requiresOres("crystalErodium")
                 .setCraftable()
                 .withStatsHead(325, 7F, 5F, HarvestLevels.OBSIDIAN)
+                .withStatsMagic(325, 5F, 1.05F, HarvestLevels.OBSIDIAN)
                 .withStatsHandle(1F, 35)
                 .withStatsExtra(45)
                 .withStatsBow(0.85F, 1.2F, 1.5F)
@@ -356,6 +397,7 @@ public class TconEvoMaterials {
                 .requiresOres("crystalKyronite")
                 .setCraftable()
                 .withStatsHead(350, 7.5F, 6F, HarvestLevels.OBSIDIAN)
+                .withStatsMagic(350, 6F, 1.1F, HarvestLevels.OBSIDIAN)
                 .withStatsHandle(1F, 50)
                 .withStatsExtra(65)
                 .withStatsBow(0.95F, 1.15F, 1F)
@@ -365,6 +407,7 @@ public class TconEvoMaterials {
                 .requiresOres("crystalPladium")
                 .setCraftable()
                 .withStatsHead(375, 8F, 7F, HarvestLevels.COBALT)
+                .withStatsMagic(375, 7F, 1.15F, HarvestLevels.COBALT)
                 .withStatsHandle(1F, 65)
                 .withStatsExtra(85)
                 .withStatsBow(1.05F, 1.1F, 0.5F)
@@ -374,6 +417,7 @@ public class TconEvoMaterials {
                 .requiresOres("crystalIonite")
                 .setCraftable()
                 .withStatsHead(400, 8.5F, 8F, 5)
+                .withStatsMagic(400, 8F, 1.2F, 5)
                 .withStatsHandle(1F, 80)
                 .withStatsExtra(105)
                 .withStatsBow(1.15F, 1.05F, 1F)
@@ -383,6 +427,7 @@ public class TconEvoMaterials {
                 .requiresOres("crystalAethium")
                 .setCraftable()
                 .withStatsHead(425, 9F, 9F, 6)
+                .withStatsMagic(425, 9F, 1.25F, 6)
                 .withStatsHandle(1F, 95)
                 .withStatsExtra(125)
                 .withStatsBow(1.25F, 1F, 2F)
@@ -412,6 +457,7 @@ public class TconEvoMaterials {
                 .requiresMods(ForegoingHooks.MOD_ID)
                 .setCastable(1000)
                 .withStatsHead(400, 5F, 5F, HarvestLevels.DIAMOND)
+                .withStatsMagic(400, 6F, 1F, HarvestLevels.DIAMOND)
                 .withStatsHandle(1.5F, 20)
                 .withStatsExtra(50)
                 .withStatsBow(1.5F, 0.7F, 0F)
@@ -453,8 +499,8 @@ public class TconEvoMaterials {
                 .withStatsHandle(0.5F, 75)
                 .withStatsExtra(50)
                 .withStatsBow(2F, 0.5F, 0F)
-                .withTraits(PartType.HEAD, TinkerTraits.squeaky)
-                .withTraits(PartType.EXTRA, TinkerTraits.crude)
+                .withTraits(PartType.MAIN, TinkerTraits.squeaky)
+                .withTraits(PartType.AUX, TinkerTraits.crude)
                 .build();
         ADV_ALLOY = new MaterialBuilder(NameConst.MAT_ADV_ALLOY, 0x515044, MaterialForm.PLATE, "AdvancedAlloy")
                 .requiresOres("plateAdvancedAlloy")
@@ -469,6 +515,7 @@ public class TconEvoMaterials {
                 .requiresMods(Ic2Hooks.MOD_ID)
                 .setCastable(1400)
                 .withStatsHead(512, 8.5F, 6F, HarvestLevels.OBSIDIAN)
+                .withStatsMagic(512, 6F, 1F, HarvestLevels.OBSIDIAN)
                 .withStatsHandle(0.8F, 40)
                 .withStatsExtra(50)
                 .withStatsBow(0.75F, 1F, 3.5F)
@@ -496,6 +543,7 @@ public class TconEvoMaterials {
                 .requiresMods(Ic2Hooks.MOD_ID)
                 .setCastable(420)
                 .withStatsHead(17, 15F, 10F, 5)
+                .withStatsMagic(17, 12F, 0.75F, 5)
                 .withStatsHandle(2F, 0)
                 .withStatsExtra(420)
                 .withStatsBow(1.25F, 1.25F, 0F)
@@ -525,6 +573,7 @@ public class TconEvoMaterials {
                 .requiresOres("ingotRefinedGlowstone")
                 .setCastable(1350)
                 .withStatsHead(300, 10F, 5F, HarvestLevels.DIAMOND)
+                .withStatsMagic(300, 7.5F, 1.25F, HarvestLevels.DIAMOND)
                 .withStatsHandle(0.8F, 30)
                 .withStatsExtra(55)
                 .withStatsBow(1F, 1.25F, 4F)
@@ -589,20 +638,22 @@ public class TconEvoMaterials {
                 .requiresMods(EqExHooks.MOD_ID)
                 .setCastable("dark_matter", 2700)
                 .withStatsHead(3200, 15F, 14F, 5)
+                .withStatsMagic(3200, 14F, 0.5F, 5)
                 .withStatsHandle(1F, 320)
                 .withStatsExtra(540)
                 .withStatsBow(0.85F, 1.5F, 4F)
-                .withTraits(PartType.HEAD, TconEvoTraits.TRAIT_ETERNAL_DENSITY[0])
+                .withTraits(PartType.MAIN, TconEvoTraits.TRAIT_ETERNAL_DENSITY[0])
                 .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_CULLING, TconEvoTraits.TRAIT_STAGGERING)
                 .build();
         RED_MATTER = new MaterialBuilder(NameConst.MAT_RED_MATTER, 0x9b060b, MaterialForm.GEM_ITEM_4, "RedMatter")
                 .requiresMods(EqExHooks.MOD_ID)
                 .setCastable("red_matter", 3400)
                 .withStatsHead(7200, 20F, 23F, 10)
+                .withStatsMagic(7200, 23F, 0.75F, 10)
                 .withStatsHandle(1F, 720)
                 .withStatsExtra(1200)
                 .withStatsBow(0.75F, 2F, 10F)
-                .withTraits(PartType.HEAD, TconEvoTraits.TRAIT_ETERNAL_DENSITY[1])
+                .withTraits(PartType.MAIN, TconEvoTraits.TRAIT_ETERNAL_DENSITY[1])
                 .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_JUGGERNAUT, TconEvoTraits.TRAIT_OVERWHELM)
                 .build();
 
@@ -620,6 +671,7 @@ public class TconEvoMaterials {
                 .requiresOres("gemCrystalFlux")
                 .setCraftable()
                 .withStatsHead(500, 7F, 8F, HarvestLevels.COBALT)
+                .withStatsMagic(500, 8F, 1F, HarvestLevels.COBALT)
                 .withStatsHandle(0.9F, 40)
                 .withStatsExtra(80)
                 .withStatsBow(1.2F, 1F, 0F)
@@ -638,6 +690,7 @@ public class TconEvoMaterials {
                 .requiresOres("gemGelid")
                 .setCraftable()
                 .withStatsHead(900, 9F, 12F, 6)
+                .withStatsMagic(900, 12F, 1.1F, 6)
                 .withStatsHandle(1F, 90)
                 .withStatsExtra(135)
                 .withStatsBow(1.5F, 1.1F, 0F)
@@ -655,6 +708,7 @@ public class TconEvoMaterials {
                 .requiresOres("ingotThaumium")
                 .setCastable("thaumium", 940)
                 .withStatsHead(500, 7F, 5.5F, HarvestLevels.OBSIDIAN)
+                .withStatsMagic(500, 6F, 1.5F, HarvestLevels.OBSIDIAN)
                 .withStatsHandle(1.3F, 20)
                 .withStatsExtra(60)
                 .withStatsBow(1.2F, 1F, 1F)
@@ -664,6 +718,7 @@ public class TconEvoMaterials {
                 .requiresOres("ingotVoid")
                 .setCastable("void_metal", 1120)
                 .withStatsHead(340, 8F, 6F, HarvestLevels.COBALT)
+                .withStatsMagic(340, 9F, 0.5F, HarvestLevels.COBALT)
                 .withStatsHandle(1.8F, 0)
                 .withStatsExtra(95)
                 .withStatsBow(1.4F, 0.8F, 1F)
@@ -673,10 +728,23 @@ public class TconEvoMaterials {
                 .requiresMods(ThaumHooks.MOD_ID)
                 .setCastable(1760)
                 .withStatsHead(170, 9F, 7F, 5)
+                .withStatsMagic(170, 9F, 1.5F, 5)
                 .withStatsHandle(1F, 0)
                 .withStatsExtra(5)
                 .withStatsBow(1.5F, 1F, 8F)
                 .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_CORRUPTING, TconEvoTraits.TRAIT_CULLING)
+                .build();
+        AMBER = new MaterialBuilder(NameConst.MAT_AMBER, 0xf8b601, MaterialForm.GEM, "Amber")
+                .requiresOres("gemAmber")
+                .setCraftable()
+                .withStatsMagic(360, 6F, 1F, HarvestLevels.IRON)
+                .withTraits(PartType.MAGIC, TconEvoTraits.TRAIT_OPPORTUNIST)
+                .build();
+        QUICKSILVER = new MaterialBuilder(NameConst.MAT_QUICKSILVER, 0xbdbcef, MaterialForm.RAW, "quicksilver")
+                .requiresOres("quicksilver")
+                .setCraftable()
+                .withStatsMagic(130, 6F, 1.2F, HarvestLevels.STONE)
+                .withTraits(PartType.MAGIC, TconEvoTraits.TRAIT_MODIFIABLE[1])
                 .build();
 
         // thermal series
@@ -705,18 +773,19 @@ public class TconEvoMaterials {
                 .withStatsHandle(0.75F, 35)
                 .withStatsExtra(60)
                 .withStatsBow(0.65F, 1.5F, 2F)
-                .withTraits(PartType.HEAD, TconEvoTraits.TRAIT_IMPACT_FORCE)
-                .withTraits(PartType.EXTRA, TinkerTraits.magnetic)
+                .withTraits(PartType.MAIN, TconEvoTraits.TRAIT_IMPACT_FORCE)
+                .withTraits(PartType.AUX, TinkerTraits.magnetic)
                 .build();
         PLATINUM = new MaterialBuilder(NameConst.MAT_PLATINUM, 0x61d1f3, MaterialForm.METAL, "Platinum")
                 .requiresOres("ingotPlatinum")
                 .setCastable("platinum", 1400)
                 .withStatsHead(1400, 9F, 6.5F, HarvestLevels.COBALT)
+                .withStatsMagic(1400, 7F, 1.25F, HarvestLevels.COBALT)
                 .withStatsHandle(0.8F, 120)
                 .withStatsExtra(100)
                 .withStatsBow(1F, 0.8F, 8F)
-                .withTraits(PartType.HEAD, TinkerTraits.coldblooded)
-                .withTraits(PartType.EXTRA, TconEvoTraits.TRAIT_DEADLY_PRECISION)
+                .withTraits(PartType.MAIN, TinkerTraits.coldblooded)
+                .withTraits(PartType.AUX, TconEvoTraits.TRAIT_DEADLY_PRECISION)
                 .build();
         INVAR = new MaterialBuilder(NameConst.MAT_INVAR, 0x93a49d, MaterialForm.METAL, "Invar")
                 .requiresOres("ingotInvar")
@@ -725,8 +794,8 @@ public class TconEvoMaterials {
                 .withStatsHandle(1.25F, 20)
                 .withStatsExtra(50)
                 .withStatsBow(0.5F, 1.75F, 6F)
-                .withTraits(PartType.HEAD, TinkerTraits.stiff)
-                .withTraits(PartType.EXTRA, TinkerTraits.duritos)
+                .withTraits(PartType.MAIN, TinkerTraits.stiff)
+                .withTraits(PartType.AUX, TinkerTraits.duritos)
                 .build();
         CONSTANTAN = new MaterialBuilder(NameConst.MAT_CONSTANTAN, 0xbf9f5f, MaterialForm.METAL, "Constantan")
                 .requiresOres("ingotConstantan")
@@ -735,8 +804,8 @@ public class TconEvoMaterials {
                 .withStatsHandle(1.1F, 10)
                 .withStatsExtra(40)
                 .withStatsBow(0.75F, 1.25F, 3F)
-                .withTraits(PartType.HEAD, TinkerTraits.aridiculous)
-                .withTraits(PartType.EXTRA, TinkerTraits.freezing)
+                .withTraits(PartType.MAIN, TinkerTraits.aridiculous)
+                .withTraits(PartType.AUX, TinkerTraits.freezing)
                 .build();
         SIGNALUM = new MaterialBuilder(NameConst.MAT_SIGNALUM, 0xdf5c00, MaterialForm.METAL, "Signalum")
                 .requiresOres("ingotSignalum")
@@ -751,21 +820,23 @@ public class TconEvoMaterials {
                 .requiresOres("ingotLumium")
                 .setCastable("lumium", 1000)
                 .withStatsHead(250, 9F, 5.5F, HarvestLevels.IRON)
+                .withStatsMagic(250, 7F, 1.5F, HarvestLevels.IRON)
                 .withStatsHandle(0.8F, 5)
                 .withStatsExtra(20)
                 .withStatsBow(1F, 1.15F, 2F)
-                .withTraits(PartType.HEAD, TconEvoTraits.TRAIT_LUMINIFEROUS)
-                .withTraits(PartType.EXTRA, TconEvoTraits.TRAIT_OPPORTUNIST)
+                .withTraits(PartType.MAIN, TconEvoTraits.TRAIT_LUMINIFEROUS)
+                .withTraits(PartType.AUX, TconEvoTraits.TRAIT_OPPORTUNIST)
                 .build();
         ENDERIUM = new MaterialBuilder(NameConst.MAT_ENDERIUM, 0x0e5f61, MaterialForm.METAL, "Enderium")
                 .requiresOres("ingotEnderium")
                 .setCastable("enderium", 1600)
                 .withStatsHead(1700, 8F, 9F, 5)
+                .withStatsMagic(1700, 9F, 1.1F, 5)
                 .withStatsHandle(1.25F, 150)
                 .withStatsExtra(180)
                 .withStatsBow(0.75F, 1.5F, 7F)
-                .withTraits(PartType.HEAD, TconEvoTraits.TRAIT_MORTAL_WOUNDS)
-                .withTraits(PartType.EXTRA, TinkerTraits.enderference)
+                .withTraits(PartType.MAIN, TconEvoTraits.TRAIT_MORTAL_WOUNDS)
+                .withTraits(PartType.AUX, TinkerTraits.enderference)
                 .build();
     }
 

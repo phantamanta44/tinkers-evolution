@@ -10,6 +10,7 @@ import slimeknights.tconstruct.library.materials.*;
 import slimeknights.tconstruct.library.traits.ITrait;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.TconEvoMod;
+import xyz.phanta.tconevo.material.stats.MagicMaterialStats;
 import xyz.phanta.tconevo.util.CraftReflect;
 import xyz.phanta.tconevo.util.LazyAccum;
 import xyz.phanta.tconevo.util.TconReflect;
@@ -110,6 +111,10 @@ public class MaterialBuilder {
 
     public MaterialBuilder withStatsFletching(float accuracy, float durabilityMultiplier) {
         return withStats(new FletchingMaterialStats(accuracy, durabilityMultiplier));
+    }
+
+    public MaterialBuilder withStatsMagic(int durability, float potency, float range, int harvestLevel) {
+        return withStats(new MagicMaterialStats(durability, potency, range, harvestLevel));
     }
 
     public MaterialBuilder setCraftable() {

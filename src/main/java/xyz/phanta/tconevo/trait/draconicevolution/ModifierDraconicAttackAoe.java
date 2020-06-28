@@ -80,8 +80,12 @@ public class ModifierDraconicAttackAoe extends ModifierDraconic {
                 ToolHelper.attackEntity(tool, toolItem, player, hit, null, false);
             }
         }
-        player.world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_PLAYER_ATTACK_SWEEP, player.getSoundCategory(), 1F, 1F);
-        player.spawnSweepParticles();
+        double reachDist = player.getEntityAttribute(EntityPlayer.REACH_DISTANCE).getAttributeValue() + 1D;
+        if (player.getDistanceSq(target) < reachDist * reachDist) {
+            player.world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_PLAYER_ATTACK_SWEEP,
+                    player.getSoundCategory(), 1F, 1F);
+            player.spawnSweepParticles();
+        }
     }
 
     private static int getAttackAoe(int tier) {

@@ -10,7 +10,9 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import slimeknights.mantle.client.book.repository.FileRepository;
+import slimeknights.tconstruct.library.TinkerRegistryClient;
 import slimeknights.tconstruct.library.book.TinkerBook;
+import slimeknights.tconstruct.library.client.ToolBuildGuiInfo;
 import slimeknights.tconstruct.library.client.material.MaterialRenderInfoLoader;
 import xyz.phanta.tconevo.CommonProxy;
 import xyz.phanta.tconevo.TconEvoMod;
@@ -19,8 +21,10 @@ import xyz.phanta.tconevo.client.command.CommandTconEvoClient;
 import xyz.phanta.tconevo.client.fx.ParticleChainLightning;
 import xyz.phanta.tconevo.client.handler.EnergyShieldHudHandler;
 import xyz.phanta.tconevo.client.handler.EnergyTooltipHandler;
+import xyz.phanta.tconevo.client.handler.ModelRegistrationHandler;
 import xyz.phanta.tconevo.client.render.material.EdgeColourMaterialRenderInfo;
 import xyz.phanta.tconevo.client.render.material.MaybeBlockMaterialRenderInfo;
+import xyz.phanta.tconevo.init.TconEvoItems;
 import xyz.phanta.tconevo.init.TconEvoTraits;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
 import xyz.phanta.tconevo.network.SPacketEntitySpecialEffect;
@@ -32,6 +36,7 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void onPreInit(FMLPreInitializationEvent event) {
         super.onPreInit(event);
+        MinecraftForge.EVENT_BUS.register(new ModelRegistrationHandler());
         MinecraftForge.EVENT_BUS.register(new EnergyTooltipHandler());
         if (!DraconicHooks.isLoaded()) {
             MinecraftForge.EVENT_BUS.register(new EnergyShieldHudHandler());
@@ -43,6 +48,13 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void onInit(FMLInitializationEvent event) {
         super.onInit(event);
+
+        ToolBuildGuiInfo buildSceptre = new ToolBuildGuiInfo(TconEvoItems.TOOL_SCEPTRE);
+        buildSceptre.addSlotPosition(26, 44); // handle
+        buildSceptre.addSlotPosition(44, 26); // focus
+        buildSceptre.addSlotPosition(26, 26); // setting
+        buildSceptre.addSlotPosition(8, 62); // hilt
+        TinkerRegistryClient.addToolBuilding(buildSceptre);
     }
 
     @Override

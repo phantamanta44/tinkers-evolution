@@ -9,8 +9,14 @@ public class NameConst {
     public static final String ITEM_EDIBLE = "edible";
     public static final String ITEM_MANA_GIVER = "mana_giver";
 
+    public static final String ITEM_PART_ARCANE_FOCUS = "part_arcane_focus";
+
+    public static final String TOOL_SCEPTRE = TconEvoMod.MOD_ID + ".sceptre", ITEM_TOOL_SCEPTRE = "tool_sceptre";
+
     public static final String BLOCK_EARTH_MATERIAL = "earth_material_block";
     public static final String BLOCK_METAL = "metal_block";
+
+    public static final String ENTITY_MAGIC_MISSILE = "magic_missile";
 
     public static final String POTION_IMMORTALITY = "immortality";
     public static final String POTION_MORTAL_WOUNDS = "mortal_wounds";
@@ -135,6 +141,9 @@ public class NameConst {
     public static final String MAT_TERRASTEEL = "terrasteel";
     public static final String MAT_ELEMENTIUM = "elementium";
     public static final String MAT_MANA_STRING = "mana_string";
+    public static final String MAT_MANA_DIAMOND = "mana_diamond";
+    public static final String MAT_MANA_PEARL = "mana_pearl";
+    public static final String MAT_DRAGONSTONE = "dragonstone";
 
     public static final String TRAIT_MANA_INFUSED = TconEvoMod.MOD_ID + ".mana_infused";
     public static final String TRAIT_AURA_SIPHON = TconEvoMod.MOD_ID + ".aura_siphon";
@@ -264,6 +273,8 @@ public class NameConst {
     public static final String MAT_THAUMIUM = "thaumium";
     public static final String MAT_VOID_METAL = "void_metal";
     public static final String MAT_PRIMAL_METAL = "primal_metal";
+    public static final String MAT_AMBER = "amber";
+    public static final String MAT_QUICKSILVER = "quicksilver";
 
     public static final String TRAIT_WARPING = TconEvoMod.MOD_ID + ".warping";
 

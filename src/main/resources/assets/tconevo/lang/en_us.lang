@@ -49,7 +49,12 @@ item.tconevo:metal43.name=UU-Metal Plate
 item.tconevo:metal44.name=UU-Metal Gear
 item.tconevo:edible0.name=Raw Meat Ingot
 item.tconevo:edible1.name=Cooked Meat Ingot
-item.tconevo.mana_giver.name=Internal Item
+item.tconevo:mana_giver.name=Internal Item
+
+item.tconevo:part_arcane_focus.name=Arcane Focus
+
+item.tconevo:tool_sceptre.name=Sceptre
+item.tconevo:tool_sceptre.desc=The Sceptre is an arcane weapon that can be used for both melee and range attacks.\nRight-clicking launches a volley of missiles at the cost of durability.\nDeals magic damage.
 
 tile.tconevo:earth_material_block0.name=Pink Slimy Mud
 tile.tconevo:metal_block0.name=Wyvern Metal Block
@@ -299,6 +304,9 @@ fluid.tconevo.terrasteel.name=Molten Terrasteel
 material.elementium.name=Elementium
 fluid.tconevo.elementium.name=Molten Elementium
 material.mana_string.name=Mana-Infused
+material.mana_diamond.name=Mana Diamond
+material.mana_pearl.name=Mana Pearl
+material.dragonstone.name=Dragonstone
 
 modifier.tconevo.mana_infused.name=Mana-Infused
 modifier.tconevo.mana_infused.desc=§oMining in the database?§r\nThis tool repairs itself using mana.
@@ -474,6 +482,8 @@ material.void_metal.name=Void Metal
 fluid.tconevo.void_metal.name=Molten Void Metal
 material.primal_metal.name=Primal Metal
 fluid.tconevo.primal_metal.name=Molten Primal Metal
+material.amber.name=Amber
+material.quicksilver.name=Quicksilver
 
 modifier.tconevo.warping.name=Warping
 modifier.tconevo.warping.desc=§oStrange whispers reveal secrets...§r\nThis accursed weapon saps at the sanity of those that bear its strikes.
@@ -496,6 +506,10 @@ material.lumium.name=Lumium
 fluid.tconevo.lumium.name=Molten Lumium
 material.enderium.name=Enderium
 fluid.tconevo.enderium.name=Molten Enderium
+
+stat.tconevo.magic.name=Magic
+stat.tconevo.magic.potency.name=Potency
+stat.tconevo.magic.potency.desc=The magical power harbored in this material.\nDetermines how effective a magical tool is at its job.
 
 death.attack.meat_ingot=%1$s choked on some very tough meat
 death.attack.tconevo.chaos=%1$s was annihilated by %2$s using dark energy

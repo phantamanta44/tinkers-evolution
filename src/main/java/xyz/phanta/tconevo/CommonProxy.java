@@ -11,6 +11,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
 import xyz.phanta.tconevo.handler.*;
+import xyz.phanta.tconevo.init.TconEvoItems;
 import xyz.phanta.tconevo.init.TconEvoTraits;
 import xyz.phanta.tconevo.integration.IntegrationManager;
 import xyz.phanta.tconevo.material.MaterialDefinition;
@@ -48,6 +49,7 @@ public class CommonProxy {
         MasterRecipes.initRecipes();
         MaterialDefinition.initMaterialProperties();
         TconEvoTraits.initModifierMaterials();
+        TconEvoItems.registerToolForging();
         IntegrationManager.dispatchInit(event);
     }
 

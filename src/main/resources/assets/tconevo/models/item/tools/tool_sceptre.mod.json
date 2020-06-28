@@ -1,0 +1,22 @@
+{
+  "textures": {
+    "bane_of_arthopods": "tconevo:items/tool/sceptre/mod_bane_spider",
+    "beheading": "tconevo:items/tool/sceptre/mod_beheading",
+    "diamond": "tconevo:items/tool/sceptre/mod_diamond",
+    "emerald": "tconevo:items/tool/sceptre/mod_emerald",
+    "fiery": "tconevo:items/tool/sceptre/mod_fiery",
+    "glowing": "tconevo:items/tool/sceptre/mod_glowing",
+    "haste": "tconevo:items/tool/sceptre/mod_haste",
+    "knockback": "tconevo:items/tool/sceptre/mod_knockback",
+    "luck": "tconevo:items/tool/sceptre/mod_luck",
+    "mending_moss": "tconevo:items/tool/sceptre/mod_mending_moss",
+    "necrotic": "tconevo:items/tool/sceptre/mod_necrotic",
+    "reinforced": "tconevo:items/tool/sceptre/mod_reinforced",
+    "sharpness": "tconevo:items/tool/sceptre/mod_sharpness",
+    "shulking": "tconevo:items/tool/sceptre/mod_shulking",
+    "silktouch": "tconevo:items/tool/sceptre/mod_silk",
+    "smite": "tconevo:items/tool/sceptre/mod_smite",
+    "soulbound": "tconevo:items/tool/sceptre/mod_soulbound",
+    "webbed": "tconevo:items/tool/sceptre/mod_web"
+  }
+}

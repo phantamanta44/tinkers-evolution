@@ -1,0 +1,20 @@
+{
+  "tool": "sceptre",
+  "text": [
+    {
+      "text": "The Sceptre is an arcane weapon that can both strike enemies at short range or launch a volley of magical missiles at longer range."
+    },
+    {
+      "text": "\n"
+    },
+    {
+      "text": "Rightclick consumes a moderate amount of durability to launch a fan of three projectiles."
+    }
+  ],
+  "properties": [
+    "Somewhat less damage output",
+    "Deals magic damage",
+    "Rightclick: Missile volley",
+    "Can use offhand"
+  ]
+}

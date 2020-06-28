@@ -1,0 +1,9 @@
+{
+  "textures": {
+    "layer0": "tconevo:items/tool/sceptre/handle",
+    "layer1": "tconevo:items/tool/sceptre/focus",
+    "layer2": "tconevo:items/tool/sceptre/setting",
+    "layer3": "tconevo:items/tool/sceptre/hilt",
+    "broken1": "tconevo:items/tool/sceptre/broken_focus"
+  }
+}
