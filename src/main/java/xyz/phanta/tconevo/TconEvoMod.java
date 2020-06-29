@@ -11,8 +11,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import xyz.phanta.tconevo.artifact.Artifact;
 import xyz.phanta.tconevo.command.CommandTconEvo;
-import xyz.phanta.tconevo.handler.ArtifactItemHandler;
 import xyz.phanta.tconevo.init.TconEvoPartTypes;
 import xyz.phanta.tconevo.item.ItemMaterial;
 
@@ -40,7 +40,7 @@ public class TconEvoMod extends Virtue {
             @Override
             public void displayAllRelevantItems(NonNullList<ItemStack> items) {
                 super.displayAllRelevantItems(items);
-                for (ArtifactItemHandler.Artifact artifact : PROXY.getArtifactHandler().getArtifacts().values()) {
+                for (Artifact<?> artifact : PROXY.getArtifactRegistry().getAllArtifacts()) {
                     items.add(artifact.newStack());
                 }
             }

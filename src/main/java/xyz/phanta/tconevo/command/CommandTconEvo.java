@@ -17,7 +17,7 @@ import slimeknights.tconstruct.library.utils.TinkerUtil;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 import slimeknights.tconstruct.tools.modifiers.ToolModifier;
 import xyz.phanta.tconevo.TconEvoMod;
-import xyz.phanta.tconevo.handler.ArtifactItemHandler;
+import xyz.phanta.tconevo.artifact.Artifact;
 import xyz.phanta.tconevo.integration.conarm.ConArmHooks;
 import xyz.phanta.tconevo.util.ToolUtils;
 
@@ -169,7 +169,7 @@ public class CommandTconEvo extends CommandBase {
                 if (args.length != 2) {
                     throw new WrongUsageException(LOC_ARTIFACTGET_USAGE);
                 }
-                ArtifactItemHandler.Artifact artifact = TconEvoMod.PROXY.getArtifactHandler().getArtifacts().get(args[1]);
+                Artifact<?> artifact = TconEvoMod.PROXY.getArtifactRegistry().getArtifact(args[1]);
                 if (artifact == null) {
                     throw new CommandException(LOC_ARTIFACTGET_FAILURE, args[1]);
                 }
@@ -178,7 +178,8 @@ public class CommandTconEvo extends CommandBase {
                 break;
             }
             case "artifactreload":
-                TconEvoMod.PROXY.getArtifactHandler().loadArtifacts();
+                TconEvoMod.PROXY.getArtifactRegistry().getLoader().loadArtifacts();
+                TconEvoMod.PROXY.getArtifactRegistry().initArtifacts();
                 player.sendMessage(new TextComponentTranslation(LOC_ARTIFACTRELOAD_SUCCESS));
                 break;
             default:
@@ -197,7 +198,7 @@ public class CommandTconEvo extends CommandBase {
             }
             return getListOfStringsMatchingLastWord(args, modifierIds);
         } else if (args[0].equals("artifactget") && args.length == 2) {
-            return getListOfStringsMatchingLastWord(args, TconEvoMod.PROXY.getArtifactHandler().getArtifacts().keySet());
+            return getListOfStringsMatchingLastWord(args, TconEvoMod.PROXY.getArtifactRegistry().getAllArtifactIds());
         }
         return Collections.emptyList();
     }

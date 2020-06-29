@@ -10,6 +10,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
+import xyz.phanta.tconevo.artifact.ArtifactRegistry;
 import xyz.phanta.tconevo.handler.*;
 import xyz.phanta.tconevo.init.TconEvoItems;
 import xyz.phanta.tconevo.init.TconEvoTraits;
@@ -21,7 +22,6 @@ import xyz.phanta.tconevo.network.SPacketLightningEffect;
 import xyz.phanta.tconevo.recipe.MasterRecipes;
 import xyz.phanta.tconevo.recipe.OreDictRegistration;
 
-import javax.annotation.Nullable;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -32,7 +32,6 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
 public class CommonProxy {
 
@@ -42,17 +41,14 @@ public class CommonProxy {
     private final ToolCapabilityHandler toolCapHandler = new ToolCapabilityHandler();
     private final PlayerStateHandler playerStateHandler = new PlayerStateHandler();
     private final EnergyShieldHandler energyShieldHandler = new EnergyShieldHandler();
-    private final ArtifactItemHandler artifactHandler = new ArtifactItemHandler();
-
-    @Nullable
-    private Path configDir;
+    private final ArtifactRegistry artifactRegistry = new ArtifactRegistry();
 
     public void onPreInit(FMLPreInitializationEvent event) {
         IntegrationManager.injectHooks(event.getAsmData());
         MinecraftForge.EVENT_BUS.register(toolCapHandler);
         MinecraftForge.EVENT_BUS.register(playerStateHandler);
         MinecraftForge.EVENT_BUS.register(energyShieldHandler);
-        MinecraftForge.EVENT_BUS.register(artifactHandler);
+        MinecraftForge.EVENT_BUS.register(new ArtifactLootHandler());
         MinecraftForge.EVENT_BUS.register(new EnergizedTraitConflictHandler());
         MinecraftForge.EVENT_BUS.register(new FlightSpeedHandler());
         MinecraftForge.EVENT_BUS.register(new EntityAttributeHandler());
@@ -62,7 +58,7 @@ public class CommonProxy {
         netHandler.registerMessage(new SPacketLightningEffect.Handler(), SPacketLightningEffect.class, 2, Side.CLIENT);
         IntegrationManager.dispatchPreInit(event);
         // handle config dir generation
-        configDir = event.getModConfigurationDirectory().toPath().resolve(TconEvoMod.MOD_ID);
+        Path configDir = event.getModConfigurationDirectory().toPath().resolve(TconEvoMod.MOD_ID);
         if (!Files.exists(configDir)) {
             TconEvoMod.LOGGER.info("No config directory found; writing defaults...");
             writeDefaultConfig(configDir);
@@ -82,6 +78,9 @@ public class CommonProxy {
                 TconEvoMod.LOGGER.error("Otherwise, edit it so that it contains the number \"{}\".", CONFIG_VERSION);
             }
         }
+        // load artifacts from files (but don't init them until post-init!)
+        artifactRegistry.getLoader().setArtifactDir(configDir.resolve("artifacts"));
+        artifactRegistry.getLoader().loadArtifacts();
     }
 
     private void writeDefaultConfig(Path destDir) {
@@ -132,9 +131,8 @@ public class CommonProxy {
     }
 
     public void onPostInit(FMLPostInitializationEvent event) {
-        artifactHandler.setArtifactDir(Objects.requireNonNull(configDir).resolve("artifacts"));
-        artifactHandler.loadArtifacts();
         IntegrationManager.dispatchPostInit(event);
+        artifactRegistry.initArtifacts();
     }
 
     public ToolCapabilityHandler getToolCapHandler() {
@@ -149,8 +147,8 @@ public class CommonProxy {
         return energyShieldHandler;
     }
 
-    public ArtifactItemHandler getArtifactHandler() {
-        return artifactHandler;
+    public ArtifactRegistry getArtifactRegistry() {
+        return artifactRegistry;
     }
 
     public void playEntityEffect(Entity entity, SPacketEntitySpecialEffect.EffectType type) {
