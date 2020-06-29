@@ -4,7 +4,9 @@ import com.chocohead.advsolar.ASP_Items;
 import com.chocohead.advsolar.items.ItemCraftingThings;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.oredict.OreDictionary;
+import xyz.phanta.tconevo.util.Reflected;
 
+@Reflected
 public class AdvSolarHooksImpl implements AdvSolarHooks {
 
     @Override

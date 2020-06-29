@@ -3,6 +3,7 @@ package xyz.phanta.tconevo.integration.projecte;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import xyz.phanta.tconevo.integration.IntegrationHooks;
+import xyz.phanta.tconevo.util.Reflected;
 
 public interface EqExHooks extends IntegrationHooks {
 
@@ -20,6 +21,7 @@ public interface EqExHooks extends IntegrationHooks {
     // 0 -> normal; 1 -> dark matter; 2 -> red matter
     int getDenseBlockTier(IBlockState state);
 
+    @Reflected
     class Noop implements EqExHooks {
 
         @Override

@@ -19,7 +19,9 @@ import xyz.phanta.tconevo.init.TconEvoItems;
 import xyz.phanta.tconevo.init.TconEvoMaterials;
 import xyz.phanta.tconevo.item.ItemMaterial;
 import xyz.phanta.tconevo.item.ItemMetal;
+import xyz.phanta.tconevo.util.Reflected;
 
+@Reflected
 public class Ic2HooksImpl implements Ic2Hooks {
 
     @Override

@@ -6,7 +6,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooksImpl;
+import xyz.phanta.tconevo.util.Reflected;
 
+@Reflected
 public class DraconicHooksClientImpl extends DraconicHooksImpl {
 
     @Override

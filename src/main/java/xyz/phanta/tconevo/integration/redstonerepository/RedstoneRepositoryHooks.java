@@ -2,6 +2,7 @@ package xyz.phanta.tconevo.integration.redstonerepository;
 
 import net.minecraft.item.ItemStack;
 import xyz.phanta.tconevo.integration.IntegrationHooks;
+import xyz.phanta.tconevo.util.Reflected;
 
 import java.util.Optional;
 
@@ -14,6 +15,7 @@ public interface RedstoneRepositoryHooks {
 
     Optional<ItemStack> getItemGelidCapacitor();
 
+    @Reflected
     class Noop implements RedstoneRepositoryHooks {
 
         @Override

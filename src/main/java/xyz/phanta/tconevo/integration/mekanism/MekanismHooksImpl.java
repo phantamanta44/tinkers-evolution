@@ -5,9 +5,11 @@ import mekanism.common.item.ItemHDPE;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.oredict.OreDictionary;
+import xyz.phanta.tconevo.util.Reflected;
 
 import java.util.Optional;
 
+@Reflected
 public class MekanismHooksImpl implements MekanismHooks {
 
     @Override

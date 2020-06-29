@@ -62,7 +62,7 @@ public class SPacketEntitySpecialEffect implements IMessage {
         FLUX_BURN,
         CHAOS_BURST;
 
-        public static EffectType[] VALUES = values();
+        public static final EffectType[] VALUES = values();
 
     }
 

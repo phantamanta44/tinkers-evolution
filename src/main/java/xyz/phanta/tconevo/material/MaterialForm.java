@@ -9,21 +9,21 @@ import java.util.List;
 public enum MaterialForm {
 
     METAL(
-            new Entry("ingot", Material.VALUE_Ingot, MaterialCastType.INGOT),
-            new Entry("dust", Material.VALUE_Ingot),
+            new Entry("ingot", MaterialCastType.INGOT),
+            new Entry("dust"),
             new Entry("nugget", Material.VALUE_Nugget, MaterialCastType.NUGGET)),
-    GEM(new Entry("gem", Material.VALUE_Ingot), new Entry("crystal", Material.VALUE_Ingot)),
+    GEM(new Entry("gem"), new Entry("crystal")),
     STONE_BLOCK(
-            new Entry("block", Material.VALUE_Ingot, MaterialCastType.BLOCK),
+            new Entry("block", MaterialCastType.BLOCK),
             new Entry("brick", Material.VALUE_Fragment, MaterialCastType.INGOT)),
-    SLIME_CRYSTAL(new Entry("slimecrystal", Material.VALUE_Ingot)),
+    SLIME_CRYSTAL(new Entry("slimecrystal")),
     GEM_ITEM_4( // based on dark matter and red matter
-            new Entry("item", Material.VALUE_Ingot, MaterialCastType.GEM),
+            new Entry("item", MaterialCastType.GEM),
             new Entry("block", Material.VALUE_BrickBlock, MaterialCastType.BLOCK),
             new Entry("nugget", Material.VALUE_Nugget, MaterialCastType.NUGGET)),
-    PLATE(new Entry("plate", Material.VALUE_Ingot, MaterialCastType.PLATE)),
-    RAW_BLOCK(new Entry("", Material.VALUE_Ingot, MaterialCastType.BLOCK)),
-    RAW(new Entry("", Material.VALUE_Ingot));
+    PLATE(new Entry("plate", MaterialCastType.PLATE)),
+    RAW_BLOCK(new Entry("", MaterialCastType.BLOCK)),
+    RAW(new Entry(""));
 
     public final List<Entry> entries;
 
@@ -44,8 +44,16 @@ public enum MaterialForm {
             this.castType = castType;
         }
 
+        Entry(String prefix, @Nullable MaterialCastType castType) {
+            this(prefix, Material.VALUE_Ingot, castType);
+        }
+
         Entry(String prefix, int value) {
             this(prefix, value, null);
+        }
+
+        Entry(String prefix) {
+            this(prefix, Material.VALUE_Ingot);
         }
 
     }

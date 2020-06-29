@@ -19,9 +19,11 @@ import slimeknights.tconstruct.library.utils.TinkerUtil;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.integration.conarm.material.ArmourMaterialDefinition;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
+import xyz.phanta.tconevo.util.Reflected;
 
 import javax.annotation.Nullable;
 
+@Reflected
 public class ConArmHooksImpl implements ConArmHooks {
 
     private static final String TAG_EQ_SLOT = "ConArmEquipmentSlot";

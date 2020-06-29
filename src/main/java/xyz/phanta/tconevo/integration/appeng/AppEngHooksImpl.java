@@ -4,7 +4,9 @@ import appeng.api.AEApi;
 import appeng.api.definitions.IDefinitions;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.oredict.OreDictionary;
+import xyz.phanta.tconevo.util.Reflected;
 
+@Reflected
 public class AppEngHooksImpl implements AppEngHooks {
 
     @Override

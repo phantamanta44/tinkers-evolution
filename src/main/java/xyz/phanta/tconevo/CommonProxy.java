@@ -40,14 +40,13 @@ public class CommonProxy {
 
     private final ToolCapabilityHandler toolCapHandler = new ToolCapabilityHandler();
     private final PlayerStateHandler playerStateHandler = new PlayerStateHandler();
-    private final EnergyShieldHandler energyShieldHandler = new EnergyShieldHandler();
     private final ArtifactRegistry artifactRegistry = new ArtifactRegistry();
 
     public void onPreInit(FMLPreInitializationEvent event) {
         IntegrationManager.injectHooks(event.getAsmData());
         MinecraftForge.EVENT_BUS.register(toolCapHandler);
         MinecraftForge.EVENT_BUS.register(playerStateHandler);
-        MinecraftForge.EVENT_BUS.register(energyShieldHandler);
+        MinecraftForge.EVENT_BUS.register(new EnergyShieldHandler());
         MinecraftForge.EVENT_BUS.register(new ArtifactLootHandler());
         MinecraftForge.EVENT_BUS.register(new EnergizedTraitConflictHandler());
         MinecraftForge.EVENT_BUS.register(new FlightSpeedHandler());
@@ -141,10 +140,6 @@ public class CommonProxy {
 
     public PlayerStateHandler getPlayerStateHandler() {
         return playerStateHandler;
-    }
-
-    public EnergyShieldHandler getEnergyShieldHandler() {
-        return energyShieldHandler;
     }
 
     public ArtifactRegistry getArtifactRegistry() {

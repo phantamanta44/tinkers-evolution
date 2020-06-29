@@ -2,6 +2,7 @@ package xyz.phanta.tconevo.integration.actuallyadditions;
 
 import net.minecraft.item.ItemStack;
 import xyz.phanta.tconevo.integration.IntegrationHooks;
+import xyz.phanta.tconevo.util.Reflected;
 
 import java.util.Optional;
 
@@ -22,6 +23,7 @@ public interface ActuallyHooks extends IntegrationHooks {
 
     Optional<ItemStack> getItemBatteryPenta();
 
+    @Reflected
     class Noop implements ActuallyHooks {
 
         @Override

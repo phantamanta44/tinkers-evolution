@@ -14,9 +14,11 @@ import xyz.phanta.tconevo.integration.conarm.ConArmHooksImpl;
 import xyz.phanta.tconevo.integration.conarm.TconEvoArmourTraits;
 import xyz.phanta.tconevo.integration.conarm.trait.bloodmagic.ArmourTraitSentient;
 import xyz.phanta.tconevo.integration.conarm.trait.draconicevolution.ArmourModDraconicMoveSpeed;
+import xyz.phanta.tconevo.util.Reflected;
 
 import java.util.UUID;
 
+@Reflected
 public class ConArmHooksClientImpl extends ConArmHooksImpl {
 
     @Override

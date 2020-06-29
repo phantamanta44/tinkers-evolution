@@ -38,7 +38,7 @@ public class TconEvoItems {
     // tools
     @GameRegistry.ObjectHolder(TconEvoMod.MOD_ID + ":" + NameConst.ITEM_TOOL_SCEPTRE)
     public static ItemToolSceptre TOOL_SCEPTRE;
-    public static LazyAccum<ToolCore> TOOLS = c -> c.acceptAll(TOOL_SCEPTRE);
+    public static final LazyAccum<ToolCore> TOOLS = c -> c.acceptAll(TOOL_SCEPTRE);
 
     @InitMe(TconEvoMod.MOD_ID)
     public static void init() {

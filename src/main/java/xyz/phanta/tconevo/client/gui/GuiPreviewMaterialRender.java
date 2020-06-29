@@ -7,7 +7,6 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.client.renderer.texture.TextureUtil;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.resources.IResourceManager;
@@ -28,8 +27,6 @@ import java.util.Collection;
 import java.util.List;
 
 public class GuiPreviewMaterialRender extends GuiScreen {
-
-    private static final ResourceLocation FALLBACK_BASE_TEX = new ResourceLocation("mantle", "textures/gui/missingno");
 
     private static final String LOC_BASE = TconEvoMod.MOD_ID + ".gui.preview_material_render.";
     private static final String LOC_REFRESH = LOC_BASE + "refresh";

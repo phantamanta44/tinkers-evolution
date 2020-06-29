@@ -10,7 +10,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.nbt.NBTTagCompound;
 import xyz.phanta.tconevo.integration.astralsorcery.AstralHooksImpl;
+import xyz.phanta.tconevo.util.Reflected;
 
+@Reflected
 public class AstralHooksClientImpl extends AstralHooksImpl {
 
     @SuppressWarnings("unchecked")

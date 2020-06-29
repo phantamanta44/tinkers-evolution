@@ -7,10 +7,14 @@ import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.item.ItemStack;
 import org.lwjgl.opengl.GL11;
 import xyz.phanta.tconevo.client.event.ItemStackBarEvent;
+import xyz.phanta.tconevo.util.Reflected;
 
 // adapted from Tinkers' MEMES MemeRenderInterceptor
 public class ItemStackBarHandler {
 
+    // this isn't actually reflected; this hook is called from code injected by the coremod
+    // see ClassTransformerItemStackBar
+    @Reflected
     public static void handleRender(ItemStack stack, int posX, int posY) {
         ItemStackBarEvent event = ItemStackBarEvent.post(stack);
         if (event.bars.isEmpty()) {

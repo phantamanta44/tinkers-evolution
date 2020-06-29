@@ -3,9 +3,11 @@ package xyz.phanta.tconevo.integration.baubles;
 import baubles.api.BaublesApi;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.items.IItemHandler;
+import xyz.phanta.tconevo.util.Reflected;
 
 import javax.annotation.Nullable;
 
+@Reflected
 public class BaublesHooksImpl implements BaublesHooks {
 
     @Nullable

@@ -1,6 +1,7 @@
 package xyz.phanta.tconevo.integration.advsolars;
 
 import xyz.phanta.tconevo.integration.IntegrationHooks;
+import xyz.phanta.tconevo.util.Reflected;
 
 public interface AdvSolarHooks extends IntegrationHooks {
 
@@ -9,6 +10,7 @@ public interface AdvSolarHooks extends IntegrationHooks {
     @Inject(MOD_ID)
     AdvSolarHooks INSTANCE = new Noop();
 
+    @Reflected
     class Noop implements AdvSolarHooks {
         // NO-OP
     }

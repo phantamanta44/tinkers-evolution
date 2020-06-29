@@ -5,7 +5,9 @@ import com.progwml6.natura.nether.block.planks.BlockNetherPlanks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.oredict.OreDictionary;
+import xyz.phanta.tconevo.util.Reflected;
 
+@Reflected
 public class NaturaHooksImpl implements NaturaHooks {
 
     @Override

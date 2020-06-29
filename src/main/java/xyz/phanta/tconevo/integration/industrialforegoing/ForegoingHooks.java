@@ -5,6 +5,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
 import xyz.phanta.tconevo.integration.IntegrationHooks;
+import xyz.phanta.tconevo.util.Reflected;
 
 import javax.annotation.Nullable;
 
@@ -20,6 +21,7 @@ public interface ForegoingHooks extends IntegrationHooks {
     @Nullable
     EntitySlime createPinkSlime(World world);
 
+    @Reflected
     class Noop implements ForegoingHooks {
 
         @Override

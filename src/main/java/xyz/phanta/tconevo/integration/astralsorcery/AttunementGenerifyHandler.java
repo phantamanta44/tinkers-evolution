@@ -9,9 +9,13 @@ import io.github.phantamanta44.libnine.util.helper.OptUtils;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import xyz.phanta.tconevo.init.TconEvoCaps;
+import xyz.phanta.tconevo.util.Reflected;
 
+// nothing is actually reflected here; these hooks are called from code injected by the coremod
+// see ClassTransformerAstralAttunement
 public class AttunementGenerifyHandler {
 
+    @Reflected
     public static Item getTunedItemVariant(Item item) {
         if (item instanceof ItemRockCrystalBase) {
             return ((ItemRockCrystalBase)item).getTunedItemVariant();
@@ -20,11 +24,13 @@ public class AttunementGenerifyHandler {
         }
     }
 
+    @Reflected
     public static ItemStack copyUnattunedStackProperties(ItemStack tuned, ItemStack unattuned) {
         OptUtils.capability(unattuned, TconEvoCaps.ASTRAL_ATTUNABLE).ifPresent(a -> a.copyUnattunedProperties(tuned));
         return tuned;
     }
 
+    @Reflected
     public static void applyMainConstellation(ItemStack stack, IWeakConstellation constellation) {
         if (stack.getItem() instanceof ItemTunedCrystalBase) {
             ItemTunedCrystalBase.applyMainConstellation(stack, constellation);
@@ -36,6 +42,7 @@ public class AttunementGenerifyHandler {
         }
     }
 
+    @Reflected
     public static void applyCrystalProperties(ItemStack stack, CrystalProperties props) {
         if (stack.getItem() instanceof CrystalPropertyItem) {
             CrystalProperties.applyCrystalProperties(stack, props);

@@ -18,12 +18,14 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import xyz.phanta.tconevo.capability.AstralAttunable;
 import xyz.phanta.tconevo.init.TconEvoCaps;
+import xyz.phanta.tconevo.util.Reflected;
 import xyz.phanta.tconevo.util.ReflectionHackUtils;
 
 import javax.annotation.Nullable;
 import java.lang.reflect.Field;
 import java.util.function.Function;
 
+@Reflected
 public class AstralHooksImpl implements AstralHooks {
 
     @SuppressWarnings("unchecked")

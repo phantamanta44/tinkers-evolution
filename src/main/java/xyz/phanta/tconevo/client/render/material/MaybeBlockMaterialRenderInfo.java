@@ -9,7 +9,7 @@ import slimeknights.tconstruct.library.client.texture.TextureColoredTexture;
 
 public class MaybeBlockMaterialRenderInfo extends MaterialRenderInfo.AbstractMaterialRenderInfo {
 
-    protected ResourceLocation texturePath;
+    protected final ResourceLocation texturePath;
 
     public MaybeBlockMaterialRenderInfo(ResourceLocation texturePath) {
         this.texturePath = texturePath;

@@ -8,6 +8,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import xyz.phanta.tconevo.integration.IntegrationHooks;
 import xyz.phanta.tconevo.integration.naturalpledge.NaturalPledgeHooks;
+import xyz.phanta.tconevo.util.Reflected;
 
 import javax.annotation.Nullable;
 
@@ -31,6 +32,7 @@ public interface AstralHooks extends IntegrationHooks {
         // clientside
     }
 
+    @Reflected
     class Noop implements AstralHooks {
 
         @Override

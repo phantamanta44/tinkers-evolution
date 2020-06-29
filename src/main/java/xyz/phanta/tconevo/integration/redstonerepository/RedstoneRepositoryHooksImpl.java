@@ -2,9 +2,11 @@ package xyz.phanta.tconevo.integration.redstonerepository;
 
 import net.minecraft.item.ItemStack;
 import thundr.redstonerepository.init.RedstoneRepositoryEquipment;
+import xyz.phanta.tconevo.util.Reflected;
 
 import java.util.Optional;
 
+@Reflected
 public class RedstoneRepositoryHooksImpl implements RedstoneRepositoryHooks {
 
     @Override

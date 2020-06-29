@@ -25,10 +25,12 @@ import vazkii.botania.common.item.equipment.armor.elementium.ItemElementiumHelm;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.integration.conarm.ConArmHooks;
+import xyz.phanta.tconevo.util.Reflected;
 import xyz.phanta.tconevo.util.ToolUtils;
 
 import java.util.Optional;
 
+@Reflected
 public class BotaniaHooksImpl implements BotaniaHooks {
 
     private static final MirrorUtils.IField<Potion[]> fPixieHandler_potions

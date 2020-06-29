@@ -5,9 +5,11 @@ import de.ellpeck.actuallyadditions.mod.items.metalists.TheCrystals;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.oredict.OreDictionary;
+import xyz.phanta.tconevo.util.Reflected;
 
 import java.util.Optional;
 
+@Reflected
 public class ActuallyHooksImpl implements ActuallyHooks {
 
     @Override

@@ -17,8 +17,6 @@ public class ArmourModDraconic extends ArmorModifierTrait {
 
     static final List<ArmourModDraconic> allMods = new ArrayList<>();
 
-    private static final EntityEquipmentSlot[] EQ_SLOTS = EntityEquipmentSlot.values();
-
     @Nullable
     private final Set<EntityEquipmentSlot> eligibleEqSlots;
 

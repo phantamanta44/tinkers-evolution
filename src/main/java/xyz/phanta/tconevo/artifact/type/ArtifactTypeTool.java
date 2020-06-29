@@ -31,7 +31,7 @@ import java.util.stream.Collectors;
 public class ArtifactTypeTool implements ArtifactType<ArtifactTypeTool.Spec> {
 
     @Override
-    public Spec parseArtifactSpec(JsonObject dto) throws BuildingException {
+    public Spec parseArtifactSpec(JsonObject dto) {
         // parse modifiers
         List<IPair<String, Integer>> modifiers;
         if (dto.has("mods")) {

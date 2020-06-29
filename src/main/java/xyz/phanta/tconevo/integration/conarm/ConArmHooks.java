@@ -7,6 +7,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import slimeknights.tconstruct.library.modifiers.IModifier;
 import slimeknights.tconstruct.library.modifiers.TinkerGuiException;
 import xyz.phanta.tconevo.integration.IntegrationHooks;
+import xyz.phanta.tconevo.util.Reflected;
 
 import javax.annotation.Nullable;
 
@@ -28,6 +29,7 @@ public interface ConArmHooks extends IntegrationHooks {
 
     boolean isTinkerArmour(ItemStack stack);
 
+    @Reflected
     class Noop implements ConArmHooks {
 
         @Override

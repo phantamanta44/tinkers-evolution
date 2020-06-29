@@ -23,7 +23,7 @@ public class TraitElectric extends AbstractTrait implements EnergeticModifier {
 
     public static final int COLOUR = 0x0a00c6;
 
-    private static final String TAG_ENERGY_MAX = "ElectricEnergyMax", TAG_ENERGY = "ElectricEnergy";
+    private static final String TAG_ENERGY = "ElectricEnergy";
 
     public TraitElectric() {
         super(NameConst.TRAIT_ELECTRIC, COLOUR);

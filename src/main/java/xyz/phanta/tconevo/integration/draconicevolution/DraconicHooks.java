@@ -14,6 +14,7 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import xyz.phanta.tconevo.integration.IntegrationHooks;
+import xyz.phanta.tconevo.util.Reflected;
 
 import javax.annotation.Nullable;
 import java.util.Optional;
@@ -71,6 +72,7 @@ public interface DraconicHooks extends IntegrationHooks {
         // only on the client
     }
 
+    @Reflected
     class Noop implements DraconicHooks {
 
         @Override

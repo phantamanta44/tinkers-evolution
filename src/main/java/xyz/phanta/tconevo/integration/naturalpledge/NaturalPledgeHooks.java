@@ -5,6 +5,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;
 import xyz.phanta.tconevo.integration.IntegrationHooks;
+import xyz.phanta.tconevo.util.Reflected;
 
 public interface NaturalPledgeHooks {
 
@@ -15,6 +16,7 @@ public interface NaturalPledgeHooks {
 
     void applyRooted(EntityLivingBase entity, int duration);
 
+    @Reflected
     class Noop implements NaturalPledgeHooks {
 
         @Override

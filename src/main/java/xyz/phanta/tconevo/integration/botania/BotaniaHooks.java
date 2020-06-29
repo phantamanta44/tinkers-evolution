@@ -5,6 +5,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
 import xyz.phanta.tconevo.integration.IntegrationHooks;
+import xyz.phanta.tconevo.util.Reflected;
 
 import java.util.Optional;
 
@@ -37,6 +38,7 @@ public interface BotaniaHooks extends IntegrationHooks {
 
     void spawnGaiaWrathBeam(EntityPlayer player, EnumHand hand);
 
+    @Reflected
     class Noop implements BotaniaHooks {
 
         @Override
