@@ -17,6 +17,7 @@ import slimeknights.tconstruct.library.client.material.MaterialRenderInfoLoader;
 import xyz.phanta.tconevo.CommonProxy;
 import xyz.phanta.tconevo.TconEvoMod;
 import xyz.phanta.tconevo.client.book.BookTransformerAppendModifiers;
+import xyz.phanta.tconevo.client.book.BookTransformerAppendTools;
 import xyz.phanta.tconevo.client.command.CommandTconEvoClient;
 import xyz.phanta.tconevo.client.fx.ParticleChainLightning;
 import xyz.phanta.tconevo.client.handler.EnergyShieldHudHandler;
@@ -60,6 +61,8 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void onPostInit(FMLPostInitializationEvent event) {
         super.onPostInit(event);
+        TinkerBook.INSTANCE.addTransformer(new BookTransformerAppendTools(
+                new FileRepository("tconstruct:book"), TconEvoItems.TOOLS));
         TinkerBook.INSTANCE.addTransformer(new BookTransformerAppendModifiers(
                 new FileRepository("tconstruct:book"), false, c -> c.acceptAll(TconEvoTraits.MODIFIERS)));
         ClientCommandHandler.instance.registerCommand(new CommandTconEvoClient());
