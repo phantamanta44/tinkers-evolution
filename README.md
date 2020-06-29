@@ -53,6 +53,11 @@ Current mod integration modules are as follows:
     * Adds support to the magma crucible for smeltery melting recipes
     * Allows flux capacitors to apply the "fluxed" modifier
 
+In addition, Tinkers' Evolution also adds these features:
+
+* Sceptres: magical weapons that can both strike things at close range or launch volleys of projectiles
+* Artifacts: powerful tools and weapons that appear in loot chests but cannot be repaired
+
 More mod integrations will be added as development goes on.
 The current plans for the future can be found [here](https://github.com/phantamanta44/tinkers-evolution/blob/1.12.2/TODO.md).
 
