@@ -16,6 +16,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants;
 import slimeknights.mantle.util.RecipeMatch;
+import slimeknights.tconstruct.library.events.ProjectileEvent;
 import slimeknights.tconstruct.library.materials.*;
 import slimeknights.tconstruct.library.tinkering.Category;
 import slimeknights.tconstruct.library.tinkering.PartMaterialType;
@@ -74,7 +75,9 @@ public class ItemToolSceptre extends TinkerToolCore implements IProjectile {
         ItemStack stack = player.getHeldItem(hand);
         if (!ToolHelper.isBroken(stack) && !player.getCooldownTracker().hasCooldown(this)) {
             if (!world.isRemote) {
-                ToolHelper.damageTool(stack, 8, player);
+                if (!player.capabilities.isCreativeMode) {
+                    ToolHelper.damageTool(stack, 8, player);
+                }
                 ProjectileLauncherNBT data = ProjectileLauncherNBT.from(stack);
                 Vec3d look = player.getLookVec();
                 Vec3d up = player.getVectorForRotation(player.rotationPitch - 90F, player.rotationYaw);
@@ -99,7 +102,9 @@ public class ItemToolSceptre extends TinkerToolCore implements IProjectile {
                                        ItemStack weapon, int colour) {
         EntityMagicMissile missile = new EntityMagicMissile(world, shooter, trajectory, velocity, weapon);
         missile.setColour(colour);
-        world.spawnEntity(missile);
+        if (ProjectileEvent.OnLaunch.fireEvent(missile, weapon, shooter)) {
+            world.spawnEntity(missile);
+        }
     }
 
     @Override

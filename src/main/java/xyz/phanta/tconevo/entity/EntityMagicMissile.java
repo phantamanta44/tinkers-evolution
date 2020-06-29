@@ -68,6 +68,7 @@ public class EntityMagicMissile extends EntityProjectileBase {
 
     @Override
     public void onHitBlock(RayTraceResult trace) {
+        inGround = true; // tells endspeed to stop simulating
         onHitSomething();
     }
 
