@@ -44,7 +44,7 @@ public class ModifierArtifact extends ModifierTrait {
     public void onToolCraft(TinkerCraftingEvent event) {
         ItemStack stack = event.getItemStack();
         if (stack.getItem() instanceof ToolCore && ToolUtils.getTraitLevel(stack, NameConst.MOD_ARTIFACT) == 1) {
-            event.setCanceled(I18n.format(NameConst.INFO_RELIC_SEALED));
+            event.setCanceled(I18n.format(NameConst.INFO_ARTIFACT_SEALED));
         }
     }
 

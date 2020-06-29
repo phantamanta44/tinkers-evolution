@@ -543,7 +543,7 @@ commands.tconevo.tconevoclient.usage=/tconevoclient <matrenderinfo>
 commands.tconevo.tconevoclient.matrenderinfo.failure_nopart=Hold a Tinkers' Construct tool part to use this command.
 
 tconevo.info.energized_trait_conflict=Two energetic traits are conflicting!
-tconevo.info.relic_sealed=Cannot modify a sealed relic tool!
+tconevo.info.artifact_sealed=Cannot modify a sealed artifact tool!
 
 tconevo.gui.preview_material_render.refresh=Reload Render Info
 tconevo.gui.preview_material_render.nothing_to_render=Nothing to render!
