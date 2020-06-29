@@ -1,0 +1,11 @@
+{
+  "weight": 75,
+  "name": "Ancient Arrow",
+  "lore": "An arrow that has been fitted with powerful ancient technology.",
+  "tool": "arrow",
+  "materials": [
+    "polyethylene",
+    "gelid_enderium",
+    "feather"
+  ]
+}

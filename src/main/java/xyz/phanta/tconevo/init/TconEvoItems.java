@@ -11,6 +11,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.tools.Pattern;
+import slimeknights.tconstruct.library.tools.ToolCore;
 import slimeknights.tconstruct.library.tools.ToolPart;
 import slimeknights.tconstruct.tools.TinkerTools;
 import xyz.phanta.tconevo.TconEvoMod;
@@ -19,6 +20,7 @@ import xyz.phanta.tconevo.item.ItemEdible;
 import xyz.phanta.tconevo.item.ItemMaterial;
 import xyz.phanta.tconevo.item.ItemMetal;
 import xyz.phanta.tconevo.item.tool.ItemToolSceptre;
+import xyz.phanta.tconevo.util.LazyAccum;
 
 @SuppressWarnings("NotNullFieldNotInitialized")
 public class TconEvoItems {
@@ -36,6 +38,7 @@ public class TconEvoItems {
     // tools
     @GameRegistry.ObjectHolder(TconEvoMod.MOD_ID + ":" + NameConst.ITEM_TOOL_SCEPTRE)
     public static ItemToolSceptre TOOL_SCEPTRE;
+    public static LazyAccum<ToolCore> TOOLS = c -> c.acceptAll(TOOL_SCEPTRE);
 
     @InitMe(TconEvoMod.MOD_ID)
     public static void init() {

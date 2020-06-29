@@ -19,7 +19,7 @@ public class ItemMaterial extends L9ItemSubs implements ParameterizedItemModel.I
 
     public enum Type {
 
-        COALESCENCE_MATRIX, PINK_SLIME_CRYSTAL;
+        COALESCENCE_MATRIX, PINK_SLIME_CRYSTAL, ARTIFACT_UNSEALER;
 
         public static final Type[] VALUES = values();
 

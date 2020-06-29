@@ -14,6 +14,11 @@
         "textures": {
           "layer0": "tconevo:items/pink_slime_crystal"
         }
+      },
+      "ARTIFACT_UNSEALER": {
+        "textures": {
+          "layer0": "tconevo:items/artifact_unsealer"
+        }
       }
     }
   }

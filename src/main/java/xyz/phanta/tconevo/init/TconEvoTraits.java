@@ -11,6 +11,7 @@ import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
 import xyz.phanta.tconevo.integration.mekanism.MekanismHooks;
 import xyz.phanta.tconevo.integration.redstonerepository.RedstoneRepositoryHooks;
 import xyz.phanta.tconevo.integration.thermal.ThermalHooks;
+import xyz.phanta.tconevo.item.ItemMaterial;
 import xyz.phanta.tconevo.trait.*;
 import xyz.phanta.tconevo.trait.astralsorcery.ModifierAttuned;
 import xyz.phanta.tconevo.trait.astralsorcery.TraitAstral;
@@ -73,6 +74,7 @@ public class TconEvoTraits {
     public static final TraitSundering TRAIT_SUNDERING = new TraitSundering();
     public static final TraitStaggering TRAIT_STAGGERING = new TraitStaggering();
     public static final TraitVampiric TRAIT_VAMPIRIC = new TraitVampiric();
+    public static final ModifierArtifact MOD_ARTIFACT = new ModifierArtifact();
     public static final ModifierFluxed MOD_FLUXED = new ModifierFluxed();
 
     // astral sorcery
@@ -138,6 +140,8 @@ public class TconEvoTraits {
             MOD_REAPING, MOD_ENTROPIC, MOD_FLUX_BURN, MOD_PRIMORDIAL);
 
     public static void initModifierMaterials() {
+        MOD_ARTIFACT.addItem(ItemMaterial.Type.ARTIFACT_UNSEALER.newStack(1), 1, 1);
+
         // actually additions
         addModItemOpt(MOD_FLUXED, ActuallyHooks.INSTANCE::getItemBatterySingle);
         addModItemOpt(MOD_FLUXED, ActuallyHooks.INSTANCE::getItemBatteryDouble);

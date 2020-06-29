@@ -365,6 +365,37 @@ public class TconEvoConfig {
 
     }
 
+    @Config.Comment("Configuration for the artifacts system.")
+    public static final Artifacts artifacts = new Artifacts();
+
+    public static class Artifacts {
+
+        @Config.Comment("Whether artifacts should be enabled or not.")
+        @Config.RequiresMcRestart
+        public boolean enabled = true;
+
+        @Config.Comment({
+                "The probabilities of an artifact being generated in various loot tables.",
+                "Each entry should be formatted `<loot table name>,<probability>`."
+        })
+        @Config.RequiresMcRestart
+        public String[] lootProbabilities = {
+                "chests/abandoned_mineshaft,0.02",
+                "chests/desert_pyramid,0.08",
+                "chests/end_city_treasure,0.15",
+                "chests/igloo_chest,0.05",
+                "chests/jungle_temple,0.08",
+                "chests/nether_bridge,0.02",
+                "chests/simple_dungeon,0.3",
+                "chests/stronghold_corridor,0.04",
+                "chests/stronghold_crossing,0.04",
+                "chests/stronghold_library,0.15",
+                "chests/village_blacksmith,0.1",
+                "chests/woodland_mansion,0.25"
+        };
+
+    }
+
     @Config.Comment("Configuration for the Astral Sorcery module.")
     public static final AstralSorcery moduleAstralSorcery = new AstralSorcery();
 

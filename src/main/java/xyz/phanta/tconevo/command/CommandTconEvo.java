@@ -16,6 +16,8 @@ import slimeknights.tconstruct.library.tinkering.ITinkerable;
 import slimeknights.tconstruct.library.utils.TinkerUtil;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 import slimeknights.tconstruct.tools.modifiers.ToolModifier;
+import xyz.phanta.tconevo.TconEvoMod;
+import xyz.phanta.tconevo.handler.ArtifactItemHandler;
 import xyz.phanta.tconevo.integration.conarm.ConArmHooks;
 import xyz.phanta.tconevo.util.ToolUtils;
 
@@ -39,6 +41,14 @@ public class CommandTconEvo extends CommandBase {
     private static final String LOC_MODMAX_USAGE = LOC_MODMAX_BASE + "usage";
     private static final String LOC_MODMAX_SUCCESS = LOC_MODMAX_BASE + "success";
     private static final String LOC_MODMAX_FAILURE = LOC_MODMAX_BASE + "failure";
+
+    private static final String LOC_ARTIFACTGET_BASE = LOC_BASE + "artifactget.";
+    private static final String LOC_ARTIFACTGET_USAGE = LOC_ARTIFACTGET_BASE + "usage";
+    private static final String LOC_ARTIFACTGET_SUCCESS = LOC_ARTIFACTGET_BASE + "success";
+    private static final String LOC_ARTIFACTGET_FAILURE = LOC_ARTIFACTGET_BASE + "failure";
+
+    private static final String LOC_ARTIFACTRELOAD_BASE = LOC_BASE + "artifactreload.";
+    private static final String LOC_ARTIFACTRELOAD_SUCCESS = LOC_ARTIFACTRELOAD_BASE + "success";
 
     @Override
     public String getName() {
@@ -155,6 +165,22 @@ public class CommandTconEvo extends CommandBase {
                 player.sendMessage(new TextComponentTranslation(LOC_MODMAX_SUCCESS));
                 break;
             }
+            case "artifactget": {
+                if (args.length != 2) {
+                    throw new WrongUsageException(LOC_ARTIFACTGET_USAGE);
+                }
+                ArtifactItemHandler.Artifact artifact = TconEvoMod.PROXY.getArtifactHandler().getArtifacts().get(args[1]);
+                if (artifact == null) {
+                    throw new CommandException(LOC_ARTIFACTGET_FAILURE, args[1]);
+                }
+                player.inventory.addItemStackToInventory(artifact.newStack());
+                player.sendMessage(new TextComponentTranslation(LOC_ARTIFACTGET_SUCCESS, artifact.getEntryName()));
+                break;
+            }
+            case "artifactreload":
+                TconEvoMod.PROXY.getArtifactHandler().loadArtifacts();
+                player.sendMessage(new TextComponentTranslation(LOC_ARTIFACTRELOAD_SUCCESS));
+                break;
             default:
                 throw new WrongUsageException(LOC_USAGE);
         }
@@ -163,13 +189,15 @@ public class CommandTconEvo extends CommandBase {
     @Override
     public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, @Nullable BlockPos targetPos) {
         if (args.length == 1) {
-            return getListOfStringsMatchingLastWord(args, "modadd", "modmax");
+            return getListOfStringsMatchingLastWord(args, "modadd", "modmax", "artifactget", "artifactreload");
         } else if (args[0].equals("modadd") && args.length == 2) {
             List<String> modifierIds = new ArrayList<>();
             for (IModifier mod : TinkerRegistry.getAllModifiers()) {
                 modifierIds.add(mod.getIdentifier());
             }
             return getListOfStringsMatchingLastWord(args, modifierIds);
+        } else if (args[0].equals("artifactget") && args.length == 2) {
+            return getListOfStringsMatchingLastWord(args, TconEvoMod.PROXY.getArtifactHandler().getArtifacts().keySet());
         }
         return Collections.emptyList();
     }

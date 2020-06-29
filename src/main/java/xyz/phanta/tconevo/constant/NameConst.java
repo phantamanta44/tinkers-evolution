@@ -25,6 +25,7 @@ public class NameConst {
 
     private static final String INFO_KEY = TconEvoMod.MOD_ID + ".info.";
     public static final String INFO_ENERGIZED_TRAIT_CONFLICT = INFO_KEY + "energized_trait_conflict";
+    public static final String INFO_RELIC_SEALED = INFO_KEY + "relic_sealed";
 
     public static final String TRAIT_AFTERSHOCK = TconEvoMod.MOD_ID + ".aftershock";
     public static final String TRAIT_BATTLE_FUROR = TconEvoMod.MOD_ID + ".battle_furor";
@@ -53,6 +54,7 @@ public class NameConst {
     public static final String TRAIT_STAGGERING = TconEvoMod.MOD_ID + ".staggering";
     public static final String TRAIT_SUNDERING = TconEvoMod.MOD_ID + ".sundering";
     public static final String TRAIT_VAMPIRIC = TconEvoMod.MOD_ID + ".vampiric";
+    public static final String MOD_ARTIFACT = TconEvoMod.MOD_ID + ".artifact";
     public static final String MOD_FLUXED = TconEvoMod.MOD_ID + ".fluxed";
 
     public static final String ARMOUR_SUFFIX = "_armor";

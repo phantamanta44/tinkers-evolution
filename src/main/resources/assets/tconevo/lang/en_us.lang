@@ -2,6 +2,7 @@ itemGroup.tconevo=Tinkers' Evolution
 
 item.tconevo:material0.name=Coalescence Matrix
 item.tconevo:material1.name=Pink Slime Crystal
+item.tconevo:material2.name=Plate of Unsealing
 item.tconevo:metal0.name=Wyvern Metal Ingot
 item.tconevo:metal1.name=Wyvern Metal Dust
 item.tconevo:metal2.name=Wyvern Metal Nugget
@@ -147,6 +148,9 @@ modifier.tconevo.sundering.desc=§oBalance is weakness...§r\nThis weapon weaken
 modifier.tconevo.vampiric.name=Vampiric
 modifier.tconevo.vampiric.desc=§oStill befriending mortals?§r\nThis weapon drains life energy from enemies to heal its wielder.
 modifier.tconevo.vampiric.extra=Lifesteal: +%s
+modifier.tconevo.artifact.name=Artifact
+modifier.tconevo.artifact.desc=§oOne-of-a-kind!§r\nThis tool cannot be modified or repaired until it is unsealed.
+modifier.tconevo.artifact.unsealed=Unsealed
 modifier.tconevo.fluxed.name=Fluxed
 modifier.tconevo.fluxed.desc=§oIt's been years!§r\nThis tool consumes energy before durability.
 
@@ -522,7 +526,7 @@ attribute.name.tconevo.evasionChance=Evasion Chance
 commands.tconevo.generic.player_only=Only players can use this command.
 commands.tconevo.generic.req_tool=You need a Tinkers' Construct item to use this command.
 commands.tconevo.generic.unknown_mod=Unknown modifier: %s
-commands.tconevo.tconevo.usage=/tconevo <modadd|modmax> ...
+commands.tconevo.tconevo.usage=/tconevo <modadd|modmax|artifactget|artifactreload> ...
 commands.tconevo.tconevo.modadd.usage=/tconevo modadd <modifier> [level]
 commands.tconevo.tconevo.modadd.success_partial=Could only apply modifier "%s" %s time(s).
 commands.tconevo.tconevo.modadd.success_total=Applied modifier "%s" %s time(s).
@@ -530,11 +534,16 @@ commands.tconevo.tconevo.modadd.failure=Failed to apply modifier: %s
 commands.tconevo.tconevo.modmax.usage=/tconevo modmax
 commands.tconevo.tconevo.modmax.success=Maximized tool.
 commands.tconevo.tconevo.modmax.failure=Failed to maximize tool: %s
+commands.tconevo.tconevo.artifactget.usage=/tconevo artifactget <artifact>
+commands.tconevo.tconevo.artifactget.success=Received artifact "%s".
+commands.tconevo.tconevo.artifactget.failure=Unknown artifact: %s
+commands.tconevo.tconevo.artifactreload.success=Reloaded artifacts.
 
 commands.tconevo.tconevoclient.usage=/tconevoclient <matrenderinfo>
 commands.tconevo.tconevoclient.matrenderinfo.failure_nopart=Hold a Tinkers' Construct tool part to use this command.
 
 tconevo.info.energized_trait_conflict=Two energetic traits are conflicting!
+tconevo.info.relic_sealed=Cannot modify a sealed relic tool!
 
 tconevo.gui.preview_material_render.refresh=Reload Render Info
 tconevo.gui.preview_material_render.nothing_to_render=Nothing to render!
