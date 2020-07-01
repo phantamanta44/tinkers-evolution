@@ -9,6 +9,7 @@
 * [x] blasting: breaking blocks and fully-charged hits create explosions
 * [x] modifiable: equipment has more modifier slots
     * a clone of writable that avoids the weird quirks of writable
+* [ ] fertilizing: right clicking consumes a lot of durability to function as bone meal
 
 ## weapon traits
 
@@ -80,7 +81,7 @@
 * [ ] boomerang: throwable thing that comes back
     * homes in on target(s) that are moused over while preparing the throw
     * can pick up one dropped item and bring it back to the thrower
-* [ ] trident: just the throwable spear thing from the aquatic updat
+* [ ] trident: just the throwable spear thing from the aquatic update
 
 ## other stuff
 
@@ -418,6 +419,23 @@
 ### other ideas
 
 * [ ] solar cells can apply photovoltaic
+
+## forestry
+
+### materials
+
+* [ ] apatite
+    * tools: fertilizing + cheapskate
+    * armour: absorbent + cheapskate
+
+### armour modifiers
+
+* [ ] apiary affinity: provides protection from bees
+
+### other stuff
+
+* [ ] kama functions as a scoop
+* [ ] thermionic fabricator can execute casting recipes
 
 ## ic2 (and icc?)
 
