@@ -6,6 +6,7 @@ import net.minecraft.util.ResourceLocation;
 import slimeknights.tconstruct.library.client.MaterialRenderInfo;
 import slimeknights.tconstruct.library.client.material.deserializers.AbstractRenderInfoDeserializer;
 import slimeknights.tconstruct.library.client.texture.TextureColoredTexture;
+import xyz.phanta.tconevo.util.Reflected;
 
 public class MaybeBlockMaterialRenderInfo extends MaterialRenderInfo.AbstractMaterialRenderInfo {
 
@@ -44,9 +45,9 @@ public class MaybeBlockMaterialRenderInfo extends MaterialRenderInfo.AbstractMat
 
     }
 
-    @SuppressWarnings({ "unused", "NotNullFieldNotInitialized" })
     public static class Deserializer extends AbstractRenderInfoDeserializer {
 
+        @Reflected
         private String texture;
 
         @Override

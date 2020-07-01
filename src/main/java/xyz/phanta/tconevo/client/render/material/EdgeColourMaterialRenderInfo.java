@@ -7,6 +7,7 @@ import slimeknights.tconstruct.library.client.RenderUtil;
 import slimeknights.tconstruct.library.client.material.deserializers.AbstractRenderInfoDeserializer;
 import slimeknights.tconstruct.library.client.texture.AbstractColoredTexture;
 import xyz.phanta.tconevo.client.util.RenderUtilsEx;
+import xyz.phanta.tconevo.util.Reflected;
 
 public class EdgeColourMaterialRenderInfo extends MaterialRenderInfo.AbstractMaterialRenderInfo {
 
@@ -57,10 +58,11 @@ public class EdgeColourMaterialRenderInfo extends MaterialRenderInfo.AbstractMat
 
     }
 
-    @SuppressWarnings({ "unused", "NotNullFieldNotInitialized" })
     public static class Deserializer extends AbstractRenderInfoDeserializer {
 
+        @Reflected
         private String inner, outer;
+        @Reflected
         private float bleed;
 
         @Override

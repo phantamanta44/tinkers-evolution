@@ -17,7 +17,6 @@ import xyz.phanta.tconevo.item.ItemMetal;
 
 import java.util.Arrays;
 
-@SuppressWarnings("NotNullFieldNotInitialized")
 public class TconEvoBlocks {
 
     @GameRegistry.ObjectHolder(TconEvoMod.MOD_ID + ":" + NameConst.BLOCK_EARTH_MATERIAL)

@@ -9,7 +9,6 @@ import xyz.phanta.tconevo.capability.AstralAttunable;
 import xyz.phanta.tconevo.capability.EnergyShield;
 import xyz.phanta.tconevo.capability.EuStore;
 
-@SuppressWarnings("NotNullFieldNotInitialized")
 public class TconEvoCaps {
 
     @CapabilityInject(EnergyShield.class)
