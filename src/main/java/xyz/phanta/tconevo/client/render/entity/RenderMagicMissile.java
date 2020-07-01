@@ -30,7 +30,7 @@ public class RenderMagicMissile extends Render<EntityMagicMissile> {
         RenderUtils.enableFullBrightness();
         GlStateManager.disableAlpha();
         TextFormatUtils.setGlColour(entity.getColour(), 1F);
-        RenderUtils.renderWorldOrtho(x, y + 0.5D, z, 0.5F, 0.5F, (entity.ticksExisted + partialTicks) / 4F);
+        RenderUtils.renderWorldOrtho(x, y + 0.25D, z, 0.5F, 0.5F, (entity.ticksExisted + partialTicks) / 4F);
         GlStateManager.color(1F, 1F, 1F, 1F);
         GlStateManager.enableAlpha();
         RenderUtils.restoreLightmap();
