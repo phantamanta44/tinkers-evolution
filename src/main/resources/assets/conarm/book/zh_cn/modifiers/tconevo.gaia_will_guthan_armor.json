@@ -1,0 +1,16 @@
+{
+  "armormodifier": "tconevo.gaia_will_guthan_armor",
+  "text": [
+    {
+      "text": "以微小的远古意志碎片为盔甲注入新的进击神力。在古赞的意志庇佑下，敌人在你的攻击下破溅出的生命能量将为你所用。"
+    }
+  ],
+  "effects": [
+    "暴击造成的部分伤害会回复生命",
+    "不可与其它意志并存",
+    "只能强化一次"
+  ],
+  "demoArmor": [
+    "conarm:helmet"
+  ]
+}

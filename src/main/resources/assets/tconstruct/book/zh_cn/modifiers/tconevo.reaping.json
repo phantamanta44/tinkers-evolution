@@ -1,0 +1,18 @@
+{
+  "modifier": "tconevo.reaping",
+  "text": [
+    {
+      "text": "末影操纵者有着抽魂离形的邪恶功用。操纵者越多，过程越干净利落。"
+    }
+  ],
+  "effects": [
+    "使被击杀的生物掉落生物灵魂",
+    "可与“魂魄出窍”并存",
+    "多个等级"
+  ],
+  "demoTool": [
+    "tconstruct:broadsword",
+    "tconstruct:cleaver",
+    "tconstruct:arrow"
+  ]
+}

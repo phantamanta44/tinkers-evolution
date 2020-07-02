@@ -1,0 +1,19 @@
+{
+  "armormodifier": "tconevo.fluxed",
+  "text": [
+    {
+      "text": "精心加装了能量力场的盔甲能够在机电负应力的加持下获得更为持久的续航能力。"
+    }
+  ],
+  "effects": [
+    "在盔甲上加装电池",
+    "消耗电力来抵消盔甲的耐久折损",
+    "只能强化一次"
+  ],
+  "demoArmor": [
+    "conarm:helmet",
+    "conarm:chestplate",
+    "conarm:leggings",
+    "conarm:boots"
+  ]
+}

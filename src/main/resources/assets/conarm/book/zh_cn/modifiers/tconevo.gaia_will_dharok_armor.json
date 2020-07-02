@@ -1,0 +1,16 @@
+{
+  "armormodifier": "tconevo.gaia_will_dharok_armor",
+  "text": [
+    {
+      "text": "以微小的远古意志碎片为盔甲注入新的进击神力。在达洛克的意志庇佑下，你的生命值将决定你的攻击伤害。"
+    }
+  ],
+  "effects": [
+    "生命值越低，暴击伤害越高",
+    "不可与其它意志并存",
+    "只能强化一次"
+  ],
+  "demoArmor": [
+    "conarm:helmet"
+  ]
+}

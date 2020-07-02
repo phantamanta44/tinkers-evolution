@@ -1,0 +1,16 @@
+{
+  "armormodifier": "tconevo.gaia_will_karil_armor",
+  "text": [
+    {
+      "text": "以微小的远古意志碎片为盔甲注入新的进击神力。在卡瑞的意志庇佑下，刃之所向，万形凋零。"
+    }
+  ],
+  "effects": [
+    "暴击施加凋零效果",
+    "不可与其它意志并存",
+    "只能强化一次"
+  ],
+  "demoArmor": [
+    "conarm:helmet"
+  ]
+}

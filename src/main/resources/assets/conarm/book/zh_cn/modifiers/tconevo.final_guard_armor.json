@@ -1,0 +1,20 @@
+{
+  "armormodifier": "tconevo.final_guard_armor",
+  "text": [
+    {
+      "text": "反应堆稳定器能够包容足可毁天灭地的混沌能量，同样的科技或许亦可应用于装甲之中。加装了这种稳定器的盔甲定可在致命的混沌打击中保全你的躯体。"
+    }
+  ],
+  "effects": [
+    "以极大的能量损耗为代价保全穿戴者的性命",
+    "该能量损耗将分摊至各个已加装该升级的盔甲",
+    "以“通量充能”为前置强化",
+    "只能强化一次"
+  ],
+  "demoArmor": [
+    "conarm:helmet",
+    "conarm:chestplate",
+    "conarm:leggings",
+    "conarm:boots"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "modifier": "tconevo.fluxed",
+  "text": [
+    {
+      "text": "为工具投射一个环绕周身的能量力场，使其借助能量的消耗来持久续航。"
+    }
+  ],
+  "effects": [
+    "在工具上加装电池",
+    "消耗电力来抵消工具的耐久折损",
+    "只能强化一次"
+  ],
+  "demoTool": [
+    "tconstruct:pickaxe",
+    "tconstruct:hammer",
+    "tconstruct:shortbow",
+    "tconstruct:arrow"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "armormodifier": "tconevo.gaia_will_torag_armor",
+  "text": [
+    {
+      "text": "以微小的远古意志碎片为盔甲注入新的进击神力。在托拉格的意志庇佑下，你的进攻将拖垮敌人的行动能力。"
+    }
+  ],
+  "effects": [
+    "暴击施加重度缓慢效果",
+    "不可与其它意志并存",
+    "只能强化一次"
+  ],
+  "demoArmor": [
+    "conarm:helmet"
+  ]
+}
