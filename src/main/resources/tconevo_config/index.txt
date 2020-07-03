@@ -1,3 +1,9 @@
+artifacts/agneyastra.json
 artifacts/ancient_arrow.json
+artifacts/crystal_sceptre.json
 artifacts/dragon_tooth.json
+artifacts/infinity_edge.json
+artifacts/maelstrom.json
+artifacts/myriad_slashes.json
+artifacts/stormbow.json
 artifacts/werebane.json
