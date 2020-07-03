@@ -148,8 +148,8 @@ modifier.tconevo.sundering.desc=§o均衡，脆弱无比……§r\n这件器械�
 modifier.tconevo.vampiric.name=吸血
 modifier.tconevo.vampiric.desc=§o还在与人类结盟？§r\n这件器械会从敌人身上榨取生命能量来滋养其持握者。
 modifier.tconevo.vampiric.extra=生命窃取：+%s
-modifier.tconevo.artifact.name=手工艺品
-modifier.tconevo.artifact.desc=§o独一无二！§r\n这件工具在被启封前无法被强化或修复。
+modifier.tconevo.artifact.name=匠心之作
+modifier.tconevo.artifact.desc=§o独一无二！§r\n这件工具在使用“启封之板”启封前无法被强化或修复。
 modifier.tconevo.artifact.unsealed=已启封
 modifier.tconevo.fluxed.name=通量注入
 modifier.tconevo.fluxed.desc=§o老传家宝了！§r\n这件工具会优先消耗电量而非耐久。
@@ -533,16 +533,16 @@ commands.tconevo.tconevo.modadd.failure=应用属性%s失败
 commands.tconevo.tconevo.modmax.usage=/tconevo modmax
 commands.tconevo.tconevo.modmax.success=工具属性已提升至上限
 commands.tconevo.tconevo.modmax.failure=提升工具%s上限值失败
-commands.tconevo.tconevo.artifactget.usage=/tconevo artifactget <“手工艺品”>
-commands.tconevo.tconevo.artifactget.success=已接受“手工艺品”：%s
-commands.tconevo.tconevo.artifactget.failure=未知“手工艺品”：%s
-commands.tconevo.tconevo.artifactreload.success=“手工艺品”已重载
+commands.tconevo.tconevo.artifactget.usage=/tconevo artifactget <“匠心之作”名称>
+commands.tconevo.tconevo.artifactget.success=已获得匠心之作：%s
+commands.tconevo.tconevo.artifactget.failure=未知的匠心之作：%s
+commands.tconevo.tconevo.artifactreload.success=匠心之作列表已重新加载
 
 commands.tconevo.tconevoclient.usage=/tconevoclient <matrenderinfo>
 commands.tconevo.tconevoclient.matrenderinfo.failure_nopart=手持一个匠魂工具部件后再尝试使用本指令！
 
 tconevo.info.energized_trait_conflict=两种充能特性相冲突！
-tconevo.info.artifact_sealed=无法改动已被封装的“手工艺品”！
+tconevo.info.artifact_sealed=无法改动未启封的“匠心之作”！
 
 tconevo.gui.preview_material_render.refresh=重载渲染信息
 tconevo.gui.preview_material_render.nothing_to_render=无待渲染目标！
