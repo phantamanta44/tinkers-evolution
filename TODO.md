@@ -691,6 +691,10 @@
 * [x] quicksilver
     * magic: modifiable 2
 
+### other stuff
+
+* [ ] allow infusion enchantment of tinkers' construct tools
+
 ## thermal series
 
 ### materials
