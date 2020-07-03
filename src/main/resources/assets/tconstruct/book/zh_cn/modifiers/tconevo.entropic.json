@@ -1,0 +1,17 @@
+{
+  "modifier": "tconevo.entropic",
+  "text": [
+    {
+      "text": "为武器加装强大的神龙能量核心，使其能够对敌人的能量护盾施放极高的熵。"
+    }
+  ],
+  "effects": [
+    "提升对能量护盾的破击能力",
+    "多个等级"
+  ],
+  "demoTool": [
+    "tconstruct:broadsword",
+    "tconstruct:cleaver",
+    "tconstruct:arrow"
+  ]
+}

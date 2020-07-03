@@ -1,0 +1,16 @@
+{
+  "armormodifier": "tconevo.gaia_will_ahrim_armor",
+  "text": [
+    {
+      "text": "以微小的远古意志碎片为盔甲注入新的进击神力。在艾琳的意志庇佑下，你的攻击将削弱敌人的气力，使其短时间内罹患虚弱效果。"
+    }
+  ],
+  "effects": [
+    "暴击施加重度虚弱效果",
+    "不可与其它意志并存",
+    "只能强化一次"
+  ],
+  "demoArmor": [
+    "conarm:helmet"
+  ]
+}

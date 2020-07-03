@@ -1,0 +1,18 @@
+{
+  "modifier": "tconevo.flux_burn",
+  "text": [
+    {
+      "text": "以飞龙能量核心充当能量虹吸装置，使原本保护着敌人的能量护盾倒戈向己。"
+    }
+  ],
+  "effects": [
+    "按一定比例燃灭敌方的护盾能量",
+    "部分被燃灭的能量将反噬其主",
+    "多个等级"
+  ],
+  "demoTool": [
+    "tconstruct:broadsword",
+    "tconstruct:cleaver",
+    "tconstruct:arrow"
+  ]
+}

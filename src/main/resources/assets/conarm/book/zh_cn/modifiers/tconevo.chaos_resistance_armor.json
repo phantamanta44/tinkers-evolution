@@ -1,0 +1,19 @@
+{
+  "armormodifier": "tconevo.chaos_resistance_armor",
+  "text": [
+    {
+      "text": "同混沌之心调谐而成的装甲板，可在一定程度上抵御其造成的慢性负面效果。"
+    }
+  ],
+  "effects": [
+    "减少任何外来的混沌伤害",
+    "分摊至每件盔甲",
+    "多个等级"
+  ],
+  "demoArmor": [
+    "conarm:helmet",
+    "conarm:chestplate",
+    "conarm:leggings",
+    "conarm:boots"
+  ]
+}

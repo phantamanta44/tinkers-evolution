@@ -1,0 +1,19 @@
+{
+  "armormodifier": "tconevo.absorption_armor",
+  "text": [
+    {
+      "text": "通过为装甲板注入伤害吸收之书的力量来使其发挥更强的防护作用。"
+    }
+  ],
+  "effects": [
+    "获得伤害吸收生命值",
+    "与伤害吸收效果类似",
+    "多个等级"
+  ],
+  "demoArmor": [
+    "conarm:helmet",
+    "conarm:chestplate",
+    "conarm:leggings",
+    "conarm:boots"
+  ]
+}

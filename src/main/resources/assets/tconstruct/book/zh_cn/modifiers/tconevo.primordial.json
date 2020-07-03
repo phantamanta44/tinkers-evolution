@@ -1,0 +1,18 @@
+{
+  "modifier": "tconevo.primordial",
+  "text": [
+    {
+      "text": "赋予至纯至臻的混沌，穿越时间空间的本质。没有任何实在的物质或玄妙的魔法能与之抗衡。"
+    }
+  ],
+  "effects": [
+    "造成的伤害将有一部分被转化为混沌伤害",
+    "绕过绝大多数的防御手段",
+    "多个等级"
+  ],
+  "demoTool": [
+    "tconstruct:broadsword",
+    "tconstruct:cleaver",
+    "tconstruct:arrow"
+  ]
+}
