@@ -1,27 +1,34 @@
 package xyz.phanta.tconevo.coremod;
 
-import net.minecraft.launchwrapper.IClassTransformer;
-import org.objectweb.asm.*;
+import org.objectweb.asm.ClassVisitor;
+import org.objectweb.asm.MethodVisitor;
+import org.objectweb.asm.Opcodes;
+
+import java.util.function.Consumer;
 
 // gregtech has code that forces crashes in deobf environments if any bad recipes are registered
 // gregicality has code that always registers a bad recipe
 // this is a stupid workaround that allows these mods to load in a deobf environment
-public class ClassTransformerGregTechRecipeCrash implements IClassTransformer {
+public class TransformGregTechRecipeCrash implements TconEvoClassTransformer.Transform {
 
     @Override
-    public byte[] transform(String name, String transformedName, byte[] code) {
-        if (transformedName.equals("gregtech.GregTechMod")) {
-            ClassReader reader = new ClassReader(code);
-            ClassWriter writer = new ClassWriter(reader, 0);
-            reader.accept(new ClassTransformerGregTechMod(Opcodes.ASM5, writer), 0);
-            return writer.toByteArray();
-        }
-        return code;
+    public String getName() {
+        return "GregTech Recipe Crash Prevention";
+    }
+
+    @Override
+    public void getClasses(Consumer<String> collector) {
+        collector.accept("gregtech.GregTechMod");
+    }
+
+    @Override
+    public ClassVisitor createTransformer(String className, int apiVersion, ClassVisitor downstream) {
+        return new ClassTransformerGregTechMod(apiVersion, downstream);
     }
 
     private static class ClassTransformerGregTechMod extends ClassVisitor {
 
-        public ClassTransformerGregTechMod(int api, ClassWriter cv) {
+        public ClassTransformerGregTechMod(int api, ClassVisitor cv) {
             super(api, cv);
         }
 

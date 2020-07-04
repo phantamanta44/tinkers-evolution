@@ -9,14 +9,7 @@ public class TconEvoCoreMod implements IFMLLoadingPlugin {
 
     @Override
     public String[] getASMTransformerClass() {
-        String pkg = TconEvoCoreMod.class.getPackage().getName() + ".";
-        return new String[] {
-                pkg + "ClassTransformerItemStackBar",
-                pkg + "ClassTransformerItemSensitiveModifiers",
-                pkg + "ClassTransformerAstralAttunement",
-                pkg + "ClassTransformerUniquePartTraits",
-                pkg + "ClassTransformerGregTechRecipeCrash"
-        };
+        return new String[] { TconEvoCoreMod.class.getPackage().getName() + ".TconEvoClassTransformer" };
     }
 
     @Nullable
