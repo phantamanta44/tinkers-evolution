@@ -1,0 +1,20 @@
+{
+  "armormodifier": "tconevo.photovoltaic_armor",
+  "text": [
+    {
+      "text": "Rigging a solar panel to your armour's internal battery gives you a simple and easy way to recharge on the go."
+    }
+  ],
+  "effects": [
+    "The armour will recharge itself under the sun",
+    "Charge rate depends on the item used to apply the modifier",
+    "Only applicable for energized armour",
+    "Single level"
+  ],
+  "demoArmor": [
+    "conarm:helmet",
+    "conarm:chestplate",
+    "conarm:leggings",
+    "conarm:boots"
+  ]
+}

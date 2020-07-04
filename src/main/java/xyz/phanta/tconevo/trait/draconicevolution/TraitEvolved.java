@@ -28,6 +28,7 @@ import slimeknights.tconstruct.library.utils.TinkerUtil;
 import slimeknights.tconstruct.tools.modifiers.ModReinforced;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.TconEvoMod;
+import xyz.phanta.tconevo.capability.RatedEnergyStorage;
 import xyz.phanta.tconevo.client.event.ItemStackBarEvent;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.trait.base.EnergeticModifier;
@@ -195,7 +196,7 @@ public class TraitEvolved extends AbstractTrait implements EnergeticModifier {
         }
     }
 
-    public static class EvolvedCap implements IEnergyStorage {
+    public static class EvolvedCap implements RatedEnergyStorage {
 
         public static final String TAG_ENERGY = "EvolvedEnergy";
 
@@ -206,11 +207,13 @@ public class TraitEvolved extends AbstractTrait implements EnergeticModifier {
         }
 
         @Override
-        public int receiveEnergy(int maxReceive, boolean simulate) {
+        public int receiveEnergy(int maxReceive, boolean simulate, boolean ignoreTfrRate) {
             int tier = getEvolvedTier(stack);
             int stored = getEnergyStored(), capacity = getMaxEnergyStored(tier);
-            int toTransfer = Math.min(Math.min(maxReceive, capacity - stored),
-                    TconEvoConfig.moduleDraconicEvolution.getRfTransfer(tier));
+            int toTransfer = Math.min(maxReceive, capacity - stored);
+            if (!ignoreTfrRate) {
+                toTransfer = Math.min(toTransfer, TconEvoConfig.moduleDraconicEvolution.getRfTransfer(tier));
+            }
             if (toTransfer > 0 && !simulate) {
                 setEnergyStored(stored + toTransfer);
             }
@@ -218,7 +221,7 @@ public class TraitEvolved extends AbstractTrait implements EnergeticModifier {
         }
 
         @Override
-        public int extractEnergy(int maxExtract, boolean simulate) {
+        public int extractEnergy(int maxExtract, boolean simulate, boolean ignoreTfrRate) {
             int stored = getEnergyStored();
             int toTransfer = Math.min(maxExtract, stored);
             if (toTransfer > 0 && !simulate) {

@@ -51,7 +51,7 @@ public class TraitPiezoelectric extends AbstractTrait {
             return;
         }
         for (int i = 0; i < recipients.size(); i++) {
-            recipients.get(i).inject((int)Math.round(energy * (missing.get(i) / (double)totalMissing)), true);
+            recipients.get(i).inject((int)Math.round(energy * (missing.get(i) / (double)totalMissing)), true, true);
         }
     }
 

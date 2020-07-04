@@ -56,6 +56,7 @@ public class NameConst {
     public static final String TRAIT_VAMPIRIC = TconEvoMod.MOD_ID + ".vampiric";
     public static final String MOD_ARTIFACT = TconEvoMod.MOD_ID + ".artifact";
     public static final String MOD_FLUXED = TconEvoMod.MOD_ID + ".fluxed";
+    public static final String MOD_PHOTOVOLTAIC = TconEvoMod.MOD_ID + ".photovoltaic";
 
     public static final String ARMOUR_SUFFIX = "_armor";
     public static final String ARMOUR_TRAIT_ENERGIZED = TRAIT_ENERGIZED + ARMOUR_SUFFIX;
@@ -77,6 +78,7 @@ public class NameConst {
     public static final String TRAIT_THUNDERGOD_FAVOUR = TconEvoMod.MOD_ID + ".thundergod_favour", ARMOUR_TRAIT_THUNDERGOD_FAVOUR = TRAIT_THUNDERGOD_FAVOUR + ARMOUR_SUFFIX;
     public static final String TRAIT_WILL_STRENGTH = TconEvoMod.MOD_ID + ".will_strength", ARMOUR_TRAIT_WILL_STRENGTH = TRAIT_WILL_STRENGTH + ARMOUR_SUFFIX;
     public static final String ARMOUR_MOD_FLUXED = MOD_FLUXED + ARMOUR_SUFFIX;
+    public static final String ARMOUR_MOD_PHOTOVOLTAIC = MOD_PHOTOVOLTAIC + ARMOUR_SUFFIX;
 
     // actually additions
 

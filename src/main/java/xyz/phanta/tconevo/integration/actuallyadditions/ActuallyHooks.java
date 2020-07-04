@@ -23,6 +23,8 @@ public interface ActuallyHooks extends IntegrationHooks {
 
     Optional<ItemStack> getItemBatteryPenta();
 
+    Optional<ItemStack> getItemSolarPanel();
+
     @Reflected
     class Noop implements ActuallyHooks {
 
@@ -48,6 +50,11 @@ public interface ActuallyHooks extends IntegrationHooks {
 
         @Override
         public Optional<ItemStack> getItemBatteryPenta() {
+            return Optional.empty();
+        }
+
+        @Override
+        public Optional<ItemStack> getItemSolarPanel() {
             return Optional.empty();
         }
 

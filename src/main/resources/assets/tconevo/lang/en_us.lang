@@ -153,6 +153,9 @@ modifier.tconevo.artifact.desc=§oOne-of-a-kind!§r\nThis tool cannot be modifie
 modifier.tconevo.artifact.unsealed=Unsealed
 modifier.tconevo.fluxed.name=Fluxed
 modifier.tconevo.fluxed.desc=§oIt's been years!§r\nThis tool consumes energy before durability.
+modifier.tconevo.photovoltaic.name=Photovoltaic
+modifier.tconevo.photovoltaic.desc=§oEmissions-free!§r\nThis tool absorbs sunlight to recharge itself.
+modifier.tconevo.photovoltaic.extra=Solar Power: %s
 
 modifier.tconevo.bulwark_armor.name=Bulwark
 modifier.tconevo.bulwark_armor.desc=§oBlocked!§r\nThis armour reduces incoming damage by one heart, to a minimum of one heart.
@@ -196,6 +199,8 @@ modifier.tconevo.will_strength_armor.name=Strength of Will
 modifier.tconevo.will_strength_armor.desc=§oMaintaining focus!§r\nThis armour grants immortality when hit at full health.
 modifier.tconevo.fluxed_armor.name=Fluxed
 modifier.tconevo.fluxed_armor.desc=§oIt's been years!§r\nThis armour consumes energy before durability.
+modifier.tconevo.photovoltaic_armor.name=Photovoltaic
+modifier.tconevo.photovoltaic_armor.desc=§oEmissions-free!§r\nThis armour absorbs sunlight to recharge itself.
 
 material.black_quartz.name=Black Quartz
 material.restonia_crystal.name=Restonia Crystal

@@ -15,6 +15,8 @@ import java.util.function.Function;
 
 public abstract class PowerWrapper {
 
+    public static final double RF_PER_EU = 2.5D;
+
     @Nullable
     private static Map<Capability<?>, Function<ICapabilityProvider, PowerWrapper>> wrapperFactories = null;
 
@@ -49,12 +51,12 @@ public abstract class PowerWrapper {
 
     public abstract int getEnergyMax();
 
-    public abstract int inject(int amount, boolean commit);
+    public abstract int inject(int amount, boolean commit, boolean ignoreTfrRate);
 
-    public abstract int extract(int amount, boolean commit);
+    public abstract int extract(int amount, boolean commit, boolean ignoreTfrRate);
 
     public boolean consume(int amount, EntityLivingBase user, boolean commit) {
-        return extract(amount, commit) >= amount;
+        return extract(amount, commit, true) >= amount;
     }
 
     private static class Fluxed extends PowerWrapper {
@@ -76,20 +78,22 @@ public abstract class PowerWrapper {
         }
 
         @Override
-        public int inject(int amount, boolean commit) {
-            return energy.receiveEnergy(amount, !commit);
+        public int inject(int amount, boolean commit, boolean ignoreTfrRate) {
+            return energy instanceof RatedEnergyStorage
+                    ? ((RatedEnergyStorage)energy).receiveEnergy(amount, !commit, ignoreTfrRate)
+                    : energy.receiveEnergy(amount, !commit);
         }
 
         @Override
-        public int extract(int amount, boolean commit) {
-            return energy.extractEnergy(amount, !commit);
+        public int extract(int amount, boolean commit, boolean ignoreTfrRate) {
+            return energy instanceof RatedEnergyStorage
+                    ? ((RatedEnergyStorage)energy).extractEnergy(amount, !commit, ignoreTfrRate)
+                    : energy.extractEnergy(amount, !commit);
         }
 
     }
 
     private static class Electric extends PowerWrapper {
-
-        private static final double RF_PER_EU = 2.5D;
 
         private final EuStore energy;
 
@@ -108,13 +112,13 @@ public abstract class PowerWrapper {
         }
 
         @Override
-        public int inject(int amount, boolean commit) {
-            return (int)Math.ceil(energy.injectEu(amount / RF_PER_EU, true, commit) * RF_PER_EU);
+        public int inject(int amount, boolean commit, boolean ignoreTfrRate) {
+            return (int)Math.ceil(energy.injectEu(amount / RF_PER_EU, ignoreTfrRate, commit) * RF_PER_EU);
         }
 
         @Override
-        public int extract(int amount, boolean commit) {
-            return (int)Math.floor(energy.extractEu(amount / RF_PER_EU, true, commit) * RF_PER_EU);
+        public int extract(int amount, boolean commit, boolean ignoreTfrRate) {
+            return (int)Math.floor(energy.extractEu(amount / RF_PER_EU, ignoreTfrRate, commit) * RF_PER_EU);
         }
 
         @Override

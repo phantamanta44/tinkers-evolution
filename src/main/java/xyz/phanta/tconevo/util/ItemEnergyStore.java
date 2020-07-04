@@ -3,8 +3,9 @@ package xyz.phanta.tconevo.util;
 import io.github.phantamanta44.libnine.util.helper.OptUtils;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.energy.IEnergyStorage;
+import xyz.phanta.tconevo.capability.RatedEnergyStorage;
 
-public abstract class ItemEnergyStore implements IEnergyStorage {
+public abstract class ItemEnergyStore implements RatedEnergyStorage {
 
     protected final ItemStack stack;
 
@@ -17,12 +18,14 @@ public abstract class ItemEnergyStore implements IEnergyStorage {
     public abstract double getEnergyTransferDivider();
 
     @Override
-    public int receiveEnergy(int maxReceive, boolean simulate) {
+    public int receiveEnergy(int maxReceive, boolean simulate, boolean ignoreTfrRate) {
         int stored = getEnergyStored(), capacity = getMaxEnergyStored();
         int toTransfer = Math.min(maxReceive, capacity - stored);
-        double rateLimit = getEnergyTransferDivider();
-        if (rateLimit > 0D) {
-            toTransfer = Math.min(toTransfer, (int)Math.ceil(capacity / rateLimit));
+        if (!ignoreTfrRate) {
+            double rateLimit = getEnergyTransferDivider();
+            if (rateLimit > 0D) {
+                toTransfer = Math.min(toTransfer, (int)Math.ceil(capacity / rateLimit));
+            }
         }
         if (toTransfer > 0 && !simulate) {
             setEnergyStored(stored + toTransfer);
@@ -31,7 +34,7 @@ public abstract class ItemEnergyStore implements IEnergyStorage {
     }
 
     @Override
-    public int extractEnergy(int maxExtract, boolean simulate) {
+    public int extractEnergy(int maxExtract, boolean simulate, boolean ignoreTfrRate) {
         int stored = getEnergyStored();
         int toTransfer = Math.min(maxExtract, stored);
         if (toTransfer > 0 && !simulate) {

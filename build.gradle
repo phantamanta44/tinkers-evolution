@@ -13,7 +13,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: "com.wynprice.cursemaven"
 
-version = "1.0.23"
+version = "1.0.24"
 group = "xyz.phanta.tconevo"
 archivesBaseName = "tconevo-1.12.2"
 
@@ -80,17 +80,21 @@ dependencies {
     deobfCompile "curse.maven:industrial-foregoing:2745321"
     deobfCompile 'appeng:appliedenergistics2:rv6-stable-7'
     deobfCompile "curse.maven:mekanism:2835175" // 9.8.3.390
+    deobfCompile "curse.maven:mekanism-generators:2835177" // 9.8.3.390
     deobfCompile "curse.maven:actually-additions:2844115" // r151-2
     deobfCompile "curse.maven:thaumcraft:2629023" // 6.1.BETA26
     deobfCompile "curse.maven:astral-sorcery:2971187" // 1.10.24
     deobfCompile "com.wayoftime.bloodmagic:BloodMagic:1.12.2-2.4.3-105"
     deobfCompile "com.progwml6.natura:natura:1.12.2-4.3.2.69"
     deobfCompile "curse.maven:projecte:2702991" // 1.4.1
+    deobfCompile "curse.maven:valkyriecompat:2691540" // 2.0.20.1
+    deobfCompile "curse.maven:valkyrielib:2691542" // 2.0.20.1
     deobfCompile "curse.maven:environmental-tech:2691536" // 2.0.20.1
     deobfCompile "curse.maven:industrial-craft:2746892" // 2.8.170-ex112
     deobfCompile "curse.maven:advanced-solar-panels:2652182" // 4.2.1
     deobfCompile "curse.maven:natural-absorption:2678478" // 1.0.0
     deobfCompile "curse.maven:redstone-repository-revolved:2695517" // 1.4.0-dev
+    deobfCompile "curse.maven:solar-flux-reborn:2887575" // 12.3.8
 }
 
 // when forgegradle deobfs dependency jars, it'll try to cheat and grab the sources jar and remap *that* to avoid decompiling

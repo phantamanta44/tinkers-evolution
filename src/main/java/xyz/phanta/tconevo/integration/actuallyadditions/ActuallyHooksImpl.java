@@ -1,10 +1,14 @@
 package xyz.phanta.tconevo.integration.actuallyadditions;
 
+import de.ellpeck.actuallyadditions.mod.blocks.InitBlocks;
 import de.ellpeck.actuallyadditions.mod.items.InitItems;
 import de.ellpeck.actuallyadditions.mod.items.metalists.TheCrystals;
+import de.ellpeck.actuallyadditions.mod.tile.TileEntityFurnaceSolar;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.oredict.OreDictionary;
+import xyz.phanta.tconevo.trait.ModifierPhotovoltaic;
 import xyz.phanta.tconevo.util.Reflected;
 
 import java.util.Optional;
@@ -20,6 +24,11 @@ public class ActuallyHooksImpl implements ActuallyHooks {
         OreDictionary.registerOre("crystalVoid", createCrystalStack(TheCrystals.COAL));
         OreDictionary.registerOre("crystalEmeraldic", createCrystalStack(TheCrystals.EMERALD));
         OreDictionary.registerOre("crystalEnori", createCrystalStack(TheCrystals.IRON));
+    }
+
+    @Override
+    public void onPostInit(FMLPostInitializationEvent event) {
+        ModifierPhotovoltaic.registerSolarItem(new ItemStack(InitBlocks.blockFurnaceSolar), TileEntityFurnaceSolar.PRODUCE * 20);
     }
 
     private static ItemStack createCrystalStack(TheCrystals type) {
@@ -49,6 +58,11 @@ public class ActuallyHooksImpl implements ActuallyHooks {
     @Override
     public Optional<ItemStack> getItemBatteryPenta() {
         return Optional.of(new ItemStack(InitItems.itemBatteryQuintuple));
+    }
+
+    @Override
+    public Optional<ItemStack> getItemSolarPanel() {
+        return Optional.of(new ItemStack(InitBlocks.blockFurnaceSolar));
     }
 
 }

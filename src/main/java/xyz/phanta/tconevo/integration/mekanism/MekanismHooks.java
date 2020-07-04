@@ -15,11 +15,25 @@ public interface MekanismHooks extends IntegrationHooks {
 
     Optional<ItemStack> getItemEnergyTablet();
 
+    Optional<ItemStack> getItemSolarGen();
+
+    Optional<ItemStack> getItemSolarGenAdv();
+
     @Reflected
     class Noop implements MekanismHooks {
 
         @Override
         public Optional<ItemStack> getItemEnergyTablet() {
+            return Optional.empty();
+        }
+
+        @Override
+        public Optional<ItemStack> getItemSolarGen() {
+            return Optional.empty();
+        }
+
+        @Override
+        public Optional<ItemStack> getItemSolarGenAdv() {
             return Optional.empty();
         }
 
