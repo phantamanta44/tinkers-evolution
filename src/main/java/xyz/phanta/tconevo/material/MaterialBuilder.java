@@ -167,22 +167,24 @@ public class MaterialBuilder {
         }
         material = new Material(matId, colour, true);
         try {
-            material.setCraftable(craftable);
-            if (castable) {
-                material.setCastable(true);
-                registerFluid(material);
-            } else {
-                material.setCastable(false);
+            if (notBlacklisted) {
+                material.setCraftable(craftable);
+                if (castable) {
+                    material.setCastable(true);
+                    registerFluid(material);
+                } else {
+                    material.setCastable(false);
+                }
             }
             for (IMaterialStats statsObj : materialStats) {
                 TinkerRegistry.addMaterialStats(material, statsObj);
             }
-            MaterialDefinition.register(material, form, oreName, conditions, traits);
             if (notBlacklisted) {
+                MaterialDefinition.register(material, form, oreName, conditions, traits);
                 TinkerRegistry.addMaterial(material);
+                // override material owner since libnine invokes the static initializers
+                TconReflect.overrideMaterialOwnerMod(material, TconEvoMod.INSTANCE);
             }
-            // override material owner since libnine invokes the static initializers
-            TconReflect.overrideMaterialOwnerMod(material, TconEvoMod.INSTANCE);
         } catch (Exception e) {
             TconEvoMod.LOGGER.error("Encountered exception while building material {}", matId);
             TconEvoMod.LOGGER.error("Stack trace:", e);
