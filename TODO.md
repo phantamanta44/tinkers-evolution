@@ -699,7 +699,8 @@
 
 ### other stuff
 
-* [ ] allow infusion enchantment of tinkers' construct tools
+* [x] add thaumonomicon entries for tconevo stuff
+* [x] allow infusion enchantment of tinkers' construct tools
 
 ## thermal series
 

@@ -1,14 +1,18 @@
 package xyz.phanta.tconevo.integration.conarm;
 
+import c4.conarm.common.armor.utils.ArmorHelper;
 import c4.conarm.lib.events.ArmoryEvent;
 import c4.conarm.lib.modifiers.ArmorModifierTrait;
 import c4.conarm.lib.tinkering.ArmorBuilder;
 import c4.conarm.lib.tinkering.TinkersArmor;
 import c4.conarm.lib.utils.RecipeMatchHolder;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.DamageSource;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -86,6 +90,13 @@ public class ConArmHooksImpl implements ConArmHooks {
     @Override
     public boolean isTinkerArmour(ItemStack stack) {
         return stack.getItem() instanceof TinkersArmor;
+    }
+
+    @Override
+    public void damageArmour(ItemStack stack, int amount, EntityLivingBase wearer) {
+        if (wearer instanceof EntityPlayer) { // this probably won't cause any huge issues
+            ArmorHelper.damageArmor(stack, DamageSource.GENERIC, amount, (EntityPlayer)wearer);
+        }
     }
 
 }

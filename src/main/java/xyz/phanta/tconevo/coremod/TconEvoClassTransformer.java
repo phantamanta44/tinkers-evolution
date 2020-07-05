@@ -21,6 +21,7 @@ public class TconEvoClassTransformer implements IClassTransformer {
                 new TransformGregTechRecipeCrash(),
                 new TransformItemSensitiveModifiers(),
                 new TransformItemStackBar(),
+                new TransformThaumInfusionEnchantment(),
                 new TransformUniquePartTraits())) {
             tform.getClasses(c -> TRANSFORMS.put(c, tform));
         }

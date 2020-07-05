@@ -558,3 +558,17 @@ upgrade.level.1=Basic
 upgrade.level.2=Wyvern
 upgrade.level.3=Draconic
 upgrade.level.4=Chaotic
+
+tc.research_category.TCONEVO=Toolsmithing
+
+tconevo.thaumresearch.base.title=Basic Toolsmithing
+tconevo.thaumresearch.base.stage.1=Through my study of alchemical metallurgy, I've discovered a means of fashioning powerful tools and weapons from magical metals. However, this equipment can be quite bland. Sometimes, I wish I had something more exciting than these cut-and-paste swords and shovels.<BR>It might be possible to shape these fantastic materials into more modular forms...
+tconevo.thaumresearch.base.stage.2=By combining my thaumaturgical prowess and the art of tool-tinkering, I've managed to devise a means of building modular tools using magical metals and materials.<BR>Most materials should be easy enough to work with by hand, but metals will likely need to be melted down in order to shape them into tools.
+research.f_tconevo.tool_table.text=Study a means of building tools
+
+tconevo.thaumresearch.primal_metal.title=Primal Metal
+tconevo.thaumresearch.primal_metal.stage.1=By coalescing the potent swirling energies of the primordial pearl into a metal form, I might be able to construct tools suffused with immense magical potential.
+tconevo.thaumresearch.primal_metal.stage.2=The strangely iridescent metal I've created seems to react very violently to objects of this plane. When it comes in contact with mundane matter, it breaks it down into its most basic elements in a burst of magical energy.<BR>Perhaps I can use this property to enhance the abilities of my weapons...?
+
+tconevo.thaumresearch.infusion_ench.title=Tinkers' Infusion Enchantment
+tconevo.thaumresearch.infusion_ench.stage.1=The infusion enchantment process that I designed for simple tools and weapons also seems to work as expected for modular equipment. I should keep this in mind when I go back to the forge.
