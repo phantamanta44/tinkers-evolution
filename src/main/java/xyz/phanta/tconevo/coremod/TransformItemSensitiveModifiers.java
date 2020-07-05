@@ -85,7 +85,7 @@ public class TransformItemSensitiveModifiers implements TconEvoClassTransformer.
                     case "canApply":
                         super.visitVarInsn(Opcodes.ALOAD, state);
                         super.visitMethodInsn(Opcodes.INVOKESTATIC,
-                                "xyz/phanta/tconevo/handler/ItemSensitiveModificationHandler",
+                                "xyz/phanta/tconevo/handler/ItemSensitiveModificationCoreHooks",
                                 "canApply",
                                 "(Lslimeknights/tconstruct/library/modifiers/IModifier;Lnet/minecraft/item/ItemStack;Lnet/minecraft/item/ItemStack;Lslimeknights/mantle/util/RecipeMatch$Match;)Z",
                                 false);
@@ -93,7 +93,7 @@ public class TransformItemSensitiveModifiers implements TconEvoClassTransformer.
                     case "apply":
                         super.visitVarInsn(Opcodes.ALOAD, state);
                         super.visitMethodInsn(Opcodes.INVOKESTATIC,
-                                "xyz/phanta/tconevo/handler/ItemSensitiveModificationHandler",
+                                "xyz/phanta/tconevo/handler/ItemSensitiveModificationCoreHooks",
                                 "apply",
                                 "(Lslimeknights/tconstruct/library/modifiers/IModifier;Lnet/minecraft/item/ItemStack;Lslimeknights/mantle/util/RecipeMatch$Match;)V",
                                 false);

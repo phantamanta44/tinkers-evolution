@@ -11,7 +11,7 @@ import xyz.phanta.tconevo.integration.conarm.ConArmHooks;
 import xyz.phanta.tconevo.util.Reflected;
 
 // methods aren't reflected, but are invoked from code injected by the coremod
-public class TinkerToolPropHandler {
+public class TinkerToolPropCoreHooks {
 
     @Reflected
     public static void damageItem(ItemStack stack, int amount, EntityLivingBase wielder) {

@@ -105,11 +105,10 @@ public class TransformItemStackBar implements TconEvoClassTransformer.Transform 
             super.visitVarInsn(Opcodes.ILOAD, 4);
             super.visitMethodInsn(
                     Opcodes.INVOKESTATIC,
-                    "xyz/phanta/tconevo/client/handler/ItemStackBarHandler",
+                    "xyz/phanta/tconevo/client/handler/ItemStackBarCoreHooks",
                     "handleRender",
                     "(Lnet/minecraft/item/ItemStack;II)V",
                     false);
-            System.out.println("[tconevo] Successfully injected item stack bar overlay handler.");
         }
 
     }

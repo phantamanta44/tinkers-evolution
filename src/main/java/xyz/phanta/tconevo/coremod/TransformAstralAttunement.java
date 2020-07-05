@@ -76,7 +76,7 @@ public class TransformAstralAttunement implements TconEvoClassTransformer.Transf
                         // but the default attunement altar impl only assumes that it's an Item
                         // passes both the item and stack because it's easier to not have to rewrite the getItem call
                         super.visitMethodInsn(Opcodes.INVOKESTATIC,
-                                "xyz/phanta/tconevo/integration/astralsorcery/AttunementGenerifyHandler",
+                                "xyz/phanta/tconevo/integration/astralsorcery/AttunementGenerifyCoreHooks",
                                 "getTunedItemVariant",
                                 "(Lnet/minecraft/item/Item;)Lnet/minecraft/item/Item;",
                                 false);
@@ -89,7 +89,7 @@ public class TransformAstralAttunement implements TconEvoClassTransformer.Transf
                         super.visitMethodInsn(Opcodes.INVOKESPECIAL, "net/minecraft/item/ItemStack", "<init>", desc, false);
                         super.visitVarInsn(Opcodes.ALOAD, untunedStackVar);
                         super.visitMethodInsn(Opcodes.INVOKESTATIC,
-                                "xyz/phanta/tconevo/integration/astralsorcery/AttunementGenerifyHandler",
+                                "xyz/phanta/tconevo/integration/astralsorcery/AttunementGenerifyCoreHooks",
                                 "copyUnattunedStackProperties",
                                 "(Lnet/minecraft/item/ItemStack;Lnet/minecraft/item/ItemStack;)Lnet/minecraft/item/ItemStack;",
                                 false);
@@ -103,7 +103,7 @@ public class TransformAstralAttunement implements TconEvoClassTransformer.Transf
                         case "hellfirepvp/astralsorcery/common/item/crystal/base/ItemTunedCrystalBase":
                             if (name.equals("applyMainConstellation")) {
                                 super.visitMethodInsn(Opcodes.INVOKESTATIC,
-                                        "xyz/phanta/tconevo/integration/astralsorcery/AttunementGenerifyHandler",
+                                        "xyz/phanta/tconevo/integration/astralsorcery/AttunementGenerifyCoreHooks",
                                         "applyMainConstellation",
                                         "(Lnet/minecraft/item/ItemStack;Lhellfirepvp/astralsorcery/common/constellation/IWeakConstellation;)V",
                                         false);
@@ -113,7 +113,7 @@ public class TransformAstralAttunement implements TconEvoClassTransformer.Transf
                         case "hellfirepvp/astralsorcery/common/item/crystal/CrystalProperties":
                             if (name.equals("applyCrystalProperties")) {
                                 super.visitMethodInsn(Opcodes.INVOKESTATIC,
-                                        "xyz/phanta/tconevo/integration/astralsorcery/AttunementGenerifyHandler",
+                                        "xyz/phanta/tconevo/integration/astralsorcery/AttunementGenerifyCoreHooks",
                                         "applyCrystalProperties",
                                         "(Lnet/minecraft/item/ItemStack;Lhellfirepvp/astralsorcery/common/item/crystal/CrystalProperties;)V",
                                         false);

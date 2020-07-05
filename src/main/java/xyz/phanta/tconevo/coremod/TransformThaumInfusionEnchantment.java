@@ -118,7 +118,7 @@ public class TransformThaumInfusionEnchantment implements TconEvoClassTransforme
         @Override
         public void visitMethodInsn(int opcode, String owner, String name, String desc, boolean itf) {
             if (name.equals("damageItem") && owner.equals("net/minecraft/item/ItemStack")) {
-                super.visitMethodInsn(Opcodes.INVOKESTATIC, "xyz/phanta/tconevo/handler/TinkerToolPropHandler",
+                super.visitMethodInsn(Opcodes.INVOKESTATIC, "xyz/phanta/tconevo/handler/TinkerToolPropCoreHooks",
                         "damageItem", "(Lnet/minecraft/item/ItemStack;ILnet/minecraft/entity/EntityLivingBase;)V", false);
             } else if (overwriteIsToolEffective && name.equals("isToolEffective") && owner.equals("net/minecraftforge/common/ForgeHooks")) {
                 // thaumcraft calls ForgeHooks::isToolEffective to check if the tool is effective on the broken block for harvesting
@@ -129,7 +129,7 @@ public class TransformThaumInfusionEnchantment implements TconEvoClassTransforme
                 super.visitMethodInsn(Opcodes.INVOKEVIRTUAL, "net/minecraftforge/event/world/BlockEvent",
                         "getState", "()Lnet/minecraft/block/state/IBlockState;", false);
                 // easier to just leave the extraneous args and pass them unused
-                super.visitMethodInsn(Opcodes.INVOKESTATIC, "xyz/phanta/tconevo/handler/TinkerToolPropHandler",
+                super.visitMethodInsn(Opcodes.INVOKESTATIC, "xyz/phanta/tconevo/handler/TinkerToolPropCoreHooks",
                         "isToolEffective",
                         "(Lnet/minecraft/world/IBlockAccess;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/item/ItemStack;Lnet/minecraft/block/state/IBlockState;)Z",
                         false);
