@@ -5,9 +5,11 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import tk.zeitheron.solarflux.api.SolarFluxAPI;
 import tk.zeitheron.solarflux.api.SolarInfo;
 import xyz.phanta.tconevo.trait.ModifierPhotovoltaic;
+import xyz.phanta.tconevo.util.Reflected;
 
 import java.util.stream.Stream;
 
+@Reflected
 public class SolarFluxHooksImpl implements SolarFluxHooks {
 
     @Override
