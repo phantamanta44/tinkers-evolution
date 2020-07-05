@@ -9,6 +9,7 @@ import xyz.phanta.tconevo.integration.actuallyadditions.ActuallyHooks;
 import xyz.phanta.tconevo.integration.advsolars.AdvSolarHooks;
 import xyz.phanta.tconevo.integration.astralsorcery.AstralConstellation;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
+import xyz.phanta.tconevo.integration.enderio.EnderIoHooks;
 import xyz.phanta.tconevo.integration.envtech.EnvTechHooks;
 import xyz.phanta.tconevo.integration.ic2.Ic2Hooks;
 import xyz.phanta.tconevo.integration.mekanism.MekanismHooks;
@@ -77,6 +78,7 @@ public class TconEvoTraits {
     public static final TraitRuination TRAIT_RUINATION = new TraitRuination();
     public static final TraitSundering TRAIT_SUNDERING = new TraitSundering();
     public static final TraitStaggering TRAIT_STAGGERING = new TraitStaggering();
+    public static final TraitThundergodWrath TRAIT_THUNDERGOD_WRATH = new TraitThundergodWrath();
     public static final TraitVampiric TRAIT_VAMPIRIC = new TraitVampiric();
     public static final ModifierArtifact MOD_ARTIFACT = new ModifierArtifact();
     public static final ModifierFluxed MOD_FLUXED = new ModifierFluxed();
@@ -168,6 +170,16 @@ public class TconEvoTraits {
         addModItemOpt(MOD_PRIMORDIAL, DraconicHooks.INSTANCE::getItemChaosShard);
         addModItemOpt(MOD_FLUXED, DraconicHooks.INSTANCE::getItemWyvernCapacitor);
         addModItemOpt(MOD_FLUXED, DraconicHooks.INSTANCE::getItemDraconicCapacitor);
+
+        // ender io
+        addModItemOpt(MOD_FLUXED, EnderIoHooks.INSTANCE::getItemInvChargerSimple);
+        addModItemOpt(MOD_FLUXED, EnderIoHooks.INSTANCE::getItemInvChargerBasic);
+        addModItemOpt(MOD_FLUXED, EnderIoHooks.INSTANCE::getItemInvChargerNormal);
+        addModItemOpt(MOD_FLUXED, EnderIoHooks.INSTANCE::getItemInvChargerVibrant);
+        addModItemOpt(MOD_PHOTOVOLTAIC, EnderIoHooks.INSTANCE::getItemSolarSimple);
+        addModItemOpt(MOD_PHOTOVOLTAIC, EnderIoHooks.INSTANCE::getItemSolarNormal);
+        addModItemOpt(MOD_PHOTOVOLTAIC, EnderIoHooks.INSTANCE::getItemSolarAdvanced);
+        addModItemOpt(MOD_PHOTOVOLTAIC, EnderIoHooks.INSTANCE::getItemSolarVibrant);
 
         // environmental tech
         addModItemOpt(MOD_PHOTOVOLTAIC, EnvTechHooks.INSTANCE::getItemSolarLitherite);

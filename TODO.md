@@ -25,7 +25,7 @@
 * [x] juggernaut: deal increased damage based on own current health with diminishing returns
 * [x] opportunist: deal increased damage to enemies with debuffs
 * [x] force of impact: deal increased damage with higher velocity
-* [ ] thundergod's wrath: fully-charged hits strike lightning on full-health enemies
+* [x] thundergod's wrath: strikes lightning on full-health enemies
 * [x] aftershock: fully-charged hits deal a fixed amount of bonus magical damage
     * higher levels -> more bonus damage
 * [x] corrupting: fully-charged hits inflict increasing levels of wither for a short duration
@@ -373,19 +373,19 @@
 
 ### materials
 
-* [ ] ender crystal
+* [x] ender crystal
     * magic: endspeed
-* [ ] pulsating crystal
+* [x] pulsating crystal
     * magic: enderference
-* [ ] vibrant crystal
+* [x] vibrant crystal
     * magic: chain lightning
-* [ ] weather crystal
+* [x] weather crystal
     * magic: thundergod's wrath
 
 ### other ideas
 
-* [ ] inventory chargers should apply fluxed
-* [ ] maybe allow dark steel upgrades to function as modifiers?
+* [x] inventory chargers should apply fluxed
+* [x] photovoltaic cells should apply photovoltaic
 
 ## env tech
 

@@ -145,6 +145,8 @@ modifier.tconevo.staggering.name=Staggering
 modifier.tconevo.staggering.desc=§o...and stay bashed!§r\nThis weapon briefly immobilizes enemies on fully-charged hits.
 modifier.tconevo.sundering.name=Sundering
 modifier.tconevo.sundering.desc=§oBalance is weakness...§r\nThis weapon weakens attacked enemies.
+modifier.tconevo.thundergod_wrath.name=Thundergod's Wrath
+modifier.tconevo.thundergod_wrath.desc=§oI condemn you!§r\nThis weapon calls down a bolt of lightning upon enemies struck at full health.
 modifier.tconevo.vampiric.name=Vampiric
 modifier.tconevo.vampiric.desc=§oStill befriending mortals?§r\nThis weapon drains life energy from enemies to heal its wielder.
 modifier.tconevo.vampiric.extra=Lifesteal: +%s
@@ -411,6 +413,11 @@ modifier.tconevo.final_guard_armor.name=Final Guard
 modifier.tconevo.final_guard_armor.desc=§oLook out!§r\nThis armour will save you from death if it has enough stored energy.
 modifier.tconevo.final_guard_armor.extra=Final Guard Cost: %s
 modifier.tconevo.final_guard_armor.proc=Your armour's %s has kept you alive!
+
+material.ender_crystal.name=Ender Crystal
+material.pulsating_crystal.name=Pulsating Crystal
+material.vibrant_crystal.name=Vibrant Crystal
+material.weather_crystal.name=Weather Crystal
 
 material.litherite.name=Litherite
 material.erodium.name=Erodium

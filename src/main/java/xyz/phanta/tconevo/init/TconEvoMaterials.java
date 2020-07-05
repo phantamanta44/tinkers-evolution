@@ -37,6 +37,8 @@ public class TconEvoMaterials {
     public static Material LIVINGROCK, LIVINGWOOD, DREAMWOOD, MANASTEEL, TERRASTEEL, ELEMENTIUM, MANA_STRING, MANA_DIAMOND, MANA_PEARL, DRAGONSTONE;
     // draconic evolution
     public static Material DRACONIUM, WYVERN_METAL, DRACONIC_METAL, CHAOTIC_METAL;
+    // ender io
+    public static Material ENDER_CRYSTAL, PULSATING_CRYSTAL, VIBRANT_CRYSTAL, WEATHER_CRYSTAL;
     // environmental tech
     public static Material LITHERITE, ERODIUM, KYRONITE, PLADIUM, IONITE, AETHIUM, LONSDALEITE, MICA;
     // industrial foregoing
@@ -371,6 +373,32 @@ public class TconEvoMaterials {
                 .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_SOUL_REND[2])
                 .build();
         TraitEvolved.registerMaterial(CHAOTIC_METAL, 3);
+
+        // ender io
+        ENDER_CRYSTAL = new MaterialBuilder(NameConst.MAT_ENDER_CRYSTAL, 0x2ed284, MaterialForm.RAW, "itemEnderCrystal")
+                .requiresOres("itemEnderCrystal")
+                .setCraftable()
+                .withStatsMagic(890, 8F, 1F, HarvestLevels.OBSIDIAN)
+                .withTraits(PartType.MAGIC, TinkerTraits.endspeed)
+                .build();
+        PULSATING_CRYSTAL = new MaterialBuilder(NameConst.MAT_PULSATING_CRYSTAL, 0x6df4eb, MaterialForm.RAW, "itemPulsatingCrystal")
+                .requiresOres("itemPulsatingCrystal")
+                .setCraftable()
+                .withStatsMagic(840, 7F, 1.1F, HarvestLevels.OBSIDIAN)
+                .withTraits(PartType.MAGIC, TinkerTraits.enderference)
+                .build();
+        VIBRANT_CRYSTAL = new MaterialBuilder(NameConst.MAT_VIBRANT_CRYSTAL, 0x69c328, MaterialForm.RAW, "itemVibrantCrystal")
+                .requiresOres("itemVibrantCrystal")
+                .setCraftable()
+                .withStatsMagic(1140, 8F, 1.15F, HarvestLevels.OBSIDIAN)
+                .withTraits(PartType.MAGIC, TconEvoTraits.TRAIT_CHAIN_LIGHTNING)
+                .build();
+        WEATHER_CRYSTAL = new MaterialBuilder(NameConst.MAT_WEATHER_CRYSTAL, 0xbe96ca, MaterialForm.RAW, "itemWeatherCrystal")
+                .requiresOres("itemWeatherCrystal")
+                .setCraftable()
+                .withStatsMagic(1420, 8.5F, 1.3F, HarvestLevels.COBALT)
+                .withTraits(PartType.MAGIC, TconEvoTraits.TRAIT_THUNDERGOD_WRATH)
+                .build();
 
         // environmental tech
         LITHERITE = new MaterialBuilder(NameConst.MAT_LITHERITE, 0x0a8352, MaterialForm.GEM, "Litherite")
