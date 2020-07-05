@@ -52,7 +52,7 @@ public class MagicMaterialStats extends AbstractMaterialStats {
     }
 
     public BowMaterialStats asBow(float bonusDmgMult) {
-        return new BowMaterialStats(0F, range, potency * bonusDmgMult);
+        return new BowMaterialStats(1F, range, potency * bonusDmgMult);
     }
 
 }
