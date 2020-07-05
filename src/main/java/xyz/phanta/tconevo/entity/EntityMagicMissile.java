@@ -1,6 +1,8 @@
 package xyz.phanta.tconevo.entity;
 
 import io.github.phantamanta44.libnine.util.format.TextFormatUtils;
+import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.SoundEvents;
@@ -10,10 +12,12 @@ import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import slimeknights.tconstruct.library.entity.EntityProjectileBase;
+import slimeknights.tconstruct.library.events.ProjectileEvent;
 
 public class EntityMagicMissile extends EntityProjectileBase {
 
@@ -69,6 +73,12 @@ public class EntityMagicMissile extends EntityProjectileBase {
     @Override
     public void onHitBlock(RayTraceResult trace) {
         inGround = true; // tells endspeed to stop simulating
+        BlockPos hitBlockPos = trace.getBlockPos();
+        IBlockState hitState = world.getBlockState(hitBlockPos);
+        ProjectileEvent.OnHitBlock.fireEvent(this, getSpeed(), hitBlockPos, hitState);
+        if (hitState.getMaterial() != Material.AIR) {
+            hitState.getBlock().onEntityCollision(world, hitBlockPos, hitState, this);
+        }
         onHitSomething();
     }
 
