@@ -9,6 +9,8 @@ import net.minecraft.world.World;
 import xyz.phanta.tconevo.integration.IntegrationHooks;
 import xyz.phanta.tconevo.util.Reflected;
 
+import java.util.Optional;
+
 public interface Ic2Hooks extends IntegrationHooks {
 
     String MOD_ID = "ic2";
@@ -16,12 +18,19 @@ public interface Ic2Hooks extends IntegrationHooks {
     @Inject(MOD_ID)
     Ic2Hooks INSTANCE = new Noop();
 
+    Optional<ItemStack> getItemSolarPanel();
+
     float getSunlight(World world, BlockPos pos);
 
     boolean consumeEu(ItemStack stack, double amount, EntityLivingBase entity, boolean commit);
 
     @Reflected
     class Noop implements Ic2Hooks {
+
+        @Override
+        public Optional<ItemStack> getItemSolarPanel() {
+            return Optional.empty();
+        }
 
         @Override
         public float getSunlight(World world, BlockPos pos) {

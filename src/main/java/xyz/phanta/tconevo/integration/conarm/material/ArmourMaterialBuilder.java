@@ -3,6 +3,7 @@ package xyz.phanta.tconevo.integration.conarm.material;
 import c4.conarm.lib.materials.CoreMaterialStats;
 import c4.conarm.lib.materials.PlatesMaterialStats;
 import c4.conarm.lib.materials.TrimMaterialStats;
+import net.minecraftforge.fml.common.ModContainer;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.IMaterialStats;
 import slimeknights.tconstruct.library.materials.Material;
@@ -62,7 +63,8 @@ public class ArmourMaterialBuilder {
     public void build() {
         // don't mess with other mods' materials in case they overwrite our materials
         try {
-            if (TinkerRegistry.getTrace(baseMaterial).matches(TconEvoMod.INSTANCE)) {
+            ModContainer owner = TinkerRegistry.getTrace(baseMaterial);
+            if (owner.matches(TconEvoMod.INSTANCE)) {
                 for (IMaterialStats statsObj : materialStats) {
                     TinkerRegistry.addMaterialStats(baseMaterial, statsObj);
                 }

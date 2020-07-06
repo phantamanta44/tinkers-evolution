@@ -12,8 +12,8 @@ import xyz.phanta.tconevo.init.TconEvoCaps;
 import xyz.phanta.tconevo.util.Reflected;
 
 // nothing is actually reflected here; these hooks are called from code injected by the coremod
-// see ClassTransformerAstralAttunement
-public class AttunementGenerifyHandler {
+// see TransformAstralAttunement
+public class AttunementGenerifyCoreHooks {
 
     @Reflected
     public static Item getTunedItemVariant(Item item) {

@@ -5,17 +5,20 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import slimeknights.mantle.util.RecipeMatch;
 import slimeknights.tconstruct.library.Util;
 import slimeknights.tconstruct.library.events.TinkerCraftingEvent;
 import slimeknights.tconstruct.library.modifiers.ModifierAspect;
 import slimeknights.tconstruct.library.modifiers.ModifierTrait;
 import slimeknights.tconstruct.library.tools.ToolCore;
 import xyz.phanta.tconevo.constant.NameConst;
+import xyz.phanta.tconevo.item.ItemMaterial;
+import xyz.phanta.tconevo.trait.base.MatchSensitiveModifier;
 import xyz.phanta.tconevo.util.ToolUtils;
 
 import javax.annotation.Nullable;
 
-public class ModifierArtifact extends ModifierTrait {
+public class ModifierArtifact extends ModifierTrait implements MatchSensitiveModifier {
 
     private static final String LOC_UNSEALED = "modifier.%s.unsealed";
 
@@ -27,9 +30,10 @@ public class ModifierArtifact extends ModifierTrait {
     }
 
     @Override
-    public boolean canApplyCustom(ItemStack stack) {
-        // applying the modifier again unseals the tool
-        return ToolUtils.getTraitLevel(stack, NameConst.MOD_ARTIFACT) == 1 && super.canApplyCustom(stack);
+    public boolean canApplyCustomWithMatch(ItemStack tool, RecipeMatch.Match match) {
+        // the unsealer can only be used to apply level 2 (i.e. unseal the tool)
+        return match.stacks.isEmpty() || !ItemMaterial.Type.ARTIFACT_UNSEALER.matches(match.stacks.get(0))
+                || ToolUtils.getTraitLevel(tool, NameConst.MOD_ARTIFACT) == 1;
     }
 
     @Override

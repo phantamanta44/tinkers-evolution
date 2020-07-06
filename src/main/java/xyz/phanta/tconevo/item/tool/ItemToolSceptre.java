@@ -8,9 +8,11 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.play.server.SPacketAnimation;
 import net.minecraft.util.*;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
@@ -73,7 +75,7 @@ public class ItemToolSceptre extends TinkerToolCore implements IProjectile {
     @Override
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, EnumHand hand) {
         ItemStack stack = player.getHeldItem(hand);
-        if (!ToolHelper.isBroken(stack) && !player.getCooldownTracker().hasCooldown(this)) {
+        if (!ToolHelper.isBroken(stack)) {
             if (!world.isRemote) {
                 if (!player.capabilities.isCreativeMode) {
                     ToolHelper.damageTool(stack, 8, player);
@@ -88,11 +90,14 @@ public class ItemToolSceptre extends TinkerToolCore implements IProjectile {
                 world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.EVOCATION_ILLAGER_CAST_SPELL,
                         SoundCategory.PLAYERS, 1.5F, 0.8F + itemRand.nextFloat() * 0.4F);
                 double atkSpd = player.getEntityAttribute(SharedMonsterAttributes.ATTACK_SPEED).getAttributeValue();
-                player.getCooldownTracker().setCooldown(this, Math.max((int)Math.round(25.6D / atkSpd), 1));
+                player.getCooldownTracker().setCooldown(this, MathUtils.clamp((int)Math.round(25.6D / (data.drawSpeed * atkSpd)), 1, 100));
+                if (player instanceof EntityPlayerMP) {
+                    // item cooldown desyncs very easily, so the swing animation will often just not play on the client
+                    // this is a dumb way of ensuring that the animation actually plays
+                    ((EntityPlayerMP)player).connection.sendPacket(new SPacketAnimation(player, hand == EnumHand.MAIN_HAND ? 0 : 3));
+                }
             }
-            if (world.isRemote) {
-                player.swingArm(hand);
-            }
+            player.swingArm(hand);
             return new ActionResult<>(EnumActionResult.SUCCESS, stack);
         }
         return new ActionResult<>(EnumActionResult.PASS, stack);

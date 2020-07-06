@@ -1,8 +1,6 @@
 package xyz.phanta.tconevo.capability;
 
-import net.minecraftforge.energy.IEnergyStorage;
-
-public interface EnergyShield extends IEnergyStorage {
+public interface EnergyShield extends RatedEnergyStorage {
 
     float getShieldPoints();
 
@@ -56,12 +54,12 @@ public interface EnergyShield extends IEnergyStorage {
         }
 
         @Override
-        public int receiveEnergy(int maxReceive, boolean simulate) {
+        public int receiveEnergy(int maxReceive, boolean simulate, boolean ignoreTfrRate) {
             return 0;
         }
 
         @Override
-        public int extractEnergy(int maxExtract, boolean simulate) {
+        public int extractEnergy(int maxExtract, boolean simulate, boolean ignoreTfrRate) {
             return 0;
         }
 

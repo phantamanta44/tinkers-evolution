@@ -55,7 +55,7 @@ public class ModifierFluxBurn extends ModifierTrait {
                 if (energy != null) {
                     burned = MathUtils.clamp((int)Math.ceil(energy.getEnergy() * burnAmount), minBurn, maxBurn);
                     if (burned > 0) {
-                        totalBurned += energy.extract(burned, true);
+                        totalBurned += energy.extract(burned, true, true);
                     }
                 }
             }

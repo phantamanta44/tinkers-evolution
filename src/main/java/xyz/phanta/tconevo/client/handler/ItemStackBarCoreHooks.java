@@ -10,10 +10,10 @@ import xyz.phanta.tconevo.client.event.ItemStackBarEvent;
 import xyz.phanta.tconevo.util.Reflected;
 
 // adapted from Tinkers' MEMES MemeRenderInterceptor
-public class ItemStackBarHandler {
+public class ItemStackBarCoreHooks {
 
     // this isn't actually reflected; this hook is called from code injected by the coremod
-    // see ClassTransformerItemStackBar
+    // see TransformItemStackBar
     @Reflected
     public static void handleRender(ItemStack stack, int posX, int posY) {
         ItemStackBarEvent event = ItemStackBarEvent.post(stack);

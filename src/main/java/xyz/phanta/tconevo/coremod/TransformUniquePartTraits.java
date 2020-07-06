@@ -1,20 +1,26 @@
 package xyz.phanta.tconevo.coremod;
 
-import net.minecraft.launchwrapper.IClassTransformer;
-import org.objectweb.asm.*;
+import org.objectweb.asm.ClassVisitor;
+import org.objectweb.asm.MethodVisitor;
+import org.objectweb.asm.Opcodes;
 
-public class ClassTransformerUniquePartTraits implements IClassTransformer {
+import java.util.function.Consumer;
+
+public class TransformUniquePartTraits implements TconEvoClassTransformer.Transform {
 
     @Override
-    public byte[] transform(String name, String transformedName, byte[] code) {
-        if (transformedName.equals("slimeknights.tconstruct.library.tinkering.PartMaterialType")) {
-            System.out.println("[tconevo] Injecting part type trait uniqueness check...");
-            ClassReader reader = new ClassReader(code);
-            ClassWriter writer = new ClassWriter(reader, 0);
-            reader.accept(new ClassTransformerPartMaterialType(Opcodes.ASM5, writer), 0);
-            return writer.toByteArray();
-        }
-        return code;
+    public String getName() {
+        return "Part Type Trait Uniqueness";
+    }
+
+    @Override
+    public void getClasses(Consumer<String> collector) {
+        collector.accept("slimeknights.tconstruct.library.tinkering.PartMaterialType");
+    }
+
+    @Override
+    public ClassVisitor createTransformer(String className, int apiVersion, ClassVisitor downstream) {
+        return new ClassTransformerPartMaterialType(apiVersion, downstream);
     }
 
     private static class ClassTransformerPartMaterialType extends ClassVisitor {

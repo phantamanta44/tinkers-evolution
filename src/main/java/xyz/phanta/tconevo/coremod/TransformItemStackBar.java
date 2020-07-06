@@ -1,24 +1,27 @@
 package xyz.phanta.tconevo.coremod;
 
-import net.minecraft.launchwrapper.IClassTransformer;
 import net.minecraftforge.fml.common.asm.transformers.deobf.FMLDeobfuscatingRemapper;
 import org.objectweb.asm.*;
 
 import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
 // adapted from Tinkers' MEMES MemeClassTransformer
-public class ClassTransformerItemStackBar implements IClassTransformer {
+public class TransformItemStackBar implements TconEvoClassTransformer.Transform {
 
     @Override
-    public byte[] transform(String name, String transformedName, byte[] code) {
-        if (transformedName.equals("net.minecraft.client.renderer.RenderItem")) {
-            System.out.println("[tconevo] Injecting item stack bar overlay handler...");
-            ClassReader reader = new ClassReader(code);
-            ClassWriter writer = new ClassWriter(reader, 0);
-            reader.accept(new RenderItemTransformer(Opcodes.ASM5, writer), 0);
-            return writer.toByteArray();
-        }
-        return code;
+    public String getName() {
+        return "Item Stack Bar Render";
+    }
+
+    @Override
+    public void getClasses(Consumer<String> collector) {
+        collector.accept("net.minecraft.client.renderer.RenderItem");
+    }
+
+    @Override
+    public ClassVisitor createTransformer(String className, int apiVersion, ClassVisitor downstream) {
+        return new RenderItemTransformer(apiVersion, downstream);
     }
 
     private static class RenderItemTransformer extends ClassVisitor {
@@ -102,11 +105,10 @@ public class ClassTransformerItemStackBar implements IClassTransformer {
             super.visitVarInsn(Opcodes.ILOAD, 4);
             super.visitMethodInsn(
                     Opcodes.INVOKESTATIC,
-                    "xyz/phanta/tconevo/client/handler/ItemStackBarHandler",
+                    "xyz/phanta/tconevo/client/handler/ItemStackBarCoreHooks",
                     "handleRender",
                     "(Lnet/minecraft/item/ItemStack;II)V",
                     false);
-            System.out.println("[tconevo] Successfully injected item stack bar overlay handler.");
         }
 
     }

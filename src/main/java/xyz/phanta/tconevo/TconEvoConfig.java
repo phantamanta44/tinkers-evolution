@@ -1108,6 +1108,21 @@ public class TconEvoConfig {
 
     }
 
+    @Config.Comment("Configuration for the Environmental Tech module.")
+    public static final EnvironmentalTech moduleEnvironmentalTech = new EnvironmentalTech();
+
+    public static class EnvironmentalTech {
+
+        @Config.Comment({
+                "The divider for the solar generation rate for environmental tech solar cells.",
+                "Since the solar gen rate is balanced around the cost of the controller, we use a divider to account for it.",
+                "For reference, the default generation rate of a litherite cell with no divider is ~60 RF/t"
+        })
+        @Config.RangeDouble(min = 1D, max = Float.MAX_VALUE)
+        public double solarGenDivider = 7.5D;
+
+    }
+
     @Config.Comment("Configuration for the Industrial Foregoing module.")
     public static final IndustrialForegoing moduleIndustrialForegoing = new IndustrialForegoing();
 

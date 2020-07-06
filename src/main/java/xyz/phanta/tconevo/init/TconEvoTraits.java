@@ -6,10 +6,15 @@ import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.integration.actuallyadditions.ActuallyHooks;
+import xyz.phanta.tconevo.integration.advsolars.AdvSolarHooks;
 import xyz.phanta.tconevo.integration.astralsorcery.AstralConstellation;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
+import xyz.phanta.tconevo.integration.enderio.EnderIoHooks;
+import xyz.phanta.tconevo.integration.envtech.EnvTechHooks;
+import xyz.phanta.tconevo.integration.ic2.Ic2Hooks;
 import xyz.phanta.tconevo.integration.mekanism.MekanismHooks;
 import xyz.phanta.tconevo.integration.redstonerepository.RedstoneRepositoryHooks;
+import xyz.phanta.tconevo.integration.solarflux.SolarFluxHooks;
 import xyz.phanta.tconevo.integration.thermal.ThermalHooks;
 import xyz.phanta.tconevo.item.ItemMaterial;
 import xyz.phanta.tconevo.trait.*;
@@ -73,9 +78,11 @@ public class TconEvoTraits {
     public static final TraitRuination TRAIT_RUINATION = new TraitRuination();
     public static final TraitSundering TRAIT_SUNDERING = new TraitSundering();
     public static final TraitStaggering TRAIT_STAGGERING = new TraitStaggering();
+    public static final TraitThundergodWrath TRAIT_THUNDERGOD_WRATH = new TraitThundergodWrath();
     public static final TraitVampiric TRAIT_VAMPIRIC = new TraitVampiric();
     public static final ModifierArtifact MOD_ARTIFACT = new ModifierArtifact();
     public static final ModifierFluxed MOD_FLUXED = new ModifierFluxed();
+    public static final ModifierPhotovoltaic MOD_PHOTOVOLTAIC = new ModifierPhotovoltaic();
 
     // astral sorcery
     public static final TraitAstral TRAIT_ASTRAL = new TraitAstral();
@@ -136,7 +143,7 @@ public class TconEvoTraits {
     public static final TraitWarping TRAIT_WARPING = new TraitWarping();
 
     public static final List<Modifier> MODIFIERS = Arrays.asList(
-            MOD_FLUXED,
+            MOD_FLUXED, MOD_PHOTOVOLTAIC,
             MOD_REAPING, MOD_ENTROPIC, MOD_FLUX_BURN, MOD_PRIMORDIAL);
 
     public static void initModifierMaterials() {
@@ -148,6 +155,13 @@ public class TconEvoTraits {
         addModItemOpt(MOD_FLUXED, ActuallyHooks.INSTANCE::getItemBatteryTriple);
         addModItemOpt(MOD_FLUXED, ActuallyHooks.INSTANCE::getItemBatteryQuadra);
         addModItemOpt(MOD_FLUXED, ActuallyHooks.INSTANCE::getItemBatteryPenta);
+        addModItemOpt(MOD_PHOTOVOLTAIC, ActuallyHooks.INSTANCE::getItemSolarPanel);
+
+        // advanced solar panels
+        addModItemOpt(MOD_PHOTOVOLTAIC, AdvSolarHooks.INSTANCE::getItemAdvancedSolar);
+        addModItemOpt(MOD_PHOTOVOLTAIC, AdvSolarHooks.INSTANCE::getItemHybridSolar);
+        addModItemOpt(MOD_PHOTOVOLTAIC, AdvSolarHooks.INSTANCE::getItemUltimateSolar);
+        addModItemOpt(MOD_PHOTOVOLTAIC, AdvSolarHooks.INSTANCE::getItemQuantumSolar);
 
         // draconic evolution
         addModItemOpt(MOD_REAPING, DraconicHooks.INSTANCE::getItemEnderEnergyManipulator);
@@ -157,11 +171,37 @@ public class TconEvoTraits {
         addModItemOpt(MOD_FLUXED, DraconicHooks.INSTANCE::getItemWyvernCapacitor);
         addModItemOpt(MOD_FLUXED, DraconicHooks.INSTANCE::getItemDraconicCapacitor);
 
+        // ender io
+        addModItemOpt(MOD_FLUXED, EnderIoHooks.INSTANCE::getItemInvChargerSimple);
+        addModItemOpt(MOD_FLUXED, EnderIoHooks.INSTANCE::getItemInvChargerBasic);
+        addModItemOpt(MOD_FLUXED, EnderIoHooks.INSTANCE::getItemInvChargerNormal);
+        addModItemOpt(MOD_FLUXED, EnderIoHooks.INSTANCE::getItemInvChargerVibrant);
+        addModItemOpt(MOD_PHOTOVOLTAIC, EnderIoHooks.INSTANCE::getItemSolarSimple);
+        addModItemOpt(MOD_PHOTOVOLTAIC, EnderIoHooks.INSTANCE::getItemSolarNormal);
+        addModItemOpt(MOD_PHOTOVOLTAIC, EnderIoHooks.INSTANCE::getItemSolarAdvanced);
+        addModItemOpt(MOD_PHOTOVOLTAIC, EnderIoHooks.INSTANCE::getItemSolarVibrant);
+
+        // environmental tech
+        addModItemOpt(MOD_PHOTOVOLTAIC, EnvTechHooks.INSTANCE::getItemSolarLitherite);
+        addModItemOpt(MOD_PHOTOVOLTAIC, EnvTechHooks.INSTANCE::getItemSolarErodium);
+        addModItemOpt(MOD_PHOTOVOLTAIC, EnvTechHooks.INSTANCE::getItemSolarKyronite);
+        addModItemOpt(MOD_PHOTOVOLTAIC, EnvTechHooks.INSTANCE::getItemSolarPladium);
+        addModItemOpt(MOD_PHOTOVOLTAIC, EnvTechHooks.INSTANCE::getItemSolarIonite);
+        addModItemOpt(MOD_PHOTOVOLTAIC, EnvTechHooks.INSTANCE::getItemSolarAethium);
+
+        // industrialcraft 2
+        addModItemOpt(MOD_PHOTOVOLTAIC, Ic2Hooks.INSTANCE::getItemSolarPanel);
+
         // mekanism
         addModItemOpt(MOD_FLUXED, MekanismHooks.INSTANCE::getItemEnergyTablet);
+        addModItemOpt(MOD_PHOTOVOLTAIC, MekanismHooks.INSTANCE::getItemSolarGen);
+        addModItemOpt(MOD_PHOTOVOLTAIC, MekanismHooks.INSTANCE::getItemSolarGenAdv);
 
         // redstone arsenal/repository
         addModItemOpt(MOD_FLUXED, RedstoneRepositoryHooks.INSTANCE::getItemGelidCapacitor);
+
+        // solar flux reborn
+        SolarFluxHooks.INSTANCE.getSolarTypes().forEach(s -> addModItem(MOD_PHOTOVOLTAIC, s.newStack(1)));
 
         // thermal series
         for (int i = 0; i < 5; i++) { // basic, hardened, redstone, signalum, resonant
@@ -173,6 +213,12 @@ public class TconEvoTraits {
     private static void addModItemOpt(Modifier mod, Supplier<Optional<ItemStack>> materialGetter) {
         if (isModifierEnabled(mod)) {
             materialGetter.get().ifPresent(s -> mod.addItem(s, 1, 1));
+        }
+    }
+
+    private static void addModItem(Modifier mod, ItemStack material) {
+        if (isModifierEnabled(mod)) {
+            mod.addItem(material, 1, 1);
         }
     }
 

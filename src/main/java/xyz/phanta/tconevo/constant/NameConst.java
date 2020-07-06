@@ -53,9 +53,11 @@ public class NameConst {
     public static final String TRAIT_RUINATION = TconEvoMod.MOD_ID + ".ruination";
     public static final String TRAIT_STAGGERING = TconEvoMod.MOD_ID + ".staggering";
     public static final String TRAIT_SUNDERING = TconEvoMod.MOD_ID + ".sundering";
+    public static final String TRAIT_THUNDERGOD_WRATH = TconEvoMod.MOD_ID + ".thundergod_wrath";
     public static final String TRAIT_VAMPIRIC = TconEvoMod.MOD_ID + ".vampiric";
     public static final String MOD_ARTIFACT = TconEvoMod.MOD_ID + ".artifact";
     public static final String MOD_FLUXED = TconEvoMod.MOD_ID + ".fluxed";
+    public static final String MOD_PHOTOVOLTAIC = TconEvoMod.MOD_ID + ".photovoltaic";
 
     public static final String ARMOUR_SUFFIX = "_armor";
     public static final String ARMOUR_TRAIT_ENERGIZED = TRAIT_ENERGIZED + ARMOUR_SUFFIX;
@@ -77,6 +79,7 @@ public class NameConst {
     public static final String TRAIT_THUNDERGOD_FAVOUR = TconEvoMod.MOD_ID + ".thundergod_favour", ARMOUR_TRAIT_THUNDERGOD_FAVOUR = TRAIT_THUNDERGOD_FAVOUR + ARMOUR_SUFFIX;
     public static final String TRAIT_WILL_STRENGTH = TconEvoMod.MOD_ID + ".will_strength", ARMOUR_TRAIT_WILL_STRENGTH = TRAIT_WILL_STRENGTH + ARMOUR_SUFFIX;
     public static final String ARMOUR_MOD_FLUXED = MOD_FLUXED + ARMOUR_SUFFIX;
+    public static final String ARMOUR_MOD_PHOTOVOLTAIC = MOD_PHOTOVOLTAIC + ARMOUR_SUFFIX;
 
     // actually additions
 
@@ -198,6 +201,13 @@ public class NameConst {
     public static final String ARMOUR_MOD_DRACONIC_JUMP_BOOST = MOD_DRACONIC_JUMP_BOOST + ARMOUR_SUFFIX;
     public static final String MOD_CHAOS_RESISTANCE = TconEvoMod.MOD_ID + ".chaos_resistance", ARMOUR_MOD_CHAOS_RESISTANCE = MOD_CHAOS_RESISTANCE + ARMOUR_SUFFIX;
     public static final String MOD_FINAL_GUARD = TconEvoMod.MOD_ID + ".final_guard", ARMOUR_MOD_FINAL_GUARD = MOD_FINAL_GUARD + ARMOUR_SUFFIX;
+
+    // ender io
+
+    public static final String MAT_ENDER_CRYSTAL = "ender_crystal";
+    public static final String MAT_PULSATING_CRYSTAL = "pulsating_crystal";
+    public static final String MAT_VIBRANT_CRYSTAL = "vibrant_crystal";
+    public static final String MAT_WEATHER_CRYSTAL = "weather_crystal";
 
     // environmental tech
 

@@ -1,25 +1,29 @@
 package xyz.phanta.tconevo.coremod;
 
-import net.minecraft.launchwrapper.IClassTransformer;
-import org.objectweb.asm.*;
+import org.objectweb.asm.ClassVisitor;
+import org.objectweb.asm.Label;
+import org.objectweb.asm.MethodVisitor;
+import org.objectweb.asm.Opcodes;
 
-public class ClassTransformerItemSensitiveModifiers implements IClassTransformer {
+import java.util.function.Consumer;
+
+public class TransformItemSensitiveModifiers implements TconEvoClassTransformer.Transform {
 
     @Override
-    public byte[] transform(String name, String transformedName, byte[] code) {
-        switch (transformedName) {
-            case "slimeknights.tconstruct.library.utils.ToolBuilder":
-            case "c4.conarm.lib.tinkering.ArmorBuilder": // conarm function coincidentally has the exact same structure
-                System.out.println("[tconevo] Injecting item-sensitive modifier handler for "
-                        + transformedName.substring(transformedName.lastIndexOf('.') + 1)
-                        + "...");
-                ClassReader reader = new ClassReader(code);
-                ClassWriter writer = new ClassWriter(reader, 0);
-                reader.accept(new ToolBuilderTransformer(Opcodes.ASM5, writer), 0);
-                return writer.toByteArray();
-            default:
-                return code;
-        }
+    public String getName() {
+        return "Item-Sensitive Modifiers";
+    }
+
+    @Override
+    public void getClasses(Consumer<String> collector) {
+        collector.accept("slimeknights.tconstruct.library.utils.ToolBuilder");
+        // conarm function for armour building coincidentally has the exact same structure as the tcon one for tools
+        collector.accept("c4.conarm.lib.tinkering.ArmorBuilder");
+    }
+
+    @Override
+    public ClassVisitor createTransformer(String className, int apiVersion, ClassVisitor downstream) {
+        return new ToolBuilderTransformer(apiVersion, downstream);
     }
 
     private static class ToolBuilderTransformer extends ClassVisitor {
@@ -81,7 +85,7 @@ public class ClassTransformerItemSensitiveModifiers implements IClassTransformer
                     case "canApply":
                         super.visitVarInsn(Opcodes.ALOAD, state);
                         super.visitMethodInsn(Opcodes.INVOKESTATIC,
-                                "xyz/phanta/tconevo/handler/ItemSensitiveModificationHandler",
+                                "xyz/phanta/tconevo/handler/ItemSensitiveModificationCoreHooks",
                                 "canApply",
                                 "(Lslimeknights/tconstruct/library/modifiers/IModifier;Lnet/minecraft/item/ItemStack;Lnet/minecraft/item/ItemStack;Lslimeknights/mantle/util/RecipeMatch$Match;)Z",
                                 false);
@@ -89,7 +93,7 @@ public class ClassTransformerItemSensitiveModifiers implements IClassTransformer
                     case "apply":
                         super.visitVarInsn(Opcodes.ALOAD, state);
                         super.visitMethodInsn(Opcodes.INVOKESTATIC,
-                                "xyz/phanta/tconevo/handler/ItemSensitiveModificationHandler",
+                                "xyz/phanta/tconevo/handler/ItemSensitiveModificationCoreHooks",
                                 "apply",
                                 "(Lslimeknights/tconstruct/library/modifiers/IModifier;Lnet/minecraft/item/ItemStack;Lslimeknights/mantle/util/RecipeMatch$Match;)V",
                                 false);

@@ -1,5 +1,6 @@
 package xyz.phanta.tconevo.integration.conarm;
 
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -29,6 +30,8 @@ public interface ConArmHooks extends IntegrationHooks {
 
     boolean isTinkerArmour(ItemStack stack);
 
+    void damageArmour(ItemStack stack, int amount, EntityLivingBase wearer);
+
     @Reflected
     class Noop implements ConArmHooks {
 
@@ -56,6 +59,11 @@ public interface ConArmHooks extends IntegrationHooks {
         @Override
         public boolean isTinkerArmour(ItemStack stack) {
             return false;
+        }
+
+        @Override
+        public void damageArmour(ItemStack stack, int amount, EntityLivingBase wearer) {
+            // NO-OP
         }
 
     }

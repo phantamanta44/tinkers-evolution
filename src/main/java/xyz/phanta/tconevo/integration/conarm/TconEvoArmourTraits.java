@@ -55,6 +55,7 @@ public class TconEvoArmourTraits {
     public static final ArmourTraitThundergodFavour TRAIT_THUNDERGOD_FAVOUR = new ArmourTraitThundergodFavour();
     public static final ArmourTraitWillStrength TRAIT_WILL_STRENGTH = new ArmourTraitWillStrength();
     public static final ArmourModFluxed MOD_FLUXED = new ArmourModFluxed();
+    public static final ArmourModPhotovoltaic MOD_PHOTOVOLTAIC = new ArmourModPhotovoltaic();
 
     // astral sorcery
     public static final ArmourTraitAstral TRAIT_ASTRAL = new ArmourTraitAstral();
@@ -117,7 +118,7 @@ public class TconEvoArmourTraits {
     public static final ArmourTraitWarping TRAIT_WARPING = new ArmourTraitWarping();
 
     public static final List<Modifier> MODIFIERS = Arrays.asList(
-            MOD_FLUXED,
+            MOD_FLUXED, MOD_PHOTOVOLTAIC,
             MOD_GAIA_WILL_AHRIM, MOD_GAIA_WILL_DHAROK, MOD_GAIA_WILL_GUTHAN,
             MOD_GAIA_WILL_KARIL, MOD_GAIA_WILL_TORAG, MOD_GAIA_WILL_VERAC,
             MOD_CHAOS_RESISTANCE, MOD_FINAL_GUARD,
@@ -141,6 +142,7 @@ public class TconEvoArmourTraits {
 
         // copy equivalent item matchers from analogous tool mods
         copyMatchers(TconEvoTraits.MOD_FLUXED, MOD_FLUXED);
+        copyMatchers(TconEvoTraits.MOD_PHOTOVOLTAIC, MOD_PHOTOVOLTAIC);
     }
 
     private static void addModItemOpt(Modifier mod, Supplier<Optional<ItemStack>> materialGetter) {

@@ -8,8 +8,8 @@ import xyz.phanta.tconevo.trait.base.MatchSensitiveModifier;
 import xyz.phanta.tconevo.util.Reflected;
 
 // nothing is actually reflected here; these hooks are called from code injected by the coremod
-// see ClassTransformerItemSensitiveModifiers
-public class ItemSensitiveModificationHandler {
+// see TransformItemSensitiveModifiers
+public class ItemSensitiveModificationCoreHooks {
 
     @Reflected
     public static boolean canApply(IModifier modifier, ItemStack stack, ItemStack original, RecipeMatch.Match match)

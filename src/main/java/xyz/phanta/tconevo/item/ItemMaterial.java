@@ -39,6 +39,10 @@ public class ItemMaterial extends L9ItemSubs implements ParameterizedItemModel.I
             return new ItemStack(TconEvoItems.MATERIAL, count, getMeta());
         }
 
+        public boolean matches(ItemStack stack) {
+            return !stack.isEmpty() && stack.getItem() == TconEvoItems.MATERIAL && stack.getMetadata() == getMeta();
+        }
+
     }
 
 }

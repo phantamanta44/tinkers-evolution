@@ -53,7 +53,7 @@ public class ArmourModFinalGuard extends ArmorModifierTrait {
         for (int i = 0; i < energyStores.length; i++) {
             ItemStack stack = player.inventory.armorInventory.get(i);
             if ((energyStores[i] = PowerWrapper.wrap(stack)) != null) {
-                totalEnergy += energy[i] = energyStores[i].extract(cost, false);
+                totalEnergy += energy[i] = energyStores[i].extract(cost, false, true);
             }
         }
         if (totalEnergy >= cost) {

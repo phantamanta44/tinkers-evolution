@@ -20,8 +20,10 @@ import slimeknights.tconstruct.library.tools.ToolCore;
 import slimeknights.tconstruct.library.utils.ToolBuilder;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 import xyz.phanta.tconevo.init.TconEvoTraits;
+import xyz.phanta.tconevo.util.ImmutableNbt;
 import xyz.phanta.tconevo.util.ToolUtils;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -71,7 +73,8 @@ public class ArtifactTypeTool implements ArtifactType<ArtifactTypeTool.Spec> {
                 dto.get("tool").getAsString(),
                 JsonUtils9.stream(dto.getAsJsonArray("materials")).map(JsonElement::getAsString).collect(Collectors.toList()),
                 dto.has("free_mods") ? dto.get("free_mods").getAsInt() : 0,
-                modifiers);
+                modifiers,
+                dto.has("data_tag") ? dto.getAsJsonObject("data_tag") : null);
     }
 
     @Override
@@ -148,20 +151,26 @@ public class ArtifactTypeTool implements ArtifactType<ArtifactTypeTool.Spec> {
         }
 
         // add lore
+        NBTTagCompound tag = ToolUtils.getOrCreateTag(stack);
         if (!spec.lore.isEmpty()) {
-            NBTTagCompound tag = ToolUtils.getOrCreateTag(stack);
+            NBTTagCompound displayTag;
             if (tag.hasKey("display")) {
-                tag = tag.getCompoundTag("display");
+                displayTag = tag.getCompoundTag("display");
             } else {
-                tag = new NBTTagCompound();
-                tag.setTag("display", tag);
+                displayTag = new NBTTagCompound();
+                tag.setTag("display", displayTag);
             }
             NBTTagList loreTag = new NBTTagList();
             loreTag.appendTag(new NBTTagString()); // empty line for padding
             for (String line : spec.lore) {
                 loreTag.appendTag(new NBTTagString(LORE_FMT + line));
             }
-            tag.setTag("Lore", loreTag);
+            displayTag.setTag("Lore", loreTag);
+        }
+
+        // add other NBT
+        if (spec.dataTag != null) {
+            stack.setTagCompound(spec.dataTag.write(tag));
         }
 
         return stack; // done!
@@ -175,15 +184,18 @@ public class ArtifactTypeTool implements ArtifactType<ArtifactTypeTool.Spec> {
         public final List<String> materials;
         public final int freeMods;
         public final List<IPair<String, Integer>> modifiers;
+        @Nullable
+        public final ImmutableNbt<NBTTagCompound> dataTag;
 
         public Spec(String name, List<String> lore, String toolType, List<String> materials,
-                    int freeMods, List<IPair<String, Integer>> modifiers) {
+                    int freeMods, List<IPair<String, Integer>> modifiers, @Nullable JsonObject dataTag) {
             this.name = name;
             this.lore = Collections.unmodifiableList(lore);
             this.toolType = toolType;
             this.materials = Collections.unmodifiableList(materials);
             this.freeMods = freeMods;
             this.modifiers = Collections.unmodifiableList(modifiers);
+            this.dataTag = dataTag != null ? ImmutableNbt.parseObject(dataTag) : null;
         }
 
     }

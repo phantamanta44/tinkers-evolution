@@ -145,6 +145,8 @@ modifier.tconevo.staggering.name=Staggering
 modifier.tconevo.staggering.desc=§o...and stay bashed!§r\nThis weapon briefly immobilizes enemies on fully-charged hits.
 modifier.tconevo.sundering.name=Sundering
 modifier.tconevo.sundering.desc=§oBalance is weakness...§r\nThis weapon weakens attacked enemies.
+modifier.tconevo.thundergod_wrath.name=Thundergod's Wrath
+modifier.tconevo.thundergod_wrath.desc=§oI condemn you!§r\nThis weapon calls down a bolt of lightning upon enemies struck at full health.
 modifier.tconevo.vampiric.name=Vampiric
 modifier.tconevo.vampiric.desc=§oStill befriending mortals?§r\nThis weapon drains life energy from enemies to heal its wielder.
 modifier.tconevo.vampiric.extra=Lifesteal: +%s
@@ -153,6 +155,9 @@ modifier.tconevo.artifact.desc=§oOne-of-a-kind!§r\nThis tool cannot be modifie
 modifier.tconevo.artifact.unsealed=Unsealed
 modifier.tconevo.fluxed.name=Fluxed
 modifier.tconevo.fluxed.desc=§oIt's been years!§r\nThis tool consumes energy before durability.
+modifier.tconevo.photovoltaic.name=Photovoltaic
+modifier.tconevo.photovoltaic.desc=§oEmissions-free!§r\nThis tool absorbs sunlight to recharge itself.
+modifier.tconevo.photovoltaic.extra=Solar Power: %s
 
 modifier.tconevo.bulwark_armor.name=Bulwark
 modifier.tconevo.bulwark_armor.desc=§oBlocked!§r\nThis armour reduces incoming damage by one heart, to a minimum of one heart.
@@ -196,6 +201,8 @@ modifier.tconevo.will_strength_armor.name=Strength of Will
 modifier.tconevo.will_strength_armor.desc=§oMaintaining focus!§r\nThis armour grants immortality when hit at full health.
 modifier.tconevo.fluxed_armor.name=Fluxed
 modifier.tconevo.fluxed_armor.desc=§oIt's been years!§r\nThis armour consumes energy before durability.
+modifier.tconevo.photovoltaic_armor.name=Photovoltaic
+modifier.tconevo.photovoltaic_armor.desc=§oEmissions-free!§r\nThis armour absorbs sunlight to recharge itself.
 
 material.black_quartz.name=Black Quartz
 material.restonia_crystal.name=Restonia Crystal
@@ -407,6 +414,11 @@ modifier.tconevo.final_guard_armor.desc=§oLook out!§r\nThis armour will save y
 modifier.tconevo.final_guard_armor.extra=Final Guard Cost: %s
 modifier.tconevo.final_guard_armor.proc=Your armour's %s has kept you alive!
 
+material.ender_crystal.name=Ender Crystal
+material.pulsating_crystal.name=Pulsating Crystal
+material.vibrant_crystal.name=Vibrant Crystal
+material.weather_crystal.name=Weather Crystal
+
 material.litherite.name=Litherite
 material.erodium.name=Erodium
 material.kyronite.name=Kyronite
@@ -553,3 +565,17 @@ upgrade.level.1=Basic
 upgrade.level.2=Wyvern
 upgrade.level.3=Draconic
 upgrade.level.4=Chaotic
+
+tc.research_category.TCONEVO=Toolsmithing
+
+tconevo.thaumresearch.base.title=Basic Toolsmithing
+tconevo.thaumresearch.base.stage.1=Through my study of alchemical metallurgy, I've discovered a means of fashioning powerful tools and weapons from magical metals. However, this equipment can be quite bland. Sometimes, I wish I had something more exciting than these cut-and-paste swords and shovels.<BR>It might be possible to shape these fantastic materials into more modular forms...
+tconevo.thaumresearch.base.stage.2=By combining my thaumaturgical prowess and the art of tool-tinkering, I've managed to devise a means of building modular tools using magical metals and materials.<BR>Most materials should be easy enough to work with by hand, but metals will likely need to be melted down in order to shape them into tools.
+research.f_tconevo.tool_table.text=Study a means of building tools
+
+tconevo.thaumresearch.primal_metal.title=Primal Metal
+tconevo.thaumresearch.primal_metal.stage.1=By coalescing the potent swirling energies of the primordial pearl into a metal form, I might be able to construct tools suffused with immense magical potential.
+tconevo.thaumresearch.primal_metal.stage.2=The strangely iridescent metal I've created seems to react very violently to objects of this plane. When it comes in contact with mundane matter, it breaks it down into its most basic elements in a burst of magical energy.<BR>Perhaps I can use this property to enhance the abilities of my weapons...?
+
+tconevo.thaumresearch.infusion_ench.title=Tinkers' Infusion Enchantment
+tconevo.thaumresearch.infusion_ench.stage.1=The infusion enchantment process that I designed for simple tools and weapons also seems to work as expected for modular equipment. I should keep this in mind when I go back to the forge.

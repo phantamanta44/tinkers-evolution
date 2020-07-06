@@ -1,0 +1,20 @@
+{
+  "modifier": "tconevo.photovoltaic",
+  "text": [
+    {
+      "text": "Rigging a solar panel to your tool's internal battery gives you a simple and easy way to recharge on the go."
+    }
+  ],
+  "effects": [
+    "The tool will recharge itself under the sun",
+    "Charge rate depends on the item used to apply the modifier",
+    "Only applicable for energized tools",
+    "Single level"
+  ],
+  "demoTool": [
+    "tconstruct:pickaxe",
+    "tconstruct:hammer",
+    "tconstruct:shortbow",
+    "tconstruct:arrow"
+  ]
+}

@@ -25,7 +25,7 @@
 * [x] juggernaut: deal increased damage based on own current health with diminishing returns
 * [x] opportunist: deal increased damage to enemies with debuffs
 * [x] force of impact: deal increased damage with higher velocity
-* [ ] thundergod's wrath: fully-charged hits strike lightning on full-health enemies
+* [x] thundergod's wrath: strikes lightning on full-health enemies
 * [x] aftershock: fully-charged hits deal a fixed amount of bonus magical damage
     * higher levels -> more bonus damage
 * [x] corrupting: fully-charged hits inflict increasing levels of wither for a short duration
@@ -65,7 +65,7 @@
 * [x] fluxed: the equipment uses forge energy before durability
     * capacity is determined by the item used to apply it
     * cannot be applied to items that are already energetic/electric
-* [ ] photovoltaic: the equipment charges itself in sunlight
+* [x] photovoltaic: the equipment charges itself in sunlight
     * can only be applied to energetic/electric items
     * generation rate is determined by the item used to apply it
 * [ ] disassembling: vein miner
@@ -119,7 +119,7 @@
 
 * [ ] some sort of rainbow crystal alloy
 * [x] batteries should apply fluxed
-* [ ] solar panel should apply photovoltaic
+* [x] solar panel should apply photovoltaic
 
 ## advanced solars
 
@@ -131,7 +131,7 @@
 
 ### other ideas
 
-* [ ] various tiers of solar panels can apply photovoltaic
+* [x] various tiers of solar panels can apply photovoltaic
 
 ## app eng
 
@@ -373,19 +373,19 @@
 
 ### materials
 
-* [ ] ender crystal
+* [x] ender crystal
     * magic: endspeed
-* [ ] pulsating crystal
+* [x] pulsating crystal
     * magic: enderference
-* [ ] vibrant crystal
+* [x] vibrant crystal
     * magic: chain lightning
-* [ ] weather crystal
+* [x] weather crystal
     * magic: thundergod's wrath
 
 ### other ideas
 
-* [ ] inventory chargers should apply fluxed
-* [ ] maybe allow dark steel upgrades to function as modifiers?
+* [x] inventory chargers should apply fluxed
+* [x] photovoltaic cells should apply photovoltaic
 
 ## env tech
 
@@ -418,7 +418,7 @@
 
 ### other ideas
 
-* [ ] solar cells can apply photovoltaic
+* [x] solar cells can apply photovoltaic
 
 ## forestry
 
@@ -467,7 +467,7 @@
 
 ### modifiers
 
-* [ ] solar panel can apply photoelectric
+* [x] solar panel can apply photoelectric
 
 ## industrial foregoing
 
@@ -515,7 +515,7 @@
 ### other notes
 
 * [x] energy tablet should apply fluxed (?)
-* [ ] solar generators should apply photovoltaic
+* [x] solar generators should apply photovoltaic
 
 ## natura
 
@@ -665,6 +665,12 @@
 
 * [x] gelid flux capacitor should apply fluxed
 
+## solar flux reborn
+
+### other stuff
+
+* [x] solar panels can apply photovoltaic modifier
+
 ## thaumcraft
 
 ### traits
@@ -690,6 +696,11 @@
     * magic: opportunist
 * [x] quicksilver
     * magic: modifiable 2
+
+### other stuff
+
+* [x] add thaumonomicon entries for tconevo stuff
+* [x] allow infusion enchantment of tinkers' construct tools
 
 ## thermal series
 
