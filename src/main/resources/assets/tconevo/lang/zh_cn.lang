@@ -145,6 +145,8 @@ modifier.tconevo.staggering.name=步履蹒跚
 modifier.tconevo.staggering.desc=§o给我接着揍！§r\n使用该器械进行全力打击会短暂地固定住敌人。
 modifier.tconevo.sundering.name=天崩地裂
 modifier.tconevo.sundering.desc=§o均衡，脆弱无比……§r\n这件器械会削弱敌人。
+modifier.tconevo.thundergod_wrath.name=雷神之怒
+modifier.tconevo.thundergod_wrath.desc=§o此乃天谴！§r\n这件器械会召唤一道天雷轰击满血的敌人。
 modifier.tconevo.vampiric.name=吸血
 modifier.tconevo.vampiric.desc=§o还在与人类结盟？§r\n这件器械会从敌人身上榨取生命能量来滋养其持握者。
 modifier.tconevo.vampiric.extra=生命窃取：+%s
@@ -153,6 +155,9 @@ modifier.tconevo.artifact.desc=§o独一无二！§r\n这件工具在使用“�
 modifier.tconevo.artifact.unsealed=已启封
 modifier.tconevo.fluxed.name=通量注入
 modifier.tconevo.fluxed.desc=§o老传家宝了！§r\n这件工具会优先消耗电量而非耐久。
+modifier.tconevo.photovoltaic.name=光伏
+modifier.tconevo.photovoltaic.desc=§o低碳生活！§r\n这件工具会利用光伏为自身充能。
+modifier.tconevo.photovoltaic.extra=光伏发电：%s
 
 modifier.tconevo.bulwark_armor.name=壁垒
 modifier.tconevo.bulwark_armor.desc=§o我挡！§r\n这件盔甲会将一切大于2点（一颗心）的外来伤害减至2点。
@@ -196,6 +201,8 @@ modifier.tconevo.will_strength_armor.name=坚定意志
 modifier.tconevo.will_strength_armor.desc=§o保持专注！§r\n这件盔甲将保护你在满血状态下不被一击必杀。
 modifier.tconevo.fluxed_armor.name=通量注入
 modifier.tconevo.fluxed_armor.desc=§o老传家宝了！§r\n这件盔甲会优先消耗电量而非耐久。
+modifier.tconevo.photovoltaic_armor.name=光伏
+modifier.tconevo.photovoltaic_armor.desc=§o低碳生活！§r\n这件盔甲会利用光伏为自身充能。
 
 material.black_quartz.name=焦黑石英
 material.restonia_crystal.name=红石水晶
@@ -282,6 +289,7 @@ modifier.tconevo.crystalys.name=水晶剑
 modifier.tconevo.crystalys.desc=§o我，不惧黑暗！§r\n这件器械会撕裂灵魂网络，使其显露出虚弱的气血碎片。
 modifier.tconevo.bloodbound.name=血缚
 modifier.tconevo.bloodbound.desc=§o……把无垠的海水染作一片殷红……§r\n这件工具会吸取其属主的生命源质来防止自身的磨损。
+modifier.tconevo.sentient.name=感知
 modifier.tconevo.sentient.desc=§o你在做，它在看……§r\n这件工具会消耗恶魔意志来强化自身。
 modifier.tconevo.willful.name=恣意
 modifier.tconevo.willful.desc=§o汝魂魄尽我之有也！§r\n这件器械会从敌人身上剥离出缠缚其身的恶魔意志。
@@ -405,6 +413,11 @@ modifier.tconevo.final_guard_armor.name=最后防线
 modifier.tconevo.final_guard_armor.desc=§o留神！§r\n若储能充足，这件盔甲将会从死神手中帮你夺回一命。
 modifier.tconevo.final_guard_armor.extra=“最后防线”消耗：%s
 modifier.tconevo.final_guard_armor.proc=你的盔甲使用【%s】救了你一命！
+
+material.ender_crystal.name=末影水晶
+material.pulsating_crystal.name=脉冲水晶
+material.vibrant_crystal.name=充能水晶
+material.weather_crystal.name=天气水晶
 
 material.litherite.name=莱泽尔
 material.erodium.name=艾洛蒂
@@ -552,3 +565,17 @@ upgrade.level.1=基础
 upgrade.level.2=飞龙
 upgrade.level.3=神龙
 upgrade.level.4=混沌
+
+tc.research_category.TCONEVO=工具匠艺
+
+tconevo.thaumresearch.base.title=基础匠作
+tconevo.thaumresearch.base.stage.1=对炼金术的潜心钻研，使得我探索出了一条利用魔法界的金属来裨益强力工具的新道路。然而，在一以贯之的强修硬补之下，用再奇异的材料拼凑出的斧钺钩叉，终究也是乏善可陈：不够新奇，不够刺激。<BR>这些幻妙的金属，说它们“力可三十六变”都不为过，岂能只有这么一点功夫……
+tconevo.thaumresearch.base.stage.2=我自诩奇术造诣异于常人，大可将之灵活运用在巧手匠艺之上，稍加思索便运用魔界的金属与零星其它材料，设计出各个模块，组装出工具种种。<BR>用这些材料精制的工具固然趁手，但烈火熔炼，铸模定型也自不可少。
+research.f_tconevo.tool_table.text=研习一种制造工具的新途径
+
+tconevo.thaumresearch.primal_metal.title=元金
+tconevo.thaumresearch.primal_metal.stage.1=元始珍珠如此猛烈的旋力竟也能凝聚为金属的形式。这样一来，我的双手也许会让一种蕴藏着巨大魔法潜力的工具成为可能。
+tconevo.thaumresearch.primal_metal.stage.2=这块金属，闪烁着迷幻的虹彩，又似乎对世俗之物的反应异常剧烈，好像并不属于这个世界一样。当与平凡的物质发生接触时，它会在刹那间迸发出一束魔能，自身也随之散作平常的基础元素。<BR>或许，我所打造的武器也能在这种魔力下增光添彩。
+
+tconevo.thaumresearch.infusion_ench.title=注魔匠艺
+tconevo.thaumresearch.infusion_ench.stage.1=我先前所设计的奥术注魔祭坛，果不其然，不止能应用于稀松平常的工具之上，这些模块组装的新器械也同样能够汲取奥术之力来裨补自身。我得记上一笔，做个备忘，回去一定得试上一试。
