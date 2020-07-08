@@ -1,5 +1,6 @@
 package xyz.phanta.tconevo;
 
+import com.enderio.core.common.config.annot.Comment;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraftforge.common.config.Config;
 
@@ -173,6 +174,10 @@ public class TconEvoConfig {
         @Config.Comment("The percentage of missing health dealt as bonus damage by the executor trait.")
         @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
         public double traitExecutorMissingHealthDamage = 0.2D;
+
+        @Comment("The cost, in durability points, of using the fertilizing trait to fertilize a crop.")
+        @Config.RangeInt(min = 0)
+        public int traitFertilizingDurabilityCost = 25;
 
         @Config.Comment("The duration, in ticks, of the speed granted by the fleet of foot trait.")
         @Config.RangeInt(min = 1)

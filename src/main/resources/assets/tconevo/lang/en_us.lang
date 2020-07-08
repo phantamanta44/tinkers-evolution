@@ -112,6 +112,8 @@ modifier.tconevo.energized.desc=§oBatteries included!§r\nThis tool consumes an
 modifier.tconevo.executor.name=Executor
 modifier.tconevo.executor.desc=§oSee ya!§r\nThis weapon deals bonus damage based on the target's missing health.
 modifier.tconevo.executor.extra=Execution Damage: +%s
+modifier.tconevo.fertilizing.name=Fertilizing
+modifier.tconevo.fertilizing.desc=§oGreen terra!§r\nThis tool can be used to fertilize crops at a large durability cost.
 modifier.tconevo.foot_fleet.name=Fleet of Foot
 modifier.tconevo.foot_fleet.desc=§oStay still--I'm trying to shoot you!§r\nThis weapon grants a burst of speed to its wielder on fully-charged hits.
 modifier.tconevo.impact_force.name=Force of Impact
@@ -428,6 +430,11 @@ material.aethium.name=Aethium
 material.lonsdaleite.name=Lonsdaleite
 material.mica.name=Mica
 fluid.tconevo.mica.name=Molten Mica
+
+material.apatite.name=Apatite
+
+modifier.tconevo.apiary_affinity_armor.name=Apiary Affinity
+modifier.tconevo.apiary_affinity_armor.desc=§oBee-utiful!§r\nThis armour protects its wearer from bees.
 
 material.essence_metal.name=Essence-Infused
 fluid.tconevo.essence_metal.name=Molten Metallic Essence

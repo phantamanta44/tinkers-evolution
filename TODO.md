@@ -9,7 +9,7 @@
 * [x] blasting: breaking blocks and fully-charged hits create explosions
 * [x] modifiable: equipment has more modifier slots
     * a clone of writable that avoids the weird quirks of writable
-* [ ] fertilizing: right clicking consumes a lot of durability to function as bone meal
+* [x] fertilizing: right clicking consumes a lot of durability to function as bone meal
 
 ## weapon traits
 
@@ -424,18 +424,22 @@
 
 ### materials
 
-* [ ] apatite
+* [x] apatite
     * tools: fertilizing + cheapskate
     * armour: absorbent + cheapskate
 
 ### armour modifiers
 
-* [ ] apiary affinity: provides protection from bees
+* [x] apiary affinity: provides protection from bees
 
 ### other stuff
 
-* [ ] kama functions as a scoop
-* [ ] thermionic fabricator can execute casting recipes
+* [x] kama functions as a scoop
+* [ ] thermionic fabricator can execute casting recipes (is this even possible?)
+
+## gtce
+
+**TODO**
 
 ## ic2 (and icc?)
 

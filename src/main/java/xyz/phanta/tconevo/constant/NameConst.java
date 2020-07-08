@@ -38,6 +38,7 @@ public class NameConst {
     public static final String TRAIT_DEADLY_PRECISION = TconEvoMod.MOD_ID + ".deadly_precision";
     public static final String TRAIT_ENERGIZED = TconEvoMod.MOD_ID + ".energized";
     public static final String TRAIT_EXECUTOR = TconEvoMod.MOD_ID + ".executor";
+    public static final String TRAIT_FERTILIZING = TconEvoMod.MOD_ID + ".fertilizing";
     public static final String TRAIT_FOOT_FLEET = TconEvoMod.MOD_ID + ".foot_fleet";
     public static final String TRAIT_IMPACT_FORCE = TconEvoMod.MOD_ID + ".impact_force";
     public static final String TRAIT_JUGGERNAUT = TconEvoMod.MOD_ID + ".juggernaut";
@@ -219,6 +220,12 @@ public class NameConst {
     public static final String MAT_AETHIUM = "aethium";
     public static final String MAT_LONSDALEITE = "lonsdaleite";
     public static final String MAT_MICA = "mica";
+
+    // forestry
+
+    public static final String MAT_APATITE = "apatite";
+
+    public static final String MOD_APIARY_AFFINITY = TconEvoMod.MOD_ID + ".apiary_affinity", ARMOUR_MOD_APIARY_AFFINITY = MOD_APIARY_AFFINITY + ARMOUR_SUFFIX;
 
     // industrial foregoing
 
