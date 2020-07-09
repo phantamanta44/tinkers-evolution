@@ -112,6 +112,8 @@ modifier.tconevo.energized.desc=§o一节更比六节强！§r\n这件工具会�
 modifier.tconevo.executor.name=处决
 modifier.tconevo.executor.desc=§o下辈子见！§r\n这件器械会依照目标已损失的生命值造成额外伤害。
 modifier.tconevo.executor.extra=处决伤害：+%s
+modifier.tconevo.fertilizing.name=催熟
+modifier.tconevo.fertilizing.desc=§o绿意盎然！§r\n这件工具可以消耗较高的耐久度来催熟作物。
 modifier.tconevo.foot_fleet.name=神行
 modifier.tconevo.foot_fleet.desc=§o站稳--我要射你了！§r\n使用该器械进行全力打击将获得爆发性移速加成。
 modifier.tconevo.impact_force.name=冲击
@@ -428,6 +430,11 @@ material.aethium.name=以太石
 material.lonsdaleite.name=蓝丝黛尔
 material.mica.name=云母
 fluid.tconevo.mica.name=熔融云母
+
+material.apatite.name=磷灰石
+
+modifier.tconevo.apiary_affinity_armor.name=养蜂人
+modifier.tconevo.apiary_affinity_armor.desc=§o蜂情万种！§r\n这件盔甲可以防止蜜蜂蛰咬。
 
 material.essence_metal.name=蕴魔源质
 fluid.tconevo.essence_metal.name=熔融蕴魔源质
