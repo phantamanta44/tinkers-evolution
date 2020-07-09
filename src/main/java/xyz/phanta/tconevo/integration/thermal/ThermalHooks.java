@@ -9,9 +9,9 @@ import java.util.Optional;
 
 public interface ThermalHooks extends IntegrationHooks {
 
-    // decided to use thermal foundation as the required mod since it's the one that provides most of the materials
-    // also, the other thermal series mods depend on it so if any of them are installed, so is thermal foundation
-    String MOD_ID = "thermalfoundation";
+    // technically, only thermal foundation is needed for materials to be registered
+    // but this hooks class only deals with thermal expansion content, so the mod id here is for that
+    String MOD_ID = "thermalexpansion";
 
     @Inject(MOD_ID)
     ThermalHooks INSTANCE = new Noop();
