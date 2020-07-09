@@ -1,0 +1,19 @@
+{
+  "armormodifier": "tconevo.apiary_affinity_armor",
+  "text": [
+    {
+      "text": "被一大群蜜蜂盯上可不是闹着玩的。作为一名新时代养蜂专业户，你必须得在盔甲上安排一些特殊的防护措施。用一些精细的织网罩住盔甲的缝隙就足够把它们挡得远远的了。"
+    }
+  ],
+  "effects": [
+    "使盔甲能够阻挡林业模组的蜂蛰伤害",
+    "四件盔甲全部加装该升级方可提供完全防护",
+    "只能强化一次"
+  ],
+  "demoArmor": [
+    "conarm:helmet",
+    "conarm:chestplate",
+    "conarm:leggings",
+    "conarm:boots"
+  ]
+}
