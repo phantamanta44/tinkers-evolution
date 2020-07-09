@@ -1,0 +1,20 @@
+{
+  "armormodifier": "tconevo.photovoltaic_armor",
+  "text": [
+    {
+      "text": "为你盔甲上的储电装置再额外装载一块光伏电池板，无疑是一个轻松便捷零负担的好选择。"
+    }
+  ],
+  "effects": [
+    "在阳光下自动充能",
+    "发电效率取决于装载的光伏板种类",
+    "仅可加装于能够存储电力的盔甲",
+    "只能强化一次"
+  ],
+  "demoArmor": [
+    "conarm:helmet",
+    "conarm:chestplate",
+    "conarm:leggings",
+    "conarm:boots"
+  ]
+}
