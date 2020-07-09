@@ -61,6 +61,7 @@ public class TconEvoTraits {
             new TraitEnergized(1), new TraitEnergized(2)
     };
     public static final TraitExecutor TRAIT_EXECUTOR = new TraitExecutor();
+    public static final TraitFertilizing TRAIT_FERTILIZING = new TraitFertilizing();
     public static final TraitFootFleet TRAIT_FOOT_FLEET = new TraitFootFleet();
     public static final TraitImpactForce TRAIT_IMPACT_FORCE = new TraitImpactForce();
     public static final TraitJuggernaut TRAIT_JUGGERNAUT = new TraitJuggernaut();

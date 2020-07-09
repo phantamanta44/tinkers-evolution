@@ -41,6 +41,8 @@ public class TconEvoMaterials {
     public static Material ENDER_CRYSTAL, PULSATING_CRYSTAL, VIBRANT_CRYSTAL, WEATHER_CRYSTAL;
     // environmental tech
     public static Material LITHERITE, ERODIUM, KYRONITE, PLADIUM, IONITE, AETHIUM, LONSDALEITE, MICA;
+    // forestry
+    public static Material APATITE;
     // industrial foregoing
     public static Material ESSENCE_METAL, MEAT_METAL, PINK_SLIME, PINK_METAL;
     // industrialcraft 2
@@ -478,6 +480,17 @@ public class TconEvoMaterials {
                 .withStatsExtra(40)
                 .withStatsBow(1.75F, 0.75F, 0F)
                 .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_MODIFIABLE[1])
+                .build();
+
+        // forestry
+        APATITE = new MaterialBuilder(NameConst.MAT_APATITE, 0x4baef1, MaterialForm.GEM, "Apatite")
+                .requiresOres("gemApatite")
+                .setCraftable()
+                .withStatsHead(375, 4F, 4.5F, HarvestLevels.IRON)
+                .withStatsMagic(375, 5F, 0.9F, HarvestLevels.IRON)
+                .withStatsHandle(0.8F, 10)
+                .withStatsExtra(35)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_FERTILIZING, TinkerTraits.cheapskate)
                 .build();
 
         // industrial foregoing

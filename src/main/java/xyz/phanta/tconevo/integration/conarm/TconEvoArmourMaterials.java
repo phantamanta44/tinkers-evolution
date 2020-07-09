@@ -182,6 +182,12 @@ public class TconEvoArmourMaterials {
                 .withTraits(ArmourPartType.ARMOUR, TconEvoTraits.TRAIT_MODIFIABLE[1])
                 .build();
 
+        // forestry
+        new ArmourMaterialBuilder(TconEvoMaterials.APATITE)
+                .withStatsArmour(3F, 9.5F, 0.8F, 2F, 0F, 2.5F)
+                .withTraits(ArmourPartType.ARMOUR, ArmorTraits.absorbent, ArmorTraits.cheapskate)
+                .build();
+
         // industrial foregoing
         new ArmourMaterialBuilder(TconEvoMaterials.ESSENCE_METAL)
                 .withStatsArmour(15F, 13F, 1.5F, 0.15F, 0F, 1.5F)

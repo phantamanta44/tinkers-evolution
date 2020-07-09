@@ -1,0 +1,19 @@
+{
+  "armormodifier": "tconevo.apiary_affinity_armor",
+  "text": [
+    {
+      "text": "Bees can be quite aggressive at times, making proper protective gear essential for the modern beekeeper. Line your armour with a fine woven mesh to keep them at bay."
+    }
+  ],
+  "effects": [
+    "Grants protection from Forestry bees",
+    "A full armour set provides total protection",
+    "Single level"
+  ],
+  "demoArmor": [
+    "conarm:helmet",
+    "conarm:chestplate",
+    "conarm:leggings",
+    "conarm:boots"
+  ]
+}
