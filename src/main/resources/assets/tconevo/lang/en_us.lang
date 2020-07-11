@@ -85,6 +85,9 @@ potion.effect.tconevo.damage_boost=Potion of Power
 splash_potion.effect.tconevo.damage_boost=Splash Potion of Power
 lingering_potion.effect.tconevo.damage_boost=Lingering Potion of Power
 
+modifier.depthdigger.name=Depth Digger
+modifier.depthdigger.desc=§oFresh-air-a-phobia?§r\nThis tool becomes more efficient at lower elevations.
+
 modifier.tconevo.aftershock.name=Aftershock
 modifier.tconevo.aftershock.desc=§oLaevatein!§r\nThis weapon deals additional magical damage on fully-charged hits.
 modifier.tconevo.battle_furor.name=Battle Furor
