@@ -7,9 +7,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import slimeknights.tconstruct.tools.harvest.TinkerHarvestTools;
 import xyz.phanta.tconevo.util.CapInstanceConsumer;
+import xyz.phanta.tconevo.util.Reflected;
 
 import java.util.Optional;
 
+@Reflected
 public class ForestryHooksImpl implements ForestryHooks {
 
     @Override

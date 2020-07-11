@@ -3,7 +3,6 @@ package xyz.phanta.tconevo.integration.thermal;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import xyz.phanta.tconevo.integration.IntegrationHooks;
-import xyz.phanta.tconevo.util.Reflected;
 
 import java.util.Optional;
 
@@ -20,7 +19,6 @@ public interface ThermalHooks extends IntegrationHooks {
 
     void addCrucibleRecipe(int energy, ItemStack input, FluidStack output);
 
-    @Reflected
     class Noop implements ThermalHooks {
 
         @Override

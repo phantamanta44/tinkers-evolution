@@ -5,7 +5,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import xyz.phanta.tconevo.integration.IntegrationHooks;
-import xyz.phanta.tconevo.util.Reflected;
 
 import java.util.Optional;
 
@@ -34,7 +33,6 @@ public interface BloodMagicHooks extends IntegrationHooks {
 
     int getSoulFrayLevel(EntityLivingBase entity);
 
-    @Reflected
     class Noop implements BloodMagicHooks {
 
         @Override

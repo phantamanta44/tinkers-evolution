@@ -2,7 +2,6 @@ package xyz.phanta.tconevo.integration.enderio;
 
 import net.minecraft.item.ItemStack;
 import xyz.phanta.tconevo.integration.IntegrationHooks;
-import xyz.phanta.tconevo.util.Reflected;
 
 import java.util.Optional;
 
@@ -29,7 +28,6 @@ public interface EnderIoHooks extends IntegrationHooks {
 
     Optional<ItemStack> getItemSolarVibrant();
 
-    @Reflected
     class Noop implements EnderIoHooks {
 
         @Override

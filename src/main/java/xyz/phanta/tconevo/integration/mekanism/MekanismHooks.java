@@ -2,7 +2,6 @@ package xyz.phanta.tconevo.integration.mekanism;
 
 import net.minecraft.item.ItemStack;
 import xyz.phanta.tconevo.integration.IntegrationHooks;
-import xyz.phanta.tconevo.util.Reflected;
 
 import java.util.Optional;
 
@@ -15,7 +14,6 @@ public interface MekanismHooks extends IntegrationHooks {
 
     Optional<ItemStack> getItemEnergyTablet();
 
-    @Reflected
     class Noop implements MekanismHooks {
 
         @Override

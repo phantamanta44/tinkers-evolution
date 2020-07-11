@@ -3,7 +3,6 @@ package xyz.phanta.tconevo.integration.naturalabsorption;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.ItemStack;
 import xyz.phanta.tconevo.integration.IntegrationHooks;
-import xyz.phanta.tconevo.util.Reflected;
 
 import javax.annotation.Nullable;
 import java.util.Optional;
@@ -20,7 +19,6 @@ public interface NaturalAbsorptionHooks {
     @Nullable
     Enchantment getEnchAbsorption();
 
-    @Reflected
     class Noop implements NaturalAbsorptionHooks {
 
         @Override

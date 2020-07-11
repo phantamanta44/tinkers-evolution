@@ -2,7 +2,6 @@ package xyz.phanta.tconevo.integration.thaumcraft;
 
 import net.minecraft.entity.player.EntityPlayer;
 import xyz.phanta.tconevo.integration.IntegrationHooks;
-import xyz.phanta.tconevo.util.Reflected;
 
 public interface ThaumHooks extends IntegrationHooks {
 
@@ -13,7 +12,6 @@ public interface ThaumHooks extends IntegrationHooks {
 
     void applyWarp(EntityPlayer player, int amount);
 
-    @Reflected
     class Noop implements ThaumHooks {
 
         @Override
