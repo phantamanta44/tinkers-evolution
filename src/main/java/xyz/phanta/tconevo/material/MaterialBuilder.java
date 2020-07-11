@@ -205,6 +205,7 @@ public class MaterialBuilder {
         fluid.setUnlocalizedName(TconEvoMod.MOD_ID + "." + material.identifier);
         FluidRegistry.registerFluid(fluid);
         CraftReflect.setFluidUniqueId(fluid, TconEvoMod.MOD_ID + ":" + material.identifier);
+        FluidRegistry.addBucketForFluid(fluid);
         material.setFluid(fluid);
     }
 

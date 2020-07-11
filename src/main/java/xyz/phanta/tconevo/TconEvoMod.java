@@ -4,6 +4,7 @@ import io.github.phantamanta44.libnine.Virtue;
 import io.github.phantamanta44.libnine.util.L9CreativeTab;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.*;
@@ -31,6 +32,10 @@ public class TconEvoMod extends Virtue {
     public static CommonProxy PROXY;
 
     public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
+
+    static {
+        FluidRegistry.enableUniversalBucket(); // "Actually just call it statically in your mod class."
+    }
 
     public TconEvoMod() {
         super(MOD_ID, new L9CreativeTab(MOD_ID, () -> ItemMaterial.Type.COALESCENCE_MATRIX.newStack(1)) {
