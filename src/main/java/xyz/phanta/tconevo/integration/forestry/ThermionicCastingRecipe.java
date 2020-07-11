@@ -1,4 +1,4 @@
-package xyz.phanta.tconevo.integration.conarm.trait.forestry;
+package xyz.phanta.tconevo.integration.forestry;
 
 import forestry.api.recipes.IFabricatorRecipe;
 import net.minecraft.item.ItemStack;
