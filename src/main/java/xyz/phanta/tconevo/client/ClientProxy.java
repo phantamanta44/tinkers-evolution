@@ -20,6 +20,7 @@ import xyz.phanta.tconevo.client.book.BookTransformerAppendModifiers;
 import xyz.phanta.tconevo.client.book.BookTransformerAppendTools;
 import xyz.phanta.tconevo.client.command.CommandTconEvoClient;
 import xyz.phanta.tconevo.client.fx.ParticleChainLightning;
+import xyz.phanta.tconevo.client.handler.ConfigGuiHandler;
 import xyz.phanta.tconevo.client.handler.EnergyShieldHudHandler;
 import xyz.phanta.tconevo.client.handler.EnergyTooltipHandler;
 import xyz.phanta.tconevo.client.handler.ModelRegistrationHandler;
@@ -37,6 +38,7 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void onPreInit(FMLPreInitializationEvent event) {
         super.onPreInit(event);
+        MinecraftForge.EVENT_BUS.register(new ConfigGuiHandler());
         MinecraftForge.EVENT_BUS.register(new ModelRegistrationHandler());
         MinecraftForge.EVENT_BUS.register(new EnergyTooltipHandler());
         if (!DraconicHooks.isLoaded()) {
