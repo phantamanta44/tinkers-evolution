@@ -12,6 +12,7 @@ import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
 import xyz.phanta.tconevo.integration.enderio.EnderIoHooks;
 import xyz.phanta.tconevo.integration.envtech.EnvTechHooks;
 import xyz.phanta.tconevo.integration.ic2.Ic2Hooks;
+import xyz.phanta.tconevo.integration.mekanism.MekanismGensHooks;
 import xyz.phanta.tconevo.integration.mekanism.MekanismHooks;
 import xyz.phanta.tconevo.integration.redstonerepository.RedstoneRepositoryHooks;
 import xyz.phanta.tconevo.integration.solarflux.SolarFluxHooks;
@@ -195,8 +196,8 @@ public class TconEvoTraits {
 
         // mekanism
         addModItemOpt(MOD_FLUXED, MekanismHooks.INSTANCE::getItemEnergyTablet);
-        addModItemOpt(MOD_PHOTOVOLTAIC, MekanismHooks.INSTANCE::getItemSolarGen);
-        addModItemOpt(MOD_PHOTOVOLTAIC, MekanismHooks.INSTANCE::getItemSolarGenAdv);
+        addModItemOpt(MOD_PHOTOVOLTAIC, MekanismGensHooks.INSTANCE::getItemSolarGen);
+        addModItemOpt(MOD_PHOTOVOLTAIC, MekanismGensHooks.INSTANCE::getItemSolarGenAdv);
 
         // redstone arsenal/repository
         addModItemOpt(MOD_FLUXED, RedstoneRepositoryHooks.INSTANCE::getItemGelidCapacitor);
