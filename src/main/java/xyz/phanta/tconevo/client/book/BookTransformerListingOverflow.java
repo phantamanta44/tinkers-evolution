@@ -26,12 +26,14 @@ public class BookTransformerListingOverflow extends SectionTransformer {
                 List<TextData> entries = TconReflectClient.getEntries(listing);
                 // this math relies on some hardcoded constants in ContentListing; hopefully they don't change
                 int pageSizeFirst = 2 * (int)Math.ceil((GuiBook.PAGE_HEIGHT - (listing.title != null ? 49F : 29F)) / 9F);
-                int pageSize = 2 * (int)Math.ceil((GuiBook.PAGE_HEIGHT - 29F) / 9F);
-                int index = 0;
-                for (int entryNdx = pageSizeFirst; entryNdx < entries.size(); entryNdx += pageSize) {
-                    addListingPage(section, index++, entries, entryNdx, Math.min(pageSize, entries.size() - entryNdx));
+                if (entries.size() > pageSizeFirst) {
+                    int pageSize = 2 * (int)Math.ceil((GuiBook.PAGE_HEIGHT - 29F) / 9F);
+                    int index = 0;
+                    for (int entryNdx = pageSizeFirst; entryNdx < entries.size(); entryNdx += pageSize) {
+                        addListingPage(section, index++, entries, entryNdx, Math.min(pageSize, entries.size() - entryNdx));
+                    }
+                    entries.subList(pageSizeFirst, entries.size()).clear();
                 }
-                entries.subList(pageSizeFirst, entries.size()).clear();
             }
         }
     }
