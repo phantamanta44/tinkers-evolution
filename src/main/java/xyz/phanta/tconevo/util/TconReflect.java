@@ -8,8 +8,10 @@ import slimeknights.mantle.util.RecipeMatch;
 import slimeknights.mantle.util.RecipeMatchRegistry;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.Material;
+import slimeknights.tconstruct.library.smeltery.AlloyRecipe;
 
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 import java.util.PriorityQueue;
 
@@ -19,6 +21,8 @@ public class TconReflect {
             .<Map<String, ModContainer>>reflectField(TinkerRegistry.class, "materialRegisteredByMod").get(null);
     private static final Map<String, Material> materials = MirrorUtils
             .<Map<String, Material>>reflectField(TinkerRegistry.class, "materials").get(null);
+    private static final List<AlloyRecipe> alloyRegistry = MirrorUtils
+            .<List<AlloyRecipe>>reflectField(TinkerRegistry.class, "alloyRegistry").get(null);
     private static final MirrorUtils.IField<PriorityQueue<RecipeMatch>> fRecipeMatchRecipe_items = MirrorUtils.
             reflectField(RecipeMatchRegistry.class, "items");
     private static final MirrorUtils.IField<List<ItemStack>> fOredict_oredictEntry = MirrorUtils
@@ -30,6 +34,10 @@ public class TconReflect {
 
     public static void removeMaterial(String identifier) {
         materials.remove(identifier);
+    }
+
+    public static ListIterator<AlloyRecipe> iterateAlloyRecipes() {
+        return alloyRegistry.listIterator();
     }
 
     public static PriorityQueue<RecipeMatch> getItems(RecipeMatchRegistry recipeRegistry) {

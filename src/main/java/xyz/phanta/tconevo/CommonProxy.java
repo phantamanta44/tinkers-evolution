@@ -131,6 +131,7 @@ public class CommonProxy {
 
     public void onPostInit(FMLPostInitializationEvent event) {
         IntegrationManager.dispatchPostInit(event);
+        MaterialOverrideHandler.handleRecipeOverrides();
         artifactRegistry.initArtifacts();
     }
 
