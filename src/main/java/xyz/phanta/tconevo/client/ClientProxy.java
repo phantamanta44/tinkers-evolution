@@ -18,6 +18,7 @@ import xyz.phanta.tconevo.CommonProxy;
 import xyz.phanta.tconevo.TconEvoMod;
 import xyz.phanta.tconevo.client.book.BookTransformerAppendModifiers;
 import xyz.phanta.tconevo.client.book.BookTransformerAppendTools;
+import xyz.phanta.tconevo.client.book.BookTransformerListingOverflow;
 import xyz.phanta.tconevo.client.command.CommandTconEvoClient;
 import xyz.phanta.tconevo.client.fx.ParticleChainLightning;
 import xyz.phanta.tconevo.client.handler.ConfigGuiHandler;
@@ -67,6 +68,7 @@ public class ClientProxy extends CommonProxy {
                 new FileRepository("tconstruct:book"), TconEvoItems.TOOLS));
         TinkerBook.INSTANCE.addTransformer(new BookTransformerAppendModifiers(
                 new FileRepository("tconstruct:book"), false, c -> c.acceptAll(TconEvoTraits.MODIFIERS)));
+        TinkerBook.INSTANCE.addTransformer(new BookTransformerListingOverflow("modifiers"));
         ClientCommandHandler.instance.registerCommand(new CommandTconEvoClient());
     }
 

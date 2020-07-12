@@ -10,6 +10,7 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import slimeknights.mantle.client.book.repository.FileRepository;
 import xyz.phanta.tconevo.client.book.BookTransformerAppendModifiers;
+import xyz.phanta.tconevo.client.book.BookTransformerListingOverflow;
 import xyz.phanta.tconevo.integration.conarm.ConArmHooksImpl;
 import xyz.phanta.tconevo.integration.conarm.TconEvoArmourTraits;
 import xyz.phanta.tconevo.integration.conarm.trait.bloodmagic.ArmourTraitSentient;
@@ -26,6 +27,7 @@ public class ConArmHooksClientImpl extends ConArmHooksImpl {
         super.onPostInit(event);
         ArmoryBook.INSTANCE.addTransformer(new BookTransformerAppendModifiers(
                 new FileRepository("conarm:book"), true, c -> c.acceptAll(TconEvoArmourTraits.MODIFIERS)));
+        ArmoryBook.INSTANCE.addTransformer(new BookTransformerListingOverflow("modifiers"));
     }
 
     // offset the fov increase caused by speed modifiers, since armour mods are semi-permanent and big fovs make the game hard to play
