@@ -2,7 +2,6 @@ package xyz.phanta.tconevo.handler;
 
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Multimaps;
-import net.minecraft.block.Block;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fluids.Fluid;
@@ -34,13 +33,6 @@ public class MaterialOverrideHandler {
     private static final Map<String, String> overrideMatIds = new HashMap<>();
     // overriding material id -> overridden material ids
     private static final Multimap<String, String> overrideMatIdsInv = Multimaps.newMultimap(new HashMap<>(), ArrayList::new);
-    /*// overriding material id -> overridden material stats TODO
-    private static final Multimap<String, IMaterialStats> overrideStats = Multimaps.newMultimap(new HashMap<>(), ArrayList::new);
-    // overriding material id -> part type -> overriden material traits
-    @SuppressWarnings("UnstableApiUsage")
-    private static final Table<String, String, List<ITrait>> overrideTraits = Tables.newCustomTable(new HashMap<>(), HashMap::new);
-    // overridden material fluid id -> overridden material id
-    private static final Map<String, String> overriddenFluidsInv = new HashMap<>();*/
     // overriding material id -> overridden material wrappers
     private static final Multimap<String, OverriddenMaterial> overriddenMats = Multimaps.newMultimap(new HashMap<>(), ArrayList::new);
     // overridden material instance -> overridden material wrapper
@@ -84,7 +76,6 @@ public class MaterialOverrideHandler {
         for (String overrideId : overrideIds) {
             overrideId = overrideId.toLowerCase(); // :I
             overrideMatIds.put(overrideId, materialId);
-            //overrideMatIdsInv.put(materialId, overrideId); FIXME
         }
     }
 
@@ -107,29 +98,6 @@ public class MaterialOverrideHandler {
             }
         }
     }
-
-    /*public static Collection<IMaterialStats> getOverriddenStats(String materialId) { TODO
-        Collection<IMaterialStats> stats = overrideStats.get(materialId);
-        return stats != null ? stats : Collections.emptyList();
-    }
-
-    public static Map<String, List<ITrait>> getOverriddenTraits(String materialId) {
-        Map<String, List<ITrait>> traits = overrideTraits.row(materialId);
-        return traits != null ? traits : Collections.emptyMap();
-    }
-
-    private static Collection<ITrait> getOrCreateOverrideTraits(String materialId, String partType) {
-        List<ITrait> traits = overrideTraits.get(materialId, partType);
-        if (traits == null) {
-            traits = new ArrayList<>();
-            overrideTraits.put(materialId, partType, traits);
-        }
-        return traits;
-    }
-
-    public static void registerFluidOverride(String fluidId, String overriddenMaterialId) {
-        overriddenFluidsInv.put(fluidId, overriddenMaterialId);
-    }*/
 
     @SubscribeEvent
     public static void onMaterialRegistration(MaterialEvent.MaterialRegisterEvent event) {
