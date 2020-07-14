@@ -18,8 +18,10 @@ import xyz.phanta.tconevo.CommonProxy;
 import xyz.phanta.tconevo.TconEvoMod;
 import xyz.phanta.tconevo.client.book.BookTransformerAppendModifiers;
 import xyz.phanta.tconevo.client.book.BookTransformerAppendTools;
+import xyz.phanta.tconevo.client.book.BookTransformerListingOverflow;
 import xyz.phanta.tconevo.client.command.CommandTconEvoClient;
 import xyz.phanta.tconevo.client.fx.ParticleChainLightning;
+import xyz.phanta.tconevo.client.handler.ConfigGuiHandler;
 import xyz.phanta.tconevo.client.handler.EnergyShieldHudHandler;
 import xyz.phanta.tconevo.client.handler.EnergyTooltipHandler;
 import xyz.phanta.tconevo.client.handler.ModelRegistrationHandler;
@@ -37,6 +39,7 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void onPreInit(FMLPreInitializationEvent event) {
         super.onPreInit(event);
+        MinecraftForge.EVENT_BUS.register(new ConfigGuiHandler());
         MinecraftForge.EVENT_BUS.register(new ModelRegistrationHandler());
         MinecraftForge.EVENT_BUS.register(new EnergyTooltipHandler());
         if (!DraconicHooks.isLoaded()) {
@@ -65,6 +68,7 @@ public class ClientProxy extends CommonProxy {
                 new FileRepository("tconstruct:book"), TconEvoItems.TOOLS));
         TinkerBook.INSTANCE.addTransformer(new BookTransformerAppendModifiers(
                 new FileRepository("tconstruct:book"), false, c -> c.acceptAll(TconEvoTraits.MODIFIERS)));
+        TinkerBook.INSTANCE.addTransformer(new BookTransformerListingOverflow("modifiers"));
         ClientCommandHandler.instance.registerCommand(new CommandTconEvoClient());
     }
 

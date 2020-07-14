@@ -2,7 +2,6 @@ package xyz.phanta.tconevo.integration.advsolars;
 
 import net.minecraft.item.ItemStack;
 import xyz.phanta.tconevo.integration.IntegrationHooks;
-import xyz.phanta.tconevo.util.Reflected;
 
 import java.util.Optional;
 
@@ -21,7 +20,6 @@ public interface AdvSolarHooks extends IntegrationHooks {
 
     Optional<ItemStack> getItemQuantumSolar();
 
-    @Reflected
     class Noop implements AdvSolarHooks {
 
         @Override

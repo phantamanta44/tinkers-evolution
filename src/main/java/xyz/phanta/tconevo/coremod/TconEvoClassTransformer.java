@@ -18,6 +18,7 @@ public class TconEvoClassTransformer implements IClassTransformer {
     static {
         for (Transform tform : Arrays.asList(
                 new TransformAstralAttunement(),
+                new TransformCaptureMaterialProperties(),
                 new TransformGregTechRecipeCrash(),
                 new TransformItemSensitiveModifiers(),
                 new TransformItemStackBar(),
@@ -31,7 +32,7 @@ public class TconEvoClassTransformer implements IClassTransformer {
     public byte[] transform(String name, String transformedName, byte[] code) {
         Transform tform = TRANSFORMS.get(transformedName);
         if (tform != null) {
-            System.out.printf("Applying transform \"%s\" to class: %s\n", tform.getName(), transformedName);
+            TconEvoCoreMod.LOGGER.info("Applying transform \"{}\" to class: {}\n", tform.getName(), transformedName);
             ClassReader reader = new ClassReader(code);
             ClassWriter writer = new ClassWriter(reader, tform.getWriteFlags());
             reader.accept(tform.createTransformer(transformedName, Opcodes.ASM5, writer), tform.getReadFlags());

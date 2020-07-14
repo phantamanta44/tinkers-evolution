@@ -127,10 +127,12 @@ public class CommonProxy {
     public void onImcReceived(FMLInterModComms.IMCEvent event) {
         // we need this to happen before tcon's post-init finishes and the imc handling event just happens to be convenient
         MaterialDefinition.activate();
+        MaterialOverrideHandler.handleTraitInheritance();
     }
 
     public void onPostInit(FMLPostInitializationEvent event) {
         IntegrationManager.dispatchPostInit(event);
+        MaterialOverrideHandler.handleRecipeOverrides();
         artifactRegistry.initArtifacts();
     }
 

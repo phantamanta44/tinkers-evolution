@@ -2,7 +2,6 @@ package xyz.phanta.tconevo.integration.envtech;
 
 import net.minecraft.item.ItemStack;
 import xyz.phanta.tconevo.integration.IntegrationHooks;
-import xyz.phanta.tconevo.util.Reflected;
 
 import java.util.Optional;
 
@@ -25,7 +24,6 @@ public interface EnvTechHooks extends IntegrationHooks {
 
     Optional<ItemStack> getItemSolarAethium();
 
-    @Reflected
     class Noop implements EnvTechHooks {
 
         @Override

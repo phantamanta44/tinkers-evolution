@@ -12,7 +12,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: "com.wynprice.cursemaven"
 
-version = "1.0.25"
+version = "1.0.28"
 group = "xyz.phanta.tconevo"
 archivesBaseName = "tconevo-1.12.2"
 

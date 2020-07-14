@@ -7,7 +7,6 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 import xyz.phanta.tconevo.integration.IntegrationHooks;
-import xyz.phanta.tconevo.util.Reflected;
 
 import java.util.Optional;
 
@@ -24,7 +23,6 @@ public interface Ic2Hooks extends IntegrationHooks {
 
     boolean consumeEu(ItemStack stack, double amount, EntityLivingBase entity, boolean commit);
 
-    @Reflected
     class Noop implements Ic2Hooks {
 
         @Override

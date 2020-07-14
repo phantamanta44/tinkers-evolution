@@ -10,6 +10,7 @@ import slimeknights.tconstruct.library.materials.*;
 import slimeknights.tconstruct.library.traits.ITrait;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.TconEvoMod;
+import xyz.phanta.tconevo.handler.MaterialOverrideHandler;
 import xyz.phanta.tconevo.material.stats.MagicMaterialStats;
 import xyz.phanta.tconevo.util.CraftReflect;
 import xyz.phanta.tconevo.util.LazyAccum;
@@ -33,7 +34,7 @@ public class MaterialBuilder {
     private final String oreName;
 
     private final List<RegCondition> conditions = new ArrayList<>();
-    private final List<IMaterialStats> materialStats = new ArrayList<>();
+    private final Map<String, IMaterialStats> materialStats = new HashMap<>();
     private boolean craftable = false, castable = false;
     @Nullable
     private Supplier<Fluid> fluidGetter = null;
@@ -81,7 +82,7 @@ public class MaterialBuilder {
     }
 
     public MaterialBuilder withStats(IMaterialStats statsObj) {
-        materialStats.add(statsObj);
+        materialStats.put(statsObj.getIdentifier(), statsObj);
         return this;
     }
 
@@ -153,6 +154,7 @@ public class MaterialBuilder {
     }
 
     public Material build() {
+        overrides(MaterialOverrideHandler.getOverriddenIds(matId).toArray(new String[0]));
         Material material = TinkerRegistry.getMaterial(matId);
         boolean notBlacklisted = isNotBlacklisted(matId);
         if (material != Material.UNKNOWN) {
@@ -161,6 +163,7 @@ public class MaterialBuilder {
                 TconEvoMod.LOGGER.info("Overriding existing material {} registered by {}",
                         material.identifier, owningMod != null ? owningMod.getModId() : "unknown");
                 TconReflect.removeMaterial(matId); // "it's my material now!" said Tap, with a laugh
+                MaterialOverrideHandler.override(matId, material);
             } else {
                 return material;
             }
@@ -176,7 +179,7 @@ public class MaterialBuilder {
                     material.setCastable(false);
                 }
             }
-            for (IMaterialStats statsObj : materialStats) {
+            for (IMaterialStats statsObj : materialStats.values()) {
                 TinkerRegistry.addMaterialStats(material, statsObj);
             }
             if (notBlacklisted) {
@@ -205,6 +208,7 @@ public class MaterialBuilder {
         fluid.setUnlocalizedName(TconEvoMod.MOD_ID + "." + material.identifier);
         FluidRegistry.registerFluid(fluid);
         CraftReflect.setFluidUniqueId(fluid, TconEvoMod.MOD_ID + ":" + material.identifier);
+        FluidRegistry.addBucketForFluid(fluid);
         material.setFluid(fluid);
     }
 

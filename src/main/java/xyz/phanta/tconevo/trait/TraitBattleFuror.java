@@ -23,7 +23,7 @@ public class TraitBattleFuror extends AbstractTrait {
                 || (player instanceof EntityPlayer && ((EntityPlayer)player).getCooledAttackStrength(0.5F) < 0.95F)) {
             return;
         }
-        PotionEffect effect = player.getActivePotionEffect(MobEffects.STRENGTH);
+        PotionEffect effect = player.getActivePotionEffect(TconEvoPotions.DAMAGE_BOOST);
         player.addPotionEffect(new PotionEffect(
                 TconEvoPotions.DAMAGE_BOOST, TconEvoConfig.general.traitBattleFurorDuration,
                 Math.min(effect != null ? (effect.getAmplifier() + 1) : 0, TconEvoConfig.general.traitBattleFurorMaxStacks)));

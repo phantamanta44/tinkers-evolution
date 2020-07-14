@@ -8,7 +8,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import slimeknights.tconstruct.library.modifiers.IModifier;
 import slimeknights.tconstruct.library.modifiers.TinkerGuiException;
 import xyz.phanta.tconevo.integration.IntegrationHooks;
-import xyz.phanta.tconevo.util.Reflected;
 
 import javax.annotation.Nullable;
 
@@ -32,7 +31,6 @@ public interface ConArmHooks extends IntegrationHooks {
 
     void damageArmour(ItemStack stack, int amount, EntityLivingBase wearer);
 
-    @Reflected
     class Noop implements ConArmHooks {
 
         @Override

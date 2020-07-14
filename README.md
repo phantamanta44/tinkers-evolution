@@ -33,6 +33,10 @@ Current mod integration modules are as follows:
 * **Environmental Tech**
     * Adds materials for the many crystal types
     * Allows solar cells to apply the "photovoltaic" modifier
+* **Forestry**
+    * Adds apatite material with the fertilizing trait
+    * Adds the apiary affinity armour modifier, which negates negative bee effects
+    * Allows the kama to destroy blocks like a scoop
 * **IndustrialCraft 2**
     * Adds industrial materials, including an energium material that runs on electricity
     * Adds a sunnarium material from Advanced Solar Panels
