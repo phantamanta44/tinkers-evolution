@@ -9,6 +9,7 @@ import slimeknights.mantle.util.RecipeMatchRegistry;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.smeltery.AlloyRecipe;
+import slimeknights.tconstruct.library.traits.ITrait;
 
 import java.util.List;
 import java.util.ListIterator;
@@ -27,6 +28,8 @@ public class TconReflect {
             reflectField(RecipeMatchRegistry.class, "items");
     private static final MirrorUtils.IField<List<ItemStack>> fOredict_oredictEntry = MirrorUtils
             .reflectField(RecipeMatch.Oredict.class, "oredictEntry");
+    private static final MirrorUtils.IField<Map<String, List<ITrait>>> fMaterial_traits = MirrorUtils
+            .reflectField(Material.class, "traits");
 
     public static void overrideMaterialOwnerMod(Material material, Object modObj) {
         materialRegisteredByMod.put(material.identifier, FMLCommonHandler.instance().findContainerFor(modObj));
@@ -46,6 +49,10 @@ public class TconReflect {
 
     public static List<ItemStack> getOreEntries(RecipeMatch.Oredict recipeMatch) {
         return fOredict_oredictEntry.get(recipeMatch);
+    }
+
+    public static Map<String, List<ITrait>> getTraits(Material material) {
+        return fMaterial_traits.get(material);
     }
 
 }

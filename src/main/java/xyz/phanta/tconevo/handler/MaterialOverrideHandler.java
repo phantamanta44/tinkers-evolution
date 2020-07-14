@@ -2,6 +2,9 @@ package xyz.phanta.tconevo.handler;
 
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Multimaps;
+import net.minecraft.block.Block;
+import net.minecraft.potion.Potion;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.Loader;
@@ -13,6 +16,7 @@ import slimeknights.tconstruct.library.events.MaterialEvent;
 import slimeknights.tconstruct.library.materials.IMaterialStats;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.smeltery.AlloyRecipe;
+import slimeknights.tconstruct.library.traits.ITrait;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.TconEvoMod;
 import xyz.phanta.tconevo.constant.NameConst;
@@ -29,11 +33,18 @@ public class MaterialOverrideHandler {
     // overridden material id -> overriding material id
     private static final Map<String, String> overrideMatIds = new HashMap<>();
     // overriding material id -> overridden material ids
-    private static final Multimap<String, String> overrideMatIdsInv = Multimaps.newMultimap(new HashMap<>(), HashSet::new);
-    // overriding material id -> overridden material stats
+    private static final Multimap<String, String> overrideMatIdsInv = Multimaps.newMultimap(new HashMap<>(), ArrayList::new);
+    /*// overriding material id -> overridden material stats TODO
     private static final Multimap<String, IMaterialStats> overrideStats = Multimaps.newMultimap(new HashMap<>(), ArrayList::new);
+    // overriding material id -> part type -> overriden material traits
+    @SuppressWarnings("UnstableApiUsage")
+    private static final Table<String, String, List<ITrait>> overrideTraits = Tables.newCustomTable(new HashMap<>(), HashMap::new);
     // overridden material fluid id -> overridden material id
-    private static final Map<String, String> overriddenFluidsInv = new HashMap<>();
+    private static final Map<String, String> overriddenFluidsInv = new HashMap<>();*/
+    // overriding material id -> overridden material wrappers
+    private static final Multimap<String, OverriddenMaterial> overriddenMats = Multimaps.newMultimap(new HashMap<>(), ArrayList::new);
+    // overridden material instance -> overridden material wrapper
+    private static final Map<Material, OverriddenMaterial> overriddenWrapperMap = new IdentityHashMap<>();
 
     static {
         // integration foregoing
@@ -73,7 +84,7 @@ public class MaterialOverrideHandler {
         for (String overrideId : overrideIds) {
             overrideId = overrideId.toLowerCase(); // :I
             overrideMatIds.put(overrideId, materialId);
-            overrideMatIdsInv.put(materialId, overrideId);
+            //overrideMatIdsInv.put(materialId, overrideId); FIXME
         }
     }
 
@@ -82,14 +93,43 @@ public class MaterialOverrideHandler {
         return ids != null ? ids : Collections.emptySet();
     }
 
-    public static Collection<IMaterialStats> getOverriddenStats(String materialId) {
+    public static void override(String overrideMatId, Material overriddenMat) {
+        OverriddenMaterial wrapper = new OverriddenMaterial(overriddenMat);
+        overriddenMats.put(overrideMatId, wrapper);
+        overriddenWrapperMap.put(overriddenMat, wrapper);
+    }
+
+    public static void putOverriddenTrait(Material overriddenMat, @Nullable String partType, ITrait trait) {
+        if (partType != null) { // do not inherit default traits
+            OverriddenMaterial wrapper = overriddenWrapperMap.get(overriddenMat);
+            if (wrapper != null) {
+                wrapper.traits.put(partType, trait);
+            }
+        }
+    }
+
+    /*public static Collection<IMaterialStats> getOverriddenStats(String materialId) { TODO
         Collection<IMaterialStats> stats = overrideStats.get(materialId);
         return stats != null ? stats : Collections.emptyList();
     }
 
+    public static Map<String, List<ITrait>> getOverriddenTraits(String materialId) {
+        Map<String, List<ITrait>> traits = overrideTraits.row(materialId);
+        return traits != null ? traits : Collections.emptyMap();
+    }
+
+    private static Collection<ITrait> getOrCreateOverrideTraits(String materialId, String partType) {
+        List<ITrait> traits = overrideTraits.get(materialId, partType);
+        if (traits == null) {
+            traits = new ArrayList<>();
+            overrideTraits.put(materialId, partType, traits);
+        }
+        return traits;
+    }
+
     public static void registerFluidOverride(String fluidId, String overriddenMaterialId) {
         overriddenFluidsInv.put(fluidId, overriddenMaterialId);
-    }
+    }*/
 
     @SubscribeEvent
     public static void onMaterialRegistration(MaterialEvent.MaterialRegisterEvent event) {
@@ -99,30 +139,59 @@ public class MaterialOverrideHandler {
                 ModContainer owningMod = Loader.instance().activeModContainer();
                 TconEvoMod.LOGGER.info("Blocking registration of material {} registered by {}",
                         event.material.identifier, owningMod != null ? owningMod.getModId() : "unknown");
-                Material overridingMat = TinkerRegistry.getMaterial(overrideMatId);
-                if (overridingMat != null) {
-                    // we want the overriding material to inherit stats from the overridden material
-                    // the order of registration can vary, so this accounts for either ordering case
-                    for (IMaterialStats statsObj : event.material.getAllStats()) {
-                        overrideStats.put(overrideMatId, statsObj);
-                        if (overridingMat.getStats(statsObj.getIdentifier()) == null) {
-                            overridingMat.addStats(statsObj);
-                        }
-                    }
-                } else { // if overriding material is registered after, then stats are handled in MaterialBuilder#build
-                    for (IMaterialStats statsObj : event.material.getAllStats()) {
-                        overrideStats.put(overrideMatId, statsObj);
-                    }
-                }
-                if (event.material.hasFluid()) {
-                    overriddenFluidsInv.put(event.material.getFluid().getName(), event.material.identifier);
-                }
                 event.setCanceled(true);
+                override(overrideMatId, event.material);
             }
         }
     }
 
+    // we don't actually care about registering potions
+    // we just need a hook that occurs after preinit but before model loading; this is a "convenient" one
+    @SubscribeEvent
+    public static void onRegisterPotions(RegistryEvent.Register<Potion> event) {
+        handleStatInheritance();
+    }
+
+    public static void handleStatInheritance() {
+        overriddenMats.asMap().forEach((overrideMatId, inheritFrom) -> {
+            Material overrideMat = TinkerRegistry.getMaterial(overrideMatId);
+            if (overrideMat != Material.UNKNOWN) {
+                for (OverriddenMaterial overriddenMat : inheritFrom) {
+                    for (IMaterialStats statsObj : overriddenMat.material.getAllStats()) {
+                        if (overrideMat.getStats(statsObj.getIdentifier()) == null) {
+                            overrideMat.addStats(statsObj);
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    public static void handleTraitInheritance() {
+        overriddenMats.asMap().forEach((overrideMatId, inheritFrom) -> {
+            Material overrideMat = TinkerRegistry.getMaterial(overrideMatId);
+            if (overrideMat != Material.UNKNOWN) {
+                for (OverriddenMaterial overriddenMat : inheritFrom) {
+                    Map<String, List<ITrait>> overrideMatTraits = TconReflect.getTraits(overrideMat);
+                    overriddenMat.traits.asMap().forEach((partType, traits) -> {
+                        if (!overrideMatTraits.containsKey(partType)) {
+                            overrideMatTraits.put(partType, new ArrayList<>(traits));
+                        }
+                    });
+                }
+            }
+        });
+    }
+
     public static void handleRecipeOverrides() {
+        // collect fluids into a lookup map
+        Map<String, String> fluidMatMap = new HashMap<>();
+        overriddenMats.forEach((overrideMatId, overriddenMat) -> {
+            if (overriddenMat.material.hasFluid()) {
+                fluidMatMap.put(overriddenMat.material.getFluid().getName(), overrideMatId);
+            }
+        });
+
         // alloying recipes
         ListIterator<AlloyRecipe> iterAlloyRecipes = TconReflect.iterateAlloyRecipes();
         while (iterAlloyRecipes.hasNext()) {
@@ -130,7 +199,7 @@ public class MaterialOverrideHandler {
             boolean changed = false;
             List<FluidStack> newInputs = new ArrayList<>();
             for (FluidStack input : recipe.getFluids()) {
-                FluidStack overrideFluid = mapFluidByOverride(input);
+                FluidStack overrideFluid = mapFluidByOverride(fluidMatMap, input);
                 if (overrideFluid != null) {
                     newInputs.add(overrideFluid);
                     changed = true;
@@ -139,7 +208,7 @@ public class MaterialOverrideHandler {
                 }
             }
             FluidStack result = recipe.getResult();
-            FluidStack resultOverrideFluid = mapFluidByOverride(result);
+            FluidStack resultOverrideFluid = mapFluidByOverride(fluidMatMap, result);
             if (resultOverrideFluid != null) {
                 result = resultOverrideFluid;
                 changed = true;
@@ -151,10 +220,10 @@ public class MaterialOverrideHandler {
     }
 
     @Nullable
-    private static FluidStack mapFluidByOverride(FluidStack fluid) {
+    private static FluidStack mapFluidByOverride(Map<String, String> fluidMatMap, FluidStack fluid) {
         String oldFluidId = fluid.getFluid().getName();
         // fake null propagation lol
-        Material mat = TinkerRegistry.getMaterial(overrideMatIds.get(overriddenFluidsInv.get(oldFluidId)));
+        Material mat = TinkerRegistry.getMaterial(fluidMatMap.get(oldFluidId));
         if (mat != Material.UNKNOWN && mat.hasFluid()) {
             Fluid newFluid = mat.getFluid();
             if (!newFluid.getName().equals(oldFluidId)) { // don't bother if the fluids are equivalent
@@ -163,6 +232,18 @@ public class MaterialOverrideHandler {
             }
         }
         return null;
+    }
+
+    private static class OverriddenMaterial {
+
+        final Material material;
+        final Multimap<String, ITrait> traits = Multimaps.newMultimap(new HashMap<>(), ArrayList::new);
+
+        OverriddenMaterial(Material material) {
+            this.material = material;
+            TconReflect.getTraits(material).forEach(traits::putAll);
+        }
+
     }
 
 }

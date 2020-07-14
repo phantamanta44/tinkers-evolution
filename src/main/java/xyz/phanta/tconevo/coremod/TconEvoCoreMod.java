@@ -1,11 +1,15 @@
 package xyz.phanta.tconevo.coremod;
 
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.annotation.Nullable;
 import java.util.Map;
 
 public class TconEvoCoreMod implements IFMLLoadingPlugin {
+
+    static final Logger LOGGER = LogManager.getLogger("tconevo-core");
 
     @Override
     public String[] getASMTransformerClass() {

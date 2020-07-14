@@ -163,14 +163,7 @@ public class MaterialBuilder {
                 TconEvoMod.LOGGER.info("Overriding existing material {} registered by {}",
                         material.identifier, owningMod != null ? owningMod.getModId() : "unknown");
                 TconReflect.removeMaterial(matId); // "it's my material now!" said Tap, with a laugh
-                for (IMaterialStats statsObj : material.getAllStats()) {
-                    if (!materialStats.containsKey(statsObj.getIdentifier())) {
-                        materialStats.put(statsObj.getIdentifier(), statsObj);
-                    }
-                }
-                if (material.hasFluid()) {
-                    MaterialOverrideHandler.registerFluidOverride(material.getFluid().getName(), material.identifier);
-                }
+                MaterialOverrideHandler.override(matId, material);
             } else {
                 return material;
             }
@@ -184,11 +177,6 @@ public class MaterialBuilder {
                     registerFluid(material);
                 } else {
                     material.setCastable(false);
-                }
-            }
-            for (IMaterialStats statsObj : MaterialOverrideHandler.getOverriddenStats(matId)) {
-                if (!materialStats.containsKey(statsObj.getIdentifier())) {
-                    materialStats.put(statsObj.getIdentifier(), statsObj);
                 }
             }
             for (IMaterialStats statsObj : materialStats.values()) {
