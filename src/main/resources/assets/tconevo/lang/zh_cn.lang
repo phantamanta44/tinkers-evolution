@@ -81,9 +81,12 @@ potion.effect.tconevo.damage_reduction=耐受药水
 splash_potion.effect.tconevo.damage_reduction=喷溅型耐受药水
 lingering_potion.effect.tconevo.damage_reduction=滞留型耐受药水
 effect.tconevo.damage_boost=增伤
-potion.effect.tconevo.damage_boost=力量药水
-splash_potion.effect.tconevo.damage_boost=喷溅型力量药水
-lingering_potion.effect.tconevo.damage_boost=滞留型力量药水
+potion.effect.tconevo.damage_boost=增伤药水
+splash_potion.effect.tconevo.damage_boost=喷溅型增伤药水
+lingering_potion.effect.tconevo.damage_boost=滞留型增伤药水
+
+modifier.depthdigger.name=深度挖掘
+modifier.depthdigger.desc=§o你就是吸到新鲜空气就会死星人？§r\n海拔越低，这件工具的采掘速度就越快。
 
 modifier.tconevo.aftershock.name=余震
 modifier.tconevo.aftershock.desc=§o烈焰魔剑！§r\n使用这件器械进行全力打击将造成额外的魔法伤害。
