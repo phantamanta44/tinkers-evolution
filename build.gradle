@@ -101,6 +101,7 @@ dependencies { // THE BEAST
     deobfCompile "com.enderio.core:EnderCore:1.12.2-0.5.76"
     deobfCompile("com.enderio:EnderIO:1.12.2-5.2.59") { exclude group: "deobf.com.enderio.core" }
     deobfCompile "net.sengir.forestry:forestry_1.12.2:5.8.2.387"
+    deobfCompile "morph.avaritia:Avaritia:1.12.2-3.3.0.33:universal"
 }
 
 // when forgegradle deobfs dependency jars, it'll try to cheat and grab the sources jar and remap *that* to avoid decompiling

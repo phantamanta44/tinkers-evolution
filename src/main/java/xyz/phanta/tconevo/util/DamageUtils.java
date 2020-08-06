@@ -15,6 +15,7 @@ public class DamageUtils {
     public static boolean isPureDamage(DamageSource dmgSrc, float damage) {
         return dmgSrc == DamageSource.OUT_OF_WORLD
                 || BloodMagicHooks.INSTANCE.isSoulDamage(dmgSrc)
+                || dmgSrc.getDamageType().equals("infinity")
                 || (damage == Float.MAX_VALUE && dmgSrc.isUnblockable() && dmgSrc.canHarmInCreative());
     }
 

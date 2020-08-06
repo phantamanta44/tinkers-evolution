@@ -70,6 +70,7 @@ public class MaterialOverrideHandler {
         registerOverrides(NameConst.MAT_FLUIX, "fluixCrystal_plustic");
         registerOverrides(NameConst.MAT_DARK_MATTER, "darkMatter"); // project: e
         registerOverrides(NameConst.MAT_RED_MATTER, "redMatter");
+        registerOverrides(NameConst.MAT_INFINITY_METAL, "infinity_avaritia_plustic"); // avaritia
     }
 
     public static void registerOverrides(String materialId, String... overrideIds) {
@@ -159,6 +160,8 @@ public class MaterialOverrideHandler {
                 fluidMatMap.put(overriddenMat.material.getFluid().getName(), overrideMatId);
             }
         });
+
+        // FIXME override melting recipes
 
         // alloying recipes
         ListIterator<AlloyRecipe> iterAlloyRecipes = TconReflect.iterateAlloyRecipes();

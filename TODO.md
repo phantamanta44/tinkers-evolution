@@ -187,7 +187,7 @@
 
 ### traits
 
-* [ ] condensing: killed enemies have a very tiny chance of dropping a pile of neutrons
+* [ ] condensing: killing enemies and breaking blocks has a very tiny chance of dropping a pile of neutrons
 * [ ] infinitum: equipment is unbreakable
 * [ ] omnipotence: equipment can destroy any block (?) and strike any entity
 
@@ -205,8 +205,8 @@
     * tools: condensing (head) + dense + heavy
     * armour: reactive + dense + heavy
 * [ ] infinity metal
-    * tools: omnipotence (core) + infinitum
-    * armour: null almighty (core) + eternity (core) + celestial (core) + gale force + infinitum
+    * tools: omnipotence (head) + infinitum
+    * armour: null almighty (core) + eternity (core) + celestial (core) + gale force 3 + infinitum
 
 ## betweenlands
 

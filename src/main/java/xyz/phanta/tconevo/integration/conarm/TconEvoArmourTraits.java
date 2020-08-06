@@ -11,6 +11,8 @@ import xyz.phanta.tconevo.integration.botania.BotaniaHooks;
 import xyz.phanta.tconevo.integration.conarm.trait.*;
 import xyz.phanta.tconevo.integration.conarm.trait.astralsorcery.ArmourModAttuned;
 import xyz.phanta.tconevo.integration.conarm.trait.astralsorcery.ArmourTraitAstral;
+import xyz.phanta.tconevo.integration.conarm.trait.avaritia.ArmourTraitEternity;
+import xyz.phanta.tconevo.integration.conarm.trait.avaritia.ArmourTraitNullAlmighty;
 import xyz.phanta.tconevo.integration.conarm.trait.bloodmagic.ArmourTraitBloodbound;
 import xyz.phanta.tconevo.integration.conarm.trait.bloodmagic.ArmourTraitSentient;
 import xyz.phanta.tconevo.integration.conarm.trait.bloodmagic.ArmourTraitSoulGuard;
@@ -72,6 +74,10 @@ public class TconEvoArmourTraits {
             MOD_ATTUNED.put(mod.getConstellation(), mod);
         }
     }
+
+    // avaritia
+    public static final ArmourTraitNullAlmighty TRAIT_NULL_ALMIGHTY = new ArmourTraitNullAlmighty();
+    public static final ArmourTraitEternity TRAIT_ETERNITY = new ArmourTraitEternity();
 
     // blood magic
     public static final ArmourTraitSoulGuard TRAIT_SOUL_GUARD = new ArmourTraitSoulGuard();

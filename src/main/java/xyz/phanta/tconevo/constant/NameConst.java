@@ -124,6 +124,19 @@ public class NameConst {
 
     public static final String ARMOUR_TRAIT_ASTRAL = TRAIT_ASTRAL + ARMOUR_SUFFIX;
 
+    // avaritia
+
+    public static final String MAT_CRYSTAL_MATRIX = "crystal_matrix";
+    public static final String MAT_NEUTRONIUM = "neutronium";
+    public static final String MAT_INFINITY_METAL = "infinity_metal";
+
+    public static final String TRAIT_CONDENSING = TconEvoMod.MOD_ID + ".condensing";
+    public static final String TRAIT_INFINITUM = TconEvoMod.MOD_ID + ".infinitum";
+    public static final String TRAIT_OMNIPOTENCE = TconEvoMod.MOD_ID + ".omnipotence";
+
+    public static final String TRAIT_NULL_ALMIGHTY = TconEvoMod.MOD_ID + ".null_almighty", ARMOUR_TRAIT_NULL_ALMIGHTY = TRAIT_NULL_ALMIGHTY + ARMOUR_SUFFIX;
+    public static final String TRAIT_ETERNITY = TconEvoMod.MOD_ID + ".eternity", ARMOUR_TRAIT_ETERNITY = TRAIT_ETERNITY + ARMOUR_SUFFIX;
+
     // blood magic
 
     public static final String MAT_BOUND_METAL = "bound_metal";

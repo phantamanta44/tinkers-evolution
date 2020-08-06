@@ -1,6 +1,5 @@
 package xyz.phanta.tconevo;
 
-import com.enderio.core.common.config.annot.Comment;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraftforge.common.config.Config;
 
@@ -175,7 +174,7 @@ public class TconEvoConfig {
         @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
         public double traitExecutorMissingHealthDamage = 0.2D;
 
-        @Comment("The cost, in durability points, of using the fertilizing trait to fertilize a crop.")
+        @Config.Comment("The cost, in durability points, of using the fertilizing trait to fertilize a crop.")
         @Config.RangeInt(min = 0)
         public int traitFertilizingDurabilityCost = 25;
 
@@ -401,6 +400,20 @@ public class TconEvoConfig {
 
     }
 
+    @Config.Comment("Configuration for client-side features.")
+    public static final Client client = new Client();
+
+    public static class Client {
+
+        @Config.Comment({
+                "Allows Tinkers' Evolution to inject its custom model render handlers.",
+                "If your tool rendering starts acting strange, disabling this might fix it."
+        })
+        @Config.RequiresMcRestart
+        public boolean useFancyModelRenders = true;
+
+    }
+
     @Config.Comment("Configuration for the Astral Sorcery module.")
     public static final AstralSorcery moduleAstralSorcery = new AstralSorcery();
 
@@ -526,6 +539,32 @@ public class TconEvoConfig {
         })
         @Config.RangeDouble(min = 0D, max = 1D)
         public double armourPelotrioRepairProbability = 0.11D;
+
+    }
+
+    @Config.Comment("Configuration for the Avaritia module.")
+    public static final Avaritia moduleAvaritia = new Avaritia();
+
+    public static class Avaritia {
+
+        @Config.Comment({
+                "The probability of a neutron pile dropping from breaking a block or killing a mob using the condensing trait.",
+                "Note that this stacks additively for each tool part with the condensing trait used in a tool."
+        })
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double condensingDropProbability = 0.005D;
+
+        @Config.Comment({
+                "Can tools with the omnipotence trait break unbreakable blocks (e.g. bedrock)?",
+                "This is a setting that server owners should probably be careful with."
+        })
+        public boolean omnipotenceBreaksUnbreakable = false;
+
+        @Config.Comment({
+                "Can weapons with the omnipotence trait hit players in creative mode?",
+                "This is a setting that server owners should probably be careful with."
+        })
+        public boolean omnipotenceHitsCreative = false;
 
     }
 

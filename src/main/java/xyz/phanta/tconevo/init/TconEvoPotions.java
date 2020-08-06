@@ -71,6 +71,7 @@ public class TconEvoPotions {
         if (entity.getActivePotionEffect(IMMORTALITY) != null) {
             entity.setHealth(1F);
             entity.hurtResistantTime = entity.maxHurtResistantTime;
+            entity.removePotionEffect(IMMORTALITY);
             event.setCanceled(true);
         }
     }

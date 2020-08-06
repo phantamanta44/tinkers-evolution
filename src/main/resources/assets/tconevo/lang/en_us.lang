@@ -285,6 +285,26 @@ modifier.tconevo.attuned_octans_armor.desc=§oEffervescent!§r\nThis armour piec
 modifier.tconevo.attuned_pelotrio_armor.name=Attuned (Pelotrio)
 modifier.tconevo.attuned_pelotrio_armor.desc=§oEffervescent!§r\nThis armour piece is aligned with Pelotrio and repairs itself over time.
 
+material.crystal_matrix.name=Crystal Matrix
+fluid.tconevo.crystal_matrix.name=Amorphous Crystal Matrix
+material.neutronium.name=Neutronium
+fluid.tconevo.neutronium.name=Hyperdense Neutron Fluid
+material.infinity_metal.name=Infinity
+fluid.tconevo.infinity_metal.name=Flow of Infinity
+
+modifier.tconevo.condensing.name=Condensing
+modifier.tconevo.condensing.desc=§oTry not to think about it.§r\nSlain foes and broken blocks may leave behind a smattering of neutrons.
+modifier.tconevo.condensing.extra=Neutron Chance: %s
+modifier.tconevo.infinitum.name=Infinitum
+modifier.tconevo.infinitum.desc=§oProven by induction!§r\nThis equipment is indestructible.
+modifier.tconevo.omnipotence.name=Omnipotence
+modifier.tconevo.omnipotence.desc=§oBegone!§r\nThis tool defies the will of gods.
+
+modifier.tconevo.null_almighty_armor.name=Null Almighty
+modifier.tconevo.null_almighty_armor.desc=§oThe power of the trickster!§r\nThis armour grants 25% resistance to all incoming damage.
+modifier.tconevo.eternity_armor.name=Eternity
+modifier.tconevo.eternity_armor.desc=§oFalling in and out of time...§r\nThis armour grants the immortality effect.
+
 material.bound_metal.name=Bound
 fluid.tconevo.bound_metal.name=Molten Bound Metal
 material.sentient_metal.name=Sentient

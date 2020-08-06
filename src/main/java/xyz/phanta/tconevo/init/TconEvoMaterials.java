@@ -17,6 +17,7 @@ import xyz.phanta.tconevo.integration.thaumcraft.ThaumHooks;
 import xyz.phanta.tconevo.material.MaterialBuilder;
 import xyz.phanta.tconevo.material.MaterialForm;
 import xyz.phanta.tconevo.material.PartType;
+import xyz.phanta.tconevo.material.stats.FabulousHeadMaterialStats;
 import xyz.phanta.tconevo.material.stats.MagicMaterialStats;
 import xyz.phanta.tconevo.trait.draconicevolution.TraitEvolved;
 
@@ -31,6 +32,8 @@ public class TconEvoMaterials {
     public static Material SKY_STONE, CERTUS_QUARTZ, FLUIX, FLUIX_STEEL;
     // astral sorcery
     public static Material AQUAMARINE, STARMETAL;
+    // avaritia
+    public static Material CRYSTAL_MATRIX, NEUTRONIUM, INFINITY_METAL;
     // blood magic
     public static Material BOUND_METAL, SENTIENT_METAL;
     // botania
@@ -216,6 +219,41 @@ public class TconEvoMaterials {
                 .withStatsBow(0.8F, 1.2F, 3F)
                 .withTraits(PartType.MAIN, TconEvoTraits.TRAIT_ASTRAL)
                 .withTraits(PartType.TOOL, TinkerTraits.unnatural)
+                .build();
+
+        // avaritia
+        CRYSTAL_MATRIX = new MaterialBuilder(NameConst.MAT_CRYSTAL_MATRIX, 0x97f1eb, MaterialForm.METAL, "CrystalMatrix")
+                .requiresOres("ingotCrystalMatrix")
+                .setCastable(2400)
+                .withStatsHead(3200, 13F, 9.5F, 5)
+                .withStatsMagic(3200, 13F, 1F, 5)
+                .withStatsHandle(1.5F, 125)
+                .withStatsExtra(400)
+                .withStatsBow(1.5F, 1F, 2F)
+                .withTraits(PartType.TOOL,
+                        TconEvoTraits.TRAIT_CRYSTALLINE, TconEvoTraits.TRAIT_AFTERSHOCK[2], TinkerTraits.insatiable)
+                .build();
+        NEUTRONIUM = new MaterialBuilder(NameConst.MAT_NEUTRONIUM, 0x3b3b3b, MaterialForm.METAL, "CosmicNeutronium")
+                .requiresOres("ingotCosmicNeutronium")
+                .setCastable(3100)
+                .withStatsHead(11111, 13F, 16F, 10)
+                .withStatsMagic(11111, 12F, 0.8F, 10)
+                .withStatsHandle(1F, 555)
+                .withStatsExtra(1111)
+                .withStatsBow(0.25F, 4F, 20F)
+                .withTraits(PartType.MAIN, TconEvoTraits.TRAIT_CONDENSING)
+                .withTraits(PartType.TOOL, TinkerTraits.dense, TinkerTraits.heavy)
+                .build();
+        INFINITY_METAL = new MaterialBuilder(NameConst.MAT_INFINITY_METAL, 0x4c9994, MaterialForm.METAL, "Infinity")
+                .requiresOres("ingotInfinity")
+                .setCastable(6660)
+                .withStats(new FabulousHeadMaterialStats(666, 66.6F, 9001, 93))
+                .withStats(new MagicMaterialStats.Fabulous(666, 9001, 2F, 93))
+                .withStatsHandle(1F, 666)
+                .withStatsExtra(666)
+                .withStatsBow(6.66F, 1F, 666F)
+                .withTraits(PartType.MAIN, TconEvoTraits.TRAIT_OMNIPOTENCE)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_INFINITUM)
                 .build();
 
         // blood magic
