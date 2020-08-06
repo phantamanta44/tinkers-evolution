@@ -15,6 +15,7 @@ import slimeknights.tconstruct.library.events.MaterialEvent;
 import slimeknights.tconstruct.library.materials.IMaterialStats;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.smeltery.AlloyRecipe;
+import slimeknights.tconstruct.library.smeltery.MeltingRecipe;
 import slimeknights.tconstruct.library.traits.ITrait;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.TconEvoMod;
@@ -161,7 +162,15 @@ public class MaterialOverrideHandler {
             }
         });
 
-        // FIXME override melting recipes
+        // melting recipes
+        Iterator<MeltingRecipe> iterMeltingRecipes = TconReflect.iterateMeltingRecipes();
+        while (iterMeltingRecipes.hasNext()) {
+            MeltingRecipe recipe = iterMeltingRecipes.next();
+            FluidStack overrideFluid = mapFluidByOverride(fluidMatMap, recipe.output);
+            if (overrideFluid != null && !overrideFluid.isFluidEqual(recipe.output)) {
+                iterMeltingRecipes.remove();
+            }
+        }
 
         // alloying recipes
         ListIterator<AlloyRecipe> iterAlloyRecipes = TconReflect.iterateAlloyRecipes();
