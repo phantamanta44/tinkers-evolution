@@ -3,9 +3,8 @@ package xyz.phanta.tconevo.client.render.material;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.util.ResourceLocation;
 import slimeknights.tconstruct.library.client.MaterialRenderInfo;
-import slimeknights.tconstruct.library.client.RenderUtil;
 import slimeknights.tconstruct.library.client.material.deserializers.AbstractRenderInfoDeserializer;
-import slimeknights.tconstruct.library.client.texture.AbstractColoredTexture;
+import xyz.phanta.tconevo.client.render.texture.EdgeFindingTexture;
 import xyz.phanta.tconevo.client.util.RenderUtilsEx;
 import xyz.phanta.tconevo.util.Reflected;
 
@@ -25,35 +24,20 @@ public class EdgeColourMaterialRenderInfo extends MaterialRenderInfo.AbstractMat
         return new EdgeColourTexture(baseTexture, location);
     }
 
-    private class EdgeColourTexture extends AbstractColoredTexture {
+    private class EdgeColourTexture extends EdgeFindingTexture {
 
         protected EdgeColourTexture(ResourceLocation baseTextureLocation, String spriteName) {
             super(baseTextureLocation, spriteName);
         }
 
         @Override
-        protected int colorPixel(int pixel, int pxCoord) {
-            return pixel;
+        protected int processEdgePixel(int colour) {
+            return RenderUtilsEx.tintColour(outer, colour, bleed);
         }
 
         @Override
-        protected void postProcess(int[] data) {
-            for (int y = 0; y < height; y++) {
-                for (int x = 0; x < width; x++) {
-                    int ndx = y * width + x; // eh it's probably row major
-                    if (RenderUtil.alpha(data[ndx]) > 0) {
-                        if (x <= 0 || y <= 0 || x + 1 >= width || y + 1 >= height
-                                || RenderUtil.alpha(data[y * width + x + 1]) <= 0
-                                || RenderUtil.alpha(data[y * width + x - 1]) <= 0
-                                || RenderUtil.alpha(data[(y + 1) * width + x]) <= 0
-                                || RenderUtil.alpha(data[(y - 1) * width + x]) <= 0) {
-                            data[ndx] = RenderUtilsEx.tintColour(outer, data[ndx], bleed);
-                        } else {
-                            data[ndx] = RenderUtilsEx.multiplyColours(inner, data[ndx]);
-                        }
-                    }
-                }
-            }
+        protected int processInnerPixel(int colour) {
+            return RenderUtilsEx.multiplyColours(inner, colour);
         }
 
     }

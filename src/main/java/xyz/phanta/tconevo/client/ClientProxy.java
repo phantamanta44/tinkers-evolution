@@ -21,10 +21,8 @@ import xyz.phanta.tconevo.client.book.BookTransformerAppendTools;
 import xyz.phanta.tconevo.client.book.BookTransformerListingOverflow;
 import xyz.phanta.tconevo.client.command.CommandTconEvoClient;
 import xyz.phanta.tconevo.client.fx.ParticleChainLightning;
-import xyz.phanta.tconevo.client.handler.ConfigGuiHandler;
-import xyz.phanta.tconevo.client.handler.EnergyShieldHudHandler;
-import xyz.phanta.tconevo.client.handler.EnergyTooltipHandler;
-import xyz.phanta.tconevo.client.handler.ModelRegistrationHandler;
+import xyz.phanta.tconevo.client.handler.*;
+import xyz.phanta.tconevo.client.render.material.CosmicMaterialRenderInfo;
 import xyz.phanta.tconevo.client.render.material.EdgeColourMaterialRenderInfo;
 import xyz.phanta.tconevo.client.render.material.MaybeBlockMaterialRenderInfo;
 import xyz.phanta.tconevo.init.TconEvoItems;
@@ -41,12 +39,14 @@ public class ClientProxy extends CommonProxy {
         super.onPreInit(event);
         MinecraftForge.EVENT_BUS.register(new ConfigGuiHandler());
         MinecraftForge.EVENT_BUS.register(new ModelRegistrationHandler());
+        MinecraftForge.EVENT_BUS.register(TextureMapHandler.INSTANCE);
         MinecraftForge.EVENT_BUS.register(new EnergyTooltipHandler());
         if (!DraconicHooks.isLoaded()) {
             MinecraftForge.EVENT_BUS.register(new EnergyShieldHudHandler());
         }
         MaterialRenderInfoLoader.addRenderInfo(TconEvoMod.MOD_ID + ".edge_colour", EdgeColourMaterialRenderInfo.Deserializer.class);
         MaterialRenderInfoLoader.addRenderInfo(TconEvoMod.MOD_ID + ".maybe_block", MaybeBlockMaterialRenderInfo.Deserializer.class);
+        MaterialRenderInfoLoader.addRenderInfo(TconEvoMod.MOD_ID + ".cosmic", CosmicMaterialRenderInfo.Deserializer.class);
     }
 
     @Override

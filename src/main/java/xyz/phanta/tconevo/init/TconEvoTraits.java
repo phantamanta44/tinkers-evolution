@@ -21,6 +21,9 @@ import xyz.phanta.tconevo.item.ItemMaterial;
 import xyz.phanta.tconevo.trait.*;
 import xyz.phanta.tconevo.trait.astralsorcery.ModifierAttuned;
 import xyz.phanta.tconevo.trait.astralsorcery.TraitAstral;
+import xyz.phanta.tconevo.trait.avaritia.TraitCondensing;
+import xyz.phanta.tconevo.trait.avaritia.TraitInfinitum;
+import xyz.phanta.tconevo.trait.avaritia.TraitOmnipotence;
 import xyz.phanta.tconevo.trait.bloodmagic.TraitBloodbound;
 import xyz.phanta.tconevo.trait.bloodmagic.TraitCrystalys;
 import xyz.phanta.tconevo.trait.bloodmagic.TraitSentient;
@@ -99,6 +102,11 @@ public class TconEvoTraits {
             MOD_ATTUNED.put(mod.getConstellation(), mod);
         }
     }
+
+    // avaritia
+    public static final TraitCondensing TRAIT_CONDENSING = new TraitCondensing();
+    public static final TraitInfinitum TRAIT_INFINITUM = new TraitInfinitum();
+    public static final TraitOmnipotence TRAIT_OMNIPOTENCE = new TraitOmnipotence();
 
     // blood magic
     public static final TraitCrystalys TRAIT_CRYSTALYS = new TraitCrystalys();

@@ -187,26 +187,26 @@
 
 ### traits
 
-* [ ] condensing: killed enemies have a very tiny chance of dropping a pile of neutrons
-* [ ] infinitum: equipment is unbreakable
-* [ ] omnipotence: equipment can destroy any block (?) and strike any entity
+* [x] condensing: killing enemies and breaking blocks has a very tiny chance of dropping a pile of neutrons
+* [x] infinitum: equipment is unbreakable
+* [x] omnipotence: equipment can destroy any block (?) and strike any entity
 
 ### armour traits
 
-* [ ] null almighty: additively stacking 25% resistance to all damage
-* [ ] eternity: grants immortality
+* [x] null almighty: additively stacking 25% resistance to all damage
+* [x] eternity: grants immortality
 
 ### materials
 
-* [ ] crystal matrix
+* [x] crystal matrix
     * tools: crystalline + aftershock 3 + insatiable
     * armour: rough + strength of will + prideful
-* [ ] neutronium
+* [x] neutronium
     * tools: condensing (head) + dense + heavy
     * armour: reactive + dense + heavy
-* [ ] infinity metal
-    * tools: omnipotence (core) + infinitum
-    * armour: null almighty (core) + eternity (core) + celestial (core) + gale force + infinitum
+* [x] infinity metal
+    * tools: omnipotence (head) + infinitum
+    * armour: null almighty (core) + eternity (core) + celestial (core) + gale force 3 + infinitum
 
 ## betweenlands
 

@@ -76,6 +76,22 @@ public class TconEvoArmourMaterials {
                 .withTraits(ArmourPartType.ARMOUR, ArmorTraits.magnetic)
                 .build();
 
+        // avaritia
+        new ArmourMaterialBuilder(TconEvoMaterials.CRYSTAL_MATRIX)
+                .withStatsArmour(25F, 21.5F, 1.5F, 3F, 2.5F, 7.5F)
+                .withTraits(ArmourPartType.ARMOUR, ArmorTraits.rough, TconEvoArmourTraits.TRAIT_WILL_STRENGTH, ArmorTraits.prideful)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.NEUTRONIUM)
+                .withStatsArmour(1111F, 24F, 1F, 111F, 15F, 111F)
+                .withTraits(ArmourPartType.ARMOUR, TconEvoArmourTraits.TRAIT_REACTIVE, ArmorTraits.dense, ArmorTraits.heavy)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.INFINITY_METAL)
+                .withStatsArmour(666F, 93F, 1F, 666F, 0F, 666F)
+                .withTraits(ArmourPartType.CORE,
+                        TconEvoArmourTraits.TRAIT_NULL_ALMIGHTY, TconEvoArmourTraits.TRAIT_ETERNITY, TconEvoArmourTraits.TRAIT_CELESTIAL)
+                .withTraits(ArmourPartType.ARMOUR, TconEvoArmourTraits.TRAIT_GALE_FORCE[0], TconEvoTraits.TRAIT_INFINITUM)
+                .build();
+
         // blood magic
         new ArmourMaterialBuilder(TconEvoMaterials.BOUND_METAL)
                 .withStatsArmour(15F, 20F, 1F, 8F, 4F, 9F)

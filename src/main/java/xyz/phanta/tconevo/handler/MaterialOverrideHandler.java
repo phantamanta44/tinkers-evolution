@@ -15,6 +15,7 @@ import slimeknights.tconstruct.library.events.MaterialEvent;
 import slimeknights.tconstruct.library.materials.IMaterialStats;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.smeltery.AlloyRecipe;
+import slimeknights.tconstruct.library.smeltery.MeltingRecipe;
 import slimeknights.tconstruct.library.traits.ITrait;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.TconEvoMod;
@@ -70,6 +71,7 @@ public class MaterialOverrideHandler {
         registerOverrides(NameConst.MAT_FLUIX, "fluixCrystal_plustic");
         registerOverrides(NameConst.MAT_DARK_MATTER, "darkMatter"); // project: e
         registerOverrides(NameConst.MAT_RED_MATTER, "redMatter");
+        registerOverrides(NameConst.MAT_INFINITY_METAL, "infinity_avaritia_plustic"); // avaritia
     }
 
     public static void registerOverrides(String materialId, String... overrideIds) {
@@ -159,6 +161,16 @@ public class MaterialOverrideHandler {
                 fluidMatMap.put(overriddenMat.material.getFluid().getName(), overrideMatId);
             }
         });
+
+        // melting recipes
+        Iterator<MeltingRecipe> iterMeltingRecipes = TconReflect.iterateMeltingRecipes();
+        while (iterMeltingRecipes.hasNext()) {
+            MeltingRecipe recipe = iterMeltingRecipes.next();
+            FluidStack overrideFluid = mapFluidByOverride(fluidMatMap, recipe.output);
+            if (overrideFluid != null && !overrideFluid.isFluidEqual(recipe.output)) {
+                iterMeltingRecipes.remove();
+            }
+        }
 
         // alloying recipes
         ListIterator<AlloyRecipe> iterAlloyRecipes = TconReflect.iterateAlloyRecipes();

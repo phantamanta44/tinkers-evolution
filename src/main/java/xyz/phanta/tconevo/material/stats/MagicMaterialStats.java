@@ -1,11 +1,13 @@
 package xyz.phanta.tconevo.material.stats;
 
+import net.minecraft.util.text.TextFormatting;
 import slimeknights.tconstruct.library.Util;
 import slimeknights.tconstruct.library.client.CustomFontColor;
 import slimeknights.tconstruct.library.materials.AbstractMaterialStats;
 import slimeknights.tconstruct.library.materials.BowMaterialStats;
 import slimeknights.tconstruct.library.materials.HeadMaterialStats;
 import xyz.phanta.tconevo.init.TconEvoPartTypes;
+import xyz.phanta.tconevo.integration.avaritia.AvaritiaHooks;
 
 import java.util.Arrays;
 import java.util.List;
@@ -53,6 +55,23 @@ public class MagicMaterialStats extends AbstractMaterialStats {
 
     public BowMaterialStats asBow(float bonusDmgMult) {
         return new BowMaterialStats(1F, range, potency * bonusDmgMult);
+    }
+
+    public static class Fabulous extends MagicMaterialStats {
+
+        public Fabulous(int durability, float potency, float range, int harvestLevel) {
+            super(durability, potency, range, harvestLevel);
+        }
+
+        @Override
+        public List<String> getLocalizedInfo() {
+            return Arrays.asList(HeadMaterialStats.formatDurability(durability),
+                    Util.translate(LOC_POTENCY_NAME) + ": "
+                            + AvaritiaHooks.INSTANCE.formatRainbowText(Util.df.format(potency)) + TextFormatting.RESET,
+                    BowMaterialStats.formatRange(range),
+                    HeadMaterialStats.formatHarvestLevel(harvestLevel));
+        }
+
     }
 
 }

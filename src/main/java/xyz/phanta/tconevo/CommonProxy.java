@@ -1,12 +1,15 @@
 package xyz.phanta.tconevo;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.potion.Potion;
 import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLInterModComms;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
@@ -51,6 +54,7 @@ public class CommonProxy {
         MinecraftForge.EVENT_BUS.register(new EnergizedTraitConflictHandler());
         MinecraftForge.EVENT_BUS.register(new FlightSpeedHandler());
         MinecraftForge.EVENT_BUS.register(new EntityAttributeHandler());
+        MinecraftForge.EVENT_BUS.register(new RegistrationHandler());
         SimpleNetworkWrapper netHandler = TconEvoMod.INSTANCE.getNetworkHandler();
         netHandler.registerMessage(new SPacketEntitySpecialEffect.Handler(), SPacketEntitySpecialEffect.class, 0, Side.CLIENT);
         netHandler.registerMessage(new CPacketGaiaWrath.Handler(), CPacketGaiaWrath.class, 1, Side.SERVER);
@@ -116,7 +120,6 @@ public class CommonProxy {
     }
 
     public void onInit(FMLInitializationEvent event) {
-        OreDictRegistration.registerOreDict();
         MasterRecipes.initRecipes();
         MaterialDefinition.initMaterialProperties();
         TconEvoTraits.initModifierMaterials();
@@ -158,6 +161,16 @@ public class CommonProxy {
         TconEvoMod.INSTANCE.getNetworkHandler().sendToAllAround(
                 new SPacketLightningEffect(positions),
                 new NetworkRegistry.TargetPoint(ref.dimension, ref.posX, ref.posY, ref.posZ, 64D));
+    }
+
+    protected static class RegistrationHandler {
+
+        @SubscribeEvent
+        public void onRegisterPotions(RegistryEvent.Register<Potion> event) {
+            // need a hook that runs between item reg and init; we don't care about potions here, but this is convenient
+            OreDictRegistration.registerOreDict();
+        }
+
     }
 
 }
