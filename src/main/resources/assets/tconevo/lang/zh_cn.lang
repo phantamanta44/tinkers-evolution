@@ -285,6 +285,26 @@ modifier.tconevo.attuned_octans_armor.desc=§o星力洋溢！§r\n这件盔甲�
 modifier.tconevo.attuned_pelotrio_armor.name=星能力共鸣【唤生座】
 modifier.tconevo.attuned_pelotrio_armor.desc=§o星力洋溢！§r\n这件盔甲已共鸣至唤生座，能够缓慢修复自身。
 
+material.crystal_matrix.name=水晶矩阵
+fluid.tconevo.crystal_matrix.name=不定型水晶矩阵
+material.neutronium.name=中子素
+fluid.tconevo.neutronium.name=超密中子流体
+material.infinity_metal.name=无尽
+fluid.tconevo.infinity_metal.name=无尽涌流
+
+modifier.tconevo.condensing.name=中子凝聚
+modifier.tconevo.condensing.desc=§o尽量不要去想它。§r\n被这件器械杀死的敌人或破坏的方块可能会凝聚下少量的中子素。
+modifier.tconevo.condensing.extra=中子素凝聚概率：%s
+modifier.tconevo.infinitum.name=亘古永恒
+modifier.tconevo.infinitum.desc=§o由归纳而证明！§r\n这件装备无法被破坏。
+modifier.tconevo.omnipotence.name=全知全能
+modifier.tconevo.omnipotence.desc=§o往后稍稍！§r\n这件器械忤逆了神的旨意！
+
+modifier.tconevo.null_almighty_armor.name=四大皆空
+modifier.tconevo.null_almighty_armor.desc=§o狡兔三窟！§r\n这件盔甲会将一切外来伤害削减至75%。
+modifier.tconevo.eternity_armor.name=永垂不朽
+modifier.tconevo.eternity_armor.desc=§o时断时续……§r\n这件盔甲会为穿戴者提供不朽效果。
+
 material.bound_metal.name=束缚
 fluid.tconevo.bound_metal.name=熔融束缚金属
 material.sentient_metal.name=感知
