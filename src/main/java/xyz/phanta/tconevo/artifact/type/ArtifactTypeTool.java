@@ -2,12 +2,14 @@ package xyz.phanta.tconevo.artifact.type;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonSyntaxException;
 import io.github.phantamanta44.libnine.util.helper.JsonUtils9;
 import io.github.phantamanta44.libnine.util.tuple.IPair;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagString;
+import net.minecraft.util.JsonUtils;
 import net.minecraft.util.NonNullList;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.events.TinkerCraftingEvent;
@@ -38,13 +40,14 @@ public class ArtifactTypeTool implements ArtifactType<ArtifactTypeTool.Spec> {
         List<IPair<String, Integer>> modifiers;
         if (dto.has("mods")) {
             modifiers = new ArrayList<>();
-            for (JsonElement modDto : dto.getAsJsonArray("mods")) {
+            for (JsonElement modDto : JsonUtils.getJsonArray(dto, "mods")) {
                 if (modDto.isJsonObject()) { // { id: String, level: Int }
                     JsonObject modDtoObj = modDto.getAsJsonObject();
-                    modifiers.add(IPair.of(modDtoObj.get("id").getAsString(),
-                            modDtoObj.has("level") ? modDtoObj.get("level").getAsInt() : 1));
-                } else { // otherwise, it's just a string for modifier id
+                    modifiers.add(IPair.of(JsonUtils.getString(modDtoObj, "id"), JsonUtils.getInt(modDtoObj, "level", 1)));
+                } else if (modDto.isJsonPrimitive() && modDto.getAsJsonPrimitive().isString()) { // just id string
                     modifiers.add(IPair.of(modDto.getAsString(), 1));
+                } else {
+                    throw new JsonSyntaxException("Expected either a modifier object or a string in \"mods\", but got " + modDto);
                 }
             }
         } else {
@@ -58,23 +61,38 @@ public class ArtifactTypeTool implements ArtifactType<ArtifactTypeTool.Spec> {
             if (loreDto.isJsonArray()) { // many lines of lore
                 lore = new ArrayList<>();
                 for (JsonElement loreLineDto : loreDto.getAsJsonArray()) {
-                    lore.add(loreLineDto.getAsString());
+                    if (loreLineDto.isJsonPrimitive() && loreLineDto.getAsJsonPrimitive().isString()) {
+                        lore.add(loreLineDto.getAsString());
+                    } else {
+                        throw new JsonSyntaxException("Expected a string in the \"lore\" array, but got: " + loreLineDto);
+                    }
                 }
-            } else { // just one string of lore
+            } else if (loreDto.isJsonPrimitive() && loreDto.getAsJsonPrimitive().isString()) { // just one string of lore
                 lore = Collections.singletonList(loreDto.getAsString());
+            } else {
+                throw new JsonSyntaxException("Expected either a string array or a string for \"lore\", but got " + loreDto);
             }
         } else {
             lore = Collections.emptyList();
         }
 
+        //noinspection ConstantConditions
         return new Spec(
-                dto.get("name").getAsString(),
+                JsonUtils.getString(dto, "name"),
                 lore,
-                dto.get("tool").getAsString(),
-                JsonUtils9.stream(dto.getAsJsonArray("materials")).map(JsonElement::getAsString).collect(Collectors.toList()),
-                dto.has("free_mods") ? dto.get("free_mods").getAsInt() : 0,
+                JsonUtils.getString(dto, "tool"),
+                JsonUtils9.stream(dto.getAsJsonArray("materials"))
+                        .map(s -> {
+                            if (s.isJsonPrimitive() && s.getAsJsonPrimitive().isString()) {
+                                return s.getAsString();
+                            } else {
+                                throw new JsonSyntaxException("Expected a string in the \"materials\" array, but got: " + s);
+                            }
+                        })
+                        .collect(Collectors.toList()),
+                JsonUtils.getInt(dto, "free_mods", 0),
                 modifiers,
-                dto.has("data_tag") ? dto.getAsJsonObject("data_tag") : null);
+                JsonUtils.getJsonObject(dto, "data_tag", null));
     }
 
     @Override
