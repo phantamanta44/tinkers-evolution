@@ -158,11 +158,13 @@ class AvaritiaMaterialModel extends MaterialModel {
             public void renderOverlay(ItemStack stack, ItemCameraTransforms.TransformType transType, Material mat) {
                 if (mat == TconEvoMaterials.INFINITY_METAL) {
                     TextureAtlasSprite maskSprite = getCosmicMask(parent);
-                    handleCosmicLighting(transType);
-                    if (transType == ItemCameraTransforms.TransformType.GUI) {
-                        AvaritiaRenderUtils.renderCosmicOverlayInGui(parent, stack, maskSprite, 1F);
-                    } else {
-                        AvaritiaRenderUtils.renderCosmicOverlayInWorld(parent, stack, maskSprite, 1F);
+                    if (maskSprite != null) {
+                        handleCosmicLighting(transType);
+                        if (transType == ItemCameraTransforms.TransformType.GUI) {
+                            AvaritiaRenderUtils.renderCosmicOverlayInGui(maskSprite, stack, 1F);
+                        } else {
+                            AvaritiaRenderUtils.renderCosmicOverlayInWorld(maskSprite, stack, 1F);
+                        }
                     }
                 }
             }
