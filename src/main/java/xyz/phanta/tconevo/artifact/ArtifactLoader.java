@@ -10,6 +10,7 @@ import javax.annotation.Nullable;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Collections;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -58,6 +59,7 @@ public class ArtifactLoader {
                         .collect(Collectors.toList()));
             } catch (IOException e) {
                 TconEvoMod.LOGGER.error("Encountered exception while loading artifacts!", e);
+                TconEvoMod.PROXY.getArtifactRegistry().registerArtifacts(Collections.emptyList());
             }
         }
     }
