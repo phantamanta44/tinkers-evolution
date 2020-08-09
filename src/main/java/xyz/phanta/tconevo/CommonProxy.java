@@ -61,6 +61,7 @@ public class CommonProxy {
         netHandler.registerMessage(new SPacketLightningEffect.Handler(), SPacketLightningEffect.class, 2, Side.CLIENT);
         IntegrationManager.dispatchPreInit(event);
         // handle config dir generation
+        TconEvoMod.LOGGER.info("Current config version: {}", CONFIG_VERSION);
         Path configDir = event.getModConfigurationDirectory().toPath().resolve(TconEvoMod.MOD_ID);
         if (!Files.exists(configDir)) {
             TconEvoMod.LOGGER.info("No config directory found; writing defaults...");
@@ -71,9 +72,14 @@ public class CommonProxy {
                 if (!Files.exists(versionFile)) {
                     TconEvoMod.LOGGER.info("No config version file found; writing defaults...");
                     writeDefaultConfig(configDir);
-                } else if (Long.parseLong(String.join("", Files.readAllLines(versionFile)).trim()) < CONFIG_VERSION) {
-                    TconEvoMod.LOGGER.info("Outdated config version found; writing defaults...");
-                    writeDefaultConfig(configDir);
+                } else {
+                    long confVer = Long.parseLong(new String(Files.readAllBytes(versionFile), StandardCharsets.UTF_8).trim());
+                    if (confVer < CONFIG_VERSION) {
+                        TconEvoMod.LOGGER.info("Outdated config version {} found; writing defaults...", confVer);
+                        writeDefaultConfig(configDir);
+                    } else {
+                        TconEvoMod.LOGGER.info("Config version {} found; nothing to do.", confVer);
+                    }
                 }
             } catch (Exception e) {
                 TconEvoMod.LOGGER.error("Failed to read config version file!", e);
