@@ -19,7 +19,6 @@ import slimeknights.tconstruct.library.modifiers.TinkerGuiException;
 import slimeknights.tconstruct.library.tinkering.PartMaterialType;
 import slimeknights.tconstruct.library.tools.IToolPart;
 import slimeknights.tconstruct.library.tools.ToolCore;
-import slimeknights.tconstruct.library.utils.ToolBuilder;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 import xyz.phanta.tconevo.init.TconEvoTraits;
 import xyz.phanta.tconevo.util.ImmutableNbt;
@@ -109,33 +108,29 @@ public class ArtifactTypeTool implements ArtifactType<ArtifactTypeTool.Spec> {
             throw new BuildingException("Needed %d materials but got %d for tool type \"%s\"",
                     componentTypes.size(), spec.materials.size(), toolType.getIdentifier());
         }
-        Material[] materials = new Material[componentTypes.size()];
-        for (int i = 0; i < materials.length; i++) {
-            String matId = spec.materials.get(i);
-            materials[i] = TinkerRegistry.getMaterial(matId);
-            if (materials[i] == Material.UNKNOWN) {
-                throw new BuildingException("Unknown material \"%s\"", matId);
+        List<Material> materials = new ArrayList<>();
+        for (String materialId : spec.materials) {
+            Material material = TinkerRegistry.getMaterial(materialId);
+            if (material == Material.UNKNOWN) {
+                throw new BuildingException("Unknown material \"%s\"", materialId);
             }
+            materials.add(material);
         }
 
         // build component stacks
         NonNullList<ItemStack> components = NonNullList.create();
-        for (int i = 0; i < materials.length; i++) {
+        for (int i = 0; i < materials.size(); i++) {
             Set<IToolPart> parts = componentTypes.get(i).getPossibleParts();
             if (parts.isEmpty()) {
                 throw new BuildingException("Unsatisfiable part %d for tool type \"%s\"", i, toolType.getIdentifier());
             }
-            components.add(parts.iterator().next().getItemstackWithMaterial(materials[i]));
+            components.add(parts.iterator().next().getItemstackWithMaterial(materials.get(i)));
         }
 
         // build tool
-        components.add(ItemStack.EMPTY); // tool building fails if there isn't a trail empty slot... for some reason
-        ItemStack stack;
+        ItemStack stack = toolType.buildItem(materials);
+        stack.setStackDisplayName(ARTIFACT_FMT + spec.name);
         try {
-            stack = ToolBuilder.tryBuildTool(components, ARTIFACT_FMT + spec.name, Collections.singleton(toolType));
-            if (stack.isEmpty()) {
-                throw new BuildingException("Tool building failed for tool type \"%s\"", toolType.getIdentifier());
-            }
             TinkerCraftingEvent.ToolCraftingEvent.fireEvent(stack, null, components);
         } catch (TinkerGuiException e) {
             throw new BuildingException("Tool building produced error: %s", e.getMessage());
