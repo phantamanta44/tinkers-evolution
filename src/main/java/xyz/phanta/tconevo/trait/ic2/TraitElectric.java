@@ -1,6 +1,7 @@
 package xyz.phanta.tconevo.trait.ic2;
 
 import io.github.phantamanta44.libnine.capability.provider.CapabilityBroker;
+import io.github.phantamanta44.libnine.util.helper.ItemUtils;
 import io.github.phantamanta44.libnine.util.helper.OptUtils;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
@@ -17,7 +18,6 @@ import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.init.TconEvoCaps;
 import xyz.phanta.tconevo.integration.ic2.Ic2Hooks;
 import xyz.phanta.tconevo.trait.base.EnergeticModifier;
-import xyz.phanta.tconevo.util.ToolUtils;
 
 public class TraitElectric extends AbstractTrait implements EnergeticModifier {
 
@@ -109,7 +109,7 @@ public class TraitElectric extends AbstractTrait implements EnergeticModifier {
         }
 
         private void setEuStored(double amount) {
-            ToolUtils.getOrCreateTag(stack).setDouble(TAG_ENERGY, amount);
+            ItemUtils.getOrCreateTag(stack).setDouble(TAG_ENERGY, amount);
         }
 
         @Override

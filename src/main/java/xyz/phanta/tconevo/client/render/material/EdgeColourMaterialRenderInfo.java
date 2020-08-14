@@ -6,7 +6,7 @@ import slimeknights.tconstruct.library.client.MaterialRenderInfo;
 import slimeknights.tconstruct.library.client.material.deserializers.AbstractRenderInfoDeserializer;
 import xyz.phanta.tconevo.client.render.texture.EdgeFindingTexture;
 import xyz.phanta.tconevo.client.util.RenderUtilsEx;
-import xyz.phanta.tconevo.util.Reflected;
+import io.github.phantamanta44.libnine.util.nullity.Reflected;
 
 public class EdgeColourMaterialRenderInfo extends MaterialRenderInfo.AbstractMaterialRenderInfo {
 

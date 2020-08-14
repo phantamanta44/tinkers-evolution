@@ -1,7 +1,7 @@
 package xyz.phanta.tconevo.material;
 
+import io.github.phantamanta44.libnine.util.helper.OreDictUtils;
 import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.oredict.OreDictionary;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.traits.ITrait;
@@ -97,7 +97,7 @@ public class MaterialDefinition {
         }
         (form == MaterialForm.METAL ? METAL_PREFIXES.stream() : form.entries.stream().map(e -> e.prefix))
                 .map(prefix -> prefix + oreName)
-                .filter(oreKey -> !OreDictionary.getOres(oreKey, false).isEmpty())
+                .filter(OreDictUtils::exists)
                 .findFirst()
                 .ifPresent(material::setRepresentativeItem);
         Fluid fluid = material.getFluid();

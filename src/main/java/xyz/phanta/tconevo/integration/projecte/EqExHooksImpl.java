@@ -8,7 +8,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.oredict.OreDictionary;
-import xyz.phanta.tconevo.util.Reflected;
+import io.github.phantamanta44.libnine.util.nullity.Reflected;
 
 @Reflected
 public class EqExHooksImpl implements EqExHooks {

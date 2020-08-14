@@ -6,7 +6,7 @@ import net.minecraft.util.ResourceLocation;
 import slimeknights.tconstruct.library.client.MaterialRenderInfo;
 import slimeknights.tconstruct.library.client.material.deserializers.AbstractRenderInfoDeserializer;
 import xyz.phanta.tconevo.client.render.texture.MaybeTextureColouredTexture;
-import xyz.phanta.tconevo.util.Reflected;
+import io.github.phantamanta44.libnine.util.nullity.Reflected;
 
 public class MaybeBlockMaterialRenderInfo extends MaterialRenderInfo.AbstractMaterialRenderInfo {
 

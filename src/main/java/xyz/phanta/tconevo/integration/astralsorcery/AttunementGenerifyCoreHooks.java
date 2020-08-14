@@ -9,7 +9,7 @@ import io.github.phantamanta44.libnine.util.helper.OptUtils;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import xyz.phanta.tconevo.init.TconEvoCaps;
-import xyz.phanta.tconevo.util.Reflected;
+import io.github.phantamanta44.libnine.util.nullity.Reflected;
 
 // nothing is actually reflected here; these hooks are called from code injected by the coremod
 // see TransformAstralAttunement

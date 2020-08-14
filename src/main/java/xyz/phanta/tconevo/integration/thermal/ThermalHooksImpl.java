@@ -9,7 +9,7 @@ import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.smeltery.MeltingRecipe;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.TconEvoMod;
-import xyz.phanta.tconevo.util.Reflected;
+import io.github.phantamanta44.libnine.util.nullity.Reflected;
 
 import java.util.Optional;
 

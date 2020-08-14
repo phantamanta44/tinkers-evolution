@@ -1,7 +1,7 @@
 package xyz.phanta.tconevo.material;
 
+import io.github.phantamanta44.libnine.util.helper.OreDictUtils;
 import net.minecraftforge.fml.common.Loader;
-import net.minecraftforge.oredict.OreDictionary;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.Material;
 import xyz.phanta.tconevo.TconEvoConfig;
@@ -35,7 +35,7 @@ public interface RegCondition {
 
         @Override
         public boolean isSatisfied() {
-            return !OreDictionary.getOres(oreKey, false).isEmpty();
+            return OreDictUtils.exists(oreKey);
         }
 
     }

@@ -16,8 +16,10 @@ import com.brandon3055.draconicevolution.lib.DEDamageSources;
 import com.brandon3055.draconicevolution.magic.EnchantmentReaper;
 import com.brandon3055.draconicevolution.network.PacketShieldHit;
 import com.google.common.collect.Sets;
+import io.github.phantamanta44.libnine.util.helper.ItemUtils;
 import io.github.phantamanta44.libnine.util.helper.OptUtils;
 import io.github.phantamanta44.libnine.util.math.MathUtils;
+import io.github.phantamanta44.libnine.util.nullity.Reflected;
 import io.github.phantamanta44.libnine.util.tuple.IPair;
 import io.github.phantamanta44.libnine.util.world.WorldUtils;
 import net.minecraft.enchantment.Enchantment;
@@ -42,7 +44,6 @@ import xyz.phanta.tconevo.init.TconEvoItems;
 import xyz.phanta.tconevo.init.TconEvoTraits;
 import xyz.phanta.tconevo.item.ItemMaterial;
 import xyz.phanta.tconevo.item.ItemMetal;
-import xyz.phanta.tconevo.util.Reflected;
 import xyz.phanta.tconevo.util.ToolUtils;
 
 import javax.annotation.Nullable;
@@ -182,8 +183,7 @@ public class DraconicHooksImpl implements DraconicHooks {
     // adapted from DEEventHandler#isValidEntity
     // would have invoked with reflection, but it's an instance method and there's no "good" way to get my hands on the singleton instance
     // also, this should really be a hash table lookup, but this is what brandon does so whatever
-    @Override
-    public boolean isEligibleForReaper(EntityLivingBase entity) {
+    private boolean isEligibleForReaper(EntityLivingBase entity) {
         if (!entity.isNonBoss() && !DEConfig.allowBossSouls) {
             return false;
         }
@@ -232,7 +232,7 @@ public class DraconicHooksImpl implements DraconicHooks {
     @Override
     public boolean inflictEntropy(ItemStack stack, float amount) {
         if (stack.getItem() instanceof ICustomArmor) {
-            NBTTagCompound tag = ToolUtils.getOrCreateTag(stack);
+            NBTTagCompound tag = ItemUtils.getOrCreateTag(stack);
             tag.setFloat("ShieldEntropy", Math.min(tag.getFloat("ShieldEntropy") + amount, 100F));
             return true;
         }

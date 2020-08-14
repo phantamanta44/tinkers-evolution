@@ -49,8 +49,6 @@ public interface DraconicHooks extends IntegrationHooks {
 
     boolean isReaperEnchantment(Enchantment ench);
 
-    boolean isEligibleForReaper(EntityLivingBase entity);
-
     void playShieldHitEffect(EntityPlayer player, float shieldPower);
 
     boolean isShieldEnabled(EntityPlayer player);
@@ -120,11 +118,6 @@ public interface DraconicHooks extends IntegrationHooks {
 
         @Override
         public boolean isReaperEnchantment(Enchantment ench) {
-            return false;
-        }
-
-        @Override
-        public boolean isEligibleForReaper(EntityLivingBase entity) {
             return false;
         }
 

@@ -3,7 +3,7 @@ package xyz.phanta.tconevo.integration.naturalpledge;
 import com.wiresegal.naturalpledge.common.potions.ModPotions;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.potion.PotionEffect;
-import xyz.phanta.tconevo.util.Reflected;
+import io.github.phantamanta44.libnine.util.nullity.Reflected;
 
 @Reflected
 public class NaturalPledgeHooksImpl implements NaturalPledgeHooks {

@@ -2,7 +2,7 @@ package xyz.phanta.tconevo.handler;
 
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.traits.ITrait;
-import xyz.phanta.tconevo.util.Reflected;
+import io.github.phantamanta44.libnine.util.nullity.Reflected;
 
 import javax.annotation.Nullable;
 

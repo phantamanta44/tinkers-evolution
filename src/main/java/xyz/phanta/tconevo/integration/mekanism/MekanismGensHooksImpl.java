@@ -5,7 +5,7 @@ import mekanism.generators.common.block.states.BlockStateGenerator;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import xyz.phanta.tconevo.trait.ModifierPhotovoltaic;
-import xyz.phanta.tconevo.util.Reflected;
+import io.github.phantamanta44.libnine.util.nullity.Reflected;
 
 import java.util.Optional;
 

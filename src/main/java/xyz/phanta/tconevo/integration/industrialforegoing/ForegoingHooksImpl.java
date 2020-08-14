@@ -16,7 +16,7 @@ import xyz.phanta.tconevo.init.TconEvoItems;
 import xyz.phanta.tconevo.item.ItemEdible;
 import xyz.phanta.tconevo.item.ItemMaterial;
 import xyz.phanta.tconevo.item.ItemMetal;
-import xyz.phanta.tconevo.util.Reflected;
+import io.github.phantamanta44.libnine.util.nullity.Reflected;
 
 import javax.annotation.Nullable;
 

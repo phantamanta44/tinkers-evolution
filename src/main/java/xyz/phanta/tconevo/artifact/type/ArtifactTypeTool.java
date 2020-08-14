@@ -3,7 +3,9 @@ package xyz.phanta.tconevo.artifact.type;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
+import io.github.phantamanta44.libnine.util.helper.ItemUtils;
 import io.github.phantamanta44.libnine.util.helper.JsonUtils9;
+import io.github.phantamanta44.libnine.util.nbt.ImmutableNbt;
 import io.github.phantamanta44.libnine.util.tuple.IPair;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -21,7 +23,6 @@ import slimeknights.tconstruct.library.tools.IToolPart;
 import slimeknights.tconstruct.library.tools.ToolCore;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 import xyz.phanta.tconevo.init.TconEvoTraits;
-import xyz.phanta.tconevo.util.ImmutableNbt;
 import xyz.phanta.tconevo.util.ToolUtils;
 
 import javax.annotation.Nullable;
@@ -164,7 +165,7 @@ public class ArtifactTypeTool implements ArtifactType<ArtifactTypeTool.Spec> {
         }
 
         // add lore
-        NBTTagCompound tag = ToolUtils.getOrCreateTag(stack);
+        NBTTagCompound tag = ItemUtils.getOrCreateTag(stack);
         if (!spec.lore.isEmpty()) {
             NBTTagCompound displayTag;
             if (tag.hasKey("display")) {

@@ -7,7 +7,7 @@ import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.item.ItemStack;
 import org.lwjgl.opengl.GL11;
 import xyz.phanta.tconevo.client.event.ItemStackBarEvent;
-import xyz.phanta.tconevo.util.Reflected;
+import io.github.phantamanta44.libnine.util.nullity.Reflected;
 
 // adapted from Tinkers' MEMES MemeRenderInterceptor
 public class ItemStackBarCoreHooks {

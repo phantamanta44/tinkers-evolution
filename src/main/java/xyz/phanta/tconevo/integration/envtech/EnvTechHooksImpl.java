@@ -10,7 +10,7 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.oredict.OreDictionary;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.trait.ModifierPhotovoltaic;
-import xyz.phanta.tconevo.util.Reflected;
+import io.github.phantamanta44.libnine.util.nullity.Reflected;
 
 import java.util.Optional;
 

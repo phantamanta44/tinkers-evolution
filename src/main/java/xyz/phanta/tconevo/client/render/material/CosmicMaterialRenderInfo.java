@@ -7,7 +7,7 @@ import slimeknights.tconstruct.library.client.material.deserializers.AbstractRen
 import xyz.phanta.tconevo.client.handler.TextureMapHandler;
 import xyz.phanta.tconevo.client.render.texture.EdgeFindingTexture;
 import xyz.phanta.tconevo.client.render.texture.MaybeTextureColouredTexture;
-import xyz.phanta.tconevo.util.Reflected;
+import io.github.phantamanta44.libnine.util.nullity.Reflected;
 
 import javax.annotation.Nullable;
 

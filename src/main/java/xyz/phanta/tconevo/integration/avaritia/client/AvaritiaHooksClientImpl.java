@@ -2,6 +2,7 @@ package xyz.phanta.tconevo.integration.avaritia.client;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
+import io.github.phantamanta44.libnine.util.nullity.Reflected;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.model.TRSRTransformation;
@@ -14,6 +15,7 @@ import xyz.phanta.tconevo.integration.avaritia.AvaritiaHooksImpl;
 
 import java.util.List;
 
+@Reflected
 public class AvaritiaHooksClientImpl extends AvaritiaHooksImpl {
 
     @Override
