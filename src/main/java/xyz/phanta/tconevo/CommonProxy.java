@@ -22,6 +22,7 @@ import xyz.phanta.tconevo.material.MaterialDefinition;
 import xyz.phanta.tconevo.network.CPacketGaiaWrath;
 import xyz.phanta.tconevo.network.SPacketEntitySpecialEffect;
 import xyz.phanta.tconevo.network.SPacketLightningEffect;
+import xyz.phanta.tconevo.network.SPacketUpdateAppliedFlightSpeed;
 import xyz.phanta.tconevo.recipe.MasterRecipes;
 import xyz.phanta.tconevo.recipe.OreDictRegistration;
 
@@ -56,9 +57,10 @@ public class CommonProxy {
         MinecraftForge.EVENT_BUS.register(new EntityAttributeHandler());
         MinecraftForge.EVENT_BUS.register(new RegistrationHandler());
         SimpleNetworkWrapper netHandler = TconEvoMod.INSTANCE.getNetworkHandler();
-        netHandler.registerMessage(new SPacketEntitySpecialEffect.Handler(), SPacketEntitySpecialEffect.class, 0, Side.CLIENT);
-        netHandler.registerMessage(new CPacketGaiaWrath.Handler(), CPacketGaiaWrath.class, 1, Side.SERVER);
-        netHandler.registerMessage(new SPacketLightningEffect.Handler(), SPacketLightningEffect.class, 2, Side.CLIENT);
+        netHandler.registerMessage(SPacketEntitySpecialEffect.Handler.class, SPacketEntitySpecialEffect.class, 0, Side.CLIENT);
+        netHandler.registerMessage(CPacketGaiaWrath.Handler.class, CPacketGaiaWrath.class, 1, Side.SERVER);
+        netHandler.registerMessage(SPacketLightningEffect.Handler.class, SPacketLightningEffect.class, 2, Side.CLIENT);
+        netHandler.registerMessage(SPacketUpdateAppliedFlightSpeed.Handler.class, SPacketUpdateAppliedFlightSpeed.class, 3, Side.CLIENT);
         IntegrationManager.dispatchPreInit(event);
         // handle config dir generation
         TconEvoMod.LOGGER.info("Current config version: {}", CONFIG_VERSION);
