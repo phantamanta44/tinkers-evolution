@@ -113,14 +113,15 @@ public class AvaritiaToolModel extends ToolModel {
         @Override
         public BakedAvaritiaToolModel wrapDelegate(ItemModelCacheKey delegateKey) {
             IBakedModel delegateModel = delegateKey.getModel();
-            ItemStack stack = delegateKey.getStack();
-            if (stack != null) {
-                return new BakedAvaritiaToolModel(delegateModel, delegateModel.getOverrides()
-                        .handleItemState(delegateModel, stack, delegateCache.getCachedWorld(), delegateCache.getCachedEntity()),
-                        state, delegateCache);
-            } else {
-                return new BakedAvaritiaToolModel(delegateModel, delegateModel, state, delegateCache);
+            if (delegateModel instanceof BakedToolModel) {
+                ItemStack stack = delegateKey.getStack();
+                if (stack != null) {
+                    return new BakedAvaritiaToolModel(delegateModel, delegateModel.getOverrides()
+                            .handleItemState(delegateModel, stack, delegateCache.getCachedWorld(), delegateCache.getCachedEntity()),
+                            new SimpleModelState(TconReflectClient.getTransforms((BakedToolModel)delegateModel)), delegateCache);
+                }
             }
+            return new BakedAvaritiaToolModel(delegateModel, delegateModel, state, delegateCache);
         }
 
         private static class ToolModelCache extends DelegateModelCache<ItemModelCacheKey, BakedAvaritiaToolModel> {
