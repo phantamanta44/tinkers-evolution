@@ -3,9 +3,6 @@ package xyz.phanta.tconevo.integration.ic2;
 import ic2.api.item.ElectricItem;
 import ic2.api.item.IBackupElectricItemManager;
 import ic2.api.item.IElectricItem;
-import ic2.core.IC2;
-import ic2.core.slot.ArmorSlot;
-import ic2.core.util.Util;
 import io.github.phantamanta44.libnine.util.format.FormatUtils;
 import io.github.phantamanta44.libnine.util.helper.OptUtils;
 import net.minecraft.entity.EntityLivingBase;
@@ -22,6 +19,10 @@ import java.awt.Color;
 public class EuStoreItemHandler implements IBackupElectricItemManager {
 
     public static final EuStoreItemHandler INSTANCE = new EuStoreItemHandler();
+
+    private static final EntityEquipmentSlot[] ARMOUR_SLOTS = {
+            EntityEquipmentSlot.HEAD, EntityEquipmentSlot.CHEST, EntityEquipmentSlot.LEGS, EntityEquipmentSlot.FEET
+    };
 
     private EuStoreItemHandler() {
         // NO-OP
@@ -70,7 +71,7 @@ public class EuStoreItemHandler implements IBackupElectricItemManager {
             chargeFromArmor(stack, entity);
         }
         double transfer = discharge(stack, amount, Integer.MAX_VALUE, true, false, true);
-        if (Util.isSimilar(transfer, amount)) {
+        if (Math.abs(transfer - amount) < 1e-5D) {
             discharge(stack, amount, Integer.MAX_VALUE, true, false, false);
             if (entity != null) {
                 chargeFromArmor(stack, entity);
@@ -85,7 +86,7 @@ public class EuStoreItemHandler implements IBackupElectricItemManager {
     @Override
     public void chargeFromArmor(ItemStack stack, EntityLivingBase entity) {
         boolean transferred = false;
-        for (EntityEquipmentSlot slot : ArmorSlot.getAll()) {
+        for (EntityEquipmentSlot slot : ARMOUR_SLOTS) {
             ItemStack source = entity.getItemStackFromSlot(slot);
             if (!source.isEmpty()) {
                 double transfer = ElectricItem.manager.discharge(
@@ -102,7 +103,7 @@ public class EuStoreItemHandler implements IBackupElectricItemManager {
                 }
             }
         }
-        if (transferred && entity instanceof EntityPlayer && IC2.platform.isSimulating()) {
+        if (transferred && entity instanceof EntityPlayer/* && IC2.platform.isSimulating()*/) { // TODO is this necessary?
             ((EntityPlayer)entity).openContainer.detectAndSendChanges();
         }
     }

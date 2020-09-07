@@ -93,7 +93,7 @@ dependencies { // THE BEAST
     deobfCompile "curse.maven:valkyriecompat:2691540" // 2.0.20.1
     deobfCompile "curse.maven:valkyrielib:2691542" // 2.0.20.1
     deobfCompile "curse.maven:environmental-tech:2691536" // 2.0.20.1
-    deobfCompile "net.industrial-craft:industrialcraft-2:2.8.170-ex112"
+    compile "net.industrial-craft:industrialcraft-2:2.8.170-ex112:api"
     deobfCompile "curse.maven:advanced-solar-panels:2652182" // 4.2.1
     deobfCompile "curse.maven:natural-absorption:2678478" // 1.0.0
     deobfCompile "curse.maven:redstone-repository-revolved:2695517" // 1.4.0-dev

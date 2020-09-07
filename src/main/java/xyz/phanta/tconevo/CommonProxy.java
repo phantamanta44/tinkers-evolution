@@ -128,11 +128,11 @@ public class CommonProxy {
     }
 
     public void onInit(FMLInitializationEvent event) {
+        TconEvoItems.registerToolForging();
+        IntegrationManager.dispatchInit(event); // needs to occur before material init so integrations can be prepared
         MasterRecipes.initRecipes();
         MaterialDefinition.initMaterialProperties();
         TconEvoTraits.initModifierMaterials();
-        TconEvoItems.registerToolForging();
-        IntegrationManager.dispatchInit(event);
     }
 
     public void onImcReceived(FMLInterModComms.IMCEvent event) {
