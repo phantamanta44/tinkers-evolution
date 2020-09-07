@@ -369,6 +369,21 @@ public class TconEvoConfig {
 
     }
 
+    @Config.Comment("Configuration for various tweaks to Tinkers' Construct and its addons.")
+    public static final Tweaks tweaks = new Tweaks();
+
+    public static class Tweaks {
+
+        @Config.Comment({
+                "A multiplier for the speed at which materials melt in heat-based machines.",
+                "This affects the smeltery as well as the heater and high oven from Tinkers' Complement.",
+                "Set to 1 to retain the default melt speed. Set to 0 if you want melting to be impossible for some reason."
+        })
+        @Config.RangeDouble(min = 0D)
+        public double meltSpeedMultiplier = 1D;
+
+    }
+
     @Config.Comment("Configuration for the artifacts system.")
     public static final Artifacts artifacts = new Artifacts();
 
