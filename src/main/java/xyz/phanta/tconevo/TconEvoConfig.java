@@ -18,6 +18,14 @@ public class TconEvoConfig {
     @Config.RequiresMcRestart
     public static String[] disabledModifiers = new String[0];
 
+    @Config.Comment({
+            "A list of mod IDs for integration modules whose hook classes (i.e. special behaviour) should not be loaded.",
+            "Note that this does not disable the materials and modifiers for that mod!",
+            "These are handled separately by `disabledMaterials` and `disabledModifiers`.",
+    })
+    @Config.RequiresMcRestart
+    public static String[] disabledModHooks = new String[0];
+
     @Config.Comment("Configuration for the mod in general.")
     public static final General general = new General();
 
