@@ -16,7 +16,7 @@ public class SolarFluxHooksImpl implements SolarFluxHooks {
     public void onPostInit(FMLPostInitializationEvent event) {
         for (SolarInfo info : SolarFluxAPI.SOLAR_PANELS) {
             ModifierPhotovoltaic.registerSolarItem(new ItemStack(info.getBlock()),
-                    (int)Math.min(info.maxGeneration * 20L, Integer.MAX_VALUE)); // wtf who needs this much energy
+                    (int)Math.min(info.getGeneration() * 20L, Integer.MAX_VALUE)); // wtf who needs this much energy
         }
     }
 
@@ -35,17 +35,17 @@ public class SolarFluxHooksImpl implements SolarFluxHooks {
 
         @Override
         public long getGenerationRate() {
-            return info.maxGeneration;
+            return info.getGeneration();
         }
 
         @Override
         public long getCapacity() {
-            return info.maxCapacity;
+            return info.getCapacity();
         }
 
         @Override
         public long getTransferRate() {
-            return info.maxTransfer;
+            return info.getTransfer();
         }
 
         @Override

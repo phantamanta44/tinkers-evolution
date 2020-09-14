@@ -12,7 +12,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: "com.wynprice.cursemaven"
 
-version = "1.0.32"
+version = "1.0.33"
 group = "xyz.phanta.tconevo"
 archivesBaseName = "tconevo-1.12.2"
 
@@ -97,7 +97,7 @@ dependencies { // THE BEAST
     deobfCompile "curse.maven:advanced-solar-panels:2652182" // 4.2.1
     deobfCompile "curse.maven:natural-absorption:2678478" // 1.0.0
     deobfCompile "curse.maven:redstone-repository-revolved:2695517" // 1.4.0-dev
-    deobfCompile "curse.maven:solar-flux-reborn:2887575" // 12.3.8
+    deobfCompile "curse.maven:solar-flux-reborn:3050838" // 12.4.11
     deobfCompile "com.enderio.core:EnderCore:1.12.2-0.5.76"
     deobfCompile("com.enderio:EnderIO:1.12.2-5.2.59") { exclude group: "deobf.com.enderio.core" }
     deobfCompile "net.sengir.forestry:forestry_1.12.2:5.8.2.387"
