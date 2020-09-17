@@ -22,6 +22,7 @@ import xyz.phanta.tconevo.material.MaterialDefinition;
 import xyz.phanta.tconevo.network.CPacketGaiaWrath;
 import xyz.phanta.tconevo.network.SPacketEntitySpecialEffect;
 import xyz.phanta.tconevo.network.SPacketLightningEffect;
+import xyz.phanta.tconevo.network.SPacketUpdateAppliedFlightSpeed;
 import xyz.phanta.tconevo.recipe.MasterRecipes;
 import xyz.phanta.tconevo.recipe.OreDictRegistration;
 
@@ -56,11 +57,13 @@ public class CommonProxy {
         MinecraftForge.EVENT_BUS.register(new EntityAttributeHandler());
         MinecraftForge.EVENT_BUS.register(new RegistrationHandler());
         SimpleNetworkWrapper netHandler = TconEvoMod.INSTANCE.getNetworkHandler();
-        netHandler.registerMessage(new SPacketEntitySpecialEffect.Handler(), SPacketEntitySpecialEffect.class, 0, Side.CLIENT);
-        netHandler.registerMessage(new CPacketGaiaWrath.Handler(), CPacketGaiaWrath.class, 1, Side.SERVER);
-        netHandler.registerMessage(new SPacketLightningEffect.Handler(), SPacketLightningEffect.class, 2, Side.CLIENT);
+        netHandler.registerMessage(SPacketEntitySpecialEffect.Handler.class, SPacketEntitySpecialEffect.class, 0, Side.CLIENT);
+        netHandler.registerMessage(CPacketGaiaWrath.Handler.class, CPacketGaiaWrath.class, 1, Side.SERVER);
+        netHandler.registerMessage(SPacketLightningEffect.Handler.class, SPacketLightningEffect.class, 2, Side.CLIENT);
+        netHandler.registerMessage(SPacketUpdateAppliedFlightSpeed.Handler.class, SPacketUpdateAppliedFlightSpeed.class, 3, Side.CLIENT);
         IntegrationManager.dispatchPreInit(event);
         // handle config dir generation
+        TconEvoMod.LOGGER.info("Current config version: {}", CONFIG_VERSION);
         Path configDir = event.getModConfigurationDirectory().toPath().resolve(TconEvoMod.MOD_ID);
         if (!Files.exists(configDir)) {
             TconEvoMod.LOGGER.info("No config directory found; writing defaults...");
@@ -71,9 +74,14 @@ public class CommonProxy {
                 if (!Files.exists(versionFile)) {
                     TconEvoMod.LOGGER.info("No config version file found; writing defaults...");
                     writeDefaultConfig(configDir);
-                } else if (Long.parseLong(String.join("", Files.readAllLines(versionFile)).trim()) < CONFIG_VERSION) {
-                    TconEvoMod.LOGGER.info("Outdated config version found; writing defaults...");
-                    writeDefaultConfig(configDir);
+                } else {
+                    long confVer = Long.parseLong(new String(Files.readAllBytes(versionFile), StandardCharsets.UTF_8).trim());
+                    if (confVer < CONFIG_VERSION) {
+                        TconEvoMod.LOGGER.info("Outdated config version {} found; writing defaults...", confVer);
+                        writeDefaultConfig(configDir);
+                    } else {
+                        TconEvoMod.LOGGER.info("Config version {} found; nothing to do.", confVer);
+                    }
                 }
             } catch (Exception e) {
                 TconEvoMod.LOGGER.error("Failed to read config version file!", e);
@@ -120,11 +128,11 @@ public class CommonProxy {
     }
 
     public void onInit(FMLInitializationEvent event) {
+        TconEvoItems.registerToolForging();
+        IntegrationManager.dispatchInit(event); // needs to occur before material init so integrations can be prepared
         MasterRecipes.initRecipes();
         MaterialDefinition.initMaterialProperties();
         TconEvoTraits.initModifierMaterials();
-        TconEvoItems.registerToolForging();
-        IntegrationManager.dispatchInit(event);
     }
 
     public void onImcReceived(FMLInterModComms.IMCEvent event) {

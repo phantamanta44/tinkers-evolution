@@ -12,7 +12,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: "com.wynprice.cursemaven"
 
-version = "1.0.29"
+version = "1.0.33"
 group = "xyz.phanta.tconevo"
 archivesBaseName = "tconevo-1.12.2"
 
@@ -65,7 +65,7 @@ repositories {
 }
 
 dependencies { // THE BEAST
-    compile 'io.github.phantamanta44.libnine:libnine-1.12.2:1.1.8'
+    compile 'io.github.phantamanta44.libnine:libnine-1.12.2:1.1.9'
     deobfCompile 'mezz.jei:jei_1.12.2:4.15.0.293'
     deobfCompile "slimeknights.mantle:Mantle:1.12-1.3.3.56"
     deobfCompile "slimeknights:TConstruct:1.12.2-2.13.0.184"
@@ -93,11 +93,11 @@ dependencies { // THE BEAST
     deobfCompile "curse.maven:valkyriecompat:2691540" // 2.0.20.1
     deobfCompile "curse.maven:valkyrielib:2691542" // 2.0.20.1
     deobfCompile "curse.maven:environmental-tech:2691536" // 2.0.20.1
-    deobfCompile "net.industrial-craft:industrialcraft-2:2.8.170-ex112"
+    compile "net.industrial-craft:industrialcraft-2:2.8.170-ex112:api"
     deobfCompile "curse.maven:advanced-solar-panels:2652182" // 4.2.1
     deobfCompile "curse.maven:natural-absorption:2678478" // 1.0.0
     deobfCompile "curse.maven:redstone-repository-revolved:2695517" // 1.4.0-dev
-    deobfCompile "curse.maven:solar-flux-reborn:2887575" // 12.3.8
+    deobfCompile "curse.maven:solar-flux-reborn:3050838" // 12.4.11
     deobfCompile "com.enderio.core:EnderCore:1.12.2-0.5.76"
     deobfCompile("com.enderio:EnderIO:1.12.2-5.2.59") { exclude group: "deobf.com.enderio.core" }
     deobfCompile "net.sengir.forestry:forestry_1.12.2:5.8.2.387"

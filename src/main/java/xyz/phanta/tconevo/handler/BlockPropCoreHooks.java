@@ -9,7 +9,7 @@ import net.minecraftforge.common.ForgeHooks;
 import slimeknights.tconstruct.library.tools.ToolCore;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.constant.NameConst;
-import xyz.phanta.tconevo.util.Reflected;
+import io.github.phantamanta44.libnine.util.nullity.Reflected;
 import xyz.phanta.tconevo.util.ToolUtils;
 
 // no reflection occurs here; these methods are called from code injected by coremods

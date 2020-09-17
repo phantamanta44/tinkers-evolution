@@ -5,7 +5,7 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import tk.zeitheron.solarflux.api.SolarFluxAPI;
 import tk.zeitheron.solarflux.api.SolarInfo;
 import xyz.phanta.tconevo.trait.ModifierPhotovoltaic;
-import xyz.phanta.tconevo.util.Reflected;
+import io.github.phantamanta44.libnine.util.nullity.Reflected;
 
 import java.util.stream.Stream;
 
@@ -16,7 +16,7 @@ public class SolarFluxHooksImpl implements SolarFluxHooks {
     public void onPostInit(FMLPostInitializationEvent event) {
         for (SolarInfo info : SolarFluxAPI.SOLAR_PANELS) {
             ModifierPhotovoltaic.registerSolarItem(new ItemStack(info.getBlock()),
-                    (int)Math.min(info.maxGeneration * 20L, Integer.MAX_VALUE)); // wtf who needs this much energy
+                    (int)Math.min(info.getGeneration() * 20L, Integer.MAX_VALUE)); // wtf who needs this much energy
         }
     }
 
@@ -35,22 +35,22 @@ public class SolarFluxHooksImpl implements SolarFluxHooks {
 
         @Override
         public long getGenerationRate() {
-            return info.maxGeneration;
+            return info.getGeneration();
         }
 
         @Override
         public long getCapacity() {
-            return info.maxCapacity;
+            return info.getCapacity();
         }
 
         @Override
         public long getTransferRate() {
-            return info.maxTransfer;
+            return info.getTransfer();
         }
 
         @Override
         public ItemStack newStack(int count) {
-            return new ItemStack(info.getBlock());
+            return new ItemStack(info.getBlock(), count);
         }
 
     }

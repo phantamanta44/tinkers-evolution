@@ -21,7 +21,7 @@ public class TraitManaInfused extends AbstractTrait {
 
     @Override
     public int onToolDamage(ItemStack tool, int damage, int newDamage, EntityLivingBase entity) {
-        return (entity instanceof EntityPlayer && requestMana(tool, (EntityPlayer)entity)) ? 0 : newDamage;
+        return (newDamage <= 0 || (entity instanceof EntityPlayer && requestMana(tool, (EntityPlayer)entity))) ? 0 : newDamage;
     }
 
     @Override

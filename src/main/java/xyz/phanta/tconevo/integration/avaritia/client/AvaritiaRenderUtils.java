@@ -19,7 +19,6 @@ import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.item.ItemStack;
 import org.lwjgl.opengl.GL11;
 
-import javax.annotation.Nullable;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -74,60 +73,45 @@ public class AvaritiaRenderUtils {
 
     // adapted from avaritia's CosmicItemRender#renderSimple, which is licensed under MIT
     // https://github.com/Morpheus1101/Avaritia/blob/master/src/main/java/morph/avaritia/client/render/item/CosmicItemRender.java
-    public static void renderCosmicOverlayInWorld(IBakedModel parentModel, ItemStack stack,
-                                                  @Nullable TextureAtlasSprite maskSprite, float opacity) {
+    public static void renderCosmicOverlayInWorld(TextureAtlasSprite maskSprite, ItemStack stack, float opacity) {
         GlStateManager.pushMatrix();
         GlStateManager.enableBlend();
         GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
+        GlStateManager.disableAlpha();
+        GlStateManager.depthFunc(GL11.GL_EQUAL);
+
         GlStateManager.color(1F, 1F, 1F, 1F);
+        CosmicShaderHelper.cosmicOpacity = opacity;
+        CosmicShaderHelper.useShader();
+        WrappedItemRenderer.renderModel(getModelForMaskSprite(maskSprite), stack);
+        CosmicShaderHelper.releaseShader();
 
-        if (maskSprite != null) {
-            GlStateManager.disableAlpha();
-            GlStateManager.depthFunc(GL11.GL_EQUAL);
-            CosmicShaderHelper.cosmicOpacity = opacity;
-            CosmicShaderHelper.useShader();
-
-            WrappedItemRenderer.renderModel(getModelForMaskSprite(maskSprite), stack);
-
-            CosmicShaderHelper.releaseShader();
-            GlStateManager.depthFunc(GL11.GL_LEQUAL);
-            GlStateManager.enableAlpha();
-        }
+        GlStateManager.depthFunc(GL11.GL_LEQUAL);
+        GlStateManager.enableAlpha();
         GlStateManager.disableBlend();
         GlStateManager.popMatrix();
     }
 
     // adapted from avaritia's CosmicItemRender#renderInventory, which is licensed under MIT
     // https://github.com/Morpheus1101/Avaritia/blob/master/src/main/java/morph/avaritia/client/render/item/CosmicItemRender.java
-    public static void renderCosmicOverlayInGui(IBakedModel parentModel, ItemStack stack,
-                                                @Nullable TextureAtlasSprite maskSprite, float opacity) {
+    public static void renderCosmicOverlayInGui(TextureAtlasSprite maskSprite, ItemStack stack, float opacity) {
         GlStateManager.pushMatrix();
         GlStateManager.enableBlend();
         GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
         GlStateManager.disableAlpha();
         GlStateManager.disableDepth();
 
-        if (maskSprite != null) {
-            GlStateManager.pushMatrix();
-            GlStateManager.enableBlend();
-            GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
-            GlStateManager.disableAlpha();
-            GlStateManager.disableDepth();
-            GlStateManager.color(1F, 1F, 1F, 1F);
-            CosmicShaderHelper.cosmicOpacity = opacity;
-            CosmicShaderHelper.inventoryRender = true;
-            CosmicShaderHelper.useShader();
+        GlStateManager.color(1F, 1F, 1F, 1F);
+        CosmicShaderHelper.cosmicOpacity = opacity;
+        CosmicShaderHelper.inventoryRender = true;
+        CosmicShaderHelper.useShader();
+        WrappedItemRenderer.renderModel(getModelForMaskSprite(maskSprite), stack);
+        CosmicShaderHelper.releaseShader();
+        CosmicShaderHelper.inventoryRender = false;
 
-            WrappedItemRenderer.renderModel(getModelForMaskSprite(maskSprite), stack);
-
-            CosmicShaderHelper.releaseShader();
-            CosmicShaderHelper.inventoryRender = false;
-            GlStateManager.popMatrix();
-        }
-
+        GlStateManager.enableDepth();
         GlStateManager.enableAlpha();
         GlStateManager.enableRescaleNormal();
-        GlStateManager.enableDepth();
         GlStateManager.disableBlend();
         GlStateManager.popMatrix();
     }

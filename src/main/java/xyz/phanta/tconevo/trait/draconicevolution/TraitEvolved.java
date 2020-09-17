@@ -3,6 +3,7 @@ package xyz.phanta.tconevo.trait.draconicevolution;
 import gnu.trove.map.TObjectIntMap;
 import gnu.trove.map.hash.TObjectIntHashMap;
 import io.github.phantamanta44.libnine.capability.provider.CapabilityBroker;
+import io.github.phantamanta44.libnine.util.helper.ItemUtils;
 import io.github.phantamanta44.libnine.util.helper.OptUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -232,7 +233,7 @@ public class TraitEvolved extends AbstractTrait implements EnergeticModifier {
 
         public void setEnergyStored(int amount) {
             // we assume the amount is already bounds-checked
-            ToolUtils.getOrCreateTag(stack).setInteger(TAG_ENERGY, amount);
+            ItemUtils.getOrCreateTag(stack).setInteger(TAG_ENERGY, amount);
             if (stack.getItem() instanceof ProjectileCore) {
                 updateProjectileAmmo(amount);
             }

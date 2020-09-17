@@ -1,6 +1,8 @@
 package xyz.phanta.tconevo.init;
 
 import io.github.phantamanta44.libnine.InitMe;
+import io.github.phantamanta44.libnine.potion.PotionDispellable;
+import io.github.phantamanta44.libnine.potion.PotionUndispellable;
 import io.github.phantamanta44.libnine.util.math.MathUtils;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.potion.Potion;
@@ -17,8 +19,6 @@ import xyz.phanta.tconevo.TconEvoMod;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.potion.PotionDamageBoost;
 import xyz.phanta.tconevo.potion.PotionDamageReduction;
-import xyz.phanta.tconevo.potion.PotionDispellable;
-import xyz.phanta.tconevo.potion.PotionUndispellable;
 import xyz.phanta.tconevo.util.DamageUtils;
 
 public class TconEvoPotions {

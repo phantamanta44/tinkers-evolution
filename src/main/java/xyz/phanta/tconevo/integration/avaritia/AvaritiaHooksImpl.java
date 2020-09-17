@@ -4,7 +4,7 @@ import morph.avaritia.init.ModItems;
 import morph.avaritia.util.TextUtils;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.ItemHandlerHelper;
-import xyz.phanta.tconevo.util.Reflected;
+import io.github.phantamanta44.libnine.util.nullity.Reflected;
 
 import java.util.Optional;
 

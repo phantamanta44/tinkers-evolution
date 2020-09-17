@@ -1,64 +1,75 @@
 package xyz.phanta.tconevo.integration.advsolars;
 
-import com.chocohead.advsolar.ASP_Items;
-import com.chocohead.advsolar.AdvancedSolarPanels;
-import com.chocohead.advsolar.items.ItemCraftingThings;
-import com.chocohead.advsolar.tiles.*;
+import com.chocohead.advsolar.tiles.TileEntityAdvancedSolar;
+import com.chocohead.advsolar.tiles.TileEntityHybridSolar;
+import com.chocohead.advsolar.tiles.TileEntityQuantumSolar;
+import com.chocohead.advsolar.tiles.TileEntityUltimateHybridSolar;
+import io.github.phantamanta44.libnine.util.nullity.Reflected;
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.oredict.OreDictionary;
 import xyz.phanta.tconevo.capability.PowerWrapper;
 import xyz.phanta.tconevo.trait.ModifierPhotovoltaic;
-import xyz.phanta.tconevo.util.Reflected;
 
+import javax.annotation.Nullable;
 import java.util.Optional;
 
 @Reflected
 public class AdvSolarHooksImpl implements AdvSolarHooks {
 
+    @Nullable
+    private Block machineBlock;
+
     @Override
     public void onInit(FMLInitializationEvent event) {
-        OreDictionary.registerOre("itemSunnarium",
-                ASP_Items.CRAFTING.getItemStack(ItemCraftingThings.CraftingTypes.SUNNARIUM));
-        OreDictionary.registerOre("nuggetSunnarium",
-                ASP_Items.CRAFTING.getItemStack(ItemCraftingThings.CraftingTypes.SUNNARIUM_PART));
+        machineBlock = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(MOD_ID, "machines"));
+        Item craftingItem = ForgeRegistries.ITEMS.getValue(new ResourceLocation(MOD_ID, "crafting"));
+        if (craftingItem != null) {
+            OreDictionary.registerOre("itemSunnarium", new ItemStack(craftingItem, 1, 0)); // sunnarium
+            OreDictionary.registerOre("nuggetSunnarium", new ItemStack(craftingItem, 1, 1)); // sunnarium part
+        }
     }
 
     @Override
     public void onPostInit(FMLPostInitializationEvent event) {
-        ModifierPhotovoltaic.registerSolarItem(newMachineStack(TEs.advanced_solar_panel),
-                (int)Math.round(TileEntityAdvancedSolar.settings.dayPower * PowerWrapper.RF_PER_EU * 20F));
-        ModifierPhotovoltaic.registerSolarItem(newMachineStack(TEs.hybrid_solar_panel),
-                (int)Math.round(TileEntityHybridSolar.settings.dayPower * PowerWrapper.RF_PER_EU * 20F));
-        ModifierPhotovoltaic.registerSolarItem(newMachineStack(TEs.ultimate_solar_panel),
-                (int)Math.round(TileEntityUltimateHybridSolar.settings.dayPower * PowerWrapper.RF_PER_EU * 20F));
-        ModifierPhotovoltaic.registerSolarItem(newMachineStack(TEs.quantum_solar_panel),
-                (int)Math.round(TileEntityQuantumSolar.settings.dayPower * PowerWrapper.RF_PER_EU * 20F));
+        getItemAdvancedSolar().ifPresent(s -> ModifierPhotovoltaic.registerSolarItem(s,
+                (int)Math.round(TileEntityAdvancedSolar.settings.dayPower * PowerWrapper.RF_PER_EU * 20F)));
+        getItemHybridSolar().ifPresent(s -> ModifierPhotovoltaic.registerSolarItem(s,
+                (int)Math.round(TileEntityHybridSolar.settings.dayPower * PowerWrapper.RF_PER_EU * 20F)));
+        getItemUltimateSolar().ifPresent(s -> ModifierPhotovoltaic.registerSolarItem(s,
+                (int)Math.round(TileEntityUltimateHybridSolar.settings.dayPower * PowerWrapper.RF_PER_EU * 20F)));
+        getItemQuantumSolar().ifPresent(s -> ModifierPhotovoltaic.registerSolarItem(s,
+                (int)Math.round(TileEntityQuantumSolar.settings.dayPower * PowerWrapper.RF_PER_EU * 20F)));
     }
 
     @Override
     public Optional<ItemStack> getItemAdvancedSolar() {
-        return Optional.of(newMachineStack(TEs.advanced_solar_panel));
+        return Optional.ofNullable(newMachineStack(2));
     }
 
     @Override
     public Optional<ItemStack> getItemHybridSolar() {
-        return Optional.of(newMachineStack(TEs.hybrid_solar_panel));
+        return Optional.ofNullable(newMachineStack(3));
     }
 
     @Override
     public Optional<ItemStack> getItemUltimateSolar() {
-        return Optional.of(newMachineStack(TEs.ultimate_solar_panel));
+        return Optional.ofNullable(newMachineStack(4));
     }
 
     @Override
     public Optional<ItemStack> getItemQuantumSolar() {
-        return Optional.of(newMachineStack(TEs.quantum_solar_panel));
+        return Optional.ofNullable(newMachineStack(5));
     }
 
-    private static ItemStack newMachineStack(TEs type) {
-        return new ItemStack(AdvancedSolarPanels.machines, 1, type.getId());
+    @Nullable
+    private ItemStack newMachineStack(int meta) {
+        return machineBlock != null ? new ItemStack(machineBlock, 1, meta) : null;
     }
 
 }

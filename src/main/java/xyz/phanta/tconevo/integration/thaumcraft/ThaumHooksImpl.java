@@ -20,7 +20,7 @@ import xyz.phanta.tconevo.TconEvoMod;
 import xyz.phanta.tconevo.init.TconEvoItems;
 import xyz.phanta.tconevo.item.ItemMaterial;
 import xyz.phanta.tconevo.item.ItemMetal;
-import xyz.phanta.tconevo.util.Reflected;
+import io.github.phantamanta44.libnine.util.nullity.Reflected;
 
 @Reflected
 public class ThaumHooksImpl implements ThaumHooks {

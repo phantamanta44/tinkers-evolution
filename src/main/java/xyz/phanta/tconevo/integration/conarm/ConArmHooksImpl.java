@@ -23,7 +23,7 @@ import slimeknights.tconstruct.library.utils.TinkerUtil;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.integration.conarm.material.ArmourMaterialDefinition;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
-import xyz.phanta.tconevo.util.Reflected;
+import io.github.phantamanta44.libnine.util.nullity.Reflected;
 
 import javax.annotation.Nullable;
 

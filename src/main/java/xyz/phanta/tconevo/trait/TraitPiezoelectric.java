@@ -2,6 +2,7 @@ package xyz.phanta.tconevo.trait;
 
 import gnu.trove.list.TIntList;
 import gnu.trove.list.array.TIntArrayList;
+import io.github.phantamanta44.libnine.util.helper.InventoryUtils;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -9,7 +10,6 @@ import slimeknights.tconstruct.library.traits.AbstractTrait;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.capability.PowerWrapper;
 import xyz.phanta.tconevo.constant.NameConst;
-import xyz.phanta.tconevo.util.InventoryUtils;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -32,7 +32,7 @@ public class TraitPiezoelectric extends AbstractTrait {
         if (energy <= 0) {
             return;
         }
-        Iterator<ItemStack> iterInv = InventoryUtils.iterateInv(player);
+        Iterator<ItemStack> iterInv = InventoryUtils.streamInventory(player).iterator();
         List<PowerWrapper> recipients = new ArrayList<>();
         TIntList missing = new TIntArrayList();
         long totalMissing = 0;

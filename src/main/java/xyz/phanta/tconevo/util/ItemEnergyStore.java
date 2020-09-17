@@ -1,8 +1,8 @@
 package xyz.phanta.tconevo.util;
 
+import io.github.phantamanta44.libnine.util.helper.ItemUtils;
 import io.github.phantamanta44.libnine.util.helper.OptUtils;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.energy.IEnergyStorage;
 import xyz.phanta.tconevo.capability.RatedEnergyStorage;
 
 public abstract class ItemEnergyStore implements RatedEnergyStorage {
@@ -50,7 +50,7 @@ public abstract class ItemEnergyStore implements RatedEnergyStorage {
 
     public void setEnergyStored(int amount) {
         // we assume the amount is already bounds-checked
-        ToolUtils.getOrCreateTag(stack).setInteger(getNbtKeyEnergy(), amount);
+        ItemUtils.getOrCreateTag(stack).setInteger(getNbtKeyEnergy(), amount);
     }
 
     @Override

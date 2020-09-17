@@ -8,7 +8,7 @@ import net.minecraft.world.IBlockAccess;
 import slimeknights.tconstruct.library.tools.ToolCore;
 import slimeknights.tconstruct.library.utils.ToolHelper;
 import xyz.phanta.tconevo.integration.conarm.ConArmHooks;
-import xyz.phanta.tconevo.util.Reflected;
+import io.github.phantamanta44.libnine.util.nullity.Reflected;
 
 // methods aren't reflected, but are invoked from code injected by the coremod
 public class TinkerToolPropCoreHooks {

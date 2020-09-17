@@ -5,7 +5,7 @@ import slimeknights.mantle.util.RecipeMatch;
 import slimeknights.tconstruct.library.modifiers.IModifier;
 import slimeknights.tconstruct.library.modifiers.TinkerGuiException;
 import xyz.phanta.tconevo.trait.base.MatchSensitiveModifier;
-import xyz.phanta.tconevo.util.Reflected;
+import io.github.phantamanta44.libnine.util.nullity.Reflected;
 
 // nothing is actually reflected here; these hooks are called from code injected by the coremod
 // see TransformItemSensitiveModifiers

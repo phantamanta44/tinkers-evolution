@@ -1,6 +1,7 @@
 package xyz.phanta.tconevo.trait.bloodmagic;
 
 import com.google.common.collect.Multimap;
+import io.github.phantamanta44.libnine.util.helper.ItemUtils;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -17,7 +18,6 @@ import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.integration.bloodmagic.BloodMagicHooks;
 import xyz.phanta.tconevo.integration.bloodmagic.DemonWillType;
-import xyz.phanta.tconevo.util.ToolUtils;
 
 import javax.annotation.Nullable;
 import java.util.Objects;
@@ -113,7 +113,7 @@ public class TraitSentient extends AbstractTrait {
             }
             willPower = WillPower.zero();
         }
-        willPower.writeToNbt(ToolUtils.getOrCreateTag(stack));
+        willPower.writeToNbt(ItemUtils.getOrCreateTag(stack));
         return willPower;
     }
 

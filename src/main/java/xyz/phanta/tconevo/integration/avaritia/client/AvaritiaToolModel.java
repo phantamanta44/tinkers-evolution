@@ -22,12 +22,17 @@ import slimeknights.tconstruct.library.client.model.*;
 import slimeknights.tconstruct.library.client.model.format.AmmoPosition;
 import slimeknights.tconstruct.library.client.model.format.ToolModelOverride;
 import slimeknights.tconstruct.library.materials.Material;
+import slimeknights.tconstruct.library.tinkering.PartMaterialType;
+import slimeknights.tconstruct.library.tinkering.TinkersItem;
+import slimeknights.tconstruct.library.tools.IToolPart;
 import slimeknights.tconstruct.library.utils.ToolHelper;
 import xyz.phanta.tconevo.client.util.*;
 import xyz.phanta.tconevo.util.ToolUtils;
 
 import javax.annotation.Nullable;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 import java.util.function.Function;
 
 public class AvaritiaToolModel extends ToolModel {
@@ -108,14 +113,15 @@ public class AvaritiaToolModel extends ToolModel {
         @Override
         public BakedAvaritiaToolModel wrapDelegate(ItemModelCacheKey delegateKey) {
             IBakedModel delegateModel = delegateKey.getModel();
-            ItemStack stack = delegateKey.getStack();
-            if (stack != null) {
-                return new BakedAvaritiaToolModel(delegateModel, delegateModel.getOverrides()
-                        .handleItemState(delegateModel, stack, delegateCache.getCachedWorld(), delegateCache.getCachedEntity()),
-                        state, delegateCache);
-            } else {
-                return new BakedAvaritiaToolModel(delegateModel, delegateModel, state, delegateCache);
+            if (delegateModel instanceof BakedToolModel) {
+                ItemStack stack = delegateKey.getStack();
+                if (stack != null) {
+                    return new BakedAvaritiaToolModel(delegateModel, delegateModel.getOverrides()
+                            .handleItemState(delegateModel, stack, delegateCache.getCachedWorld(), delegateCache.getCachedEntity()),
+                            new SimpleModelState(TconReflectClient.getTransforms((BakedToolModel)delegateModel)), delegateCache);
+                }
             }
+            return new BakedAvaritiaToolModel(delegateModel, delegateModel, state, delegateCache);
         }
 
         private static class ToolModelCache extends DelegateModelCache<ItemModelCacheKey, BakedAvaritiaToolModel> {
@@ -168,12 +174,14 @@ public class AvaritiaToolModel extends ToolModel {
             private final List<Material> materials;
             private final int renderPartCount;
             private final AvaritiaMaterialModel.BakedAvaritiaMaterialModel[] renderablePartModels;
+            private final ItemStack[] partStacks;
 
             ToolPartRenderer(BakedToolModel baseModel, ItemStack stack) {
                 this.materials = ToolUtils.getToolMaterials(stack);
                 BakedMaterialModel[] parts = TconReflectClient.getParts(baseModel);
                 this.renderPartCount = Math.min(parts.length, materials.size());
                 this.renderablePartModels = new AvaritiaMaterialModel.BakedAvaritiaMaterialModel[renderPartCount];
+                this.partStacks = new ItemStack[renderPartCount];
                 if (ToolHelper.isBroken(stack)) {
                     BakedMaterialModel[] brokenParts = TconReflectClient.getBrokenParts(baseModel);
                     for (int i = 0; i < renderPartCount; i++) {
@@ -194,13 +202,29 @@ public class AvaritiaToolModel extends ToolModel {
                         }
                     }
                 }
+                if (stack.getItem() instanceof TinkersItem) {
+                    List<PartMaterialType> partItemTypes = ((TinkersItem)stack.getItem()).getRequiredComponents();
+                    for (int i = 0; i < renderPartCount; i++) {
+                        // no need to spend time making a part stack for a part that never gets rendered
+                        if (renderablePartModels[i] != null) {
+                            Set<IToolPart> partItems = partItemTypes.get(i).getPossibleParts();
+                            if (partItems.isEmpty()) {
+                                partStacks[i] = ItemStack.EMPTY;
+                            } else {
+                                partStacks[i] = partItems.iterator().next().getItemstackWithMaterial(materials.get(i));
+                            }
+                        }
+                    }
+                } else {
+                    Arrays.fill(partStacks, ItemStack.EMPTY);
+                }
             }
 
             @Override
             public void renderUnderlays(ItemCameraTransforms.TransformType transType) {
                 for (int i = 0; i < renderPartCount; i++) {
                     if (renderablePartModels[i] != null) {
-                        renderablePartModels[i].renderUnderlay(ItemStack.EMPTY, transType, materials.get(i));
+                        renderablePartModels[i].renderUnderlay(partStacks[i], transType, materials.get(i));
                     }
                 }
             }
@@ -209,7 +233,7 @@ public class AvaritiaToolModel extends ToolModel {
             public void renderOverlays(ItemCameraTransforms.TransformType transType) {
                 for (int i = 0; i < renderPartCount; i++) {
                     if (renderablePartModels[i] != null) {
-                        renderablePartModels[i].renderOverlay(ItemStack.EMPTY, transType, materials.get(i));
+                        renderablePartModels[i].renderOverlay(partStacks[i], transType, materials.get(i));
                     }
                 }
             }

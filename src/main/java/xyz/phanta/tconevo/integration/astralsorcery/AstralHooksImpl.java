@@ -18,7 +18,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import xyz.phanta.tconevo.capability.AstralAttunable;
 import xyz.phanta.tconevo.init.TconEvoCaps;
-import xyz.phanta.tconevo.util.Reflected;
+import io.github.phantamanta44.libnine.util.nullity.Reflected;
 import xyz.phanta.tconevo.util.ReflectionHackUtils;
 
 import javax.annotation.Nullable;

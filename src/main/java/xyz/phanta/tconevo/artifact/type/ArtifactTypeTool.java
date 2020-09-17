@@ -2,12 +2,16 @@ package xyz.phanta.tconevo.artifact.type;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonSyntaxException;
+import io.github.phantamanta44.libnine.util.helper.ItemUtils;
 import io.github.phantamanta44.libnine.util.helper.JsonUtils9;
+import io.github.phantamanta44.libnine.util.nbt.ImmutableNbt;
 import io.github.phantamanta44.libnine.util.tuple.IPair;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagString;
+import net.minecraft.util.JsonUtils;
 import net.minecraft.util.NonNullList;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.events.TinkerCraftingEvent;
@@ -17,10 +21,8 @@ import slimeknights.tconstruct.library.modifiers.TinkerGuiException;
 import slimeknights.tconstruct.library.tinkering.PartMaterialType;
 import slimeknights.tconstruct.library.tools.IToolPart;
 import slimeknights.tconstruct.library.tools.ToolCore;
-import slimeknights.tconstruct.library.utils.ToolBuilder;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 import xyz.phanta.tconevo.init.TconEvoTraits;
-import xyz.phanta.tconevo.util.ImmutableNbt;
 import xyz.phanta.tconevo.util.ToolUtils;
 
 import javax.annotation.Nullable;
@@ -38,13 +40,14 @@ public class ArtifactTypeTool implements ArtifactType<ArtifactTypeTool.Spec> {
         List<IPair<String, Integer>> modifiers;
         if (dto.has("mods")) {
             modifiers = new ArrayList<>();
-            for (JsonElement modDto : dto.getAsJsonArray("mods")) {
+            for (JsonElement modDto : JsonUtils.getJsonArray(dto, "mods")) {
                 if (modDto.isJsonObject()) { // { id: String, level: Int }
                     JsonObject modDtoObj = modDto.getAsJsonObject();
-                    modifiers.add(IPair.of(modDtoObj.get("id").getAsString(),
-                            modDtoObj.has("level") ? modDtoObj.get("level").getAsInt() : 1));
-                } else { // otherwise, it's just a string for modifier id
+                    modifiers.add(IPair.of(JsonUtils.getString(modDtoObj, "id"), JsonUtils.getInt(modDtoObj, "level", 1)));
+                } else if (modDto.isJsonPrimitive() && modDto.getAsJsonPrimitive().isString()) { // just id string
                     modifiers.add(IPair.of(modDto.getAsString(), 1));
+                } else {
+                    throw new JsonSyntaxException("Expected either a modifier object or a string in \"mods\", but got " + modDto);
                 }
             }
         } else {
@@ -58,23 +61,38 @@ public class ArtifactTypeTool implements ArtifactType<ArtifactTypeTool.Spec> {
             if (loreDto.isJsonArray()) { // many lines of lore
                 lore = new ArrayList<>();
                 for (JsonElement loreLineDto : loreDto.getAsJsonArray()) {
-                    lore.add(loreLineDto.getAsString());
+                    if (loreLineDto.isJsonPrimitive() && loreLineDto.getAsJsonPrimitive().isString()) {
+                        lore.add(loreLineDto.getAsString());
+                    } else {
+                        throw new JsonSyntaxException("Expected a string in the \"lore\" array, but got: " + loreLineDto);
+                    }
                 }
-            } else { // just one string of lore
+            } else if (loreDto.isJsonPrimitive() && loreDto.getAsJsonPrimitive().isString()) { // just one string of lore
                 lore = Collections.singletonList(loreDto.getAsString());
+            } else {
+                throw new JsonSyntaxException("Expected either a string array or a string for \"lore\", but got " + loreDto);
             }
         } else {
             lore = Collections.emptyList();
         }
 
+        //noinspection ConstantConditions
         return new Spec(
-                dto.get("name").getAsString(),
+                JsonUtils.getString(dto, "name"),
                 lore,
-                dto.get("tool").getAsString(),
-                JsonUtils9.stream(dto.getAsJsonArray("materials")).map(JsonElement::getAsString).collect(Collectors.toList()),
-                dto.has("free_mods") ? dto.get("free_mods").getAsInt() : 0,
+                JsonUtils.getString(dto, "tool"),
+                JsonUtils9.stream(dto.getAsJsonArray("materials"))
+                        .map(s -> {
+                            if (s.isJsonPrimitive() && s.getAsJsonPrimitive().isString()) {
+                                return s.getAsString();
+                            } else {
+                                throw new JsonSyntaxException("Expected a string in the \"materials\" array, but got: " + s);
+                            }
+                        })
+                        .collect(Collectors.toList()),
+                JsonUtils.getInt(dto, "free_mods", 0),
                 modifiers,
-                dto.has("data_tag") ? dto.getAsJsonObject("data_tag") : null);
+                JsonUtils.getJsonObject(dto, "data_tag", null));
     }
 
     @Override
@@ -91,33 +109,29 @@ public class ArtifactTypeTool implements ArtifactType<ArtifactTypeTool.Spec> {
             throw new BuildingException("Needed %d materials but got %d for tool type \"%s\"",
                     componentTypes.size(), spec.materials.size(), toolType.getIdentifier());
         }
-        Material[] materials = new Material[componentTypes.size()];
-        for (int i = 0; i < materials.length; i++) {
-            String matId = spec.materials.get(i);
-            materials[i] = TinkerRegistry.getMaterial(matId);
-            if (materials[i] == Material.UNKNOWN) {
-                throw new BuildingException("Unknown material \"%s\"", matId);
+        List<Material> materials = new ArrayList<>();
+        for (String materialId : spec.materials) {
+            Material material = TinkerRegistry.getMaterial(materialId);
+            if (material == Material.UNKNOWN) {
+                throw new BuildingException("Unknown material \"%s\"", materialId);
             }
+            materials.add(material);
         }
 
         // build component stacks
         NonNullList<ItemStack> components = NonNullList.create();
-        for (int i = 0; i < materials.length; i++) {
+        for (int i = 0; i < materials.size(); i++) {
             Set<IToolPart> parts = componentTypes.get(i).getPossibleParts();
             if (parts.isEmpty()) {
                 throw new BuildingException("Unsatisfiable part %d for tool type \"%s\"", i, toolType.getIdentifier());
             }
-            components.add(parts.iterator().next().getItemstackWithMaterial(materials[i]));
+            components.add(parts.iterator().next().getItemstackWithMaterial(materials.get(i)));
         }
 
         // build tool
-        components.add(ItemStack.EMPTY); // tool building fails if there isn't a trail empty slot... for some reason
-        ItemStack stack;
+        ItemStack stack = toolType.buildItem(materials);
+        stack.setStackDisplayName(ARTIFACT_FMT + spec.name);
         try {
-            stack = ToolBuilder.tryBuildTool(components, ARTIFACT_FMT + spec.name, Collections.singleton(toolType));
-            if (stack.isEmpty()) {
-                throw new BuildingException("Tool building failed for tool type \"%s\"", toolType.getIdentifier());
-            }
             TinkerCraftingEvent.ToolCraftingEvent.fireEvent(stack, null, components);
         } catch (TinkerGuiException e) {
             throw new BuildingException("Tool building produced error: %s", e.getMessage());
@@ -151,7 +165,7 @@ public class ArtifactTypeTool implements ArtifactType<ArtifactTypeTool.Spec> {
         }
 
         // add lore
-        NBTTagCompound tag = ToolUtils.getOrCreateTag(stack);
+        NBTTagCompound tag = ItemUtils.getOrCreateTag(stack);
         if (!spec.lore.isEmpty()) {
             NBTTagCompound displayTag;
             if (tag.hasKey("display")) {

@@ -2,6 +2,7 @@ package xyz.phanta.tconevo.item.tool;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+import io.github.phantamanta44.libnine.util.math.LinAlUtils;
 import io.github.phantamanta44.libnine.util.math.MathUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -39,7 +40,6 @@ import xyz.phanta.tconevo.material.stats.MagicMaterialStats;
 import xyz.phanta.tconevo.network.SPacketEntitySpecialEffect;
 import xyz.phanta.tconevo.util.DamageUtils;
 import xyz.phanta.tconevo.util.ToolUtils;
-import xyz.phanta.tconevo.util.VectorUtils;
 
 import java.util.List;
 import java.util.Optional;
@@ -85,8 +85,8 @@ public class ItemToolSceptre extends TinkerToolCore implements IProjectile {
                 Vec3d up = player.getVectorForRotation(player.rotationPitch - 90F, player.rotationYaw);
                 int colour = ToolUtils.getToolMaterials(stack).get(1).materialTextColor;
                 emitProjectile(world, player, look, data.range, stack, colour);
-                emitProjectile(world, player, VectorUtils.rotate(look, up, -MathUtils.PI_F / 12F), data.range, stack, colour);
-                emitProjectile(world, player, VectorUtils.rotate(look, up, MathUtils.PI_F / 12F), data.range, stack, colour);
+                emitProjectile(world, player, LinAlUtils.rotate(look, up, -MathUtils.PI_F / 12F), data.range, stack, colour);
+                emitProjectile(world, player, LinAlUtils.rotate(look, up, MathUtils.PI_F / 12F), data.range, stack, colour);
                 world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.EVOCATION_ILLAGER_CAST_SPELL,
                         SoundCategory.PLAYERS, 1.5F, 0.8F + itemRand.nextFloat() * 0.4F);
                 double atkSpd = player.getEntityAttribute(SharedMonsterAttributes.ATTACK_SPEED).getAttributeValue();

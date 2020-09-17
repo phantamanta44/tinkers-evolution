@@ -2,6 +2,7 @@ package xyz.phanta.tconevo.trait.projecte;
 
 import gnu.trove.list.TLongList;
 import gnu.trove.list.array.TLongArrayList;
+import io.github.phantamanta44.libnine.util.helper.InventoryUtils;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,7 +15,6 @@ import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.integration.projecte.EqExHooks;
 import xyz.phanta.tconevo.trait.base.StackableTrait;
-import xyz.phanta.tconevo.util.InventoryUtils;
 import xyz.phanta.tconevo.util.ToolUtils;
 
 import java.util.ArrayList;
@@ -45,7 +45,7 @@ public class TraitEternalDensity extends StackableTrait {
     }
 
     private static void distributeEmc(EntityLivingBase entity, long amount) {
-        Iterator<ItemStack> iterInv = InventoryUtils.iterateInv(entity);
+        Iterator<ItemStack> iterInv = InventoryUtils.streamInventory(entity).iterator();
         List<ItemStack> recipients = new ArrayList<>();
         TLongList recipientMisssing = new TLongArrayList();
         long totalMissing = 0L;

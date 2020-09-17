@@ -64,7 +64,7 @@ public class ArmourMaterialBuilder {
         // don't mess with other mods' materials in case they overwrite our materials
         try {
             ModContainer owner = TinkerRegistry.getTrace(baseMaterial);
-            if (owner.matches(TconEvoMod.INSTANCE)) {
+            if (owner != null && owner.matches(TconEvoMod.INSTANCE)) {
                 for (IMaterialStats statsObj : materialStats) {
                     TinkerRegistry.addMaterialStats(baseMaterial, statsObj);
                 }

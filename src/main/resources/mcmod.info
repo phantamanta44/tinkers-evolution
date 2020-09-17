@@ -12,6 +12,6 @@
   "screenshots": [],
   "useDependencyInformation": true,
   "dependencies": ["libnine", "baubles", "mantle", "tconstruct", "conarm", "draconicevolution"],
-  "requiredMods": ["libnine@[1.1.8,)", "tconstruct"]
+  "requiredMods": ["libnine@[1.1.9,)", "tconstruct"]
 }
 ]

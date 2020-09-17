@@ -369,6 +369,10 @@
 * [ ] ember crystal
     * magic: superheat + ember-aspected
 
+### other notes
+
+* *TODO* aetherworks integration
+
 ## ender io
 
 ### materials
@@ -520,6 +524,10 @@
 
 * [x] energy tablet should apply fluxed (?)
 * [x] solar generators should apply photovoltaic
+
+## the midnight
+
+*TODO*
 
 ## natura
 

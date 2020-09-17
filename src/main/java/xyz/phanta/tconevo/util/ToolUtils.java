@@ -25,7 +25,6 @@ import xyz.phanta.tconevo.integration.conarm.ConArmHooks;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
 public class ToolUtils {
 
@@ -33,15 +32,6 @@ public class ToolUtils {
         return CapabilityTinkerProjectile.getTinkerProjectile(dmgSrc)
                 .map(ITinkerProjectile::getItemStack)
                 .orElse(attacker.getHeldItem(EnumHand.MAIN_HAND));
-    }
-
-    public static NBTTagCompound getOrCreateTag(ItemStack stack) {
-        if (stack.hasTagCompound()) {
-            return Objects.requireNonNull(stack.getTagCompound());
-        }
-        NBTTagCompound tag = new NBTTagCompound();
-        stack.setTagCompound(tag);
-        return tag;
     }
 
     public static ProjectileNBT getProjectileData(NBTTagCompound tag) {

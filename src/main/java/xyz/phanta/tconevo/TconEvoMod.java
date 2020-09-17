@@ -21,7 +21,7 @@ import xyz.phanta.tconevo.item.ItemMaterial;
 public class TconEvoMod extends Virtue {
 
     public static final String MOD_ID = "tconevo";
-    public static final String VERSION = "1.0.29";
+    public static final String VERSION = "1.0.33";
 
     @Mod.Instance(MOD_ID)
     public static TconEvoMod INSTANCE;
@@ -44,7 +44,9 @@ public class TconEvoMod extends Virtue {
             public void displayAllRelevantItems(NonNullList<ItemStack> items) {
                 super.displayAllRelevantItems(items);
                 for (Artifact<?> artifact : PROXY.getArtifactRegistry().getAllArtifacts()) {
-                    items.add(artifact.newStack());
+                    if (artifact.isValid()) {
+                        items.add(artifact.newStack());
+                    }
                 }
             }
         });

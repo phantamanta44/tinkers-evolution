@@ -1,11 +1,11 @@
 package xyz.phanta.tconevo.integration.forestry;
 
 import forestry.api.recipes.IFabricatorRecipe;
+import io.github.phantamanta44.libnine.util.collection.NonNullLists;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
-import xyz.phanta.tconevo.util.CollectionUtils;
 
 import javax.annotation.Nullable;
 
@@ -36,12 +36,12 @@ public abstract class ThermionicCastingRecipe implements IFabricatorRecipe {
 
         public Consuming(NonNullList<ItemStack> castStacks, @Nullable String oreEntry, FluidStack liquid, ItemStack output) {
             super(liquid, output);
-            this.castStacks = CollectionUtils.nonnullListOf(castStacks);
-            this.oreEntry = CollectionUtils.nonnullListOf(oreEntry != null ? oreEntry : "");
+            this.castStacks = NonNullLists.nonnullListOf(castStacks);
+            this.oreEntry = NonNullLists.nonnullListOf(oreEntry != null ? oreEntry : "");
         }
 
         public Consuming(String oreEntry, FluidStack liquid, ItemStack output) {
-            this(CollectionUtils.wrapNonnull(OreDictionary.getOres(oreEntry)), oreEntry, liquid, output);
+            this(NonNullLists.wrapNonnull(OreDictionary.getOres(oreEntry)), oreEntry, liquid, output);
         }
 
         @Override
@@ -82,12 +82,12 @@ public abstract class ThermionicCastingRecipe implements IFabricatorRecipe {
 
         @Override
         public NonNullList<NonNullList<ItemStack>> getIngredients() {
-            return CollectionUtils.emptyNonnullList();
+            return NonNullLists.emptyNonnullList();
         }
 
         @Override
         public NonNullList<String> getOreDicts() {
-            return CollectionUtils.emptyNonnullList();
+            return NonNullLists.emptyNonnullList();
         }
 
         @Override

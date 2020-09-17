@@ -2,6 +2,7 @@ package xyz.phanta.tconevo.integration.conarm.trait.draconicevolution;
 
 import c4.conarm.lib.traits.AbstractArmorTrait;
 import io.github.phantamanta44.libnine.capability.provider.CapabilityBroker;
+import io.github.phantamanta44.libnine.util.helper.ItemUtils;
 import io.github.phantamanta44.libnine.util.helper.OptUtils;
 import io.github.phantamanta44.libnine.util.math.MathUtils;
 import net.minecraft.entity.EntityLiving;
@@ -87,7 +88,7 @@ public class ArmourTraitEvolved extends AbstractArmorTrait implements EnergeticM
         @Override
         public void setEnergyStored(int amount) {
             // we assume the amount is already bounds-checked
-            ToolUtils.getOrCreateTag(stack).setInteger(TAG_ENERGY, amount);
+            ItemUtils.getOrCreateTag(stack).setInteger(TAG_ENERGY, amount);
         }
 
         @Override
@@ -114,7 +115,7 @@ public class ArmourTraitEvolved extends AbstractArmorTrait implements EnergeticM
 
         @Override
         public void setShield(float amount) {
-            ToolUtils.getOrCreateTag(stack).setFloat(TAG_SHIELD, MathUtils.clamp(amount, 0F, getShieldCapacity()));
+            ItemUtils.getOrCreateTag(stack).setFloat(TAG_SHIELD, MathUtils.clamp(amount, 0F, getShieldCapacity()));
         }
 
         @Override
@@ -130,7 +131,7 @@ public class ArmourTraitEvolved extends AbstractArmorTrait implements EnergeticM
 
         @Override
         public void setEntropy(float amount) {
-            ToolUtils.getOrCreateTag(stack).setFloat(TAG_ENTROPY, MathUtils.clamp(amount, 0F, 100F));
+            ItemUtils.getOrCreateTag(stack).setFloat(TAG_ENTROPY, MathUtils.clamp(amount, 0F, 100F));
         }
 
         private static float getShieldPartition(EntityEquipmentSlot slot) {

@@ -18,6 +18,14 @@ public class TconEvoConfig {
     @Config.RequiresMcRestart
     public static String[] disabledModifiers = new String[0];
 
+    @Config.Comment({
+            "A list of mod IDs for integration modules whose hook classes (i.e. special behaviour) should not be loaded.",
+            "Note that this does not disable the materials and modifiers for that mod!",
+            "These are handled separately by `disabledMaterials` and `disabledModifiers`.",
+    })
+    @Config.RequiresMcRestart
+    public static String[] disabledModHooks = new String[0];
+
     @Config.Comment("Configuration for the mod in general.")
     public static final General general = new General();
 
@@ -366,6 +374,21 @@ public class TconEvoConfig {
         })
         @Config.RangeDouble(min = 0D)
         public double modFluxedEnergyTransferDivider = 100;
+
+    }
+
+    @Config.Comment("Configuration for various tweaks to Tinkers' Construct and its addons.")
+    public static final Tweaks tweaks = new Tweaks();
+
+    public static class Tweaks {
+
+        @Config.Comment({
+                "A multiplier for the speed at which materials melt in heat-based machines.",
+                "This affects the smeltery as well as the heater and high oven from Tinkers' Complement.",
+                "Set to 1 to retain the default melt speed. Set to 0 if you want melting to be impossible for some reason."
+        })
+        @Config.RangeDouble(min = 0D)
+        public double meltSpeedMultiplier = 1D;
 
     }
 

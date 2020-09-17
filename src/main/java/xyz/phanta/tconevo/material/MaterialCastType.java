@@ -1,16 +1,14 @@
 package xyz.phanta.tconevo.material;
 
+import io.github.phantamanta44.libnine.util.helper.OreDictUtils;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import net.minecraftforge.items.ItemHandlerHelper;
-import net.minecraftforge.oredict.OreDictionary;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.Util;
 
 import javax.annotation.Nullable;
-import java.util.List;
 
 public enum MaterialCastType {
 
@@ -39,16 +37,12 @@ public enum MaterialCastType {
     }
 
     public void registerCasting(String oreKey, Fluid fluid, int amount) {
-        List<ItemStack> oreStacks = OreDictionary.getOres(oreKey, false);
-        if (!oreStacks.isEmpty()) {
+        ItemStack stack = OreDictUtils.getStack(oreKey, 1);
+        if (stack != null) {
             if (this == BLOCK) {
-                TinkerRegistry.registerBasinCasting(
-                        ItemHandlerHelper.copyStackWithSize(oreStacks.get(0), 1),
-                        ItemStack.EMPTY, fluid, amount);
+                TinkerRegistry.registerBasinCasting(stack, ItemStack.EMPTY, fluid, amount);
             } else {
-                TinkerRegistry.registerTableCasting(
-                        ItemHandlerHelper.copyStackWithSize(oreStacks.get(0), 1),
-                        getCast(), fluid, amount);
+                TinkerRegistry.registerTableCasting(stack, getCast(), fluid, amount);
             }
         }
     }

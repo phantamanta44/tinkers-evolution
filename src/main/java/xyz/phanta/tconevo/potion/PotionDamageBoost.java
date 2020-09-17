@@ -2,12 +2,13 @@ package xyz.phanta.tconevo.potion;
 
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.potion.Potion;
 import net.minecraftforge.common.util.Constants;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.init.TconEvoPotions;
 
-public class PotionDamageBoost extends PotionDispellable {
+public class PotionDamageBoost extends Potion {
 
     public PotionDamageBoost() {
         super(false, 0xf81838);
