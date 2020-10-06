@@ -21,7 +21,7 @@ public interface BloodMagicHooks extends IntegrationHooks {
 
     boolean isSoulDamage(DamageSource dmgSrc);
 
-    void handleDemonWillDrops(EntityLivingBase attacker, EntityLivingBase target);
+    void handleDemonWillDrops(EntityLivingBase attacker, EntityLivingBase target, ItemStack weapon);
 
     DemonWillType getLargestWillType(EntityPlayer player);
 
@@ -51,7 +51,7 @@ public interface BloodMagicHooks extends IntegrationHooks {
         }
 
         @Override
-        public void handleDemonWillDrops(EntityLivingBase attacker, EntityLivingBase target) {
+        public void handleDemonWillDrops(EntityLivingBase attacker, EntityLivingBase target, ItemStack weapon) {
             // NO-OP
         }
 

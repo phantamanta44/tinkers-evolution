@@ -5,13 +5,14 @@ import WayofTime.bloodmagic.api.impl.BloodMagicRecipeRegistrar;
 import WayofTime.bloodmagic.core.RegistrarBloodMagic;
 import WayofTime.bloodmagic.core.RegistrarBloodMagicItems;
 import WayofTime.bloodmagic.core.data.SoulTicket;
+import WayofTime.bloodmagic.item.soul.ItemSentientSword;
 import WayofTime.bloodmagic.soul.EnumDemonWillType;
 import WayofTime.bloodmagic.soul.IDemonWill;
-import WayofTime.bloodmagic.soul.IDemonWillWeapon;
 import WayofTime.bloodmagic.soul.PlayerDemonWillHandler;
 import WayofTime.bloodmagic.util.BooleanResult;
 import WayofTime.bloodmagic.util.DamageSourceBloodMagic;
 import WayofTime.bloodmagic.util.helper.NetworkHelper;
+import io.github.phantamanta44.libnine.util.nullity.Reflected;
 import io.github.phantamanta44.libnine.util.world.WorldUtils;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -22,10 +23,13 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import xyz.phanta.tconevo.TconEvoConfig;
+import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.init.TconEvoItems;
 import xyz.phanta.tconevo.item.ItemMaterial;
 import xyz.phanta.tconevo.item.ItemMetal;
-import io.github.phantamanta44.libnine.util.nullity.Reflected;
+import xyz.phanta.tconevo.trait.bloodmagic.TraitSentient;
+import xyz.phanta.tconevo.util.ToolUtils;
 
 import java.util.List;
 import java.util.Optional;
@@ -68,12 +72,22 @@ public class BloodMagicHooksImpl implements BloodMagicHooks {
     }
 
     @Override
-    public void handleDemonWillDrops(EntityLivingBase attacker, EntityLivingBase target) {
+    public void handleDemonWillDrops(EntityLivingBase attacker, EntityLivingBase target, ItemStack weapon) {
         if (RegistrarBloodMagicItems.SENTIENT_SWORD == Items.AIR) {
             return;
         }
-        List<ItemStack> drops = ((IDemonWillWeapon)RegistrarBloodMagicItems.SENTIENT_SWORD)
-                .getRandomDemonWillDrop(target, attacker, new ItemStack(RegistrarBloodMagicItems.SENTIENT_SWORD), 0);
+        ItemSentientSword itemSword = (ItemSentientSword)RegistrarBloodMagicItems.SENTIENT_SWORD;
+        ItemStack dummyWeapon = new ItemStack(itemSword);
+        if (ToolUtils.hasTrait(weapon, NameConst.TRAIT_SENTIENT)) {
+            TraitSentient.WillPower willPower = TraitSentient.getWillPower(weapon);
+            itemSword.setCurrentType(dummyWeapon, unwrap(willPower.getWillType()));
+            itemSword.setStaticDropOfActivatedSword(dummyWeapon, willPower.getStaticDropRate());
+            itemSword.setDropOfActivatedSword(dummyWeapon, willPower.getBonusDropRate());
+        } else {
+            itemSword.setStaticDropOfActivatedSword(dummyWeapon, TconEvoConfig.moduleBloodMagic.willfulStaticDropBase);
+            itemSword.setDropOfActivatedSword(dummyWeapon, TconEvoConfig.moduleBloodMagic.willfulBonusDropBase);
+        }
+        List<ItemStack> drops = itemSword.getRandomDemonWillDrop(target, attacker, dummyWeapon, 0);
         if (drops.isEmpty()) {
             return;
         }

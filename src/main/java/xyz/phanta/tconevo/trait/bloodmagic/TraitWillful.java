@@ -20,7 +20,7 @@ public class TraitWillful extends AbstractTrait {
         if (target.world.isRemote || !wasHit || target.isEntityAlive()) {
             return;
         }
-        BloodMagicHooks.INSTANCE.handleDemonWillDrops(player, target);
+        BloodMagicHooks.INSTANCE.handleDemonWillDrops(player, target, tool);
     }
 
 }
