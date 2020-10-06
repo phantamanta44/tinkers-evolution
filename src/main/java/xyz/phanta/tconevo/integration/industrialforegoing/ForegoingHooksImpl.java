@@ -4,6 +4,7 @@ import com.buuz135.industrial.api.recipe.ore.OreFluidEntrySieve;
 import com.buuz135.industrial.entity.EntityPinkSlime;
 import com.buuz135.industrial.proxy.FluidsRegistry;
 import com.buuz135.industrial.proxy.ItemRegistry;
+import io.github.phantamanta44.libnine.util.nullity.Reflected;
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -16,7 +17,6 @@ import xyz.phanta.tconevo.init.TconEvoItems;
 import xyz.phanta.tconevo.item.ItemEdible;
 import xyz.phanta.tconevo.item.ItemMaterial;
 import xyz.phanta.tconevo.item.ItemMetal;
-import io.github.phantamanta44.libnine.util.nullity.Reflected;
 
 import javax.annotation.Nullable;
 
@@ -26,6 +26,12 @@ public class ForegoingHooksImpl implements ForegoingHooks {
     @Override
     public void onInit(FMLInitializationEvent event) {
         OreDictionary.registerOre("ingotPinkMetal", new ItemStack(ItemRegistry.pinkSlimeIngot));
+
+        OreDictionary.registerOre("slimecrystalPink", ItemMaterial.Type.PINK_SLIME_CRYSTAL.newStack(1));
+        OreDictionary.registerOre("ingotMeatRaw", ItemEdible.Type.MEAT_INGOT_RAW.newStack(1));
+        OreDictionary.registerOre("listAllmeatraw", ItemEdible.Type.MEAT_INGOT_RAW.newStack(1));
+        OreDictionary.registerOre("ingotMeat", ItemEdible.Type.MEAT_INGOT_COOKED.newStack(1));
+        OreDictionary.registerOre("listAllmeatcooked", ItemEdible.Type.MEAT_INGOT_COOKED.newStack(1));
     }
 
     @Override

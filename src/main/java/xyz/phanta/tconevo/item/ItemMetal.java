@@ -2,14 +2,38 @@ package xyz.phanta.tconevo.item;
 
 import io.github.phantamanta44.libnine.client.model.ParameterizedItemModel;
 import io.github.phantamanta44.libnine.item.L9ItemSubs;
+import io.github.phantamanta44.libnine.util.TriBool;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
+import net.minecraft.util.NonNullList;
+import net.minecraftforge.fml.common.Loader;
 import xyz.phanta.tconevo.constant.NameConst;
+import xyz.phanta.tconevo.integration.bloodmagic.BloodMagicHooks;
+import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
+import xyz.phanta.tconevo.integration.ic2.Ic2Hooks;
+import xyz.phanta.tconevo.integration.industrialforegoing.ForegoingHooks;
+import xyz.phanta.tconevo.integration.thaumcraft.ThaumHooks;
+
+import javax.annotation.Nullable;
 
 public class ItemMetal extends L9ItemSubs implements ParameterizedItemModel.IParamaterized {
 
     public ItemMetal() {
         super(NameConst.ITEM_METAL, Type.VALUES.length * Form.VALUES.length);
+    }
+
+    @Override
+    public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) {
+        if (isInCreativeTab(tab)) {
+            for (Type type : Type.VALUES) {
+                if (type.isEnabled()) {
+                    for (Form form : Form.VALUES) {
+                        items.add(newStack(type, form, 1));
+                    }
+                }
+            }
+        }
     }
 
     @Override
@@ -23,9 +47,15 @@ public class ItemMetal extends L9ItemSubs implements ParameterizedItemModel.IPar
 
     public enum Type implements IStringSerializable {
 
-        WYVERN_METAL("WyvernMetal"), DRACONIC_METAL("DraconicMetal"), CHAOTIC_METAL("ChaoticMetal"),
-        ESSENCE_METAL("EssenceMetal"), PRIMAL_METAL("Primordial"), BOUND_METAL("BoundMetal"),
-        SENTIENT_METAL("SentientMetal"), ENERGETIC_METAL("Energium"), UNIVERSAL_METAL("UUMatter");
+        WYVERN_METAL("WyvernMetal", DraconicHooks.MOD_ID),
+        DRACONIC_METAL("DraconicMetal", DraconicHooks.MOD_ID),
+        CHAOTIC_METAL("ChaoticMetal", DraconicHooks.MOD_ID),
+        ESSENCE_METAL("EssenceMetal", ForegoingHooks.MOD_ID),
+        PRIMAL_METAL("Primordial", ThaumHooks.MOD_ID),
+        BOUND_METAL("BoundMetal", BloodMagicHooks.MOD_ID),
+        SENTIENT_METAL("SentientMetal", BloodMagicHooks.MOD_ID),
+        ENERGETIC_METAL("Energium", Ic2Hooks.MOD_ID),
+        UNIVERSAL_METAL("UUMatter", Ic2Hooks.MOD_ID);
 
         public static final Type[] VALUES = values();
 
@@ -40,8 +70,20 @@ public class ItemMetal extends L9ItemSubs implements ParameterizedItemModel.IPar
 
         public final String oreName;
 
-        Type(String oreName) {
+        @Nullable
+        private final String dependentMod;
+        private TriBool enabled = TriBool.NONE;
+
+        Type(String oreName, @Nullable String dependentMod) {
             this.oreName = oreName;
+            this.dependentMod = dependentMod;
+        }
+
+        public boolean isEnabled() {
+            if (enabled == TriBool.NONE) {
+                enabled = TriBool.wrap(dependentMod == null || Loader.isModLoaded(dependentMod));
+            }
+            return enabled.value;
         }
 
         @Override
