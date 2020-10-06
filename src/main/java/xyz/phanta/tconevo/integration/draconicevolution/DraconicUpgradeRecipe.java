@@ -81,7 +81,7 @@ public class DraconicUpgradeRecipe implements IFusionRecipe {
         try {
             upgradeMod.apply(result);
             // hopefully not a big problem that the player here is null...
-            TinkerCraftingEvent.ToolModifyEvent.fireEvent(result, null, stack);
+            TinkerCraftingEvent.ToolModifyEvent.fireEvent(result, null, stack.copy());
             ToolUtils.rebuildToolStack(result);
         } catch (TinkerGuiException e) {
             return ItemStack.EMPTY;

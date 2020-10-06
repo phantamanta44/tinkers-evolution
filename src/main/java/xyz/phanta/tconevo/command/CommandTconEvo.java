@@ -97,7 +97,7 @@ public class CommandTconEvo extends CommandBase {
                     }
                     mod.apply(stack);
                     try {
-                        TinkerCraftingEvent.ToolModifyEvent.fireEvent(stack, player, orig);
+                        TinkerCraftingEvent.ToolModifyEvent.fireEvent(stack, player, orig.copy());
                     } catch (TinkerGuiException e) {
                         throw new CommandException(LOC_MODADD_FAILURE, e.getMessage());
                     }
@@ -148,7 +148,7 @@ public class CommandTconEvo extends CommandBase {
                         }
                         mod.apply(stack);
                         try {
-                            TinkerCraftingEvent.ToolModifyEvent.fireEvent(stack, player, orig);
+                            TinkerCraftingEvent.ToolModifyEvent.fireEvent(stack, player, orig.copy());
                         } catch (TinkerGuiException e) {
                             throw new CommandException(LOC_MODMAX_FAILURE, e.getMessage());
                         }

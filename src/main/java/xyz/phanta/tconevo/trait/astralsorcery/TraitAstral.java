@@ -53,7 +53,7 @@ public class TraitAstral extends AbstractTrait {
                 try {
                     mod.apply(result);
                     // hopefully not a big problem that the player here is null...
-                    TinkerCraftingEvent.ToolModifyEvent.fireEvent(result, null, stack);
+                    TinkerCraftingEvent.ToolModifyEvent.fireEvent(result, null, stack.copy());
                     ToolUtils.rebuildToolStack(result);
                 } catch (TinkerGuiException e) {
                     return;
