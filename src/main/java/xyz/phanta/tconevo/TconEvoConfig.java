@@ -10,11 +10,11 @@ public class TconEvoConfig {
     @Config.RequiresMcRestart
     public static boolean overrideMaterials = true;
 
-    @Config.Comment("A list of tool materials that should be disabled.")
+    @Config.Comment("A list of material IDs for tool materials that should be disabled.")
     @Config.RequiresMcRestart
     public static String[] disabledMaterials = new String[0];
 
-    @Config.Comment("A list of tool modifiers that should be disabled.")
+    @Config.Comment("A list of modifier IDs for modifiers that should be disabled.")
     @Config.RequiresMcRestart
     public static String[] disabledModifiers = new String[0];
 
