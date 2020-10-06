@@ -6,6 +6,7 @@ import c4.conarm.lib.modifiers.ArmorModifierTrait;
 import c4.conarm.lib.tinkering.ArmorBuilder;
 import c4.conarm.lib.tinkering.TinkersArmor;
 import c4.conarm.lib.utils.RecipeMatchHolder;
+import io.github.phantamanta44.libnine.util.nullity.Reflected;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -14,7 +15,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import slimeknights.tconstruct.library.modifiers.IModifier;
@@ -23,7 +23,6 @@ import slimeknights.tconstruct.library.utils.TinkerUtil;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.integration.conarm.material.ArmourMaterialDefinition;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
-import io.github.phantamanta44.libnine.util.nullity.Reflected;
 
 import javax.annotation.Nullable;
 
@@ -40,7 +39,7 @@ public class ConArmHooksImpl implements ConArmHooks {
     }
 
     @Override
-    public void onInit(FMLInitializationEvent event) {
+    public void registerModifiers() {
         ArmourMaterialDefinition.initMaterialTraits();
         TconEvoArmourTraits.initModifierMaterials();
         // draconic evolution evolved upgrade recipes
