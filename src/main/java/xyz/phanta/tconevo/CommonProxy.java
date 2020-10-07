@@ -51,6 +51,7 @@ public class CommonProxy {
         IntegrationManager.injectHooks(event.getAsmData());
         MinecraftForge.EVENT_BUS.register(toolCapHandler);
         MinecraftForge.EVENT_BUS.register(playerStateHandler);
+        MinecraftForge.EVENT_BUS.register(new ToolCraftingHandler());
         MinecraftForge.EVENT_BUS.register(new EnergyShieldHandler());
         MinecraftForge.EVENT_BUS.register(new ArtifactLootHandler());
         MinecraftForge.EVENT_BUS.register(new EnergizedTraitConflictHandler());

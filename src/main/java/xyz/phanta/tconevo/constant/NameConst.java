@@ -26,6 +26,7 @@ public class NameConst {
     private static final String INFO_KEY = TconEvoMod.MOD_ID + ".info.";
     public static final String INFO_ENERGIZED_TRAIT_CONFLICT = INFO_KEY + "energized_trait_conflict";
     public static final String INFO_ARTIFACT_SEALED = INFO_KEY + "artifact_sealed";
+    public static final String INFO_CANNOT_REPLACE = INFO_KEY + "cannot_replace";
 
     public static final String TRAIT_AFTERSHOCK = TconEvoMod.MOD_ID + ".aftershock";
     public static final String TRAIT_BATTLE_FUROR = TconEvoMod.MOD_ID + ".battle_furor";

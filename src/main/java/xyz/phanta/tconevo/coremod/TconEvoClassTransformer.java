@@ -27,7 +27,7 @@ public class TconEvoClassTransformer implements IClassTransformer {
                 new TransformCaptureMaterialProperties(),
                 new TransformCustomMaterialRender(),
                 new TransformGregTechRecipeCrash(),
-                new TransformItemSensitiveModifiers(),
+                new TransformImprovedToolBuilding(),
                 new TransformItemStackBar(),
                 new TransformModifyMeltSpeed(),
                 new TransformThaumInfusionEnchantment(),
@@ -50,7 +50,7 @@ public class TconEvoClassTransformer implements IClassTransformer {
                 try {
                     Path outputDir = Paths.get("tconevo-coremod-debug");
                     Files.createDirectories(outputDir);
-                    Files.write(outputDir.resolve(niceName.substring(niceName.lastIndexOf('.') + 1) + ".class"), newCode);
+                    Files.write(outputDir.resolve(niceName.substring(niceName.lastIndexOf('.') + 1).replace('$', '_') + ".class"), newCode);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
