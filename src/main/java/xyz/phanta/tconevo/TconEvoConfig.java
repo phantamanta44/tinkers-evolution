@@ -10,11 +10,11 @@ public class TconEvoConfig {
     @Config.RequiresMcRestart
     public static boolean overrideMaterials = true;
 
-    @Config.Comment("A list of tool materials that should be disabled.")
+    @Config.Comment("A list of material IDs for tool materials that should be disabled.")
     @Config.RequiresMcRestart
     public static String[] disabledMaterials = new String[0];
 
-    @Config.Comment("A list of tool modifiers that should be disabled.")
+    @Config.Comment("A list of modifier IDs for modifiers that should be disabled.")
     @Config.RequiresMcRestart
     public static String[] disabledModifiers = new String[0];
 
@@ -879,6 +879,37 @@ public class TconEvoConfig {
         })
         @Config.RangeDouble(min = 0D, max = 1D)
         public double soulGuardFrayedPenalty = 0.33D;
+
+        @Config.Comment({
+                "The base static demon will drop rate for the willful trait.",
+                "Dropped will is computed as the static drop rate scaled by the health pool size of the killed mob's .",
+                "Additionally, a random bonus amount of will is added, up to the bonus drop rate.",
+                "Drop rates increase based on the level of the sentient trait (and not the willful trait!).",
+                "For weapons that have the willful trait but not the sentient trait, only the base drop rates are used."
+        })
+        @Config.RangeDouble(min = 0D)
+        public double willfulStaticDropBase = 1D;
+
+        @Config.Comment({
+                "The additional static demon will drop rate per level of the sentient trait.",
+                "See `willfulStaticDropBase` for more details."
+        })
+        @Config.RangeDouble(min = 0D)
+        public double willfulStaticDropPerLevel = 0.43D;
+
+        @Config.Comment({
+                "The base bonus demon will drop rate for the willful trait.",
+                "See `willfulStaticDropBase` for more details."
+        })
+        @Config.RangeDouble(min = 0D)
+        public double willfulBonusDropBase = 2D;
+
+        @Config.Comment({
+                "The additional bonus demon will drop rate per level of the sentient trait.",
+                "See `willfulStaticDropBase` for more details."
+        })
+        @Config.RangeDouble(min = 0D)
+        public double willfulBonusDropPerLevel = 2.3D;
 
         @Config.Comment({
                 "The probability of a mob becoming soul-snared upon attacking armour with the willful trait.",

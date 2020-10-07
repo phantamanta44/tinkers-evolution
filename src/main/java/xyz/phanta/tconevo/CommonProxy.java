@@ -18,6 +18,7 @@ import xyz.phanta.tconevo.handler.*;
 import xyz.phanta.tconevo.init.TconEvoItems;
 import xyz.phanta.tconevo.init.TconEvoTraits;
 import xyz.phanta.tconevo.integration.IntegrationManager;
+import xyz.phanta.tconevo.integration.conarm.ConArmHooks;
 import xyz.phanta.tconevo.material.MaterialDefinition;
 import xyz.phanta.tconevo.network.CPacketGaiaWrath;
 import xyz.phanta.tconevo.network.SPacketEntitySpecialEffect;
@@ -50,6 +51,7 @@ public class CommonProxy {
         IntegrationManager.injectHooks(event.getAsmData());
         MinecraftForge.EVENT_BUS.register(toolCapHandler);
         MinecraftForge.EVENT_BUS.register(playerStateHandler);
+        MinecraftForge.EVENT_BUS.register(new ToolCraftingHandler());
         MinecraftForge.EVENT_BUS.register(new EnergyShieldHandler());
         MinecraftForge.EVENT_BUS.register(new ArtifactLootHandler());
         MinecraftForge.EVENT_BUS.register(new EnergizedTraitConflictHandler());
@@ -133,6 +135,9 @@ public class CommonProxy {
         MasterRecipes.initRecipes();
         MaterialDefinition.initMaterialProperties();
         TconEvoTraits.initModifierMaterials();
+        // manually call an init hook for conarm because its recipe registration relies on tool modifiers having
+        // already had recipes registered (e.g. because it copies recipe matchers for its fluxed trait)
+        ConArmHooks.INSTANCE.registerModifiers();
     }
 
     public void onImcReceived(FMLInterModComms.IMCEvent event) {

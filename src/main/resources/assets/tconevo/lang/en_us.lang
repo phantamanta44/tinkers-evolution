@@ -586,6 +586,7 @@ commands.tconevo.tconevoclient.matrenderinfo.failure_nopart=Hold a Tinkers' Cons
 
 tconevo.info.energized_trait_conflict=Two energetic traits are conflicting!
 tconevo.info.artifact_sealed=Cannot modify a sealed artifact tool!
+tconevo.info.cannot_replace=Cannot replace this tool part!
 
 tconevo.gui.preview_material_render.refresh=Reload Render Info
 tconevo.gui.preview_material_render.nothing_to_render=Nothing to render!

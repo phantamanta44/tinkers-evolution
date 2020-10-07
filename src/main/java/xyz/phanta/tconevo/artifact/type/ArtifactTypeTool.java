@@ -156,7 +156,7 @@ public class ArtifactTypeTool implements ArtifactType<ArtifactTypeTool.Spec> {
 
         // finalize the tool
         try {
-            TinkerCraftingEvent.ToolModifyEvent.fireEvent(stack, null, stackPreMods);
+            TinkerCraftingEvent.ToolModifyEvent.fireEvent(stack, null, stackPreMods.copy());
             // apply the artifact modifier after modify event because otherwise the modifier would cancel the event
             TconEvoTraits.MOD_ARTIFACT.apply(stack);
             ToolUtils.rebuildToolStack(stack);

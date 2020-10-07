@@ -165,6 +165,16 @@ public class TraitSentient extends AbstractTrait {
                     + tier * TconEvoConfig.moduleBloodMagic.sentientWillCostPerLevel;
         }
 
+        public double getStaticDropRate() {
+            return TconEvoConfig.moduleBloodMagic.willfulStaticDropBase
+                    + tier * TconEvoConfig.moduleBloodMagic.willfulStaticDropPerLevel;
+        }
+
+        public double getBonusDropRate() {
+            return TconEvoConfig.moduleBloodMagic.willfulBonusDropBase
+                    + tier * TconEvoConfig.moduleBloodMagic.willfulBonusDropPerLevel;
+        }
+
         public float getDigSpeedModifier() {
             return tier * (float)TconEvoConfig.moduleBloodMagic.sentientDigSpeedPerLevel;
         }

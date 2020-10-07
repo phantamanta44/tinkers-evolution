@@ -39,7 +39,7 @@ public class TraitEvolved extends AbstractTrait implements EnergeticModifier {
 
     public static final int COLOUR = 0xc89af4;
 
-    private static final String TAG_EVOLVED_TIER = "EvolvedTier";
+    public static final String TAG_EVOLVED_TIER = "EvolvedTier";
 
     private static final TObjectIntMap<String> evolvedMaterials = new TObjectIntHashMap<>();
 

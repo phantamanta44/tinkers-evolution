@@ -18,6 +18,8 @@ public interface ConArmHooks extends IntegrationHooks {
     @Inject(value = MOD_ID, sided = true)
     ConArmHooks INSTANCE = new Noop();
 
+    void registerModifiers();
+
     boolean isArmourModifierTrait(IModifier mod);
 
     @Nullable
@@ -32,6 +34,11 @@ public interface ConArmHooks extends IntegrationHooks {
     void damageArmour(ItemStack stack, int amount, EntityLivingBase wearer);
 
     class Noop implements ConArmHooks {
+
+        @Override
+        public void registerModifiers() {
+            // NO-OP
+        }
 
         @Override
         public boolean isArmourModifierTrait(IModifier mod) {

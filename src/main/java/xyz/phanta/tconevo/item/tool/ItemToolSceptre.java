@@ -89,8 +89,7 @@ public class ItemToolSceptre extends TinkerToolCore implements IProjectile {
                 emitProjectile(world, player, LinAlUtils.rotate(look, up, MathUtils.PI_F / 12F), data.range, stack, colour);
                 world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.EVOCATION_ILLAGER_CAST_SPELL,
                         SoundCategory.PLAYERS, 1.5F, 0.8F + itemRand.nextFloat() * 0.4F);
-                double atkSpd = player.getEntityAttribute(SharedMonsterAttributes.ATTACK_SPEED).getAttributeValue();
-                player.getCooldownTracker().setCooldown(this, MathUtils.clamp((int)Math.round(25.6D / (data.drawSpeed * atkSpd)), 1, 100));
+                player.getCooldownTracker().setCooldown(this, MathUtils.clamp((int)Math.round(16D / data.drawSpeed), 1, 100));
                 if (player instanceof EntityPlayerMP) {
                     // item cooldown desyncs very easily, so the swing animation will often just not play on the client
                     // this is a dumb way of ensuring that the animation actually plays

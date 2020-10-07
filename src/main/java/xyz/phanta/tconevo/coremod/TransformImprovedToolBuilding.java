@@ -7,11 +7,11 @@ import org.objectweb.asm.Opcodes;
 
 import java.util.function.Consumer;
 
-public class TransformItemSensitiveModifiers implements TconEvoClassTransformer.Transform {
+public class TransformImprovedToolBuilding implements TconEvoClassTransformer.Transform {
 
     @Override
     public String getName() {
-        return "Item-Sensitive Modifiers";
+        return "Improved Tool Building";
     }
 
     @Override
@@ -23,12 +23,12 @@ public class TransformItemSensitiveModifiers implements TconEvoClassTransformer.
 
     @Override
     public ClassVisitor createTransformer(String className, int apiVersion, ClassVisitor downstream) {
-        return new ToolBuilderTransformer(apiVersion, downstream);
+        return new ClassTransformerToolBuilder(apiVersion, downstream);
     }
 
-    private static class ToolBuilderTransformer extends ClassVisitor {
+    private static class ClassTransformerToolBuilder extends ClassVisitor {
 
-        public ToolBuilderTransformer(int api, ClassVisitor cv) {
+        public ClassTransformerToolBuilder(int api, ClassVisitor cv) {
             super(api, cv);
         }
 
@@ -37,7 +37,9 @@ public class TransformItemSensitiveModifiers implements TconEvoClassTransformer.
             switch (name) {
                 case "tryModifyTool":
                 case "tryModifyArmor":
-                    return new TryModifyToolTransformer(api, super.visitMethod(access, name, desc, signature, exceptions));
+                    return new MethodTransformerTryModifyTool(api, super.visitMethod(access, name, desc, signature, exceptions));
+                case "rebuildTool":
+                    return new MethodTransformerRebuildTool(api, super.visitMethod(access, name, desc, signature, exceptions));
                 default:
                     return super.visitMethod(access, name, desc, signature, exceptions);
             }
@@ -45,11 +47,12 @@ public class TransformItemSensitiveModifiers implements TconEvoClassTransformer.
 
     }
 
-    private static class TryModifyToolTransformer extends MethodVisitor {
+    // deals with item-sensitive modifiers
+    private static class MethodTransformerTryModifyTool extends MethodVisitor {
 
         private int state = -2;
 
-        public TryModifyToolTransformer(int api, MethodVisitor mv) {
+        public MethodTransformerTryModifyTool(int api, MethodVisitor mv) {
             super(api, mv);
         }
 
@@ -101,6 +104,51 @@ public class TransformItemSensitiveModifiers implements TconEvoClassTransformer.
                 }
             }
             super.visitMethodInsn(opcode, owner, name, desc, itf);
+        }
+
+    }
+
+    // deals with stripping extra data from rebuilt tools
+    private static class MethodTransformerRebuildTool extends MethodVisitor {
+
+        private int lastVar = -1;
+        private boolean go = false;
+
+        public MethodTransformerRebuildTool(int api, MethodVisitor mv) {
+            super(api, mv);
+        }
+
+        @Override
+        public void visitVarInsn(int opcode, int var) {
+            if (opcode == Opcodes.ALOAD) {
+                lastVar = var; // assume the last variable loaded is the tag
+            }
+            super.visitVarInsn(opcode, var);
+        }
+
+        @Override
+        public void visitLdcInsn(Object cst) {
+            if (lastVar != -1 && cst instanceof String && cst.equals("EnchantEffect")) {
+                go = true;
+            }
+            super.visitLdcInsn(cst);
+        }
+
+        @Override
+        public void visitMethodInsn(int opcode, String owner, String name, String desc, boolean itf) {
+            super.visitMethodInsn(opcode, owner, name, desc, itf);
+            if (go && opcode == Opcodes.INVOKEVIRTUAL
+                    && (name.equals("func_82580_o") || name.equals("removeTag")) && desc.equals("(Ljava/lang/String;)V")) {
+                super.visitVarInsn(Opcodes.ALOAD, lastVar);
+                super.visitLdcInsn("Unbreakable");
+                super.visitMethodInsn(Opcodes.INVOKEVIRTUAL, owner, name, "(Ljava/lang/String;)V", false);
+            }
+        }
+
+        @Override
+        public void visitLineNumber(int line, Label start) {
+            go = false; // better safe than sorry
+            super.visitLineNumber(line, start);
         }
 
     }
