@@ -586,6 +586,7 @@ commands.tconevo.tconevoclient.matrenderinfo.failure_nopart=手持一个匠魂�
 
 tconevo.info.energized_trait_conflict=两种充能特性相冲突！
 tconevo.info.artifact_sealed=无法改动未启封的“匠心之作”！
+tconevo.info.cannot_replace=无法替换该工具部件！
 
 tconevo.gui.preview_material_render.refresh=重载渲染信息
 tconevo.gui.preview_material_render.nothing_to_render=无待渲染目标！
