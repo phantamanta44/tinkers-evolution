@@ -81,6 +81,7 @@ In addition, Tinkers' Evolution also adds these features:
 * Artifacts: powerful tools and weapons that appear in loot chests but cannot be repaired
 * Tweaks: small, configurable changes to basic Tinkers' Construct behaviour
     * Melt speed multiplier: a multiplier applied to melting speeds for all heat-based devices (e.g. smeltery, melter)
+    * Disable damage cap: disables the tool damage cap mechanic, so tools can have arbitrarily large damage stats
 
 The current plans for the future can be found [here](https://github.com/phantamanta44/tinkers-evolution/blob/1.12.2/TODO.md).
 
