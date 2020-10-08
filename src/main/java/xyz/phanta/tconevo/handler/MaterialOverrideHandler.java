@@ -15,7 +15,7 @@ import slimeknights.tconstruct.library.events.MaterialEvent;
 import slimeknights.tconstruct.library.materials.IMaterialStats;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.smeltery.AlloyRecipe;
-import slimeknights.tconstruct.library.smeltery.MeltingRecipe;
+import slimeknights.tconstruct.library.smeltery.CastingRecipe;
 import slimeknights.tconstruct.library.traits.ITrait;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.TconEvoMod;
@@ -25,6 +25,8 @@ import xyz.phanta.tconevo.util.TconReflect;
 
 import javax.annotation.Nullable;
 import java.util.*;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 // usually i don't like using this annotation but this handler MUST be registered asap
 @Mod.EventBusSubscriber(modid = TconEvoMod.MOD_ID)
@@ -163,14 +165,13 @@ public class MaterialOverrideHandler {
         });
 
         // melting recipes
-        Iterator<MeltingRecipe> iterMeltingRecipes = TconReflect.iterateMeltingRecipes();
-        while (iterMeltingRecipes.hasNext()) {
-            MeltingRecipe recipe = iterMeltingRecipes.next();
-            FluidStack overrideFluid = mapFluidByOverride(fluidMatMap, recipe.output);
-            if (overrideFluid != null && !overrideFluid.isFluidEqual(recipe.output)) {
-                iterMeltingRecipes.remove();
-            }
-        }
+        removeOverriddenFluidRecipes(fluidMatMap, TconReflect.iterateMeltingRecipes(), null, r -> r.output);
+
+        // casting recipes
+        removeOverriddenFluidRecipes(fluidMatMap, TconReflect.iterateTableCastRecipes(),
+                r -> r instanceof CastingRecipe, r -> ((CastingRecipe)r).getFluid());
+        removeOverriddenFluidRecipes(fluidMatMap, TconReflect.iterateBasinCastRecipes(),
+                r -> r instanceof CastingRecipe, r -> ((CastingRecipe)r).getFluid());
 
         // alloying recipes
         ListIterator<AlloyRecipe> iterAlloyRecipes = TconReflect.iterateAlloyRecipes();
@@ -195,6 +196,21 @@ public class MaterialOverrideHandler {
             }
             if (changed) {
                 iterAlloyRecipes.set(new AlloyRecipe(result, newInputs.toArray(new FluidStack[0])));
+            }
+        }
+    }
+
+    private static <T> void removeOverriddenFluidRecipes(Map<String, String> fluidMatMap,
+                                                         Iterator<T> iterRecipes, @Nullable Predicate<T> recipeFilter,
+                                                         Function<T, FluidStack> getFluid) {
+        while (iterRecipes.hasNext()) {
+            T recipe = iterRecipes.next();
+            if (recipeFilter == null || recipeFilter.test(recipe)) {
+                FluidStack overriddenFluid = getFluid.apply(recipe);
+                FluidStack overrideFluid = mapFluidByOverride(fluidMatMap, overriddenFluid);
+                if (overrideFluid != null && !overrideFluid.isFluidEqual(overriddenFluid)) {
+                    iterRecipes.remove();
+                }
             }
         }
     }
