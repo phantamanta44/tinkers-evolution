@@ -393,6 +393,12 @@ public class TconEvoConfig {
         @Config.RangeDouble(min = 0D)
         public double meltSpeedMultiplier = 1D;
 
+        @Config.Comment({
+                "Disables the damage cutoff mechanic, which normally limits the attack damage stat on tools.",
+                "Enabling this will not automatically fix tools built before it was enabled!"
+        })
+        public boolean disableDamageCutoff = false;
+
     }
 
     @Config.Comment("Configuration for the artifacts system.")
@@ -1023,6 +1029,19 @@ public class TconEvoConfig {
             return armourSwitch(slot, manaAffinityDiscountHelmet, manaAffinityDiscountChestplate,
                     manaAffinityDiscountLeggings, manaAffinityDiscountBoots, 0D);
         }
+
+    }
+
+    @Config.Comment("Configuration for the Construct's Armoury module.")
+    public static final ConstructsArmoury moduleConstructsArmoury = new ConstructsArmoury();
+
+    public static class ConstructsArmoury {
+
+        @Config.Comment({
+                "Fixes the bug where Construct's Armoury armour can take damage even with traits that prevent it.",
+                "Only useful with Construct's Armoury installed!"
+        })
+        public boolean fixConArmArmourDamage = true;
 
     }
 
