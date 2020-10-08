@@ -287,9 +287,12 @@ public class TconEvoConfig {
         @Config.RangeInt(min = 1)
         public int traitRejuvenatingRegenDuration = 64;
 
-        @Config.Comment("The number of ticks of invincibility removed by the relentless trait.")
+        @Config.Comment({
+                "The number of ticks of invincibility removed by the relentless trait.",
+                "By default, every mob has 20 ticks of invincibility, but only half of them actually block incoming damage."
+        })
         @Config.RangeInt(min = 1)
-        public int traitRelentlessInvincibilityReduction = 16;
+        public int traitRelentlessInvincibilityReduction = 7;
 
         @Config.Comment("The fraction of enemy current health dealt as bonus damage by the ruination trait.")
         @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
