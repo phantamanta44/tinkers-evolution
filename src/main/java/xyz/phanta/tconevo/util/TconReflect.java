@@ -9,6 +9,7 @@ import slimeknights.mantle.util.RecipeMatchRegistry;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.smeltery.AlloyRecipe;
+import slimeknights.tconstruct.library.smeltery.ICastingRecipe;
 import slimeknights.tconstruct.library.smeltery.MeltingRecipe;
 import slimeknights.tconstruct.library.traits.ITrait;
 
@@ -25,6 +26,10 @@ public class TconReflect {
             .<Map<String, Material>>reflectField(TinkerRegistry.class, "materials").get(null);
     private static final List<MeltingRecipe> meltingRegistry = MirrorUtils
             .<List<MeltingRecipe>>reflectField(TinkerRegistry.class, "meltingRegistry").get(null);
+    private static final List<ICastingRecipe> tableCastRegistry = MirrorUtils
+            .<List<ICastingRecipe>>reflectField(TinkerRegistry.class, "tableCastRegistry").get(null);
+    private static final List<ICastingRecipe> basinCastRegistry = MirrorUtils
+            .<List<ICastingRecipe>>reflectField(TinkerRegistry.class, "basinCastRegistry").get(null);
     private static final List<AlloyRecipe> alloyRegistry = MirrorUtils
             .<List<AlloyRecipe>>reflectField(TinkerRegistry.class, "alloyRegistry").get(null);
     private static final MirrorUtils.IField<PriorityQueue<RecipeMatch>> fRecipeMatchRecipe_items = MirrorUtils.
@@ -44,6 +49,14 @@ public class TconReflect {
 
     public static ListIterator<MeltingRecipe> iterateMeltingRecipes() {
         return meltingRegistry.listIterator();
+    }
+
+    public static ListIterator<ICastingRecipe> iterateTableCastRecipes() {
+        return tableCastRegistry.listIterator();
+    }
+
+    public static ListIterator<ICastingRecipe> iterateBasinCastRecipes() {
+        return basinCastRegistry.listIterator();
     }
 
     public static ListIterator<AlloyRecipe> iterateAlloyRecipes() {

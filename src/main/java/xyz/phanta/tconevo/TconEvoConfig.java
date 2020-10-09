@@ -287,9 +287,12 @@ public class TconEvoConfig {
         @Config.RangeInt(min = 1)
         public int traitRejuvenatingRegenDuration = 64;
 
-        @Config.Comment("The number of ticks of invincibility removed by the relentless trait.")
+        @Config.Comment({
+                "The number of ticks of invincibility removed by the relentless trait.",
+                "By default, every mob has 20 ticks of invincibility, but only half of them actually block incoming damage."
+        })
         @Config.RangeInt(min = 1)
-        public int traitRelentlessInvincibilityReduction = 16;
+        public int traitRelentlessInvincibilityReduction = 7;
 
         @Config.Comment("The fraction of enemy current health dealt as bonus damage by the ruination trait.")
         @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
@@ -389,6 +392,12 @@ public class TconEvoConfig {
         })
         @Config.RangeDouble(min = 0D)
         public double meltSpeedMultiplier = 1D;
+
+        @Config.Comment({
+                "Disables the damage cutoff mechanic, which normally limits the attack damage stat on tools.",
+                "Enabling this will not automatically fix tools built before it was enabled!"
+        })
+        public boolean disableDamageCutoff = false;
 
     }
 
@@ -1020,6 +1029,19 @@ public class TconEvoConfig {
             return armourSwitch(slot, manaAffinityDiscountHelmet, manaAffinityDiscountChestplate,
                     manaAffinityDiscountLeggings, manaAffinityDiscountBoots, 0D);
         }
+
+    }
+
+    @Config.Comment("Configuration for the Construct's Armoury module.")
+    public static final ConstructsArmoury moduleConstructsArmoury = new ConstructsArmoury();
+
+    public static class ConstructsArmoury {
+
+        @Config.Comment({
+                "Fixes the bug where Construct's Armoury armour can take damage even with traits that prevent it.",
+                "Only useful with Construct's Armoury installed!"
+        })
+        public boolean fixConArmArmourDamage = true;
 
     }
 

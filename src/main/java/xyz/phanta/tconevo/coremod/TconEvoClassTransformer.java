@@ -26,6 +26,8 @@ public class TconEvoClassTransformer implements IClassTransformer {
                 new TransformBreakUnbreakable(),
                 new TransformCaptureMaterialProperties(),
                 new TransformCustomMaterialRender(),
+                new TransformDisableDamageCutoff(),
+                new TransformFixArmourDamage(),
                 new TransformGregTechRecipeCrash(),
                 new TransformImprovedToolBuilding(),
                 new TransformItemStackBar(),
