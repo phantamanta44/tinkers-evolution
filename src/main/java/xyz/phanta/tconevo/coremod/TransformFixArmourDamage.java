@@ -48,10 +48,10 @@ public class TransformFixArmourDamage implements TconEvoClassTransformer.Transfo
 
         @Override
         public void visitMethodInsn(int opcode, String owner, String name, String desc, boolean itf) {
-            if (opcode == Opcodes.INVOKEVIRTUAL && name.equals("damageItem") && owner.equals("net/minecraft/item/ItemStack")
-                    && desc.equals("(ILnet/minecraft/entity/EntityLivingBase;)V")) {
+            if (opcode == Opcodes.INVOKEVIRTUAL && (name.equals("func_77972_a") || name.equals("damageItem"))
+                    && owner.equals("net/minecraft/item/ItemStack") && desc.equals("(ILnet/minecraft/entity/EntityLivingBase;)V")) {
                 super.visitMethodInsn(Opcodes.INVOKESTATIC, "xyz/phanta/tconevo/handler/ArmourDamageCoreHooks",
-                        "damageitem", "(Lnet/minecraft/item/ItemStack;ILnet/minecraft/entity/EntityLivingBase;)V", false);
+                        "damageItem", "(Lnet/minecraft/item/ItemStack;ILnet/minecraft/entity/EntityLivingBase;)V", false);
             } else {
                 super.visitMethodInsn(opcode, owner, name, desc, itf);
             }
