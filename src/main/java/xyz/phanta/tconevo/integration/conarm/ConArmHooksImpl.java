@@ -7,7 +7,6 @@ import c4.conarm.lib.tinkering.ArmorBuilder;
 import c4.conarm.lib.tinkering.TinkersArmor;
 import c4.conarm.lib.utils.RecipeMatchHolder;
 import io.github.phantamanta44.libnine.util.nullity.Reflected;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -24,8 +23,6 @@ import slimeknights.tconstruct.library.utils.TinkerUtil;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.integration.conarm.material.ArmourMaterialDefinition;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
-import xyz.phanta.tconevo.trait.draconicevolution.TraitEvolved;
-import xyz.phanta.tconevo.util.CraftReflect;
 
 import javax.annotation.Nullable;
 
@@ -37,22 +34,8 @@ public class ConArmHooksImpl implements ConArmHooks {
 
     @Override
     public void onPreInit(FMLPreInitializationEvent event) {
-        CraftReflect.replaceExceptionHandler(MinecraftForge.EVENT_BUS, h -> (b, ev, l, i, e) -> {
-//            if (e instanceof RuntimeException && e.getCause() instanceof TinkerGuiException) {
-//                throw (RuntimeException)e; // this allows us to swallow the message that would normally be thrown
-            if (e instanceof TinkerGuiException) {
-                throwUncheckedChecked(e);
-            } else {
-                h.handleException(b, ev, l, i, e);
-            }
-        });
         MinecraftForge.EVENT_BUS.register(this);
         TconEvoArmourMaterials.init();
-    }
-
-    @SuppressWarnings("unchecked")
-    private static <T extends Throwable> void throwUncheckedChecked(Throwable e) throws T {
-        throw (T)e; // uses type erasure as a hacky way to throw a checked exception at runtime
     }
 
     @Override
@@ -90,9 +73,6 @@ public class ConArmHooksImpl implements ConArmHooks {
             // draconic modifier init was deferred to here if the tool was just built
             // this is because it's impossible to know what the armour type is during trait init
             TconEvoArmourTraits.TRAIT_EVOLVED.initDraconicModifiers(event.tag, event.armor.armorType);
-        } else if (event.tag.hasKey(TraitEvolved.TAG_EVOLVED_TIER)) {
-            // don't allow draconic parts to be replaced, or else they would leave the draconic modifiers on the armour
-            throw new TinkerGuiException(I18n.format(NameConst.INFO_CANNOT_REPLACE));
         }
     }
 
