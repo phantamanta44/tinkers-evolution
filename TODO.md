@@ -325,13 +325,13 @@
     * armour: alien
 * [x] wyvern metal
     * tools: evolved (head) + soul rend
-    * armour: evolved (core)
+    * armour: evolved (core) + heavy (extra)
 * [x] draconic metal
     * tools: evolved (head) + soul rend 2
-    * armour: evolved (core) + celestial (plates) + gale force (trim)
+    * armour: evolved (core) + heavy (extra) + celestial (plates) + gale force (trim)
 * [x] chaotic metal
     * tools: evolved (head) + soul rend 3
-    * armour: evolved (core) + celestial (plates) + gale force 2 (trim)
+    * armour: evolved (core) + heavy (extra) + celestial (plates) + gale force 2 (trim)
 
 ### modifiers
 

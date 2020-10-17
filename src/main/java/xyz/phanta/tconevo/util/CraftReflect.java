@@ -8,13 +8,10 @@ import net.minecraft.util.NonNullList;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
-import net.minecraftforge.fml.common.eventhandler.EventBus;
-import net.minecraftforge.fml.common.eventhandler.IEventExceptionHandler;
 import net.minecraftforge.oredict.OreDictionary;
 
 import java.lang.reflect.Field;
 import java.util.List;
-import java.util.function.UnaryOperator;
 
 public class CraftReflect {
 
@@ -25,8 +22,6 @@ public class CraftReflect {
             = MirrorUtils.<BiMap<String, String>>reflectField(FluidRegistry.class, "defaultFluidName").get(null);
     private static final List<NonNullList<ItemStack>> idToStackUn
             = MirrorUtils.<List<NonNullList<ItemStack>>>reflectField(OreDictionary.class, "idToStackUn").get(null);
-    private static final MirrorUtils.IField<IEventExceptionHandler> fEventBus_exceptionHandler
-            = MirrorUtils.reflectField(EventBus.class, "exceptionHandler");
 
     static {
         fPlayerCapabilities_flySpeed = ObfuscationReflectionHelper.findField(PlayerCapabilities.class, "field_75096_f");
@@ -53,10 +48,6 @@ public class CraftReflect {
 
     public static List<NonNullList<ItemStack>> getOreIdToStackMapping() {
         return idToStackUn;
-    }
-
-    public static void replaceExceptionHandler(EventBus eventBus, UnaryOperator<IEventExceptionHandler> replacer) {
-        fEventBus_exceptionHandler.set(eventBus, replacer.apply(fEventBus_exceptionHandler.get(eventBus)));
     }
 
 }

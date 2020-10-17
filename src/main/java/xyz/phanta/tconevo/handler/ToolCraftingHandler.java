@@ -19,7 +19,8 @@ public class ToolCraftingHandler {
         ItemStack stack = event.getItemStack();
         if (stack.hasTagCompound()) {
             NBTTagCompound tag = Objects.requireNonNull(stack.getTagCompound());
-            if (tag.hasKey(TraitEvolved.TAG_EVOLVED_TIER) && !TinkerUtil.hasTrait(tag, NameConst.TRAIT_EVOLVED)) {
+            if (tag.hasKey(TraitEvolved.TAG_EVOLVED_TIER) && !TinkerUtil.hasTrait(tag, NameConst.TRAIT_EVOLVED)
+                    && !TinkerUtil.hasTrait(tag, NameConst.ARMOUR_TRAIT_EVOLVED)) {
                 event.setCanceled(I18n.format(NameConst.INFO_CANNOT_REPLACE));
             }
         }

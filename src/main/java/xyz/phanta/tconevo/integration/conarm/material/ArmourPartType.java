@@ -14,8 +14,7 @@ public enum ArmourPartType {
 
     ARMOUR(CORE, PLATES, TRIM),
     EXTRA(PLATES, TRIM),
-    PROTECTIVE(CORE, PLATES),
-    DEFAULT((String)null);
+    PROTECTIVE(CORE, PLATES);
 
     public final List<String> typeKeys;
 
