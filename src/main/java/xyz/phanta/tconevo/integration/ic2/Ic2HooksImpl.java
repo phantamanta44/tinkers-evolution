@@ -16,7 +16,9 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.items.ItemHandlerHelper;
+import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.Material;
+import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.capability.PowerWrapper;
 import xyz.phanta.tconevo.init.TconEvoItems;
 import xyz.phanta.tconevo.init.TconEvoMaterials;
@@ -59,6 +61,13 @@ public class Ic2HooksImpl implements Ic2Hooks {
 
     @Override
     public void onPostInit(FMLPostInitializationEvent event) {
+        if (TconEvoConfig.moduleIndustrialCraft.fuelSuperheatedSteamBurnTime > 0) {
+            Fluid superhotSteam = FluidRegistry.getFluid("ic2superheated_steam");
+            if (superhotSteam != null) {
+                TinkerRegistry.registerSmelteryFuel(new FluidStack(superhotSteam, 50),
+                        TconEvoConfig.moduleIndustrialCraft.fuelSuperheatedSteamBurnTime);
+            }
+        }
         if (Ic2Reflect.canGetSolarMultiplier()) {
             ItemStack solarGen = IC2Items.getItem("te", "solar_generator");
             if (solarGen != null) {
