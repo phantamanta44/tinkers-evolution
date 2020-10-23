@@ -31,6 +31,7 @@ Current mod integration modules are as follows:
     * Allows wyvern and draconic flux capacitors to apply the "fluxed" modifier
 * **Ender IO**
     * Adds various crystal materials for magic tool parts
+    * Registers fire water as a smeltery fuel
     * Allows inventory chargers to apply the "fluxed" modifier
     * Allows photovoltaic cells to apply the "photovoltaic" modifier
 * **Environmental Tech**
@@ -43,6 +44,7 @@ Current mod integration modules are as follows:
 * **IndustrialCraft 2**
     * Adds industrial materials, including an energium material that runs on electricity
     * Adds a sunnarium material from Advanced Solar Panels
+    * Registers superheated steam as a smeltery fuel
     * Allows solar panels (both IC2 and ASP) to apply the "photovoltaic" modifier
 * **Industrial Foregoing**
     * Adds IF-based materials, including a powerful pink metal material
@@ -69,6 +71,7 @@ Current mod integration modules are as follows:
 * **Thermal Series**
     * Adds materials for the various thermal metals
     * Adds Verey Fast(TM) signalum bows
+    * Registers blazing pyrotheum as a smeltery fuel
     * Adds support to the magma crucible for smeltery melting recipes
     * Allows flux capacitors to apply the "fluxed" modifier
 
