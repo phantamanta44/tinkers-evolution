@@ -12,7 +12,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: "com.wynprice.cursemaven"
 
-version = "1.0.36"
+version = "1.0.37"
 group = "xyz.phanta.tconevo"
 archivesBaseName = "tconevo-1.12.2"
 
@@ -62,6 +62,10 @@ repositories {
         name "sfPlayer1 Maven"
         url "https://maven.ic2.player.to/"
     }
+    maven {
+        name "Darkhax Maven"
+        url "https://maven.mcmoddev.com"
+    }
 }
 
 dependencies { // THE BEAST
@@ -79,6 +83,7 @@ dependencies { // THE BEAST
     deobfCompile "com.teamwizardry.librarianlib:librarianlib-1.12.2:4.19.1"
     deobfCompile "curse.maven:natural-pledge:2740703" // r3.1.2
     deobfCompile "cofh:CoFHCore:1.12.2-4.6.3.27:universal"
+    deobfCompile "cofh:ThermalFoundation:1.12.2-2.6.3.27:universal"
     deobfCompile "cofh:ThermalExpansion:1.12.2-5.5.4.43:universal"
     deobfCompile "curse.maven:industrial-foregoing:2745321"
     deobfCompile 'appeng:appliedenergistics2:rv6-stable-7'
@@ -102,6 +107,8 @@ dependencies { // THE BEAST
     deobfCompile("com.enderio:EnderIO:1.12.2-5.2.59") { exclude group: "deobf.com.enderio.core" }
     deobfCompile "net.sengir.forestry:forestry_1.12.2:5.8.2.387"
     deobfCompile "morph.avaritia:Avaritia:1.12.2-3.3.0.33:universal"
+    compile "net.darkhax.bookshelf:Bookshelf-1.12.2:2.3.590"
+    compile "net.darkhax.gamestages:GameStages-1.12.2:2.0.123"
 }
 
 // when forgegradle deobfs dependency jars, it'll try to cheat and grab the sources jar and remap *that* to avoid decompiling
