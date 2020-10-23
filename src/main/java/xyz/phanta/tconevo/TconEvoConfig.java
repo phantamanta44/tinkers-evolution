@@ -1314,7 +1314,7 @@ public class TconEvoConfig {
         })
         @Config.RangeInt(min = 0)
         @Config.RequiresMcRestart
-        public int fuelSuperheatedSteamBurnTime = 10;
+        public int fuelSuperheatedSteamBurnTime = 12;
 
     }
 
