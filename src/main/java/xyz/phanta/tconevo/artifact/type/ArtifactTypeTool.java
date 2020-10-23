@@ -23,6 +23,7 @@ import slimeknights.tconstruct.library.tools.IToolPart;
 import slimeknights.tconstruct.library.tools.ToolCore;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 import xyz.phanta.tconevo.init.TconEvoTraits;
+import xyz.phanta.tconevo.integration.gamestages.GameStagesHooks;
 import xyz.phanta.tconevo.util.ToolUtils;
 
 import javax.annotation.Nullable;
@@ -132,9 +133,12 @@ public class ArtifactTypeTool implements ArtifactType<ArtifactTypeTool.Spec> {
         ItemStack stack = toolType.buildItem(materials);
         stack.setStackDisplayName(ARTIFACT_FMT + spec.name);
         try {
+            GameStagesHooks.INSTANCE.startBypass();
             TinkerCraftingEvent.ToolCraftingEvent.fireEvent(stack, null, components);
         } catch (TinkerGuiException e) {
             throw new BuildingException("Tool building produced error: %s", e.getMessage());
+        } finally {
+            GameStagesHooks.INSTANCE.endBypass();
         }
         ItemStack stackPreMods = stack.copy();
 
@@ -156,12 +160,15 @@ public class ArtifactTypeTool implements ArtifactType<ArtifactTypeTool.Spec> {
 
         // finalize the tool
         try {
+            GameStagesHooks.INSTANCE.startBypass();
             TinkerCraftingEvent.ToolModifyEvent.fireEvent(stack, null, stackPreMods.copy());
             // apply the artifact modifier after modify event because otherwise the modifier would cancel the event
             TconEvoTraits.MOD_ARTIFACT.apply(stack);
             ToolUtils.rebuildToolStack(stack);
         } catch (TinkerGuiException e) {
             throw new BuildingException("Tool modification produced error: %s", e.getMessage());
+        } finally {
+            GameStagesHooks.INSTANCE.endBypass();
         }
 
         // add lore
