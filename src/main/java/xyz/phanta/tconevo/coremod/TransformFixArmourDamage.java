@@ -1,8 +1,6 @@
 package xyz.phanta.tconevo.coremod;
 
-import org.objectweb.asm.ClassVisitor;
-import org.objectweb.asm.MethodVisitor;
-import org.objectweb.asm.Opcodes;
+import org.objectweb.asm.*;
 
 import java.util.function.Consumer;
 
@@ -11,6 +9,11 @@ public class TransformFixArmourDamage implements TconEvoClassTransformer.Transfo
     @Override
     public String getName() {
         return "Fix Armour Damage";
+    }
+
+    @Override
+    public int getWriteFlags() {
+        return ClassWriter.COMPUTE_FRAMES | ClassWriter.COMPUTE_MAXS;
     }
 
     @Override
@@ -42,16 +45,43 @@ public class TransformFixArmourDamage implements TconEvoClassTransformer.Transfo
 
     private static class MethodTransformerApplyArmor extends MethodVisitor {
 
+        private final VarTracker vars = new VarTracker(5);
+
         MethodTransformerApplyArmor(int api, MethodVisitor mv) {
             super(api, mv);
+        }
+
+        @Override
+        public void visitVarInsn(int opcode, int var) {
+            super.visitVarInsn(opcode, vars.map(opcode, var));
         }
 
         @Override
         public void visitMethodInsn(int opcode, String owner, String name, String desc, boolean itf) {
             if (opcode == Opcodes.INVOKEVIRTUAL && (name.equals("func_77972_a") || name.equals("damageItem"))
                     && owner.equals("net/minecraft/item/ItemStack") && desc.equals("(ILnet/minecraft/entity/EntityLivingBase;)V")) {
+                // pop args off stack and store in local vars
+                int varItemStack = vars.create(), varDamage = vars.create(), varWielder = vars.create();
+                super.visitVarInsn(Opcodes.ASTORE, varWielder);
+                super.visitVarInsn(Opcodes.ISTORE, varDamage);
+                super.visitVarInsn(Opcodes.ASTORE, varItemStack);
+
+                // load args, call hook
+                super.visitVarInsn(Opcodes.ALOAD, varItemStack);
+                super.visitVarInsn(Opcodes.ILOAD, varDamage);
+                super.visitVarInsn(Opcodes.ALOAD, varWielder);
                 super.visitMethodInsn(Opcodes.INVOKESTATIC, "xyz/phanta/tconevo/handler/ArmourDamageCoreHooks",
-                        "damageItem", "(Lnet/minecraft/item/ItemStack;ILnet/minecraft/entity/EntityLivingBase;)V", false);
+                        "shouldDamageItem", "(Lnet/minecraft/item/ItemStack;ILnet/minecraft/entity/EntityLivingBase;)Z", false);
+
+                // if hook returned false, cancel the damage; otherwise, load args and call damage function
+                Label cancelDamage = new Label();
+                super.visitJumpInsn(Opcodes.IFEQ, cancelDamage);
+                super.visitVarInsn(Opcodes.ALOAD, varItemStack);
+                super.visitVarInsn(Opcodes.ILOAD, varDamage);
+                super.visitVarInsn(Opcodes.ALOAD, varWielder);
+                super.visitMethodInsn(Opcodes.INVOKEVIRTUAL, "net/minecraft/item/ItemStack",
+                        name, "(ILnet/minecraft/entity/EntityLivingBase;)V", false);
+                super.visitLabel(cancelDamage);
             } else {
                 super.visitMethodInsn(opcode, owner, name, desc, itf);
             }
