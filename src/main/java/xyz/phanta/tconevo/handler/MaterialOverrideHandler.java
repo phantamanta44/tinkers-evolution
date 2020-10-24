@@ -43,6 +43,7 @@ public class MaterialOverrideHandler {
 
     static {
         // integration foregoing
+        registerOverrides(NameConst.MAT_RUBBER, "integrationforegoing.plastic"); // IF plastic is actually just rubber
         registerOverrides(NameConst.MAT_PINK_SLIME, "integrationforegoing.pink_slime");
         registerOverrides(NameConst.MAT_PINK_METAL, "integrationforegoing.reinforced_pink_slime");
 
@@ -74,6 +75,39 @@ public class MaterialOverrideHandler {
         registerOverrides(NameConst.MAT_DARK_MATTER, "darkMatter"); // project: e
         registerOverrides(NameConst.MAT_RED_MATTER, "redMatter");
         registerOverrides(NameConst.MAT_INFINITY_METAL, "infinity_avaritia_plustic"); // avaritia
+
+        // tinkers' reforged
+        registerOverrides(NameConst.MAT_INVAR, "ref_invar"); // common
+        registerOverrides(NameConst.MAT_ALUMINIUM, "ref_aluminum");
+        registerOverrides(NameConst.MAT_IRIDIUM, "ref_iridium");
+        registerOverrides(NameConst.MAT_PLATINUM, "ref_platinum");
+        registerOverrides(NameConst.MAT_BLACK_QUARTZ, "ref_blackquartz"); // actually additions
+        registerOverrides(NameConst.MAT_AA_DIAMANTINE, "ref_diamatine");
+        registerOverrides(NameConst.MAT_AA_EMERALDIC, "ref_emeradic");
+        registerOverrides(NameConst.MAT_AA_ENORI, "ref_enori");
+        registerOverrides(NameConst.MAT_AA_PALIS, "ref_palis");
+        registerOverrides(NameConst.MAT_AA_RESTONIA, "ref_restonia");
+        registerOverrides(NameConst.MAT_AA_VOID, "ref_void");
+        registerOverrides(NameConst.MAT_CERTUS_QUARTZ, "ref_certus_quartz"); // applied energistics 2
+        registerOverrides(NameConst.MAT_FLUIX, "ref_fluid_crystal");
+        registerOverrides(NameConst.MAT_STARMETAL, "ref_starmetal"); // astral sorcery
+        registerOverrides(NameConst.MAT_DRAGONSTONE, "ref_dragonstone"); // botania
+        registerOverrides(NameConst.MAT_DREAMWOOD, "ref_dreamwood");
+        registerOverrides(NameConst.MAT_ELEMENTIUM, "ref_elementium");
+        registerOverrides(NameConst.MAT_MANA_STRING, "ref_mana_string");
+        registerOverrides(NameConst.MAT_MANASTEEL, "ref_manasteel");
+        registerOverrides(NameConst.MAT_TERRASTEEL, "ref_terrasteel");
+        registerOverrides(NameConst.MAT_MANA_DIAMOND, "ref_mana_diamond");
+        registerOverrides(NameConst.MAT_LIVINGROCK, "ref_livingrock");
+        registerOverrides(NameConst.MAT_LIVINGWOOD, "ref_livingwood");
+        registerOverrides(NameConst.MAT_AQUAMARINE, "ref_aquamarine"); // cavern ii (actually AS on our end)
+        registerOverrides(NameConst.MAT_OSMIUM, "ref_osmium"); // mekanism
+        registerOverrides(NameConst.MAT_REFINED_OBSIDIAN, "ref_refined_obsidian");
+        registerOverrides(NameConst.MAT_REFINED_GLOWSTONE, "ref_refined_glowstone");
+        registerOverrides(NameConst.MAT_THAUMIUM, "ref_thaumium"); // thaumcraft
+        registerOverrides(NameConst.MAT_ENDERIUM, "ref_enderium"); // thermal series
+        registerOverrides(NameConst.MAT_LUMIUM, "ref_lumium");
+        registerOverrides(NameConst.MAT_SIGNALUM, "ref_signalum");
     }
 
     public static void registerOverrides(String materialId, String... overrideIds) {

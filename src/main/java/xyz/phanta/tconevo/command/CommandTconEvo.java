@@ -19,6 +19,7 @@ import slimeknights.tconstruct.tools.modifiers.ToolModifier;
 import xyz.phanta.tconevo.TconEvoMod;
 import xyz.phanta.tconevo.artifact.Artifact;
 import xyz.phanta.tconevo.integration.conarm.ConArmHooks;
+import xyz.phanta.tconevo.integration.gamestages.GameStagesHooks;
 import xyz.phanta.tconevo.util.ToolUtils;
 
 import javax.annotation.Nullable;
@@ -65,6 +66,7 @@ public class CommandTconEvo extends CommandBase {
         return LOC_USAGE;
     }
 
+    @SuppressWarnings("DuplicatedCode")
     @Override
     public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
         EntityPlayer player = getSenderPlayer(sender);
@@ -97,9 +99,12 @@ public class CommandTconEvo extends CommandBase {
                     }
                     mod.apply(stack);
                     try {
+                        GameStagesHooks.INSTANCE.startBypass();
                         TinkerCraftingEvent.ToolModifyEvent.fireEvent(stack, player, orig.copy());
                     } catch (TinkerGuiException e) {
                         throw new CommandException(LOC_MODADD_FAILURE, e.getMessage());
+                    } finally {
+                        GameStagesHooks.INSTANCE.endBypass();
                     }
                     orig = stack.copy();
                     --remaining;
@@ -148,9 +153,12 @@ public class CommandTconEvo extends CommandBase {
                         }
                         mod.apply(stack);
                         try {
+                            GameStagesHooks.INSTANCE.startBypass();
                             TinkerCraftingEvent.ToolModifyEvent.fireEvent(stack, player, orig.copy());
                         } catch (TinkerGuiException e) {
                             throw new CommandException(LOC_MODMAX_FAILURE, e.getMessage());
+                        } finally {
+                            GameStagesHooks.INSTANCE.endBypass();
                         }
                         orig = stack.copy();
                     }

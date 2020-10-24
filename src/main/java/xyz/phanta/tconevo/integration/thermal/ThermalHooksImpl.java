@@ -2,6 +2,8 @@ package xyz.phanta.tconevo.integration.thermal;
 
 import cofh.thermalexpansion.init.TEItems;
 import cofh.thermalexpansion.util.managers.machine.CrucibleManager;
+import cofh.thermalfoundation.init.TFFluids;
+import io.github.phantamanta44.libnine.util.nullity.Reflected;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -9,7 +11,6 @@ import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.smeltery.MeltingRecipe;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.TconEvoMod;
-import io.github.phantamanta44.libnine.util.nullity.Reflected;
 
 import java.util.Optional;
 
@@ -31,6 +32,13 @@ public class ThermalHooksImpl implements ThermalHooks {
                     }
                 }
             }
+        }
+        // note: since this hook is for thermal expansion but the fuel fluids are added by thermal foundation,
+        // the fuels will fail to register if thermal foundation is present but thermal expansion is not.
+        // however, nobody uses TF without TE, so this is probably acceptable
+        if (TconEvoConfig.moduleThermalSeries.fuelPyrotheumBurnTime > 0) {
+            TinkerRegistry.registerSmelteryFuel(new FluidStack(TFFluids.fluidPyrotheum, 50),
+                    TconEvoConfig.moduleThermalSeries.fuelPyrotheumBurnTime);
         }
     }
 

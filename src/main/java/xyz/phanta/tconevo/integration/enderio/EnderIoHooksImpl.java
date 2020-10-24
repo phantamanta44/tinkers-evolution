@@ -1,12 +1,16 @@
 package xyz.phanta.tconevo.integration.enderio;
 
+import crazypants.enderio.base.fluid.Fluids;
 import crazypants.enderio.base.init.IModObjectBase;
 import crazypants.enderio.base.init.ModObject;
 import crazypants.enderio.machines.machine.solar.SolarType;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import xyz.phanta.tconevo.trait.ModifierPhotovoltaic;
 import io.github.phantamanta44.libnine.util.nullity.Reflected;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import slimeknights.tconstruct.library.TinkerRegistry;
+import xyz.phanta.tconevo.TconEvoConfig;
+import xyz.phanta.tconevo.trait.ModifierPhotovoltaic;
 
 import java.util.Optional;
 
@@ -15,6 +19,10 @@ public class EnderIoHooksImpl implements EnderIoHooks {
 
     @Override
     public void onPostInit(FMLPostInitializationEvent event) {
+        if (TconEvoConfig.moduleEnderIo.fuelFireWaterBurnTime > 0) {
+            TinkerRegistry.registerSmelteryFuel(new FluidStack(Fluids.FIRE_WATER.getFluid(), 50),
+                    TconEvoConfig.moduleEnderIo.fuelFireWaterBurnTime);
+        }
         for (SolarType type : SolarType.values()) {
             ModifierPhotovoltaic.registerSolarItem(type.getItemStack(), type.getRfperSecond());
         }

@@ -11,10 +11,8 @@ import xyz.phanta.tconevo.integration.conarm.ConArmHooks;
 public class ArmourDamageCoreHooks {
 
     @Reflected
-    public static void damageItem(ItemStack stack, int damage, EntityLivingBase owner) {
-        if (!TconEvoConfig.moduleConstructsArmoury.fixConArmArmourDamage || !ConArmHooks.INSTANCE.isTinkerArmour(stack)) {
-            stack.damageItem(damage, owner);
-        }
+    public static boolean shouldDamageItem(ItemStack stack, int damage, EntityLivingBase owner) {
+        return !TconEvoConfig.moduleConstructsArmoury.fixConArmArmourDamage || !ConArmHooks.INSTANCE.isTinkerArmour(stack);
     }
 
 }

@@ -1228,6 +1228,21 @@ public class TconEvoConfig {
 
     }
 
+    @Config.Comment("Configuration for the Ender IO module.")
+    public static final EnderIo moduleEnderIo = new EnderIo();
+
+    public static class EnderIo {
+
+        @Config.Comment({
+                "The burn time, in ticks, per 50 mB of fire water when used as a smeltery fuel.",
+                "Set to zero to disable fire water as a smeltery fuel."
+        })
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public int fuelFireWaterBurnTime = 125;
+
+    }
+
     @Config.Comment("Configuration for the Environmental Tech module.")
     public static final EnvironmentalTech moduleEnvironmentalTech = new EnvironmentalTech();
 
@@ -1293,6 +1308,14 @@ public class TconEvoConfig {
         @Config.RangeDouble(min = 0D)
         public double electricArmourEnergyBuffer = 30000D;
 
+        @Config.Comment({
+                "The burn time, in ticks, per 50 mB of superheated steam when used as a smeltery fuel.",
+                "Set to zero to disable superheated steam as a smeltery fuel."
+        })
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public int fuelSuperheatedSteamBurnTime = 12;
+
     }
 
     @Config.Comment("Configuration for the Natural Absorption module.")
@@ -1353,6 +1376,14 @@ public class TconEvoConfig {
         @Config.RangeDouble(min = 0D)
         @Config.RequiresMcRestart
         public double magmaCrucibleMeltingCostMultiplier = 9D;
+
+        @Config.Comment({
+                "The burn time, in ticks, per 50 mB of blazing pyrotheum when used as a smeltery fuel.",
+                "Set to zero to disable blazing pyrotheum as a smeltery fuel."
+        })
+        @Config.RangeInt(min = 0)
+        @Config.RequiresMcRestart
+        public int fuelPyrotheumBurnTime = 150;
 
     }
 
