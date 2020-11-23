@@ -37,63 +37,66 @@ public class ArtifactTypeTool implements ArtifactType<ArtifactTypeTool.Spec> {
 
     @Override
     public Spec parseArtifactSpec(JsonObject dto) {
-        // parse modifiers
-        List<IPair<String, Integer>> modifiers;
-        if (dto.has("mods")) {
-            modifiers = new ArrayList<>();
-            for (JsonElement modDto : JsonUtils.getJsonArray(dto, "mods")) {
-                if (modDto.isJsonObject()) { // { id: String, level: Int }
-                    JsonObject modDtoObj = modDto.getAsJsonObject();
-                    modifiers.add(IPair.of(JsonUtils.getString(modDtoObj, "id"), JsonUtils.getInt(modDtoObj, "level", 1)));
-                } else if (modDto.isJsonPrimitive() && modDto.getAsJsonPrimitive().isString()) { // just id string
-                    modifiers.add(IPair.of(modDto.getAsString(), 1));
-                } else {
-                    throw new JsonSyntaxException("Expected either a modifier object or a string in \"mods\", but got " + modDto);
-                }
-            }
-        } else {
-            modifiers = Collections.emptyList();
-        }
-
-        // parse lore
-        List<String> lore;
-        if (dto.has("lore")) {
-            JsonElement loreDto = dto.get("lore");
-            if (loreDto.isJsonArray()) { // many lines of lore
-                lore = new ArrayList<>();
-                for (JsonElement loreLineDto : loreDto.getAsJsonArray()) {
-                    if (loreLineDto.isJsonPrimitive() && loreLineDto.getAsJsonPrimitive().isString()) {
-                        lore.add(loreLineDto.getAsString());
-                    } else {
-                        throw new JsonSyntaxException("Expected a string in the \"lore\" array, but got: " + loreLineDto);
-                    }
-                }
-            } else if (loreDto.isJsonPrimitive() && loreDto.getAsJsonPrimitive().isString()) { // just one string of lore
-                lore = Collections.singletonList(loreDto.getAsString());
-            } else {
-                throw new JsonSyntaxException("Expected either a string array or a string for \"lore\", but got " + loreDto);
-            }
-        } else {
-            lore = Collections.emptyList();
-        }
-
         //noinspection ConstantConditions
         return new Spec(
                 JsonUtils.getString(dto, "name"),
-                lore,
+                parseLore(dto),
                 JsonUtils.getString(dto, "tool"),
-                JsonUtils9.stream(dto.getAsJsonArray("materials"))
-                        .map(s -> {
-                            if (s.isJsonPrimitive() && s.getAsJsonPrimitive().isString()) {
-                                return s.getAsString();
-                            } else {
-                                throw new JsonSyntaxException("Expected a string in the \"materials\" array, but got: " + s);
-                            }
-                        })
-                        .collect(Collectors.toList()),
+                parseMaterials(dto),
                 JsonUtils.getInt(dto, "free_mods", 0),
-                modifiers,
+                parseModifiers(dto),
                 JsonUtils.getJsonObject(dto, "data_tag", null));
+    }
+
+    public static List<String> parseLore(JsonObject dto) {
+        if (!dto.has("lore")) {
+            return Collections.emptyList();
+        }
+        JsonElement loreDto = dto.get("lore");
+        if (loreDto.isJsonArray()) { // many lines of lore
+            List<String> lore = new ArrayList<>();
+            for (JsonElement loreLineDto : loreDto.getAsJsonArray()) {
+                if (loreLineDto.isJsonPrimitive() && loreLineDto.getAsJsonPrimitive().isString()) {
+                    lore.add(loreLineDto.getAsString());
+                } else {
+                    throw new JsonSyntaxException("Expected a string in the \"lore\" array, but got: " + loreLineDto);
+                }
+            }
+            return lore;
+        } else if (loreDto.isJsonPrimitive() && loreDto.getAsJsonPrimitive().isString()) { // just one string of lore
+            return Collections.singletonList(loreDto.getAsString());
+        }
+        throw new JsonSyntaxException("Expected either a string array or a string for \"lore\", but got " + loreDto);
+    }
+
+    public static List<String> parseMaterials(JsonObject dto) {
+        return JsonUtils9.stream(dto.getAsJsonArray("materials"))
+                .map(s -> {
+                    if (s.isJsonPrimitive() && s.getAsJsonPrimitive().isString()) {
+                        return s.getAsString();
+                    } else {
+                        throw new JsonSyntaxException("Expected a string in the \"materials\" array, but got: " + s);
+                    }
+                })
+                .collect(Collectors.toList());
+    }
+
+    public static List<IPair<String, Integer>> parseModifiers(JsonObject dto) {
+        if (!dto.has("mods")) {
+            return Collections.emptyList();
+        }
+        List<IPair<String, Integer>> modifiers = new ArrayList<>();
+        for (JsonElement modDto : JsonUtils.getJsonArray(dto, "mods")) {
+            if (modDto.isJsonObject()) { // { id: String, level: Int }
+                JsonObject modDtoObj = modDto.getAsJsonObject();
+                modifiers.add(IPair.of(JsonUtils.getString(modDtoObj, "id"), JsonUtils.getInt(modDtoObj, "level", 1)));
+            } else if (modDto.isJsonPrimitive() && modDto.getAsJsonPrimitive().isString()) { // just id string
+                modifiers.add(IPair.of(modDto.getAsString(), 1));
+            } else {
+                throw new JsonSyntaxException("Expected either a modifier object or a string in \"mods\", but got " + modDto);
+            }
+        }
+        return modifiers;
     }
 
     @Override
@@ -110,14 +113,7 @@ public class ArtifactTypeTool implements ArtifactType<ArtifactTypeTool.Spec> {
             throw new BuildingException("Needed %d materials but got %d for tool type \"%s\"",
                     componentTypes.size(), spec.materials.size(), toolType.getIdentifier());
         }
-        List<Material> materials = new ArrayList<>();
-        for (String materialId : spec.materials) {
-            Material material = TinkerRegistry.getMaterial(materialId);
-            if (material == Material.UNKNOWN) {
-                throw new BuildingException("Unknown material \"%s\"", materialId);
-            }
-            materials.add(material);
-        }
+        List<Material> materials = resolveMaterials(spec.materials);
 
         // build component stacks
         NonNullList<ItemStack> components = NonNullList.create();
@@ -148,15 +144,7 @@ public class ArtifactTypeTool implements ArtifactType<ArtifactTypeTool.Spec> {
         }
 
         // apply modifiers
-        for (IPair<String, Integer> modEntry : spec.modifiers) {
-            IModifier mod = TinkerRegistry.getModifier(modEntry.getA());
-            if (mod == null) {
-                throw new BuildingException("Unknown modifier \"%s\"", modEntry.getA());
-            }
-            for (int i = modEntry.getB(); i > 0; i--) {
-                mod.apply(stack);
-            }
-        }
+        applyModifiers(spec.modifiers, stack);
 
         // finalize the tool
         try {
@@ -171,9 +159,39 @@ public class ArtifactTypeTool implements ArtifactType<ArtifactTypeTool.Spec> {
             GameStagesHooks.INSTANCE.endBypass();
         }
 
-        // add lore
+        // add lore and other NBT
+        addExtraItemData(stack, spec.lore, spec.dataTag);
+
+        return stack; // done!
+    }
+
+    public static List<Material> resolveMaterials(List<String> materialIds) throws BuildingException {
+        List<Material> materials = new ArrayList<>();
+        for (String materialId : materialIds) {
+            Material material = TinkerRegistry.getMaterial(materialId);
+            if (material == Material.UNKNOWN) {
+                throw new ArtifactType.BuildingException("Unknown material \"%s\"", materialId);
+            }
+            materials.add(material);
+        }
+        return materials;
+    }
+
+    public static void applyModifiers(List<IPair<String, Integer>> modEntries, ItemStack stack) throws BuildingException {
+        for (IPair<String, Integer> modEntry : modEntries) {
+            IModifier mod = TinkerRegistry.getModifier(modEntry.getA());
+            if (mod == null) {
+                throw new ArtifactType.BuildingException("Unknown modifier \"%s\"", modEntry.getA());
+            }
+            for (int i = modEntry.getB(); i > 0; i--) {
+                mod.apply(stack);
+            }
+        }
+    }
+
+    public static void addExtraItemData(ItemStack stack, List<String> lore, @Nullable ImmutableNbt<NBTTagCompound> dataTag) {
         NBTTagCompound tag = ItemUtils.getOrCreateTag(stack);
-        if (!spec.lore.isEmpty()) {
+        if (!lore.isEmpty()) {
             NBTTagCompound displayTag;
             if (tag.hasKey("display")) {
                 displayTag = tag.getCompoundTag("display");
@@ -183,18 +201,15 @@ public class ArtifactTypeTool implements ArtifactType<ArtifactTypeTool.Spec> {
             }
             NBTTagList loreTag = new NBTTagList();
             loreTag.appendTag(new NBTTagString()); // empty line for padding
-            for (String line : spec.lore) {
+            for (String line : lore) {
                 loreTag.appendTag(new NBTTagString(LORE_FMT + line));
             }
             displayTag.setTag("Lore", loreTag);
         }
 
-        // add other NBT
-        if (spec.dataTag != null) {
-            stack.setTagCompound(spec.dataTag.write(tag));
+        if (dataTag != null) {
+            stack.setTagCompound(dataTag.write(tag));
         }
-
-        return stack; // done!
     }
 
     public static class Spec {

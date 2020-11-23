@@ -7,6 +7,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import slimeknights.tconstruct.library.modifiers.IModifier;
 import slimeknights.tconstruct.library.modifiers.TinkerGuiException;
+import xyz.phanta.tconevo.artifact.type.ArtifactType;
+import xyz.phanta.tconevo.artifact.type.ArtifactTypeArmour;
 import xyz.phanta.tconevo.integration.IntegrationHooks;
 
 import javax.annotation.Nullable;
@@ -32,6 +34,8 @@ public interface ConArmHooks extends IntegrationHooks {
     boolean isTinkerArmour(ItemStack stack);
 
     void damageArmour(ItemStack stack, int amount, EntityLivingBase wearer);
+
+    ItemStack buildArmourArtifact(ArtifactTypeArmour.Spec spec) throws ArtifactType.BuildingException;
 
     class Noop implements ConArmHooks {
 
@@ -69,6 +73,11 @@ public interface ConArmHooks extends IntegrationHooks {
         @Override
         public void damageArmour(ItemStack stack, int amount, EntityLivingBase wearer) {
             // NO-OP
+        }
+
+        @Override
+        public ItemStack buildArmourArtifact(ArtifactTypeArmour.Spec spec) throws ArtifactType.BuildingException {
+            throw new ArtifactType.BuildingException("Construct's Armoury is not available");
         }
 
     }

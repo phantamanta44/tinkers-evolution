@@ -17,6 +17,7 @@ public class ArtifactTypeRegistry {
     public ArtifactTypeRegistry() {
         // can't use newResourceLocation() because the mod isn't fully-initialized yet
         registerArtifactType(new ResourceLocation(TconEvoMod.MOD_ID, "tool"), new ArtifactTypeTool());
+        registerArtifactType(new ResourceLocation(TconEvoMod.MOD_ID, "armour"), new ArtifactTypeArmour());
     }
 
     public void registerArtifactType(ResourceLocation typeId, ArtifactType<?> type) {
