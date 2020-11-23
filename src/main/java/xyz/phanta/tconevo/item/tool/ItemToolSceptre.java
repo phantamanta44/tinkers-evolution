@@ -155,8 +155,17 @@ public class ItemToolSceptre extends TinkerToolCore implements IProjectile {
         Optional<RecipeMatch.Match> matchOptional = material.matches(repairItems);
         return matchOptional.map(match -> {
             RecipeMatch.removeMatch(repairItems, match);
-            return (int)(material.<MagicMaterialStats>getStats(TconEvoPartTypes.MAGIC).durability
-                    * (match.amount / (float)Material.VALUE_Ingot));
+            int baseDurability = 0;
+            MagicMaterialStats magicStats = material.getStats(TconEvoPartTypes.MAGIC);
+            if (magicStats != null) {
+                baseDurability = magicStats.durability;
+            } else {
+                HeadMaterialStats headStats = material.getStats(MaterialTypes.HEAD);
+                if (headStats != null) {
+                    baseDurability = headStats.durability;
+                }
+            }
+            return (int)(baseDurability * (match.amount / (float)Material.VALUE_Ingot));
         }).orElse(0);
     }
 
