@@ -40,7 +40,7 @@ import java.util.List;
 
 public class CommonProxy {
 
-    private static final long CONFIG_VERSION = 1L;
+    private static final long CONFIG_VERSION = 2L;
     private static final String CONFIG_VERSION_FILE = ".config_version";
 
     private final ToolCapabilityHandler toolCapHandler = new ToolCapabilityHandler();

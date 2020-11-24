@@ -2,10 +2,13 @@ artifacts/agneyastra.json
 artifacts/ancient_arrow.json
 artifacts/crystal_sceptre.json
 artifacts/dragon_tooth.json
+artifacts/guardian_angel.json
 artifacts/infinity_edge.json
+artifacts/light_shoes.json
 artifacts/maelstrom.json
 artifacts/morning_star.json
 artifacts/ms_erudita.json
 artifacts/myriad_slashes.json
+artifacts/phase_boots.json
 artifacts/stormbow.json
 artifacts/werebane.json
