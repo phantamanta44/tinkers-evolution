@@ -6,11 +6,9 @@ buildscript {
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
-        classpath "com.wynprice.cursemaven:CurseMaven:2.1.4"
     }
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
-apply plugin: "com.wynprice.cursemaven"
 
 version = "1.0.38"
 group = "xyz.phanta.tconevo"
@@ -30,6 +28,10 @@ minecraft {
 
 repositories {
     mavenLocal()
+    maven {
+        name 'CurseMaven'
+        url 'https://www.cursemaven.com/'
+    }
     maven {
         name 'DVS1 Repo'
         url 'http://dvs1.progwml6.com/files/maven/'
@@ -69,40 +71,40 @@ repositories {
 }
 
 dependencies { // THE BEAST
-    compile 'io.github.phantamanta44.libnine:libnine-1.12.2:1.1.9'
+    compile 'io.github.phantamanta44.libnine:libnine-1.12.2:1.2.0'
     deobfCompile 'mezz.jei:jei_1.12.2:4.15.0.293'
     deobfCompile "slimeknights.mantle:Mantle:1.12-1.3.3.56"
     deobfCompile "slimeknights:TConstruct:1.12.2-2.13.0.184"
-    deobfCompile "curse.maven:constructs-armory:2882794" // 1.2.5.4
+    deobfCompile "curse.maven:constructs-armory-287683:2882794" // 1.2.5.4
     deobfCompile 'com.azanor.baubles:Baubles:1.12-1.5.2'
     deobfCompile "codechicken:CodeChickenLib:1.12.2-3.2.3.358:universal"
     deobfCompile "cofh:RedstoneFlux:1.12-2.1.0.7:universal"
-    deobfCompile "curse.maven:brandons-core:2867147" // 2.4.18.210
-    deobfCompile "curse.maven:draconic-evolution:2867186" // 2.3.25.351
+    deobfCompile "curse.maven:brandons-core-231382:2867147" // 2.4.18.210
+    deobfCompile "curse.maven:draconic-evolution-223565:2867186" // 2.3.25.351
     deobfCompile "vazkii.botania:Botania:r1.10-363.148"
     deobfCompile "com.teamwizardry.librarianlib:librarianlib-1.12.2:4.19.1"
-    deobfCompile "curse.maven:natural-pledge:2740703" // r3.1.2
+    deobfCompile "curse.maven:natural-pledge-247704:2740703" // r3.1.2
     deobfCompile "cofh:CoFHCore:1.12.2-4.6.3.27:universal"
     deobfCompile "cofh:ThermalFoundation:1.12.2-2.6.3.27:universal"
     deobfCompile "cofh:ThermalExpansion:1.12.2-5.5.4.43:universal"
-    deobfCompile "curse.maven:industrial-foregoing:2745321"
+    deobfCompile "curse.maven:industrial-foregoing-266515:2745321"
     deobfCompile 'appeng:appliedenergistics2:rv6-stable-7'
-    deobfCompile "curse.maven:mekanism:2835175" // 9.8.3.390
-    deobfCompile "curse.maven:mekanism-generators:2835177" // 9.8.3.390
-    deobfCompile "curse.maven:actually-additions:2844115" // r151-2
-    deobfCompile "curse.maven:thaumcraft:2629023" // 6.1.BETA26
-    deobfCompile "curse.maven:astral-sorcery:2971187" // 1.10.24
-    deobfCompile "curse.maven:blood-magic:2822288" // 2.4.3-105
+    deobfCompile "curse.maven:mekanism-268560:2835175" // 9.8.3.390
+    deobfCompile "curse.maven:mekanism-generators-268566:2835177" // 9.8.3.390
+    deobfCompile "curse.maven:actually-additions-228404:2844115" // r151-2
+    deobfCompile "curse.maven:thaumcraft-223628:2629023" // 6.1.BETA26
+    deobfCompile "curse.maven:astral-sorcery-241721:2971187" // 1.10.24
+    deobfCompile "curse.maven:blood-magic-224791:2822288" // 2.4.3-105
     deobfCompile "com.progwml6.natura:natura:1.12.2-4.3.2.69"
-    deobfCompile "curse.maven:projecte:2702991" // 1.4.1
-    deobfCompile "curse.maven:valkyriecompat:2691540" // 2.0.20.1
-    deobfCompile "curse.maven:valkyrielib:2691542" // 2.0.20.1
-    deobfCompile "curse.maven:environmental-tech:2691536" // 2.0.20.1
+    deobfCompile "curse.maven:projecte-226410:2702991" // 1.4.1
+    deobfCompile "curse.maven:valkyriecompat-289532:2691540" // 2.0.20.1
+    deobfCompile "curse.maven:valkyrielib-245480:2691542" // 2.0.20.1
+    deobfCompile "curse.maven:environmental-tech-245453:2691536" // 2.0.20.1
     compile "net.industrial-craft:industrialcraft-2:2.8.170-ex112:api"
-    deobfCompile "curse.maven:advanced-solar-panels:2652182" // 4.2.1
-    deobfCompile "curse.maven:natural-absorption:2678478" // 1.0.0
-    deobfCompile "curse.maven:redstone-repository-revolved:2695517" // 1.4.0-dev
-    deobfCompile "curse.maven:solar-flux-reborn:3050838" // 12.4.11
+    deobfCompile "curse.maven:advanced-solar-panels-252714:2652182" // 4.2.1
+    deobfCompile "curse.maven:natural-absorption-224296:2678478" // 1.0.0
+    deobfCompile "curse.maven:redstone-repository-revolved-300750:2695517" // 1.4.0-dev
+    deobfCompile "curse.maven:solar-flux-reborn-246974:3050838" // 12.4.11
     deobfCompile "com.enderio.core:EnderCore:1.12.2-0.5.76"
     deobfCompile("com.enderio:EnderIO:1.12.2-5.2.59") { exclude group: "deobf.com.enderio.core" }
     deobfCompile "net.sengir.forestry:forestry_1.12.2:5.8.2.387"
