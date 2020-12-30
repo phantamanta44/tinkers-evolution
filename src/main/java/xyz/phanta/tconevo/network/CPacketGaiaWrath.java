@@ -44,7 +44,7 @@ public class CPacketGaiaWrath implements IMessage {
         public IMessage onMessage(CPacketGaiaWrath message, MessageContext ctx) {
             EntityPlayer player = ctx.getServerHandler().player;
             //noinspection Convert2Lambda
-            ctx.getServerHandler().server.addScheduledTask(new Runnable() {
+            ctx.getServerHandler().serverController.addScheduledTask(new Runnable() {
                 @Override
                 public void run() {
                     if (player.getCooledAttackStrength(0.5F) >= 0.95) {

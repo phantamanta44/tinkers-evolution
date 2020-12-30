@@ -10,6 +10,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
+import java.util.Collections;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
@@ -29,6 +30,7 @@ public abstract class DelegateModelCache<K, M extends DelegatingModel<K, M>> ext
     private BlockPos cachedRenderEntityPos = null;
 
     public DelegateModelCache(M rootModel) {
+        super(Collections.emptyList());
         this.rootModel = rootModel;
     }
 

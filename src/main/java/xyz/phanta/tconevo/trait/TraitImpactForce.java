@@ -17,7 +17,7 @@ public class TraitImpactForce extends AbstractTrait {
     public float damage(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damage, float newDamage, boolean isCritical) {
         // will very likely be client-server inconsistency here, but that's probably not a huge issue...
         double velocity = player instanceof EntityPlayer && !player.world.isRemote
-                ? TconEvoMod.PROXY.getPlayerStateHandler().getPlayerVelocity((EntityPlayer)player).length()
+                ? TconEvoMod.PROXY.getPlayerStateHandler().getPlayerVelocity((EntityPlayer)player).lengthVector()
                 : Math.sqrt(player.motionX * player.motionX + player.motionY * player.motionY + player.motionZ * player.motionZ);
         return newDamage + damage * (float)velocity;
     }

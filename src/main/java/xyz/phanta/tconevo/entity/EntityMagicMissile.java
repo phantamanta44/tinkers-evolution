@@ -58,6 +58,11 @@ public class EntityMagicMissile extends EntityProjectileBase {
     }
 
     @Override
+    protected ItemStack getArrowStack() {
+        return ItemStack.EMPTY;
+    }
+
+    @Override
     public void onUpdate() {
         super.onUpdate();
         if (ticksExisted > 32) { // die if nothing is hit within a certain time
@@ -77,7 +82,7 @@ public class EntityMagicMissile extends EntityProjectileBase {
         IBlockState hitState = world.getBlockState(hitBlockPos);
         ProjectileEvent.OnHitBlock.fireEvent(this, getSpeed(), hitBlockPos, hitState);
         if (hitState.getMaterial() != Material.AIR) {
-            hitState.getBlock().onEntityCollision(world, hitBlockPos, hitState, this);
+            hitState.getBlock().onEntityCollidedWithBlock(world, hitBlockPos, hitState, this);
         }
         onHitSomething();
     }

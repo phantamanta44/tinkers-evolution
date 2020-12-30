@@ -63,7 +63,7 @@ public class TconEvoItems {
 
     private static <T extends Item> T register(IForgeRegistry<Item> reg, String name, T item) {
         item.setRegistryName(TconEvoMod.INSTANCE.newResourceLocation(name));
-        item.setTranslationKey(TconEvoMod.INSTANCE.prefix(name));
+        item.setUnlocalizedName(TconEvoMod.INSTANCE.prefix(name));
         reg.register(item);
         return item;
     }
