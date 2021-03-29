@@ -169,7 +169,4 @@ processResources {
     exclude '**/*.js'
     exclude '**/*.py'
     exclude '**/*.sh'
-
-    // copy access transformers
-    rename '.+_at\\.cfg', 'META-INF/$0'
 }
