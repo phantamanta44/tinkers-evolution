@@ -113,7 +113,8 @@ public class ItemToolSceptre extends TinkerToolCore implements IProjectile {
 
     @Override
     public boolean dealDamage(ItemStack stack, EntityLivingBase player, Entity entity, float damage) {
-        if (entity.attackEntityFrom(DamageUtils.getEntityDamageSource(player).setMagicDamage(), damage)) {
+        if (DamageUtils.attackEntityWithTool(player, stack, entity,
+                DamageUtils.getEntityDamageSource(player).setMagicDamage(), damage)) {
             TconEvoMod.PROXY.playEntityEffect(entity, SPacketEntitySpecialEffect.EffectType.ENTROPY_BURST);
             return true;
         }
@@ -122,7 +123,7 @@ public class ItemToolSceptre extends TinkerToolCore implements IProjectile {
 
     @Override
     public boolean dealDamageRanged(ItemStack stack, Entity projectile, EntityLivingBase player, Entity entity, float damage) {
-        return entity.attackEntityFrom(
+        return DamageUtils.attackEntityWithTool(player, stack, entity,
                 DamageUtils.getProjectileDamageSource(entity, player, projectile).setMagicDamage(), damage);
     }
 

@@ -10,6 +10,7 @@ import xyz.phanta.tconevo.TconEvoMod;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
 import xyz.phanta.tconevo.network.SPacketEntitySpecialEffect;
+import xyz.phanta.tconevo.util.DamageUtils;
 import xyz.phanta.tconevo.util.ToolUtils;
 
 import java.util.List;
@@ -35,7 +36,7 @@ public class ModifierPrimordial extends ModifierTrait {
             float chaosDmg = damage * getDamageConversion(ToolUtils.getTraitLevel(tool, identifier));
             if (chaosDmg > 0F) {
                 newDamage = Math.max(newDamage - chaosDmg, 0F);
-                if (target.attackEntityFrom(DraconicHooks.INSTANCE.getChaosDamage(player), chaosDmg)) {
+                if (DamageUtils.attackEntityWithTool(player, tool, target, DraconicHooks.INSTANCE.getChaosDamage(player), chaosDmg)) {
                     // if the hit lands, reset i-frames so they can be hit by the non-chaos damage instance too
                     target.hurtResistantTime = 0;
                     TconEvoMod.PROXY.playEntityEffect(target, SPacketEntitySpecialEffect.EffectType.CHAOS_BURST);
