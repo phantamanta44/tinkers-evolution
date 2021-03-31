@@ -21,6 +21,9 @@ public enum MaterialForm {
             new Entry("item", MaterialCastType.GEM),
             new Entry("block", Material.VALUE_BrickBlock, MaterialCastType.BLOCK),
             new Entry("nugget", Material.VALUE_Nugget, MaterialCastType.NUGGET)),
+    WOOD(
+            new Entry("planks", Material.VALUE_Ingot),
+            new Entry("log", Material.VALUE_BrickBlock)),
     PLATE(new Entry("plate", MaterialCastType.PLATE)),
     RAW_BLOCK(new Entry("", MaterialCastType.BLOCK)),
     RAW(new Entry(""));
