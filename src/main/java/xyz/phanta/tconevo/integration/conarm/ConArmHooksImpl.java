@@ -83,7 +83,7 @@ public class ConArmHooksImpl implements ConArmHooks {
     }
 
     @SubscribeEvent
-    public void onArmourBuilt(ArmoryEvent.OnItemBuilding event) throws TinkerGuiException {
+    public void onArmourBuilt(ArmoryEvent.OnItemBuilding event) {
         event.tag.setInteger(TAG_EQ_SLOT, event.armor.armorType.ordinal());
         if (TinkerUtil.hasTrait(event.tag, NameConst.ARMOUR_TRAIT_EVOLVED)) {
             // draconic modifier init was deferred to here if the tool was just built
@@ -117,7 +117,7 @@ public class ConArmHooksImpl implements ConArmHooks {
     @Override
     public ItemStack buildArmourArtifact(ArtifactTypeArmour.Spec spec) throws ArtifactType.BuildingException {
         // get armour type
-        // this is bad and slow, but conarm doesn't offer any better way to look up tool types
+        // this is bad and slow, but conarm doesn't offer any better way to look up armour types
         ArmorCore armourType = ArmoryRegistry.getArmor().stream()
                 .filter(t -> t.getIdentifier().equals(spec.armourType))
                 .findAny().orElseThrow(() -> new ArtifactType.BuildingException("Unknown armour type \"%s\"", spec.armourType));
