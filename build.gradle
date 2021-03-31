@@ -80,8 +80,8 @@ dependencies { // THE BEAST
     deobfCompile 'com.azanor.baubles:Baubles:1.12-1.5.2'
     deobfCompile "codechicken:CodeChickenLib:1.12.2-3.2.3.358:universal"
     deobfCompile "cofh:RedstoneFlux:1.12-2.1.0.7:universal"
-    deobfCompile "curse.maven:brandons-core-231382:2867147" // 2.4.18.210
-    deobfCompile "curse.maven:draconic-evolution-223565:2867186" // 2.3.25.351
+    deobfCompile "curse.maven:brandons-core-231382:3051539" // 2.4.19.214
+    deobfCompile "curse.maven:draconic-evolution-223565:3051542" // 2.3.27.353
     deobfCompile "vazkii.botania:Botania:r1.10-363.148"
     deobfCompile "com.teamwizardry.librarianlib:librarianlib-1.12.2:4.19.1"
     deobfCompile "curse.maven:natural-pledge-247704:2740703" // r3.1.2
