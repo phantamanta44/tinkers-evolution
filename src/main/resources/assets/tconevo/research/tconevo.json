@@ -5,6 +5,7 @@
       "name": "tconevo.thaumresearch.base.title",
       "icons": ["tconstruct:tooltables;1;3"],
       "category": "TCONEVO",
+      "parents": ["METALLURGY"],
       "meta": ["ROUND", "HIDDEN"],
       "location": [0, 0],
       "stages": [

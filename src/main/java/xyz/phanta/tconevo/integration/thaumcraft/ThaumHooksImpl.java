@@ -1,5 +1,6 @@
 package xyz.phanta.tconevo.integration.thaumcraft;
 
+import io.github.phantamanta44.libnine.util.nullity.Reflected;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -20,7 +21,6 @@ import xyz.phanta.tconevo.TconEvoMod;
 import xyz.phanta.tconevo.init.TconEvoItems;
 import xyz.phanta.tconevo.item.ItemMaterial;
 import xyz.phanta.tconevo.item.ItemMetal;
-import io.github.phantamanta44.libnine.util.nullity.Reflected;
 
 @Reflected
 public class ThaumHooksImpl implements ThaumHooks {
@@ -28,17 +28,19 @@ public class ThaumHooksImpl implements ThaumHooks {
     @Override
     public void onInit(FMLInitializationEvent event) {
         // research
+        // thaumcraft api says to register categories in post-init
+        // but research loading fails if you do that because the research category doesn't exist :v
         ResearchCategories.registerCategory("TCONEVO", "METALLURGY",
                 new AspectList().add(Aspect.TOOL, 20).add(Aspect.AVERSION, 20).add(Aspect.PROTECT, 20)
                         .add(Aspect.METAL, 15).add(Aspect.CRAFT, 10).add(Aspect.FIRE, 5).add(Aspect.ORDER, 5),
                 new ResourceLocation(MOD_ID, "textures/items/thaumium_pick.png"),
                 new ResourceLocation(TConstruct.modID, "textures/blocks/smeltery/seared_brick.png"));
-        ScanningManager.addScannableThing(new ScanBlock("tconevo.tool_table", TinkerTools.toolTables));
+        ScanningManager.addScannableThing(new ScanBlock("f_tconevo.tool_table", TinkerTools.toolTables));
         ThaumcraftApi.registerResearchLocation(TconEvoMod.INSTANCE.newResourceLocation("research/tconevo.json"));
 
         // recipes
         ThaumcraftApi.addInfusionCraftingRecipe(
-                TconEvoMod.INSTANCE.newResourceLocation("primal_metal"), new InfusionRecipe("TCONEVO_PRIMALMETAL",
+                TconEvoMod.INSTANCE.newResourceLocation("primal_metal"), new InfusionRecipe("TCONEVO_PRIMALMETAL@1",
                         TconEvoItems.METAL.newStack(ItemMetal.Type.PRIMAL_METAL, ItemMetal.Form.INGOT, 1), 5,
                         new AspectList().add(Aspect.METAL, 30).add(Aspect.AIR, 15).add(Aspect.EARTH, 15)
                                 .add(Aspect.FIRE, 15).add(Aspect.WATER, 15).add(Aspect.ORDER, 15).add(Aspect.ENTROPY, 15),
