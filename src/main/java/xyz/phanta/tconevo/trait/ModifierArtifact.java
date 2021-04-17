@@ -1,6 +1,5 @@
 package xyz.phanta.tconevo.trait;
 
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
@@ -48,7 +47,7 @@ public class ModifierArtifact extends ModifierTrait implements MatchSensitiveMod
     public void onToolCraft(TinkerCraftingEvent event) {
         ItemStack stack = event.getItemStack();
         if (stack.getItem() instanceof ITinkerable && ToolUtils.getTraitLevel(stack, NameConst.MOD_ARTIFACT) == 1) {
-            event.setCanceled(I18n.format(NameConst.INFO_ARTIFACT_SEALED));
+            event.setCanceled(Util.translate(NameConst.INFO_ARTIFACT_SEALED));
         }
     }
 

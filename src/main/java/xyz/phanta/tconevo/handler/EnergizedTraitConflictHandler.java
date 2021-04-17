@@ -1,9 +1,9 @@
 package xyz.phanta.tconevo.handler;
 
-import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import slimeknights.tconstruct.library.Util;
 import slimeknights.tconstruct.library.events.TinkerCraftingEvent;
 import slimeknights.tconstruct.library.traits.ITrait;
 import slimeknights.tconstruct.library.utils.ToolHelper;
@@ -16,7 +16,7 @@ public class EnergizedTraitConflictHandler {
     @SubscribeEvent
     public void onToolBuilt(TinkerCraftingEvent.ToolCraftingEvent event) {
         if (isConflicting(event.getItemStack())) {
-            event.setCanceled(I18n.format(NameConst.INFO_ENERGIZED_TRAIT_CONFLICT));
+            event.setCanceled(Util.translate(NameConst.INFO_ENERGIZED_TRAIT_CONFLICT));
         }
     }
 
