@@ -63,7 +63,6 @@ public class TconEvoMaterials {
     // thermal series
     public static Material TIN, ALUMINIUM, NICKEL, PLATINUM, INVAR, CONSTANTAN, SIGNALUM, LUMIUM, ENDERIUM;
 
-    @InitMe
     public static void init() {
         // tinkers' construct
         TinkerMaterials.stone.addStats(new MagicMaterialStats(120, 1F, 0.25F, HarvestLevels.IRON));
@@ -670,7 +669,7 @@ public class TconEvoMaterials {
                 .build();
 
         // natura
-        GHOSTWOOD = new MaterialBuilder(NameConst.MAT_GHOSTWOOD, 0xc1c1c1, MaterialForm.RAW, "planksGhostwood")
+        GHOSTWOOD = new MaterialBuilder(NameConst.MAT_GHOSTWOOD, 0xc1c1c1, MaterialForm.WOOD, "Ghostwood")
                 .requiresOres("planksGhostwood")
                 .setCraftable()
                 .withStatsHead(24, 3F, 2.5F, HarvestLevels.STONE)
@@ -681,7 +680,7 @@ public class TconEvoMaterials {
                 .withStatsFletching(1F, 0.9F)
                 .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_FOOT_FLEET, TinkerTraits.ecological)
                 .build();
-        BLOODWOOD = new MaterialBuilder(NameConst.MAT_BLOODWOOD, 0x761d12, MaterialForm.RAW, "planksBloodwood")
+        BLOODWOOD = new MaterialBuilder(NameConst.MAT_BLOODWOOD, 0x761d12, MaterialForm.WOOD, "Bloodwood")
                 .requiresOres("planksBloodwood")
                 .setCraftable()
                 .withStatsHead(350, 7F, 5F, HarvestLevels.OBSIDIAN)
@@ -691,7 +690,7 @@ public class TconEvoMaterials {
                 .withStatsArrowShaft(1.5F, 0)
                 .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_VAMPIRIC, TinkerTraits.ecological)
                 .build();
-        DARKWOOD = new MaterialBuilder(NameConst.MAT_DARKWOOD, 0x275293, MaterialForm.RAW, "planksDarkwood")
+        DARKWOOD = new MaterialBuilder(NameConst.MAT_DARKWOOD, 0x275293, MaterialForm.WOOD, "Darkwood")
                 .requiresOres("planksDarkwood")
                 .setCraftable()
                 .withStatsHead(112, 4F, 3.5F, HarvestLevels.IRON)
@@ -701,7 +700,7 @@ public class TconEvoMaterials {
                 .withStatsArrowShaft(1F, 10)
                 .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_SUNDERING, TinkerTraits.ecological)
                 .build();
-        FUSEWOOD = new MaterialBuilder(NameConst.MAT_FUSEWOOD, 0x365841, MaterialForm.RAW, "planksFusewood")
+        FUSEWOOD = new MaterialBuilder(NameConst.MAT_FUSEWOOD, 0x365841, MaterialForm.WOOD, "Fusewood")
                 .requiresOres("planksFusewood")
                 .setCraftable()
                 .withStatsHead(24, 5.5F, 4.5F, HarvestLevels.DIAMOND)

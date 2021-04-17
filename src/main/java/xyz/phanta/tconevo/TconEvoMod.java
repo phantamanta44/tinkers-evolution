@@ -14,6 +14,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import xyz.phanta.tconevo.artifact.Artifact;
 import xyz.phanta.tconevo.command.CommandTconEvo;
+import xyz.phanta.tconevo.init.TconEvoMaterials;
 import xyz.phanta.tconevo.init.TconEvoPartTypes;
 import xyz.phanta.tconevo.item.ItemMaterial;
 
@@ -21,7 +22,7 @@ import xyz.phanta.tconevo.item.ItemMaterial;
 public class TconEvoMod extends Virtue {
 
     public static final String MOD_ID = "tconevo";
-    public static final String VERSION = "1.0.38";
+    public static final String VERSION = "1.0.39";
 
     @Mod.Instance(MOD_ID)
     public static TconEvoMod INSTANCE;
@@ -51,6 +52,11 @@ public class TconEvoMod extends Virtue {
             }
         });
         TconEvoPartTypes.init(); // this needs to be called as soon as possible
+    }
+
+    @Mod.EventHandler
+    public void onConstruction(FMLConstructionEvent event) {
+        TconEvoMaterials.init();
     }
 
     @Mod.EventHandler

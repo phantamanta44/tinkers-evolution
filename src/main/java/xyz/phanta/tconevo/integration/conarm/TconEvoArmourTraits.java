@@ -1,5 +1,6 @@
 package xyz.phanta.tconevo.integration.conarm;
 
+import c4.conarm.lib.ArmoryRegistry;
 import c4.conarm.lib.utils.RecipeMatchHolder;
 import net.minecraft.item.ItemStack;
 import slimeknights.mantle.util.RecipeMatch;
@@ -157,6 +158,10 @@ public class TconEvoArmourTraits {
         // copy equivalent item matchers from analogous tool mods
         copyMatchers(TconEvoTraits.MOD_FLUXED, MOD_FLUXED);
         copyMatchers(TconEvoTraits.MOD_PHOTOVOLTAIC, MOD_PHOTOVOLTAIC);
+
+        // copy tool mods that are also used as armour mods
+        ArmoryRegistry.registerModifier(TconEvoTraits.MOD_ARTIFACT);
+        copyMatchers(TconEvoTraits.MOD_ARTIFACT, TconEvoTraits.MOD_ARTIFACT);
     }
 
     private static void addModItemOpt(Modifier mod, Supplier<Optional<ItemStack>> materialGetter) {

@@ -5,7 +5,6 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.DamageSource;
 import slimeknights.tconstruct.library.modifiers.ModifierAspect;
 import slimeknights.tconstruct.library.modifiers.ModifierTrait;
 import xyz.phanta.tconevo.TconEvoConfig;
@@ -14,6 +13,7 @@ import xyz.phanta.tconevo.capability.PowerWrapper;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
 import xyz.phanta.tconevo.network.SPacketEntitySpecialEffect;
+import xyz.phanta.tconevo.util.DamageUtils;
 import xyz.phanta.tconevo.util.ToolUtils;
 
 import java.util.List;
@@ -64,9 +64,7 @@ public class ModifierFluxBurn extends ModifierTrait {
             float burnDamage = (float)(totalBurned / (double)TconEvoConfig.moduleDraconicEvolution.fluxBurnEnergy);
             if (burnDamage >= 0.01F) { // no small damage
                 target.hurtResistantTime = 0; // reset i-frames from the original attack
-                target.attackEntityFrom(player instanceof EntityPlayer
-                        ? DamageSource.causePlayerDamage((EntityPlayer)player)
-                        : DamageSource.causeMobDamage(player), burnDamage);
+                DamageUtils.attackEntityWithTool(player, tool, target, DamageUtils.getEntityDamageSource(player), burnDamage);
             }
             TconEvoMod.PROXY.playEntityEffect(target, SPacketEntitySpecialEffect.EffectType.FLUX_BURN);
         }

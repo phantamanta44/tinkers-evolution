@@ -90,9 +90,11 @@ public class MaterialDefinition {
     }
 
     private void tryActivate() {
-        for (RegCondition condition : conditions) {
-            if (!condition.isSatisfied()) {
-                return;
+        if (MaterialBuilder.isNotWhitelisted(material.identifier)) {
+            for (RegCondition condition : conditions) {
+                if (!condition.isSatisfied()) {
+                    return;
+                }
             }
         }
         (form == MaterialForm.METAL ? METAL_PREFIXES.stream() : form.entries.stream().map(e -> e.prefix))

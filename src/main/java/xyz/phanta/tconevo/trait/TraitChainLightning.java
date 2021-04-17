@@ -70,7 +70,7 @@ public class TraitChainLightning extends AbstractTrait {
         for (EntityLivingBase hit : toStrike) {
             hitPositions.add(new Vec3d(hit.posX, hit.posY + hit.height / 2D, hit.posZ));
             hit.hurtResistantTime = 0;
-            hit.attackEntityFrom(dmgSrc, lightningDmg);
+            DamageUtils.attackEntityWithTool(player, tool, hit, dmgSrc, lightningDmg);
         }
         TconEvoMod.PROXY.playLightningEffect(target, hitPositions);
     }

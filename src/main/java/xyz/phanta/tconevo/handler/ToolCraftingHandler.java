@@ -1,9 +1,9 @@
 package xyz.phanta.tconevo.handler;
 
-import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import slimeknights.tconstruct.library.Util;
 import slimeknights.tconstruct.library.events.TinkerCraftingEvent;
 import slimeknights.tconstruct.library.utils.TinkerUtil;
 import xyz.phanta.tconevo.constant.NameConst;
@@ -21,7 +21,7 @@ public class ToolCraftingHandler {
             NBTTagCompound tag = Objects.requireNonNull(stack.getTagCompound());
             if (tag.hasKey(TraitEvolved.TAG_EVOLVED_TIER) && !TinkerUtil.hasTrait(tag, NameConst.TRAIT_EVOLVED)
                     && !TinkerUtil.hasTrait(tag, NameConst.ARMOUR_TRAIT_EVOLVED)) {
-                event.setCanceled(I18n.format(NameConst.INFO_CANNOT_REPLACE));
+                event.setCanceled(Util.translate(NameConst.INFO_CANNOT_REPLACE));
             }
         }
     }

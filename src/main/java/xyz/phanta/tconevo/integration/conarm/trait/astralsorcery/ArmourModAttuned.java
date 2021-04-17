@@ -30,6 +30,7 @@ import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.integration.astralsorcery.AstralConstellation;
 import xyz.phanta.tconevo.integration.astralsorcery.AstralHooks;
 import xyz.phanta.tconevo.trait.astralsorcery.ModifierAttuned;
+import xyz.phanta.tconevo.util.DamageUtils;
 
 import javax.annotation.Nullable;
 
@@ -161,7 +162,7 @@ public abstract class ArmourModAttuned extends ArmorModifierTrait {
             if (attacker != null) {
                 damage *= (float)TconEvoConfig.moduleAstralSorcery.armourDiscidiaReflectRatio;
                 if (damage > 0F) {
-                    attacker.attackEntityFrom(DamageSource.causeThornsDamage(player), damage);
+                    DamageUtils.attackEntityWithTool(player, armour, attacker, DamageSource.causeThornsDamage(player), damage);
                 }
             }
         }

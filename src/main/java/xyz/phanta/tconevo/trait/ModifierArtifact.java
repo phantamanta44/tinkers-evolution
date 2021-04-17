@@ -1,6 +1,5 @@
 package xyz.phanta.tconevo.trait;
 
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
@@ -10,7 +9,7 @@ import slimeknights.tconstruct.library.Util;
 import slimeknights.tconstruct.library.events.TinkerCraftingEvent;
 import slimeknights.tconstruct.library.modifiers.ModifierAspect;
 import slimeknights.tconstruct.library.modifiers.ModifierTrait;
-import slimeknights.tconstruct.library.tools.ToolCore;
+import slimeknights.tconstruct.library.tinkering.ITinkerable;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.item.ItemMaterial;
 import xyz.phanta.tconevo.trait.base.MatchSensitiveModifier;
@@ -47,8 +46,8 @@ public class ModifierArtifact extends ModifierTrait implements MatchSensitiveMod
     @SubscribeEvent
     public void onToolCraft(TinkerCraftingEvent event) {
         ItemStack stack = event.getItemStack();
-        if (stack.getItem() instanceof ToolCore && ToolUtils.getTraitLevel(stack, NameConst.MOD_ARTIFACT) == 1) {
-            event.setCanceled(I18n.format(NameConst.INFO_ARTIFACT_SEALED));
+        if (stack.getItem() instanceof ITinkerable && ToolUtils.getTraitLevel(stack, NameConst.MOD_ARTIFACT) == 1) {
+            event.setCanceled(Util.translate(NameConst.INFO_ARTIFACT_SEALED));
         }
     }
 

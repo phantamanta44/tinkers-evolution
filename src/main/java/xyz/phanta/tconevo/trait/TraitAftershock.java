@@ -34,7 +34,8 @@ public class TraitAftershock extends StackableTrait {
         float bonusDamage = getBonusDamage(ToolUtils.getTraitLevel(tool, NameConst.TRAIT_AFTERSHOCK));
         if (bonusDamage > 0F) {
             target.hurtResistantTime = 0;
-            target.attackEntityFrom(DamageUtils.getEntityDamageSource(player).setMagicDamage(), bonusDamage);
+            DamageUtils.attackEntityWithTool(player, tool, target,
+                    DamageUtils.getEntityDamageSource(player).setMagicDamage(), bonusDamage);
         }
     }
 
