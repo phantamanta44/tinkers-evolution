@@ -15,6 +15,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import slimeknights.tconstruct.library.tinkering.ITinkerable;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.capability.PowerWrapper;
 import xyz.phanta.tconevo.constant.NameConst;
@@ -52,7 +53,8 @@ public class ArmourModFinalGuard extends ArmorModifierTrait {
         int cost = TconEvoConfig.moduleDraconicEvolution.finalGuardEnergy;
         for (int i = 0; i < energyStores.length; i++) {
             ItemStack stack = player.inventory.armorInventory.get(i);
-            if ((energyStores[i] = PowerWrapper.wrap(stack)) != null) {
+            if (stack.getItem() instanceof ITinkerable && ToolUtils.hasTrait(stack, NameConst.ARMOUR_MOD_FINAL_GUARD)
+                    && (energyStores[i] = PowerWrapper.wrap(stack)) != null) {
                 totalEnergy += energy[i] = energyStores[i].extract(cost, false, true);
             }
         }
