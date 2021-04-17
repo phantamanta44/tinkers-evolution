@@ -1,6 +1,5 @@
 package xyz.phanta.tconevo.init;
 
-import io.github.phantamanta44.libnine.InitMe;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.utils.HarvestLevels;
 import slimeknights.tconstruct.tools.TinkerMaterials;
