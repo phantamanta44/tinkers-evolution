@@ -24,6 +24,7 @@ public class TconEvoClassTransformer implements IClassTransformer {
         for (Transform tform : Arrays.asList(
                 new TransformAstralAttunement(),
                 new TransformBreakUnbreakable(),
+                new TransformCaptureDuplicateMaterials(),
                 new TransformCaptureMaterialProperties(),
                 new TransformCustomMaterialRender(),
                 new TransformDisableDamageCutoff(),
