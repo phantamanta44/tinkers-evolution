@@ -32,6 +32,7 @@ public class TconEvoClassTransformer implements IClassTransformer {
                 new TransformGregTechRecipeCrash(),
                 new TransformImprovedToolBuilding(),
                 new TransformItemStackBar(),
+                new TransformMaterialisConArmCrash(),
                 new TransformModifyMeltSpeed(),
                 new TransformThaumInfusionEnchantment(),
                 new TransformUniquePartTraits(),
