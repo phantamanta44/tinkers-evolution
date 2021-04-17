@@ -14,6 +14,10 @@ public class TconEvoConfig {
     @Config.RequiresMcRestart
     public static String[] disabledMaterials = new String[0];
 
+    @Config.Comment("A list of material IDs to always load, regardless of other loading conditions.")
+    @Config.RequiresMcRestart
+    public static String[] forceLoadMaterials = new String[0];
+
     @Config.Comment("A list of modifier IDs for modifiers that should be disabled.")
     @Config.RequiresMcRestart
     public static String[] disabledModifiers = new String[0];

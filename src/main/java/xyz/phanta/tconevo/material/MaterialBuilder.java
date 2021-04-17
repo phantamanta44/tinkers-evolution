@@ -23,9 +23,14 @@ import java.util.function.Supplier;
 public class MaterialBuilder {
 
     private static final Set<String> blacklisted = Sets.newHashSet(TconEvoConfig.disabledMaterials);
+    private static final Set<String> whitelisted = Sets.newHashSet(TconEvoConfig.forceLoadMaterials);
 
     public static boolean isNotBlacklisted(String matId) {
         return !blacklisted.contains(matId);
+    }
+
+    public static boolean isNotWhitelisted(String matId) {
+        return whitelisted.contains(matId);
     }
 
     private final String matId;
