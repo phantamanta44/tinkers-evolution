@@ -63,7 +63,6 @@ public class TconEvoMaterials {
     // thermal series
     public static Material TIN, ALUMINIUM, NICKEL, PLATINUM, INVAR, CONSTANTAN, SIGNALUM, LUMIUM, ENDERIUM;
 
-    @InitMe
     public static void init() {
         // tinkers' construct
         TinkerMaterials.stone.addStats(new MagicMaterialStats(120, 1F, 0.25F, HarvestLevels.IRON));
