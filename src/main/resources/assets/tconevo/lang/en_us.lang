@@ -530,12 +530,16 @@ material.primal_metal.name=Primal Metal
 fluid.tconevo.primal_metal.name=Molten Primal Metal
 material.amber.name=Amber
 material.quicksilver.name=Quicksilver
+material.enchanted_fabric.name=Enchanted Fabric
 
 modifier.tconevo.warping.name=Warping
 modifier.tconevo.warping.desc=§oStrange whispers reveal secrets...§r\nThis accursed weapon saps at the sanity of those that bear its strikes.
 
 modifier.tconevo.warping_armor.name=Warping
 modifier.tconevo.warping_armor.desc=§oStrange whispers reveal secrets...§r\nThis accursed plate saps at the sanity of those that would strike it.
+modifier.tconevo.aura_affinity_armor.name=Aura Affinity
+modifier.tconevo.aura_affinity_armor.desc=§oWarp included!§r\nThis armour reduces vis costs.
+modifier.tconevo.aura_affinity_armor.extra=Vis Discount: -%s
 
 material.tin.name=Tin
 material.aluminium.name=Aluminium

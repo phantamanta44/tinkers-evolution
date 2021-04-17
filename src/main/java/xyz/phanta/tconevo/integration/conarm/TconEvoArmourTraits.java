@@ -26,6 +26,7 @@ import xyz.phanta.tconevo.integration.conarm.trait.industrialforegoing.ArmourTra
 import xyz.phanta.tconevo.integration.conarm.trait.naturalabsorption.ArmourModAbsorption;
 import xyz.phanta.tconevo.integration.conarm.trait.projecte.ArmourTraitSuperdense;
 import xyz.phanta.tconevo.integration.conarm.trait.projecte.ArmourTraitUltradense;
+import xyz.phanta.tconevo.integration.conarm.trait.thaumcraft.ArmourTraitAuraAffinity;
 import xyz.phanta.tconevo.integration.conarm.trait.thaumcraft.ArmourTraitWarping;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
 import xyz.phanta.tconevo.integration.forestry.ForestryHooks;
@@ -126,8 +127,9 @@ public class TconEvoArmourTraits {
     public static final ArmourTraitSuperdense TRAIT_SUPERDENSE = new ArmourTraitSuperdense();
     public static final ArmourTraitUltradense TRAIT_ULTRADENSE = new ArmourTraitUltradense();
 
-    // thaumium
+    // thaumcraft
     public static final ArmourTraitWarping TRAIT_WARPING = new ArmourTraitWarping();
+    public static final ArmourTraitAuraAffinity TRAIT_AURA_AFFINITY = new ArmourTraitAuraAffinity(1);
 
     public static final List<Modifier> MODIFIERS = Arrays.asList(
             MOD_FLUXED, MOD_PHOTOVOLTAIC,

@@ -58,7 +58,7 @@ public class TconEvoMaterials {
     // redstone arsenal/repository
     public static Material FLUXED_ELECTRUM, FLUX_CRYSTAL, GELID_ENDERIUM, GELID_GEM, FLUXED_STRING;
     // thaumcraft
-    public static Material THAUMIUM, VOID_METAL, PRIMAL_METAL, AMBER, QUICKSILVER;
+    public static Material THAUMIUM, VOID_METAL, PRIMAL_METAL, AMBER, QUICKSILVER, ENCHANTED_FABRIC;
     // thermal series
     public static Material TIN, ALUMINIUM, NICKEL, PLATINUM, INVAR, CONSTANTAN, SIGNALUM, LUMIUM, ENDERIUM;
 
@@ -822,6 +822,12 @@ public class TconEvoMaterials {
                 .setCraftable()
                 .withStatsMagic(130, 6F, 1.2F, HarvestLevels.STONE)
                 .withTraits(PartType.MAGIC, TconEvoTraits.TRAIT_MODIFIABLE[1])
+                .build();
+        ENCHANTED_FABRIC = new MaterialBuilder(NameConst.MAT_ENCHANTED_FABRIC, 0x5893d5, MaterialForm.RAW, "itemEnchantedFabric")
+                .requiresOres("itemEnchantedFabric")
+                .setCraftable()
+                .withStatsBowString(0.9F)
+                .withTraits(PartType.BOWSTRING, TconEvoTraits.TRAIT_MODIFIABLE[0])
                 .build();
 
         // thermal series

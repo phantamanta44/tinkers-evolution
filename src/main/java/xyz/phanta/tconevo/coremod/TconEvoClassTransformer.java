@@ -35,6 +35,7 @@ public class TconEvoClassTransformer implements IClassTransformer {
                 new TransformMaterialisConArmCrash(),
                 new TransformModifyMeltSpeed(),
                 new TransformThaumInfusionEnchantment(),
+                new TransformThaumVisDiscount(),
                 new TransformUniquePartTraits(),
                 new TransformUseJeiFancyRender())) {
             tform.getClasses(c -> TRANSFORMS.put(c, tform));

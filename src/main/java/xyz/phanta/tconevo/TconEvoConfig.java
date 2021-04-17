@@ -1364,6 +1364,20 @@ public class TconEvoConfig {
 
     }
 
+    @Config.Comment("Configuration for the Thaumcraft module.")
+    public static final Thaumcraft moduleThaumcraft = new Thaumcraft();
+
+    public static class Thaumcraft {
+
+        @Config.Comment({
+                "The percentage vis discount provided per level of the aura affinity trait.",
+                "Only useful with Construct's Armoury installed."
+        })
+        @Config.RangeInt(min = 1, max = 100)
+        public int auraAffinityVisDiscount = 2;
+
+    }
+
     @Config.Comment("Configuration for the Thermal Series module.")
     public static final ThermalSeries moduleThermalSeries = new ThermalSeries();
 
