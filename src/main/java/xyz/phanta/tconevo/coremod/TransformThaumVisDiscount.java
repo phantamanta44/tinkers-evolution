@@ -45,6 +45,7 @@ public class TransformThaumVisDiscount implements TconEvoClassTransformer.Transf
 
         @Nullable
         private Label elseLabel = null;
+        private boolean go = false;
 
         public MethodTransformerGetTotalVisDiscount(int api, MethodVisitor mv) {
             super(api, mv);
@@ -62,6 +63,15 @@ public class TransformThaumVisDiscount implements TconEvoClassTransformer.Transf
         public void visitLabel(Label label) {
             super.visitLabel(label);
             if (label.equals(elseLabel)) {
+                go = true;
+            }
+        }
+
+        @Override
+        public void visitFrame(int type, int nLocal, Object[] local, int nStack, Object[] stack) {
+            super.visitFrame(type, nLocal, local, nStack, stack);
+            if (go) {
+                go = false;
                 super.visitVarInsn(Opcodes.ALOAD, 0);
                 super.visitMethodInsn(Opcodes.INVOKESTATIC,
                         "xyz/phanta/tconevo/integration/thaumcraft/VisDiscountCoreHooks", "getVisDiscount",
