@@ -640,7 +640,7 @@ public class TconEvoMaterials {
         REFINED_OBSIDIAN = new MaterialBuilder(NameConst.MAT_REFINED_OBSIDIAN, 0x7d659b, MaterialForm.METAL, "RefinedObsidian")
                 .requiresOres("ingotRefinedObsidian")
                 .setCastable(2100)
-                .withStatsHead(1100, 8.5F, 8F, 4)
+                .withStatsHead(1100, 8F, 7.5F, 4)
                 .withStatsHandle(1.25F, 50)
                 .withStatsExtra(300)
                 .withStatsBow(0.65F, 1.35F, 7F)
