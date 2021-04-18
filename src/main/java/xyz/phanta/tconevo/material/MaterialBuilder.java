@@ -30,7 +30,7 @@ public class MaterialBuilder {
     }
 
     public static boolean isNotWhitelisted(String matId) {
-        return whitelisted.contains(matId);
+        return !whitelisted.contains(matId);
     }
 
     private final String matId;
