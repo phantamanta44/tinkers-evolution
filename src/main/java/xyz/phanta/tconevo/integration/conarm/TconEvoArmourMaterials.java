@@ -334,6 +334,10 @@ public class TconEvoArmourMaterials {
                 .withTraits(ArmourPartType.PROTECTIVE, TconEvoArmourTraits.TRAIT_GALE_FORCE[0])
                 .withTraits(ArmourPartType.TRIM, TconEvoArmourTraits.TRAIT_PHOENIX_ASPECT)
                 .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.ENCHANTED_FABRIC)
+                .withStatsArmour(10F, 12F, 0.9F, 1F, 0F, 0.9F)
+                .withTraits(ArmourPartType.ARMOUR, TconEvoArmourTraits.TRAIT_AURA_AFFINITY)
+                .build();
 
         // thermal series
         new ArmourMaterialBuilder(TconEvoMaterials.TIN)

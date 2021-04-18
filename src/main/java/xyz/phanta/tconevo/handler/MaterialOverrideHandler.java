@@ -108,6 +108,11 @@ public class MaterialOverrideHandler {
         registerOverrides(NameConst.MAT_ENDERIUM, "ref_enderium"); // thermal series
         registerOverrides(NameConst.MAT_LUMIUM, "ref_lumium");
         registerOverrides(NameConst.MAT_SIGNALUM, "ref_signalum");
+
+        // materialis
+        registerOverrides(NameConst.MAT_ALUMINIUM, "aluminum"); // :v
+        registerOverrides(NameConst.MAT_NEUTRONIUM, "cosmic_neutronium");
+        registerOverrides(NameConst.MAT_INFINITY_METAL, "infinity");
     }
 
     public static void registerOverrides(String materialId, String... overrideIds) {

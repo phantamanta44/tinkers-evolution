@@ -24,6 +24,7 @@ public class TconEvoClassTransformer implements IClassTransformer {
         for (Transform tform : Arrays.asList(
                 new TransformAstralAttunement(),
                 new TransformBreakUnbreakable(),
+                new TransformCaptureDuplicateMaterials(),
                 new TransformCaptureMaterialProperties(),
                 new TransformCustomMaterialRender(),
                 new TransformDisableDamageCutoff(),
@@ -31,8 +32,10 @@ public class TconEvoClassTransformer implements IClassTransformer {
                 new TransformGregTechRecipeCrash(),
                 new TransformImprovedToolBuilding(),
                 new TransformItemStackBar(),
+                new TransformMaterialisConArmCrash(),
                 new TransformModifyMeltSpeed(),
                 new TransformThaumInfusionEnchantment(),
+                new TransformThaumVisDiscount(),
                 new TransformUniquePartTraits(),
                 new TransformUseJeiFancyRender())) {
             tform.getClasses(c -> TRANSFORMS.put(c, tform));

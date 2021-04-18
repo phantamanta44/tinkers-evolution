@@ -692,6 +692,7 @@
 ### armour traits
 
 * [x] warping: inflicts temporary warp on attackers
+* [x] aura affinity: grants vis discount
 
 ### materials
 
@@ -708,6 +709,9 @@
     * magic: opportunist
 * [x] quicksilver
     * magic: modifiable 2
+* [x] enchanted fabric
+    * bowstring: modifiable
+    * armour: aura affinity
 
 ### other stuff
 

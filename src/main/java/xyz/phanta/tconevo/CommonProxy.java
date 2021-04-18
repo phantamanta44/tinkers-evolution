@@ -4,6 +4,9 @@ import net.minecraft.entity.Entity;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.CapabilityInject;
+import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLInterModComms;
@@ -16,6 +19,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import xyz.phanta.tconevo.artifact.ArtifactRegistry;
 import xyz.phanta.tconevo.handler.*;
 import xyz.phanta.tconevo.init.TconEvoItems;
+import xyz.phanta.tconevo.init.TconEvoMaterials;
 import xyz.phanta.tconevo.init.TconEvoTraits;
 import xyz.phanta.tconevo.integration.IntegrationManager;
 import xyz.phanta.tconevo.integration.conarm.ConArmHooks;
@@ -46,6 +50,12 @@ public class CommonProxy {
     private final ToolCapabilityHandler toolCapHandler = new ToolCapabilityHandler();
     private final PlayerStateHandler playerStateHandler = new PlayerStateHandler();
     private final ArtifactRegistry artifactRegistry = new ArtifactRegistry();
+
+    // ridiculous hack that lets us get some work done after construction but before pre-init
+    @CapabilityInject(IEnergyStorage.class)
+    public static void onCapabilityInject(Capability<IEnergyStorage> cap) {
+        TconEvoMaterials.init();
+    }
 
     public void onPreInit(FMLPreInitializationEvent event) {
         IntegrationManager.injectHooks(event.getAsmData());

@@ -308,10 +308,12 @@ public class NameConst {
     public static final String MAT_PRIMAL_METAL = "primal_metal";
     public static final String MAT_AMBER = "amber";
     public static final String MAT_QUICKSILVER = "quicksilver";
+    public static final String MAT_ENCHANTED_FABRIC = "enchanted_fabric";
 
     public static final String TRAIT_WARPING = TconEvoMod.MOD_ID + ".warping";
 
     public static final String ARMOUR_TRAIT_WARPING = TRAIT_WARPING + ARMOUR_SUFFIX;
+    public static final String TRAIT_AURA_AFFINITY = TconEvoMod.MOD_ID + ".aura_affinity", ARMOUR_TRAIT_AURA_AFFINITY = TRAIT_AURA_AFFINITY + ARMOUR_SUFFIX;
 
     // thermal series
 

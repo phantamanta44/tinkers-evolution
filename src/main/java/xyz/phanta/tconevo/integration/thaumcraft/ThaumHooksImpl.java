@@ -5,6 +5,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.oredict.OreDictionary;
 import slimeknights.tconstruct.TConstruct;
 import slimeknights.tconstruct.tools.TinkerTools;
 import thaumcraft.api.ThaumcraftApi;
@@ -27,6 +28,8 @@ public class ThaumHooksImpl implements ThaumHooks {
 
     @Override
     public void onInit(FMLInitializationEvent event) {
+        OreDictionary.registerOre("itemEnchantedFabric", ItemsTC.fabric);
+
         // research
         // thaumcraft api says to register categories in post-init
         // but research loading fails if you do that because the research category doesn't exist :v
