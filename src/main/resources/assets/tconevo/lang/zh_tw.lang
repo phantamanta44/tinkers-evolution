@@ -530,12 +530,16 @@ material.primal_metal.name=元金
 fluid.tconevo.primal_metal.name=熔融元金
 material.amber.name=琥珀
 material.quicksilver.name=水銀
+material.enchanted_fabric.name=附魔布料
 
 modifier.tconevo.warping.name=扭曲
 modifier.tconevo.warping.desc=§o奇異的低語預示著奧秘……§r\n這把可憎的兵刃將使它的敵人走火入魔。
 
 modifier.tconevo.warping_armor.name=扭曲
 modifier.tconevo.warping_armor.desc=§o奇異的低語預示著奧秘……§r\n這件可憎的盔甲將使企圖觸碰它的人走火入魔。
+modifier.tconevo.aura_affinity_armor.name=親魔性
+modifier.tconevo.aura_affinity_armor.desc=§o内含扭曲！§r\n這件盔甲會削減魔素消耗。
+modifier.tconevo.aura_affinity_armor.extra=魔素消耗削減：-%s
 
 material.tin.name=錫
 material.aluminium.name=鋁
