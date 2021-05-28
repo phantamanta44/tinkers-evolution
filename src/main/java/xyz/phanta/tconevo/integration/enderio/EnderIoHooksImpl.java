@@ -3,7 +3,7 @@ package xyz.phanta.tconevo.integration.enderio;
 import crazypants.enderio.base.fluid.Fluids;
 import crazypants.enderio.base.init.IModObjectBase;
 import crazypants.enderio.base.init.ModObject;
-import crazypants.enderio.machines.machine.solar.SolarType;
+import crazypants.enderio.machines.machine.solar.ISolarType;
 import io.github.phantamanta44.libnine.util.nullity.Reflected;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
@@ -12,7 +12,9 @@ import slimeknights.tconstruct.library.TinkerRegistry;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.trait.ModifierPhotovoltaic;
 
+import java.util.Collection;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Reflected
 public class EnderIoHooksImpl implements EnderIoHooks {
@@ -23,7 +25,7 @@ public class EnderIoHooksImpl implements EnderIoHooks {
             TinkerRegistry.registerSmelteryFuel(new FluidStack(Fluids.FIRE_WATER.getFluid(), 50),
                     TconEvoConfig.moduleEnderIo.fuelFireWaterBurnTime);
         }
-        for (SolarType type : SolarType.values()) {
+        for (ISolarType type : ISolarType.KIND.getOrderedValues()) {
             ModifierPhotovoltaic.registerSolarItem(type.getItemStack(), type.getRfperSecond());
         }
     }
@@ -49,23 +51,10 @@ public class EnderIoHooksImpl implements EnderIoHooks {
     }
 
     @Override
-    public Optional<ItemStack> getItemSolarSimple() {
-        return Optional.of(SolarType.SIMPLE.getItemStack());
-    }
-
-    @Override
-    public Optional<ItemStack> getItemSolarNormal() {
-        return Optional.of(SolarType.NORMAL.getItemStack());
-    }
-
-    @Override
-    public Optional<ItemStack> getItemSolarAdvanced() {
-        return Optional.of(SolarType.ADVANCED.getItemStack());
-    }
-
-    @Override
-    public Optional<ItemStack> getItemSolarVibrant() {
-        return Optional.of(SolarType.VIBRANT.getItemStack());
+    public Collection<ItemStack> getSolarItems() {
+        return ISolarType.KIND.getOrderedValues().stream()
+                .map(ISolarType::getItemStack)
+                .collect(Collectors.toList());
     }
 
     private static Optional<ItemStack> getModObjStack(IModObjectBase type) {

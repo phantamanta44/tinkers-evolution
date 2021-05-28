@@ -3,6 +3,8 @@ package xyz.phanta.tconevo.integration.enderio;
 import net.minecraft.item.ItemStack;
 import xyz.phanta.tconevo.integration.IntegrationHooks;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Optional;
 
 public interface EnderIoHooks extends IntegrationHooks {
@@ -20,13 +22,7 @@ public interface EnderIoHooks extends IntegrationHooks {
 
     Optional<ItemStack> getItemInvChargerVibrant();
 
-    Optional<ItemStack> getItemSolarSimple();
-
-    Optional<ItemStack> getItemSolarNormal();
-
-    Optional<ItemStack> getItemSolarAdvanced();
-
-    Optional<ItemStack> getItemSolarVibrant();
+    Collection<ItemStack> getSolarItems();
 
     class Noop implements EnderIoHooks {
 
@@ -51,23 +47,8 @@ public interface EnderIoHooks extends IntegrationHooks {
         }
 
         @Override
-        public Optional<ItemStack> getItemSolarSimple() {
-            return Optional.empty();
-        }
-
-        @Override
-        public Optional<ItemStack> getItemSolarNormal() {
-            return Optional.empty();
-        }
-
-        @Override
-        public Optional<ItemStack> getItemSolarAdvanced() {
-            return Optional.empty();
-        }
-
-        @Override
-        public Optional<ItemStack> getItemSolarVibrant() {
-            return Optional.empty();
+        public Collection<ItemStack> getSolarItems() {
+            return Collections.emptyList();
         }
 
     }

@@ -186,10 +186,9 @@ public class TconEvoTraits {
         addModItemOpt(MOD_FLUXED, EnderIoHooks.INSTANCE::getItemInvChargerBasic);
         addModItemOpt(MOD_FLUXED, EnderIoHooks.INSTANCE::getItemInvChargerNormal);
         addModItemOpt(MOD_FLUXED, EnderIoHooks.INSTANCE::getItemInvChargerVibrant);
-        addModItemOpt(MOD_PHOTOVOLTAIC, EnderIoHooks.INSTANCE::getItemSolarSimple);
-        addModItemOpt(MOD_PHOTOVOLTAIC, EnderIoHooks.INSTANCE::getItemSolarNormal);
-        addModItemOpt(MOD_PHOTOVOLTAIC, EnderIoHooks.INSTANCE::getItemSolarAdvanced);
-        addModItemOpt(MOD_PHOTOVOLTAIC, EnderIoHooks.INSTANCE::getItemSolarVibrant);
+        for (ItemStack stack : EnderIoHooks.INSTANCE.getSolarItems()) {
+            addModItem(MOD_PHOTOVOLTAIC, stack);
+        }
 
         // environmental tech
         addModItemOpt(MOD_PHOTOVOLTAIC, EnvTechHooks.INSTANCE::getItemSolarLitherite);

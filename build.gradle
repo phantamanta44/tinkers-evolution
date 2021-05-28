@@ -6,7 +6,7 @@ buildscript {
         mavenLocal()
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle-Phanta:2.3.1-SNAPSHOT'
+        classpath 'net.minecraftforge.gradle:ForgeGradle-Phanta:2.4-SNAPSHOT'
     }
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
@@ -89,7 +89,7 @@ dependencies { // THE BEAST
     deobfCompile "cofh:ThermalFoundation:1.12.2-2.6.3.27:universal"
     deobfCompile "cofh:ThermalExpansion:1.12.2-5.5.4.43:universal"
     deobfCompile "curse.maven:industrial-foregoing-266515:2745321" // 1.12.13-237
-    deobfCompile 'appeng:appliedenergistics2:rv6-stable-7'
+    deobfCompile "curse.maven:applied-energistics-2-223794:2747063" // rv6-stable-7
     deobfCompile "curse.maven:mekanism-268560:2835175" // 9.8.3.390
     deobfCompile "curse.maven:mekanism-generators-268566:2835177" // 9.8.3.390
     deobfCompile "curse.maven:actually-additions-228404:2844115" // r151-2
@@ -107,7 +107,10 @@ dependencies { // THE BEAST
     deobfCompile "curse.maven:redstone-repository-revolved-300750:2695517" // 1.4.0-dev
     deobfCompile "curse.maven:solar-flux-reborn-246974:3050838" // 12.4.11
     deobfCompile "com.enderio.core:EnderCore:1.12.2-0.5.76"
-    deobfCompile("com.enderio:EnderIO:1.12.2-5.2.59") { exclude group: "deobf.com.enderio.core" }
+    deobfCompile("com.enderio:EnderIO:1.12.2-5.3.68") {
+        exclude group: 'com.enderio', module: 'ap'
+        exclude group: "deobf.com.enderio.core"
+    }
     deobfCompile "net.sengir.forestry:forestry_1.12.2:5.8.2.387"
     deobfCompile("morph.avaritia:Avaritia:1.12.2-3.3.0.33:universal") { exclude group: "codechicken" }
     compile "net.darkhax.bookshelf:Bookshelf-1.12.2:2.3.590"
