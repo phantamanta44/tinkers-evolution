@@ -11,7 +11,7 @@ buildscript {
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
 
-version = "1.0.41"
+version = "1.0.42"
 group = "xyz.phanta.tconevo"
 archivesBaseName = "tconevo-1.12.2"
 

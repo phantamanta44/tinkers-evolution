@@ -1,5 +1,6 @@
 package xyz.phanta.tconevo.util;
 
+import c4.conarm.lib.tinkering.TinkersArmor;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
@@ -86,7 +87,7 @@ public class ToolUtils {
         NBTTagCompound rootTag = TagUtil.getTagSafe(stack);
         if (stack.getItem() instanceof TinkersItem) {
             ToolBuilder.rebuildTool(rootTag, (TinkersItem)stack.getItem());
-        } else { // if it's not a tool, it's probably armour
+        } else if (stack.getItem() instanceof TinkersArmor) { // if it's not a tool, it's probably armour
             ConArmHooks.INSTANCE.rebuildArmour(rootTag, stack.getItem());
         }
         stack.setTagCompound(rootTag);
