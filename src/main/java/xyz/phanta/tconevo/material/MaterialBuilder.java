@@ -174,6 +174,7 @@ public class MaterialBuilder {
             }
         }
         material = new Material(matId, colour, true);
+        TconReflect.uncancelMaterial(material.identifier);
         try {
             if (notBlacklisted) {
                 material.setCraftable(craftable);

@@ -9,6 +9,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.ModContainer;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.events.MaterialEvent;
@@ -142,7 +143,7 @@ public class MaterialOverrideHandler {
         }
     }
 
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void onMaterialRegistration(MaterialEvent.MaterialRegisterEvent event) {
         if (TconEvoConfig.overrideMaterials) {
             String overrideMatId = overrideMatIds.get(event.material.identifier);
@@ -169,8 +170,13 @@ public class MaterialOverrideHandler {
             if (overrideMat != Material.UNKNOWN) {
                 for (OverriddenMaterial overriddenMat : inheritFrom) {
                     for (IMaterialStats statsObj : overriddenMat.material.getAllStats()) {
-                        if (overrideMat.getStats(statsObj.getIdentifier()) == null) {
-                            overrideMat.addStats(statsObj);
+                        String statKey = statsObj.getIdentifier();
+                        if (overrideMat.getStats(statKey) == null) {
+                            ModContainer oldOwner = TconReflect.getStatOwnerMod(overriddenMat.material, statKey);
+                            TinkerRegistry.addMaterialStats(overrideMat, statsObj);
+                            if (oldOwner != null) {
+                                TconReflect.overrideStatOwnerMod(overrideMat, statKey, oldOwner);
+                            }
                         }
                     }
                 }
@@ -184,9 +190,13 @@ public class MaterialOverrideHandler {
             if (overrideMat != Material.UNKNOWN) {
                 for (OverriddenMaterial overriddenMat : inheritFrom) {
                     Map<String, List<ITrait>> overrideMatTraits = TconReflect.getTraits(overrideMat);
-                    overriddenMat.traits.asMap().forEach((partType, traits) -> {
+                    overriddenMat.traits.forEach((partType, trait) -> {
                         if (!overrideMatTraits.containsKey(partType)) {
-                            overrideMatTraits.put(partType, new ArrayList<>(traits));
+                            ModContainer oldOwner = TconReflect.getTraitOwnerMod(overriddenMat.material, trait);
+                            TinkerRegistry.addMaterialTrait(overrideMat, trait, partType);
+                            if (oldOwner != null) {
+                                TconReflect.overrideTraitOwnerMod(overrideMat, trait, oldOwner);
+                            }
                         }
                     });
                 }

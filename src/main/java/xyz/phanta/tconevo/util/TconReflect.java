@@ -13,15 +13,17 @@ import slimeknights.tconstruct.library.smeltery.ICastingRecipe;
 import slimeknights.tconstruct.library.smeltery.MeltingRecipe;
 import slimeknights.tconstruct.library.traits.ITrait;
 
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Map;
-import java.util.PriorityQueue;
+import javax.annotation.Nullable;
+import java.util.*;
 
 public class TconReflect {
 
     private static final Map<String, ModContainer> materialRegisteredByMod = MirrorUtils
             .<Map<String, ModContainer>>reflectField(TinkerRegistry.class, "materialRegisteredByMod").get(null);
+    private static final Map<String, Map<String, ModContainer>> statRegisteredByMod = MirrorUtils
+            .<Map<String, Map<String, ModContainer>>>reflectField(TinkerRegistry.class, "statRegisteredByMod").get(null);
+    private static final Map<String, Map<String, ModContainer>> traitRegisteredByMod = MirrorUtils
+            .<Map<String, Map<String, ModContainer>>>reflectField(TinkerRegistry.class, "traitRegisteredByMod").get(null);
     private static final Map<String, Material> materials = MirrorUtils
             .<Map<String, Material>>reflectField(TinkerRegistry.class, "materials").get(null);
     private static final List<MeltingRecipe> meltingRegistry = MirrorUtils
@@ -32,6 +34,9 @@ public class TconReflect {
             .<List<ICastingRecipe>>reflectField(TinkerRegistry.class, "basinCastRegistry").get(null);
     private static final List<AlloyRecipe> alloyRegistry = MirrorUtils
             .<List<AlloyRecipe>>reflectField(TinkerRegistry.class, "alloyRegistry").get(null);
+    private static final Set<String> cancelledMaterials = MirrorUtils
+            .<Set<String>>reflectField(TinkerRegistry.class, "cancelledMaterials").get(null);
+
     private static final MirrorUtils.IField<PriorityQueue<RecipeMatch>> fRecipeMatchRecipe_items = MirrorUtils.
             reflectField(RecipeMatchRegistry.class, "items");
     private static final MirrorUtils.IField<List<ItemStack>> fOredict_oredictEntry = MirrorUtils
@@ -43,8 +48,33 @@ public class TconReflect {
         materialRegisteredByMod.put(material.identifier, FMLCommonHandler.instance().findContainerFor(modObj));
     }
 
+    @Nullable
+    public static ModContainer getStatOwnerMod(Material material, String statKey) {
+        Map<String, ModContainer> statOwners = statRegisteredByMod.get(material.identifier);
+        return statOwners != null ? statOwners.get(statKey) : null;
+    }
+
+    public static void overrideStatOwnerMod(Material material, String statKey, ModContainer modCont) {
+        statRegisteredByMod.computeIfAbsent(material.identifier, k -> new HashMap<>()).put(statKey, modCont);
+    }
+
+    @Nullable
+    public static ModContainer getTraitOwnerMod(Material material, ITrait trait) {
+        Map<String, ModContainer> traitOwners = traitRegisteredByMod.get(material.identifier);
+        return traitOwners != null ? traitOwners.get(trait.getIdentifier()) : null;
+    }
+
+    public static void overrideTraitOwnerMod(Material material, ITrait trait, ModContainer modCont) {
+        traitRegisteredByMod.computeIfAbsent(material.identifier, k -> new HashMap<>())
+                .put(trait.getIdentifier(), modCont);
+    }
+
     public static void removeMaterial(String identifier) {
         materials.remove(identifier);
+    }
+
+    public static void uncancelMaterial(String identifier) {
+        cancelledMaterials.remove(identifier);
     }
 
     public static ListIterator<MeltingRecipe> iterateMeltingRecipes() {
