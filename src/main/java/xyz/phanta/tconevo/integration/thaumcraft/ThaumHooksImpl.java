@@ -3,6 +3,7 @@ package xyz.phanta.tconevo.integration.thaumcraft;
 import io.github.phantamanta44.libnine.util.nullity.Reflected;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.oredict.OreDictionary;
@@ -48,8 +49,8 @@ public class ThaumHooksImpl implements ThaumHooks {
                         new AspectList().add(Aspect.METAL, 30).add(Aspect.AIR, 15).add(Aspect.EARTH, 15)
                                 .add(Aspect.FIRE, 15).add(Aspect.WATER, 15).add(Aspect.ORDER, 15).add(Aspect.ENTROPY, 15),
                         ItemMaterial.Type.COALESCENCE_MATRIX.newStack(1),
-                        new ItemStack(ItemsTC.primordialPearl, 1, 0),
-                        ItemsTC.salisMundus));
+                        Ingredient.fromItem(ItemsTC.primordialPearl),
+                        new ItemStack(ItemsTC.salisMundus)));
     }
 
     @Override
