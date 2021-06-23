@@ -217,6 +217,12 @@ public class NameConst {
     public static final String MOD_CHAOS_RESISTANCE = TconEvoMod.MOD_ID + ".chaos_resistance", ARMOUR_MOD_CHAOS_RESISTANCE = MOD_CHAOS_RESISTANCE + ARMOUR_SUFFIX;
     public static final String MOD_FINAL_GUARD = TconEvoMod.MOD_ID + ".final_guard", ARMOUR_MOD_FINAL_GUARD = MOD_FINAL_GUARD + ARMOUR_SUFFIX;
 
+    // elenai dodge
+
+    public static final String MOD_GROUNDING = TconEvoMod.MOD_ID + ".grounding";
+
+    public static final String MOD_WEIGHTLESS = TconEvoMod.MOD_ID + ".weightless", ARMOUR_MOD_WEIGHTLESS = MOD_WEIGHTLESS + ARMOUR_SUFFIX;
+
     // ender io
 
     public static final String MAT_ENDER_CRYSTAL = "ender_crystal";

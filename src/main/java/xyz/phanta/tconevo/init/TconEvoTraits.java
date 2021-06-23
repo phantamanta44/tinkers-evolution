@@ -9,6 +9,7 @@ import xyz.phanta.tconevo.integration.actuallyadditions.ActuallyHooks;
 import xyz.phanta.tconevo.integration.advsolars.AdvSolarHooks;
 import xyz.phanta.tconevo.integration.astralsorcery.AstralConstellation;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
+import xyz.phanta.tconevo.integration.elenaidodge.ElenaiDodgeHooks;
 import xyz.phanta.tconevo.integration.enderio.EnderIoHooks;
 import xyz.phanta.tconevo.integration.envtech.EnvTechHooks;
 import xyz.phanta.tconevo.integration.ic2.Ic2Hooks;
@@ -33,6 +34,7 @@ import xyz.phanta.tconevo.trait.botania.TraitFaeVoice;
 import xyz.phanta.tconevo.trait.botania.TraitGaiaWrath;
 import xyz.phanta.tconevo.trait.botania.TraitManaInfused;
 import xyz.phanta.tconevo.trait.draconicevolution.*;
+import xyz.phanta.tconevo.trait.elenaidodge.ModifierGrounding;
 import xyz.phanta.tconevo.trait.ic2.TraitElectric;
 import xyz.phanta.tconevo.trait.industrialforegoing.TraitSlimeyPink;
 import xyz.phanta.tconevo.trait.projecte.TraitEternalDensity;
@@ -138,6 +140,9 @@ public class TconEvoTraits {
     public static final ModifierFluxBurn MOD_FLUX_BURN = new ModifierFluxBurn();
     public static final ModifierPrimordial MOD_PRIMORDIAL = new ModifierPrimordial();
 
+    // elenai dodge
+    public static final ModifierGrounding MOD_GROUNDING = new ModifierGrounding();
+
     // industrial foregoing
     public static final TraitSlimeyPink TRAIT_SLIMEY_PINK = new TraitSlimeyPink();
 
@@ -154,7 +159,8 @@ public class TconEvoTraits {
 
     public static final List<Modifier> MODIFIERS = Arrays.asList(
             MOD_FLUXED, MOD_PHOTOVOLTAIC,
-            MOD_REAPING, MOD_ENTROPIC, MOD_FLUX_BURN, MOD_PRIMORDIAL);
+            MOD_REAPING, MOD_ENTROPIC, MOD_FLUX_BURN, MOD_PRIMORDIAL,
+            MOD_GROUNDING);
 
     public static void initModifierMaterials() {
         MOD_ARTIFACT.addItem(ItemMaterial.Type.ARTIFACT_UNSEALER.newStack(1), 1, 1);
@@ -180,6 +186,9 @@ public class TconEvoTraits {
         addModItemOpt(MOD_PRIMORDIAL, DraconicHooks.INSTANCE::getItemChaosShard);
         addModItemOpt(MOD_FLUXED, DraconicHooks.INSTANCE::getItemWyvernCapacitor);
         addModItemOpt(MOD_FLUXED, DraconicHooks.INSTANCE::getItemDraconicCapacitor);
+
+        // elenai dodge
+        addModItemOpt(MOD_GROUNDING, ElenaiDodgeHooks.INSTANCE::getItemFeatheryGold);
 
         // ender io
         addModItemOpt(MOD_FLUXED, EnderIoHooks.INSTANCE::getItemInvChargerSimple);

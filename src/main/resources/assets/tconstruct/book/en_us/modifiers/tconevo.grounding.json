@@ -1,0 +1,17 @@
+{
+  "modifier": "tconevo.grounding",
+  "text": [
+    {
+      "text": "Sometimes, your foes just won't hold still long enough to hit them! Now, you can make them hold still."
+    }
+  ],
+  "effects": [
+    "Fully-charged hits prevent enemies from dodging",
+    "Single level"
+  ],
+  "demoTool": [
+    "tconstruct:broadsword",
+    "tconstruct:cleaver",
+    "tconstruct:arrow"
+  ]
+}

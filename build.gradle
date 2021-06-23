@@ -116,6 +116,7 @@ dependencies { // THE BEAST
     compile "net.darkhax.bookshelf:Bookshelf-1.12.2:2.3.590"
     compile "net.darkhax.gamestages:GameStages-1.12.2:2.0.123"
     deobfCompile 'curse.maven:tinkers-tool-leveling-250957:2630860' // 1.1.0
+    deobfCompile 'curse.maven:elenai-dodge-2-442962:3343308' // 1.1.0
 }
 
 // when forgegradle deobfs dependency jars, it'll try to cheat and grab the sources jar and remap *that* to avoid decompiling

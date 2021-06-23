@@ -349,6 +349,16 @@
 
 * [x] wyvern/draconic flux capacitors should apply fluxed modifier
 
+## elenai dodge 2
+
+### modifiers
+
+* [x] grounding: fully-charged hits briefly prevent enemies from dodging
+
+### armour modifiers
+
+* [x] weightless: reduces armour weight
+
 ## embers
 
 ### traits

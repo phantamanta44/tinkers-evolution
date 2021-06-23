@@ -29,6 +29,9 @@ Current mod integration modules are as follows:
     * Adds wyvern, draconic, and chaotic materials that use energy and are upgradable by fusion crafting
     * Adds modifiers that augment offensive capabilities against draconic armour, among other things
     * Allows wyvern and draconic flux capacitors to apply the "fluxed" modifier
+* **Elenai Dodge 2**
+    * Adds a modifier that prevents struck enemies from dodging
+    * Adds an armour modifier that applies the lightweight enchantment
 * **Ender IO**
     * Adds various crystal materials for magic tool parts
     * Registers fire water as a smeltery fuel

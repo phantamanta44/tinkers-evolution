@@ -439,6 +439,12 @@ modifier.tconevo.final_guard_armor.desc=§oLook out!§r\nThis armour will save y
 modifier.tconevo.final_guard_armor.extra=Final Guard Cost: %s
 modifier.tconevo.final_guard_armor.proc=Your armour's %s has kept you alive!
 
+modifier.tconevo.grounding.name=Grounding
+modifier.tconevo.grounding.desc=§oNot so fast!§r\nThis weapon's fully-charged hits will briefly prevent enemies from dodging.
+
+modifier.tconevo.weightless_armor.name=Weightless
+modifier.tconevo.weightless_armor.desc=§oYou feel ethereal.§r\nThis armour is lighter, and so it doesn't impede dodges as much.
+
 material.ender_crystal.name=Ender Crystal
 material.pulsating_crystal.name=Pulsating Crystal
 material.vibrant_crystal.name=Vibrant Crystal

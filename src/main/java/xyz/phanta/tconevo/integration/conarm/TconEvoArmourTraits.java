@@ -20,6 +20,7 @@ import xyz.phanta.tconevo.integration.conarm.trait.bloodmagic.ArmourTraitSoulGua
 import xyz.phanta.tconevo.integration.conarm.trait.bloodmagic.ArmourTraitWillful;
 import xyz.phanta.tconevo.integration.conarm.trait.botania.*;
 import xyz.phanta.tconevo.integration.conarm.trait.draconicevolution.*;
+import xyz.phanta.tconevo.integration.conarm.trait.elenaidodge.ArmourModWeightless;
 import xyz.phanta.tconevo.integration.conarm.trait.forestry.ArmourModApiaryAffinity;
 import xyz.phanta.tconevo.integration.conarm.trait.ic2.ArmourTraitElectric;
 import xyz.phanta.tconevo.integration.conarm.trait.industrialforegoing.ArmourTraitSlimeyPink;
@@ -29,6 +30,7 @@ import xyz.phanta.tconevo.integration.conarm.trait.projecte.ArmourTraitUltradens
 import xyz.phanta.tconevo.integration.conarm.trait.thaumcraft.ArmourTraitAuraAffinity;
 import xyz.phanta.tconevo.integration.conarm.trait.thaumcraft.ArmourTraitWarping;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
+import xyz.phanta.tconevo.integration.elenaidodge.ElenaiDodgeHooks;
 import xyz.phanta.tconevo.integration.forestry.ForestryHooks;
 import xyz.phanta.tconevo.integration.naturalabsorption.NaturalAbsorptionHooks;
 import xyz.phanta.tconevo.util.TconReflect;
@@ -111,6 +113,9 @@ public class TconEvoArmourTraits {
     public static final ArmourModChaosResistance MOD_CHAOS_RESISTANCE = new ArmourModChaosResistance();
     public static final ArmourModFinalGuard MOD_FINAL_GUARD = new ArmourModFinalGuard();
 
+    // elenai dodge
+    public static final ArmourModWeightless MOD_WEIGHTLESS = new ArmourModWeightless();
+
     // forestry
     public static final ArmourModApiaryAffinity MOD_APIARY_AFFINITY = new ArmourModApiaryAffinity();
 
@@ -136,7 +141,7 @@ public class TconEvoArmourTraits {
             MOD_GAIA_WILL_AHRIM, MOD_GAIA_WILL_DHAROK, MOD_GAIA_WILL_GUTHAN,
             MOD_GAIA_WILL_KARIL, MOD_GAIA_WILL_TORAG, MOD_GAIA_WILL_VERAC,
             MOD_CHAOS_RESISTANCE, MOD_FINAL_GUARD,
-            MOD_APIARY_AFFINITY, MOD_ABSORPTION);
+            MOD_WEIGHTLESS, MOD_APIARY_AFFINITY, MOD_ABSORPTION);
 
     public static void initModifierMaterials() {
         // botania
@@ -150,6 +155,9 @@ public class TconEvoArmourTraits {
         // draconic evolution
         addModItemOpt(MOD_CHAOS_RESISTANCE, DraconicHooks.INSTANCE::getItemDragonHeart);
         addModItemOpt(MOD_FINAL_GUARD, DraconicHooks.INSTANCE::getItemReactorStabilizer);
+
+        // elenai dodge
+        addModItemOpt(MOD_WEIGHTLESS, ElenaiDodgeHooks.INSTANCE::getItemFeatheryIron);
 
         // forestry
         addModItemOpt(MOD_APIARY_AFFINITY, ForestryHooks.INSTANCE::getItemWovenSilk);

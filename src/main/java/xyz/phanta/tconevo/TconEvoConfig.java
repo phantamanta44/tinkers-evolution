@@ -1232,6 +1232,24 @@ public class TconEvoConfig {
 
     }
 
+    @Config.Comment("Configuration for the Elenai Dodge 2 module.")
+    public static final ElenaiDodge moduleElenaiDodge = new ElenaiDodge();
+
+    public static class ElenaiDodge {
+
+        @Config.Comment("The duration, in ticks, of the weight effect inflicted by the grounding modifier.")
+        @Config.RangeInt(min = 1)
+        public int groundingDuration = 20;
+
+        @Config.Comment({
+                "Causes only the first level of the weightless armour modifier to consume a modifier slot.",
+                "Only useful with Construct's Armoury installed."
+        })
+        @Config.RequiresMcRestart
+        public boolean weightlessOnlyUsesOneModifier = false;
+
+    }
+
     @Config.Comment("Configuration for the Ender IO module.")
     public static final EnderIo moduleEnderIo = new EnderIo();
 

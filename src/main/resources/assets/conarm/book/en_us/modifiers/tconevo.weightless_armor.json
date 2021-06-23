@@ -1,0 +1,19 @@
+{
+  "armormodifier": "tconevo.weightless_armor",
+  "text": [
+    {
+      "text": "By attaching feathers to your armour, you might be able to lighten some of its burden, granting greater agility in combat."
+    }
+  ],
+  "effects": [
+    "Applies the lightweight enchantment",
+    "Decreases weight to provide more dodges",
+    "Multiple levels"
+  ],
+  "demoArmor": [
+    "conarm:helmet",
+    "conarm:chestplate",
+    "conarm:leggings",
+    "conarm:boots"
+  ]
+}
