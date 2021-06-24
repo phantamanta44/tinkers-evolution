@@ -69,6 +69,12 @@ public class TconReflect {
                 .put(trait.getIdentifier(), modCont);
     }
 
+    public static void prioritizeMaterial(Material material) {
+       if (materials instanceof LinkedHashMap) {
+           JReflect.moveLinkedHashMapEntryToFront((LinkedHashMap<String, Material>)materials, material.identifier);
+       }
+    }
+
     public static void removeMaterial(String identifier) {
         materials.remove(identifier);
     }

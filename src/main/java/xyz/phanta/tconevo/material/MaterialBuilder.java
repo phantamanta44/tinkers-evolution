@@ -38,6 +38,7 @@ public class MaterialBuilder {
     private final MaterialForm form;
     private final String oreName;
 
+    private boolean needsPriority = false;
     private final List<RegCondition> conditions = new ArrayList<>();
     private final Map<String, IMaterialStats> materialStats = new HashMap<>();
     private boolean craftable = false, castable = false;
@@ -51,6 +52,11 @@ public class MaterialBuilder {
         this.colour = colour;
         this.form = form;
         this.oreName = oreName;
+    }
+
+    public MaterialBuilder needsPriority() {
+        needsPriority = true;
+        return this;
     }
 
     public MaterialBuilder requires(RegCondition condition) {
@@ -191,6 +197,9 @@ public class MaterialBuilder {
             if (notBlacklisted) {
                 MaterialDefinition.register(material, form, oreName, conditions, traits);
                 TinkerRegistry.addMaterial(material);
+                if (needsPriority) {
+                    TconReflect.prioritizeMaterial(material);
+                }
                 // override material owner since libnine invokes the static initializers
                 TconReflect.overrideMaterialOwnerMod(material, TconEvoMod.INSTANCE);
             }
