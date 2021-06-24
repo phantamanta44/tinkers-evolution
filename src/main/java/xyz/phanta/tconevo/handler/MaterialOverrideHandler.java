@@ -193,7 +193,7 @@ public class MaterialOverrideHandler {
                     overriddenMat.traits.forEach((partType, trait) -> {
                         if (!overrideMatTraits.containsKey(partType)) {
                             ModContainer oldOwner = TconReflect.getTraitOwnerMod(overriddenMat.material, trait);
-                            TinkerRegistry.addMaterialTrait(overrideMat, trait, partType);
+                            overrideMat.addTrait(trait, partType);
                             if (oldOwner != null) {
                                 TconReflect.overrideTraitOwnerMod(overrideMat, trait, oldOwner);
                             }
