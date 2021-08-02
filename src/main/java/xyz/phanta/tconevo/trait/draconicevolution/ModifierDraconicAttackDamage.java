@@ -14,6 +14,7 @@ public class ModifierDraconicAttackDamage extends ModifierDraconic {
 
     @Override
     protected void applyDraconicEffect(NBTTagCompound rootTag, int tier) {
+        if(tier>=4) tier=4;
         ToolNBT toolData = TagUtil.getToolStats(rootTag);
         toolData.attack += tier * TagUtil.getOriginalToolStats(rootTag).attack / 4F;
         TagUtil.setToolTag(rootTag, toolData.get());
