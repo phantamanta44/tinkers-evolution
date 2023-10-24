@@ -14,6 +14,7 @@ import slimeknights.tconstruct.library.tools.Pattern;
 import slimeknights.tconstruct.library.tools.ToolCore;
 import slimeknights.tconstruct.library.tools.ToolPart;
 import slimeknights.tconstruct.tools.TinkerTools;
+import xyz.phanta.tconevo.TconEvoConsts;
 import xyz.phanta.tconevo.TconEvoMod;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.item.ItemEdible;
@@ -25,22 +26,22 @@ import xyz.phanta.tconevo.util.LazyAccum;
 @SuppressWarnings("NotNullFieldNotInitialized")
 public class TconEvoItems {
 
-    @GameRegistry.ObjectHolder(TconEvoMod.MOD_ID + ":" + NameConst.ITEM_MATERIAL)
+    @GameRegistry.ObjectHolder(TconEvoConsts.MOD_ID + ":" + NameConst.ITEM_MATERIAL)
     public static ItemMaterial MATERIAL;
-    @GameRegistry.ObjectHolder(TconEvoMod.MOD_ID + ":" + NameConst.ITEM_METAL)
+    @GameRegistry.ObjectHolder(TconEvoConsts.MOD_ID + ":" + NameConst.ITEM_METAL)
     public static ItemMetal METAL;
-    @GameRegistry.ObjectHolder(TconEvoMod.MOD_ID + ":" + NameConst.ITEM_EDIBLE)
+    @GameRegistry.ObjectHolder(TconEvoConsts.MOD_ID + ":" + NameConst.ITEM_EDIBLE)
     public static ItemEdible EDIBLE;
 
     // parts (can't use object holders because this field must be populated before tools are created)
     public static ToolPart PART_ARCANE_FOCUS;
 
     // tools
-    @GameRegistry.ObjectHolder(TconEvoMod.MOD_ID + ":" + NameConst.ITEM_TOOL_SCEPTRE)
+    @GameRegistry.ObjectHolder(TconEvoConsts.MOD_ID + ":" + NameConst.ITEM_TOOL_SCEPTRE)
     public static ItemToolSceptre TOOL_SCEPTRE;
     public static final LazyAccum<ToolCore> TOOLS = c -> c.acceptAll(TOOL_SCEPTRE);
 
-    @InitMe(TconEvoMod.MOD_ID)
+    @InitMe(TconEvoConsts.MOD_ID)
     public static void init() {
         new ItemMaterial();
         new ItemMetal();

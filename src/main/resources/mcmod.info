@@ -1,10 +1,10 @@
 [
 {
-  "modid": "tconevo",
+  "modid": "${modId}",
   "name": "Tinkers' Evolution",
   "description": "balanced because it takes effort",
-  "version": "${version}",
-  "mcversion": "${mcversion}",
+  "version": "${modVersion}",
+  "mcversion": "${mcVersion}",
   "url": "",
   "updateUrl": "",
   "authorList": ["phantamanta44"],

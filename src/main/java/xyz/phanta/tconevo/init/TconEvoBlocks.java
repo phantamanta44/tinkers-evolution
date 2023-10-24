@@ -9,7 +9,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
 import slimeknights.tconstruct.tools.TinkerTools;
-import xyz.phanta.tconevo.TconEvoMod;
+import xyz.phanta.tconevo.TconEvoConsts;
 import xyz.phanta.tconevo.block.BlockEarthMaterial;
 import xyz.phanta.tconevo.block.BlockMetal;
 import xyz.phanta.tconevo.constant.NameConst;
@@ -19,12 +19,12 @@ import java.util.Arrays;
 
 public class TconEvoBlocks {
 
-    @GameRegistry.ObjectHolder(TconEvoMod.MOD_ID + ":" + NameConst.BLOCK_EARTH_MATERIAL)
+    @GameRegistry.ObjectHolder(TconEvoConsts.MOD_ID + ":" + NameConst.BLOCK_EARTH_MATERIAL)
     public static BlockEarthMaterial EARTH_MATERIAL;
-    @GameRegistry.ObjectHolder(TconEvoMod.MOD_ID + ":" + NameConst.BLOCK_METAL)
+    @GameRegistry.ObjectHolder(TconEvoConsts.MOD_ID + ":" + NameConst.BLOCK_METAL)
     public static BlockMetal METAL_BLOCK;
 
-    @InitMe(TconEvoMod.MOD_ID)
+    @InitMe(TconEvoConsts.MOD_ID)
     public static void init() {
         MinecraftForge.EVENT_BUS.register(new TconEvoBlocks());
         new BlockEarthMaterial();

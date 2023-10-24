@@ -3,7 +3,7 @@ package xyz.phanta.tconevo.artifact.type;
 import com.google.gson.JsonObject;
 import net.minecraft.util.JsonUtils;
 import net.minecraft.util.ResourceLocation;
-import xyz.phanta.tconevo.TconEvoMod;
+import xyz.phanta.tconevo.TconEvoConsts;
 import xyz.phanta.tconevo.artifact.Artifact;
 
 import javax.annotation.Nullable;
@@ -16,8 +16,8 @@ public class ArtifactTypeRegistry {
 
     public ArtifactTypeRegistry() {
         // can't use newResourceLocation() because the mod isn't fully-initialized yet
-        registerArtifactType(new ResourceLocation(TconEvoMod.MOD_ID, "tool"), new ArtifactTypeTool());
-        registerArtifactType(new ResourceLocation(TconEvoMod.MOD_ID, "armour"), new ArtifactTypeArmour());
+        registerArtifactType(new ResourceLocation(TconEvoConsts.MOD_ID, "tool"), new ArtifactTypeTool());
+        registerArtifactType(new ResourceLocation(TconEvoConsts.MOD_ID, "armour"), new ArtifactTypeArmour());
     }
 
     public void registerArtifactType(ResourceLocation typeId, ArtifactType<?> type) {

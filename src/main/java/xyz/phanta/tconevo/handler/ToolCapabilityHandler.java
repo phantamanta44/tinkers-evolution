@@ -13,7 +13,7 @@ import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierNBT;
 import slimeknights.tconstruct.library.tinkering.ITinkerable;
 import slimeknights.tconstruct.library.utils.TagUtil;
-import xyz.phanta.tconevo.TconEvoMod;
+import xyz.phanta.tconevo.TconEvoConsts;
 
 import javax.annotation.Nullable;
 import java.util.HashMap;
@@ -24,7 +24,7 @@ import java.util.function.Function;
 
 public class ToolCapabilityHandler {
 
-    private final ResourceLocation TINKERS_EVO_CAP = new ResourceLocation(TconEvoMod.MOD_ID, "multi_capability");
+    private final ResourceLocation TINKERS_EVO_CAP = new ResourceLocation(TconEvoConsts.MOD_ID, "multi_capability");
     private final Map<String, Function<ItemStack, ICapabilityProvider>> modifierCaps = new HashMap<>();
 
     public void addModifierCap(Modifier mod, Function<ItemStack, ICapabilityProvider> capFactory) {

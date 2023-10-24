@@ -15,7 +15,7 @@ import slimeknights.tconstruct.library.book.TinkerBook;
 import slimeknights.tconstruct.library.client.ToolBuildGuiInfo;
 import slimeknights.tconstruct.library.client.material.MaterialRenderInfoLoader;
 import xyz.phanta.tconevo.CommonProxy;
-import xyz.phanta.tconevo.TconEvoMod;
+import xyz.phanta.tconevo.TconEvoConsts;
 import xyz.phanta.tconevo.client.book.BookTransformerAppendModifiers;
 import xyz.phanta.tconevo.client.book.BookTransformerAppendTools;
 import xyz.phanta.tconevo.client.book.BookTransformerListingOverflow;
@@ -44,9 +44,9 @@ public class ClientProxy extends CommonProxy {
         if (!DraconicHooks.isLoaded()) {
             MinecraftForge.EVENT_BUS.register(new EnergyShieldHudHandler());
         }
-        MaterialRenderInfoLoader.addRenderInfo(TconEvoMod.MOD_ID + ".edge_colour", EdgeColourMaterialRenderInfo.Deserializer.class);
-        MaterialRenderInfoLoader.addRenderInfo(TconEvoMod.MOD_ID + ".maybe_block", MaybeBlockMaterialRenderInfo.Deserializer.class);
-        MaterialRenderInfoLoader.addRenderInfo(TconEvoMod.MOD_ID + ".cosmic", CosmicMaterialRenderInfo.Deserializer.class);
+        MaterialRenderInfoLoader.addRenderInfo(TconEvoConsts.MOD_ID + ".edge_colour", EdgeColourMaterialRenderInfo.Deserializer.class);
+        MaterialRenderInfoLoader.addRenderInfo(TconEvoConsts.MOD_ID + ".maybe_block", MaybeBlockMaterialRenderInfo.Deserializer.class);
+        MaterialRenderInfoLoader.addRenderInfo(TconEvoConsts.MOD_ID + ".cosmic", CosmicMaterialRenderInfo.Deserializer.class);
     }
 
     @Override

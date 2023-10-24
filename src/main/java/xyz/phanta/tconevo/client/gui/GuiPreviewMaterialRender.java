@@ -18,6 +18,7 @@ import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.tools.IToolPart;
 import slimeknights.tconstruct.tools.TinkerTools;
 import slimeknights.tconstruct.tools.common.client.GuiButtonItem;
+import xyz.phanta.tconevo.TconEvoConsts;
 import xyz.phanta.tconevo.TconEvoMod;
 import xyz.phanta.tconevo.client.util.ArbitraryTexture;
 
@@ -28,7 +29,7 @@ import java.util.List;
 
 public class GuiPreviewMaterialRender extends GuiScreen {
 
-    private static final String LOC_BASE = TconEvoMod.MOD_ID + ".gui.preview_material_render.";
+    private static final String LOC_BASE = TconEvoConsts.MOD_ID + ".gui.preview_material_render.";
     private static final String LOC_REFRESH = LOC_BASE + "refresh";
     private static final String LOC_NOTHING_TO_RENDER = LOC_BASE + "nothing_to_render";
 

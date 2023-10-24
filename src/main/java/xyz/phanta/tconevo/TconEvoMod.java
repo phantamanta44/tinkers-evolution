@@ -17,13 +17,13 @@ import xyz.phanta.tconevo.command.CommandTconEvo;
 import xyz.phanta.tconevo.init.TconEvoPartTypes;
 import xyz.phanta.tconevo.item.ItemMaterial;
 
-@Mod(modid = TconEvoMod.MOD_ID, version = TconEvoMod.VERSION, useMetadata = true)
+@Mod(modid = TconEvoConsts.MOD_ID, version = TconEvoConsts.VERSION, useMetadata = true)
 public class TconEvoMod extends Virtue {
 
-    public static final String MOD_ID = "tconevo";
-    public static final String VERSION = "1.0.44";
+    @Deprecated
+    public static final String MOD_ID = TconEvoConsts.MOD_ID;
 
-    @Mod.Instance(MOD_ID)
+    @Mod.Instance(TconEvoConsts.MOD_ID)
     public static TconEvoMod INSTANCE;
 
     @SidedProxy(
@@ -31,14 +31,14 @@ public class TconEvoMod extends Virtue {
             serverSide = "xyz.phanta.tconevo.CommonProxy")
     public static CommonProxy PROXY;
 
-    public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
+    public static final Logger LOGGER = LogManager.getLogger(TconEvoConsts.MOD_ID);
 
     static {
         FluidRegistry.enableUniversalBucket(); // "Actually just call it statically in your mod class."
     }
 
     public TconEvoMod() {
-        super(MOD_ID, new L9CreativeTab(MOD_ID, () -> ItemMaterial.Type.COALESCENCE_MATRIX.newStack(1)) {
+        super(TconEvoConsts.MOD_ID, new L9CreativeTab(TconEvoConsts.MOD_ID, () -> ItemMaterial.Type.COALESCENCE_MATRIX.newStack(1)) {
             @SideOnly(Side.CLIENT)
             @Override
             public void displayAllRelevantItems(NonNullList<ItemStack> items) {

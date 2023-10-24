@@ -19,6 +19,7 @@ import slimeknights.tconstruct.library.smeltery.AlloyRecipe;
 import slimeknights.tconstruct.library.smeltery.CastingRecipe;
 import slimeknights.tconstruct.library.traits.ITrait;
 import xyz.phanta.tconevo.TconEvoConfig;
+import xyz.phanta.tconevo.TconEvoConsts;
 import xyz.phanta.tconevo.TconEvoMod;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.material.MaterialBuilder;
@@ -30,7 +31,7 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 // usually i don't like using this annotation but this handler MUST be registered asap
-@Mod.EventBusSubscriber(modid = TconEvoMod.MOD_ID)
+@Mod.EventBusSubscriber(modid = TconEvoConsts.MOD_ID)
 public class MaterialOverrideHandler {
 
     // overridden material id -> overriding material id

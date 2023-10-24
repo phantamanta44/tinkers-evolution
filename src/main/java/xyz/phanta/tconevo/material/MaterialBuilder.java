@@ -9,6 +9,7 @@ import slimeknights.tconstruct.library.fluid.FluidMolten;
 import slimeknights.tconstruct.library.materials.*;
 import slimeknights.tconstruct.library.traits.ITrait;
 import xyz.phanta.tconevo.TconEvoConfig;
+import xyz.phanta.tconevo.TconEvoConsts;
 import xyz.phanta.tconevo.TconEvoMod;
 import xyz.phanta.tconevo.handler.MaterialOverrideHandler;
 import xyz.phanta.tconevo.material.stats.MagicMaterialStats;
@@ -220,9 +221,9 @@ public class MaterialBuilder {
         }
         Fluid fluid = new FluidMolten(material.identifier, material.materialTextColor);
         fluid.setTemperature(fluidTemperature);
-        fluid.setUnlocalizedName(TconEvoMod.MOD_ID + "." + material.identifier);
+        fluid.setUnlocalizedName(TconEvoConsts.MOD_ID + "." + material.identifier);
         FluidRegistry.registerFluid(fluid);
-        CraftReflect.setFluidUniqueId(fluid, TconEvoMod.MOD_ID + ":" + material.identifier);
+        CraftReflect.setFluidUniqueId(fluid, TconEvoConsts.MOD_ID + ":" + material.identifier);
         FluidRegistry.addBucketForFluid(fluid);
         material.setFluid(fluid);
     }

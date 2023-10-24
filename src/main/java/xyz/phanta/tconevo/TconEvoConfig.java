@@ -3,7 +3,7 @@ package xyz.phanta.tconevo;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraftforge.common.config.Config;
 
-@Config(modid = TconEvoMod.MOD_ID)
+@Config(modid = TconEvoConsts.MOD_ID)
 public class TconEvoConfig {
 
     @Config.Comment("When enabled, Tinkers' Evolution will replace tool materials added by other mods in case overlaps occur.")

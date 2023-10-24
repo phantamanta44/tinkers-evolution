@@ -66,7 +66,7 @@ public class CommonProxy {
         IntegrationManager.dispatchPreInit(event);
         // handle config dir generation
         TconEvoMod.LOGGER.info("Current config version: {}", CONFIG_VERSION);
-        Path configDir = event.getModConfigurationDirectory().toPath().resolve(TconEvoMod.MOD_ID);
+        Path configDir = event.getModConfigurationDirectory().toPath().resolve(TconEvoConsts.MOD_ID);
         if (!Files.exists(configDir)) {
             TconEvoMod.LOGGER.info("No config directory found; writing defaults...");
             writeDefaultConfig(configDir);

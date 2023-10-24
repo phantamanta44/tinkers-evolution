@@ -15,7 +15,7 @@ import net.minecraftforge.event.entity.living.LivingHealEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import xyz.phanta.tconevo.TconEvoConfig;
-import xyz.phanta.tconevo.TconEvoMod;
+import xyz.phanta.tconevo.TconEvoConsts;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.potion.PotionDamageBoost;
 import xyz.phanta.tconevo.potion.PotionDamageReduction;
@@ -40,10 +40,10 @@ public class TconEvoPotions {
     @SubscribeEvent
     public void onRegisterPotions(RegistryEvent.Register<Potion> event) {
         event.getRegistry().registerAll(
-                IMMORTALITY.setRegistryName(TconEvoMod.MOD_ID, NameConst.POTION_IMMORTALITY),
-                MORTAL_WOUNDS.setRegistryName(TconEvoMod.MOD_ID, NameConst.POTION_MORTAL_WOUNDS),
-                DAMAGE_REDUCTION.setRegistryName(TconEvoMod.MOD_ID, NameConst.POTION_DAMAGE_REDUCTION),
-                DAMAGE_BOOST.setRegistryName(TconEvoMod.MOD_ID, NameConst.POTION_DAMAGE_BOOST));
+                IMMORTALITY.setRegistryName(TconEvoConsts.MOD_ID, NameConst.POTION_IMMORTALITY),
+                MORTAL_WOUNDS.setRegistryName(TconEvoConsts.MOD_ID, NameConst.POTION_MORTAL_WOUNDS),
+                DAMAGE_REDUCTION.setRegistryName(TconEvoConsts.MOD_ID, NameConst.POTION_DAMAGE_REDUCTION),
+                DAMAGE_BOOST.setRegistryName(TconEvoConsts.MOD_ID, NameConst.POTION_DAMAGE_BOOST));
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
