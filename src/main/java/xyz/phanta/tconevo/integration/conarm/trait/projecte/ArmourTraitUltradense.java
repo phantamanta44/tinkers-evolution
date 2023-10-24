@@ -8,6 +8,7 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.util.Constants;
+import slimeknights.tconstruct.library.modifiers.IToolMod;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.init.TconEvoEntityAttrs;
@@ -24,6 +25,11 @@ public class ArmourTraitUltradense extends AbstractArmorTrait {
 
     public ArmourTraitUltradense() {
         super(NameConst.TRAIT_ULTRADENSE, 0x9b060b);
+    }
+
+    @Override
+    public boolean canApplyTogether(IToolMod otherModifier) {
+        return !(otherModifier instanceof ArmourTraitSuperdense);
     }
 
     @Override
