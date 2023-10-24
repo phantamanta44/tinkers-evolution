@@ -35,6 +35,27 @@ public class TconEvoConfig {
 
     public static class General {
 
+        @Config.Comment({
+                "The minimum value for the \"damage taken\" attribute.",
+                "If set to 1, then damage reduction will not work at all."
+        })
+        @Config.RangeDouble(min = 0D, max = 1D)
+        @Config.RequiresMcRestart
+        public double attrDamageTakenMin = 0D;
+
+        @Config.Comment("The maximum value for the \"damage taken\" attribute.")
+        @Config.RangeDouble(min = 1D)
+        @Config.RequiresMcRestart
+        public double attrDamageTakenMax = 1e9D;
+
+        @Config.Comment({
+                "The maximum value for the \"evasion\" attribute.",
+                "If set to 0, then evasion will not work at all."
+        })
+        @Config.RangeDouble(min = 0D, max = 1D)
+        @Config.RequiresMcRestart
+        public double attrEvasionMax = 1D;
+
         @Config.Comment("The additional bonus damage percentage granted per level of the damage boost effect.")
         @Config.RangeDouble(min = 0D, max = 1D)
         public double effectDamageBoostBonusDamage = 0.05D;

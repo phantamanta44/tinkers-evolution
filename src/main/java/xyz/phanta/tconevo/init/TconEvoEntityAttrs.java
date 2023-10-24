@@ -9,14 +9,17 @@ import net.minecraft.entity.ai.attributes.RangedAttribute;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import xyz.phanta.tconevo.TconEvoConfig;
 
 public class TconEvoEntityAttrs {
 
     public static final IAttribute FLIGHT_SPEED = new RangedAttribute(null, "tconevo.flightSpeed", 0.05D, 0D, 1D)
             .setDescription("Flight Speed").setShouldWatch(true);
-    public static final IAttribute DAMAGE_TAKEN = new RangedAttribute(null, "tconevo.damageTaken", 1D, 0D, 1e9D)
+    public static final IAttribute DAMAGE_TAKEN = new RangedAttribute(null, "tconevo.damageTaken",
+            1D, TconEvoConfig.general.attrDamageTakenMin, TconEvoConfig.general.attrDamageTakenMax)
             .setDescription("Damage Taken").setShouldWatch(true);
-    public static final IAttribute EVASION_CHANCE = new RangedAttribute(null, "tconevo.evasionChance", 1D, 1D, 2D)
+    public static final IAttribute EVASION_CHANCE = new RangedAttribute(null, "tconevo.evasionChance",
+            1D, 1D, 1D + TconEvoConfig.general.attrEvasionMax)
             .setDescription("Evasion Chance").setShouldWatch(true);
 
     @InitMe
