@@ -165,7 +165,7 @@ modifier.tconevo.photovoltaic.desc=§o低碳生活！§r\n這件工具會利用�
 modifier.tconevo.photovoltaic.extra=光伏發電：%s
 
 modifier.tconevo.bulwark_armor.name=壁壘
-modifier.tconevo.bulwark_armor.desc=§o我擋！§r\n這件盔甲會將一切大於2點（一顆心）的外來傷害減至2點。
+modifier.tconevo.bulwark_armor.desc=§o我擋！§r\n這件盔甲會將外來傷害降低一顆心，最低保留一顆心的傷害。
 modifier.tconevo.celestial_armor.name=飛仙
 modifier.tconevo.celestial_armor.desc=§o深淵之翼！§r\n這件盔甲將給予穿戴者創造式飛行的能力。
 modifier.tconevo.chilling_touch_armor.name=寒冰之觸
