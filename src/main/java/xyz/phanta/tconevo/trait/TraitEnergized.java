@@ -34,6 +34,9 @@ public class TraitEnergized extends StackableTrait implements EnergeticModifier 
 
     @Override
     public int onToolDamage(ItemStack tool, int damage, int newDamage, EntityLivingBase entity) {
+        if (!isCanonical(this, tool)) {
+            return newDamage;
+        }
         return ModifierFluxed.doDamageReduction(tool, newDamage, TconEvoConfig.general.traitEnergizedEnergyCostTools);
     }
 

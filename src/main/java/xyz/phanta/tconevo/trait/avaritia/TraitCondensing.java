@@ -33,14 +33,14 @@ public class TraitCondensing extends StackableTrait {
 
     @Override
     public void afterBlockBreak(ItemStack tool, World world, IBlockState state, BlockPos pos, EntityLivingBase player, boolean wasEffective) {
-        if (wasEffective && !world.isRemote) {
+        if (wasEffective && !world.isRemote && isCanonical(this, tool)) {
             tryDropNeutrons(world, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, tool);
         }
     }
 
     @Override
     public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt, boolean wasCritical, boolean wasHit) {
-        if (!target.isEntityAlive() && !target.world.isRemote) {
+        if (!target.isEntityAlive() && !target.world.isRemote && isCanonical(this, tool)) {
             tryDropNeutrons(target.getEntityWorld(), target.posX, target.posY, target.posZ, tool);
         }
     }

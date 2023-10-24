@@ -17,6 +17,7 @@ import xyz.phanta.tconevo.integration.conarm.trait.base.StackableArmourTrait;
 import xyz.phanta.tconevo.trait.ModifierFluxed;
 import xyz.phanta.tconevo.trait.TraitEnergized;
 import xyz.phanta.tconevo.trait.base.EnergeticModifier;
+import xyz.phanta.tconevo.trait.base.StackableTrait;
 import xyz.phanta.tconevo.util.ToolUtils;
 
 public class ArmourTraitEnergized extends StackableArmourTrait implements EnergeticModifier {
@@ -32,6 +33,9 @@ public class ArmourTraitEnergized extends StackableArmourTrait implements Energe
 
     @Override
     public int onArmorDamage(ItemStack armour, DamageSource source, int damage, int newDamage, EntityPlayer player, int slot) {
+        if (!StackableTrait.isCanonical(this, armour)) {
+            return newDamage;
+        }
         return ModifierFluxed.doDamageReduction(armour, newDamage, TconEvoConfig.general.traitEnergizedEnergyCostArmour);
     }
 

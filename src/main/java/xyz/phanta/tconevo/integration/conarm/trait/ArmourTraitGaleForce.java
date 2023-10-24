@@ -9,6 +9,7 @@ import net.minecraftforge.common.util.Constants;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.init.TconEvoEntityAttrs;
 import xyz.phanta.tconevo.integration.conarm.trait.base.StackableArmourTrait;
+import xyz.phanta.tconevo.trait.base.StackableTrait;
 import xyz.phanta.tconevo.util.ArmourAttributeId;
 import xyz.phanta.tconevo.util.ToolUtils;
 
@@ -29,7 +30,7 @@ public class ArmourTraitGaleForce extends StackableArmourTrait {
 
     @Override
     public void getAttributeModifiers(EntityEquipmentSlot slot, ItemStack stack, Multimap<String, AttributeModifier> attributeMap) {
-        if (slot == EntityLiving.getSlotForItemStack(stack)) {
+        if (StackableTrait.isCanonical(this, stack) && slot == EntityLiving.getSlotForItemStack(stack)) {
             attributeMap.put(TconEvoEntityAttrs.FLIGHT_SPEED.getName(), new AttributeModifier(
                     ATTR_FLIGHT_SPEED.getId(slot), "Gale Force Flight Speed",
                     0.02D * ToolUtils.getTraitLevel(stack, NameConst.ARMOUR_TRAIT_GALE_FORCE),

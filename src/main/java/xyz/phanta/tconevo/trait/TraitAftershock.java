@@ -27,7 +27,7 @@ public class TraitAftershock extends StackableTrait {
     @Override
     public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target,
                          float damageDealt, boolean wasCritical, boolean wasHit) {
-        if (target.world.isRemote || !wasHit
+        if (target.world.isRemote || !wasHit || !isCanonical(this, tool)
                 || (player instanceof EntityPlayer && ((EntityPlayer)player).getCooledAttackStrength(0.5F) < 0.95F)) {
             return;
         }

@@ -55,8 +55,7 @@ public class EqExHooksImpl implements EqExHooks {
                 case RED_MATTER:
                     return 2;
             }
-        }
-        if (block == ObjHandler.dmFurnaceOff || block == ObjHandler.dmFurnaceOn) {
+        } else if (block == ObjHandler.dmFurnaceOff || block == ObjHandler.dmFurnaceOn) {
             return 1;
         } else if (block == ObjHandler.rmFurnaceOff || block == ObjHandler.rmFurnaceOn) {
             return 2;

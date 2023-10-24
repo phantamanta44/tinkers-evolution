@@ -35,7 +35,7 @@ public class TraitEternalDensity extends StackableTrait {
 
     @Override
     public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damageDealt, boolean wasCritical, boolean wasHit) {
-        if (target.world.isRemote || !wasHit) {
+        if (target.world.isRemote || !wasHit || !isCanonical(this, tool)) {
             return;
         }
         long amount = (long)Math.ceil(damageDealt * getConversionRatio(ToolUtils.getTraitLevel(tool, NameConst.TRAIT_ETERNAL_DENSITY)));
@@ -69,6 +69,9 @@ public class TraitEternalDensity extends StackableTrait {
 
     @Override
     public void miningSpeed(ItemStack tool, PlayerEvent.BreakSpeed event) {
+        if (!isCanonical(this, tool)) {
+            return;
+        }
         int densityTier = EqExHooks.INSTANCE.getDenseBlockTier(event.getState());
         if (densityTier > 0 && ToolUtils.getTraitLevel(tool, NameConst.TRAIT_ETERNAL_DENSITY) >= densityTier) {
             event.setNewSpeed(1200000F);
@@ -78,7 +81,7 @@ public class TraitEternalDensity extends StackableTrait {
     @Override
     public void afterBlockBreak(ItemStack tool, World world, IBlockState state, BlockPos pos, EntityLivingBase player, boolean wasEffective) {
         // matter blocks are hardcoded to only be harvestable by projecte pickaxes, so we force them to drop here
-        if (player instanceof EntityPlayer && wasEffective) {
+        if (player instanceof EntityPlayer && wasEffective && isCanonical(this, tool)) {
             int densityTier = EqExHooks.INSTANCE.getDenseBlockTier(state);
             if (densityTier > 0 && ToolUtils.getTraitLevel(tool, NameConst.TRAIT_ETERNAL_DENSITY) >= densityTier
                     && !state.getBlock().canHarvestBlock(world, pos, (EntityPlayer)player)) {
