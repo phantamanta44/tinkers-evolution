@@ -18,7 +18,7 @@ public class TraitCulling extends AbstractTrait {
     }
 
     private static float getHealthDamageRatio() {
-        return (float)TconEvoConfig.general.traitRuinationHealthMultiplier;
+        return (float)TconEvoConfig.general.traitCullingDifferenceMultiplier;
     }
 
     @Override
@@ -26,8 +26,7 @@ public class TraitCulling extends AbstractTrait {
         if (player instanceof EntityPlayer && ((EntityPlayer)player).getCooledAttackStrength(0.5F) < 0.95F) {
             return newDamage;
         }
-        float bonusDamage = (player.getMaxHealth() - target.getMaxHealth())
-                * (float)TconEvoConfig.general.traitCullingDifferenceMultiplier;
+        float bonusDamage = (player.getMaxHealth() - target.getMaxHealth()) * getHealthDamageRatio();
         if (bonusDamage <= 0F) {
             return newDamage;
         }
