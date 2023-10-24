@@ -67,7 +67,6 @@ public class ToolCapabilityHandler {
                     ModifierNBT modTag = ModifierNBT.readTag((NBTTagCompound)tag);
                     ICapabilityProvider capProvider = null;
                     Optional<ICapabilityProvider> capProviderOpt = capCache.get(modTag.identifier);
-                    //noinspection OptionalAssignedToNull
                     if (capProviderOpt != null) {
                         if (capProviderOpt.isPresent()) {
                             capProvider = capProviderOpt.get();

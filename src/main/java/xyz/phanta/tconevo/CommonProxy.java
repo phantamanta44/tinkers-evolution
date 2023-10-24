@@ -37,6 +37,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class CommonProxy {
 
@@ -100,8 +101,8 @@ public class CommonProxy {
         try {
             Files.createDirectories(destDir);
             List<String> configFiles = new ArrayList<>();
-            try (BufferedReader indexIn = new BufferedReader(new InputStreamReader(
-                    TconEvoMod.class.getResourceAsStream("/tconevo_config/index.txt")))) {
+            try (BufferedReader indexIn = new BufferedReader(new InputStreamReader(Objects.requireNonNull(
+                    TconEvoMod.class.getResourceAsStream("/tconevo_config/index.txt"))))) {
                 String line;
                 while ((line = indexIn.readLine()) != null) {
                     line = line.trim();
@@ -114,7 +115,8 @@ public class CommonProxy {
                 TconEvoMod.LOGGER.debug("Writing default config file: {}", configFile);
                 Path destFile = destDir.resolve(configFile);
                 if (!Files.exists(destFile)) {
-                    try (InputStream cfgIn = TconEvoMod.class.getResourceAsStream("/tconevo_config/" + configFile)) {
+                    try (InputStream cfgIn = Objects.requireNonNull(
+                            TconEvoMod.class.getResourceAsStream("/tconevo_config/" + configFile))) {
                         Files.createDirectories(destFile.getParent());
                         Files.copy(cfgIn, destFile);
                     } catch (IOException e) {

@@ -4,7 +4,6 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import xyz.phanta.tconevo.TconEvoConsts;
 import xyz.phanta.tconevo.constant.NameConst;
 
-@SuppressWarnings("NotNullFieldNotInitialized")
 public class BotaniaIntItems {
 
     @GameRegistry.ObjectHolder(TconEvoConsts.MOD_ID + ":" + NameConst.ITEM_MANA_GIVER)
