@@ -1,0 +1,17 @@
+{
+  "modifier": "tconevo.grounding",
+  "text": [
+    {
+      "text": "Иногда ваши враги просто не могут перестать уклонятся! Теперь вы можете заставить их стоять на месте"
+    }
+  ],
+  "effects": [
+    "Полностью заряженные удары не дают врагам уклониться",
+    "Одноразово"
+  ],
+  "demoTool": [
+    "tconstruct:broadsword",
+    "tconstruct:cleaver",
+    "tconstruct:arrow"
+  ]
+}
