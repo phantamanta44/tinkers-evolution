@@ -223,7 +223,7 @@ dependencies { // THE BEAST
     compileOnly(deobf("net.industrial-craft:industrialcraft-2:2.8.91-ex112"))
     compileOnly(deobf("curse.maven:advanced-solar-panels-252714:2652182")) // 4.2.1
     compileOnly(deobf("curse.maven:natural-absorption-224296:2678478")) // 1.0.0
-    compileOnly(deobf("curse.maven:redstone-repository-revolved-300750:2695517")) // 1.4.0-dev
+    compileOnly(deobf("curse.maven:redstone-repository-revolved-300750:3483422")) // 2.0.0
     compileOnly(deobf("curse.maven:solar-flux-reborn-246974:3050838")) // 12.4.11
     compileOnly(deobf("com.enderio.core:EnderCore:1.12.2-0.5.76"))
     compileOnly(deobf("com.enderio:EnderIO:1.12.2-5.3.68")) {

@@ -770,7 +770,7 @@ public class TconEvoMaterials {
                 .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_ENERGIZED[1], TconEvoTraits.TRAIT_JUGGERNAUT)
                 .build();
         GELID_GEM = new MaterialBuilder(NameConst.MAT_GELID_GEM, 0x3aadad, MaterialForm.GEM, "Gelid")
-                .requiresOres("gemGelid")
+                .requiresOres("gemGelidCrystal")
                 .setCraftable()
                 .withStatsHead(900, 9F, 12F, 6)
                 .withStatsMagic(900, 12F, 1.1F, 6)
