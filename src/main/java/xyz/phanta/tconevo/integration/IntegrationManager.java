@@ -41,7 +41,9 @@ public class IntegrationManager {
                         hooksInstances.add((IntegrationHooks)hooksImpl);
                     }
                 } catch (Exception e) {
-                    TconEvoMod.LOGGER.error("Failed to load integration!", e);
+                    TconEvoMod.LOGGER.error("Failed to load integration: " + modId, e);
+                } catch (Error e) {
+                    throw new Error("Failed to load integration: " + modId, e);
                 }
             }
         }
