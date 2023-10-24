@@ -384,6 +384,20 @@ public class TconEvoConfig {
 
     }
 
+    @Config.Comment("Configuration for tools added by Tinkers' Evolution.")
+    public static final Tools tools = new Tools();
+
+    public static class Tools {
+
+        @Config.Comment({
+                "Whether to enable the sceptre or not.",
+                "If disabled, the recipe and book pages are removed."
+        })
+        @Config.RequiresMcRestart
+        public boolean sceptreEnabled = true;
+
+    }
+
     @Config.Comment("Configuration for various tweaks to Tinkers' Construct and its addons.")
     public static final Tweaks tweaks = new Tweaks();
 

@@ -14,6 +14,7 @@ import slimeknights.tconstruct.library.tools.Pattern;
 import slimeknights.tconstruct.library.tools.ToolCore;
 import slimeknights.tconstruct.library.tools.ToolPart;
 import slimeknights.tconstruct.tools.TinkerTools;
+import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.TconEvoConsts;
 import xyz.phanta.tconevo.TconEvoMod;
 import xyz.phanta.tconevo.constant.NameConst;
@@ -39,7 +40,11 @@ public class TconEvoItems {
     // tools
     @GameRegistry.ObjectHolder(TconEvoConsts.MOD_ID + ":" + NameConst.ITEM_TOOL_SCEPTRE)
     public static ItemToolSceptre TOOL_SCEPTRE;
-    public static final LazyAccum<ToolCore> TOOLS = c -> c.acceptAll(TOOL_SCEPTRE);
+    public static final LazyAccum<ToolCore> TOOLS = c -> {
+        if (TconEvoConfig.tools.sceptreEnabled) {
+            c.accept(TOOL_SCEPTRE);
+        }
+    };
 
     @InitMe(TconEvoConsts.MOD_ID)
     public static void init() {
@@ -70,7 +75,9 @@ public class TconEvoItems {
     }
 
     public static void registerToolForging() {
-        TinkerRegistry.registerToolForgeCrafting(TOOL_SCEPTRE);
+        if (TconEvoConfig.tools.sceptreEnabled) {
+            TinkerRegistry.registerToolForgeCrafting(TOOL_SCEPTRE);
+        }
     }
 
 }
