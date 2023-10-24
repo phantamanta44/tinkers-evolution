@@ -9,7 +9,7 @@
     "The tool will recharge itself under the sun",
     "Charge rate depends on the item used to apply the modifier",
     "Only applicable for energized tools",
-    "Single level"
+    "The solar panel can be replaced in a tool forge"
   ],
   "demoTool": [
     "tconstruct:pickaxe",

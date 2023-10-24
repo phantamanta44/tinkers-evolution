@@ -6,6 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import slimeknights.mantle.util.RecipeMatch;
+import slimeknights.tconstruct.library.modifiers.ModifierAspect;
 import xyz.phanta.tconevo.capability.PowerWrapper;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.init.TconEvoTraits;
@@ -18,11 +19,13 @@ public class ArmourModPhotovoltaic extends ArmorModifierTrait implements MatchSe
 
     public ArmourModPhotovoltaic() {
         super(NameConst.MOD_PHOTOVOLTAIC, ModifierPhotovoltaic.COLOUR);
+        aspects.remove(aspects.lastIndexOf(ModifierAspect.freeModifier));
+        addAspects(new ModifierAspect.FreeFirstModifierAspect(this, 1));
     }
 
     @Override
     public boolean canApplyCustom(ItemStack stack) {
-        return PowerWrapper.isPowered(stack) && super.canApplyCustom(stack);
+        return PowerWrapper.isPowered(stack);
     }
 
     @Override

@@ -8,7 +8,7 @@
   "effects": [
     "Attaches a battery to the tool",
     "The battery will be depleted in place of tool durability",
-    "Single level"
+    "The battery can be replaced in a tool forge"
   ],
   "demoTool": [
     "tconstruct:pickaxe",

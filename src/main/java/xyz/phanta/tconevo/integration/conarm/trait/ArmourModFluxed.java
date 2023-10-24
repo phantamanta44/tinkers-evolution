@@ -13,6 +13,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import slimeknights.mantle.util.RecipeMatch;
 import slimeknights.tconstruct.library.modifiers.IToolMod;
+import slimeknights.tconstruct.library.modifiers.ModifierAspect;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.TconEvoMod;
 import xyz.phanta.tconevo.capability.PowerWrapper;
@@ -28,6 +29,9 @@ public class ArmourModFluxed extends ArmorModifierTrait implements MatchSensitiv
 
     public ArmourModFluxed() {
         super(NameConst.MOD_FLUXED, ModifierFluxed.COLOUR);
+        aspects.remove(aspects.lastIndexOf(ModifierAspect.freeModifier));
+        addAspects(new ModifierAspect.FreeFirstModifierAspect(this, 1));
+
         TconEvoMod.PROXY.getToolCapHandler().addModifierCap(this, s -> new CapabilityBroker()
                 .with(CapabilityEnergy.ENERGY, new ModifierFluxed.FluxedEnergyStore(s)));
         MinecraftForge.EVENT_BUS.register(this);
@@ -35,7 +39,7 @@ public class ArmourModFluxed extends ArmorModifierTrait implements MatchSensitiv
 
     @Override
     public boolean canApplyCustom(ItemStack stack) {
-        return !PowerWrapper.isPowered(stack) && super.canApplyCustom(stack);
+        return !PowerWrapper.isPowered(stack) || isToolWithTrait(stack);
     }
 
     @Override

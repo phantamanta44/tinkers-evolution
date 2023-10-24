@@ -8,7 +8,7 @@
   "effects": [
     "Attaches a battery to the armour piece",
     "The battery will be depleted in place of armour durability",
-    "Single level"
+    "The battery can be replaced in a tool forge"
   ],
   "demoArmor": [
     "conarm:helmet",

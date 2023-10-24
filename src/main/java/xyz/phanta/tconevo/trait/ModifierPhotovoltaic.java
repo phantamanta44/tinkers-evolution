@@ -11,6 +11,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import slimeknights.mantle.util.RecipeMatch;
+import slimeknights.tconstruct.library.modifiers.ModifierAspect;
 import slimeknights.tconstruct.library.modifiers.ModifierTrait;
 import slimeknights.tconstruct.library.utils.TagUtil;
 import xyz.phanta.tconevo.TconEvoMod;
@@ -52,11 +53,13 @@ public class ModifierPhotovoltaic extends ModifierTrait implements MatchSensitiv
 
     public ModifierPhotovoltaic() {
         super(NameConst.MOD_PHOTOVOLTAIC, COLOUR);
+        aspects.remove(aspects.lastIndexOf(ModifierAspect.freeModifier));
+        addAspects(new ModifierAspect.FreeFirstModifierAspect(this, 1));
     }
 
     @Override
     public boolean canApplyCustom(ItemStack stack) {
-        return PowerWrapper.isPowered(stack) && super.canApplyCustom(stack);
+        return PowerWrapper.isPowered(stack);
     }
 
     @Override

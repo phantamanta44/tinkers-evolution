@@ -15,6 +15,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import slimeknights.mantle.util.RecipeMatch;
 import slimeknights.tconstruct.library.modifiers.IToolMod;
+import slimeknights.tconstruct.library.modifiers.ModifierAspect;
 import slimeknights.tconstruct.library.modifiers.ModifierTrait;
 import slimeknights.tconstruct.library.utils.TagUtil;
 import slimeknights.tconstruct.library.utils.ToolHelper;
@@ -39,6 +40,9 @@ public class ModifierFluxed extends ModifierTrait implements MatchSensitiveModif
 
     public ModifierFluxed() {
         super(NameConst.MOD_FLUXED, COLOUR);
+        aspects.remove(aspects.lastIndexOf(ModifierAspect.freeModifier));
+        addAspects(new ModifierAspect.FreeFirstModifierAspect(this, 1));
+
         TconEvoMod.PROXY.getToolCapHandler().addModifierCap(this, s -> new CapabilityBroker()
                 .with(CapabilityEnergy.ENERGY, new FluxedEnergyStore(s)));
         MinecraftForge.EVENT_BUS.register(this);
@@ -46,7 +50,7 @@ public class ModifierFluxed extends ModifierTrait implements MatchSensitiveModif
 
     @Override
     public boolean canApplyCustom(ItemStack stack) {
-        return !PowerWrapper.isPowered(stack) && super.canApplyCustom(stack);
+        return !PowerWrapper.isPowered(stack) || isToolWithTrait(stack);
     }
 
     @Override
