@@ -15,10 +15,11 @@ import xyz.phanta.tconevo.capability.EnergyShield;
 import xyz.phanta.tconevo.init.TconEvoCaps;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class EnergyShieldHandler {
+
+    private final Set<UUID> inHitHandler = new HashSet<>();
 
     // this should, in theory, always run after DE's handler
     // there's the slightly weird effect of the shield seeming to "deplete" twice, but I don't really know what to do to get around that
@@ -29,73 +30,82 @@ public class EnergyShieldHandler {
             return;
         }
         EntityPlayer player = (EntityPlayer)event.getEntityLiving();
-        if (player.world.isRemote || !DraconicHooks.INSTANCE.isShieldEnabled(player)) {
+        if (player.world.isRemote) {
             return;
         }
-        float damage = event.getAmount();
-        DamageSource dmgSrc = event.getSource();
-        // don't block /kill damage
-        // could use DamageUtils::isPureDamage, but this is slightly more faithful to the original DE mechanics
-        // (not sure if that's a good or bad thing lol)
-        if (damage == Float.MAX_VALUE && dmgSrc.isUnblockable() && dmgSrc.canHarmInCreative()) {
+        UUID playerId = player.getUniqueID();
+        if (inHitHandler.contains(playerId) || !DraconicHooks.INSTANCE.isShieldEnabled(player)) {
             return;
         }
-        List<EnergyShield> shields = collectArmourShields(player.inventory);
-        float totalShieldPoints = 0;
-        for (EnergyShield shield : shields) {
-            totalShieldPoints += shield.getShieldPoints();
-        }
-        if (totalShieldPoints <= 0F) {
-            return;
-        }
-        // apply damage modifiers; see DE's ModHelper#applyModDamageAdjustments
-        Entity attackerEntity = dmgSrc.getTrueSource();
-        float bonusEntropyCost = 0F;
-        if (attackerEntity instanceof EntityPlayer) {
-            EntityPlayer attacker = (EntityPlayer)attackerEntity;
-            IPair<Float, Float> newDamage = DraconicHooks.INSTANCE
-                    .applyShieldDamageModifiers(player, attacker, totalShieldPoints, damage);
-            if (newDamage != null) {
-                damage = newDamage.getA();
-                bonusEntropyCost = newDamage.getB();
-            } else if (dmgSrc.isUnblockable() || dmgSrc.canHarmInCreative()) {
-                damage *= 2F;
+        inHitHandler.add(playerId);
+        try {
+            float damage = event.getAmount();
+            DamageSource dmgSrc = event.getSource();
+            // don't block /kill damage
+            // could use DamageUtils::isPureDamage, but this is slightly more faithful to the original DE mechanics
+            // (not sure if that's a good or bad thing lol)
+            if (damage == Float.MAX_VALUE && dmgSrc.isUnblockable() && dmgSrc.canHarmInCreative()) {
+                return;
             }
-        }
-        // absorb damage
-        event.setCanceled(true);
-        if (player.hurtResistantTime <= player.maxHurtResistantTime - 4F) {
-            // entropy cost is computed over average entropy and all energy shields inherit the new average
-            float newEntropy = 0F;
-            float totalShieldCapacity = 0;
+            List<EnergyShield> shields = collectArmourShields(player.inventory);
+            float totalShieldPoints = 0;
             for (EnergyShield shield : shields) {
-                newEntropy += shield.getEntropy();
-                totalShieldCapacity += shield.getShieldCapacity();
+                totalShieldPoints += shield.getShieldPoints();
             }
-            newEntropy = Math.min(newEntropy / shields.size() + 1F + damage / 20F + bonusEntropyCost, 100F);
-            // distribute damage across energy shields
-            float damageAbsorbedTotal = 0F;
-            float remainingShieldTotal = 0;
-            for (EnergyShield shield : shields) {
-                float shieldPoints = shield.getShieldPoints();
-                if (shieldPoints > 0F) {
-                    // the min call is probably not necessary, but DE does it, so we'll do it too just to be safe
-                    float damageAbsorbed = Math.min(damage * (shieldPoints / totalShieldPoints), shieldPoints);
-                    if (damageAbsorbed > 0F) {
-                        damageAbsorbedTotal += damageAbsorbed;
-                        float remainingShield = shieldPoints - damageAbsorbed;
-                        shield.setShield(remainingShield);
-                        remainingShieldTotal += remainingShield;
-                        shield.setEntropy(newEntropy);
-                    }
+            if (totalShieldPoints <= 0F) {
+                return;
+            }
+            // apply damage modifiers; see DE's ModHelper#applyModDamageAdjustments
+            Entity attackerEntity = dmgSrc.getTrueSource();
+            float bonusEntropyCost = 0F;
+            if (attackerEntity instanceof EntityPlayer) {
+                EntityPlayer attacker = (EntityPlayer) attackerEntity;
+                IPair<Float, Float> newDamage = DraconicHooks.INSTANCE
+                        .applyShieldDamageModifiers(player, attacker, totalShieldPoints, damage);
+                if (newDamage != null) {
+                    damage = newDamage.getA();
+                    bonusEntropyCost = newDamage.getB();
+                } else if (dmgSrc.isUnblockable() || dmgSrc.canHarmInCreative()) {
+                    damage *= 2F;
                 }
             }
-            DraconicHooks.INSTANCE.playShieldHitEffect(player, remainingShieldTotal / totalShieldCapacity);
-            if (remainingShieldTotal > 0F) {
-                player.hurtResistantTime = 20;
-            } else if (damageAbsorbedTotal < damage) {
-                player.attackEntityFrom(dmgSrc, damage - damageAbsorbedTotal);
+            // absorb damage
+            event.setCanceled(true);
+            if (player.hurtResistantTime <= player.maxHurtResistantTime - 4F) {
+                // entropy cost is computed over average entropy and all energy shields inherit the new average
+                float newEntropy = 0F;
+                float totalShieldCapacity = 0;
+                for (EnergyShield shield : shields) {
+                    newEntropy += shield.getEntropy();
+                    totalShieldCapacity += shield.getShieldCapacity();
+                }
+                newEntropy = Math.min(newEntropy / shields.size() + 1F + damage / 20F + bonusEntropyCost, 100F);
+                // distribute damage across energy shields
+                float damageAbsorbedTotal = 0F;
+                float remainingShieldTotal = 0;
+                for (EnergyShield shield : shields) {
+                    float shieldPoints = shield.getShieldPoints();
+                    if (shieldPoints > 0F) {
+                        // the min call is probably not necessary, but DE does it, so we'll do it too just to be safe
+                        float damageAbsorbed = Math.min(damage * (shieldPoints / totalShieldPoints), shieldPoints);
+                        if (damageAbsorbed > 0F) {
+                            damageAbsorbedTotal += damageAbsorbed;
+                            float remainingShield = shieldPoints - damageAbsorbed;
+                            shield.setShield(remainingShield);
+                            remainingShieldTotal += remainingShield;
+                            shield.setEntropy(newEntropy);
+                        }
+                    }
+                }
+                DraconicHooks.INSTANCE.playShieldHitEffect(player, remainingShieldTotal / totalShieldCapacity);
+                if (remainingShieldTotal > 0F) {
+                    player.hurtResistantTime = 20;
+                } else if (damageAbsorbedTotal < damage) {
+                    player.attackEntityFrom(dmgSrc, damage - damageAbsorbedTotal);
+                }
             }
+        } finally {
+            inHitHandler.remove(playerId);
         }
     }
 
