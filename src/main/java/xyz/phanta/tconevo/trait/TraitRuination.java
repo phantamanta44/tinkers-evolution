@@ -26,7 +26,12 @@ public class TraitRuination extends AbstractTrait {
         if (player instanceof EntityPlayer && ((EntityPlayer)player).getCooledAttackStrength(0.5F) < 0.95F) {
             return newDamage;
         }
-        return newDamage + target.getHealth() * getHealthDamageRatio();
+        float bonusDmg = target.getHealth() * getHealthDamageRatio();
+        float bound = (float)TconEvoConfig.general.traitRuinationDamageMax;
+        if (bound > 0F && bonusDmg > bound) {
+            return newDamage + bound;
+        }
+        return newDamage + bonusDmg;
     }
 
     @Override

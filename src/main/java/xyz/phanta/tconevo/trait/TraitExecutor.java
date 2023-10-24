@@ -26,7 +26,12 @@ public class TraitExecutor extends AbstractTrait {
         if (player instanceof EntityPlayer && ((EntityPlayer)player).getCooledAttackStrength(0.5F) < 0.95F) {
             return newDamage;
         }
-        return newDamage + (target.getMaxHealth() - target.getHealth()) * getMissingHealthDamageRatio();
+        float bonusDmg = (target.getMaxHealth() - target.getHealth()) * getMissingHealthDamageRatio();
+        float bound = (float)TconEvoConfig.general.traitExecutorDamageMax;
+        if (bound > 0F && bonusDmg > bound) {
+            return newDamage + bound;
+        }
+        return newDamage + bonusDmg;
     }
 
     @Override

@@ -207,6 +207,13 @@ public class TconEvoConfig {
         @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
         public double traitExecutorMissingHealthDamage = 0.2D;
 
+        @Config.Comment({
+                "The maximum amount of damage that can be dealt in a single executor proc.",
+                "Set this to zero to disable the upper bound."
+        })
+        @Config.RangeDouble(min = 0D)
+        public double traitExecutorDamageMax = 0D;
+
         @Config.Comment("The cost, in durability points, of using the fertilizing trait to fertilize a crop.")
         @Config.RangeInt(min = 0)
         public int traitFertilizingDurabilityCost = 25;
@@ -322,6 +329,13 @@ public class TconEvoConfig {
         @Config.Comment("The fraction of enemy current health dealt as bonus damage by the ruination trait.")
         @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
         public double traitRuinationHealthMultiplier = 0.04D;
+
+        @Config.Comment({
+                "The maximum amount of damage that can be dealt in a single ruination proc.",
+                "Set this to zero to disable the upper bound."
+        })
+        @Config.RangeDouble(min = 0D)
+        public double traitRuinationDamageMax = 0D;
 
         @Config.Comment({
                 "The duration, in ticks, of the regeneration granted by the second wind trait.",
