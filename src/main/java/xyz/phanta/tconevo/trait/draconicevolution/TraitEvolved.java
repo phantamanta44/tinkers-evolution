@@ -79,12 +79,14 @@ public class TraitEvolved extends AbstractTrait implements EnergeticModifier {
             super.applyEffect(rootCompound, modifierTag);
             rootCompound.setBoolean(ModReinforced.TAG_UNBREAKABLE, true);
             setEvolvedTier(rootCompound);
+
             // add draconic modifiers
             for (ModifierDraconic mod : ModifierDraconic.allMods) {
-                if (mod.isEligible(rootCompound)) {
+                if (mod.isEligible(rootCompound) && !TinkerUtil.hasTrait(rootCompound, mod.identifier)) {
                     mod.apply(rootCompound);
                 }
             }
+
             // since there are no hooks for ammo use, we set projectile-type things to broken
             if (TinkerUtil.hasCategory(rootCompound, Category.PROJECTILE) && rootCompound.getInteger(EvolvedCap.TAG_ENERGY) <= 0) {
                 NBTTagCompound toolDataTag = TagUtil.getToolTag(rootCompound);

@@ -61,7 +61,7 @@ public class ArmourTraitEvolved extends AbstractArmorTrait implements EnergeticM
             return;
         }
         for (ArmourModDraconic mod : ArmourModDraconic.allMods) {
-            if (mod.isEligible(rootTag, slot)) {
+            if (mod.isEligible(rootTag, slot) && !TinkerUtil.hasTrait(rootTag, mod.identifier)) {
                 mod.apply(rootTag);
             }
         }
