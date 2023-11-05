@@ -12,6 +12,7 @@ import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.TconEvoConsts;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.potion.PotionDamageBoost;
@@ -52,8 +53,9 @@ public class TconEvoPotions {
         }
         EntityLivingBase entity = event.getEntityLiving();
         if (entity.getActivePotionEffect(IMMORTALITY) != null) {
-            // never let damage drop the player below 1 health
-            amount = MathUtils.clamp(entity.getHealth() - 1F, 0F, amount);
+            // never let damage drop the player below the health threshold
+            amount = MathUtils.clamp(
+                    entity.getHealth() - (float)TconEvoConfig.general.effectImmortalityMinHealth, 0F, amount);
         }
         event.setAmount(amount);
     }
@@ -66,9 +68,9 @@ public class TconEvoPotions {
         }
         EntityLivingBase entity = event.getEntityLiving();
         if (entity.getActivePotionEffect(IMMORTALITY) != null) {
-            entity.setHealth(1F);
+            entity.setHealth((float)TconEvoConfig.general.effectImmortalityMinHealth);
             entity.hurtResistantTime = entity.maxHurtResistantTime;
-            entity.removePotionEffect(IMMORTALITY);
+            entity.removePotionEffect(IMMORTALITY); // you only get to cheat death once
             event.setCanceled(true);
         }
     }

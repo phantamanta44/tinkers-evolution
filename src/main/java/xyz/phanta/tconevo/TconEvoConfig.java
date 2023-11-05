@@ -84,6 +84,13 @@ public class TconEvoConfig {
         @Config.RangeDouble(min = 0D, max = 1D)
         public double effectMortalWoundsHealReduction = 0.75D;
 
+        @Config.Comment({
+                "The minimum amount of health a player can drop to while under the immortality effect.",
+                "Setting this to zero will make the immortality effect completely useless."
+        })
+        @Config.RangeDouble(min = 1D)
+        public double effectImmortalityMinHealth = 1D;
+
         @Config.Comment("The amount of flat bonus magical damage dealt per level of the aftershock trait.")
         @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
         public double traitAftershockDamage = 2D;
@@ -405,6 +412,13 @@ public class TconEvoConfig {
         })
         @Config.RangeInt(min = 1)
         public int traitWillStrengthImmortalityDuration = 200;
+
+        @Config.Comment({
+                "The cooldown, in ticks, between procs of the strength of will trait.",
+                "Only useful with Construct's Armoury installed."
+        })
+        @Config.RangeInt(min = 0)
+        public int traitWillStrengthCooldown = 0;
 
         @Config.Comment({
                 "The energy capacity divider that determines the durability threshold for the fluxed modifier.",
