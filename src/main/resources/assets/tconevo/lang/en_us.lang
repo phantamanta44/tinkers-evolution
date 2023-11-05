@@ -574,6 +574,7 @@ death.attack.tconevo.chaos.item=%1$s was annihilated by %2$s using the dark ener
 attribute.name.tconevo.flightSpeed=Flight Speed
 attribute.name.tconevo.damageTaken=Damage Taken
 attribute.name.tconevo.evasionChance=Evasion Chance
+attribute.name.tconevo.healingReceived=Healing Received
 
 commands.tconevo.generic.player_only=Only players can use this command.
 commands.tconevo.generic.req_tool=You need a Tinkers' Construct item to use this command.

@@ -5,6 +5,7 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundCategory;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraftforge.event.entity.living.LivingHealEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -47,6 +48,18 @@ public class EntityAttributeHandler {
         double multiplier = event.getEntityLiving().getEntityAttribute(TconEvoEntityAttrs.DAMAGE_TAKEN).getAttributeValue();
         if (multiplier != 1D) {
             event.setAmount(Math.max(damage * (float)multiplier, 0F));
+        }
+    }
+
+    @SubscribeEvent(priority = EventPriority.LOW)
+    public void onEntityHeal(LivingHealEvent event) {
+        float amount = event.getAmount();
+        if (amount <= 0F) {
+            return;
+        }
+        double multiplier = event.getEntityLiving().getEntityAttribute(TconEvoEntityAttrs.HEALING_RECEIVED).getAttributeValue();
+        if (multiplier != 1D) {
+            event.setAmount(Math.max(amount * (float)multiplier, 0F));
         }
     }
 

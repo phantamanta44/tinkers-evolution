@@ -56,6 +56,22 @@ public class TconEvoConfig {
         @Config.RequiresMcRestart
         public double attrEvasionMax = 1D;
 
+        @Config.Comment({
+                "The minimum value for the \"healing received\" attribute.",
+                "If set to 1, then heal reduction will not work at all."
+        })
+        @Config.RangeDouble(min = 0D, max = 1D)
+        @Config.RequiresMcRestart
+        public double attrHealingReceivedMin = 0D;
+
+        @Config.Comment({
+                "The maximum value for the \"healing received\" attribute.",
+                "If set to 1, then heal amplification will not work at all."
+        })
+        @Config.RangeDouble(min = 1D)
+        @Config.RequiresMcRestart
+        public double attrHealingReceivedMax = 1e9D;
+
         @Config.Comment("The additional bonus damage percentage granted per level of the damage boost effect.")
         @Config.RangeDouble(min = 0D, max = 1D)
         public double effectDamageBoostBonusDamage = 0.05D;

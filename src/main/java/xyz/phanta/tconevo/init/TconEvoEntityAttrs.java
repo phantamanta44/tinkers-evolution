@@ -21,6 +21,9 @@ public class TconEvoEntityAttrs {
     public static final IAttribute EVASION_CHANCE = new RangedAttribute(null, "tconevo.evasionChance",
             1D, 1D, 1D + TconEvoConfig.general.attrEvasionMax)
             .setDescription("Evasion Chance").setShouldWatch(true);
+    public static final IAttribute HEALING_RECEIVED = new RangedAttribute(null, "tconevo.healingReceived",
+            1D, TconEvoConfig.general.attrHealingReceivedMin, TconEvoConfig.general.attrHealingReceivedMax)
+            .setDescription("Healing Received").setShouldWatch(true);
 
     @InitMe
     public static void init() {
@@ -35,6 +38,7 @@ public class TconEvoEntityAttrs {
             attrMap.registerAttribute(FLIGHT_SPEED);
             attrMap.registerAttribute(DAMAGE_TAKEN);
             attrMap.registerAttribute(EVASION_CHANCE);
+            attrMap.registerAttribute(HEALING_RECEIVED);
         }
     }
 
