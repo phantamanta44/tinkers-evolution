@@ -15,7 +15,7 @@ public class PotionDamageReduction extends Potion {
         setBeneficial();
         setPotionName(TconEvoPotions.PREFIX + NameConst.POTION_DAMAGE_REDUCTION);
         registerPotionAttributeModifier(TconEvoEntityAttrs.DAMAGE_TAKEN, "44069cae-ab88-4f51-a373-005831e223f9",
-                0D, Constants.AttributeModifierOperation.ADD);
+                0D, Constants.AttributeModifierOperation.ADD_MULTIPLE);
     }
 
     public double getAttributeModifierAmount(int amplifier, AttributeModifier modifier) {
