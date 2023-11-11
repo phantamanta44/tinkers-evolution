@@ -10,7 +10,6 @@ import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import slimeknights.tconstruct.library.modifiers.Modifier;
-import slimeknights.tconstruct.library.modifiers.ModifierNBT;
 import slimeknights.tconstruct.library.tinkering.ITinkerable;
 import slimeknights.tconstruct.library.utils.TagUtil;
 import xyz.phanta.tconevo.TconEvoConsts;
@@ -48,6 +47,8 @@ public class ToolCapabilityHandler {
         private final ItemStack stack;
         private final Map<String, Function<ItemStack, ICapabilityProvider>> capFactories;
         private final Map<String, Optional<ICapabilityProvider>> capCache = new HashMap<>();
+        // not useful to try to cache the capability -> provider mappings wholesale, since we'd have to check to see if
+        // the corresponding modifier is still on the tool, which requires linear search of the modifier list anyways
 
         public TconEvoCapProvider(ItemStack stack, Map<String, Function<ItemStack, ICapabilityProvider>> capFactories) {
             this.stack = stack;
@@ -64,20 +65,20 @@ public class ToolCapabilityHandler {
         public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
             for (NBTBase tag : TagUtil.getModifiersTagList(stack)) {
                 if (tag instanceof NBTTagCompound) {
-                    ModifierNBT modTag = ModifierNBT.readTag((NBTTagCompound)tag);
+                    String modId = ((NBTTagCompound)tag).getString("identifier");
                     ICapabilityProvider capProvider = null;
-                    Optional<ICapabilityProvider> capProviderOpt = capCache.get(modTag.identifier);
+                    Optional<ICapabilityProvider> capProviderOpt = capCache.get(modId);
                     if (capProviderOpt != null) {
                         if (capProviderOpt.isPresent()) {
                             capProvider = capProviderOpt.get();
                         }
                     } else {
-                        Function<ItemStack, ICapabilityProvider> capFactory = capFactories.get(modTag.identifier);
+                        Function<ItemStack, ICapabilityProvider> capFactory = capFactories.get(modId);
                         if (capFactory != null) {
                             capProvider = capFactory.apply(stack);
-                            capCache.put(modTag.identifier, Optional.of(capProvider));
+                            capCache.put(modId, Optional.of(capProvider));
                         } else {
-                            capCache.put(modTag.identifier, Optional.empty());
+                            capCache.put(modId, Optional.empty());
                         }
                     }
                     if (capProvider != null && capProvider.hasCapability(capability, facing)) {
