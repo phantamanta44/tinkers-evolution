@@ -1,7 +1,8 @@
-package xyz.phanta.tconevo.coremod;
+package xyz.phanta.tconevo.coremod.transform;
 
 import net.minecraftforge.fml.common.asm.transformers.deobf.FMLDeobfuscatingRemapper;
 import org.objectweb.asm.*;
+import xyz.phanta.tconevo.coremod.TconEvoClassTransformer;
 
 import javax.annotation.Nullable;
 import java.util.function.Consumer;

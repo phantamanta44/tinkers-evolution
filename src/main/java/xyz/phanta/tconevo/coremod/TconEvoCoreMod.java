@@ -10,7 +10,7 @@ import java.util.Map;
 @IFMLLoadingPlugin.SortingIndex(1540)
 public class TconEvoCoreMod implements IFMLLoadingPlugin {
 
-    static final Logger LOGGER = LogManager.getLogger("tconevo-core");
+    public static final Logger LOGGER = LogManager.getLogger("tconevo-core");
 
     @Override
     public String[] getASMTransformerClass() {

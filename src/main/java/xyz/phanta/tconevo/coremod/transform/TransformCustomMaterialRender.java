@@ -1,6 +1,7 @@
-package xyz.phanta.tconevo.coremod;
+package xyz.phanta.tconevo.coremod.transform;
 
 import org.objectweb.asm.*;
+import xyz.phanta.tconevo.coremod.TconEvoClassTransformer;
 
 import java.util.function.Consumer;
 

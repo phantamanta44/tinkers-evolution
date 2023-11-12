@@ -1,10 +1,10 @@
-package xyz.phanta.tconevo.coremod;
+package xyz.phanta.tconevo.coremod.util;
 
 import gnu.trove.map.TIntIntMap;
 import gnu.trove.map.hash.TIntIntHashMap;
 import org.objectweb.asm.Opcodes;
 
-class VarTracker {
+public class VarTracker {
 
     private final TIntIntMap mapped = new TIntIntHashMap();
     private int nextFreeVar;

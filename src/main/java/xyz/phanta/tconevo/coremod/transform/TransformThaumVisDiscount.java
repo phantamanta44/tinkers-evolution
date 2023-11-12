@@ -1,9 +1,10 @@
-package xyz.phanta.tconevo.coremod;
+package xyz.phanta.tconevo.coremod.transform;
 
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.Label;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
+import xyz.phanta.tconevo.coremod.TconEvoClassTransformer;
 
 import javax.annotation.Nullable;
 import java.util.function.Consumer;

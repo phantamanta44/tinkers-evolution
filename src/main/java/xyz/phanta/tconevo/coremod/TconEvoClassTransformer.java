@@ -5,6 +5,7 @@ import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.Opcodes;
+import xyz.phanta.tconevo.coremod.transform.*;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -65,7 +66,7 @@ public class TconEvoClassTransformer implements IClassTransformer {
         return code;
     }
 
-    interface Transform {
+    public interface Transform {
 
         String getName();
 
