@@ -1296,6 +1296,12 @@ public class TconEvoConfig {
         @Config.RequiresMcRestart
         public boolean chaosResistOnlyUsesOneModifier = false;
 
+        @Config.Comment({
+                "If enabled, damage blocked by energy shields will still grant tool experience.",
+                "Only useful with both Construct's Armoury and Tinkers Tool Leveling installed."
+        })
+        public boolean shieldedDamageGrantsToolXp = false;
+
         private static <T> T triSwitch(int tier, T wyvern, T draconic, T chaotic, T defaultValue) {
             switch (tier) {
                 case 1:

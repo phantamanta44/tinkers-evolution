@@ -94,6 +94,7 @@ public class EnergyShieldHandler {
                             shield.setShield(remainingShield);
                             remainingShieldTotal += remainingShield;
                             shield.setEntropy(newEntropy);
+                            shield.onDamageAbsorbed(damageAbsorbed, player);
                         }
                     }
                 }

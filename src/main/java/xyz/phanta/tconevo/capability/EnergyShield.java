@@ -1,5 +1,7 @@
 package xyz.phanta.tconevo.capability;
 
+import net.minecraft.entity.player.EntityPlayer;
+
 public interface EnergyShield extends RatedEnergyStorage {
 
     float getShieldPoints();
@@ -15,6 +17,10 @@ public interface EnergyShield extends RatedEnergyStorage {
     float getShieldRecovery();
 
     void setEntropy(float amount);
+
+    default void onDamageAbsorbed(float damage, EntityPlayer player) {
+        // NO-OP
+    }
 
     class Noop implements EnergyShield {
 

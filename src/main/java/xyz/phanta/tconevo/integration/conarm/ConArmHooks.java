@@ -1,6 +1,7 @@
 package xyz.phanta.tconevo.integration.conarm;
 
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -36,6 +37,8 @@ public interface ConArmHooks extends IntegrationHooks {
     void damageArmour(ItemStack stack, int amount, EntityLivingBase wearer);
 
     ItemStack buildArmourArtifact(ArtifactTypeArmour.Spec spec) throws ArtifactType.BuildingException;
+
+    void addArmourXpFromDamage(ItemStack stack, float damage, EntityPlayer player);
 
     class Noop implements ConArmHooks {
 
@@ -78,6 +81,11 @@ public interface ConArmHooks extends IntegrationHooks {
         @Override
         public ItemStack buildArmourArtifact(ArtifactTypeArmour.Spec spec) throws ArtifactType.BuildingException {
             throw new ArtifactType.BuildingException("Construct's Armoury is not available");
+        }
+
+        @Override
+        public void addArmourXpFromDamage(ItemStack stack, float damage, EntityPlayer player) {
+            // NO-OP
         }
 
     }

@@ -6,6 +6,7 @@ import io.github.phantamanta44.libnine.util.helper.ItemUtils;
 import io.github.phantamanta44.libnine.util.helper.OptUtils;
 import io.github.phantamanta44.libnine.util.math.MathUtils;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -125,13 +126,20 @@ public class ArmourTraitEvolved extends AbstractArmorTrait implements EnergeticM
 
         @Override
         public float getShieldRecovery() {
-            return (float)TconEvoConfig.moduleDraconicEvolution.getBaseShieldRecovery(TraitEvolved.getEvolvedTier(stack))
+            return (float) TconEvoConfig.moduleDraconicEvolution.getBaseShieldRecovery(TraitEvolved.getEvolvedTier(stack))
                     * ToolUtils.getTraitLevel(stack, NameConst.ARMOUR_MOD_DRACONIC_SHIELD_RECOVERY);
         }
 
         @Override
         public void setEntropy(float amount) {
             ItemUtils.getOrCreateTag(stack).setFloat(TAG_ENTROPY, MathUtils.clamp(amount, 0F, 100F));
+        }
+
+        @Override
+        public void onDamageAbsorbed(float damage, EntityPlayer player) {
+            if (TconEvoConfig.moduleDraconicEvolution.shieldedDamageGrantsToolXp) {
+                ConArmHooks.INSTANCE.addArmourXpFromDamage(stack, damage, player);
+            }
         }
 
         private static float getShieldPartition(EntityEquipmentSlot slot) {

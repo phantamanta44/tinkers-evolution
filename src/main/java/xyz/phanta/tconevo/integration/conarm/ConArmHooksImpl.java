@@ -1,6 +1,7 @@
 package xyz.phanta.tconevo.integration.conarm;
 
 import c4.conarm.common.armor.utils.ArmorHelper;
+import c4.conarm.integrations.tinkertoolleveling.ModArmorLeveling;
 import c4.conarm.lib.ArmoryRegistry;
 import c4.conarm.lib.armor.ArmorCore;
 import c4.conarm.lib.events.ArmoryEvent;
@@ -17,6 +18,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -94,7 +96,7 @@ public class ConArmHooksImpl implements ConArmHooks {
 
     @Override
     public void rebuildArmour(NBTTagCompound rootTag, Item item) throws TinkerGuiException {
-        ArmorBuilder.rebuildArmor(rootTag, (TinkersArmor)item);
+        ArmorBuilder.rebuildArmor(rootTag, (TinkersArmor) item);
     }
 
     @Override
@@ -110,7 +112,7 @@ public class ConArmHooksImpl implements ConArmHooks {
     @Override
     public void damageArmour(ItemStack stack, int amount, EntityLivingBase wearer) {
         if (wearer instanceof EntityPlayer) { // this probably won't cause any huge issues
-            ArmorHelper.damageArmor(stack, DamageSource.GENERIC, amount, (EntityPlayer)wearer);
+            ArmorHelper.damageArmor(stack, DamageSource.GENERIC, amount, (EntityPlayer) wearer);
         }
     }
 
@@ -180,6 +182,15 @@ public class ConArmHooksImpl implements ConArmHooks {
         ArtifactTypeTool.addExtraItemData(stack, spec.lore, spec.dataTag);
 
         return stack; // done!
+    }
+
+    @Override
+    public void addArmourXpFromDamage(ItemStack stack, float damage, EntityPlayer player) {
+        if (ModArmorLeveling.modArmorLeveling != null) {
+            ModArmorLeveling.modArmorLeveling.addXp(stack,
+                    MathHelper.clamp((int) (damage * ModArmorLeveling.damageToXP), 1, ModArmorLeveling.xpGainCap),
+                    player);
+        }
     }
 
 }
