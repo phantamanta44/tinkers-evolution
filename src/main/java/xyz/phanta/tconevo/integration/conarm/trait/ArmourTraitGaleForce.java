@@ -6,6 +6,7 @@ import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.Constants;
+import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.init.TconEvoEntityAttrs;
 import xyz.phanta.tconevo.integration.conarm.trait.base.StackableArmourTrait;
@@ -33,7 +34,8 @@ public class ArmourTraitGaleForce extends StackableArmourTrait {
         if (StackableTrait.isCanonical(this, stack) && slot == EntityLiving.getSlotForItemStack(stack)) {
             attributeMap.put(TconEvoEntityAttrs.FLIGHT_SPEED.getName(), new AttributeModifier(
                     ATTR_FLIGHT_SPEED.getId(slot), "Gale Force Flight Speed",
-                    0.02D * ToolUtils.getTraitLevel(stack, NameConst.ARMOUR_TRAIT_GALE_FORCE),
+                    TconEvoConfig.general.traitGaleForceFlightSpeed
+                            * ToolUtils.getTraitLevel(stack, NameConst.ARMOUR_TRAIT_GALE_FORCE),
                     Constants.AttributeModifierOperation.ADD));
         }
     }

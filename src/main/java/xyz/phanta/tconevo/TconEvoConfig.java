@@ -245,6 +245,10 @@ public class TconEvoConfig {
         @Config.RangeInt(min = 1)
         public int traitFootFleetSpeedDuration = 50;
 
+        @Config.Comment("The bonus flight speed provided per level of the gale force trait.")
+        @Config.RangeDouble(min = 0D)
+        public double traitGaleForceFlightSpeed = 0.02D;
+
         @Config.Comment({
                 "The duration, in ticks, of the regeneration and fire resistance granted by the hearth's embrace trait.",
                 "Only useful with Construct's Armoury installed."
