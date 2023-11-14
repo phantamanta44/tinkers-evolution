@@ -13,6 +13,8 @@ import xyz.phanta.tconevo.artifact.type.ArtifactTypeArmour;
 import xyz.phanta.tconevo.integration.IntegrationHooks;
 
 import javax.annotation.Nullable;
+import java.util.Collection;
+import java.util.Collections;
 
 public interface ConArmHooks extends IntegrationHooks {
 
@@ -39,6 +41,8 @@ public interface ConArmHooks extends IntegrationHooks {
     ItemStack buildArmourArtifact(ArtifactTypeArmour.Spec spec) throws ArtifactType.BuildingException;
 
     void addArmourXpFromDamage(ItemStack stack, float damage, EntityPlayer player);
+
+    Collection<? extends Item> getArmourItems();
 
     class Noop implements ConArmHooks {
 
@@ -86,6 +90,11 @@ public interface ConArmHooks extends IntegrationHooks {
         @Override
         public void addArmourXpFromDamage(ItemStack stack, float damage, EntityPlayer player) {
             // NO-OP
+        }
+
+        @Override
+        public Collection<? extends Item> getArmourItems() {
+            return Collections.emptyList();
         }
 
     }

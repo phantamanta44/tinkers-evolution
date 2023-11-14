@@ -41,6 +41,7 @@ import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
 import xyz.phanta.tconevo.integration.gamestages.GameStagesHooks;
 
 import javax.annotation.Nullable;
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
@@ -191,6 +192,11 @@ public class ConArmHooksImpl implements ConArmHooks {
                     MathHelper.clamp((int) (damage * ModArmorLeveling.damageToXP), 1, ModArmorLeveling.xpGainCap),
                     player);
         }
+    }
+
+    @Override
+    public Collection<? extends Item> getArmourItems() {
+        return ArmoryRegistry.getArmor();
     }
 
 }

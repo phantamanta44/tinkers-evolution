@@ -11,6 +11,8 @@ import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.smeltery.AlloyRecipe;
 import slimeknights.tconstruct.library.smeltery.ICastingRecipe;
 import slimeknights.tconstruct.library.smeltery.MeltingRecipe;
+import slimeknights.tconstruct.library.tinkering.Category;
+import slimeknights.tconstruct.library.tinkering.TinkersItem;
 import slimeknights.tconstruct.library.traits.ITrait;
 
 import javax.annotation.Nullable;
@@ -37,12 +39,15 @@ public class TconReflect {
     private static final Set<String> cancelledMaterials = MirrorUtils
             .<Set<String>>reflectField(TinkerRegistry.class, "cancelledMaterials").get(null);
 
-    private static final MirrorUtils.IField<PriorityQueue<RecipeMatch>> fRecipeMatchRecipe_items = MirrorUtils.
-            reflectField(RecipeMatchRegistry.class, "items");
+    private static final MirrorUtils.IField<PriorityQueue<RecipeMatch>> fRecipeMatchRecipe_items = MirrorUtils
+            .reflectField(RecipeMatchRegistry.class, "items");
     private static final MirrorUtils.IField<List<ItemStack>> fOredict_oredictEntry = MirrorUtils
             .reflectField(RecipeMatch.Oredict.class, "oredictEntry");
     private static final MirrorUtils.IField<Map<String, List<ITrait>>> fMaterial_traits = MirrorUtils
             .reflectField(Material.class, "traits");
+
+    private static final MirrorUtils.IMethod<Category[]> mTinkersItem_getCategories = MirrorUtils
+            .reflectMethod(TinkersItem.class, "getCategories");
 
     public static void overrideMaterialOwnerMod(Material material, Object modObj) {
         materialRegisteredByMod.put(material.identifier, FMLCommonHandler.instance().findContainerFor(modObj));
@@ -70,9 +75,9 @@ public class TconReflect {
     }
 
     public static void prioritizeMaterial(Material material) {
-       if (materials instanceof LinkedHashMap) {
-           JReflect.moveLinkedHashMapEntryToFront((LinkedHashMap<String, Material>)materials, material.identifier);
-       }
+        if (materials instanceof LinkedHashMap) {
+            JReflect.moveLinkedHashMapEntryToFront((LinkedHashMap<String, Material>) materials, material.identifier);
+        }
     }
 
     public static void removeMaterial(String identifier) {
@@ -109,6 +114,10 @@ public class TconReflect {
 
     public static Map<String, List<ITrait>> getTraits(Material material) {
         return fMaterial_traits.get(material);
+    }
+
+    public static Category[] getCategories(TinkersItem item) {
+        return mTinkersItem_getCategories.invoke(item);
     }
 
 }
