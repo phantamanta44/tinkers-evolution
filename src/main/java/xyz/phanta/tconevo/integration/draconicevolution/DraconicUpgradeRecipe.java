@@ -17,6 +17,7 @@ import slimeknights.tconstruct.library.tinkering.ITinkerable;
 import slimeknights.tconstruct.library.utils.TinkerUtil;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.integration.gamestages.GameStagesHooks;
+import xyz.phanta.tconevo.trait.draconicevolution.TraitEvolved;
 import xyz.phanta.tconevo.util.ToolUtils;
 
 import javax.annotation.Nullable;
@@ -40,6 +41,10 @@ public class DraconicUpgradeRecipe implements IFusionRecipe {
         this.tier = tier;
         this.ingredients = new ArrayList<>(Arrays.asList(ingredients));
         this.ingredients.add(this.upgradeKey);
+    }
+
+    public Modifier getModifier() {
+        return upgradeMod;
     }
 
     @Override
@@ -129,6 +134,8 @@ public class DraconicUpgradeRecipe implements IFusionRecipe {
             return "upgrade.de.upgradeNA.info";
         } else if (!inv.getStackInCore(1).isEmpty()) {
             return "outputObstructed";
+        } else if (TraitEvolved.getEvolvedTier(tool) < tier) {
+            return "upgrade.de.upgradeLevelToHigh.info";
         }
         try {
             if (!upgradeMod.canApply(tool, tool)) {
