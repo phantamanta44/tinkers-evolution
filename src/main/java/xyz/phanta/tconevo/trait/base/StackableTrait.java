@@ -81,15 +81,9 @@ public abstract class StackableTrait extends AbstractTrait implements Incrementa
         int modDataNdx = TinkerUtil.getIndexInCompoundList(modDataTags, mod.getBaseIdentifier());
         if (modDataNdx > -1) {
             NBTTagCompound modDataTag = modDataTags.getCompoundTagAt(modDataNdx);
-            if (modDataTag.hasKey(TAG_CANONICAL_LEVEL, Constants.NBT.TAG_INT)) {
-                newDataTag.setInteger(TAG_CANONICAL_LEVEL, modDataTag.getInteger(TAG_CANONICAL_LEVEL));
-            } else {
-                newDataTag.setInteger(TAG_CANONICAL_LEVEL, mod.getLevelIncrement());
-            }
             modDataTags.set(modDataNdx, newDataTag);
             modData = ModifierNBT.readTag(modDataTag);
         } else {
-            newDataTag.setInteger(TAG_CANONICAL_LEVEL, mod.getLevelIncrement());
             modDataTags.appendTag(newDataTag);
             modData = new ModifierNBT();
             modData.identifier = mod.getBaseIdentifier();
@@ -102,6 +96,7 @@ public abstract class StackableTrait extends AbstractTrait implements Incrementa
             mod.applyEffectIncremental(rootTag, modData.level, newLevel);
             modData.level = newLevel;
         }
+        newDataTag.setInteger(TAG_CANONICAL_LEVEL, mod.getLevelIncrement());
         modData.write(newDataTag);
         TagUtil.setModifiersTagList(rootTag, modDataTags);
     }
