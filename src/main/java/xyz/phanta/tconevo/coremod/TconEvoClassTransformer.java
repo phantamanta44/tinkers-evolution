@@ -6,6 +6,7 @@ import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.Opcodes;
 import xyz.phanta.tconevo.coremod.transform.*;
+import xyz.phanta.tconevo.coremod.util.SafeClassWriter;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -50,7 +51,7 @@ public class TconEvoClassTransformer implements IClassTransformer {
         if (tform != null) {
             TconEvoCoreMod.LOGGER.info("Applying transform \"{}\" to class: {}", tform.getName(), niceName);
             ClassReader reader = new ClassReader(code);
-            ClassWriter writer = new ClassWriter(reader, tform.getWriteFlags());
+            ClassWriter writer = new SafeClassWriter(reader, tform.getWriteFlags(), getClass().getClassLoader());
             reader.accept(tform.createTransformer(niceName, Opcodes.ASM5, writer), tform.getReadFlags());
             byte[] newCode = writer.toByteArray();
             if (DEBUG) {
