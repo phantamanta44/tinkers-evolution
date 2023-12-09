@@ -4,10 +4,14 @@ import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
-import org.objectweb.asm.tree.*;
+import org.objectweb.asm.tree.InsnList;
+import org.objectweb.asm.tree.LabelNode;
+import org.objectweb.asm.tree.MethodNode;
+import org.objectweb.asm.tree.VarInsnNode;
 import xyz.phanta.tconevo.coremod.TconEvoClassTransformer;
 import xyz.phanta.tconevo.coremod.TconEvoCoreMod;
 import xyz.phanta.tconevo.coremod.util.InsnMatcher;
+import xyz.phanta.tconevo.coremod.util.InsnWriter;
 import xyz.phanta.tconevo.coremod.util.MethodRewriter;
 
 import java.util.Objects;
@@ -60,21 +64,23 @@ public class TransformAstralAttunement implements TconEvoClassTransformer.Transf
 
         private static final InsnMatcher MATCH_CRAFTING_CHECK = InsnMatcher.sequence(
                 InsnMatcher.varInsn(Opcodes.ALOAD, 0),
-                InsnMatcher.fieldInsn(Opcodes.GETFIELD, TYPE_ATT_ALTAR, "serverSyncAttTick"),
+                InsnMatcher.fieldInsn(Opcodes.GETFIELD, TYPE_ATT_ALTAR, "serverSyncAttTick", "I"),
                 InsnMatcher.intInsn(Opcodes.SIPUSH, 500),
                 InsnMatcher.anyInsn(Opcodes.IF_ICMPLT));
 
         private static final InsnMatcher MATCH_GET_THROWER = InsnMatcher.sequence(
                 InsnMatcher.varInsn(Opcodes.ALOAD, 0),
-                InsnMatcher.fieldInsn(Opcodes.GETFIELD, TYPE_ATT_ALTAR, "activeEntity"),
+                InsnMatcher.fieldInsn(Opcodes.GETFIELD,
+                        TYPE_ATT_ALTAR, "activeEntity", "Lnet/minecraft/entity/Entity;"),
                 InsnMatcher.typeInsn(Opcodes.CHECKCAST, "net/minecraft/entity/item/EntityItem"),
-                InsnMatcher.methodInsn(Opcodes.INVOKEVIRTUAL,
-                        "net/minecraft/entity/item/EntityItem", "getThrower", "()Ljava/lang/String;"),
+                InsnMatcher.methodInsn(Opcodes.INVOKEVIRTUAL, // getThrower
+                        "net/minecraft/entity/item/EntityItem", "func_145800_j", "()Ljava/lang/String;"),
                 InsnMatcher.anyInsn(Opcodes.ASTORE));
 
         private static final InsnMatcher MATCH_DROP_ITEM = InsnMatcher.sequence(
                 InsnMatcher.varInsn(Opcodes.ALOAD, 0),
-                InsnMatcher.fieldInsn(Opcodes.GETFIELD, TYPE_ATT_ALTAR, "world"),
+                InsnMatcher.fieldInsn(Opcodes.GETFIELD, // world
+                        TYPE_ATT_ALTAR, "field_145850_b", "Lnet/minecraft/world/World;"),
                 InsnMatcher.anyInsn(Opcodes.ALOAD),
                 InsnMatcher.methodInsn(Opcodes.INVOKEVIRTUAL,
                         "hellfirepvp/astralsorcery/common/util/data/Vector3", "getX", "()D"),
@@ -121,26 +127,24 @@ public class TransformAstralAttunement implements TconEvoClassTransformer.Transf
         }
 
         private static InsnList getInjectedCode(int resultVar, LabelNode successLabel) {
-            InsnList insns = new InsnList();
-            insns.add(new VarInsnNode(Opcodes.ALOAD, 0));
-            insns.add(new FieldInsnNode(Opcodes.GETFIELD,
-                    TYPE_ATT_ALTAR, "activeEntity", "Lnet/minecraft/entity/Entity;"));
-            insns.add(new TypeInsnNode(Opcodes.CHECKCAST, "net/minecraft/entity/item/EntityItem"));
-            insns.add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL,
-                    "net/minecraft/entity/item/EntityItem", "getItem", "()Lnet/minecraft/item/ItemStack;", false));
-            insns.add(new VarInsnNode(Opcodes.ALOAD, 0));
-            insns.add(new FieldInsnNode(Opcodes.GETFIELD, TYPE_ATT_ALTAR, "activeFound",
-                    "Lhellfirepvp/astralsorcery/common/constellation/IConstellation;"));
-            insns.add(new MethodInsnNode(Opcodes.INVOKESTATIC,
-                    "xyz/phanta/tconevo/integration/astralsorcery/AttunementGenerifyCoreHooks", "tryAttuneItem",
-                    "(Lnet/minecraft/item/ItemStack;" +
-                            "Lhellfirepvp/astralsorcery/common/constellation/IConstellation;)" +
-                            "Lnet/minecraft/item/ItemStack;",
-                    false));
-            insns.add(new VarInsnNode(Opcodes.ASTORE, resultVar));
-            insns.add(new VarInsnNode(Opcodes.ALOAD, resultVar));
-            insns.add(new JumpInsnNode(Opcodes.IFNONNULL, successLabel));
-            return insns;
+            return new InsnWriter()
+                    .aload(0)
+                    .getfield(TYPE_ATT_ALTAR, "activeEntity", "Lnet/minecraft/entity/Entity;")
+                    .checkcast("net/minecraft/entity/item/EntityItem")
+                    .invokevirtual( // getItem
+                            "net/minecraft/entity/item/EntityItem", "func_92059_d", "()Lnet/minecraft/item/ItemStack;")
+                    .aload(0)
+                    .getfield(TYPE_ATT_ALTAR, "activeFound",
+                            "Lhellfirepvp/astralsorcery/common/constellation/IConstellation;")
+                    .invokestatic(
+                            "xyz/phanta/tconevo/integration/astralsorcery/AttunementGenerifyCoreHooks", "tryAttuneItem",
+                            "(Lnet/minecraft/item/ItemStack;" +
+                                    "Lhellfirepvp/astralsorcery/common/constellation/IConstellation;)" +
+                                    "Lnet/minecraft/item/ItemStack;")
+                    .astore(resultVar)
+                    .aload(resultVar)
+                    .ifnonnull(successLabel)
+                    .asList();
         }
 
     }

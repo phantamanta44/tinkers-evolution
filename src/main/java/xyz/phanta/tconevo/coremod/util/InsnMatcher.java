@@ -1,6 +1,7 @@
 package xyz.phanta.tconevo.coremod.util;
 
 import io.github.phantamanta44.libnine.util.tuple.IPair;
+import net.minecraftforge.fml.common.asm.transformers.deobf.FMLDeobfuscatingRemapper;
 import org.objectweb.asm.tree.*;
 
 import javax.annotation.Nullable;
@@ -65,10 +66,15 @@ public interface InsnMatcher {
     }
 
     static InsnMatcher sequence(InsnMatcher head, InsnMatcher... tail) {
-        for (InsnMatcher matcher : tail) {
-            head = head.then(matcher);
+        if (tail.length == 0) {
+            return head;
         }
-        return head;
+        // better to associate rightwards to avoid having to reconstruct the entire chain in #then on every step
+        InsnMatcher tailMatcher = tail[tail.length - 1];
+        for (int i = tail.length - 2; i >= 0; i--) {
+            tailMatcher = tail[i].then(tailMatcher);
+        }
+        return head.then(tailMatcher);
     }
 
     @Nullable
@@ -139,14 +145,16 @@ public interface InsnMatcher {
         return matchByType(VarInsnNode.class, opcode, insn -> insn.var == varIndex);
     }
 
-    static InsnMatcher fieldInsn(int opcode, String owner, String name) {
+    static InsnMatcher fieldInsn(int opcode, String owner, String name, String desc) {
+        String mappedName = FMLDeobfuscatingRemapper.INSTANCE.mapFieldName(owner, name, desc);
         return matchByType(FieldInsnNode.class, opcode, insn ->
-                insn.owner.equals(owner) && insn.name.equals(name));
+                insn.owner.equals(owner) && insn.name.equals(mappedName) && insn.desc.equals(desc));
     }
 
     static InsnMatcher methodInsn(int opcode, String owner, String name, String desc) {
+        String mappedName = FMLDeobfuscatingRemapper.INSTANCE.mapMethodName(owner, name, desc);
         return matchByType(MethodInsnNode.class, opcode, insn ->
-                insn.owner.equals(owner) && insn.name.equals(name) && insn.desc.equals(desc));
+                insn.owner.equals(owner) && insn.name.equals(mappedName) && insn.desc.equals(desc));
     }
 
     static InsnMatcher typeInsn(int opcode, String typeName) {
