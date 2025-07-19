@@ -143,10 +143,6 @@ tasks.jar {
  * Configure dependencies
  */
 
-configurations {
-    
-}
-
 repositories {
     mavenLocal()
     maven {
@@ -158,14 +154,6 @@ repositories {
         url = uri("https://dvs1.progwml6.com/files/maven/")
     }
     maven {
-        name = "OpenComputers"
-        url = uri("https://maven.cil.li")
-    }
-    maven {
-        name = "CoFH Maven"
-        url = uri("https://maven.covers1624.net")
-    }
-    maven {
         name = "Thiakil Maven"
         url = uri("https://maven.thiakil.com/")
     }
@@ -174,16 +162,12 @@ repositories {
         url = uri("https://maven.blamejared.com/")
     }
     maven {
-        name = "Bluexin Maven"
-        url = uri("https://maven.bluexin.be/repository/snapshots/")
+        name = "ShadowFacts Maven"
+        url = uri("https://maven.shadowfacts.net/")
     }
     maven {
-        name = "tterrag Maven"
-        url = uri("https://maven.tterrag.com/")
-    }
-    maven {
-        name = "Darkhax Maven"
-        url = uri("https://maven.mcmoddev.com")
+        name = "ModMaven"
+        url = uri("https://modmaven.dev/")
     }
 }
 
@@ -196,13 +180,14 @@ dependencies { // THE BEAST
     api(deobf("slimeknights.mantle:Mantle:1.12-1.3.3.56"))
     api(deobf("slimeknights:TConstruct:1.12.2-2.13.0.184"))
     compileOnly(deobf("curse.maven:constructs-armory-287683:2882794")) // 1.2.5.4
+    compileOnly(deobf("net.shadowfacts:Forgelin:1.8.4"))
     compileOnly(deobf("com.azanor.baubles:Baubles:1.12-1.5.2"))
     compileOnly(deobf("curse.maven:codechicken-lib-1-8-242818:2779848")) // 3.2.3.358
     compileOnly(deobf("cofh:RedstoneFlux:1.12-2.1.0.7:universal"))
     compileOnly(deobf("curse.maven:brandons-core-231382:3051539")) // 2.4.19.214
     compileOnly(deobf("curse.maven:draconic-evolution-223565:3051542")) // 2.3.27.353
     compileOnly(deobf("vazkii.botania:Botania:r1.10-363.148"))
-    compileOnly(deobf("com.teamwizardry.librarianlib:librarianlib-1.12.2:4.19.1"))
+    compileOnly(deobf("curse.maven:librarianlib-252910:3041340")) // 1.12.2-4.22
     compileOnly(deobf("curse.maven:natural-pledge-247704:2740703")) // r3.1.2
     compileOnly(deobf("cofh:CoFHCore:1.12.2-4.6.3.27:universal"))
     compileOnly(deobf("cofh:ThermalFoundation:1.12.2-2.6.3.27:universal"))
@@ -225,10 +210,10 @@ dependencies { // THE BEAST
     compileOnly(deobf("curse.maven:natural-absorption-224296:2678478")) // 1.0.0
     compileOnly(deobf("curse.maven:redstone-repository-revolved-300750:3483422")) // 2.0.0
     compileOnly(deobf("curse.maven:solar-flux-reborn-246974:3050838")) // 12.4.11
-    compileOnly(deobf("com.enderio.core:EnderCore:1.12.2-0.5.76"))
-    compileOnly(deobf("com.enderio:EnderIO:1.12.2-5.3.68")) {
-        exclude(group = "com.enderio", module = "ap")
-        exclude(group = "deobf.com.enderio.core")
+    compileOnly(deobf("com.enderio.core:EnderCore:1.12.2-0.5.78"))
+    compileOnly(deobf("com.enderio:EnderIO:1.12.2-5.3.72")) {
+        exclude("com.enderio", module = "ap")
+        exclude("com.enderio.core", module = "EnderCore")
     }
     compileOnly(deobf("net.sengir.forestry:forestry_1.12.2:5.8.0.311"))
     compileOnly(deobf("morph.avaritia:Avaritia:1.12.2-3.3.0.33:universal")) { exclude(group = "codechicken") }

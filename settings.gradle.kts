@@ -3,11 +3,12 @@ rootProject.name = providers.gradleProperty("mod.id").get()
 pluginManagement {
     repositories {
         // RetroFuturaGradle
-        maven {
-            name = "GTNH Maven"
-            url = uri("http://jenkins.usrv.eu:8081/nexus/content/groups/public/")
-            isAllowInsecureProtocol = true
-        }
+//        maven {
+//            name = "GTNH Maven"
+//            url = uri("http://jenkins.usrv.eu:8081/nexus/content/groups/public/")
+//            isAllowInsecureProtocol = true
+//        }
+        mavenLocal()
         gradlePluginPortal()
         mavenCentral()
     }

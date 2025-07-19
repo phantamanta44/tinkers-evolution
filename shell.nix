@@ -1,8 +1,7 @@
-{ pkgs ? import <nixpkgs> {}
-, unstable ? import <nixos-unstable> {} }:
+{ pkgs ? import <nixpkgs> {} }:
 
 let
-  zulu17 = unstable.zulu17;
+  zulu17 = pkgs.zulu17;
   zulu8 = pkgs.zulu8;
 
   gradlePropPrefix = "ORG_GRADLE_PROJECT_";
