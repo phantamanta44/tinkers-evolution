@@ -71,7 +71,7 @@ public class ToolUtils {
     }
 
     public static List<String> formatExtraInfoPercent(String identifier, float percentage) {
-        if (percentage > 0 && percentage < 1) {
+        if (percentage > 0F && percentage < 0.01F) {
             return formatExtraInfo(identifier, "<1%");
         }
         return formatExtraInfo(identifier, Util.dfPercent.format(percentage));
