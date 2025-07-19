@@ -2,6 +2,7 @@ package xyz.phanta.tconevo;
 
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraftforge.common.config.Config;
+import slimeknights.tconstruct.library.tools.ToolCore;
 
 @Config(modid = TconEvoConsts.MOD_ID)
 public class TconEvoConfig {
@@ -496,6 +497,14 @@ public class TconEvoConfig {
         @Config.Comment("Whether artifacts should be enabled or not.")
         @Config.RequiresMcRestart
         public boolean enabled = true;
+
+        @Config.Comment({
+                "The minimum number of free modifiers artifacts should have as a baseline.",
+                "This is useful for working around lower baselines set by Tool Leveling.",
+                "Set to -1 to just use the default."
+        })
+        @Config.RangeInt(min = -1, max = ToolCore.DEFAULT_MODIFIERS)
+        public int freeModBaseline = ToolCore.DEFAULT_MODIFIERS;
 
         @Config.Comment({
                 "The probabilities of an artifact being generated in various loot tables.",

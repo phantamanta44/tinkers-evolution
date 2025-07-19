@@ -29,8 +29,10 @@ import slimeknights.tconstruct.library.modifiers.TinkerGuiException;
 import slimeknights.tconstruct.library.tinkering.PartMaterialType;
 import slimeknights.tconstruct.library.tools.IToolPart;
 import slimeknights.tconstruct.library.utils.TagUtil;
+import slimeknights.tconstruct.library.utils.Tags;
 import slimeknights.tconstruct.library.utils.TinkerUtil;
 import slimeknights.tconstruct.tools.TinkerModifiers;
+import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.artifact.type.ArtifactType;
 import xyz.phanta.tconevo.artifact.type.ArtifactTypeArmour;
 import xyz.phanta.tconevo.artifact.type.ArtifactTypeTool;
@@ -157,6 +159,12 @@ public class ConArmHooksImpl implements ConArmHooks {
         ItemStack stackPreMods = stack.copy();
 
         // add additional free modifiers
+        if (TconEvoConfig.artifacts.freeModBaseline >= 0) {
+            NBTTagCompound toolTag = TagUtil.getToolTag(stack);
+            for (int i = toolTag.getInteger(Tags.FREE_MODIFIERS); i < TconEvoConfig.artifacts.freeModBaseline; i++) {
+                TinkerModifiers.modCreative.apply(stack);
+            }
+        }
         for (int i = spec.freeMods; i > 0; i--) {
             TinkerModifiers.modCreative.apply(stack);
         }
