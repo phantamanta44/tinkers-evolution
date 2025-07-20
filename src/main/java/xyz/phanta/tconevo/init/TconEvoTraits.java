@@ -17,6 +17,7 @@ import xyz.phanta.tconevo.integration.mekanism.MekanismGensHooks;
 import xyz.phanta.tconevo.integration.mekanism.MekanismHooks;
 import xyz.phanta.tconevo.integration.redstonerepository.RedstoneRepositoryHooks;
 import xyz.phanta.tconevo.integration.solarflux.SolarFluxHooks;
+import xyz.phanta.tconevo.integration.techreborn.TechRebornHooks;
 import xyz.phanta.tconevo.integration.thermal.ThermalHooks;
 import xyz.phanta.tconevo.item.ItemMaterial;
 import xyz.phanta.tconevo.trait.*;
@@ -222,6 +223,9 @@ public class TconEvoTraits {
 
         // solar flux reborn
         SolarFluxHooks.INSTANCE.getSolarTypes().forEach(s -> addModItem(MOD_PHOTOVOLTAIC, s.newStack(1)));
+
+        // tech reborn
+        TechRebornHooks.INSTANCE.getSolarPanels().forEach(e -> addModItem(MOD_PHOTOVOLTAIC, e.getA()));
 
         // thermal series
         for (int i = 0; i < 5; i++) { // basic, hardened, redstone, signalum, resonant

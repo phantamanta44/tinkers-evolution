@@ -12,45 +12,60 @@ public interface RegCondition {
 
     class ModLoaded implements RegCondition {
 
-        private final String modId;
+        private final String[] modIds;
 
-        public ModLoaded(String modId) {
-            this.modId = modId;
+        public ModLoaded(String[] modIds) {
+            this.modIds = modIds;
         }
 
         @Override
         public boolean isSatisfied() {
-            return Loader.isModLoaded(modId);
+            for (String modId : modIds) {
+                if (Loader.isModLoaded(modId)) {
+                    return true;
+                }
+            }
+            return false;
         }
 
     }
 
     class OreDictExists implements RegCondition {
 
-        private final String oreKey;
+        private final String[] oreKeys;
 
-        public OreDictExists(String oreKey) {
-            this.oreKey = oreKey;
+        public OreDictExists(String[] oreKeys) {
+            this.oreKeys = oreKeys;
         }
 
         @Override
         public boolean isSatisfied() {
-            return OreDictUtils.exists(oreKey);
+            for (String oreKey : oreKeys) {
+                if (OreDictUtils.exists(oreKey)) {
+                    return true;
+                }
+            }
+            return false;
         }
 
     }
 
     class MaterialVisible implements RegCondition {
 
-        private final Material material;
+        private final Material[] materials;
 
-        public MaterialVisible(Material material) {
-            this.material = material;
+        public MaterialVisible(Material[] materials) {
+            this.materials = materials;
         }
 
         @Override
         public boolean isSatisfied() {
-            return !material.isHidden();
+            for (Material material : materials) {
+                if (!material.isHidden()) {
+                    return true;
+                }
+            }
+            return false;
         }
 
     }

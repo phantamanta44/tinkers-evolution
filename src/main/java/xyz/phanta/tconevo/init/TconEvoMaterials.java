@@ -10,9 +10,11 @@ import xyz.phanta.tconevo.integration.astralsorcery.AstralHooks;
 import xyz.phanta.tconevo.integration.bloodmagic.BloodMagicHooks;
 import xyz.phanta.tconevo.integration.botania.BotaniaHooks;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
+import xyz.phanta.tconevo.integration.hbm.HbmHooks;
 import xyz.phanta.tconevo.integration.ic2.Ic2Hooks;
 import xyz.phanta.tconevo.integration.industrialforegoing.ForegoingHooks;
 import xyz.phanta.tconevo.integration.projecte.EqExHooks;
+import xyz.phanta.tconevo.integration.techreborn.TechRebornHooks;
 import xyz.phanta.tconevo.integration.thaumcraft.ThaumHooks;
 import xyz.phanta.tconevo.material.MaterialBuilder;
 import xyz.phanta.tconevo.material.MaterialForm;
@@ -615,7 +617,7 @@ public class TconEvoMaterials {
                 .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_OVERWHELM, TinkerTraits.momentum)
                 .build();
         UU_METAL = new MaterialBuilder(NameConst.MAT_UU_METAL, 0xd75dd6, MaterialForm.METAL, "UUMatter")
-                .requiresMods(Ic2Hooks.MOD_ID)
+                .requiresMods(Ic2Hooks.MOD_ID, TechRebornHooks.MOD_ID, HbmHooks.MOD_ID)
                 .setCastable(420)
                 .withStatsHead(17, 15F, 10F, 5)
                 .withStatsMagic(17, 12F, 0.75F, 5)

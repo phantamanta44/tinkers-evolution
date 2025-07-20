@@ -65,27 +65,22 @@ public class MaterialBuilder {
         return this;
     }
 
+    // requires ONE OF these mods
     public MaterialBuilder requiresMods(String... mods) {
-        for (String mod : mods) {
-            requires(new RegCondition.ModLoaded(mod));
-        }
-        return this;
+        return requires(new RegCondition.ModLoaded(mods));
     }
 
+    // requires ONE OF these oredict entries
     public MaterialBuilder requiresOres(String... oreKeys) {
-        for (String oreKey : oreKeys) {
-            requires(new RegCondition.OreDictExists(oreKey));
-        }
-        return this;
+        return requires(new RegCondition.OreDictExists(oreKeys));
     }
 
+    // requires ONE OF these materials
     public MaterialBuilder requiresMaterials(Material... materials) {
-        for (Material material : materials) {
-            requires(new RegCondition.MaterialVisible(material));
-        }
-        return this;
+        return requires(new RegCondition.MaterialVisible(materials));
     }
 
+    // overrides ALL these materials
     public MaterialBuilder overrides(String... matIds) {
         for (String matId : matIds) {
             requires(new RegCondition.MaterialCanOverride(matId));

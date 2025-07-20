@@ -608,6 +608,8 @@ upgrade.level.2=Wyvern
 upgrade.level.3=Draconic
 upgrade.level.4=Chaotic
 
+chem.tconevo.UU_METAL=UU-Metal Production
+
 tc.research_category.TCONEVO=Toolsmithing
 
 tconevo.thaumresearch.base.title=Basic Toolsmithing

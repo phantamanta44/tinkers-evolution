@@ -455,6 +455,12 @@
 
 **TODO**
 
+## hbm's nuclear tech
+
+### other stuff
+
+* [x] UU-matter compatible with IC2
+
 ## ic2 (and icc?)
 
 ### traits
@@ -692,6 +698,14 @@
 ### other stuff
 
 * [x] solar panels can apply photovoltaic modifier
+
+## tech reborn
+
+### other stuff
+
+* [x] UU-matter compatible with IC2
+* [x] solar panels can apply photovoltaic (when FE compatibility is enabled in RebornCore)
+* [ ] maybe TR EU compatibility?
 
 ## thaumcraft
 
