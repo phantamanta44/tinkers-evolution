@@ -66,7 +66,7 @@ public class SafeClassWriter extends ClassWriter {
             }
         }
 
-        ClassTreeNodeFactory factory = new ClassTreeNodeFactory(loader);
+        ClassTreeNodeFactory factory = new ClassTreeNodeFactory(className, loader);
         try (InputStream classStream = classResource.openStream()) {
             new ClassReader(classStream)
                     .accept(factory, ClassReader.SKIP_CODE | ClassReader.SKIP_DEBUG | ClassReader.SKIP_FRAMES);
@@ -152,18 +152,21 @@ public class SafeClassWriter extends ClassWriter {
 
     private static class ClassTreeNodeFactory extends ClassVisitor {
 
+        private final String className;
         private final ClassLoader loader;
         @Nullable
         private ClassTreeNode result;
 
-        ClassTreeNodeFactory(ClassLoader loader) {
+        ClassTreeNodeFactory(String className, ClassLoader loader) {
             super(Opcodes.ASM5);
+            this.className = className;
             this.loader = loader;
         }
 
         @Override
         public void visit(int version, int access, String name, String signature, String superName, String[] interfaces) {
-            result = new ClassTreeNode(name, () -> resolve(superName, loader));
+            String deobfSuperName = FMLDeobfuscatingRemapper.INSTANCE.map(superName);
+            result = new ClassTreeNode(className, () -> resolve(deobfSuperName, loader));
         }
 
         ClassTreeNode getTreeNode() {
