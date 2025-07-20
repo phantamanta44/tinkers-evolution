@@ -1,6 +1,7 @@
 package xyz.phanta.tconevo.integration.conarm.trait.base;
 
 import c4.conarm.lib.traits.AbstractArmorTrait;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.Util;
@@ -10,6 +11,7 @@ import slimeknights.tconstruct.library.utils.TinkerUtil;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.trait.base.IncrementalModifier;
 import xyz.phanta.tconevo.trait.base.StackableTrait;
+import xyz.phanta.tconevo.util.ToolUtils;
 
 // pretty much copied from StackableTrait; see the notes in that class for more details
 public abstract class StackableArmourTrait extends AbstractArmorTrait implements IncrementalModifier {
@@ -42,6 +44,10 @@ public abstract class StackableArmourTrait extends AbstractArmorTrait implements
     @Override
     public int getLevelMaximum() {
         return levelMax;
+    }
+
+    public boolean isToolWithStackableTrait(ItemStack stack) {
+        return ToolUtils.hasModifier(stack, getBaseIdentifier());
     }
 
     public void updateNBTforTrait(NBTTagCompound modifierTag, int newColor) {

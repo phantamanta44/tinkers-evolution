@@ -1,6 +1,5 @@
 package xyz.phanta.tconevo.integration.conarm.trait.draconicevolution;
 
-import c4.conarm.lib.traits.AbstractArmorTrait;
 import io.github.phantamanta44.libnine.capability.provider.CapabilityBroker;
 import io.github.phantamanta44.libnine.util.helper.ItemUtils;
 import io.github.phantamanta44.libnine.util.helper.OptUtils;
@@ -24,29 +23,31 @@ import xyz.phanta.tconevo.client.event.ItemStackBarEvent;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.init.TconEvoCaps;
 import xyz.phanta.tconevo.integration.conarm.ConArmHooks;
+import xyz.phanta.tconevo.integration.conarm.trait.base.StackableArmourTrait;
 import xyz.phanta.tconevo.trait.base.EnergeticModifier;
 import xyz.phanta.tconevo.trait.draconicevolution.TraitEvolved;
 import xyz.phanta.tconevo.util.ToolUtils;
 
-public class ArmourTraitEvolved extends AbstractArmorTrait implements EnergeticModifier {
+public class ArmourTraitEvolved extends StackableArmourTrait implements EnergeticModifier {
 
     private static final String TAG_EVOLVED_INIT = "ConArmEvolvedInit";
 
-    public ArmourTraitEvolved() {
-        super(NameConst.TRAIT_EVOLVED, TraitEvolved.COLOUR);
-        TconEvoMod.PROXY.getToolCapHandler().addModifierCap(this, s -> {
-            EvolvedArmourCap cap = new EvolvedArmourCap(s);
-            return new CapabilityBroker().with(CapabilityEnergy.ENERGY, cap).with(TconEvoCaps.ENERGY_SHIELD, cap);
-        });
-        MinecraftForge.EVENT_BUS.register(this);
+    public ArmourTraitEvolved(int level) {
+        super(NameConst.TRAIT_EVOLVED, TraitEvolved.COLOUR, 3, level);
+        if (level == 1) {
+            TconEvoMod.PROXY.getToolCapHandler().addModifierCap(NameConst.ARMOUR_TRAIT_EVOLVED, s -> {
+                EvolvedArmourCap cap = new EvolvedArmourCap(s);
+                return new CapabilityBroker().with(CapabilityEnergy.ENERGY, cap).with(TconEvoCaps.ENERGY_SHIELD, cap);
+            });
+            MinecraftForge.EVENT_BUS.register(this);
+        }
     }
 
     @Override
     public void applyEffect(NBTTagCompound rootCompound, NBTTagCompound modifierTag) {
-        if (!TinkerUtil.hasTrait(rootCompound, identifier)) {
+        if (modifierTag.getInteger("level") == 0) {
             super.applyEffect(rootCompound, modifierTag);
             rootCompound.setBoolean(ModReinforced.TAG_UNBREAKABLE, true);
-            TraitEvolved.setEvolvedTier(rootCompound);
             // at tool building time, there's no possible way to know what armour type the item is, so we defer in that case
             EntityEquipmentSlot slot = ConArmHooks.INSTANCE.getArmourType(rootCompound);
             if (slot != null) {
@@ -72,7 +73,7 @@ public class ArmourTraitEvolved extends AbstractArmorTrait implements EnergeticM
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
     public void onItemStackBars(ItemStackBarEvent event) {
-        if (isToolWithTrait(event.stack)) {
+        if (isToolWithStackableTrait(event.stack)) {
             event.addForgeEnergyBar();
         }
     }

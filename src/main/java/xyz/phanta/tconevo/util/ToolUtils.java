@@ -4,6 +4,7 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import slimeknights.tconstruct.library.Util;
@@ -56,6 +57,20 @@ public class ToolUtils {
 
     public static boolean hasTrait(ItemStack stack, String traitId) {
         return TinkerUtil.hasTrait(TagUtil.getTagSafe(stack), traitId);
+    }
+
+    public static boolean hasModifier(ItemStack stack, String modifierId) {
+        return hasModifier(TagUtil.getTagSafe(stack), modifierId);
+    }
+
+    public static boolean hasModifier(NBTTagCompound rootTag, String modifierId) {
+        NBTTagList modTags = TagUtil.getModifiersTagList(rootTag);
+        for (int i = 0; i < modTags.tagCount(); i++) {
+            if (modifierId.equals(modTags.getCompoundTagAt(i).getString("identifier"))) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static int getTraitLevel(ItemStack stack, String traitId) {

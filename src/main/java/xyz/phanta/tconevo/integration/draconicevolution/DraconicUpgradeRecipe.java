@@ -15,6 +15,7 @@ import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.TinkerGuiException;
 import slimeknights.tconstruct.library.tinkering.ITinkerable;
 import slimeknights.tconstruct.library.utils.TinkerUtil;
+import xyz.phanta.tconevo.TconEvoMod;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.integration.gamestages.GameStagesHooks;
 import xyz.phanta.tconevo.trait.draconicevolution.TraitEvolved;
@@ -73,7 +74,8 @@ public class DraconicUpgradeRecipe implements IFusionRecipe {
             return false;
         }
         return OptUtils.stackTag(stack)
-                .map(t -> (TinkerUtil.hasTrait(t, NameConst.TRAIT_EVOLVED) || TinkerUtil.hasTrait(t, NameConst.ARMOUR_TRAIT_EVOLVED))
+                .map(t -> (ToolUtils.hasModifier(t, NameConst.TRAIT_EVOLVED)
+                        || ToolUtils.hasModifier(t, NameConst.ARMOUR_TRAIT_EVOLVED))
                         && TinkerUtil.hasTrait(t, upgradeMod.identifier))
                 .orElse(false);
     }
@@ -91,6 +93,7 @@ public class DraconicUpgradeRecipe implements IFusionRecipe {
             TinkerCraftingEvent.ToolModifyEvent.fireEvent(result, null, stack.copy());
             ToolUtils.rebuildToolStack(result);
         } catch (TinkerGuiException e) {
+            TconEvoMod.LOGGER.warn("Draconic tool upgrade failed", e);
             return ItemStack.EMPTY;
         } finally {
             GameStagesHooks.INSTANCE.endBypass();

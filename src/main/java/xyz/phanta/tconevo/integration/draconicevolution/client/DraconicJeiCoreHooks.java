@@ -44,7 +44,7 @@ public class DraconicJeiCoreHooks {
                 // NO-OP
             }
             TagUtil.setCategories(tag, TconReflect.getCategories(item));
-            TconEvoTraits.TRAIT_EVOLVED.apply(tag);
+            TconEvoTraits.TRAIT_EVOLVED[0].apply(tag);
             ItemStack stack = new ItemStack(item);
             stack.setTagCompound(tag);
             cachedToolStacks.add(stack);
@@ -65,7 +65,7 @@ public class DraconicJeiCoreHooks {
                 // NO-OP
             }
             ItemStack stack = new ItemStack(item);
-            ITrait trait = TinkerRegistry.getTrait(NameConst.ARMOUR_TRAIT_EVOLVED);
+            ITrait trait = TinkerRegistry.getTrait(NameConst.TRAIT_EVOLVED + "1" + NameConst.ARMOUR_SUFFIX);
             if (trait instanceof IModifier) {
                 ((IModifier) trait).apply(tag);
             }

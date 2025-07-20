@@ -30,7 +30,6 @@ import slimeknights.tconstruct.library.tinkering.PartMaterialType;
 import slimeknights.tconstruct.library.tools.IToolPart;
 import slimeknights.tconstruct.library.utils.TagUtil;
 import slimeknights.tconstruct.library.utils.Tags;
-import slimeknights.tconstruct.library.utils.TinkerUtil;
 import slimeknights.tconstruct.tools.TinkerModifiers;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.artifact.type.ArtifactType;
@@ -41,6 +40,7 @@ import xyz.phanta.tconevo.init.TconEvoTraits;
 import xyz.phanta.tconevo.integration.conarm.material.ArmourMaterialDefinition;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
 import xyz.phanta.tconevo.integration.gamestages.GameStagesHooks;
+import xyz.phanta.tconevo.util.ToolUtils;
 
 import javax.annotation.Nullable;
 import java.util.Collection;
@@ -90,10 +90,10 @@ public class ConArmHooksImpl implements ConArmHooks {
     @SubscribeEvent
     public void onArmourBuilt(ArmoryEvent.OnItemBuilding event) {
         event.tag.setInteger(TAG_EQ_SLOT, event.armor.armorType.ordinal());
-        if (TinkerUtil.hasTrait(event.tag, NameConst.ARMOUR_TRAIT_EVOLVED)) {
+        if (ToolUtils.hasModifier(event.tag, NameConst.ARMOUR_TRAIT_EVOLVED)) {
             // draconic modifier init was deferred to here if the tool was just built
             // this is because it's impossible to know what the armour type is during trait init
-            TconEvoArmourTraits.TRAIT_EVOLVED.initDraconicModifiers(event.tag, event.armor.armorType);
+            TconEvoArmourTraits.TRAIT_EVOLVED[0].initDraconicModifiers(event.tag, event.armor.armorType);
         }
     }
 

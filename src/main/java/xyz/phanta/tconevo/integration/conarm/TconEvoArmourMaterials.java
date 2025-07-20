@@ -145,19 +145,19 @@ public class TconEvoArmourMaterials {
                 .build();
         new ArmourMaterialBuilder(TconEvoMaterials.WYVERN_METAL)
                 .withStatsArmour(21F, 22.5F, 1.5F, 4F, 8F, 8F)
-                .withTraits(ArmourPartType.CORE, TconEvoArmourTraits.TRAIT_EVOLVED)
+                .withTraits(ArmourPartType.CORE, TconEvoArmourTraits.TRAIT_EVOLVED[0])
                 .withTraits(ArmourPartType.EXTRA, ArmorTraits.heavy)
                 .build();
         new ArmourMaterialBuilder(TconEvoMaterials.DRACONIC_METAL)
                 .withStatsArmour(34F, 52.5F, 1.8F, 9F, 14F, 14F)
-                .withTraits(ArmourPartType.CORE, TconEvoArmourTraits.TRAIT_EVOLVED)
+                .withTraits(ArmourPartType.CORE, TconEvoArmourTraits.TRAIT_EVOLVED[1])
                 .withTraits(ArmourPartType.EXTRA, ArmorTraits.heavy)
                 .withTraits(ArmourPartType.PLATES, TconEvoArmourTraits.TRAIT_CELESTIAL)
                 .withTraits(ArmourPartType.TRIM, TconEvoArmourTraits.TRAIT_GALE_FORCE[0])
                 .build();
         new ArmourMaterialBuilder(TconEvoMaterials.CHAOTIC_METAL)
                 .withStatsArmour(55F, 96F, 2.2F, 16F, 27F, 20F)
-                .withTraits(ArmourPartType.CORE, TconEvoArmourTraits.TRAIT_EVOLVED)
+                .withTraits(ArmourPartType.CORE, TconEvoArmourTraits.TRAIT_EVOLVED[2])
                 .withTraits(ArmourPartType.EXTRA, ArmorTraits.heavy)
                 .withTraits(ArmourPartType.PLATES, TconEvoArmourTraits.TRAIT_CELESTIAL)
                 .withTraits(ArmourPartType.TRIM, TconEvoArmourTraits.TRAIT_GALE_FORCE[1])

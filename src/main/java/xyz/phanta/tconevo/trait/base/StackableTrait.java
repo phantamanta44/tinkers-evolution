@@ -12,6 +12,7 @@ import slimeknights.tconstruct.library.modifiers.ModifierNBT;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 import slimeknights.tconstruct.library.utils.TagUtil;
 import slimeknights.tconstruct.library.utils.TinkerUtil;
+import xyz.phanta.tconevo.util.ToolUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -57,6 +58,10 @@ public abstract class StackableTrait extends AbstractTrait implements Incrementa
     @Override
     public int getLevelMaximum() {
         return levelMax;
+    }
+
+    public boolean isToolWithStackableTrait(ItemStack stack) {
+        return ToolUtils.hasModifier(stack, getBaseIdentifier());
     }
 
     @Override

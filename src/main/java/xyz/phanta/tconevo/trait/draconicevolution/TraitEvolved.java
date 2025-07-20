@@ -1,7 +1,5 @@
 package xyz.phanta.tconevo.trait.draconicevolution;
 
-import gnu.trove.map.TObjectIntMap;
-import gnu.trove.map.hash.TObjectIntHashMap;
 import io.github.phantamanta44.libnine.capability.provider.CapabilityBroker;
 import io.github.phantamanta44.libnine.util.helper.ItemUtils;
 import io.github.phantamanta44.libnine.util.helper.OptUtils;
@@ -11,6 +9,7 @@ import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -19,10 +18,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import slimeknights.tconstruct.library.events.ProjectileEvent;
 import slimeknights.tconstruct.library.events.TinkerToolEvent;
-import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.tinkering.Category;
 import slimeknights.tconstruct.library.tools.ranged.ProjectileCore;
-import slimeknights.tconstruct.library.traits.AbstractTrait;
 import slimeknights.tconstruct.library.utils.TagUtil;
 import slimeknights.tconstruct.library.utils.Tags;
 import slimeknights.tconstruct.library.utils.TinkerUtil;
@@ -32,53 +29,44 @@ import xyz.phanta.tconevo.TconEvoMod;
 import xyz.phanta.tconevo.capability.RatedEnergyStorage;
 import xyz.phanta.tconevo.client.event.ItemStackBarEvent;
 import xyz.phanta.tconevo.constant.NameConst;
+import xyz.phanta.tconevo.integration.conarm.ConArmHooks;
 import xyz.phanta.tconevo.trait.base.EnergeticModifier;
+import xyz.phanta.tconevo.trait.base.StackableTrait;
 import xyz.phanta.tconevo.util.ToolUtils;
 
-public class TraitEvolved extends AbstractTrait implements EnergeticModifier {
+public class TraitEvolved extends StackableTrait implements EnergeticModifier {
 
     public static final int COLOUR = 0xc89af4;
 
     public static final String TAG_EVOLVED_TIER = "EvolvedTier";
 
-    private static final TObjectIntMap<String> evolvedMaterials = new TObjectIntHashMap<>();
-
-    public static void registerMaterial(Material material, int evolvedTier) {
-        evolvedMaterials.put(material.identifier, evolvedTier);
-    }
-
-    public static void setEvolvedTier(NBTTagCompound rootTag) {
-        int tier = 1;
-        for (Material material : TinkerUtil.getMaterialsFromTagList(TagUtil.getBaseMaterialsTagList(rootTag))) {
-            int matTier = evolvedMaterials.get(material.identifier);
-            if (matTier > tier) {
-                tier = matTier;
-            }
-        }
-        rootTag.setInteger(TAG_EVOLVED_TIER, tier);
-    }
-
-    public static int getEvolvedTier(NBTTagCompound rootTag) {
-        return Math.max(rootTag.getInteger(TAG_EVOLVED_TIER), 1);
-    }
-
     public static int getEvolvedTier(ItemStack stack) {
-        return OptUtils.stackTag(stack).map(TraitEvolved::getEvolvedTier).orElse(1);
+        // backwards-compatibility
+        NBTTagCompound tag = stack.getTagCompound();
+        if (tag != null && tag.hasKey(TAG_EVOLVED_TIER, Constants.NBT.TAG_INT)) {
+            return Math.max(tag.getInteger(TAG_EVOLVED_TIER), 1);
+        }
+
+        // not very nice to check this every time, but it makes the code slightly cleaner, i guess
+        String traitId = ConArmHooks.INSTANCE.isTinkerArmour(stack)
+                ? NameConst.ARMOUR_TRAIT_EVOLVED : NameConst.TRAIT_EVOLVED;
+        return Math.max(ToolUtils.getTraitLevel(stack, traitId), 1);
     }
 
-    public TraitEvolved() {
-        super(NameConst.TRAIT_EVOLVED, COLOUR);
-        TconEvoMod.PROXY.getToolCapHandler().addModifierCap(this, s -> new CapabilityBroker()
-                .with(CapabilityEnergy.ENERGY, new EvolvedCap(s)));
-        MinecraftForge.EVENT_BUS.register(this);
+    public TraitEvolved(int level) {
+        super(NameConst.TRAIT_EVOLVED, COLOUR, 3, level);
+        if (level == 1) {
+            TconEvoMod.PROXY.getToolCapHandler().addModifierCap(NameConst.TRAIT_EVOLVED, s -> new CapabilityBroker()
+                    .with(CapabilityEnergy.ENERGY, new EvolvedCap(s)));
+            MinecraftForge.EVENT_BUS.register(this);
+        }
     }
 
     @Override
     public void applyEffect(NBTTagCompound rootCompound, NBTTagCompound modifierTag) {
-        if (!TinkerUtil.hasTrait(rootCompound, identifier)) {
+        if (modifierTag.getInteger("level") == 0) {
             super.applyEffect(rootCompound, modifierTag);
             rootCompound.setBoolean(ModReinforced.TAG_UNBREAKABLE, true);
-            setEvolvedTier(rootCompound);
 
             // add draconic modifiers
             for (ModifierDraconic mod : ModifierDraconic.allMods) {
@@ -100,6 +88,9 @@ public class TraitEvolved extends AbstractTrait implements EnergeticModifier {
 
     @Override
     public int onToolDamage(ItemStack tool, int damage, int newDamage, EntityLivingBase entity) {
+        if (!isCanonical(this, tool)) {
+            return newDamage;
+        }
         int energyCost = getOperationCost(tool);
         if (energyCost > 0) {
             OptUtils.capability(tool, CapabilityEnergy.ENERGY).ifPresent(e -> e.extractEnergy(energyCost, false));
@@ -109,6 +100,9 @@ public class TraitEvolved extends AbstractTrait implements EnergeticModifier {
 
     @Override
     public int onToolHeal(ItemStack tool, int amount, int newAmount, EntityLivingBase entity) {
+        if (!isCanonical(this, tool)) {
+            return newAmount;
+        }
         if (tool.getItem() instanceof ProjectileCore) {
             updateProjectileAmmo(tool);
         }
@@ -117,20 +111,23 @@ public class TraitEvolved extends AbstractTrait implements EnergeticModifier {
 
     @Override
     public void miningSpeed(ItemStack tool, PlayerEvent.BreakSpeed event) {
-        if (!canPerformOperation(tool)) {
+        if (isCanonical(this, tool) && !canPerformOperation(tool)) {
             event.setNewSpeed(0.5F);
         }
     }
 
     @Override
     public float damage(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damage, float newDamage, boolean isCritical) {
+        if (!isCanonical(this, tool)) {
+            return newDamage;
+        }
         return canPerformOperation(tool) ? newDamage : newDamage / 10F;
     }
 
     @SubscribeEvent
     public void onBreakExtraBlocks(TinkerToolEvent.ExtraBlockBreak event) {
         // doesn't account for additional energy cost of breaking many blocks, but whatever
-        if (isToolWithTrait(event.itemStack) && !canPerformOperation(event.itemStack)) {
+        if (isToolWithStackableTrait(event.itemStack) && !canPerformOperation(event.itemStack)) {
             event.setCanceled(true);
         }
     }
@@ -140,7 +137,7 @@ public class TraitEvolved extends AbstractTrait implements EnergeticModifier {
         if (!event.projectileEntity.world.isRemote) {
             // handle evolved projectile launcher
             ItemStack bowStack = event.launcher;
-            if (bowStack != null && isToolWithTrait(bowStack)) {
+            if (bowStack != null && isToolWithStackableTrait(bowStack)) {
                 if (event.projectile != null) {
                     if (!canPerformOperation(bowStack)) {
                         dampenVelocity(event.projectile);
@@ -153,7 +150,7 @@ public class TraitEvolved extends AbstractTrait implements EnergeticModifier {
             // handle evolved projectile
             if (event.projectile != null) {
                 ItemStack ammoStack = event.projectile.tinkerProjectile.getItemStack();
-                if (ammoStack.getItem() instanceof ProjectileCore && isToolWithTrait(ammoStack)) {
+                if (ammoStack.getItem() instanceof ProjectileCore && isToolWithStackableTrait(ammoStack)) {
                     event.projectile.pickupStatus = EntityArrow.PickupStatus.DISALLOWED;
                 }
             }
@@ -194,7 +191,7 @@ public class TraitEvolved extends AbstractTrait implements EnergeticModifier {
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
     public void onItemStackBars(ItemStackBarEvent event) {
-        if (isToolWithTrait(event.stack)) {
+        if (isToolWithStackableTrait(event.stack)) {
             event.addForgeEnergyBar();
         }
     }

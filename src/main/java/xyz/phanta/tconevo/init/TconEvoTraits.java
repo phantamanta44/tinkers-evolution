@@ -126,7 +126,9 @@ public class TconEvoTraits {
     public static final TraitSoulRend[] TRAIT_SOUL_REND = {
             new TraitSoulRend(1), new TraitSoulRend(2), new TraitSoulRend(3)
     };
-    public static final TraitEvolved TRAIT_EVOLVED = new TraitEvolved();
+    public static final TraitEvolved[] TRAIT_EVOLVED = {
+            new TraitEvolved(1), new TraitEvolved(2), new TraitEvolved(3)
+    };
     public static final ModifierDraconic MOD_DRACONIC_ENERGY = new ModifierDraconicEnergy();
     public static final ModifierDraconic MOD_DRACONIC_DIG_SPEED = new ModifierDraconicDigSpeed();
     public static final ModifierDraconic MOD_DRACONIC_DIG_AOE = new ModifierDraconicDigAoe();

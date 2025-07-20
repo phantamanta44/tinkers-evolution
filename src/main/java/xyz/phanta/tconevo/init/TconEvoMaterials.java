@@ -19,7 +19,6 @@ import xyz.phanta.tconevo.material.MaterialForm;
 import xyz.phanta.tconevo.material.PartType;
 import xyz.phanta.tconevo.material.stats.FabulousHeadMaterialStats;
 import xyz.phanta.tconevo.material.stats.MagicMaterialStats;
-import xyz.phanta.tconevo.trait.draconicevolution.TraitEvolved;
 
 @SuppressWarnings("NotNullFieldNotInitialized")
 public class TconEvoMaterials {
@@ -385,10 +384,9 @@ public class TconEvoMaterials {
                 .withStatsHandle(1.5F, 250)
                 .withStatsExtra(200)
                 .withStatsBow(0.9F, 1.3F, 6F)
-                .withTraits(PartType.MAIN, TconEvoTraits.TRAIT_EVOLVED, TconEvoTraits.TRAIT_SOUL_REND[0])
+                .withTraits(PartType.MAIN, TconEvoTraits.TRAIT_EVOLVED[0], TconEvoTraits.TRAIT_SOUL_REND[0])
                 .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_SOUL_REND[0])
                 .build();
-        TraitEvolved.registerMaterial(WYVERN_METAL, 1);
         DRACONIC_METAL = new MaterialBuilder(NameConst.MAT_DRACONIC_METAL, 0xff921c, MaterialForm.METAL, "DraconicMetal")
                 .requiresMods(DraconicHooks.MOD_ID)
                 .setCastable(1700)
@@ -397,10 +395,9 @@ public class TconEvoMaterials {
                 .withStatsHandle(1.75F, 300)
                 .withStatsExtra(300)
                 .withStatsBow(0.85F, 1.6F, 10F)
-                .withTraits(PartType.MAIN, TconEvoTraits.TRAIT_EVOLVED, TconEvoTraits.TRAIT_SOUL_REND[1])
+                .withTraits(PartType.MAIN, TconEvoTraits.TRAIT_EVOLVED[1], TconEvoTraits.TRAIT_SOUL_REND[1])
                 .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_SOUL_REND[1])
                 .build();
-        TraitEvolved.registerMaterial(DRACONIC_METAL, 2);
         CHAOTIC_METAL = new MaterialBuilder(NameConst.MAT_CHAOTIC_METAL, 0x666666, MaterialForm.METAL, "ChaoticMetal")
                 .requiresMods(DraconicHooks.MOD_ID)
                 .setCastable(3400)
@@ -409,10 +406,9 @@ public class TconEvoMaterials {
                 .withStatsHandle(2.2F, 125)
                 .withStatsExtra(340)
                 .withStatsBow(1.2F, 2F, 18F)
-                .withTraits(PartType.MAIN, TconEvoTraits.TRAIT_EVOLVED, TconEvoTraits.TRAIT_SOUL_REND[2])
+                .withTraits(PartType.MAIN, TconEvoTraits.TRAIT_EVOLVED[2], TconEvoTraits.TRAIT_SOUL_REND[2])
                 .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_SOUL_REND[2])
                 .build();
-        TraitEvolved.registerMaterial(CHAOTIC_METAL, 3);
 
         // ender io
         ENDER_CRYSTAL = new MaterialBuilder(NameConst.MAT_ENDER_CRYSTAL, 0x2ed284, MaterialForm.RAW, "itemEnderCrystal")

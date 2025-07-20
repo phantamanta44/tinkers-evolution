@@ -104,7 +104,9 @@ public class TconEvoArmourTraits {
     public static final ArmourModGaiaWill.Verac MOD_GAIA_WILL_VERAC = new ArmourModGaiaWill.Verac();
 
     // draconic evolution
-    public static final ArmourTraitEvolved TRAIT_EVOLVED = new ArmourTraitEvolved();
+    public static final ArmourTraitEvolved[] TRAIT_EVOLVED = {
+            new ArmourTraitEvolved(1), new ArmourTraitEvolved(2), new ArmourTraitEvolved(3)
+    };
     public static final ArmourModDraconic MOD_DRACONIC_ENERGY = new ArmourModDraconic(NameConst.MOD_DRACONIC_ENERGY);
     public static final ArmourModDraconic MOD_DRACONIC_SHIELD_CAPACITY = new ArmourModDraconic(NameConst.MOD_DRACONIC_SHIELD_CAPACITY);
     public static final ArmourModDraconic MOD_DRACONIC_SHIELD_RECOVERY = new ArmourModDraconic(NameConst.MOD_DRACONIC_SHIELD_RECOVERY);
