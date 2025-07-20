@@ -50,7 +50,7 @@ public class ModifierFluxed extends ModifierTrait implements MatchSensitiveModif
 
     @Override
     public boolean canApplyCustom(ItemStack stack) {
-        return !PowerWrapper.isPowered(stack) || isToolWithTrait(stack);
+        return !PowerWrapper.isPowered(stack) || (TconEvoConfig.general.modFluxedReplaceable && isToolWithTrait(stack));
     }
 
     @Override

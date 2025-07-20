@@ -7,6 +7,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import slimeknights.mantle.util.RecipeMatch;
 import slimeknights.tconstruct.library.modifiers.ModifierAspect;
+import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.capability.PowerWrapper;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.init.TconEvoTraits;
@@ -25,7 +26,8 @@ public class ArmourModPhotovoltaic extends ArmorModifierTrait implements MatchSe
 
     @Override
     public boolean canApplyCustom(ItemStack stack) {
-        return PowerWrapper.isPowered(stack);
+        return PowerWrapper.isPowered(stack)
+                && (TconEvoConfig.general.modPhotovoltaicReplaceable || !isToolWithTrait(stack));
     }
 
     @Override

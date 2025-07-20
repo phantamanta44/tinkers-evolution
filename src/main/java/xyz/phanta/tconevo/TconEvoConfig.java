@@ -452,6 +452,12 @@ public class TconEvoConfig {
         @Config.RangeDouble(min = 0D)
         public double modFluxedEnergyTransferDivider = 100;
 
+        @Config.Comment("Can the fluxed modifier be re-applied to replace the battery?")
+        public boolean modFluxedReplaceable = true;
+
+        @Config.Comment("Can the photovoltaic modifier be re-applied to replace the solar panel?")
+        public boolean modPhotovoltaicReplaceable = true;
+
     }
 
     @Config.Comment("Configuration for tools added by Tinkers' Evolution.")

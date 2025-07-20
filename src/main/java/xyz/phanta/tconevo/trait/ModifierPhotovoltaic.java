@@ -14,6 +14,7 @@ import slimeknights.mantle.util.RecipeMatch;
 import slimeknights.tconstruct.library.modifiers.ModifierAspect;
 import slimeknights.tconstruct.library.modifiers.ModifierTrait;
 import slimeknights.tconstruct.library.utils.TagUtil;
+import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.TconEvoMod;
 import xyz.phanta.tconevo.capability.PowerWrapper;
 import xyz.phanta.tconevo.constant.NameConst;
@@ -59,7 +60,8 @@ public class ModifierPhotovoltaic extends ModifierTrait implements MatchSensitiv
 
     @Override
     public boolean canApplyCustom(ItemStack stack) {
-        return PowerWrapper.isPowered(stack);
+        return PowerWrapper.isPowered(stack)
+                && (TconEvoConfig.general.modPhotovoltaicReplaceable || !isToolWithTrait(stack));
     }
 
     @Override
