@@ -8,8 +8,6 @@ import java.util.Optional;
 
 public interface ThermalHooks extends IntegrationHooks {
 
-    // technically, only thermal foundation is needed for materials to be registered
-    // but this hooks class only deals with thermal expansion content, so the mod id here is for that
     String MOD_ID = "thermalexpansion";
 
     @Inject(MOD_ID)
