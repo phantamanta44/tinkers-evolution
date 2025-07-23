@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public class ModifierDraconic extends ModifierTrait {
+public class ModifierDraconic extends ModifierTrait implements DraconicTieredModifier {
 
     public static final int DEFAULT_COLOUR = 0x00aaaa;
 

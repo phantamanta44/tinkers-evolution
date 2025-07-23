@@ -7,13 +7,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextFormatting;
 import slimeknights.tconstruct.library.modifiers.ModifierAspect;
+import xyz.phanta.tconevo.trait.draconicevolution.DraconicTieredModifier;
 import xyz.phanta.tconevo.trait.draconicevolution.ModifierDraconic;
 import xyz.phanta.tconevo.util.ToolUtils;
 
 import javax.annotation.Nullable;
 import java.util.*;
 
-public class ArmourModDraconic extends ArmorModifierTrait {
+public class ArmourModDraconic extends ArmorModifierTrait implements DraconicTieredModifier {
 
     static final List<ArmourModDraconic> allMods = new ArrayList<>();
 

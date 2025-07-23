@@ -9,8 +9,7 @@ import slimeknights.tconstruct.library.modifiers.IModifier;
 import slimeknights.tconstruct.library.modifiers.ModifierNBT;
 import slimeknights.tconstruct.library.utils.TagUtil;
 import xyz.phanta.tconevo.constant.NameConst;
-import xyz.phanta.tconevo.integration.conarm.trait.draconicevolution.ArmourModDraconic;
-import xyz.phanta.tconevo.trait.draconicevolution.ModifierDraconic;
+import xyz.phanta.tconevo.trait.draconicevolution.DraconicTieredModifier;
 
 public class ToolCraftingHandler {
 
@@ -30,10 +29,8 @@ public class ToolCraftingHandler {
                     continue;
             }
             IModifier mod = TinkerRegistry.getModifier(modData.identifier);
-            if (mod instanceof ModifierDraconic || mod instanceof ArmourModDraconic) {
-                if (modData.level > draconicModTier) {
-                    draconicModTier = modData.level;
-                }
+            if (mod instanceof DraconicTieredModifier && modData.level > draconicModTier) {
+                draconicModTier = modData.level;
             }
         }
         if (draconicModTier - 2 > evolvedTier) {
