@@ -19,4 +19,9 @@ public class ItemManaGiver extends L9Item {
         // NO-OP
     }
 
+    @Override
+    protected void initModel() {
+        // NO-OP
+    }
+
 }
