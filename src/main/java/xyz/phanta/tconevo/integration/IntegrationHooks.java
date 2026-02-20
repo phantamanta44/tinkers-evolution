@@ -35,6 +35,8 @@ public interface IntegrationHooks {
 
         boolean sided() default false;
 
+        boolean customCheck() default false;
+
     }
 
 }

@@ -28,23 +28,34 @@ public class IntegrationManager {
             String modId = (String)annot.getAnnotationInfo().get("value");
             if (!Loader.isModLoaded(modId)) {
                 TconEvoMod.LOGGER.info("Ignoring integration for missing mod: {}", modId);
-            } else if (blacklisted.contains(modId)) {
+                continue;
+            }
+            if (blacklisted.contains(modId)) {
                 TconEvoMod.LOGGER.info("Ignoring disabled integration for mod: {}", modId);
-            } else {
-                TconEvoMod.LOGGER.info("Loading integration for mod: {}", modId);
-                try {
-                    Field fHooksImpl = Class.forName(annot.getClassName()).getField(annot.getObjectName());
-                    ReflectionHackUtils.forceWritable(fHooksImpl);
-                    Object hooksImpl = Class.forName(getImplClass(annot)).newInstance();
-                    fHooksImpl.set(null, hooksImpl);
-                    if (hooksImpl instanceof IntegrationHooks) {
-                        hooksInstances.add((IntegrationHooks)hooksImpl);
-                    }
-                } catch (Exception e) {
-                    TconEvoMod.LOGGER.error("Failed to load integration: " + modId, e);
-                } catch (Error e) {
-                    throw new Error("Failed to load integration: " + modId, e);
+                continue;
+            }
+
+            try {
+                final Class<?> intClass = Class.forName(annot.getClassName());
+                if (annot.getAnnotationInfo().containsKey("customCheck")
+                        && (Boolean)annot.getAnnotationInfo().get("customCheck")
+                        && !(Boolean)intClass.getMethod("shouldLoadIntegration").invoke(null)) {
+                    TconEvoMod.LOGGER.info("Ignoring integration for mod failing custom check: {}", modId);
+                    continue;
                 }
+
+                TconEvoMod.LOGGER.info("Loading integration for mod: {}", modId);
+                Field fHooksImpl = intClass.getField(annot.getObjectName());
+                ReflectionHackUtils.forceWritable(fHooksImpl);
+                Object hooksImpl = Class.forName(getImplClass(annot)).newInstance();
+                fHooksImpl.set(null, hooksImpl);
+                if (hooksImpl instanceof IntegrationHooks) {
+                    hooksInstances.add((IntegrationHooks)hooksImpl);
+                }
+            } catch (Exception e) {
+                TconEvoMod.LOGGER.error("Failed to load integration: " + modId, e);
+            } catch (Error e) {
+                throw new Error("Failed to load integration: " + modId, e);
             }
         }
     }
