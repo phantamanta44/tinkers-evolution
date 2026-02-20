@@ -28,6 +28,19 @@ public class ArtifactTypeArmour implements ArtifactType<ArtifactTypeArmour.Spec>
     }
 
     @Override
+    public void serialize(final Spec spec, final JsonObject dto) {
+        dto.addProperty("name", spec.name);
+        ArtifactTypeTool.serializeLore(dto, spec.lore);
+        dto.addProperty("armour", spec.armourType);
+        ArtifactTypeTool.serializeMaterials(dto, spec.materials);
+        if (spec.freeMods > 0) { // ignore invalid free modifiers < 0
+            dto.addProperty("free_mods", spec.freeMods);
+        }
+        ArtifactTypeTool.serializeModifiers(dto, spec.modifiers);
+        // TODO serialize data tag
+    }
+
+    @Override
     public ItemStack buildArtifact(Spec spec) throws BuildingException {
         return ConArmHooks.INSTANCE.buildArmourArtifact(spec);
     }

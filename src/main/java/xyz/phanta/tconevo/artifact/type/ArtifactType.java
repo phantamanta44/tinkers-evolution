@@ -11,6 +11,8 @@ public interface ArtifactType<T> {
 
     T parseArtifactSpec(JsonObject dto) throws BuildingException;
 
+    void serialize(T spec, JsonObject dto);
+
     ItemStack buildArtifact(T spec) throws BuildingException;
 
     class BuildingException extends Exception {

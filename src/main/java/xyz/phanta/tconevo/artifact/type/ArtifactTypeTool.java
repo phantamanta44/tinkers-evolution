@@ -1,5 +1,6 @@
 package xyz.phanta.tconevo.artifact.type;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
@@ -100,6 +101,59 @@ public class ArtifactTypeTool implements ArtifactType<ArtifactTypeTool.Spec> {
             }
         }
         return modifiers;
+    }
+
+    @Override
+    public void serialize(final Spec spec, final JsonObject dto) {
+        dto.addProperty("name", spec.name);
+        serializeLore(dto, spec.lore);
+        dto.addProperty("tool", spec.toolType);
+        serializeMaterials(dto, spec.materials);
+        if (spec.freeMods > 0) { // ignore invalid free modifiers < 0
+            dto.addProperty("free_mods", spec.freeMods);
+        }
+        serializeModifiers(dto, spec.modifiers);
+        // TODO serialize data tag
+    }
+
+    public static void serializeLore(JsonObject dto, List<String> lore) {
+        if (!lore.isEmpty()) {
+            if (lore.size() == 1) {
+                dto.addProperty("lore", lore.get(0));
+            } else {
+                JsonArray loreArr = new JsonArray();
+                for (final String line : lore) {
+                    loreArr.add(line);
+                }
+                dto.add("lore", loreArr);
+            }
+        }
+    }
+
+    public static void serializeMaterials(JsonObject dto, List<String> materials) {
+        JsonArray matArr = new JsonArray();
+        for (final String mat : materials) {
+            matArr.add(mat);
+        }
+        dto.add("materials", matArr);
+    }
+
+    public static void serializeModifiers(JsonObject dto, List<IPair<String, Integer>> modifiers) {
+        if (!modifiers.isEmpty()) {
+            JsonArray modArr = new JsonArray();
+            for (final IPair<String, Integer> mod : modifiers) {
+                int level = mod.getB();
+                if (level > 1) {
+                    modArr.add(mod.getA());
+                } else if (level == 1) {
+                    JsonObject modEntry = new JsonObject();
+                    modEntry.addProperty("id", mod.getA());
+                    modEntry.addProperty("level", level);
+                    modArr.add(modEntry);
+                } // ignore invalid modifier entries with level < 1
+            }
+            dto.add("mods", modArr);
+        }
     }
 
     @Override

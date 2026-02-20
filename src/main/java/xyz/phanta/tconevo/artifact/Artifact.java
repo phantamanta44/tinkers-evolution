@@ -65,7 +65,7 @@ public class Artifact<T> extends LootEntry {
 
     @Override
     protected void serialize(JsonObject json, JsonSerializationContext context) {
-        throw new UnsupportedOperationException(); // there's no reason this should ever need to be serialized
+        type.serialize(spec, json);
     }
 
 }
