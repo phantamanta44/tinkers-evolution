@@ -12,7 +12,7 @@ plugins {
     id("maven-publish")
     id("org.jetbrains.gradle.plugin.idea-ext") version "1.1.7"
     id("eclipse")
-    id("com.gtnewhorizons.retrofuturagradle") version "1.3.24-1-ge8cce0a" // custom local build
+    id("com.gtnewhorizons.retrofuturagradle") version "1.4.1"
 }
 
 /*
@@ -198,8 +198,8 @@ dependencies { // THE BEAST
     compileOnly(deobf("cofh:ThermalExpansion:1.12.2-5.5.4.43:universal"))
     compileOnly(deobf("curse.maven:industrial-foregoing-266515:2745321")) // 1.12.13-237
     compileOnly(deobf("curse.maven:applied-energistics-2-223794:2747063")) // rv6-stable-7
-    compileOnly(deobf("curse.maven:mekanism-268560:2835175")) // 9.8.3.390
-    compileOnly(deobf("curse.maven:mekanism-generators-268566:2835177")) // 9.8.3.390
+    compileOnly(deobf("curse.maven:mekanism-ce-399904:7054604")) // 9.12.12
+    compileOnly(deobf("curse.maven:mekanism-generators-813408:7054621")) // 9.12.12
     compileOnly(deobf("curse.maven:actually-additions-228404:2844115")) // r151-2
     compileOnly(deobf("curse.maven:thaumcraft-223628:2629023")) // 6.1.BETA26
     compileOnly(deobf("curse.maven:astral-sorcery-241721:2971187")) // 1.10.24
