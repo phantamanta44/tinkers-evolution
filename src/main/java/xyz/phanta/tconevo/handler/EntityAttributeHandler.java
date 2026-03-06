@@ -1,5 +1,6 @@
 package xyz.phanta.tconevo.handler;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.DamageSource;
@@ -42,12 +43,29 @@ public class EntityAttributeHandler {
     @SubscribeEvent(priority = EventPriority.LOW)
     public void onEntityHurt(LivingHurtEvent event) {
         float damage = event.getAmount();
-        if (damage <= 0F || DamageUtils.isPureDamage(event.getSource(), damage)) {
+        if (damage <= 0F) {
             return;
         }
-        double multiplier = event.getEntityLiving().getEntityAttribute(TconEvoEntityAttrs.DAMAGE_TAKEN).getAttributeValue();
-        if (multiplier != 1D) {
-            event.setAmount(Math.max(damage * (float)multiplier, 0F));
+
+        if (!DamageUtils.isPureDamage(event.getSource(), damage)) {
+            double takenMod = event.getEntityLiving()
+                    .getEntityAttribute(TconEvoEntityAttrs.DAMAGE_TAKEN).getAttributeValue();
+            if (takenMod != 1D) {
+                damage *= (float) takenMod;
+            }
+        }
+
+        Entity attacker = event.getSource().getTrueSource();
+        if (attacker instanceof EntityLivingBase) {
+            double dealtMod = ((EntityLivingBase) attacker)
+                    .getEntityAttribute(TconEvoEntityAttrs.DAMAGE_DEALT).getAttributeValue();
+            if (dealtMod != 1D) {
+                damage *= (float) dealtMod;
+            }
+        }
+
+        if (damage != event.getAmount()) {
+            event.setAmount(damage);
         }
     }
 

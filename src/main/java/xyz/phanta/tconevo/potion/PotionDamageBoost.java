@@ -6,6 +6,7 @@ import net.minecraft.potion.Potion;
 import net.minecraftforge.common.util.Constants;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.constant.NameConst;
+import xyz.phanta.tconevo.init.TconEvoEntityAttrs;
 import xyz.phanta.tconevo.init.TconEvoPotions;
 
 public class PotionDamageBoost extends Potion {
@@ -14,8 +15,15 @@ public class PotionDamageBoost extends Potion {
         super(false, 0xf81838);
         setBeneficial();
         setPotionName(TconEvoPotions.PREFIX + NameConst.POTION_DAMAGE_BOOST);
-        registerPotionAttributeModifier(SharedMonsterAttributes.ATTACK_DAMAGE, "a68351eb-5327-45da-a5c5-2af42f08300d",
-                0D, Constants.AttributeModifierOperation.ADD_MULTIPLE);
+        if (TconEvoConfig.general.effectDamageBoostGeneric) {
+            registerPotionAttributeModifier(
+                    TconEvoEntityAttrs.DAMAGE_DEALT, "04a1c278-b020-4218-8c76-658ac9697f34",
+                    0D, Constants.AttributeModifierOperation.ADD_MULTIPLE);
+        } else {
+            registerPotionAttributeModifier(
+                    SharedMonsterAttributes.ATTACK_DAMAGE, "a68351eb-5327-45da-a5c5-2af42f08300d",
+                    0D, Constants.AttributeModifierOperation.ADD_MULTIPLE);
+        }
     }
 
     public double getAttributeModifierAmount(int amplifier, AttributeModifier modifier) {

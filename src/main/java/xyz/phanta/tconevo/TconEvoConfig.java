@@ -73,9 +73,26 @@ public class TconEvoConfig {
         @Config.RequiresMcRestart
         public double attrHealingReceivedMax = 1e9D;
 
+        @Config.Comment("The minimum value for the \"damage dealt\" attribute.")
+        @Config.RangeDouble(min = 0D, max = 1D)
+        @Config.RequiresMcRestart
+        public double attrDamageDealtMin = 0D;
+
+        @Config.Comment({
+                "The maximum value for the \"damage dealt\" attribute.",
+                "If set to 1, then damage amplification will not work at all."
+        })
+        @Config.RangeDouble(min = 1D)
+        @Config.RequiresMcRestart
+        public double attrDamageDealtMax = 1e9D;
+
         @Config.Comment("The additional bonus damage percentage granted per level of the damage boost effect.")
         @Config.RangeDouble(min = 0D, max = 1D)
         public double effectDamageBoostBonusDamage = 0.05D;
+
+        @Config.Comment("Should the damage boost effect apply to all damage instead of just attack damage?")
+        @Config.RequiresMcRestart
+        public boolean effectDamageBoostGeneric = false;
 
         @Config.Comment("The additional percentage of damage mitigated per level of the damage reduction effect.")
         @Config.RangeDouble(min = 0D, max = 1D)
