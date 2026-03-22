@@ -22,6 +22,7 @@ public class NameConst {
     public static final String POTION_MORTAL_WOUNDS = "mortal_wounds";
     public static final String POTION_DAMAGE_REDUCTION = "damage_reduction";
     public static final String POTION_DAMAGE_BOOST = "damage_boost";
+    public static final String POTION_TRUE_STRIKE = "true_strike";
 
     private static final String INFO_KEY = TconEvoConsts.MOD_ID + ".info.";
     public static final String INFO_ENERGIZED_TRAIT_CONFLICT = INFO_KEY + "energized_trait_conflict";
@@ -56,10 +57,13 @@ public class NameConst {
     public static final String TRAIT_STAGGERING = TconEvoConsts.MOD_ID + ".staggering";
     public static final String TRAIT_SUNDERING = TconEvoConsts.MOD_ID + ".sundering";
     public static final String TRAIT_THUNDERGOD_WRATH = TconEvoConsts.MOD_ID + ".thundergod_wrath";
+    public static final String TRAIT_TRUE_STRIKE = TconEvoConsts.MOD_ID + ".true_strike";
     public static final String TRAIT_VAMPIRIC = TconEvoConsts.MOD_ID + ".vampiric";
+
     public static final String MOD_ARTIFACT = TconEvoConsts.MOD_ID + ".artifact";
     public static final String MOD_FLUXED = TconEvoConsts.MOD_ID + ".fluxed";
     public static final String MOD_PHOTOVOLTAIC = TconEvoConsts.MOD_ID + ".photovoltaic";
+    public static final String MOD_ACCURACY = TconEvoConsts.MOD_ID + ".accuracy";
 
     public static final String ARMOUR_SUFFIX = "_armor";
     public static final String ARMOUR_TRAIT_ENERGIZED = TRAIT_ENERGIZED + ARMOUR_SUFFIX;

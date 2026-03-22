@@ -38,6 +38,7 @@
 * [x] sundering: enemies are inflicted with weakness
 * [x] rejuvenating: hit entities are granted regeneration for a duration
 * [x] luminiferous: hit entities are inflicted with glowing for a short duration
+* [x] true strike: fully-charged hits pierce evasion
 
 ## armour traits
 
@@ -69,6 +70,7 @@
     * can only be applied to energetic/electric items
     * generation rate is determined by the item used to apply it
 * [ ] disassembling: vein miner
+* [x] accuracy: increasing evasion pierce chance per level
 
 ## materials
 
@@ -771,7 +773,7 @@
     * tools: luminiferous (head) + opportunist (extra)
     * armour: radiant (core) + indomitable (plates/trim)
 * [x] enderium
-    * tools: mortal wounds (head) + enderference (extra)
+    * tools: mortal wounds (head) + true strike (extra) + enderference (extra)
     * armour: vengeful (core) + enderport (plates/trim)
 
 ### other stuff

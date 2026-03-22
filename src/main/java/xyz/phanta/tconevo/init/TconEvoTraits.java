@@ -87,10 +87,13 @@ public class TconEvoTraits {
     public static final TraitSundering TRAIT_SUNDERING = new TraitSundering();
     public static final TraitStaggering TRAIT_STAGGERING = new TraitStaggering();
     public static final TraitThundergodWrath TRAIT_THUNDERGOD_WRATH = new TraitThundergodWrath();
+    public static final TraitTrueStrike TRAIT_TRUE_STRIKE = new TraitTrueStrike();
     public static final TraitVampiric TRAIT_VAMPIRIC = new TraitVampiric();
+
     public static final ModifierArtifact MOD_ARTIFACT = new ModifierArtifact();
     public static final ModifierFluxed MOD_FLUXED = new ModifierFluxed();
     public static final ModifierPhotovoltaic MOD_PHOTOVOLTAIC = new ModifierPhotovoltaic();
+    public static final ModifierAccuracy MOD_ACCURACY = new ModifierAccuracy();
 
     // astral sorcery
     public static final TraitAstral TRAIT_ASTRAL = new TraitAstral();
@@ -161,12 +164,13 @@ public class TconEvoTraits {
     public static final TraitWarping TRAIT_WARPING = new TraitWarping();
 
     public static final List<Modifier> MODIFIERS = Arrays.asList(
-            MOD_FLUXED, MOD_PHOTOVOLTAIC,
+            MOD_FLUXED, MOD_PHOTOVOLTAIC, MOD_ACCURACY,
             MOD_REAPING, MOD_ENTROPIC, MOD_FLUX_BURN, MOD_PRIMORDIAL,
             MOD_GROUNDING);
 
     public static void initModifierMaterials() {
         MOD_ARTIFACT.addItem(ItemMaterial.Type.ARTIFACT_UNSEALER.newStack(1), 1, 1);
+        MOD_ACCURACY.addItem(ItemMaterial.Type.WIDE_LENS.newStack(1), 1, 1);
 
         // actually additions
         addModItemOpt(MOD_FLUXED, ActuallyHooks.INSTANCE::getItemBatterySingle);

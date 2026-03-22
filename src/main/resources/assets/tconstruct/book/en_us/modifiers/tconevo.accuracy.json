@@ -1,0 +1,17 @@
+{
+  "modifier": "tconevo.accuracy",
+  "text": [
+    {
+      "text": "Strapping a precision optic to your weapon seems to improve the odds of successfully landing a hit."
+    }
+  ],
+  "effects": [
+    "Grants a chance to pierce through evasion",
+    "Multiple levels"
+  ],
+  "demoTool": [
+    "tconstruct:broadsword",
+    "tconstruct:cleaver",
+    "tconstruct:arrow"
+  ]
+}

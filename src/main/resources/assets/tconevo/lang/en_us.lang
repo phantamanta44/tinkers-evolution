@@ -3,6 +3,7 @@ itemGroup.tconevo=Tinkers' Evolution
 item.tconevo:material0.name=Coalescence Matrix
 item.tconevo:material1.name=Pink Slime Crystal
 item.tconevo:material2.name=Plate of Unsealing
+item.tconevo:material3.name=Wide Lens
 item.tconevo:metal0.name=Wyvern Metal Ingot
 item.tconevo:metal1.name=Wyvern Metal Dust
 item.tconevo:metal2.name=Wyvern Metal Nugget
@@ -84,6 +85,10 @@ effect.tconevo.damage_boost=Damage Boost
 potion.effect.tconevo.damage_boost=Potion of Power
 splash_potion.effect.tconevo.damage_boost=Splash Potion of Power
 lingering_potion.effect.tconevo.damage_boost=Lingering Potion of Power
+effect.tconevo.true_strike=True Strike
+potion.effect.tconevo.true_strike=Potion of Accuracy
+splash_potion.effect.tconevo.true_strike=Splash Potion of Accuracy
+lingering_potion.effect.tconevo.true_strike=Lingering Potion of Accuracy
 
 modifier.depthdigger.name=Depth Digger
 modifier.depthdigger.desc=§oFresh-air-a-phobia?§r\nThis tool becomes more efficient at lower elevations.
@@ -152,9 +157,12 @@ modifier.tconevo.sundering.name=Sundering
 modifier.tconevo.sundering.desc=§oBalance is weakness...§r\nThis weapon weakens attacked enemies.
 modifier.tconevo.thundergod_wrath.name=Thundergod's Wrath
 modifier.tconevo.thundergod_wrath.desc=§oI condemn you!§r\nThis weapon calls down a bolt of lightning upon enemies struck at full health.
+modifier.tconevo.true_strike.name=True Strike
+modifier.tconevo.true_strike.desc=§oThis'll work.§r\nThis weapon pierces through evasion on fully-charged hits.
 modifier.tconevo.vampiric.name=Vampiric
 modifier.tconevo.vampiric.desc=§oStill befriending mortals?§r\nThis weapon drains life energy from enemies to heal its wielder.
 modifier.tconevo.vampiric.extra=Lifesteal: +%s
+
 modifier.tconevo.artifact.name=Artifact
 modifier.tconevo.artifact.desc=§oOne-of-a-kind!§r\nThis tool cannot be modified or repaired until it is unsealed.
 modifier.tconevo.artifact.unsealed=Unsealed
@@ -163,6 +171,9 @@ modifier.tconevo.fluxed.desc=§oIt's been years!§r\nThis tool consumes energy b
 modifier.tconevo.photovoltaic.name=Photovoltaic
 modifier.tconevo.photovoltaic.desc=§oEmissions-free!§r\nThis tool absorbs sunlight to recharge itself.
 modifier.tconevo.photovoltaic.extra=Solar Power: %s
+modifier.tconevo.accuracy.name=Accuracy
+modifier.tconevo.accuracy.desc=§oI won't miss!§r\nThis weapon has a chance to pierce through evasion.
+modifier.tconevo.accuracy.extra=Accuracy: %s
 
 modifier.tconevo.bulwark_armor.name=Bulwark
 modifier.tconevo.bulwark_armor.desc=§oBlocked!§r\nThis armour reduces incoming damage by one heart, to a minimum of one heart.
@@ -573,9 +584,10 @@ death.attack.tconevo.chaos.item=%1$s was annihilated by %2$s using the dark ener
 
 attribute.name.tconevo.flightSpeed=Flight Speed
 attribute.name.tconevo.damageTaken=Damage Taken
-attribute.name.tconevo.evasionChance=Evasion Chance
-attribute.name.tconevo.healingReceived=Healing Received
 attribute.name.tconevo.damageDealt=Damage Dealt
+attribute.name.tconevo.evasionChance=Evasion Chance
+attribute.name.tconevo.accuracy=Accuracy
+attribute.name.tconevo.healingReceived=Healing Received
 
 commands.tconevo.generic.player_only=Only players can use this command.
 commands.tconevo.generic.req_tool=You need a Tinkers' Construct item to use this command.

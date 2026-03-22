@@ -49,6 +49,19 @@ public class TconEvoConfig {
         @Config.RequiresMcRestart
         public double attrDamageTakenMax = 1e9D;
 
+        @Config.Comment("The minimum value for the \"damage dealt\" attribute.")
+        @Config.RangeDouble(min = 0D, max = 1D)
+        @Config.RequiresMcRestart
+        public double attrDamageDealtMin = 0D;
+
+        @Config.Comment({
+                "The maximum value for the \"damage dealt\" attribute.",
+                "If set to 1, then damage amplification will not work at all."
+        })
+        @Config.RangeDouble(min = 1D)
+        @Config.RequiresMcRestart
+        public double attrDamageDealtMax = 1e9D;
+
         @Config.Comment({
                 "The maximum value for the \"evasion\" attribute.",
                 "If set to 0, then evasion will not work at all."
@@ -56,6 +69,14 @@ public class TconEvoConfig {
         @Config.RangeDouble(min = 0D, max = 1D)
         @Config.RequiresMcRestart
         public double attrEvasionMax = 1D;
+
+        @Config.Comment({
+                "The maximum value for the \"accuracy\" attribute.",
+                "If set to 0, then accuracy will not work at all."
+        })
+        @Config.RangeDouble(min = 0D, max = 1D)
+        @Config.RequiresMcRestart
+        public double attrAccuracyMax = 1D;
 
         @Config.Comment({
                 "The minimum value for the \"healing received\" attribute.",
@@ -72,19 +93,6 @@ public class TconEvoConfig {
         @Config.RangeDouble(min = 1D)
         @Config.RequiresMcRestart
         public double attrHealingReceivedMax = 1e9D;
-
-        @Config.Comment("The minimum value for the \"damage dealt\" attribute.")
-        @Config.RangeDouble(min = 0D, max = 1D)
-        @Config.RequiresMcRestart
-        public double attrDamageDealtMin = 0D;
-
-        @Config.Comment({
-                "The maximum value for the \"damage dealt\" attribute.",
-                "If set to 1, then damage amplification will not work at all."
-        })
-        @Config.RangeDouble(min = 1D)
-        @Config.RequiresMcRestart
-        public double attrDamageDealtMax = 1e9D;
 
         @Config.Comment("The additional bonus damage percentage granted per level of the damage boost effect.")
         @Config.RangeDouble(min = 0D, max = 1D)
@@ -474,6 +482,14 @@ public class TconEvoConfig {
 
         @Config.Comment("Can the photovoltaic modifier be re-applied to replace the solar panel?")
         public boolean modPhotovoltaicReplaceable = true;
+
+        @Config.Comment("The accuracy percentage granted by each level of the accuracy modifier.")
+        @Config.RangeDouble(min = 0D)
+        public double modAccuracyChancePerLevel = 0.2D;
+
+        @Config.Comment("Causes only the first level of the accuracy modifier to consume a modifier slot.")
+        @Config.RequiresMcRestart
+        public boolean modAccuracyOnlyUsesOneModifier = false;
 
     }
 

@@ -923,7 +923,7 @@ public class TconEvoMaterials {
                 .withStatsExtra(180)
                 .withStatsBow(0.75F, 1.5F, 7F)
                 .withTraits(PartType.MAIN, TconEvoTraits.TRAIT_MORTAL_WOUNDS)
-                .withTraits(PartType.AUX, TinkerTraits.enderference)
+                .withTraits(PartType.AUX, TconEvoTraits.TRAIT_TRUE_STRIKE, TinkerTraits.enderference)
                 .build();
     }
 

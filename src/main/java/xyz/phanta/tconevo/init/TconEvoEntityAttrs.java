@@ -18,15 +18,18 @@ public class TconEvoEntityAttrs {
     public static final IAttribute DAMAGE_TAKEN = new RangedAttribute(null, "tconevo.damageTaken",
             1D, TconEvoConfig.general.attrDamageTakenMin, TconEvoConfig.general.attrDamageTakenMax)
             .setDescription("Damage Taken").setShouldWatch(true);
-    public static final IAttribute EVASION_CHANCE = new RangedAttribute(null, "tconevo.evasionChance",
-            1D, 1D, 1D + TconEvoConfig.general.attrEvasionMax)
-            .setDescription("Evasion Chance").setShouldWatch(true);
-    public static final IAttribute HEALING_RECEIVED = new RangedAttribute(null, "tconevo.healingReceived",
-            1D, TconEvoConfig.general.attrHealingReceivedMin, TconEvoConfig.general.attrHealingReceivedMax)
-            .setDescription("Healing Received").setShouldWatch(true);
     public static final IAttribute DAMAGE_DEALT = new RangedAttribute(null, "tconevo.damageDealt",
             1D, TconEvoConfig.general.attrDamageDealtMin, TconEvoConfig.general.attrDamageDealtMax)
             .setDescription("Damage Dealt").setShouldWatch(true);
+    public static final IAttribute EVASION_CHANCE = new RangedAttribute(null, "tconevo.evasionChance",
+            1D, 1D, 1D + TconEvoConfig.general.attrEvasionMax)
+            .setDescription("Evasion Chance").setShouldWatch(true);
+    public static final IAttribute ACCURACY = new RangedAttribute(null, "tconevo.accuracy",
+            1D, 1D, 1D + TconEvoConfig.general.attrAccuracyMax)
+            .setDescription("Accuracy").setShouldWatch(true);
+    public static final IAttribute HEALING_RECEIVED = new RangedAttribute(null, "tconevo.healingReceived",
+            1D, TconEvoConfig.general.attrHealingReceivedMin, TconEvoConfig.general.attrHealingReceivedMax)
+            .setDescription("Healing Received").setShouldWatch(true);
 
     @InitMe
     public static void init() {
@@ -41,6 +44,7 @@ public class TconEvoEntityAttrs {
             attrMap.registerAttribute(FLIGHT_SPEED);
             attrMap.registerAttribute(DAMAGE_TAKEN);
             attrMap.registerAttribute(EVASION_CHANCE);
+            attrMap.registerAttribute(ACCURACY);
             attrMap.registerAttribute(HEALING_RECEIVED);
             attrMap.registerAttribute(DAMAGE_DEALT);
         }

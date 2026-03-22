@@ -19,6 +19,11 @@
         "textures": {
           "layer0": "tconevo:items/artifact_unsealer"
         }
+      },
+      "WIDE_LENS": {
+        "textures": {
+          "layer0": "tconevo:items/wide_lens"
+        }
       }
     }
   }

@@ -18,6 +18,7 @@ import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.potion.PotionDamageBoost;
 import xyz.phanta.tconevo.potion.PotionDamageReduction;
 import xyz.phanta.tconevo.potion.PotionHealReduction;
+import xyz.phanta.tconevo.potion.PotionTrueStrike;
 import xyz.phanta.tconevo.util.DamageUtils;
 
 public class TconEvoPotions {
@@ -29,6 +30,7 @@ public class TconEvoPotions {
     public static final Potion MORTAL_WOUNDS = new PotionHealReduction();
     public static final Potion DAMAGE_REDUCTION = new PotionDamageReduction();
     public static final Potion DAMAGE_BOOST = new PotionDamageBoost();
+    public static final Potion TRUE_STRIKE = new PotionTrueStrike();
 
     @InitMe
     public static void init() {
@@ -41,7 +43,8 @@ public class TconEvoPotions {
                 IMMORTALITY.setRegistryName(TconEvoConsts.MOD_ID, NameConst.POTION_IMMORTALITY),
                 MORTAL_WOUNDS.setRegistryName(TconEvoConsts.MOD_ID, NameConst.POTION_MORTAL_WOUNDS),
                 DAMAGE_REDUCTION.setRegistryName(TconEvoConsts.MOD_ID, NameConst.POTION_DAMAGE_REDUCTION),
-                DAMAGE_BOOST.setRegistryName(TconEvoConsts.MOD_ID, NameConst.POTION_DAMAGE_BOOST));
+                DAMAGE_BOOST.setRegistryName(TconEvoConsts.MOD_ID, NameConst.POTION_DAMAGE_BOOST),
+                TRUE_STRIKE.setRegistryName(TconEvoConsts.MOD_ID, NameConst.POTION_TRUE_STRIKE));
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)

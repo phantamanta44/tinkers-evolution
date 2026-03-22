@@ -26,11 +26,7 @@ public class EntityAttributeHandler {
         }
         DamageSource dmgSrc = event.getSource();
         float amount = event.getAmount();
-        if (dmgSrc.getImmediateSource() == null || dmgSrc.isDamageAbsolute() || DamageUtils.isPureDamage(dmgSrc, amount)) {
-            return;
-        }
-        double odds = victim.getEntityAttribute(TconEvoEntityAttrs.EVASION_CHANCE).getAttributeValue() - 1D;
-        if (odds > 0D && (odds >= 1D || victim.world.rand.nextDouble() <= odds)) {
+        if (checkEvasion(dmgSrc, amount, victim) && !checkAccuracy(dmgSrc)) {
             event.setCanceled(true);
             victim.lastDamage = amount;
             victim.hurtResistantTime = victim.maxHurtResistantTime;
@@ -38,6 +34,23 @@ public class EntityAttributeHandler {
                     SoundEvents.ENTITY_PLAYER_ATTACK_SWEEP, SoundCategory.PLAYERS,
                     1F, 1.4F + 0.3F * victim.world.rand.nextFloat());
         }
+    }
+
+    private static boolean checkEvasion(DamageSource dmgSrc, float amount, EntityLivingBase victim) {
+        if (dmgSrc.getImmediateSource() == null || dmgSrc.isDamageAbsolute() || DamageUtils.isPureDamage(dmgSrc, amount)) {
+            return false;
+        }
+        double odds = victim.getEntityAttribute(TconEvoEntityAttrs.EVASION_CHANCE).getAttributeValue() - 1D;
+        return odds > 0D && (odds >= 1D || victim.world.rand.nextDouble() <= odds);
+    }
+
+    private static boolean checkAccuracy(DamageSource dmgSrc) {
+        Entity attacker = dmgSrc.getTrueSource();
+        if (!(attacker instanceof EntityLivingBase)) {
+            return false;
+        }
+        double odds = ((EntityLivingBase)attacker).getEntityAttribute(TconEvoEntityAttrs.ACCURACY).getAttributeValue() - 1D;
+        return odds > 0D && (odds >= 1D || attacker.world.rand.nextDouble() <= odds);
     }
 
     @SubscribeEvent(priority = EventPriority.LOW)
