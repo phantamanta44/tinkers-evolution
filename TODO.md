@@ -3,12 +3,12 @@
 ## tool traits
 
 * [x] energized: the equipment uses forge energy before durability
-    * higher levels -> higher energy capacity
+  * higher levels -> higher energy capacity
 * [x] photosynthetic: repairs in the sun
 * [x] cascading: destroys all gravitating blocks in a column
 * [x] blasting: breaking blocks and fully-charged hits create explosions
 * [x] modifiable: equipment has more modifier slots
-    * a clone of writable that avoids the weird quirks of writable
+  * a clone of writable that avoids the weird quirks of writable
 * [x] fertilizing: right clicking consumes a lot of durability to function as bone meal
 
 ## weapon traits
@@ -27,7 +27,7 @@
 * [x] force of impact: deal increased damage with higher velocity
 * [x] thundergod's wrath: strikes lightning on full-health enemies
 * [x] aftershock: fully-charged hits deal a fixed amount of bonus magical damage
-    * higher levels -> more bonus damage
+  * higher levels -> more bonus damage
 * [x] corrupting: fully-charged hits inflict increasing levels of wither for a short duration
 * [x] piezoelectric: fully-charged hits charge energetic items in the inventory
 * [x] crystalline: do more damage at higher durability
@@ -39,6 +39,8 @@
 * [x] rejuvenating: hit entities are granted regeneration for a duration
 * [x] luminiferous: hit entities are inflicted with glowing for a short duration
 * [x] true strike: fully-charged hits pierce evasion
+* [x] purging: fully-charged hits have a chance to remove a random dispellable buff
+  * higher levels -> higher chance of dispel
 
 ## armour traits
 
@@ -48,14 +50,14 @@
 * [ ] counterstrike: incoming hits have a chance to be reflected at the attacker
 * [x] shadowstep: grants invisibility in low light levels
 * [x] strength of will: taking a hit at full health grants immortality for a short duration
-* [x] spectral: incoming hits have a chance to be ignored entirely
+* [x] spectral: gain evasion chance
 * [x] aspect of the phoenix: saves the wearer from death and full heals, but breaks the armour piece
 * [x] bulwark: all damage is reduced by one heart but does at least one heart of damage
 * [x] radiant: attacking enemies are briefly blinded
 * [x] celestial: grants creative flight
 * [x] gale force: increases speed of creative flight
 * [x] hearth's embrace: when set aflame, the wearer is extinguished and granted regen for a short duration
-* [ ] megaflip: exposions deal no damage but increased knockback
+* [x] megaflip: explosions deal no damage but increased knockback
 * [x] stifling: attacking enemies are inflicted with weakness for a short duration
 * [x] thundergod's favour: immune to lightning damage
 * [x] chilling touch: attacking enemies are inflicted with slowness for a short duration
@@ -64,11 +66,11 @@
 ## modifiers
 
 * [x] fluxed: the equipment uses forge energy before durability
-    * capacity is determined by the item used to apply it
-    * cannot be applied to items that are already energetic/electric
+  * capacity is determined by the item used to apply it
+  * cannot be applied to items that are already energetic/electric
 * [x] photovoltaic: the equipment charges itself in sunlight
-    * can only be applied to energetic/electric items
-    * generation rate is determined by the item used to apply it
+  * can only be applied to energetic/electric items
+  * generation rate is determined by the item used to apply it
 * [ ] disassembling: vein miner
 * [x] accuracy: increasing evasion pierce chance per level
 
@@ -81,8 +83,8 @@
 
 * [x] sceptre: hits things while near or launches projectiles from a distance for magic damage
 * [ ] boomerang: throwable thing that comes back
-    * homes in on target(s) that are moused over while preparing the throw
-    * can pick up one dropped item and bring it back to the thrower
+  * homes in on target(s) that are moused over while preparing the throw
+  * can pick up one dropped item and bring it back to the thrower
 * [ ] trident: just the throwable spear thing from the aquatic update
 
 ## other stuff
@@ -96,26 +98,26 @@
 ### materials
 
 * [x] black quartz
-    * tools: depth digger + jagged
-    * armour: subterranean + rough
+  * tools: depth digger + jagged
+  * armour: subterranean + rough
 * [x] restonia crystal
-    * tools: crystalline + piezoelectric (head)
-    * armour: mundane
+  * tools: crystalline + piezoelectric (head)
+  * armour: mundane
 * [x] palis crystal
-    * tools: crystalline + well-established
-    * armour: ambitious
+  * tools: crystalline + well-established
+  * armour: ambitious
 * [x] diamantine crystal
-    * tools: crystalline + aftershock
-    * armour: shielding
+  * tools: crystalline + aftershock
+  * armour: shielding
 * [x] void crystal
-    * tools: crystalline + cheapskate
-    * armour: cheapskate
+  * tools: crystalline + cheapskate
+  * armour: cheapskate
 * [x] emeraldic crystal
-    * tools: crystalline + cold-blooded (head) + momentum (extra)
-    * armour: vengeful
+  * tools: crystalline + cold-blooded (head) + momentum (extra)
+  * armour: vengeful
 * [x] enori crystal
-    * tools: crystalline + magnetic
-    * armour: heavy + magnetic
+  * tools: crystalline + magnetic
+  * armour: heavy + magnetic
 
 ### other ideas
 
@@ -128,8 +130,8 @@
 ### materials
 
 * [x] sunnarium
-    * tools: photosynthetic + luminiferous
-    * armour: photosynthetic + radiant
+  * tools: photosynthetic + luminiferous
+  * armour: photosynthetic + radiant
 
 ### other ideas
 
@@ -140,17 +142,17 @@
 ### materials
 
 * [x] sky stone
-    * tools: crumbling (head) + stonebound
-    * armour: alien (core) + stonebound
+  * tools: crumbling (head) + stonebound
+  * armour: alien (core) + stonebound
 * [x] certus quartz
-    * tools: crystalline + lightweight
-    * armour: lightweight
+  * tools: crystalline + lightweight
+  * armour: lightweight
 * [x] fluix
-    * tools: crystalline + shocking
-    * armour: voltaic
+  * tools: crystalline + shocking
+  * armour: voltaic
 * [x] fluix steel (lazy ae2)
-    * tools: piezoelectric (head) + magnetic
-    * armour: steady + magnetic
+  * tools: piezoelectric (head) + magnetic
+  * armour: steady + magnetic
 
 ## astral sorcery
 
@@ -158,28 +160,28 @@
 
 * [x] astral: equipment can be attuned in an attunement altar for additional effects
 * [x] attuned: equipment is more effective at night while attuned constellation is present + gets a bonus effect
-    * aevitas: tools grant regen after hitting something, armour grants regen after getting hit
-    * armara: tools grant resistance after hitting something, armour has increased protection
-    * discidia: tools deal more damage, armour reflects a portion of incoming damage
-    * evorsio: tools mine faster, armour grants haste
-    * vicio: tools grant move speed after hitting something, armour grants move speed after getting hit
-    * bootes: tools have silk touch, has a chance of spawning a flare after getting hit
-    * fornax: tools ignite enemies, armour grants fire resistance
-    * horologium: tools freeze enemies on hit, armour freezes attackers
-    * lucerna: tools apply glowing on hit, armour grants night vision
-    * mineralis: tools gain fortune, armour grants the block x-ray effect
-    * octans: tools mine faster in water, armour grants water breathing
-    * pelotrio: tools and armour repair themselves over time
-    * probably should implement each attunement as a separate modifier
+  * aevitas: tools grant regen after hitting something, armour grants regen after getting hit
+  * armara: tools grant resistance after hitting something, armour has increased protection
+  * discidia: tools deal more damage, armour reflects a portion of incoming damage
+  * evorsio: tools mine faster, armour grants haste
+  * vicio: tools grant move speed after hitting something, armour grants move speed after getting hit
+  * bootes: tools have silk touch, has a chance of spawning a flare after getting hit
+  * fornax: tools ignite enemies, armour grants fire resistance
+  * horologium: tools freeze enemies on hit, armour freezes attackers
+  * lucerna: tools apply glowing on hit, armour grants night vision
+  * mineralis: tools gain fortune, armour grants the block x-ray effect
+  * octans: tools mine faster in water, armour grants water breathing
+  * pelotrio: tools and armour repair themselves over time
+  * probably should implement each attunement as a separate modifier
 
 ### materials
 
 * [x] aquamarine
-    * tools: astral (head) + crystalline
-    * armour: astral (core) + absorbent
+  * tools: astral (head) + crystalline
+  * armour: astral (core) + absorbent
 * [x] starmetal
-    * tools: astral (head) + unnatural
-    * armour: astral (core) + magnetic
+  * tools: astral (head) + unnatural
+  * armour: astral (core) + magnetic
 
 ### other ideas
 
@@ -201,14 +203,14 @@
 ### materials
 
 * [x] crystal matrix
-    * tools: crystalline + aftershock 3 + insatiable
-    * armour: rough + strength of will + prideful
+  * tools: crystalline + aftershock 3 + insatiable
+  * armour: rough + strength of will + prideful
 * [x] neutronium
-    * tools: condensing (head) + dense + heavy
-    * armour: reactive + dense + heavy
+  * tools: condensing (head) + dense + heavy
+  * armour: reactive + dense + heavy
 * [x] infinity metal
-    * tools: omnipotence (head) + infinitum
-    * armour: null almighty (core) + eternity (core) + celestial (core) + gale force 3 + infinitum
+  * tools: omnipotence (head) + infinitum
+  * armour: null almighty (core) + eternity (core) + celestial (core) + gale force 3 + infinitum
 
 ## betweenlands
 
@@ -232,11 +234,11 @@
 ### materials
 
 * [x] bound metal (infuse blood into coag matrix)
-    * tools: crystalys (head) + bloodbound
-    * armour: soul guard (core) + bloodbound
+  * tools: crystalys (head) + bloodbound
+  * armour: soul guard (core) + bloodbound
 * [x] sentient metal (forge tartaric gem + coag matrix)
-    * tools: sentient (head) + willful
-    * armour: sentient (core) + willful
+  * tools: sentient (head) + willful
+  * armour: sentient (core) + willful
 
 ### other ideas
 
@@ -255,40 +257,40 @@
 ### armour traits
 
 * [x] mana affinity: provides a mana cost discount
-    * higher levels -> higher discount
+  * higher levels -> higher discount
 * [x] aura-infused: generates mana in the inventory over time
 * [x] voice of the fae: has a chance to summon pixies when hit
 
 ### materials
 
 * [x] livingrock
-    * tools: sundering (head) + stonebound
-    * armour: stifling (core) + stonebound
+  * tools: sundering (head) + stonebound
+  * armour: stifling (core) + stonebound
 * [x] livingwood
-    * tools: modifiable + ecological
-    * armour: modifiable + ecological
-    * suitable for arrow shaft
+  * tools: modifiable + ecological
+  * armour: modifiable + ecological
+  * suitable for arrow shaft
 * [x] dreamwood
-    * tools: aura siphon + ecological
-    * armour: aura-infused + ecological
-    * suitable for arrow shaft
+  * tools: aura siphon + ecological
+  * armour: aura-infused + ecological
+  * suitable for arrow shaft
 * [x] manasteel
-    * tools: momentum + mana-infused
-    * armour: lightweight + mana-infused + mana affinity
+  * tools: momentum + mana-infused
+  * armour: lightweight + mana-infused + mana affinity
 * [x] terrasteel
-    * tools: staggering (head) + gaia's wrath (extra) + mortal wounds + mana-infused
-    * armour: strength of will (core) + second wind (plates/trim) + heavy + mana-infused + mana affinity 2
+  * tools: staggering (head) + gaia's wrath (extra) + mortal wounds + mana-infused
+  * armour: strength of will (core) + second wind (plates/trim) + heavy + mana-infused + mana affinity 2
 * [x] elementium
-    * tools: voice of the fae (head) + opportunist (extra) + cascading + mana-infused
-    * armour: voice of the fae (core) + divine grace (plates/trim) + shielding + mana-infused + mana affinity
+  * tools: voice of the fae (head) + opportunist (extra) + cascading + mana-infused
+  * armour: voice of the fae (core) + divine grace (plates/trim) + shielding + mana-infused + mana affinity
 * [x] mana string
-    * bowstring: mana-infused
+  * bowstring: mana-infused
 * [x] mana diamond
-    * magic: crystalline + mana-infused
+  * magic: crystalline + mana-infused
 * [x] mana pearl
-    * magic: endspeed + mana-infused
+  * magic: endspeed + mana-infused
 * [x] dragonstone
-    * magic: voice of the fae + mana-infused
+  * magic: voice of the fae + mana-infused
 
 ### other ideas
 
@@ -301,39 +303,39 @@
 ### traits
 
 * [x] evolved: unbreakable, runs on rf, upgradable via fusion crafting
-    * arrow damage: increases damage of projectiles
-    * arrow speed: increases range of launchers
-    * attack aoe: increases aoe of weapons
-    * attack damage: increases damage of weapons
-    * dig aoe: increases mining aoe of tools
-    * dig speed: increases mining speed of tools
-    * draw speed: increases draw speed of launchers
-    * energy capacity: increases rf buffer
+  * arrow damage: increases damage of projectiles
+  * arrow speed: increases range of launchers
+  * attack aoe: increases aoe of weapons
+  * attack damage: increases damage of weapons
+  * dig aoe: increases mining aoe of tools
+  * dig speed: increases mining speed of tools
+  * draw speed: increases draw speed of launchers
+  * energy capacity: increases rf buffer
 * [x] soul rend: tool has inherent reaping
 
 ### armour traits
 
 * [x] evolved: unbreakable, runs on rf, grants energy shield, upgradable via fusion crafting
-    * energy capacity: increases rf buffer
-    * shield capacity: increases shield point buffer of energy shield
-    * shield recovery: speeds up entropy dissipation of energy shield
-    * move speed: increases move speed on boots
-    * jump boost: increases jump height on leggings
+  * energy capacity: increases rf buffer
+  * shield capacity: increases shield point buffer of energy shield
+  * shield recovery: speeds up entropy dissipation of energy shield
+  * move speed: increases move speed on boots
+  * jump boost: increases jump height on leggings
 
 ### materials
 
 * [x] draconium
-    * tools: soul rend (head) + alien
-    * armour: alien
+  * tools: soul rend (head) + alien
+  * armour: alien
 * [x] wyvern metal
-    * tools: evolved (head) + soul rend
-    * armour: evolved (core) + heavy (extra)
+  * tools: evolved (head) + soul rend
+  * armour: evolved (core) + heavy (extra)
 * [x] draconic metal
-    * tools: evolved (head) + soul rend 2
-    * armour: evolved (core) + heavy (extra) + celestial (plates) + gale force (trim)
+  * tools: evolved (head) + soul rend 2
+  * armour: evolved (core) + heavy (extra) + celestial (plates) + gale force (trim)
 * [x] chaotic metal
-    * tools: evolved (head) + soul rend 3
-    * armour: evolved (core) + heavy (extra) + celestial (plates) + gale force 2 (trim)
+  * tools: evolved (head) + soul rend 3
+  * armour: evolved (core) + heavy (extra) + celestial (plates) + gale force 2 (trim)
 
 ### modifiers
 
@@ -370,16 +372,16 @@
 ### materials
 
 * [ ] caminite
-    * tools: crude + stonebound
-    * armour: mundane + stonebound
+  * tools: crude + stonebound
+  * armour: mundane + stonebound
 * [ ] dawnstone
-    * tools: overwhelm + ember-aspected
-    * armour: heavy + ember-aspected
+  * tools: overwhelm + ember-aspected
+  * armour: heavy + ember-aspected
 * [ ] antimony (soot)
-    * tools: shredding + ember-aspected
-    * armour: indomitable + ember-aspected
+  * tools: shredding + ember-aspected
+  * armour: indomitable + ember-aspected
 * [ ] ember crystal
-    * magic: superheat + ember-aspected
+  * magic: superheat + ember-aspected
 
 ### other notes
 
@@ -387,16 +389,63 @@
 
 ## ender io
 
+### traits
+
+* [ ] endermorphic: allows installation of dark steel upgrades
+  * not compatible with other energy upgrades, even with no empowered installed
+
 ### materials
 
+* [x] redstone alloy
+  * tools: crude + cheap
+  * armour: mundane + cheap
+* [x] electrical steel
+  * tools: shocking + dense
+  * armour: voltaic + dense
+* [x] pulsating iron
+  * tools: enderference + established
+  * armour: shielding + ambitious
+* [x] conductive iron
+  * tools: heavy + magnetic
+  * armour: steady + magnetic
+* [x] energetic alloy
+  * tools: aftershock (head) + vampiric (extra) + force of impact
+  * armour: second wind + hearth's embrace
+* [x] energetic silver
+  * tools: momentum (head) + lightweight (extra) + fleet of foot
+  * armour: divine grace + thundergod's favour
+* [x] vibrant alloy
+  * tools: aftershock 2 (head) + deadly precision (extra) + piezoelectric
+  * armour: dramatic + shielding
+* [x] vivid alloy
+  * tools: relentless (head) + opportunist (extra) + crumbling
+  * armour: megaflip + lightweight
+* [x] crystalline alloy
+  * tools: executor (head) + true strike (extra) + crystalline
+  * armour: spectral (core) + prideful (extra) + indomitable
+* [x] melodic alloy
+  * tools: purging (head) + corrupting (extra) + unnatural
+  * armour: aspect of the phoenix (core) + invigorating (extra) + gale force
+* [x] soularium
+  * tools: mortal wounds (head) + poisonous (extra) + sundering
+  * armour: vengeful (core) + chilling touch (extra) + stifling
+* [ ] dark steel
+  * tools: endermorphic (head) + magnetic 2 + stonebound (extra)
+  * armour: endermorphic (core) + magnetic 2 + stonebound (extra)
+* [ ] end steel
+  * tools: endermorphic (head) + juggernaut + culling (extra)
+  * armour: endermorphic (core) + steady + bulwark (extra)
+* [ ] stellar alloy
+  * tools: endermorphic (head) + battle furor + modifiable 2 (extra)
+  * armour: endermorphic (core) + reactive + modifiable 2 (extra)
 * [x] ender crystal
-    * magic: endspeed
+  * magic: endspeed
 * [x] pulsating crystal
-    * magic: enderference
+  * magic: true strike + enderference
 * [x] vibrant crystal
-    * magic: chain lightning
+  * magic: chain lightning
 * [x] weather crystal
-    * magic: thundergod's wrath
+  * magic: thundergod's wrath
 
 ### other ideas
 
@@ -408,29 +457,29 @@
 ### materials
 
 * [x] litherite
-    * tools: jagged + petramor
-    * armour: rough + petravidity
+  * tools: jagged + petramor
+  * armour: rough + petravidity
 * [x] erodium
-    * tools: lightweight + depth digger
-    * armour: lightweight + subterranean
+  * tools: lightweight + depth digger
+  * armour: lightweight + subterranean
 * [x] kyronite
-    * tools: battle furor
-    * armour: infernal (core/plates) + invigorating (trim)
+  * tools: battle furor
+  * armour: infernal (core/plates) + invigorating (trim)
 * [x] pladium
-    * tools: relentless
-    * armour: bulwark (core/plates) + second wind (trim)
+  * tools: relentless
+  * armour: bulwark (core/plates) + second wind (trim)
 * [x] ionite
-    * tools: deadly precision + chain lightning
-    * armour: shadowstep (core/plates) + gale force (trim)
+  * tools: deadly precision + chain lightning
+  * armour: shadowstep (core/plates) + gale force (trim)
 * [x] aethium
-    * tools: executor + corrupting
-    * armour: celestial (core/plates) + spectral (trim)
+  * tools: executor + corrupting
+  * armour: celestial (core/plates) + spectral (trim)
 * [x] lonsdaleite
-    * tools: modifiable + crude
-    * armour: modifiable + mundane
+  * tools: modifiable + crude
+  * armour: modifiable + mundane
 * [x] mica
-    * tools: modifiable 2
-    * armour: modifiable 2
+  * tools: modifiable 2
+  * armour: modifiable 2
 
 ### other ideas
 
@@ -441,8 +490,8 @@
 ### materials
 
 * [x] apatite
-    * tools: fertilizing + cheapskate
-    * armour: absorbent + cheapskate
+  * tools: fertilizing + cheapskate
+  * armour: absorbent + cheapskate
 
 ### armour modifiers
 
@@ -468,28 +517,28 @@
 ### traits
 
 * [x] electric: has an EU buffer that is consumed before durability
-    * if possible, should be mutually exclusive with energized/fluxed
+  * if possible, should be mutually exclusive with energized/fluxed
 
 ### materials
 
 * [x] rubber
-    * tools: squeaky (head) + crude (extra)
-    * armour: bouncy + thundergod's favour
+  * tools: squeaky (head) + crude (extra)
+  * armour: bouncy + thundergod's favour
 * [x] advanced alloy
-    * tools: dense + force of impact
-    * armour: dense + indomitable
+  * tools: dense + force of impact
+  * armour: dense + indomitable
 * [x] energetic metal (canning machine infuse energium dust + coag matrix)
-    * tools: electric
-    * armour: electric
+  * tools: electric
+  * armour: electric
 * [x] carbon fiber
-    * tools: relentless + lightweight
-    * armour: bulwark + lightweight
+  * tools: relentless + lightweight
+  * armour: bulwark + lightweight
 * [x] iridium
-    * tools: overwhelm + momentum
-    * armour: steady + reactive
+  * tools: overwhelm + momentum
+  * armour: steady + reactive
 * [x] universal metal (canning machine infuse uu matter + coag matrix)
-    * tools: ruination + crumbling
-    * armour: aspect of the phoenix
+  * tools: ruination + crumbling
+  * armour: aspect of the phoenix
 
 ### modifiers
 
@@ -504,17 +553,17 @@
 ### materials
 
 * [x] metallic essence (fluid sieve essence into coag matrix)
-    * tools: well-established + sundering
-    * armour: ambitious + stifling
+  * tools: well-established + sundering
+  * armour: ambitious + stifling
 * [x] meaty (fluid sieve meat into coag matrix)
-    * tools: rejuvenating + tasty
-    * armour: second wind + tasty
+  * tools: rejuvenating + tasty
+  * armour: second wind + tasty
 * [x] pink slime
-    * tools: slimey (pink)
-    * armour: slimey (pink) + bouncy
+  * tools: slimey (pink)
+  * armour: slimey (pink) + bouncy
 * [x] pink metal
-    * tools: mortal wounds + unnatural
-    * armour: divine grace + vengeful
+  * tools: mortal wounds + unnatural
+  * armour: divine grace + vengeful
 
 ### other ideas
 
@@ -525,18 +574,18 @@
 ### materials
 
 * [x] osmium
-    * tools: dense + stiff
-    * armour: dense + heavy
+  * tools: dense + stiff
+  * armour: dense + heavy
 * [x] refined obsidian
-    * tools: duritae + force of impact
-    * armour: duritae + bulwark
+  * tools: duritae + force of impact
+  * armour: duritae + bulwark
 * [x] refined glowstone
-    * tools: luminiferous + sharp
-    * armour: radiant + indomitable
+  * tools: luminiferous + sharp
+  * armour: radiant + indomitable
 * [x] hdpe
-    * tools: cheap + crude + fleet of foot
-    * armour: cheap + mundane + reactive
-    * suitable for arrow shaft
+  * tools: cheap + crude + fleet of foot
+  * armour: cheap + mundane + reactive
+  * suitable for arrow shaft
 
 ### other notes
 
@@ -552,21 +601,21 @@
 ### materials
 
 * [x] ghostwood
-    * tools: fleet of foot + ecological
-    * armour: spectral + ecological
-    * suitable for arrow shaft + fletching
+  * tools: fleet of foot + ecological
+  * armour: spectral + ecological
+  * suitable for arrow shaft + fletching
 * [x] bloodwood
-    * tools: vampiric + ecological
-    * armour: infernal + ecological
-    * suitable for arrow shaft
+  * tools: vampiric + ecological
+  * armour: infernal + ecological
+  * suitable for arrow shaft
 * [x] darkwood
-    * tools: sundering + ecological
-    * armour: stifling + ecological
-    * suitable for arrow shaft
+  * tools: sundering + ecological
+  * armour: stifling + ecological
+  * suitable for arrow shaft
 * [x] fusewood
-    * tools: blasting + ecological
-    * armour: steady + ecological
-    * suitable for arrow shaft
+  * tools: blasting + ecological
+  * armour: steady + ecological
+  * suitable for arrow shaft
 
 ## natural absorption
 
@@ -589,32 +638,32 @@
 ### materials
 
 * [ ] iridescent crystal
-    * tools: lustrebane (head) + fleet of foot
-    * armour: radiant (core) + shadowstep
+  * tools: lustrebane (head) + fleet of foot
+  * armour: radiant (core) + shadowstep
 * [ ] thundersteel
-    * tools: chain lightning (head) + battle furor
-    * armour: indomitable (core) + gale force
+  * tools: chain lightning (head) + battle furor
+  * armour: indomitable (core) + gale force
 * [ ] soulroot
-    * tools: rejuvenating (head) + ecological
-    * armour: second wind (core) + ecological
+  * tools: rejuvenating (head) + ecological
+  * armour: second wind (core) + ecological
 * [ ] hearth ember
-    * tools: deadly precision (head) + hellish
-    * armour: counterstrike (core) + hearth's embrace
+  * tools: deadly precision (head) + hellish
+  * armour: counterstrike (core) + hearth's embrace
 * [ ] divine metal (craft divine spirit + coag matrix)
-    * tools: ruination + holy
-    * armour: aspect of the phoenix + blessed 
+  * tools: ruination + holy
+  * armour: aspect of the phoenix + blessed 
 * [ ] sealing oak
-    * tools: deafening + ecological
-    * armour: deafening + ecological
+  * tools: deafening + ecological
+  * armour: deafening + ecological
 * [ ] thunderous oak
-    * tools: thundergod's wrath + ecological
-    * armour: thundergod's favour + ecological
+  * tools: thundergod's wrath + ecological
+  * armour: thundergod's favour + ecological
 * [ ] calico wood
-    * tools: calico + ecological
-    * armour: megaflip + ecological
+  * tools: calico + ecological
+  * armour: megaflip + ecological
 * [ ] circuitree
-    * tools: shocking + ecological
-    * armour: voltaic + ecological
+  * tools: shocking + ecological
+  * armour: voltaic + ecological
 
 ### other ideas
 
@@ -625,8 +674,8 @@
 ### traits
 
 * [x] eternal density: dealing damage fills klein stars in the inventory
-    * higher levels -> higher conversion ratio
-    * also allows breaking dark/red matter blocks
+  * higher levels -> higher conversion ratio
+  * also allows breaking dark/red matter blocks
 
 ### armour traits
 
@@ -636,11 +685,11 @@
 ### materials
 
 * [x] dark matter
-    * tools: eternal density (head) + culling + staggering
-    * armour: superdense (core) + infernal (plates/trim) + dense
+  * tools: eternal density (head) + culling + staggering
+  * armour: superdense (core) + infernal (plates/trim) + dense
 * [x] red matter
-    * tools: eternal density 2 (head) + juggernaut + overwhelm
-    * armour: ultradense (core) + hearth's embrace (plates/trim) + dense
+  * tools: eternal density 2 (head) + juggernaut + overwhelm
+  * armour: ultradense (core) + hearth's embrace (plates/trim) + dense
 
 ## psi
 
@@ -651,17 +700,17 @@
 ### materials
 
 * [ ] psimetal
-    * tools: psion-infused + magnetic
-    * armour: psion-infused + magnetic
+  * tools: psion-infused + magnetic
+  * armour: psion-infused + magnetic
 * [ ] psigem
-    * tools: psion-infused + aftershock
-    * armour: psion-infused + shielding
+  * tools: psion-infused + aftershock
+  * armour: psion-infused + shielding
 * [ ] ebony psimetal
-    * tools: psion-infused + battle furor
-    * armour: psion-infused + heavy
+  * tools: psion-infused + battle furor
+  * armour: psion-infused + heavy
 * [ ] ivory psimetal
-    * tools: psion-infused + relentless
-    * armour: psion-infused + steady
+  * tools: psion-infused + relentless
+  * armour: psion-infused + steady
 
 ### other notes
 
@@ -672,25 +721,25 @@
 ### materials
 
 * [x] fluxed electrum
-    * tools: energized + magnetic 2
-    * armour: energized + magnetic 2
+  * tools: energized + magnetic 2
+  * armour: energized + magnetic 2
 * [x] flux crystal
-    * tools: energized + aftershock
-    * armour: energized + shielding
+  * tools: energized + aftershock
+  * armour: energized + shielding
 
 ## redstone repository
 
 ### materials
 
 * [x] gelid enderium
-    * tools: energized 2 + juggernaut
-    * armour: energized 2 + chilling touch
+  * tools: energized 2 + juggernaut
+  * armour: energized 2 + chilling touch
 * [x] gelid gem
-    * tools: energized 2 + aftershock 2
-    * armour: energized 2 + reactive
+  * tools: energized 2 + aftershock 2
+  * armour: energized 2 + reactive
 * [x] fluxed string
-    * bowstring: aftershock
-    
+  * bowstring: aftershock
+  
 ### other stuff
 
 * [x] gelid flux capacitor should apply fluxed
@@ -723,21 +772,21 @@
 ### materials
 
 * [x] thaumium
-    * tools: modifiable + opportunist
-    * armour: modifiable + shielding
+  * tools: modifiable + opportunist
+  * armour: modifiable + shielding
 * [x] void metal
-    * tools: ruination + sundering + warping
-    * armour: chilling touch + stifling + warping
+  * tools: ruination + sundering + warping
+  * armour: chilling touch + stifling + warping
 * [x] primal metal (infuse primordial pearl + salis mundis onto coag matrix)
-    * tools: corrupting + culling
-    * armour: gale force (core/plates) + aspect of the phoenix (trim)
+  * tools: corrupting + culling
+  * armour: gale force (core/plates) + aspect of the phoenix (trim)
 * [x] amber
-    * magic: opportunist
+  * magic: opportunist
 * [x] quicksilver
-    * magic: modifiable 2
+  * magic: modifiable 2
 * [x] enchanted fabric
-    * bowstring: modifiable
-    * armour: aura affinity
+  * bowstring: modifiable
+  * armour: aura affinity
 
 ### other stuff
 
@@ -749,32 +798,32 @@
 ### materials
 
 * [x] tin
-    * tools: crude
-    * armour: mundane
+  * tools: crude
+  * armour: mundane
 * [x] aluminium
-    * tools: lightweight
-    * armour: featherweight
+  * tools: lightweight
+  * armour: featherweight
 * [x] nickel
-    * tools: force of impact (head) + magnetic (extra)
-    * armour: bulwark (core) + magnetic (plates/trim)
+  * tools: force of impact (head) + magnetic (extra)
+  * armour: bulwark (core) + magnetic (plates/trim)
 * [x] platinum
-    * tools: cold-blooded (head) + deadly precision (extra)
-    * armour: prideful (core) + divine grace (plates/trim)
+  * tools: cold-blooded (head) + deadly precision (extra)
+  * armour: prideful (core) + divine grace (plates/trim)
 * [x] invar
-    * tools: stiff (head) + duritae (extra)
-    * armour: steady (core) + duritae (plates/trim)
+  * tools: stiff (head) + duritae (extra)
+  * armour: steady (core) + duritae (plates/trim)
 * [x] constantan
-    * tools: aridiculous (head) + freezing (extra)
-    * armour: hearth's embrace (core) + chilling touch (plates/trim)
+  * tools: aridiculous (head) + freezing (extra)
+  * armour: hearth's embrace (core) + chilling touch (plates/trim)
 * [x] signalum
-    * tools: relentless + aftershock
-    * armour: lightweight + invigorating
+  * tools: relentless + aftershock
+  * armour: lightweight + invigorating
 * [x] lumium
-    * tools: luminiferous (head) + opportunist (extra)
-    * armour: radiant (core) + indomitable (plates/trim)
+  * tools: luminiferous (head) + opportunist (extra)
+  * armour: radiant (core) + indomitable (plates/trim)
 * [x] enderium
-    * tools: mortal wounds (head) + true strike (extra) + enderference (extra)
-    * armour: vengeful (core) + enderport (plates/trim)
+  * tools: mortal wounds (head) + true strike (extra) + enderference (extra)
+  * armour: vengeful (core) + enderport (plates/trim)
 
 ### other stuff
 

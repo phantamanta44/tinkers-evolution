@@ -25,6 +25,7 @@ import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.integration.astralsorcery.AstralConstellation;
 import xyz.phanta.tconevo.integration.astralsorcery.AstralHooks;
+import xyz.phanta.tconevo.util.ToolUtils;
 
 import javax.annotation.Nullable;
 
@@ -56,14 +57,14 @@ public abstract class ModifierAttuned extends ModifierTrait {
     public void miningSpeed(ItemStack tool, PlayerEvent.BreakSpeed event) {
         if (isConstellationInSky(event.getEntityPlayer().world)) {
             event.setNewSpeed(event.getNewSpeed() + event.getOriginalSpeed()
-                    * (float)TconEvoConfig.moduleAstralSorcery.attunementBonusEfficiency);
+                    * (float) TconEvoConfig.moduleAstralSorcery.attunementBonusEfficiency);
         }
     }
 
     @Override
     public float damage(ItemStack tool, EntityLivingBase player, EntityLivingBase target, float damage, float newDamage, boolean isCritical) {
         return isConstellationInSky(player.world)
-                ? (newDamage + damage * (float)TconEvoConfig.moduleAstralSorcery.attunementBonusDamage) : newDamage;
+                ? (newDamage + damage * (float) TconEvoConfig.moduleAstralSorcery.attunementBonusDamage) : newDamage;
     }
 
     private boolean isConstellationInSky(World world) {
@@ -106,7 +107,7 @@ public abstract class ModifierAttuned extends ModifierTrait {
         public void afterHit(ItemStack tool, EntityLivingBase player, EntityLivingBase target,
                              float damageDealt, boolean wasCritical, boolean wasHit) {
             if (target.world.isRemote || !wasHit
-                    || (player instanceof EntityPlayer && ((EntityPlayer)player).getCooledAttackStrength(0.5F) < 0.95F)) {
+                    || (player instanceof EntityPlayer && ((EntityPlayer) player).getCooledAttackStrength(0.5F) < 0.95F)) {
                 return;
             }
             doAttunedEffect(player, target, damageDealt);
@@ -171,7 +172,7 @@ public abstract class ModifierAttuned extends ModifierTrait {
 
         @Override
         protected void doAttunedEffect(ToolNBT toolData, ToolNBT originalData) {
-            toolData.attack += originalData.attack * (float)TconEvoConfig.moduleAstralSorcery.toolDiscidiaBonusDamage;
+            toolData.attack += originalData.attack * (float) TconEvoConfig.moduleAstralSorcery.toolDiscidiaBonusDamage;
         }
 
     }
@@ -184,7 +185,7 @@ public abstract class ModifierAttuned extends ModifierTrait {
 
         @Override
         protected void doAttunedEffect(ToolNBT toolData, ToolNBT originalData) {
-            toolData.speed += originalData.speed * (float)TconEvoConfig.moduleAstralSorcery.toolEvorsioBonusEfficiency;
+            toolData.speed += originalData.speed * (float) TconEvoConfig.moduleAstralSorcery.toolEvorsioBonusEfficiency;
         }
 
     }
@@ -293,11 +294,9 @@ public abstract class ModifierAttuned extends ModifierTrait {
         @Override
         public void onUpdate(ItemStack tool, World world, Entity entity, int itemSlot, boolean isSelected) {
             if (!world.isRemote && !isSelected && entity instanceof EntityLivingBase && entity.ticksExisted % 20 == 0
-                    && tool.getItemDamage() > 0 && !ToolHelper.isBroken(tool)) {
-                double odds = TconEvoConfig.moduleAstralSorcery.toolPelotrioRepairProbability;
-                if (odds > 0D && (odds >= 1D || world.rand.nextDouble() <= odds)) {
-                    ToolHelper.healTool(tool, 1, (EntityLivingBase)entity);
-                }
+                    && tool.getItemDamage() > 0 && !ToolHelper.isBroken(tool)
+                    && ToolUtils.bernoulli(random, TconEvoConfig.moduleAstralSorcery.toolPelotrioRepairProbability)) {
+                ToolHelper.healTool(tool, 1, (EntityLivingBase) entity);
             }
         }
 

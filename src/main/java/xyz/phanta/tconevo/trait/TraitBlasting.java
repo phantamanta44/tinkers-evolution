@@ -12,6 +12,7 @@ import slimeknights.tconstruct.library.events.ProjectileEvent;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.constant.NameConst;
+import xyz.phanta.tconevo.util.ToolUtils;
 
 import javax.annotation.Nullable;
 
@@ -48,7 +49,7 @@ public class TraitBlasting extends AbstractTrait {
     }
 
     private static void tryBlast(World world, double x, double y, double z, double odds, @Nullable Entity exploder) {
-        if (odds > 0D && (odds >= 1D || random.nextDouble() <= odds)) {
+        if (ToolUtils.bernoulli(random, odds)) {
             if (exploder != null) {
                 exploder.setDead();
             }

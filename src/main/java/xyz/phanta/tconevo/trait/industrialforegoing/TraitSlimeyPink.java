@@ -11,6 +11,7 @@ import slimeknights.tconstruct.tools.TinkerTraits;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.integration.industrialforegoing.ForegoingHooks;
+import xyz.phanta.tconevo.util.ToolUtils;
 
 // adapted from Tinkers' Construct's TraitSlimey
 public class TraitSlimeyPink extends AbstractTrait {
@@ -46,8 +47,7 @@ public class TraitSlimeyPink extends AbstractTrait {
     }
 
     public static void trySpawnSlime(EntityLivingBase player, double x, double y, double z, World world) {
-        double odds = TconEvoConfig.moduleIndustrialForegoing.slimeyPinkSpawnProbability;
-        if (odds > 0D && (odds >= 1D || random.nextDouble() <= odds)) {
+        if (ToolUtils.bernoulli(random, TconEvoConfig.moduleIndustrialForegoing.slimeyPinkSpawnProbability)) {
             EntitySlime slime = ForegoingHooks.INSTANCE.createPinkSlime(world);
             if (slime != null) {
                 slime.setSlimeSize(1, true);

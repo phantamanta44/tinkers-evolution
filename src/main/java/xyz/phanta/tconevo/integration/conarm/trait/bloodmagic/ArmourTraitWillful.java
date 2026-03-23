@@ -11,6 +11,7 @@ import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.integration.bloodmagic.BloodMagicHooks;
 import xyz.phanta.tconevo.trait.bloodmagic.TraitWillful;
+import xyz.phanta.tconevo.util.ToolUtils;
 
 public class ArmourTraitWillful extends AbstractArmorTrait {
 
@@ -21,12 +22,10 @@ public class ArmourTraitWillful extends AbstractArmorTrait {
     @Override
     public float onHurt(ItemStack armour, EntityPlayer player, DamageSource source, float damage, float newDamage, LivingHurtEvent event) {
         Entity attacker = event.getSource().getTrueSource();
-        if (attacker instanceof EntityLivingBase && !attacker.world.isRemote) {
-            double odds = TconEvoConfig.moduleBloodMagic.willfulArmourEnsnareProbability;
-            if (odds > 0D && (odds >= 1D || attacker.world.rand.nextDouble() <= odds)) {
-                BloodMagicHooks.INSTANCE.applySoulSnare((EntityLivingBase)attacker,
-                        TconEvoConfig.moduleBloodMagic.willfulArmourEnsnareDuration);
-            }
+        if (attacker instanceof EntityLivingBase && !attacker.world.isRemote
+                && ToolUtils.bernoulli(random, TconEvoConfig.moduleBloodMagic.willfulArmourEnsnareProbability)) {
+            BloodMagicHooks.INSTANCE.applySoulSnare((EntityLivingBase) attacker,
+                    TconEvoConfig.moduleBloodMagic.willfulArmourEnsnareDuration);
         }
         return newDamage;
     }

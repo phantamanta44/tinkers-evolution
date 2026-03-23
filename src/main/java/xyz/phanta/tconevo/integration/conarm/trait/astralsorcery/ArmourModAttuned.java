@@ -31,6 +31,7 @@ import xyz.phanta.tconevo.integration.astralsorcery.AstralConstellation;
 import xyz.phanta.tconevo.integration.astralsorcery.AstralHooks;
 import xyz.phanta.tconevo.trait.astralsorcery.ModifierAttuned;
 import xyz.phanta.tconevo.util.DamageUtils;
+import xyz.phanta.tconevo.util.ToolUtils;
 
 import javax.annotation.Nullable;
 
@@ -59,7 +60,7 @@ public abstract class ArmourModAttuned extends ArmorModifierTrait {
     public ArmorModifications getModifications(EntityPlayer player, ArmorModifications mods, ItemStack armour,
                                                DamageSource source, double damage, int slot) {
         if (isConstellationInSky(player.world)) {
-            mods.addEffectiveness((float)TconEvoConfig.moduleAstralSorcery.attunementBonusProtection);
+            mods.addEffectiveness((float) TconEvoConfig.moduleAstralSorcery.attunementBonusProtection);
         }
         return mods;
     }
@@ -79,7 +80,7 @@ public abstract class ArmourModAttuned extends ArmorModifierTrait {
                             LivingHurtEvent event) {
             if (!player.world.isRemote) {
                 Entity attacker = event.getSource().getTrueSource();
-                doAttunedEffect(armour, player, attacker instanceof EntityLivingBase ? (EntityLivingBase)attacker : null, newDamage);
+                doAttunedEffect(armour, player, attacker instanceof EntityLivingBase ? (EntityLivingBase) attacker : null, newDamage);
             }
             return newDamage;
         }
@@ -139,7 +140,7 @@ public abstract class ArmourModAttuned extends ArmorModifierTrait {
         @Override
         public void applyEffect(NBTTagCompound rootCompound, NBTTagCompound modifierTag) {
             super.applyEffect(rootCompound, modifierTag);
-            float bonusProt = (float)TconEvoConfig.moduleAstralSorcery.armourArmaraBonusProtection;
+            float bonusProt = (float) TconEvoConfig.moduleAstralSorcery.armourArmaraBonusProtection;
             if (bonusProt > 0F) {
                 ArmorNBT armourData = ArmorTagUtil.getArmorStats(rootCompound);
                 ArmorNBT origData = ArmorTagUtil.getOriginalArmorStats(rootCompound);
@@ -160,7 +161,7 @@ public abstract class ArmourModAttuned extends ArmorModifierTrait {
         @Override
         protected void doAttunedEffect(ItemStack armour, EntityPlayer player, @Nullable EntityLivingBase attacker, float damage) {
             if (attacker != null) {
-                damage *= (float)TconEvoConfig.moduleAstralSorcery.armourDiscidiaReflectRatio;
+                damage *= (float) TconEvoConfig.moduleAstralSorcery.armourDiscidiaReflectRatio;
                 if (damage > 0F) {
                     DamageUtils.attackEntityWithTool(player, armour, attacker, DamageSource.causeThornsDamage(player), damage);
                 }
@@ -204,11 +205,9 @@ public abstract class ArmourModAttuned extends ArmorModifierTrait {
 
         @Override
         protected void doAttunedEffect(ItemStack armour, EntityPlayer player, @Nullable EntityLivingBase attacker, float damage) {
-            if (attacker != null) {
-                double odds = TconEvoConfig.moduleAstralSorcery.armourBootesFlareProbability;
-                if (odds > 0D && (odds >= 1D || player.world.rand.nextDouble() <= odds)) {
-                    AstralHooks.INSTANCE.spawnFlare(player, attacker);
-                }
+            if (attacker != null
+                    && ToolUtils.bernoulli(random, TconEvoConfig.moduleAstralSorcery.armourBootesFlareProbability)) {
+                AstralHooks.INSTANCE.spawnFlare(player, attacker);
             }
         }
 
@@ -237,7 +236,7 @@ public abstract class ArmourModAttuned extends ArmorModifierTrait {
         protected void doAttunedEffect(ItemStack armour, EntityPlayer player, @Nullable EntityLivingBase attacker, float damage) {
             if (!player.getCooldownTracker().hasCooldown(armour.getItem())) {
                 AstralHooks.INSTANCE.freezeTime(player.world, player.getPosition(), player,
-                        (float)TconEvoConfig.moduleAstralSorcery.armourHorologiumFreezeRange,
+                        (float) TconEvoConfig.moduleAstralSorcery.armourHorologiumFreezeRange,
                         TconEvoConfig.moduleAstralSorcery.armourHorologiumFreezeDuration,
                         false);
                 player.getCooldownTracker().setCooldown(armour.getItem(), TconEvoConfig.moduleAstralSorcery.armourHorologiumCooldown);
@@ -307,11 +306,9 @@ public abstract class ArmourModAttuned extends ArmorModifierTrait {
 
         @Override
         public void onArmorTick(ItemStack tool, World world, EntityPlayer player) {
-            if (!world.isRemote && player.ticksExisted % 20 == 0 && tool.getItemDamage() > 0 && !ToolHelper.isBroken(tool)) {
-                double odds = TconEvoConfig.moduleAstralSorcery.armourPelotrioRepairProbability;
-                if (odds > 0D && (odds >= 1D || world.rand.nextDouble() <= odds)) {
-                    ArmorHelper.healArmor(tool, 1, player, EntityLiving.getSlotForItemStack(tool).getIndex());
-                }
+            if (!world.isRemote && player.ticksExisted % 20 == 0 && tool.getItemDamage() > 0 && !ToolHelper.isBroken(tool)
+                    && ToolUtils.bernoulli(random, TconEvoConfig.moduleAstralSorcery.armourPelotrioRepairProbability)) {
+                ArmorHelper.healArmor(tool, 1, player, EntityLiving.getSlotForItemStack(tool).getIndex());
             }
         }
 

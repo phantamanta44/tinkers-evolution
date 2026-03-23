@@ -15,6 +15,7 @@ import xyz.phanta.tconevo.trait.base.StackableTrait;
 import xyz.phanta.tconevo.util.ToolUtils;
 
 import java.util.List;
+import java.util.Optional;
 
 public class TraitCondensing extends StackableTrait {
 
@@ -46,16 +47,17 @@ public class TraitCondensing extends StackableTrait {
     }
 
     private static void tryDropNeutrons(World world, double x, double y, double z, ItemStack tool) {
-        double odds = getNeutronDropProbability(ToolUtils.getTraitLevel(tool, NameConst.TRAIT_CONDENSING));
-        if (odds > 0D && (odds >= 1D || random.nextDouble() <= odds)) {
-            AvaritiaHooks.INSTANCE.getItemNeutronPile().ifPresent(s -> WorldUtils.dropItem(world, new Vec3d(x, y, z), s));
+        Optional<ItemStack> neutronPile = AvaritiaHooks.INSTANCE.getItemNeutronPile();
+        if (neutronPile.isPresent() && ToolUtils.bernoulli(random,
+                getNeutronDropProbability(ToolUtils.getTraitLevel(tool, NameConst.TRAIT_CONDENSING)))) {
+            WorldUtils.dropItem(world, new Vec3d(x, y, z), neutronPile.get());
         }
     }
 
     @Override
     public List<String> getExtraInfo(ItemStack tool, NBTTagCompound modifierTag) {
         return ToolUtils.formatExtraInfoPercent(NameConst.TRAIT_CONDENSING,
-                (float)getNeutronDropProbability(ToolUtils.getTraitLevel(modifierTag)));
+                (float) getNeutronDropProbability(ToolUtils.getTraitLevel(modifierTag)));
     }
 
 }

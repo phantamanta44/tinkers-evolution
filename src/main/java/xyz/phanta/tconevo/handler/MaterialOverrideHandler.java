@@ -26,7 +26,15 @@ import xyz.phanta.tconevo.material.MaterialBuilder;
 import xyz.phanta.tconevo.util.TconReflect;
 
 import javax.annotation.Nullable;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.IdentityHashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Map;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -50,7 +58,6 @@ public class MaterialOverrideHandler {
         registerOverrides(NameConst.MAT_PINK_METAL, "integrationforegoing.reinforced_pink_slime");
 
         // plustic
-        // imagine using consistent naming conventions zfgLUL
         registerOverrides(NameConst.MAT_BLACK_QUARTZ, "blackquartz_plustic"); // actually additions
         registerOverrides(NameConst.MAT_AA_VOID, "void_actadd_plustic");
         registerOverrides(NameConst.MAT_AA_ENORI, "enori_actadd_plustic");
@@ -146,15 +153,16 @@ public class MaterialOverrideHandler {
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void onMaterialRegistration(MaterialEvent.MaterialRegisterEvent event) {
-        if (TconEvoConfig.overrideMaterials) {
-            String overrideMatId = overrideMatIds.get(event.material.identifier);
-            if (overrideMatId != null && MaterialBuilder.isNotBlacklisted(overrideMatId)) {
-                ModContainer owningMod = Loader.instance().activeModContainer();
-                TconEvoMod.LOGGER.info("Blocking registration of material {} registered by {}",
-                        event.material.identifier, owningMod != null ? owningMod.getModId() : "unknown");
-                event.setCanceled(true);
-                override(overrideMatId, event.material);
-            }
+        if (!TconEvoConfig.overrideMaterials) {
+            return;
+        }
+        String overrideMatId = overrideMatIds.get(event.material.identifier);
+        if (overrideMatId != null && MaterialBuilder.isNotBlacklisted(overrideMatId)) {
+            ModContainer owningMod = Loader.instance().activeModContainer();
+            TconEvoMod.LOGGER.info("Blocking registration of material {} registered by {}",
+                    event.material.identifier, owningMod != null ? owningMod.getModId() : "unknown");
+            event.setCanceled(true);
+            override(overrideMatId, event.material);
         }
     }
 
@@ -219,9 +227,9 @@ public class MaterialOverrideHandler {
 
         // casting recipes
         removeOverriddenFluidRecipes(fluidMatMap, TconReflect.iterateTableCastRecipes(),
-                r -> r instanceof CastingRecipe, r -> ((CastingRecipe)r).getFluid());
+                r -> r instanceof CastingRecipe, r -> ((CastingRecipe) r).getFluid());
         removeOverriddenFluidRecipes(fluidMatMap, TconReflect.iterateBasinCastRecipes(),
-                r -> r instanceof CastingRecipe, r -> ((CastingRecipe)r).getFluid());
+                r -> r instanceof CastingRecipe, r -> ((CastingRecipe) r).getFluid());
 
         // alloying recipes
         ListIterator<AlloyRecipe> iterAlloyRecipes = TconReflect.iterateAlloyRecipes();

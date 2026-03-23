@@ -220,6 +220,7 @@ dependencies { // THE BEAST
         exclude("com.enderio", module = "ap")
         exclude("com.enderio.core", module = "EnderCore")
     }
+    compileOnly(deobf("curse.maven:ender-io-endergy-304346:4674241")) // 1.12.2-5.3.72
     compileOnly(deobf("net.sengir.forestry:forestry_1.12.2:5.8.0.311"))
     compileOnly(deobf("morph.avaritia:Avaritia:1.12.2-3.3.0.33:universal")) { exclude(group = "codechicken") }
     compileOnly("net.darkhax.bookshelf:Bookshelf-1.12.2:2.3.590")

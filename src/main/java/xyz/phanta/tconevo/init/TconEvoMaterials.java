@@ -42,7 +42,9 @@ public class TconEvoMaterials {
     // draconic evolution
     public static Material DRACONIUM, WYVERN_METAL, DRACONIC_METAL, CHAOTIC_METAL;
     // ender io
-    public static Material ENDER_CRYSTAL, PULSATING_CRYSTAL, VIBRANT_CRYSTAL, WEATHER_CRYSTAL;
+    public static Material REDSTONE_ALLOY, ELECTRICAL_STEEL, PULSATING_IRON, CONDUCTIVE_IRON,
+            ENERGETIC_ALLOY, ENERGETIC_SILVER, VIBRANT_ALLOY, VIVID_ALLOY, CRYSTALLINE_ALLOY, MELODIC_ALLOY, SOULARIUM,
+            /*DARK_STEEL, END_STEEL, STELLAR_ALLOY,*/ ENDER_CRYSTAL, PULSATING_CRYSTAL, VIBRANT_CRYSTAL, WEATHER_CRYSTAL;
     // environmental tech
     public static Material LITHERITE, ERODIUM, KYRONITE, PLADIUM, IONITE, AETHIUM, LONSDALEITE, MICA;
     // forestry
@@ -413,6 +415,119 @@ public class TconEvoMaterials {
                 .build();
 
         // ender io
+        REDSTONE_ALLOY = new MaterialBuilder(NameConst.MAT_REDSTONE_ALLOY, 0xda4343, MaterialForm.METAL, "RedstoneAlloy")
+                .requiresOres("ingotRedstoneAlloy")
+                .setCastable("redstone_alloy", 1084 + 273)
+                .withStatsHead(167, 3F, 3F, HarvestLevels.IRON)
+                .withStatsHandle(0.8F, 0)
+                .withStatsExtra(15)
+                .withStatsBow(3F, 0.9F, 1F)
+                .withTraits(PartType.TOOL, TinkerTraits.crude, TinkerTraits.cheap)
+                .build();
+        ELECTRICAL_STEEL = new MaterialBuilder(NameConst.MAT_ELECTRICAL_STEEL, 0x8e8e8e, MaterialForm.METAL, "ElectricalSteel")
+                .requiresOres("ingotElectricalSteel")
+                .setCastable("electrical_steel", 1202 + 273)
+                .withStatsHead(318, 6F, 5F, HarvestLevels.DIAMOND)
+                .withStatsHandle(1.1F, 0)
+                .withStatsExtra(60)
+                .withStatsBow(0.6F, 1.25F, 6F)
+                .withTraits(PartType.TOOL, TinkerTraits.shocking, TinkerTraits.dense)
+                .build();
+        PULSATING_IRON = new MaterialBuilder(NameConst.MAT_PULSATING_IRON, 0x98e8ab, MaterialForm.METAL, "PulsatingIron")
+                .requiresOres("ingotPulsatingIron")
+                .setCastable("pulsating_iron", 1132 + 273)
+                .withStatsHead(212, 9F, 4F, HarvestLevels.DIAMOND)
+                .withStatsHandle(0.8F, -20)
+                .withStatsExtra(3)
+                .withStatsBow(1.3F, 1F, 3F)
+                .withTraits(PartType.TOOL, TinkerTraits.enderference, TinkerTraits.established)
+                .build();
+        CONDUCTIVE_IRON = new MaterialBuilder(NameConst.MAT_CONDUCTIVE_IRON, 0xdfb6b0, MaterialForm.METAL, "ConductiveIron")
+                .requiresOres("ingotConductiveIron")
+                .setCastable("conductive_iron", 1127 + 273)
+                .withStatsHead(271, 5.5F, 4.5F, HarvestLevels.DIAMOND)
+                .withStatsHandle(1F, -30)
+                .withStatsExtra(30)
+                .withStatsBow(0.9F, 1.2F, 5F)
+                .withTraits(PartType.TOOL, TinkerTraits.heavy, TinkerTraits.magnetic)
+                .build();
+        ENERGETIC_ALLOY = new MaterialBuilder(NameConst.MAT_ENERGETIC_ALLOY, 0xffad56, MaterialForm.METAL, "EnergeticAlloy")
+                .requiresOres("ingotEnergeticAlloy")
+                .setCastable("energetic_alloy", 855 + 273)
+                .withStatsHead(348, 6.5F, 6F, HarvestLevels.OBSIDIAN)
+                .withStatsHandle(1F, 24)
+                .withStatsExtra(30)
+                .withStatsBow(0.85F, 1.25F, 7F)
+                .withTraits(PartType.MAIN, TconEvoTraits.TRAIT_AFTERSHOCK[0])
+                .withTraits(PartType.AUX, TconEvoTraits.TRAIT_VAMPIRIC)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_IMPACT_FORCE)
+                .build();
+        ENERGETIC_SILVER = new MaterialBuilder(NameConst.MAT_ENERGETIC_SILVER, 0x84a7c4, MaterialForm.METAL, "EnergeticSilver")
+                .requiresOres("ingotEnergeticSilver")
+                .setCastable("energetic_silver", 855 + 273)
+                .withStatsHead(324, 7F, 5.5F, HarvestLevels.OBSIDIAN)
+                .withStatsHandle(1.1F, 0)
+                .withStatsExtra(12)
+                .withStatsBow(1.2F, 1F, 5F)
+                .withTraits(PartType.MAIN, TinkerTraits.momentum)
+                .withTraits(PartType.AUX, TinkerTraits.lightweight)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_FOOT_FLEET)
+                .build();
+        VIBRANT_ALLOY = new MaterialBuilder(NameConst.MAT_VIBRANT_ALLOY, 0xcff474, MaterialForm.METAL, "VibrantAlloy")
+                .requiresOres("ingotVibrantAlloy")
+                .setCastable("vibrant_alloy", 640 + 273)
+                .withStatsHead(525, 7F, 7F, HarvestLevels.COBALT)
+                .withStatsHandle(1.1F, 60)
+                .withStatsExtra(72)
+                .withStatsBow(0.75F, 1.3F, 8.5F)
+                .withTraits(PartType.MAIN, TconEvoTraits.TRAIT_AFTERSHOCK[1])
+                .withTraits(PartType.AUX, TconEvoTraits.TRAIT_DEADLY_PRECISION)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_PIEZOELECTRIC)
+                .build();
+        VIVID_ALLOY = new MaterialBuilder(NameConst.MAT_VIVID_ALLOY, 0x57c1dc, MaterialForm.METAL, "VividAlloy")
+                .requiresOres("ingotVividAlloy")
+                .setCastable("vivid_alloy", 650 + 273)
+                .withStatsHead(460, 8F, 6F, HarvestLevels.COBALT)
+                .withStatsHandle(1.25F, 0)
+                .withStatsExtra(32)
+                .withStatsBow(1.3F, 1.1F, 6F)
+                .withTraits(PartType.MAIN, TconEvoTraits.TRAIT_RELENTLESS)
+                .withTraits(PartType.AUX, TconEvoTraits.TRAIT_OPPORTUNIST)
+                .withTraits(PartType.TOOL, TinkerTraits.crumbling)
+                .build();
+        CRYSTALLINE_ALLOY = new MaterialBuilder(NameConst.MAT_CRYSTALLINE_ALLOY, 0x98dddd, MaterialForm.METAL, "CrystallineAlloy")
+                .requiresOres("ingotCrystallineAlloy")
+                .setCastable("crystalline_alloy", 1152 + 273)
+                .withStatsHead(626, 8.5F, 7.5F, 5)
+                .withStatsHandle(1.3F, 50)
+                .withStatsExtra(75)
+                .withStatsBow(0.9F, 1.25F, 9F)
+                .withTraits(PartType.MAIN, TconEvoTraits.TRAIT_EXECUTOR)
+                .withTraits(PartType.AUX, TconEvoTraits.TRAIT_TRUE_STRIKE)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_CRYSTALLINE)
+                .build();
+        MELODIC_ALLOY = new MaterialBuilder(NameConst.MAT_MELODIC_ALLOY, 0xb487b4, MaterialForm.METAL, "MelodicAlloy")
+                .requiresOres("ingotMelodicAlloy")
+                .setCastable("melodic_alloy", 940 + 273)
+                .withStatsHead(727, 9F, 6.5F, 5)
+                .withStatsHandle(1.5F, -75)
+                .withStatsExtra(69)
+                .withStatsBow(1.4F, 1.2F, 8F)
+                .withTraits(PartType.MAIN, TconEvoTraits.TRAIT_PURGING[0])
+                .withTraits(PartType.AUX, TconEvoTraits.TRAIT_CORRUPTING)
+                .withTraits(PartType.TOOL, TinkerTraits.unnatural)
+                .build();
+        SOULARIUM = new MaterialBuilder(NameConst.MAT_SOULARIUM, 0x756048, MaterialForm.METAL, "Soularium")
+                .requiresOres("ingotSoularium")
+                .setCastable("soularium", 363 + 273)
+                .withStatsHead(194, 7F, 4F, HarvestLevels.IRON)
+                .withStatsHandle(0.7F, 150)
+                .withStatsExtra(10)
+                .withStatsBow(1.25F, 0.9F, 3F)
+                .withTraits(PartType.MAIN, TconEvoTraits.TRAIT_MORTAL_WOUNDS)
+                .withTraits(PartType.AUX, TinkerTraits.poisonous)
+                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_SUNDERING)
+                .build();
         ENDER_CRYSTAL = new MaterialBuilder(NameConst.MAT_ENDER_CRYSTAL, 0x2ed284, MaterialForm.RAW, "itemEnderCrystal")
                 .requiresOres("itemEnderCrystal")
                 .setCraftable()
@@ -423,7 +538,7 @@ public class TconEvoMaterials {
                 .requiresOres("itemPulsatingCrystal")
                 .setCraftable()
                 .withStatsMagic(840, 7F, 1.1F, HarvestLevels.OBSIDIAN)
-                .withTraits(PartType.MAGIC, TinkerTraits.enderference)
+                .withTraits(PartType.MAGIC, TconEvoTraits.TRAIT_TRUE_STRIKE, TinkerTraits.enderference)
                 .build();
         VIBRANT_CRYSTAL = new MaterialBuilder(NameConst.MAT_VIBRANT_CRYSTAL, 0x69c328, MaterialForm.RAW, "itemVibrantCrystal")
                 .requiresOres("itemVibrantCrystal")

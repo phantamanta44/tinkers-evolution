@@ -8,6 +8,9 @@ import slimeknights.tconstruct.library.traits.AbstractTrait;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.integration.bloodmagic.BloodMagicHooks;
+import xyz.phanta.tconevo.util.ToolUtils;
+
+import java.util.Optional;
 
 public class TraitCrystalys extends AbstractTrait {
 
@@ -21,10 +24,10 @@ public class TraitCrystalys extends AbstractTrait {
         if (target.world.isRemote || !wasHit || target.isEntityAlive() || target instanceof EntityAnimal) {
             return;
         }
-        double odds = TconEvoConfig.moduleBloodMagic.crystalysDropProbability;
-        if (odds > 0D && (odds >= 1D || target.world.rand.nextDouble() <= odds)) {
-            BloodMagicHooks.INSTANCE.getItemWeakBloodShard()
-                    .ifPresent(stack -> WorldUtils.dropItem(target.world, target.getPositionVector(), stack));
+        Optional<ItemStack> weakBloodShard = BloodMagicHooks.INSTANCE.getItemWeakBloodShard();
+        if (weakBloodShard.isPresent()
+                && ToolUtils.bernoulli(random, TconEvoConfig.moduleBloodMagic.crystalysDropProbability)) {
+            WorldUtils.dropItem(target.world, target.getPositionVector(), weakBloodShard.get());
         }
     }
 

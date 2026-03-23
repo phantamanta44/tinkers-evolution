@@ -51,6 +51,7 @@ public class NameConst {
     public static final String TRAIT_OVERWHELM = TconEvoConsts.MOD_ID + ".overwhelm";
     public static final String TRAIT_PHOTOSYNTHETIC = TconEvoConsts.MOD_ID + ".photosynthetic";
     public static final String TRAIT_PIEZOELECTRIC = TconEvoConsts.MOD_ID + ".piezoelectric";
+    public static final String TRAIT_PURGING = TconEvoConsts.MOD_ID + ".purging";
     public static final String TRAIT_REJUVENATING = TconEvoConsts.MOD_ID + ".rejuvenating";
     public static final String TRAIT_RELENTLESS = TconEvoConsts.MOD_ID + ".relentless";
     public static final String TRAIT_RUINATION = TconEvoConsts.MOD_ID + ".ruination";
@@ -74,6 +75,7 @@ public class NameConst {
     public static final String TRAIT_DIVINE_GRACE = TconEvoConsts.MOD_ID + ".divine_grace", ARMOUR_TRAIT_DIVINE_GRACE = TRAIT_DIVINE_GRACE + ARMOUR_SUFFIX;
     public static final String TRAIT_GALE_FORCE = TconEvoConsts.MOD_ID + ".gale_force", ARMOUR_TRAIT_GALE_FORCE = TRAIT_GALE_FORCE + ARMOUR_SUFFIX;
     public static final String TRAIT_HEARTH_EMBRACE = TconEvoConsts.MOD_ID + ".hearth_embrace", ARMOUR_TRAIT_HEARTH_EMBRACE = TRAIT_HEARTH_EMBRACE + ARMOUR_SUFFIX;
+    public static final String TRAIT_MEGAFLIP = TconEvoConsts.MOD_ID + ".megaflip", ARMOUR_TRAIT_MEGAFLIP = TRAIT_MEGAFLIP + ARMOUR_SUFFIX;
     public static final String TRAIT_PHOENIX_ASPECT = TconEvoConsts.MOD_ID + ".phoenix_aspect", ARMOUR_TRAIT_PHOENIX_ASPECT = TRAIT_PHOENIX_ASPECT + ARMOUR_SUFFIX;
     public static final String TRAIT_RADIANT = TconEvoConsts.MOD_ID + ".radiant", ARMOUR_TRAIT_RADIANT = TRAIT_RADIANT + ARMOUR_SUFFIX;
     public static final String TRAIT_REACTIVE = TconEvoConsts.MOD_ID + ".reactive", ARMOUR_TRAIT_REACTIVE = TRAIT_REACTIVE + ARMOUR_SUFFIX;
@@ -229,6 +231,20 @@ public class NameConst {
 
     // ender io
 
+    public static final String MAT_REDSTONE_ALLOY = "redstone_alloy";
+    public static final String MAT_ELECTRICAL_STEEL = "electrical_steel";
+    public static final String MAT_PULSATING_IRON = "pulsating_iron";
+    public static final String MAT_CONDUCTIVE_IRON = "conductive_iron";
+    public static final String MAT_ENERGETIC_ALLOY = "energetic_alloy";
+    public static final String MAT_ENERGETIC_SILVER = "energetic_silver";
+    public static final String MAT_VIBRANT_ALLOY = "vibrant_alloy";
+    public static final String MAT_VIVID_ALLOY = "vivid_alloy";
+    public static final String MAT_CRYSTALLINE_ALLOY = "crystalline_alloy";
+    public static final String MAT_MELODIC_ALLOY = "melodic_alloy";
+    public static final String MAT_SOULARIUM = "soularium";
+    public static final String MAT_DARK_STEEL = "dark_steel";
+    public static final String MAT_END_STEEL = "end_steel";
+    public static final String MAT_STELLAR_ALLOY = "stellar_alloy";
     public static final String MAT_ENDER_CRYSTAL = "ender_crystal";
     public static final String MAT_PULSATING_CRYSTAL = "pulsating_crystal";
     public static final String MAT_VIBRANT_CRYSTAL = "vibrant_crystal";

@@ -26,6 +26,7 @@ import xyz.phanta.tconevo.integration.conarm.ConArmHooks;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class ToolUtils {
 
@@ -112,6 +113,10 @@ public class ToolUtils {
 
     public static List<Material> getToolMaterials(ItemStack stack) {
         return TinkerUtil.getMaterialsFromTagList(TagUtil.getBaseMaterialsTagList(stack));
+    }
+
+    public static boolean bernoulli(Random rand, double odds) {
+        return odds > 0D && (odds >= 1D || rand.nextDouble() < odds);
     }
 
 }

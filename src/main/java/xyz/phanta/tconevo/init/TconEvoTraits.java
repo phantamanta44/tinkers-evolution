@@ -20,7 +20,41 @@ import xyz.phanta.tconevo.integration.solarflux.SolarFluxHooks;
 import xyz.phanta.tconevo.integration.techreborn.TechRebornHooks;
 import xyz.phanta.tconevo.integration.thermal.ThermalHooks;
 import xyz.phanta.tconevo.item.ItemMaterial;
-import xyz.phanta.tconevo.trait.*;
+import xyz.phanta.tconevo.trait.ModifierAccuracy;
+import xyz.phanta.tconevo.trait.ModifierArtifact;
+import xyz.phanta.tconevo.trait.ModifierFluxed;
+import xyz.phanta.tconevo.trait.ModifierPhotovoltaic;
+import xyz.phanta.tconevo.trait.TraitAftershock;
+import xyz.phanta.tconevo.trait.TraitBattleFuror;
+import xyz.phanta.tconevo.trait.TraitBlasting;
+import xyz.phanta.tconevo.trait.TraitCascading;
+import xyz.phanta.tconevo.trait.TraitChainLightning;
+import xyz.phanta.tconevo.trait.TraitCorrupting;
+import xyz.phanta.tconevo.trait.TraitCrystalline;
+import xyz.phanta.tconevo.trait.TraitCulling;
+import xyz.phanta.tconevo.trait.TraitDeadlyPrecision;
+import xyz.phanta.tconevo.trait.TraitEnergized;
+import xyz.phanta.tconevo.trait.TraitExecutor;
+import xyz.phanta.tconevo.trait.TraitFertilizing;
+import xyz.phanta.tconevo.trait.TraitFootFleet;
+import xyz.phanta.tconevo.trait.TraitImpactForce;
+import xyz.phanta.tconevo.trait.TraitJuggernaut;
+import xyz.phanta.tconevo.trait.TraitLuminiferous;
+import xyz.phanta.tconevo.trait.TraitModifiable;
+import xyz.phanta.tconevo.trait.TraitMortalWounds;
+import xyz.phanta.tconevo.trait.TraitOpportunist;
+import xyz.phanta.tconevo.trait.TraitOverwhelm;
+import xyz.phanta.tconevo.trait.TraitPhotosynthetic;
+import xyz.phanta.tconevo.trait.TraitPiezoelectric;
+import xyz.phanta.tconevo.trait.TraitPurging;
+import xyz.phanta.tconevo.trait.TraitRejuvenating;
+import xyz.phanta.tconevo.trait.TraitRelentless;
+import xyz.phanta.tconevo.trait.TraitRuination;
+import xyz.phanta.tconevo.trait.TraitStaggering;
+import xyz.phanta.tconevo.trait.TraitSundering;
+import xyz.phanta.tconevo.trait.TraitThundergodWrath;
+import xyz.phanta.tconevo.trait.TraitTrueStrike;
+import xyz.phanta.tconevo.trait.TraitVampiric;
 import xyz.phanta.tconevo.trait.astralsorcery.ModifierAttuned;
 import xyz.phanta.tconevo.trait.astralsorcery.TraitAstral;
 import xyz.phanta.tconevo.trait.avaritia.TraitCondensing;
@@ -34,14 +68,33 @@ import xyz.phanta.tconevo.trait.botania.TraitAuraSiphon;
 import xyz.phanta.tconevo.trait.botania.TraitFaeVoice;
 import xyz.phanta.tconevo.trait.botania.TraitGaiaWrath;
 import xyz.phanta.tconevo.trait.botania.TraitManaInfused;
-import xyz.phanta.tconevo.trait.draconicevolution.*;
+import xyz.phanta.tconevo.trait.draconicevolution.ModifierDraconic;
+import xyz.phanta.tconevo.trait.draconicevolution.ModifierDraconicArrowDamage;
+import xyz.phanta.tconevo.trait.draconicevolution.ModifierDraconicArrowSpeed;
+import xyz.phanta.tconevo.trait.draconicevolution.ModifierDraconicAttackAoe;
+import xyz.phanta.tconevo.trait.draconicevolution.ModifierDraconicAttackDamage;
+import xyz.phanta.tconevo.trait.draconicevolution.ModifierDraconicDigAoe;
+import xyz.phanta.tconevo.trait.draconicevolution.ModifierDraconicDigSpeed;
+import xyz.phanta.tconevo.trait.draconicevolution.ModifierDraconicDrawSpeed;
+import xyz.phanta.tconevo.trait.draconicevolution.ModifierDraconicEnergy;
+import xyz.phanta.tconevo.trait.draconicevolution.ModifierEntropic;
+import xyz.phanta.tconevo.trait.draconicevolution.ModifierFluxBurn;
+import xyz.phanta.tconevo.trait.draconicevolution.ModifierPrimordial;
+import xyz.phanta.tconevo.trait.draconicevolution.ModifierReaping;
+import xyz.phanta.tconevo.trait.draconicevolution.TraitEvolved;
+import xyz.phanta.tconevo.trait.draconicevolution.TraitSoulRend;
 import xyz.phanta.tconevo.trait.elenaidodge.ModifierGrounding;
 import xyz.phanta.tconevo.trait.ic2.TraitElectric;
 import xyz.phanta.tconevo.trait.industrialforegoing.TraitSlimeyPink;
 import xyz.phanta.tconevo.trait.projecte.TraitEternalDensity;
 import xyz.phanta.tconevo.trait.thaumcraft.TraitWarping;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import java.util.function.Supplier;
 
 public class TconEvoTraits {
@@ -81,6 +134,9 @@ public class TconEvoTraits {
     public static final TraitOverwhelm TRAIT_OVERWHELM = new TraitOverwhelm();
     public static final TraitPhotosynthetic TRAIT_PHOTOSYNTHETIC = new TraitPhotosynthetic();
     public static final TraitPiezoelectric TRAIT_PIEZOELECTRIC = new TraitPiezoelectric();
+    public static final TraitPurging[] TRAIT_PURGING = {
+            new TraitPurging(1), new TraitPurging(2), new TraitPurging(3)
+    };
     public static final TraitRejuvenating TRAIT_REJUVENATING = new TraitRejuvenating();
     public static final TraitRelentless TRAIT_RELENTLESS = new TraitRelentless();
     public static final TraitRuination TRAIT_RUINATION = new TraitRuination();
@@ -169,8 +225,8 @@ public class TconEvoTraits {
             MOD_GROUNDING);
 
     public static void initModifierMaterials() {
-        MOD_ARTIFACT.addItem(ItemMaterial.Type.ARTIFACT_UNSEALER.newStack(1), 1, 1);
-        MOD_ACCURACY.addItem(ItemMaterial.Type.WIDE_LENS.newStack(1), 1, 1);
+        addModItem(MOD_ARTIFACT, ItemMaterial.Type.ARTIFACT_UNSEALER.newStack(1));
+        addModItem(MOD_ACCURACY, ItemMaterial.Type.WIDE_LENS.newStack(1));
 
         // actually additions
         addModItemOpt(MOD_FLUXED, ActuallyHooks.INSTANCE::getItemBatterySingle);

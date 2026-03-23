@@ -46,7 +46,7 @@ public class ArmourTraitFaeVoice extends AbstractArmorTrait {
                 odds += getProbability(stack);
             }
         }
-        if (odds > 0D && (odds >= 1D || random.nextDouble() <= odds)) {
+        if (ToolUtils.bernoulli(random, odds)) {
             BotaniaHooks.INSTANCE.spawnPixie((EntityPlayer)victim, (EntityLivingBase)attacker);
         }
     }

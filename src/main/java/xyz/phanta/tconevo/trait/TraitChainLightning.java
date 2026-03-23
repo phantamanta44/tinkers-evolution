@@ -37,8 +37,7 @@ public class TraitChainLightning extends AbstractTrait {
         if (lightningDmg <= 0F) {
             return;
         }
-        double odds = TconEvoConfig.general.traitChainLightningProbability;
-        if (odds <= 0D || (odds < 1D && random.nextDouble() > odds)) {
+        if (!ToolUtils.bernoulli(random, TconEvoConfig.general.traitChainLightningProbability)) {
             return;
         }
         // we want to maintain insertion order so lightning bounces between enemies in the right order

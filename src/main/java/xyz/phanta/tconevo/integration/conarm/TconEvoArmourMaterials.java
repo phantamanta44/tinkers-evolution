@@ -163,6 +163,58 @@ public class TconEvoArmourMaterials {
                 .withTraits(ArmourPartType.TRIM, TconEvoArmourTraits.TRAIT_GALE_FORCE[1])
                 .build();
 
+        // ender io
+        new ArmourMaterialBuilder(TconEvoMaterials.REDSTONE_ALLOY)
+                .withStatsArmour(4F, 4F, 0.8F, 0F, 0F, 0.1F)
+                .withTraits(ArmourPartType.ARMOUR, ArmorTraits.mundane, ArmorTraits.cheap)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.ELECTRICAL_STEEL)
+                .withStatsArmour(15F, 15F, 1.1F, 1F, 1F, 4.5F)
+                .withTraits(ArmourPartType.ARMOUR, ArmorTraits.voltaic, ArmorTraits.dense)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.PULSATING_IRON)
+                .withStatsArmour(7F, 12F, 0.8F, 0F, 0F, 2F)
+                .withTraits(ArmourPartType.ARMOUR, ArmorTraits.shielding, ArmorTraits.ambitious)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.CONDUCTIVE_IRON)
+                .withStatsArmour(6F, 13F, 1F, 1F, 0F, 3F)
+                .withTraits(ArmourPartType.ARMOUR, ArmorTraits.steady, ArmorTraits.magnetic)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.ENERGETIC_ALLOY)
+                .withStatsArmour(18F, 16F, 1F, 5F, 2F, 4F)
+                .withTraits(ArmourPartType.ARMOUR, TconEvoArmourTraits.TRAIT_SECOND_WIND, TconEvoArmourTraits.TRAIT_HEARTH_EMBRACE)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.ENERGETIC_SILVER)
+                .withStatsArmour(15F, 17.5F, 1.1F, 3.5F, 0.5F, 2.5F)
+                .withTraits(ArmourPartType.ARMOUR, TconEvoArmourTraits.TRAIT_DIVINE_GRACE, TconEvoArmourTraits.TRAIT_THUNDERGOD_FAVOUR)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.VIBRANT_ALLOY)
+                .withStatsArmour(24F, 17F, 1.1F, 7F, 4F, 6F)
+                .withTraits(ArmourPartType.ARMOUR, ArmorTraits.dramatic, ArmorTraits.shielding)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.VIVID_ALLOY)
+                .withStatsArmour(20F, 19F, 1.25F, 4F, 1F, 3F)
+                .withTraits(ArmourPartType.ARMOUR, TconEvoArmourTraits.TRAIT_MEGAFLIP, ArmorTraits.lightweight)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.CRYSTALLINE_ALLOY)
+                .withStatsArmour(25F, 20F, 1.3F, 6F, 5F, 7F)
+                .withTraits(ArmourPartType.CORE, TconEvoArmourTraits.TRAIT_SPECTRAL)
+                .withTraits(ArmourPartType.EXTRA, ArmorTraits.prideful)
+                .withTraits(ArmourPartType.ARMOUR, ArmorTraits.indomitable)
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.MELODIC_ALLOY)
+                .withStatsArmour(27F, 21F, 1.5F, 0F, 5.5F, 6.9F)
+                .withTraits(ArmourPartType.CORE, TconEvoArmourTraits.TRAIT_PHOENIX_ASPECT)
+                .withTraits(ArmourPartType.EXTRA, ArmorTraits.invigorating)
+                .withTraits(ArmourPartType.ARMOUR, TconEvoArmourTraits.TRAIT_GALE_FORCE[0])
+                .build();
+        new ArmourMaterialBuilder(TconEvoMaterials.SOULARIUM)
+                .withStatsArmour(3F, 13.5F, 0.7F, 10F, 1F, 2F)
+                .withTraits(ArmourPartType.CORE, ArmorTraits.vengeful)
+                .withTraits(ArmourPartType.EXTRA, TconEvoArmourTraits.TRAIT_CHILLING_TOUCH)
+                .withTraits(ArmourPartType.ARMOUR, TconEvoArmourTraits.TRAIT_STIFLING)
+                .build();
+
         // environmental tech
         new ArmourMaterialBuilder(TconEvoMaterials.LITHERITE)
                 .withStatsArmour(6F, 17F, 1F, 4F, 0F, 5F)

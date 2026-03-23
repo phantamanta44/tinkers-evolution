@@ -9,6 +9,7 @@ import slimeknights.tconstruct.library.utils.ToolHelper;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.integration.ic2.Ic2Hooks;
+import xyz.phanta.tconevo.util.ToolUtils;
 
 public class TraitPhotosynthetic extends AbstractTrait {
 
@@ -18,15 +19,17 @@ public class TraitPhotosynthetic extends AbstractTrait {
         super(NameConst.TRAIT_PHOTOSYNTHETIC, COLOUR);
     }
 
+    private static double getRepairProbability(World world, Entity user) {
+        return TconEvoConfig.general.traitPhotosyntheticRepairProbability
+                * Ic2Hooks.INSTANCE.getSunlight(world, user.getPosition());
+    }
+
     @Override
     public void onUpdate(ItemStack tool, World world, Entity entity, int itemSlot, boolean isSelected) {
         if (!world.isRemote && !isSelected && entity instanceof EntityLivingBase && entity.ticksExisted % 20 == 0
-                && tool.getItemDamage() > 0 && !ToolHelper.isBroken(tool)) {
-            double odds = TconEvoConfig.general.traitPhotosyntheticRepairProbability
-                    * Ic2Hooks.INSTANCE.getSunlight(world, entity.getPosition());
-            if (odds > 0D && (odds >= 1D || random.nextDouble() <= odds)) {
-                ToolHelper.healTool(tool, 1, (EntityLivingBase)entity);
-            }
+                && tool.getItemDamage() > 0 && !ToolHelper.isBroken(tool)
+                && ToolUtils.bernoulli(random, getRepairProbability(world, entity))) {
+            ToolHelper.healTool(tool, 1, (EntityLivingBase) entity);
         }
     }
 

@@ -26,8 +26,7 @@ public class TraitFaeVoice extends AbstractTrait {
         if (player.world.isRemote || !wasHit || !(player instanceof EntityPlayer)) {
             return;
         }
-        double odds = TconEvoConfig.moduleBotania.faeVoiceProbabilityWeapon;
-        if (odds > 0D && (odds >= 1D || random.nextDouble() <= odds)) {
+        if (ToolUtils.bernoulli(random, TconEvoConfig.moduleBotania.faeVoiceProbabilityWeapon)) {
             BotaniaHooks.INSTANCE.spawnPixie((EntityPlayer)player, target);
             target.hurtResistantTime = 0; // clear i-frames so the pixie can hit them
         }

@@ -315,6 +315,10 @@ public class TconEvoConfig {
         @Config.RangeInt(min = 1)
         public int traitLuminiferousGlowingDuration = 160;
 
+        @Config.Comment("The knockback multiplier for explosions absorbed by the megaflip trait.")
+        @Config.RangeDouble(min = 0)
+        public double traitMegaflipKnockbackMultiplier = 3;
+
         @Config.Comment("The duration, in ticks, of the healing reduction applied by the mortal wounds trait.")
         @Config.RangeInt(min = 1)
         public int traitMortalWoundsHealReductionDuration = 100;
@@ -345,6 +349,10 @@ public class TconEvoConfig {
         @Config.Comment("The fraction of damage converted to energy for attacks that proc the piezoelectric trait.")
         @Config.RangeDouble(min = 0D, max = Float.MAX_VALUE)
         public double traitPiezoelectricConversionRatio = 36D;
+
+        @Config.Comment("The probability of a hit removing a buff per level of the purging trait.")
+        @Config.RangeDouble(min = 0D, max = 1D)
+        public double traitPurgingProbability = 0.17D;
 
         @Config.Comment({
                 "The duration, in ticks, of the blindness applied by the radiant trait.",

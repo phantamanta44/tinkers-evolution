@@ -51,6 +51,7 @@ public class TconEvoArmourTraits {
             new ArmourTraitGaleForce(1), new ArmourTraitGaleForce(2), new ArmourTraitGaleForce(3)
     };
     public static final ArmourTraitHearthEmbrace TRAIT_HEARTH_EMBRACE = new ArmourTraitHearthEmbrace();
+    public static final ArmourTraitMegaflip TRAIT_MEGAFLIP = new ArmourTraitMegaflip();
     public static final ArmourTraitPhoenixAspect TRAIT_PHOENIX_ASPECT = new ArmourTraitPhoenixAspect();
     public static final ArmourTraitPhotosynthetic TRAIT_PHOTOSYNTHETIC = new ArmourTraitPhotosynthetic();
     public static final ArmourTraitRadiant TRAIT_RADIANT = new ArmourTraitRadiant();

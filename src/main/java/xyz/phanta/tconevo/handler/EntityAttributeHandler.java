@@ -12,6 +12,7 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import xyz.phanta.tconevo.init.TconEvoEntityAttrs;
 import xyz.phanta.tconevo.util.DamageUtils;
+import xyz.phanta.tconevo.util.ToolUtils;
 
 public class EntityAttributeHandler {
 
@@ -40,8 +41,8 @@ public class EntityAttributeHandler {
         if (dmgSrc.getImmediateSource() == null || dmgSrc.isDamageAbsolute() || DamageUtils.isPureDamage(dmgSrc, amount)) {
             return false;
         }
-        double odds = victim.getEntityAttribute(TconEvoEntityAttrs.EVASION_CHANCE).getAttributeValue() - 1D;
-        return odds > 0D && (odds >= 1D || victim.world.rand.nextDouble() <= odds);
+        return ToolUtils.bernoulli(victim.world.rand,
+                victim.getEntityAttribute(TconEvoEntityAttrs.EVASION_CHANCE).getAttributeValue() - 1D);
     }
 
     private static boolean checkAccuracy(DamageSource dmgSrc) {
@@ -49,8 +50,8 @@ public class EntityAttributeHandler {
         if (!(attacker instanceof EntityLivingBase)) {
             return false;
         }
-        double odds = ((EntityLivingBase)attacker).getEntityAttribute(TconEvoEntityAttrs.ACCURACY).getAttributeValue() - 1D;
-        return odds > 0D && (odds >= 1D || attacker.world.rand.nextDouble() <= odds);
+        return ToolUtils.bernoulli(attacker.world.rand,
+                ((EntityLivingBase) attacker).getEntityAttribute(TconEvoEntityAttrs.ACCURACY).getAttributeValue() - 1D);
     }
 
     @SubscribeEvent(priority = EventPriority.LOW)
@@ -90,7 +91,7 @@ public class EntityAttributeHandler {
         }
         double multiplier = event.getEntityLiving().getEntityAttribute(TconEvoEntityAttrs.HEALING_RECEIVED).getAttributeValue();
         if (multiplier != 1D) {
-            event.setAmount(Math.max(amount * (float)multiplier, 0F));
+            event.setAmount(Math.max(amount * (float) multiplier, 0F));
         }
     }
 
