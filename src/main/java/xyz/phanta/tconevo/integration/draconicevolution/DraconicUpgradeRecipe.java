@@ -19,10 +19,16 @@ import xyz.phanta.tconevo.TconEvoMod;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.integration.gamestages.GameStagesHooks;
 import xyz.phanta.tconevo.trait.draconicevolution.TraitEvolved;
+import xyz.phanta.tconevo.util.CommonFakePlayer;
 import xyz.phanta.tconevo.util.ToolUtils;
 
 import javax.annotation.Nullable;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 public class DraconicUpgradeRecipe implements IFusionRecipe {
 
@@ -89,8 +95,7 @@ public class DraconicUpgradeRecipe implements IFusionRecipe {
         try {
             GameStagesHooks.INSTANCE.startBypass();
             upgradeMod.apply(result);
-            // hopefully not a big problem that the player here is null...
-            TinkerCraftingEvent.ToolModifyEvent.fireEvent(result, null, stack.copy());
+            TinkerCraftingEvent.ToolModifyEvent.fireEvent(result, CommonFakePlayer.getInstance(), stack.copy());
             ToolUtils.rebuildToolStack(result);
         } catch (TinkerGuiException e) {
             TconEvoMod.LOGGER.warn("Draconic tool upgrade failed", e);

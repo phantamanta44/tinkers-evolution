@@ -14,6 +14,7 @@ import xyz.phanta.tconevo.init.TconEvoCaps;
 import xyz.phanta.tconevo.init.TconEvoTraits;
 import xyz.phanta.tconevo.integration.astralsorcery.AstralConstellation;
 import xyz.phanta.tconevo.integration.gamestages.GameStagesHooks;
+import xyz.phanta.tconevo.util.CommonFakePlayer;
 import xyz.phanta.tconevo.util.ToolUtils;
 
 import javax.annotation.Nullable;
@@ -54,8 +55,7 @@ public class TraitAstral extends AbstractTrait {
                 try {
                     GameStagesHooks.INSTANCE.startBypass();
                     mod.apply(result);
-                    // hopefully not a big problem that the player here is null...
-                    TinkerCraftingEvent.ToolModifyEvent.fireEvent(result, null, stack.copy());
+                    TinkerCraftingEvent.ToolModifyEvent.fireEvent(result, CommonFakePlayer.getInstance(), stack.copy());
                     ToolUtils.rebuildToolStack(result);
                 } catch (TinkerGuiException e) {
                     return;
