@@ -12,7 +12,7 @@
   "screenshots": [],
   "useDependencyInformation": true,
   "dependencies": ["libnine", "baubles", "mantle", "tconstruct", "conarm", "draconicevolution", "hbm"],
-  "dependents": ["integrationforegoing"],
+  "dependants": ["integrationforegoing"],
   "requiredMods": ["libnine@[1.1.9,)", "tconstruct"]
 }
 ]
