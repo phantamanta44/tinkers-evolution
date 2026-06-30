@@ -1,9 +1,6 @@
-rootProject.name = providers.gradleProperty("mod.id").get()
-
 pluginManagement {
     repositories {
         mavenLocal()
-        // RetroFuturaGradle
         maven {
             name = "GTNH Maven"
             url = uri("https://nexus.gtnewhorizons.com/repository/public/")
@@ -13,7 +10,6 @@ pluginManagement {
             }
         }
         gradlePluginPortal()
-        mavenCentral()
     }
 }
 

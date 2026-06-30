@@ -1,142 +1,23 @@
-import org.jetbrains.gradle.ext.Gradle
-import org.jetbrains.gradle.ext.compiler
-import org.jetbrains.gradle.ext.runConfigurations
-import org.jetbrains.gradle.ext.settings
-import java.io.BufferedReader
-import java.io.FileReader
-
-val resourcesDir: String = "src/main/resources"
-
 plugins {
-    id("java-library")
+    id("st.evening.mc.prelude.build") version "1.0.0"
     id("maven-publish")
-    id("org.jetbrains.gradle.plugin.idea-ext") version "1.1.7"
-    id("eclipse")
-    id("com.gtnewhorizons.retrofuturagradle") version "1.4.1"
 }
 
-/*
- * Load project properties
- */
+group = "xyz.phanta.tconevo"
+version = "1.1.6"
 
-class Props {
-    private fun propS(propName: String): String = providers.gradleProperty(propName).get()
-
-    private fun optS(propName: String): String? = providers.gradleProperty(propName).orNull
-
-    private fun propSL(propName: String): List<String> = providers.gradleProperty(propName)
-        .map { strVal -> strVal.split(',').map { it.trim() } }
-        .getOrElse(listOf())
-
-    private fun propB(propName: String): Boolean = providers.gradleProperty(propName).map {
-        when (val strVal = it.lowercase()) {
-            "true" -> true
-            "false" -> false
-            else -> throw IllegalArgumentException("Not a boolean value: $strVal")
-        }
-    }.get()
-
-    val modId: String = propS("mod.id")
-    val modPackage: String = propS("mod.package")
-    val modVersion: String = propS("mod.version")
-
-    val modATs: String? = optS("mod.access_transformers")
-    val modConstClass: String = propS("mod.const_class")
-    val modLoadingPlugin: String? = optS("mod.loading_plugin")?.let { "$modPackage.$it" }
-
-    val mcVersion: String = propS("minecraft.version")
-    val mcDeobfMappingsChannel: String = propS("minecraft.deobf.mappings.channel")
-    val mcDeobfMappingsVersion: String = propS("minecraft.deobf.mappings.version")
-
-    val buildSources: Boolean = propB("build.buildSources")
-    val buildDocs: Boolean = propB("build.buildDocs")
-}
-
-val props = Props()
-
-inline fun <T> withProps(f: Props.() -> T): T = props.run(f)
-
-/*
- * Configure project
- */
-
-group = props.modPackage
-version = props.modVersion
-
-base {
-    archivesName = withProps { "$modId-$mcVersion" }
-}
-
-/*
- * Configure build system
- */
-
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(8)
-        vendor = JvmVendorSpec.AZUL // RFG requires an Azul JVM for its build tasks
+preludeBuild {
+    modId = "tconevo"
+    mod {
+        constantsClass = "TconEvoConsts"
+        accessTransformerFile = "tconevo_at.cfg"
+        loadingPluginClass = "coremod.TconEvoCoreMod"
     }
-
-    if (props.buildSources) {
-        withSourcesJar()
-    }
-    if (props.buildDocs) {
-        withJavadocJar()
-    }
-}
-
-tasks.compileJava {
-    options.encoding = "UTF-8"
-}
-
-minecraft {
-    // Build config
-    mcVersion = props.mcVersion
-    mcpMappingChannel = props.mcDeobfMappingsChannel
-    mcpMappingVersion = props.mcDeobfMappingsVersion
-
-    useDependencyAccessTransformers = true
-
-    injectedTags.apply {
-        put("MOD_ID", props.modId)
-        put("VERSION", props.modVersion)
-    }
-
-    // Runtime config
-    username = "Player"
-    extraRunJvmArguments.add("-ea:${props.modPackage}")
-    props.modLoadingPlugin?.let { extraRunJvmArguments.add("-Dfml.coreMods.load=$it") }
-}
-
-tasks.injectTags {
-    outputClassName = withProps { "$modPackage.$modConstClass" }
-}
-
-tasks.processResources {
-    inputs.property("version", props.modVersion)
-
-    filesMatching("mcmod.info") {
-        expand(
-            "modId" to props.modId,
-            "modVersion" to props.modVersion,
-            "mcVersion" to props.mcVersion
-        )
-    }
-}
-
-tasks.deobfuscateMergedJarToSrg {
-    props.modATs?.let { accessTransformerFiles.from("$resourcesDir/META-INF/$it") }
-}
-
-tasks.srgifyBinpatchedJar {
-    props.modATs?.let { accessTransformerFiles.from("$resourcesDir/META-INF/$it") }
-}
-
-tasks.jar {
-    manifest {
-        props.modATs?.let { attributes("FMLAT" to it) }
-        props.modLoadingPlugin?.let {
-            attributes("FMLCorePlugin" to it, "FMLCorePluginContainsFMLMod" to "true")
+    minecraft {
+        mcVersion = "1.12.2"
+        deobf {
+            mappingsChannel = "stable"
+            mappingsVersion = "39"
         }
     }
 }
@@ -182,7 +63,6 @@ dependencies { // THE BEAST
     api(deobf("slimeknights.mantle:Mantle:1.12-1.3.3.56"))
     api(deobf("slimeknights:TConstruct:1.12.2-2.13.0.184"))
     compileOnly(deobf("curse.maven:constructs-armory-287683:2882794")) // 1.2.5.4
-    compileOnly(deobf("net.shadowfacts:Forgelin:1.8.4"))
     compileOnly("CraftTweaker2:ZenScript:4.1.9.491")
     compileOnly("CraftTweaker2:CraftTweaker2-API:4.1.14.519")
     compileOnly(deobf("com.azanor.baubles:Baubles:1.12-1.5.2"))
@@ -191,7 +71,7 @@ dependencies { // THE BEAST
     compileOnly(deobf("curse.maven:brandons-core-231382:3051539")) // 2.4.19.214
     compileOnly(deobf("curse.maven:draconic-evolution-223565:3051542")) // 2.3.27.353
     compileOnly(deobf("vazkii.botania:Botania:r1.10-363.148"))
-    compileOnly(deobf("curse.maven:librarianlib-252910:3041340")) // 1.12.2-4.22
+    compileOnly(deobf("curse.maven:librarianlib-continuous-1058274:6617935")) // 1.12.2-4.22-2.0-3
     compileOnly(deobf("curse.maven:natural-pledge-247704:2740703")) // r3.1.2
     compileOnly(deobf("cofh:CoFHCore:1.12.2-4.6.3.27:universal"))
     compileOnly(deobf("cofh:ThermalFoundation:1.12.2-2.6.3.27:universal"))
@@ -242,7 +122,7 @@ configurations {
 
 abstract class CheckCrossContaminationTask : DefaultTask() {
     companion object {
-        val PKG_PATTERN = Regex("""\s*(import|package)\s+([a-zA-Z_$][\w$]*(?:\.[a-zA-Z_$][\w$]*)*)\s*;\s*""")
+        val PKG_PATTERN: Regex = Regex("""\s*(import|package)\s+([a-zA-Z_$][\w$]*(?:\.[a-zA-Z_$][\w$]*)*)\s*;\s*""")
 
         fun getIntegrationModule(qn: String): String? {
             if (!qn.startsWith("xyz.phanta.tconevo.integration.")) return null
@@ -268,7 +148,7 @@ abstract class CheckCrossContaminationTask : DefaultTask() {
         // very rudimentary, but actually parsing the java seems excessive
         val units = mutableMapOf<String, SourceUnit>()
         sources.forEach { srcFile ->
-            BufferedReader(FileReader(srcFile)).use { src ->
+            srcFile.bufferedReader().use { src ->
                 var pkgTemp: String? = null
                 var intLocalAnnot = false
                 val imports = mutableListOf<String>()
@@ -315,75 +195,10 @@ abstract class CheckCrossContaminationTask : DefaultTask() {
     }
 }
 
-val checkCrossContamination = tasks.register<CheckCrossContaminationTask>("checkCrossContamination") {
+val checkCrossContamination: TaskProvider<*> = tasks.register<CheckCrossContaminationTask>("checkCrossContamination") {
     sources.from(sourceSets[SourceSet.MAIN_SOURCE_SET_NAME].allJava)
 }
 
 tasks.check {
     dependsOn(checkCrossContamination)
-}
-
-/*
- * Configure artifact publication
- */
-
-publishing {
-    publications {
-        create<MavenPublication>("maven") {
-            artifactId = withProps { "$modId-$mcVersion" }
-            from(components["java"])
-        }
-    }
-}
-
-/*
- * Configure IDE integration
- */
-
-eclipse {
-    classpath {
-        isDownloadSources = true
-        isDownloadJavadoc = true
-    }
-}
-
-idea {
-    module {
-        isDownloadJavadoc = true
-        isDownloadSources = true
-        inheritOutputDirs = true // Fix resources in IJ-Native runs
-    }
-    project {
-        settings {
-            runConfigurations {
-                add(Gradle("1. Run Client").apply {
-                    setProperty("taskNames", listOf("runClient"))
-                })
-                add(Gradle("2. Run Server").apply {
-                    setProperty("taskNames", listOf("runServer"))
-                })
-                add(Gradle("3. Run Obfuscated Client").apply {
-                    setProperty("taskNames", listOf("runObfClient"))
-                })
-                add(Gradle("4. Run Obfuscated Server").apply {
-                    setProperty("taskNames", listOf("runObfServer"))
-                })
-            }
-            compiler {
-                afterEvaluate {
-                    javac {
-                        javacAdditionalOptions = "-encoding utf8"
-                        moduleJavacAdditionalOptions = mapOf(
-                            (project.name + ".main") to
-                                tasks.compileJava.get().options.compilerArgs.joinToString(" ") { "\"$it\"" }
-                        )
-                    }
-                }
-            }
-        }
-    }
-}
-
-tasks.processIdeaSettings {
-    dependsOn(tasks.injectTags)
 }
