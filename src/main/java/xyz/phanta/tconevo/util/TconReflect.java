@@ -1,6 +1,7 @@
 package xyz.phanta.tconevo.util;
 
 import io.github.phantamanta44.libnine.util.helper.MirrorUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.ModContainer;
@@ -14,9 +15,16 @@ import slimeknights.tconstruct.library.smeltery.MeltingRecipe;
 import slimeknights.tconstruct.library.tinkering.Category;
 import slimeknights.tconstruct.library.tinkering.TinkersItem;
 import slimeknights.tconstruct.library.traits.ITrait;
+import xyz.phanta.tconevo.TconEvoMod;
 
 import javax.annotation.Nullable;
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Map;
+import java.util.PriorityQueue;
+import java.util.Set;
 
 public class TconReflect {
 
@@ -77,6 +85,11 @@ public class TconReflect {
     public static void prioritizeMaterial(Material material) {
         if (materials instanceof LinkedHashMap) {
             JReflect.moveLinkedHashMapEntryToFront((LinkedHashMap<String, Material>) materials, material.identifier);
+        } else if (materials instanceof Object2ObjectLinkedOpenHashMap) { // tinkers' antique uses this instead
+            ((Object2ObjectLinkedOpenHashMap<String, Material>) materials).getAndMoveToFirst(material.identifier);
+        } else {
+            TconEvoMod.LOGGER.warn("Material priority hack failed! Material registry is: {}",
+                    materials.getClass().getCanonicalName());
         }
     }
 
