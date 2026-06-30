@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "xyz.phanta.tconevo"
-version = "1.1.6"
+version = "1.1.7"
 
 preludeBuild {
     modId = "tconevo"
