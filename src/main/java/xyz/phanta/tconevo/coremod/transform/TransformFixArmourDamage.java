@@ -72,8 +72,9 @@ public class TransformFixArmourDamage implements TconEvoClassTransformer.Transfo
                 super.visitVarInsn(Opcodes.ALOAD, varItemStack);
                 super.visitVarInsn(Opcodes.ILOAD, varDamage);
                 super.visitVarInsn(Opcodes.ALOAD, varWielder);
+                super.visitVarInsn(Opcodes.ALOAD, 2); // DamageSource parameter
                 super.visitMethodInsn(Opcodes.INVOKESTATIC, "xyz/phanta/tconevo/handler/ArmourDamageCoreHooks",
-                        "shouldDamageItem", "(Lnet/minecraft/item/ItemStack;ILnet/minecraft/entity/EntityLivingBase;)Z", false);
+                        "shouldDamageItem", "(Lnet/minecraft/item/ItemStack;ILnet/minecraft/entity/EntityLivingBase;Lnet/minecraft/util/DamageSource;)Z", false);
 
                 // if hook returned false, cancel the damage; otherwise, load args and call damage function
                 Label cancelDamage = new Label();
