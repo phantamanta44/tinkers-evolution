@@ -91,7 +91,7 @@ dependencies { // THE BEAST
     compileOnly(deobf("curse.maven:environmental-tech-245453:2691536")) // 2.0.20.1
     compileOnly(deobf("net.industrial-craft:industrialcraft-2:2.8.222-ex112"))
     compileOnly(deobf("curse.maven:advanced-solar-panels-252714:2652182")) // 4.2.1
-    runtimeOnly(deobf("curse.maven:advanced-solar-panels-patcher-400399:3401706")) // 1.2.1
+    compileOnly(deobf("curse.maven:advanced-solar-panels-patcher-400399:3401706")) // 1.2.1
     compileOnly(deobf("curse.maven:natural-absorption-224296:2678478")) // 1.0.0
     compileOnly(deobf("curse.maven:redstone-repository-revolved-300750:3483422")) // 2.0.0
     compileOnly(deobf("curse.maven:solar-flux-reborn-246974:3050838")) // 12.4.11
@@ -112,8 +112,56 @@ dependencies { // THE BEAST
     compileOnly(deobf("curse.maven:hbms-nuclear-tech-mod-extended-edition-708939:5254559")) // 1.12.2-2.0.2
 }
 
-configurations {
-    runtimeClasspath { extendsFrom(compileOnly.get()) }
+abstract class FindRuntimeModsTask : DefaultTask() {
+    companion object {
+        private fun getDepName(dep: ResolvedDependency): String {
+            if (dep.moduleGroup != "curse.maven") return dep.moduleName
+            val name = dep.moduleName
+            return name.substring(0, name.lastIndexOf('-'))
+        }
+    }
+
+    @get:Input
+    abstract val sourceConfiguration: Property<String>
+
+    @get:OutputFiles
+    var outputDeps: FileCollection = project.files()
+
+    @TaskAction
+    fun search() {
+        val config = project.configurations.getByName(sourceConfiguration.get()).resolvedConfiguration
+        val seen = mutableListOf<String>()
+        val result = mutableListOf<File>()
+        config.firstLevelModuleDependencies.forEach { dep ->
+            val name = getDepName(dep)
+            if (project.findProperty("runtime.mod.$name") != "true") return@forEach
+            seen += name
+            dep.moduleArtifacts.mapTo(result) { it.file }
+        }
+        project.properties.forEach { (key, value) ->
+            if (value == "true" && key.startsWith("runtime.mod.")) {
+                val name = key.drop(12)
+                if (name !in seen) {
+                    logger.warn("Unknown runtime mod specified: $name")
+                }
+            }
+        }
+        outputDeps = project.files(result)
+    }
+}
+
+val taskFindRuntimeMods: TaskProvider<*> = tasks.register<FindRuntimeModsTask>("findRuntimeMods") {
+    sourceConfiguration = configurations.compileClasspath.name
+}
+
+tasks.runClient {
+    dependsOn(taskFindRuntimeMods)
+    classpath(taskFindRuntimeMods)
+}
+
+tasks.runServer {
+    dependsOn(taskFindRuntimeMods)
+    classpath(taskFindRuntimeMods)
 }
 
 /*
