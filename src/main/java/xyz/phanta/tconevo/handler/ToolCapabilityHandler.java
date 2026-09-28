@@ -8,6 +8,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.tinkering.ITinkerable;
@@ -34,10 +35,13 @@ public class ToolCapabilityHandler {
         modifierCaps.put(modifierId, capFactory);
     }
 
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.HIGH)
     public void onItemCapAttach(AttachCapabilitiesEvent<ItemStack> event) {
         ItemStack stack = event.getObject();
         if (stack.getItem() instanceof ITinkerable) {
+            if (event.getCapabilities().containsKey(TINKERS_EVO_CAP)) { // not really sure why this can happen
+                return;
+            }
             event.addCapability(TINKERS_EVO_CAP, new TconEvoCapProvider(stack, modifierCaps));
         }
     }
