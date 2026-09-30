@@ -18,15 +18,13 @@ public class FlightSpeedHandler {
         if (event.phase != TickEvent.Phase.START) {
             return;
         }
-        float speed = (float)event.player.getEntityAttribute(TconEvoEntityAttrs.FLIGHT_SPEED).getAttributeValue() - 0.05F;
+        float speed = (float)event.player.getEntityAttribute(TconEvoEntityAttrs.FLIGHT_SPEED).getAttributeValue();
         float currentSpeed = getCurrentAppliedSpeed(event.player);
         if (Math.abs(speed - currentSpeed) > 1e-9F) {
-            float realSpeed = event.player.capabilities.getFlySpeed() - currentSpeed + speed;
-            CraftReflect.setFlySpeed(event.player.capabilities, realSpeed);
             setCurrentAppliedSpeed(event.player, speed);
             if (event.player instanceof EntityPlayerMP) {
                 TconEvoMod.INSTANCE.getNetworkHandler()
-                        .sendTo(new SPacketUpdateAppliedFlightSpeed(realSpeed, speed), (EntityPlayerMP)event.player);
+                        .sendTo(new SPacketUpdateAppliedFlightSpeed(speed), (EntityPlayerMP)event.player);
             }
         }
     }
@@ -36,6 +34,7 @@ public class FlightSpeedHandler {
     }
 
     public static void setCurrentAppliedSpeed(EntityPlayer player, float speed) {
+        CraftReflect.setFlySpeed(player.capabilities, speed);
         player.getEntityData().setFloat(TAG_APPLIED_SPEED, speed);
     }
 
