@@ -2,11 +2,11 @@ package xyz.phanta.tconevo.trait;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.constant.NameConst;
+import xyz.phanta.tconevo.init.TconEvoSounds;
 import xyz.phanta.tconevo.integration.naturalpledge.NaturalPledgeHooks;
 
 public class TraitStaggering extends AbstractTrait {
@@ -23,7 +23,7 @@ public class TraitStaggering extends AbstractTrait {
             return;
         }
         player.world.playSound(null, player.posX, player.posY, player.posZ,
-                SoundEvents.ENTITY_PLAYER_ATTACK_SWEEP, player.getSoundCategory(), 1F, 1F);
+                TconEvoSounds.FX_STAGGER, player.getSoundCategory(), 1F, 1F);
         NaturalPledgeHooks.INSTANCE.applyRooted(target, TconEvoConfig.general.traitStaggeringRootDuration);
     }
 

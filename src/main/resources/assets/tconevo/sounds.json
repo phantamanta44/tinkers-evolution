@@ -1,0 +1,86 @@
+{
+  "entity.evasion_dodge": {
+    "subtitle": "tconevo.subtitles.entity.evasion_dodge",
+    "sounds": [
+      {
+        "name": "entity/player/attack/sweep1",
+        "volume": 0.7,
+        "pitch": 1.4
+      },
+      {
+        "name": "entity/player/attack/sweep2",
+        "volume": 0.7,
+        "pitch": 1.4
+      },
+      {
+        "name": "entity/player/attack/sweep3",
+        "volume": 0.7,
+        "pitch": 1.4
+      },
+      {
+        "name": "entity/player/attack/sweep4",
+        "volume": 0.7,
+        "pitch": 1.4
+      },
+      {
+        "name": "entity/player/attack/sweep5",
+        "volume": 0.7,
+        "pitch": 1.4
+      },
+      {
+        "name": "entity/player/attack/sweep6",
+        "volume": 0.7,
+        "pitch": 1.4
+      },
+      {
+        "name": "entity/player/attack/sweep7",
+        "volume": 0.7,
+        "pitch": 1.4
+      }
+    ]
+  },
+  "item.meat_ingot.eat": {
+    "subtitle": "tconevo.subtitles.item.meat_ingot.eat",
+    "sounds": [
+      {
+        "name": "random/break",
+        "pitch": 1.5
+      }
+    ]
+  },
+  "tool.sceptre.fire": {
+    "subtitle": "tconevo.subtitles.tool.sceptre.fire",
+    "sounds": [
+      "tconevo:sceptre/fire"
+    ]
+  },
+  "tool.sceptre.hit_missile": {
+    "subtitle": "tconevo.subtitles.tool.sceptre.hit_missile",
+    "sounds": [
+      "tconevo:sceptre/hit_missile"
+    ]
+  },
+  "fx.purge": {
+    "sounds": [
+      "tconevo:fx/purge"
+    ]
+  },
+  "fx.omnipotent": {
+    "sounds": [
+      {
+        "name": "tconevo:fx/omnipotent",
+        "volume": 0.75
+      }
+    ]
+  },
+  "fx.chain_lightning": {
+    "sounds": [
+      "tconevo:fx/chain_lightning"
+    ]
+  },
+  "fx.stagger": {
+    "sounds": [
+      "tconevo:fx/stagger"
+    ]
+  }
+}

@@ -10,7 +10,9 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 import xyz.phanta.tconevo.TconEvoConfig;
+import xyz.phanta.tconevo.TconEvoMod;
 import xyz.phanta.tconevo.constant.NameConst;
+import xyz.phanta.tconevo.network.SPacketOwnedEntitySpecialEffect;
 
 import javax.annotation.Nullable;
 
@@ -42,6 +44,7 @@ public class TraitOmnipotence extends AbstractTrait {
         if (undealtDmg > 0F) {
             target.setHealth(target.getHealth() - undealtDmg);
         }
+        TconEvoMod.PROXY.playOwnedEntityEffect(player, target, SPacketOwnedEntitySpecialEffect.EffectType.MUSOU_NO_HITOTACHI);
     }
 
     @SubscribeEvent

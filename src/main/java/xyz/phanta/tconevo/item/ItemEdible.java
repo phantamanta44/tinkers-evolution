@@ -14,6 +14,7 @@ import net.minecraft.util.*;
 import net.minecraft.world.World;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.init.TconEvoItems;
+import xyz.phanta.tconevo.init.TconEvoSounds;
 
 public class ItemEdible extends L9ItemSubs implements ParameterizedItemModel.IParamaterized {
 
@@ -57,7 +58,7 @@ public class ItemEdible extends L9ItemSubs implements ParameterizedItemModel.IPa
             Type type = Type.getForStack(stack);
             player.getFoodStats().addStats(type.foodPoints, type.satMultiplier);
             world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_PLAYER_BURP,
-                    SoundCategory.PLAYERS, 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
+                    eater.getSoundCategory(), 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
             type.onEaten(stack, world, player);
             //noinspection ConstantConditions
             player.addStat(StatList.getObjectUseStats(this));
@@ -74,8 +75,8 @@ public class ItemEdible extends L9ItemSubs implements ParameterizedItemModel.IPa
         MEAT_INGOT_RAW(3, 0.6667F, false) {
             @Override
             public void onEaten(ItemStack stack, World world, EntityPlayer player) {
-                world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_ITEM_BREAK,
-                        SoundCategory.PLAYERS, 1F, 1.5F + world.rand.nextFloat() * 0.25F);
+                world.playSound(null, player.posX, player.posY, player.posZ, TconEvoSounds.ITEM_MEAT_INGOT_EAT,
+                        player.getSoundCategory(), 1F, 1F + world.rand.nextFloat() * 0.167F);
                 player.attackEntityFrom(DMG_MEAT_INGOT, 1F);
             }
         },

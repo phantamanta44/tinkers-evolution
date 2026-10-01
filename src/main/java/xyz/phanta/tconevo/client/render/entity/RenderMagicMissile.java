@@ -27,13 +27,13 @@ public class RenderMagicMissile extends Render<EntityMagicMissile> {
         bindTexture(TEX_MAGIC_MISSILE);
         GlStateManager.disableLighting();
         GlStateManager.enableBlend();
+        GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
         RenderUtils.enableFullBrightness();
-        GlStateManager.disableAlpha();
         TextFormatUtils.setGlColour(entity.getColour(), 1F);
         RenderUtils.renderWorldOrtho(x, y + 0.25D, z, 0.5F, 0.5F, (entity.ticksExisted + partialTicks) / 4F);
         GlStateManager.color(1F, 1F, 1F, 1F);
-        GlStateManager.enableAlpha();
         RenderUtils.restoreLightmap();
+        GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE);
         GlStateManager.disableBlend();
         GlStateManager.enableLighting();
     }

@@ -1,6 +1,7 @@
 package xyz.phanta.tconevo.integration.botania;
 
 import io.github.phantamanta44.libnine.util.helper.MirrorUtils;
+import io.github.phantamanta44.libnine.util.nullity.Reflected;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -8,7 +9,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -25,7 +25,6 @@ import vazkii.botania.common.item.equipment.armor.elementium.ItemElementiumHelm;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.integration.conarm.ConArmHooks;
-import io.github.phantamanta44.libnine.util.nullity.Reflected;
 import xyz.phanta.tconevo.util.ToolUtils;
 
 import java.util.Optional;
@@ -141,7 +140,7 @@ public class BotaniaHooksImpl implements BotaniaHooks {
         ItemNBTHelper.setString(fakeSword, "attackerUsername", player.getName());
         burst.setSourceLens(fakeSword);
         player.world.spawnEntity(burst);
-        player.world.playSound(null, player.posX, player.posY, player.posZ, ModSounds.terraBlade, SoundCategory.PLAYERS, 0.4F, 1.4F);
+        player.world.playSound(null, player.posX, player.posY, player.posZ, ModSounds.terraBlade, player.getSoundCategory(), 0.4F, 1.4F);
     }
 
 }

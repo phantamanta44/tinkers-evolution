@@ -10,7 +10,6 @@ import net.minecraft.network.play.server.SPacketAnimation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EntityDamageSource;
-import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import xyz.phanta.tconevo.integration.IntegrationHooks;
@@ -130,8 +129,9 @@ public interface DraconicHooks extends IntegrationHooks {
             } else {
                 player.onEnchantmentCritical(player);
             }
+            // not a proper sound, but this is a fallback that isn't supposed to be used, so oh well
             player.world.playSound(null, player.posX, player.posY, player.posZ,
-                    SoundEvents.ENTITY_BLAZE_HURT, SoundCategory.PLAYERS, 1F, 1F + 0.5F * shieldPower);
+                    SoundEvents.ENTITY_BLAZE_HURT, player.getSoundCategory(), 1F, 1F + 0.5F * shieldPower);
         }
 
         @Override

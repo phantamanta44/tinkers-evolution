@@ -2,15 +2,14 @@ package xyz.phanta.tconevo.handler;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.SoundCategory;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingHealEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import xyz.phanta.tconevo.init.TconEvoEntityAttrs;
+import xyz.phanta.tconevo.init.TconEvoSounds;
 import xyz.phanta.tconevo.util.DamageUtils;
 import xyz.phanta.tconevo.util.ToolUtils;
 
@@ -32,8 +31,8 @@ public class EntityAttributeHandler {
             victim.lastDamage = amount;
             victim.hurtResistantTime = victim.maxHurtResistantTime;
             victim.world.playSound(null, victim.posX, victim.posY, victim.posZ,
-                    SoundEvents.ENTITY_PLAYER_ATTACK_SWEEP, SoundCategory.PLAYERS,
-                    1F, 1.4F + 0.3F * victim.world.rand.nextFloat());
+                    TconEvoSounds.ENTITY_EVASION_DODGE, victim.getSoundCategory(),
+                    1F, 1F + 0.2143F * victim.world.rand.nextFloat());
         }
     }
 

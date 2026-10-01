@@ -36,6 +36,9 @@ public class TraitAftershock extends StackableTrait {
             target.hurtResistantTime = 0;
             DamageUtils.attackEntityWithTool(player, tool, target,
                     DamageUtils.getEntityDamageSource(player).setMagicDamage(), bonusDamage);
+            if (player instanceof EntityPlayer) {
+                ((EntityPlayer) player).onEnchantmentCritical(target);
+            }
         }
     }
 

@@ -151,6 +151,7 @@ abstract class FindRuntimeModsTask : DefaultTask() {
 }
 
 val taskFindRuntimeMods: TaskProvider<*> = tasks.register<FindRuntimeModsTask>("findRuntimeMods") {
+    outputs.upToDateWhen { false }
     sourceConfiguration = configurations.compileClasspath.name
 }
 

@@ -6,9 +6,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 import xyz.phanta.tconevo.TconEvoConfig;
+import xyz.phanta.tconevo.TconEvoMod;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.integration.botania.BotaniaHooks;
 import xyz.phanta.tconevo.integration.botania.BotaniaIntItems;
+import xyz.phanta.tconevo.network.SPacketOwnedEntitySpecialEffect;
 import xyz.phanta.tconevo.util.ToolUtils;
 
 import java.util.List;
@@ -28,6 +30,7 @@ public class TraitAuraSiphon extends AbstractTrait {
         int mana = Math.round(damageDealt * (float)TconEvoConfig.moduleBotania.auraSiphonMultiplier);
         if (mana > 0) {
             BotaniaHooks.INSTANCE.dispatchMana(new ItemStack(BotaniaIntItems.MANA_GIVER), (EntityPlayer)player, mana, true);
+            TconEvoMod.PROXY.playOwnedEntityEffect(player, target, SPacketOwnedEntitySpecialEffect.EffectType.MANA_STEAL);
         }
     }
 

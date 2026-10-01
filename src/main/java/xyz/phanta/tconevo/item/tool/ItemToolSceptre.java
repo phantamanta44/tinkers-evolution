@@ -10,17 +10,23 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.play.server.SPacketAnimation;
-import net.minecraft.util.*;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants;
 import slimeknights.mantle.util.RecipeMatch;
 import slimeknights.tconstruct.library.events.ProjectileEvent;
-import slimeknights.tconstruct.library.materials.*;
+import slimeknights.tconstruct.library.materials.ExtraMaterialStats;
+import slimeknights.tconstruct.library.materials.HandleMaterialStats;
+import slimeknights.tconstruct.library.materials.HeadMaterialStats;
+import slimeknights.tconstruct.library.materials.Material;
+import slimeknights.tconstruct.library.materials.MaterialTypes;
 import slimeknights.tconstruct.library.tinkering.Category;
 import slimeknights.tconstruct.library.tinkering.PartMaterialType;
 import slimeknights.tconstruct.library.tools.ProjectileLauncherNBT;
@@ -31,13 +37,12 @@ import slimeknights.tconstruct.library.utils.TinkerUtil;
 import slimeknights.tconstruct.library.utils.ToolHelper;
 import slimeknights.tconstruct.library.utils.TooltipBuilder;
 import slimeknights.tconstruct.tools.TinkerTools;
-import xyz.phanta.tconevo.TconEvoMod;
 import xyz.phanta.tconevo.constant.NameConst;
 import xyz.phanta.tconevo.entity.EntityMagicMissile;
 import xyz.phanta.tconevo.init.TconEvoItems;
 import xyz.phanta.tconevo.init.TconEvoPartTypes;
+import xyz.phanta.tconevo.init.TconEvoSounds;
 import xyz.phanta.tconevo.material.stats.MagicMaterialStats;
-import xyz.phanta.tconevo.network.SPacketEntitySpecialEffect;
 import xyz.phanta.tconevo.util.DamageUtils;
 import xyz.phanta.tconevo.util.ToolUtils;
 
@@ -87,8 +92,8 @@ public class ItemToolSceptre extends TinkerToolCore implements IProjectile {
                 emitProjectile(world, player, look, data.range, stack, colour);
                 emitProjectile(world, player, LinAlUtils.rotate(look, up, -MathUtils.PI_F / 12F), data.range, stack, colour);
                 emitProjectile(world, player, LinAlUtils.rotate(look, up, MathUtils.PI_F / 12F), data.range, stack, colour);
-                world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.EVOCATION_ILLAGER_CAST_SPELL,
-                        SoundCategory.PLAYERS, 1.5F, 0.8F + itemRand.nextFloat() * 0.4F);
+                world.playSound(null, player.posX, player.posY, player.posZ, TconEvoSounds.TOOL_SCEPTRE_FIRE,
+                        player.getSoundCategory(), 1.5F, 1F + itemRand.nextFloat() * 0.2F);
                 player.getCooldownTracker().setCooldown(this, MathUtils.clamp((int)Math.round(16D / data.drawSpeed), 1, 100));
                 if (player instanceof EntityPlayerMP) {
                     // item cooldown desyncs very easily, so the swing animation will often just not play on the client
@@ -115,7 +120,9 @@ public class ItemToolSceptre extends TinkerToolCore implements IProjectile {
     public boolean dealDamage(ItemStack stack, EntityLivingBase player, Entity entity, float damage) {
         if (DamageUtils.attackEntityWithTool(player, stack, entity,
                 DamageUtils.getEntityDamageSource(player).setMagicDamage(), damage)) {
-            TconEvoMod.PROXY.playEntityEffect(entity, SPacketEntitySpecialEffect.EffectType.ENTROPY_BURST);
+            if (player instanceof EntityPlayer) {
+                ((EntityPlayer) player).onEnchantmentCritical(entity);
+            }
             return true;
         }
         return false;

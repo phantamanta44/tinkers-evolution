@@ -1,14 +1,12 @@
 package xyz.phanta.tconevo.client.fx;
 
 import io.github.phantamanta44.libnine.util.render.RenderUtils;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
@@ -26,16 +24,27 @@ public class ParticleChainLightning extends Particle {
 
     private ParticleChainLightning(World world, Vec3d pos, List<Vec3d> positions) {
         super(world, pos.x, pos.y, pos.z);
-        this.particleMaxAge = 4;
-        vertices.add(findPositionNear(pos));
+        this.particleMaxAge = 3;
+        final Vec3d firstNear = findPositionNear(pos);
+        vertices.add(findPositionNear(firstNear));
+        vertices.add(firstNear);
         vertices.add(pos);
         for (int i = 1; i < positions.size(); i++) {
-            Vec3d nextPos = positions.get(i);
+            final Vec3d nextPos = positions.get(i);
             vertices.add(findPositionNear(
-                    (pos.x + nextPos.x) / 2D, (pos.y + nextPos.y) / 2D, (pos.z + nextPos.z) / 2D, 0.5D));
+                    pos.x * 0.33D + nextPos.x * 0.67D,
+                    pos.y * 0.33D + nextPos.y * 0.67D,
+                    pos.z * 0.33D + nextPos.z * 0.67D,
+                    0.3D));
+            vertices.add(findPositionNear(
+                    pos.x * 0.67D + nextPos.x * 0.33D,
+                    pos.y * 0.67D + nextPos.y * 0.33D,
+                    pos.z * 0.67D + nextPos.z * 0.33D,
+                    0.3D));
             vertices.add(nextPos);
             pos = nextPos;
         }
+        vertices.add(findPositionNear(positions.get(positions.size() - 1)));
         vertices.add(findPositionNear(positions.get(positions.size() - 1)));
     }
 
@@ -50,11 +59,6 @@ public class ParticleChainLightning extends Particle {
     @Override
     public int getFXLayer() {
         return 3;
-    }
-
-    @Override
-    public int getBrightnessForRender(float p_189214_1_) {
-        return 15;
     }
 
     public void onUpdate() {
@@ -73,16 +77,15 @@ public class ParticleChainLightning extends Particle {
         GlStateManager.enableBlend();
         RenderUtils.enableFullBrightness();
         GlStateManager.pushMatrix();
-        EntityPlayer player = Minecraft.getMinecraft().player;
-        GlStateManager.translate(-player.posX, -player.posY, -player.posZ);
+        GlStateManager.translate(-interpPosX, -interpPosY, -interpPosZ);
 
         Tessellator tess = Tessellator.getInstance();
         BufferBuilder buf = tess.getBuffer();
         GlStateManager.color(0.467F, 0.82F, 0.827F, 0.3F);
-        GlStateManager.glLineWidth(6F);
+        GlStateManager.glLineWidth(12F);
         drawArcs(tess, buf);
         GlStateManager.color(1F, 1F, 1F, 0.4F);
-        GlStateManager.glLineWidth(3F);
+        GlStateManager.glLineWidth(5F);
         drawArcs(tess, buf);
 
         GlStateManager.popMatrix();

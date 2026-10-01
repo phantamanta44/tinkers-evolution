@@ -14,7 +14,15 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
 import xyz.phanta.tconevo.artifact.ArtifactRegistry;
-import xyz.phanta.tconevo.handler.*;
+import xyz.phanta.tconevo.handler.ArtifactLootHandler;
+import xyz.phanta.tconevo.handler.EnergizedTraitConflictHandler;
+import xyz.phanta.tconevo.handler.EnergyShieldHandler;
+import xyz.phanta.tconevo.handler.EntityAttributeHandler;
+import xyz.phanta.tconevo.handler.FlightSpeedHandler;
+import xyz.phanta.tconevo.handler.MaterialOverrideHandler;
+import xyz.phanta.tconevo.handler.PlayerStateHandler;
+import xyz.phanta.tconevo.handler.ToolCapabilityHandler;
+import xyz.phanta.tconevo.handler.ToolCraftingHandler;
 import xyz.phanta.tconevo.init.TconEvoItems;
 import xyz.phanta.tconevo.init.TconEvoTraits;
 import xyz.phanta.tconevo.integration.IntegrationManager;
@@ -23,6 +31,7 @@ import xyz.phanta.tconevo.material.MaterialDefinition;
 import xyz.phanta.tconevo.network.CPacketGaiaWrath;
 import xyz.phanta.tconevo.network.SPacketEntitySpecialEffect;
 import xyz.phanta.tconevo.network.SPacketLightningEffect;
+import xyz.phanta.tconevo.network.SPacketOwnedEntitySpecialEffect;
 import xyz.phanta.tconevo.network.SPacketUpdateAppliedFlightSpeed;
 import xyz.phanta.tconevo.recipe.MasterRecipes;
 import xyz.phanta.tconevo.recipe.OreDictRegistration;
@@ -64,6 +73,7 @@ public class CommonProxy {
         netHandler.registerMessage(CPacketGaiaWrath.Handler.class, CPacketGaiaWrath.class, 1, Side.SERVER);
         netHandler.registerMessage(SPacketLightningEffect.Handler.class, SPacketLightningEffect.class, 2, Side.CLIENT);
         netHandler.registerMessage(SPacketUpdateAppliedFlightSpeed.Handler.class, SPacketUpdateAppliedFlightSpeed.class, 3, Side.CLIENT);
+        netHandler.registerMessage(SPacketOwnedEntitySpecialEffect.Handler.class, SPacketOwnedEntitySpecialEffect.class, 4, Side.CLIENT);
         IntegrationManager.dispatchPreInit(event);
         // handle config dir generation
         TconEvoMod.LOGGER.info("Current config version: {}", CONFIG_VERSION);
@@ -169,6 +179,12 @@ public class CommonProxy {
     public void playEntityEffect(Entity entity, SPacketEntitySpecialEffect.EffectType type) {
         TconEvoMod.INSTANCE.getNetworkHandler().sendToAllAround(
                 new SPacketEntitySpecialEffect(entity.getEntityId(), type),
+                new NetworkRegistry.TargetPoint(entity.dimension, entity.posX, entity.posY, entity.posZ, 32D));
+    }
+
+    public void playOwnedEntityEffect(Entity owner, Entity entity, SPacketOwnedEntitySpecialEffect.EffectType type) {
+        TconEvoMod.INSTANCE.getNetworkHandler().sendToAllAround(
+                new SPacketOwnedEntitySpecialEffect(owner.getEntityId(), entity.getEntityId(), type),
                 new NetworkRegistry.TargetPoint(entity.dimension, entity.posX, entity.posY, entity.posZ, 32D));
     }
 

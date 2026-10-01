@@ -7,7 +7,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
 import xyz.phanta.tconevo.TconEvoConfig;
+import xyz.phanta.tconevo.TconEvoMod;
 import xyz.phanta.tconevo.constant.NameConst;
+import xyz.phanta.tconevo.network.SPacketEntitySpecialEffect;
 import xyz.phanta.tconevo.trait.base.StackableTrait;
 import xyz.phanta.tconevo.util.ToolUtils;
 
@@ -48,7 +50,7 @@ public class TraitPurging extends StackableTrait {
             return;
         }
         target.removePotionEffect(candidates.get(random.nextInt(candidates.size())).getPotion());
-        // TODO purge particle/sound effect
+        TconEvoMod.PROXY.playEntityEffect(target, SPacketEntitySpecialEffect.EffectType.PURGE);
     }
 
     @Override

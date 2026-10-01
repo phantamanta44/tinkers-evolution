@@ -648,6 +648,11 @@ tconevo.info.cannot_replace=Cannot replace this tool part!
 tconevo.gui.preview_material_render.refresh=Reload Render Info
 tconevo.gui.preview_material_render.nothing_to_render=Nothing to render!
 
+tconevo.subtitles.entity.evasion_dodge=Attack dodged
+tconevo.subtitles.item.meat_ingot.eat=Meat ingot eaten
+tconevo.subtitles.tool.sceptre.fire=Sceptre fired
+tconevo.subtitles.tool.sceptre.hit_missile=Magic missile hit
+
 upgrade.level.0=-
 upgrade.level.1=Basic
 upgrade.level.2=Wyvern

@@ -3,6 +3,7 @@ package xyz.phanta.tconevo.network;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
+import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
@@ -27,13 +28,13 @@ public class SPacketEntitySpecialEffect implements IMessage {
 
     @Override
     public void toBytes(ByteBuf buf) {
-        buf.writeInt(entityId).writeInt(type.ordinal());
+        new PacketBuffer(buf).writeVarInt(entityId).writeByte(type.ordinal());
     }
 
     @Override
     public void fromBytes(ByteBuf buf) {
-        this.entityId = buf.readInt();
-        this.type = EffectType.VALUES[buf.readInt()];
+        this.entityId = new PacketBuffer(buf).readVarInt();
+        this.type = EffectType.VALUES[buf.readByte()];
     }
 
     public static class Handler implements IMessageHandler<SPacketEntitySpecialEffect, IMessage> {
@@ -60,7 +61,8 @@ public class SPacketEntitySpecialEffect implements IMessage {
 
         ENTROPY_BURST,
         FLUX_BURN,
-        CHAOS_BURST;
+        CHAOS_BURST,
+        PURGE;
 
         public static final EffectType[] VALUES = values();
 
