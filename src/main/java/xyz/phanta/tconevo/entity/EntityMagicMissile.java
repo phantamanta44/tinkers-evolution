@@ -14,6 +14,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import slimeknights.tconstruct.library.entity.EntityProjectileBase;
 import slimeknights.tconstruct.library.events.ProjectileEvent;
 import xyz.phanta.tconevo.client.fx.ParticleGlimmer;
@@ -97,6 +99,7 @@ public class EntityMagicMissile extends EntityProjectileBase {
         setDead();
     }
 
+    @SideOnly(Side.CLIENT)
     private void playFlightEffect() {
         if (rand.nextBoolean()) return;
         final int colour = getColour();
@@ -108,6 +111,7 @@ public class EntityMagicMissile extends EntityProjectileBase {
                 ((colour >> 16) & 0xFF) / 255F, ((colour >> 8) & 0xFF) / 255F, (colour & 0xFF) / 255F, 8));
     }
 
+    @SideOnly(Side.CLIENT)
     private void playHitEffect() {
         world.playSound(posX, posY, posZ, TconEvoSounds.TOOL_SCEPTRE_HIT_MISSILE, shootingEntity.getSoundCategory(),
                 0.75F, 1F + rand.nextFloat() * 0.333F, false);
